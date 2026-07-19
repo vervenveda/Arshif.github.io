@@ -337,4 +337,4 @@ Use the license file selected for this repository. If this project is part of th
 
 ## Public-Facing Summary
 
-**ARSHIF Nonprofit Hall** is a free, local-first nonprofit education portal for learning civic stewardship, governance, funding, compliance awareness, program design, international caution, and public accountability. It helps learners build knowledge and planning artifacts while reminding them to verify legal, tax, grant, and compliance actions with official sources and qualified professionals.
+**ARSHIF Nonprofit Hall** is a free, local-first nonprofit education portal for learning civic stewardship, governance, funding, compliance awareness, program design, international caution, and public accountability. It helps learners build knowledge and planning artifacts while reminding them to verify legal, tax, grant, and compliance actions with official sources and qualified professionals.ability. It helps learners build knowledge and planning artifacts while reminding them to verify legal, tax, grant, and compliance actions with official sources and qualified professionals.
