@@ -1273,7 +1273,7 @@
 
   <header class="site-header">
     <div class="header-inner">
-      <a class="brand" href="/" aria-label="ARSHIF home">
+      <a class="brand" href="./" aria-label="ARSHIF home">
         <svg class="brand-mark" viewBox="0 0 100 100" aria-hidden="true">
           <circle cx="50" cy="50" r="43" fill="none" stroke="currentColor" stroke-width="1.8"/>
           <circle cx="50" cy="50" r="30" fill="none" stroke="currentColor" stroke-width="1" opacity=".55"/>
@@ -1485,10 +1485,10 @@
 
       <nav class="footer-links" aria-label="Footer navigation">
         <a href="#archive">Archive Index</a>
-        <a href="/research/">Research Gate</a>
-        <a href="/about/">About ARSHIF</a>
-        <a href="/privacy/">Privacy</a>
-        <a href="/license/">Rights</a>
+        <a href="./research/">Research Gate</a>
+        <a href="./about/">About ARSHIF</a>
+        <a href="./privacy/">Privacy</a>
+        <a href="./license/">Rights</a>
       </nav>
     </div>
   </footer>
@@ -1515,7 +1515,7 @@
       </div>
 
       <div class="modal-actions">
-        <a class="primary-button" id="modalEnterLink" href="/">Enter this hall</a>
+        <a class="primary-button" id="modalEnterLink" href="./">Enter this hall</a>
         <button class="quiet-button" id="modalFavoriteButton" type="button">Save to favorites</button>
       </div>
     </div>
@@ -1536,7 +1536,7 @@
       ----------------------
       Edit this single array to add, remove, rename, or redirect halls.
       Every route is a normal independent folder, such as:
-      medical/index.html  ->  /medical/
+      apps/financial_hall/index.html  ->  ./apps/financial_hall/
     */
 
     const halls = [
@@ -1545,7 +1545,7 @@
         title: "Medical Hall",
         category: "Health & Life",
         symbol: "✚",
-        path: "/medical/",
+        path: "./medical/",
         description: "Human anatomy, medicine, public health, healing traditions, ethics, and the changing history of care.",
         pathways: ["Anatomy and physiology", "History of medicine", "Public health", "Medical ethics", "Primary-source medical texts"]
       },
@@ -1554,7 +1554,7 @@
         title: "Financial Hall",
         category: "Civic & Practical",
         symbol: "◈",
-        path: "/financial/",
+        path: "./apps/financial_hall/",
         description: "Personal finance, economic systems, public budgets, markets, labor, monetary history, and financial literacy.",
         pathways: ["Personal financial literacy", "Economic history", "Public finance", "Markets and institutions", "Consumer protection"]
       },
@@ -1563,7 +1563,7 @@
         title: "Entrepreneur Hall",
         category: "Civic & Practical",
         symbol: "↗",
-        path: "/entrepreneur/",
+        path: "./entrepreneur/",
         description: "Research, planning, ethics, design, operations, and resilient pathways for building useful enterprises.",
         pathways: ["Idea validation", "Business models", "Ethical entrepreneurship", "Operations", "Community enterprise"]
       },
@@ -1572,7 +1572,7 @@
         title: "Nonprofit Hall",
         category: "Civic & Practical",
         symbol: "◎",
-        path: "/nonprofit/",
+        path: "./apps/nonprofit_hall/",
         description: "Public service, governance, mission design, fundraising, compliance, community accountability, and impact.",
         pathways: ["Formation and governance", "Mission and strategy", "Fundraising", "Compliance", "Impact measurement"]
       },
@@ -1581,7 +1581,7 @@
         title: "Culinary Hall",
         category: "Culture & Daily Life",
         symbol: "◒",
-        path: "/culinary/",
+        path: "./apps/culinary_hall/",
         description: "Food history, culinary technique, agriculture, nutrition, preservation, trade, ritual, and cultural identity.",
         pathways: ["Culinary foundations", "World foodways", "Food preservation", "Agriculture and trade", "Nutrition and culture"]
       },
@@ -1590,7 +1590,7 @@
         title: "Poetry Hall",
         category: "Arts & Expression",
         symbol: "❧",
-        path: "/poetry/",
+        path: "./apps/poetry_hall/",
         description: "Poetic traditions, forms, voices, movements, performance, close reading, and the craft of language.",
         pathways: ["World poetry", "Forms and technique", "Poetry movements", "Oral performance", "Writing practice"]
       },
@@ -1599,7 +1599,7 @@
         title: "Art Hall",
         category: "Arts & Expression",
         symbol: "✦",
-        path: "/art/",
+        path: "./art/",
         description: "Visual culture across time: materials, movements, artists, criticism, conservation, and creative practice.",
         pathways: ["Art history", "Studio methods", "Materials and conservation", "Visual analysis", "Professional practice"]
       },
@@ -1608,7 +1608,7 @@
         title: "Heritage Hall",
         category: "Memory & Civilization",
         symbol: "⌂",
-        path: "/heritage/",
+        path: "./heritage/",
         description: "Family memory, archives, genealogy, place, cultural inheritance, historic preservation, and living tradition.",
         pathways: ["Family archives", "Oral history", "Historic places", "Genealogy", "Cultural preservation"]
       },
@@ -1617,7 +1617,7 @@
         title: "Collectable Hall",
         category: "Memory & Civilization",
         symbol: "◇",
-        path: "/collectable/",
+        path: "./collectable/",
         description: "Objects as evidence: provenance, classification, conservation, valuation, material culture, and collecting ethics.",
         pathways: ["Material culture", "Provenance research", "Conservation", "Cataloging", "Ethics of collecting"]
       },
@@ -1626,7 +1626,7 @@
         title: "Hall of World Classics",
         category: "Texts & Ideas",
         symbol: "Ⅳ",
-        path: "/classics/",
+        path: "./classics/",
         description: "Foundational works from civilizations around the world, read in historical and cultural context.",
         pathways: ["Ancient epics", "Classical drama", "Philosophical texts", "Historical chronicles", "Comparative reading"]
       },
@@ -1635,7 +1635,7 @@
         title: "Hall of World Literature",
         category: "Texts & Ideas",
         symbol: "¶",
-        path: "/literature/",
+        path: "./literature/",
         description: "Novels, stories, essays, drama, and literary movements across languages, nations, and centuries.",
         pathways: ["Global literary traditions", "Literary movements", "Close reading", "Translation studies", "Public-domain texts"]
       },
@@ -1644,7 +1644,7 @@
         title: "Hall of Philosophy",
         category: "Texts & Ideas",
         symbol: "Φ",
-        path: "/philosophy/",
+        path: "./philosophy/",
         description: "Questions of being, knowledge, ethics, logic, meaning, politics, beauty, mind, and human responsibility.",
         pathways: ["Ethics", "Logic", "Epistemology", "Political philosophy", "Philosophy of mind"]
       },
@@ -1653,7 +1653,7 @@
         title: "Hall of Theatre",
         category: "Arts & Expression",
         symbol: "◐",
-        path: "/theatre/",
+        path: "./theatre/",
         description: "Plays, performance traditions, dramatic structure, stagecraft, acting, directing, and theatre history.",
         pathways: ["World drama", "Performance traditions", "Stagecraft", "Dramatic writing", "Theatre criticism"]
       },
@@ -1662,7 +1662,7 @@
         title: "Hall of Mythology",
         category: "Memory & Civilization",
         symbol: "☼",
-        path: "/mythology/",
+        path: "./mythology/",
         description: "Creation stories, heroic cycles, deities, symbols, cosmologies, and comparative myth across cultures.",
         pathways: ["Creation traditions", "Heroic cycles", "Sacred symbols", "Comparative mythology", "Myth and society"]
       },
@@ -1671,7 +1671,7 @@
         title: "Hall of Travelogues & Exploration",
         category: "Memory & Civilization",
         symbol: "⌖",
-        path: "/travelogues/",
+        path: "./travelogues/",
         description: "Journeys, maps, encounters, exploration narratives, migration, exchange, and the ethics of observing others.",
         pathways: ["Historic travel writing", "Cartography", "Migration", "Cross-cultural encounter", "Exploration ethics"]
       },
@@ -1680,7 +1680,7 @@
         title: "Hall of Indigenous Oral Traditions",
         category: "Memory & Civilization",
         symbol: "◌",
-        path: "/indigenous/",
+        path: "./indigenous/",
         description: "Oral memory, story, song, place-based knowledge, language stewardship, and respectful cultural preservation.",
         pathways: ["Oral history methods", "Language stewardship", "Story and place", "Community authority", "Ethical preservation"]
       },
@@ -1689,7 +1689,7 @@
         title: "Hall of the History of Science",
         category: "Science & Systems",
         symbol: "⚗",
-        path: "/science/",
+        path: "./science/",
         description: "How observation, experiment, mathematics, institutions, tools, and debate shaped scientific knowledge.",
         pathways: ["Scientific revolutions", "History of experimentation", "Instruments and measurement", "Science and society", "Primary scientific texts"]
       },
@@ -1698,7 +1698,7 @@
         title: "Hall of Law & Governance",
         category: "Civic & Practical",
         symbol: "⚖",
-        path: "/law/",
+        path: "./law/",
         description: "Legal traditions, constitutions, institutions, rights, duties, public power, and civic accountability.",
         pathways: ["Constitutional traditions", "Civil and human rights", "Legal history", "Public institutions", "Primary legal sources"]
       },
@@ -1707,7 +1707,7 @@
         title: "Hall of Psychology & Mind",
         category: "Health & Life",
         symbol: "Ψ",
-        path: "/psychology/",
+        path: "./psychology/",
         description: "Mind, behavior, development, memory, emotion, cognition, relationships, and the history of psychological thought.",
         pathways: ["Cognition", "Development", "Emotion", "Social psychology", "History and ethics"]
       },
@@ -1716,16 +1716,25 @@
         title: "Hall of Holistic & Traditional Medicine",
         category: "Health & Life",
         symbol: "☿",
-        path: "/holistic/",
+        path: "./apps/holistic_medicine_hall/",
         description: "Traditional healing systems, plant knowledge, cultural context, evidence, safety, and responsible comparison.",
         pathways: ["Traditional systems", "Ethnobotany", "Evidence and safety", "Cultural context", "Integrative-care history"]
+      },
+      {
+        id: "traditional-medicine",
+        title: "Traditional Medicine Hall",
+        category: "Health & Life",
+        symbol: "✥",
+        path: "./apps/traditional_medicine_hall/",
+        description: "A safety-first study of world healing traditions, historical practice, cultural context, evidence, ethics, and responsible source comparison.",
+        pathways: ["World healing traditions", "Historical medical systems", "Cultural context", "Evidence and safety", "Ethics and respectful study"]
       },
       {
         id: "children",
         title: "Children’s Medicinal Resource",
         category: "Health & Life",
         symbol: "❀",
-        path: "/children/",
+        path: "./apps/childrens_medicine_hall/",
         description: "Age-appropriate learning about health, safety, plants, medicines, bodies, caregivers, and when to seek help.",
         pathways: ["Body literacy", "Medicine safety", "Plant awareness", "Healthy habits", "Trusted adults and care"]
       },
@@ -1734,7 +1743,7 @@
         title: "Hall of Language Learning",
         category: "Texts & Ideas",
         symbol: "AΩ",
-        path: "/languages/",
+        path: "./apps/language_hall/",
         description: "Language families, writing systems, pronunciation, communication, translation, culture, and multilingual learning.",
         pathways: ["World languages", "Writing systems", "Phonetics", "Translation", "Language and culture"]
       },
@@ -1743,7 +1752,7 @@
         title: "Hall of Business Management",
         category: "Civic & Practical",
         symbol: "▦",
-        path: "/business/",
+        path: "./business/",
         description: "Leadership, operations, strategy, accounting, communication, ethics, teams, and organizational stewardship.",
         pathways: ["Management foundations", "Operations", "Strategy", "Organizational behavior", "Business ethics"]
       },
@@ -1752,7 +1761,7 @@
         title: "Hall of Gardening",
         category: "Earth & Ecology",
         symbol: "♧",
-        path: "/gardening/",
+        path: "./gardening/",
         description: "Soil, seeds, horticulture, food gardens, ecology, seasonal practice, stewardship, and community growing.",
         pathways: ["Soil science", "Planting and propagation", "Horticulture", "Food gardens", "Ecological stewardship"]
       },
@@ -1761,7 +1770,7 @@
         title: "Hall of Trees",
         category: "Earth & Ecology",
         symbol: "♜",
-        path: "/trees/",
+        path: "./trees/",
         description: "Ancient, sacred, medicinal, ecological, cultural, and symbolic trees from every region of the world.",
         pathways: ["Tree identification", "Forest ecology", "Sacred trees", "Medicinal history", "Conservation"]
       },
@@ -1770,7 +1779,7 @@
         title: "Archive for Human Connection",
         category: "Human Experience",
         symbol: "∞",
-        path: "/connection/",
+        path: "./connection/",
         description: "Relationships, rituals, emotions, everyday lives, intergenerational voices, and the social fabric of humanity.",
         pathways: ["Everyday lives", "Rituals and traditions", "Languages of love", "Emotions atlas", "Voices across generations"]
       },
@@ -1779,7 +1788,7 @@
         title: "Open Academy of Living Knowledge",
         category: "Human Experience",
         symbol: "△",
-        path: "/academy/",
+        path: "./academy/",
         description: "Open learning pathways, teaching toolkits, cross-cultural wisdom, multimedia study, and guided discovery.",
         pathways: ["Open educational resources", "Teaching toolkits", "Guided courses", "Cross-cultural learning", "Community knowledge"]
       },
@@ -1788,7 +1797,7 @@
         title: "ARSHIF Research Gate",
         category: "Science & Systems",
         symbol: "⌕",
-        path: "/research/",
+        path: "./research/",
         description: "A disciplined starting point for source discovery, comparison, note-making, verification, and research design.",
         pathways: ["Research questions", "Source evaluation", "Primary-source discovery", "Comparative inquiry", "Research notebooks"]
       }
