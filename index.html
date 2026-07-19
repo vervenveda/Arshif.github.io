@@ -1,0 +1,2159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="ARSHIF — The Living Archive of Human Knowledge. A sovereign, privacy-respecting gateway to deep research, public learning, culture, history, science, art, and human memory." />
+  <meta name="theme-color" content="#0b1013" />
+  <meta name="color-scheme" content="dark" />
+
+  <title>ARSHIF — The Living Archive of Human Knowledge</title>
+
+  <style>
+    :root {
+      --night: #080c0f;
+      --night-2: #0c1317;
+      --night-3: #111b20;
+      --paper: #e8e1cf;
+      --paper-soft: #bdb7a7;
+      --ink: #121719;
+      --gold: #c5a56a;
+      --gold-bright: #e3c98f;
+      --gold-dim: rgba(197, 165, 106, 0.22);
+      --teal: #6f9e99;
+      --teal-deep: #365b5a;
+      --line: rgba(227, 201, 143, 0.18);
+      --panel: rgba(15, 23, 27, 0.86);
+      --panel-solid: #10191d;
+      --shadow: 0 26px 70px rgba(0, 0, 0, 0.38);
+      --radius: 1.25rem;
+      --max: 1240px;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      background: var(--night);
+    }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      overflow-x: hidden;
+      color: var(--paper);
+      background:
+        radial-gradient(circle at 12% 8%, rgba(111, 158, 153, 0.13), transparent 28rem),
+        radial-gradient(circle at 88% 18%, rgba(197, 165, 106, 0.12), transparent 26rem),
+        linear-gradient(180deg, #0a0f12 0%, #081014 48%, #070b0e 100%);
+      font-family: Georgia, "Times New Roman", serif;
+      line-height: 1.6;
+    }
+
+    body.menu-open,
+    body.modal-open {
+      overflow: hidden;
+    }
+
+    button,
+    input,
+    a {
+      font: inherit;
+    }
+
+    button,
+    a {
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    a {
+      color: inherit;
+    }
+
+    img,
+    svg {
+      display: block;
+      max-width: 100%;
+    }
+
+    .skip-link {
+      position: fixed;
+      z-index: 9999;
+      top: 0.75rem;
+      left: 0.75rem;
+      transform: translateY(-180%);
+      padding: 0.8rem 1rem;
+      color: var(--ink);
+      background: var(--gold-bright);
+      border-radius: 0.5rem;
+      text-decoration: none;
+      transition: transform 160ms ease;
+    }
+
+    .skip-link:focus {
+      transform: translateY(0);
+    }
+
+    .page-grid {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      opacity: 0.16;
+      background-image:
+        linear-gradient(rgba(227, 201, 143, 0.055) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(227, 201, 143, 0.04) 1px, transparent 1px);
+      background-size: 60px 60px;
+      mask-image: linear-gradient(to bottom, black, transparent 78%);
+    }
+
+    .page-noise {
+      position: fixed;
+      inset: 0;
+      z-index: -1;
+      pointer-events: none;
+      opacity: 0.04;
+      background-image:
+        radial-gradient(circle at 1px 1px, #fff 1px, transparent 0);
+      background-size: 22px 22px;
+    }
+
+    .site-header {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      border-bottom: 1px solid rgba(227, 201, 143, 0.12);
+      background: rgba(8, 12, 15, 0.82);
+      backdrop-filter: blur(18px);
+    }
+
+    .header-inner {
+      width: min(calc(100% - 2rem), var(--max));
+      min-height: 74px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+    }
+
+    .brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.8rem;
+      min-width: 0;
+      color: var(--paper);
+      text-decoration: none;
+    }
+
+    .brand-mark {
+      width: 42px;
+      height: 42px;
+      flex: 0 0 auto;
+      color: var(--gold-bright);
+    }
+
+    .brand-copy {
+      display: grid;
+      line-height: 1;
+    }
+
+    .brand-name {
+      font-size: 1.05rem;
+      letter-spacing: 0.28em;
+    }
+
+    .brand-subtitle {
+      margin-top: 0.42rem;
+      color: var(--paper-soft);
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 0.67rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+
+    .header-actions {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+    }
+
+    .icon-button,
+    .quiet-button,
+    .primary-button,
+    .filter-button,
+    .favorite-button {
+      border: 0;
+      cursor: pointer;
+    }
+
+    .icon-button {
+      width: 44px;
+      height: 44px;
+      display: inline-grid;
+      place-items: center;
+      color: var(--paper);
+      background: rgba(255, 255, 255, 0.045);
+      border: 1px solid rgba(227, 201, 143, 0.18);
+      border-radius: 999px;
+      transition: transform 160ms ease, background 160ms ease, border-color 160ms ease;
+    }
+
+    .icon-button:hover {
+      transform: translateY(-1px);
+      background: rgba(197, 165, 106, 0.12);
+      border-color: rgba(227, 201, 143, 0.42);
+    }
+
+    .icon-button svg {
+      width: 21px;
+      height: 21px;
+    }
+
+    .menu-button .menu-lines,
+    .menu-button .menu-lines::before,
+    .menu-button .menu-lines::after {
+      width: 20px;
+      height: 1.5px;
+      display: block;
+      position: relative;
+      background: currentColor;
+      transition: transform 180ms ease, opacity 180ms ease;
+    }
+
+    .menu-button .menu-lines::before,
+    .menu-button .menu-lines::after {
+      content: "";
+      position: absolute;
+      left: 0;
+    }
+
+    .menu-button .menu-lines::before {
+      top: -6px;
+    }
+
+    .menu-button .menu-lines::after {
+      top: 6px;
+    }
+
+    .menu-button[aria-expanded="true"] .menu-lines {
+      background: transparent;
+    }
+
+    .menu-button[aria-expanded="true"] .menu-lines::before {
+      top: 0;
+      transform: rotate(45deg);
+    }
+
+    .menu-button[aria-expanded="true"] .menu-lines::after {
+      top: 0;
+      transform: rotate(-45deg);
+    }
+
+    .menu-overlay {
+      position: fixed;
+      inset: 0;
+      z-index: 150;
+      visibility: hidden;
+      opacity: 0;
+      background: rgba(0, 0, 0, 0.62);
+      transition: opacity 180ms ease, visibility 180ms ease;
+    }
+
+    .menu-overlay.is-open {
+      visibility: visible;
+      opacity: 1;
+    }
+
+    .menu-panel {
+      position: absolute;
+      top: 0;
+      right: 0;
+      width: min(92vw, 430px);
+      height: 100%;
+      overflow-y: auto;
+      padding: 1.2rem;
+      border-left: 1px solid rgba(227, 201, 143, 0.18);
+      background:
+        linear-gradient(180deg, rgba(17, 27, 32, 0.98), rgba(8, 13, 16, 0.99));
+      box-shadow: -20px 0 80px rgba(0, 0, 0, 0.45);
+      transform: translateX(100%);
+      transition: transform 220ms ease;
+    }
+
+    .menu-overlay.is-open .menu-panel {
+      transform: translateX(0);
+    }
+
+    .menu-top {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      padding-bottom: 1rem;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .menu-title {
+      margin: 0;
+      color: var(--gold-bright);
+      font-size: 1.25rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+
+    .menu-intro {
+      margin: 1rem 0;
+      color: var(--paper-soft);
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 0.92rem;
+    }
+
+    .menu-search {
+      width: 100%;
+      margin-bottom: 1rem;
+      padding: 0.85rem 1rem;
+      color: var(--paper);
+      background: rgba(255, 255, 255, 0.045);
+      border: 1px solid rgba(227, 201, 143, 0.16);
+      border-radius: 0.85rem;
+      outline: none;
+    }
+
+    .menu-search:focus {
+      border-color: var(--gold);
+      box-shadow: 0 0 0 3px rgba(197, 165, 106, 0.15);
+    }
+
+    .menu-links {
+      display: grid;
+      gap: 0.55rem;
+    }
+
+    .menu-link {
+      display: grid;
+      grid-template-columns: auto 1fr auto;
+      align-items: center;
+      gap: 0.8rem;
+      padding: 0.82rem 0.9rem;
+      color: var(--paper);
+      text-decoration: none;
+      border: 1px solid rgba(227, 201, 143, 0.1);
+      border-radius: 0.85rem;
+      background: rgba(255, 255, 255, 0.025);
+      transition: background 160ms ease, border-color 160ms ease, transform 160ms ease;
+    }
+
+    .menu-link:hover {
+      transform: translateX(-2px);
+      background: rgba(197, 165, 106, 0.09);
+      border-color: rgba(227, 201, 143, 0.28);
+    }
+
+    .menu-link-icon {
+      color: var(--gold-bright);
+      font-size: 1rem;
+    }
+
+    .menu-link-copy {
+      min-width: 0;
+    }
+
+    .menu-link-title {
+      display: block;
+      font-size: 0.98rem;
+    }
+
+    .menu-link-category {
+      display: block;
+      margin-top: 0.12rem;
+      color: var(--paper-soft);
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 0.69rem;
+      letter-spacing: 0.09em;
+      text-transform: uppercase;
+    }
+
+    .menu-link-arrow {
+      color: var(--gold);
+    }
+
+    main {
+      position: relative;
+      z-index: 1;
+    }
+
+    .hero {
+      position: relative;
+      min-height: min(850px, calc(100vh - 74px));
+      overflow: hidden;
+      display: grid;
+      place-items: center;
+      padding: 7rem 1rem 5rem;
+      isolation: isolate;
+    }
+
+    .hero::before {
+      content: "";
+      position: absolute;
+      inset: 7% auto auto 50%;
+      z-index: -1;
+      width: min(78vw, 860px);
+      aspect-ratio: 1;
+      transform: translateX(-50%);
+      border: 1px solid rgba(227, 201, 143, 0.12);
+      border-radius: 50%;
+      box-shadow:
+        0 0 0 50px rgba(227, 201, 143, 0.025),
+        0 0 0 110px rgba(227, 201, 143, 0.018),
+        inset 0 0 90px rgba(111, 158, 153, 0.05);
+    }
+
+    .orbital {
+      position: absolute;
+      z-index: -1;
+      width: 10px;
+      height: 10px;
+      border: 1px solid var(--gold);
+      border-radius: 50%;
+      box-shadow: 0 0 18px rgba(227, 201, 143, 0.8);
+      animation: drift 9s ease-in-out infinite alternate;
+    }
+
+    .orbital.one {
+      top: 18%;
+      left: 15%;
+    }
+
+    .orbital.two {
+      right: 12%;
+      bottom: 22%;
+      width: 7px;
+      height: 7px;
+      animation-delay: -3s;
+    }
+
+    @keyframes drift {
+      from { transform: translate3d(0, 0, 0); }
+      to { transform: translate3d(18px, -14px, 0); }
+    }
+
+    .hero-inner {
+      width: min(100%, 1000px);
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    .hero-sigil {
+      width: min(210px, 50vw);
+      margin: 0 auto 1.4rem;
+      color: var(--gold-bright);
+      filter: drop-shadow(0 0 24px rgba(227, 201, 143, 0.18));
+    }
+
+    .eyebrow {
+      margin: 0 0 1.15rem;
+      color: var(--gold-bright);
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: clamp(0.72rem, 1.5vw, 0.86rem);
+      font-weight: 700;
+      letter-spacing: 0.28em;
+      text-transform: uppercase;
+    }
+
+    h1 {
+      margin: 0;
+      font-size: clamp(3rem, 9vw, 7.2rem);
+      font-weight: 400;
+      line-height: 0.94;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      text-wrap: balance;
+    }
+
+    .hero-title-accent {
+      display: block;
+      margin-top: 0.65rem;
+      color: var(--paper-soft);
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: clamp(0.88rem, 2vw, 1.28rem);
+      font-weight: 400;
+      letter-spacing: 0.22em;
+      line-height: 1.4;
+      text-transform: uppercase;
+    }
+
+    .hero-description {
+      width: min(100%, 720px);
+      margin: 2rem auto 0;
+      color: #d3cebf;
+      font-size: clamp(1.05rem, 2.3vw, 1.35rem);
+      line-height: 1.75;
+      text-wrap: balance;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 0.8rem;
+      margin-top: 2.1rem;
+    }
+
+    .primary-button,
+    .quiet-button {
+      min-height: 50px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.65rem;
+      padding: 0.9rem 1.15rem;
+      border-radius: 999px;
+      text-decoration: none;
+      transition: transform 160ms ease, background 160ms ease, border-color 160ms ease;
+    }
+
+    .primary-button {
+      color: #101416;
+      background: linear-gradient(135deg, var(--gold-bright), var(--gold));
+      box-shadow: 0 12px 32px rgba(197, 165, 106, 0.2);
+    }
+
+    .primary-button:hover {
+      transform: translateY(-2px);
+    }
+
+    .quiet-button {
+      color: var(--paper);
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid rgba(227, 201, 143, 0.2);
+    }
+
+    .quiet-button:hover {
+      transform: translateY(-2px);
+      background: rgba(197, 165, 106, 0.09);
+      border-color: rgba(227, 201, 143, 0.38);
+    }
+
+    .hero-notes {
+      width: min(100%, 720px);
+      margin: 2.4rem auto 0;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      border: 1px solid rgba(227, 201, 143, 0.12);
+      border-radius: 1rem;
+      overflow: hidden;
+      background: rgba(5, 9, 11, 0.36);
+      backdrop-filter: blur(8px);
+    }
+
+    .hero-note {
+      padding: 0.85rem;
+      border-right: 1px solid rgba(227, 201, 143, 0.1);
+    }
+
+    .hero-note:last-child {
+      border-right: 0;
+    }
+
+    .hero-note strong,
+    .hero-note span {
+      display: block;
+    }
+
+    .hero-note strong {
+      color: var(--gold-bright);
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 0.72rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+    }
+
+    .hero-note span {
+      margin-top: 0.25rem;
+      color: var(--paper-soft);
+      font-size: 0.84rem;
+    }
+
+    .section {
+      width: min(calc(100% - 2rem), var(--max));
+      margin: 0 auto;
+      padding: 5.2rem 0;
+    }
+
+    .section + .section {
+      border-top: 1px solid rgba(227, 201, 143, 0.09);
+    }
+
+    .section-heading {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      align-items: end;
+      gap: 2rem;
+      margin-bottom: 2rem;
+    }
+
+    .section-kicker {
+      margin: 0 0 0.55rem;
+      color: var(--gold-bright);
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 0.73rem;
+      font-weight: 700;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+    }
+
+    h2 {
+      margin: 0;
+      font-size: clamp(2rem, 5vw, 4rem);
+      font-weight: 400;
+      line-height: 1.04;
+      text-wrap: balance;
+    }
+
+    .section-copy {
+      max-width: 680px;
+      margin: 0.8rem 0 0;
+      color: var(--paper-soft);
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 1rem;
+    }
+
+    .archive-principles {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1rem;
+    }
+
+    .principle {
+      min-height: 220px;
+      padding: 1.35rem;
+      border: 1px solid rgba(227, 201, 143, 0.12);
+      border-radius: var(--radius);
+      background:
+        linear-gradient(180deg, rgba(255, 255, 255, 0.035), rgba(255, 255, 255, 0.015));
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.14);
+    }
+
+    .principle-index {
+      color: var(--gold-bright);
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 0.72rem;
+      letter-spacing: 0.14em;
+    }
+
+    .principle h3 {
+      margin: 2rem 0 0.6rem;
+      font-size: 1.3rem;
+      font-weight: 400;
+    }
+
+    .principle p {
+      margin: 0;
+      color: var(--paper-soft);
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 0.92rem;
+    }
+
+    .archive-toolbar {
+      position: relative;
+      display: grid;
+      grid-template-columns: minmax(240px, 1fr) auto;
+      gap: 0.85rem;
+      margin: 1.8rem 0;
+    }
+
+    .search-wrap {
+      position: relative;
+    }
+
+    .search-wrap svg {
+      position: absolute;
+      top: 50%;
+      left: 1rem;
+      width: 19px;
+      height: 19px;
+      transform: translateY(-50%);
+      color: var(--gold);
+      pointer-events: none;
+    }
+
+    .archive-search {
+      width: 100%;
+      min-height: 54px;
+      padding: 0.9rem 1rem 0.9rem 3rem;
+      color: var(--paper);
+      background: rgba(255, 255, 255, 0.035);
+      border: 1px solid rgba(227, 201, 143, 0.16);
+      border-radius: 999px;
+      outline: none;
+    }
+
+    .archive-search::placeholder {
+      color: #8f918b;
+    }
+
+    .archive-search:focus {
+      border-color: var(--gold);
+      box-shadow: 0 0 0 4px rgba(197, 165, 106, 0.12);
+    }
+
+    .toolbar-actions {
+      display: flex;
+      gap: 0.65rem;
+    }
+
+    .filters {
+      display: flex;
+      gap: 0.55rem;
+      padding-bottom: 1rem;
+      overflow-x: auto;
+      scrollbar-width: thin;
+    }
+
+    .filter-button {
+      flex: 0 0 auto;
+      padding: 0.7rem 0.95rem;
+      color: var(--paper-soft);
+      background: transparent;
+      border: 1px solid rgba(227, 201, 143, 0.13);
+      border-radius: 999px;
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 0.82rem;
+      transition: color 150ms ease, background 150ms ease, border-color 150ms ease;
+    }
+
+    .filter-button:hover,
+    .filter-button[aria-pressed="true"] {
+      color: #101416;
+      background: var(--gold-bright);
+      border-color: var(--gold-bright);
+    }
+
+    .results-line {
+      min-height: 1.5rem;
+      margin: 0.3rem 0 1rem;
+      color: var(--paper-soft);
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 0.85rem;
+    }
+
+    .hall-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 1rem;
+    }
+
+    .hall-card {
+      position: relative;
+      min-height: 300px;
+      display: flex;
+      flex-direction: column;
+      padding: 1.3rem;
+      overflow: hidden;
+      border: 1px solid rgba(227, 201, 143, 0.13);
+      border-radius: var(--radius);
+      background:
+        radial-gradient(circle at 95% 2%, rgba(111, 158, 153, 0.13), transparent 11rem),
+        linear-gradient(150deg, rgba(255, 255, 255, 0.04), rgba(255, 255, 255, 0.015));
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.16);
+      transition: transform 180ms ease, border-color 180ms ease, box-shadow 180ms ease;
+    }
+
+    .hall-card::after {
+      content: "";
+      position: absolute;
+      right: -32px;
+      bottom: -32px;
+      width: 120px;
+      height: 120px;
+      border: 1px solid rgba(227, 201, 143, 0.1);
+      border-radius: 50%;
+      box-shadow: 0 0 0 18px rgba(227, 201, 143, 0.018);
+      pointer-events: none;
+    }
+
+    .hall-card:hover {
+      transform: translateY(-4px);
+      border-color: rgba(227, 201, 143, 0.34);
+      box-shadow: var(--shadow);
+    }
+
+    .hall-card.is-hidden {
+      display: none;
+    }
+
+    .card-top {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 1rem;
+    }
+
+    .hall-symbol {
+      width: 48px;
+      height: 48px;
+      display: grid;
+      place-items: center;
+      color: var(--gold-bright);
+      border: 1px solid rgba(227, 201, 143, 0.19);
+      border-radius: 50%;
+      background: rgba(197, 165, 106, 0.07);
+      font-size: 1.2rem;
+    }
+
+    .favorite-button {
+      width: 40px;
+      height: 40px;
+      display: grid;
+      place-items: center;
+      color: var(--paper-soft);
+      background: transparent;
+      border: 1px solid transparent;
+      border-radius: 50%;
+    }
+
+    .favorite-button:hover,
+    .favorite-button[aria-pressed="true"] {
+      color: var(--gold-bright);
+      background: rgba(197, 165, 106, 0.09);
+      border-color: rgba(227, 201, 143, 0.18);
+    }
+
+    .favorite-button svg {
+      width: 19px;
+      height: 19px;
+    }
+
+    .favorite-button[aria-pressed="true"] svg {
+      fill: currentColor;
+    }
+
+    .hall-category {
+      margin: 1.45rem 0 0.4rem;
+      color: var(--teal);
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+    }
+
+    .hall-card h3 {
+      margin: 0;
+      font-size: 1.55rem;
+      font-weight: 400;
+      line-height: 1.15;
+    }
+
+    .hall-description {
+      margin: 0.8rem 0 1.2rem;
+      color: var(--paper-soft);
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 0.92rem;
+    }
+
+    .card-actions {
+      position: relative;
+      z-index: 2;
+      display: flex;
+      align-items: center;
+      gap: 0.7rem;
+      margin-top: auto;
+    }
+
+    .enter-link,
+    .details-button {
+      min-height: 42px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0.65rem 0.85rem;
+      border-radius: 999px;
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 0.79rem;
+      letter-spacing: 0.04em;
+      text-decoration: none;
+    }
+
+    .enter-link {
+      color: #111719;
+      background: var(--gold-bright);
+    }
+
+    .details-button {
+      color: var(--paper);
+      background: transparent;
+      border: 1px solid rgba(227, 201, 143, 0.16);
+      cursor: pointer;
+    }
+
+    .enter-link:hover,
+    .details-button:hover {
+      filter: brightness(1.07);
+    }
+
+    .empty-state {
+      display: none;
+      padding: 3rem 1rem;
+      text-align: center;
+      color: var(--paper-soft);
+      border: 1px dashed rgba(227, 201, 143, 0.18);
+      border-radius: var(--radius);
+    }
+
+    .empty-state.is-visible {
+      display: block;
+    }
+
+    .manifesto {
+      position: relative;
+      padding: clamp(2rem, 5vw, 4.6rem);
+      overflow: hidden;
+      border: 1px solid rgba(227, 201, 143, 0.15);
+      border-radius: calc(var(--radius) + 0.4rem);
+      background:
+        radial-gradient(circle at 90% 12%, rgba(197, 165, 106, 0.12), transparent 25rem),
+        linear-gradient(135deg, rgba(19, 31, 36, 0.95), rgba(9, 14, 17, 0.95));
+      box-shadow: var(--shadow);
+    }
+
+    .manifesto::before {
+      content: "A";
+      position: absolute;
+      top: -1.7rem;
+      right: 1rem;
+      color: rgba(227, 201, 143, 0.035);
+      font-size: clamp(12rem, 26vw, 25rem);
+      line-height: 1;
+      pointer-events: none;
+    }
+
+    .manifesto blockquote {
+      position: relative;
+      z-index: 1;
+      max-width: 920px;
+      margin: 0;
+      font-size: clamp(1.55rem, 4vw, 3.25rem);
+      line-height: 1.32;
+      text-wrap: balance;
+    }
+
+    .manifesto footer {
+      position: relative;
+      z-index: 1;
+      margin-top: 1.4rem;
+      color: var(--gold-bright);
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 0.75rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+    }
+
+    .site-footer {
+      border-top: 1px solid rgba(227, 201, 143, 0.1);
+      background: rgba(4, 7, 9, 0.55);
+    }
+
+    .footer-inner {
+      width: min(calc(100% - 2rem), var(--max));
+      margin: 0 auto;
+      padding: 2.2rem 0;
+      display: grid;
+      grid-template-columns: 1fr auto;
+      align-items: center;
+      gap: 1.5rem;
+    }
+
+    .footer-title {
+      margin: 0;
+      color: var(--gold-bright);
+      font-size: 1.05rem;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+    }
+
+    .footer-copy,
+    .footer-legal {
+      margin: 0.4rem 0 0;
+      color: var(--paper-soft);
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 0.78rem;
+    }
+
+    .footer-links {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+      gap: 0.8rem;
+    }
+
+    .footer-links a {
+      color: var(--paper-soft);
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 0.8rem;
+      text-decoration: none;
+    }
+
+    .footer-links a:hover {
+      color: var(--gold-bright);
+    }
+
+    .modal {
+      position: fixed;
+      inset: 0;
+      z-index: 200;
+      display: none;
+      place-items: center;
+      padding: 1rem;
+      background: rgba(0, 0, 0, 0.74);
+    }
+
+    .modal.is-open {
+      display: grid;
+    }
+
+    .modal-dialog {
+      width: min(100%, 680px);
+      max-height: min(760px, calc(100vh - 2rem));
+      overflow-y: auto;
+      padding: clamp(1.25rem, 4vw, 2rem);
+      color: var(--paper);
+      background:
+        radial-gradient(circle at 100% 0%, rgba(111, 158, 153, 0.16), transparent 22rem),
+        var(--panel-solid);
+      border: 1px solid rgba(227, 201, 143, 0.22);
+      border-radius: 1.25rem;
+      box-shadow: 0 40px 100px rgba(0, 0, 0, 0.55);
+    }
+
+    .modal-header {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 1rem;
+    }
+
+    .modal-category {
+      margin: 0 0 0.45rem;
+      color: var(--teal);
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 0.73rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+    }
+
+    .modal-title {
+      margin: 0;
+      font-size: clamp(1.8rem, 5vw, 3rem);
+      font-weight: 400;
+      line-height: 1.05;
+    }
+
+    .modal-body {
+      color: var(--paper-soft);
+      font-family: Arial, Helvetica, sans-serif;
+    }
+
+    .modal-body p {
+      margin: 1.2rem 0;
+    }
+
+    .modal-list {
+      padding-left: 1.2rem;
+    }
+
+    .modal-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.7rem;
+      margin-top: 1.5rem;
+    }
+
+    .noscript {
+      width: min(calc(100% - 2rem), 900px);
+      margin: 1rem auto;
+      padding: 1rem;
+      color: #241d10;
+      background: #f0dca7;
+      border-radius: 0.8rem;
+      font-family: Arial, Helvetica, sans-serif;
+    }
+
+    :focus-visible {
+      outline: 3px solid var(--gold-bright);
+      outline-offset: 3px;
+    }
+
+    @media (max-width: 1000px) {
+      .archive-principles {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .hall-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+    }
+
+    @media (max-width: 720px) {
+      .brand-subtitle {
+        display: none;
+      }
+
+      .hero {
+        min-height: auto;
+        padding-top: 5rem;
+      }
+
+      .hero-notes {
+        grid-template-columns: 1fr;
+      }
+
+      .hero-note {
+        border-right: 0;
+        border-bottom: 1px solid rgba(227, 201, 143, 0.1);
+      }
+
+      .hero-note:last-child {
+        border-bottom: 0;
+      }
+
+      .section-heading,
+      .archive-toolbar,
+      .footer-inner {
+        grid-template-columns: 1fr;
+      }
+
+      .section-heading {
+        align-items: start;
+      }
+
+      .archive-toolbar {
+        gap: 0.7rem;
+      }
+
+      .toolbar-actions {
+        width: 100%;
+      }
+
+      .toolbar-actions .quiet-button {
+        flex: 1;
+      }
+
+      .hall-grid,
+      .archive-principles {
+        grid-template-columns: 1fr;
+      }
+
+      .hall-card {
+        min-height: 270px;
+      }
+
+      .footer-links {
+        justify-content: flex-start;
+      }
+    }
+
+    @media (max-width: 430px) {
+      .header-inner {
+        min-height: 66px;
+      }
+
+      .brand-name {
+        font-size: 0.9rem;
+        letter-spacing: 0.2em;
+      }
+
+      .brand-mark {
+        width: 37px;
+        height: 37px;
+      }
+
+      .hero-actions,
+      .modal-actions {
+        display: grid;
+      }
+
+      .primary-button,
+      .quiet-button {
+        width: 100%;
+      }
+
+      .card-actions {
+        align-items: stretch;
+        flex-direction: column;
+      }
+
+      .enter-link,
+      .details-button {
+        width: 100%;
+      }
+    }
+
+    @media print {
+      .site-header,
+      .menu-overlay,
+      .hero-actions,
+      .archive-toolbar,
+      .filters,
+      .favorite-button,
+      .card-actions,
+      .site-footer,
+      .modal {
+        display: none !important;
+      }
+
+      body {
+        color: #111;
+        background: #fff;
+      }
+
+      .page-grid,
+      .page-noise,
+      .hero::before,
+      .orbital {
+        display: none;
+      }
+
+      .hero,
+      .section {
+        min-height: 0;
+        padding: 1.5rem 0;
+      }
+
+      .hero-description,
+      .section-copy,
+      .hall-description,
+      .principle p,
+      .results-line {
+        color: #333;
+      }
+
+      .eyebrow,
+      .section-kicker,
+      .hall-category,
+      .principle-index {
+        color: #6e5526;
+      }
+
+      .hall-grid,
+      .archive-principles {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .hall-card,
+      .principle,
+      .manifesto {
+        break-inside: avoid;
+        color: #111;
+        background: #fff;
+        border-color: #999;
+        box-shadow: none;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *,
+      *::before,
+      *::after {
+        scroll-behavior: auto !important;
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <a class="skip-link" href="#main-content">Skip to the archive</a>
+  <div class="page-grid" aria-hidden="true"></div>
+  <div class="page-noise" aria-hidden="true"></div>
+
+  <header class="site-header">
+    <div class="header-inner">
+      <a class="brand" href="/" aria-label="ARSHIF home">
+        <svg class="brand-mark" viewBox="0 0 100 100" aria-hidden="true">
+          <circle cx="50" cy="50" r="43" fill="none" stroke="currentColor" stroke-width="1.8"/>
+          <circle cx="50" cy="50" r="30" fill="none" stroke="currentColor" stroke-width="1" opacity=".55"/>
+          <path d="M31 61c9-22 29-22 38 0M38 41h24M50 25v50" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+          <circle cx="50" cy="50" r="5" fill="currentColor"/>
+        </svg>
+        <span class="brand-copy">
+          <span class="brand-name">ARSHIF</span>
+          <span class="brand-subtitle">The Living Archive of Human Knowledge</span>
+        </span>
+      </a>
+
+      <div class="header-actions">
+        <button class="icon-button" id="printButton" type="button" aria-label="Print archive directory" title="Print archive directory">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true">
+            <path d="M7 8V3h10v5M7 17H5a2 2 0 0 1-2-2v-4a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2v4a2 2 0 0 1-2 2h-2"/>
+            <path d="M7 14h10v7H7z"/>
+          </svg>
+        </button>
+
+        <button class="icon-button menu-button" id="menuButton" type="button" aria-label="Open archive menu" aria-expanded="false" aria-controls="siteMenu">
+          <span class="menu-lines" aria-hidden="true"></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <div class="menu-overlay" id="siteMenu" aria-hidden="true">
+    <nav class="menu-panel" aria-label="Archive navigation">
+      <div class="menu-top">
+        <h2 class="menu-title">Archive Index</h2>
+        <button class="icon-button" id="closeMenuButton" type="button" aria-label="Close archive menu">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true">
+            <path d="M5 5l14 14M19 5L5 19"/>
+          </svg>
+        </button>
+      </div>
+
+      <p class="menu-intro">
+        Search the halls, archives, and research chambers of ARSHIF.
+      </p>
+
+      <label class="visually-hidden" for="menuSearch">Search menu</label>
+      <input class="menu-search" id="menuSearch" type="search" placeholder="Search the index…" autocomplete="off" />
+
+      <div class="menu-links" id="menuLinks"></div>
+    </nav>
+  </div>
+
+  <main id="main-content">
+    <section class="hero" aria-labelledby="heroTitle">
+      <span class="orbital one" aria-hidden="true"></span>
+      <span class="orbital two" aria-hidden="true"></span>
+
+      <div class="hero-inner">
+        <svg class="hero-sigil" viewBox="0 0 400 220" role="img" aria-label="ARSHIF archive sigil">
+          <g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M200 18v184" stroke-width="2"/>
+            <path d="M145 45c30 8 46 28 55 54 9-26 25-46 55-54-5 35-20 60-55 78-35-18-50-43-55-78Z" stroke-width="2.2"/>
+            <path d="M102 100c35-2 65 9 98 33 33-24 63-35 98-33-20 33-50 54-98 64-48-10-78-31-98-64Z" stroke-width="2.2"/>
+            <path d="M73 149c42-4 82 4 127 26 45-22 85-30 127-26" stroke-width="1.7"/>
+            <circle cx="200" cy="133" r="12" stroke-width="2"/>
+            <circle cx="200" cy="133" r="3" fill="currentColor" stroke="none"/>
+            <path d="M44 176h312M85 190h230" opacity=".55"/>
+          </g>
+        </svg>
+
+        <p class="eyebrow">A Sovereign Archive for Deep Inquiry</p>
+
+        <h1 id="heroTitle">
+          ARSHIF
+          <span class="hero-title-accent">The Living Archive of Human Knowledge</span>
+        </h1>
+
+        <p class="hero-description">
+          A quiet gateway into the record of human thought—where history, science, medicine,
+          art, culture, law, philosophy, memory, and lived experience are preserved for
+          study, comparison, and discovery.
+        </p>
+
+        <div class="hero-actions">
+          <a class="primary-button" href="#archive">
+            Enter the Archive
+            <span aria-hidden="true">↓</span>
+          </a>
+          <button class="quiet-button" id="randomButton" type="button">
+            Open a Random Hall
+            <span aria-hidden="true">✦</span>
+          </button>
+        </div>
+
+        <div class="hero-notes" aria-label="Archive qualities">
+          <div class="hero-note">
+            <strong>Sovereign</strong>
+            <span>No external framework or account required</span>
+          </div>
+          <div class="hero-note">
+            <strong>Private by Design</strong>
+            <span>Search and favorites remain in this browser</span>
+          </div>
+          <div class="hero-note">
+            <strong>Research Centered</strong>
+            <span>Built for context, evidence, and lifelong learning</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" aria-labelledby="principlesTitle">
+      <div class="section-heading">
+        <div>
+          <p class="section-kicker">The Archive Standard</p>
+          <h2 id="principlesTitle">Knowledge with context, memory, and care.</h2>
+          <p class="section-copy">
+            ARSHIF is designed as more than a directory. Each hall can become a layered
+            research environment with source pathways, public-domain works, timelines,
+            primary documents, lessons, questions, and living connections between fields.
+          </p>
+        </div>
+      </div>
+
+      <div class="archive-principles">
+        <article class="principle">
+          <span class="principle-index">01 / Evidence</span>
+          <h3>Trace the source</h3>
+          <p>Separate primary records, scholarship, commentary, oral history, and interpretation so learners can understand how knowledge is built.</p>
+        </article>
+
+        <article class="principle">
+          <span class="principle-index">02 / Context</span>
+          <h3>See the whole field</h3>
+          <p>Place discoveries within historical, cultural, geographic, ethical, and scientific context rather than presenting isolated fragments.</p>
+        </article>
+
+        <article class="principle">
+          <span class="principle-index">03 / Access</span>
+          <h3>Open a first door</h3>
+          <p>Use readable pathways, free resources, public archives, and thoughtful organization to make difficult subjects approachable.</p>
+        </article>
+
+        <article class="principle">
+          <span class="principle-index">04 / Stewardship</span>
+          <h3>Preserve with dignity</h3>
+          <p>Treat human stories, cultural knowledge, art, scholarship, and memory as inheritances to be protected rather than extracted.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="section" id="archive" aria-labelledby="archiveTitle">
+      <div class="section-heading">
+        <div>
+          <p class="section-kicker">Directory of Halls</p>
+          <h2 id="archiveTitle">Choose a chamber of inquiry.</h2>
+          <p class="section-copy">
+            Search by subject, filter by knowledge family, save halls to this device,
+            or allow the archive to choose a path for you.
+          </p>
+        </div>
+      </div>
+
+      <div class="archive-toolbar">
+        <div class="search-wrap">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true">
+            <circle cx="11" cy="11" r="7"/>
+            <path d="m20 20-4-4"/>
+          </svg>
+          <label class="visually-hidden" for="archiveSearch">Search halls</label>
+          <input class="archive-search" id="archiveSearch" type="search" placeholder="Search medicine, philosophy, art, law, memory…" autocomplete="off" />
+        </div>
+
+        <div class="toolbar-actions">
+          <button class="quiet-button" id="favoritesButton" type="button" aria-pressed="false">
+            Favorites
+            <span id="favoriteCount" aria-label="0 favorites">0</span>
+          </button>
+          <button class="quiet-button" id="clearButton" type="button">Clear</button>
+        </div>
+      </div>
+
+      <div class="filters" id="filters" aria-label="Filter halls by category"></div>
+      <p class="results-line" id="resultsLine" aria-live="polite"></p>
+
+      <div class="hall-grid" id="hallGrid"></div>
+
+      <div class="empty-state" id="emptyState">
+        <h3>No chamber matched that search.</h3>
+        <p>Try a broader subject, clear the filters, or open a random hall.</p>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="manifesto">
+        <blockquote>
+          “Knowledge becomes living when it is preserved with context, questioned with
+          humility, connected across disciplines, and returned to the people.”
+        </blockquote>
+        <footer>ARSHIF Founding Principle</footer>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <div>
+        <p class="footer-title">ARSHIF</p>
+        <p class="footer-copy">The Living Archive of Human Knowledge</p>
+        <p class="footer-legal">© <span id="year"></span> Jennifer Pearl. All Rights Reserved.</p>
+      </div>
+
+      <nav class="footer-links" aria-label="Footer navigation">
+        <a href="#archive">Archive Index</a>
+        <a href="/research/">Research Gate</a>
+        <a href="/about/">About ARSHIF</a>
+        <a href="/privacy/">Privacy</a>
+        <a href="/license/">Rights</a>
+      </nav>
+    </div>
+  </footer>
+
+  <div class="modal" id="hallModal" role="dialog" aria-modal="true" aria-labelledby="modalTitle" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-header">
+        <div>
+          <p class="modal-category" id="modalCategory"></p>
+          <h2 class="modal-title" id="modalTitle"></h2>
+        </div>
+
+        <button class="icon-button" id="closeModalButton" type="button" aria-label="Close hall details">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true">
+            <path d="M5 5l14 14M19 5L5 19"/>
+          </svg>
+        </button>
+      </div>
+
+      <div class="modal-body">
+        <p id="modalDescription"></p>
+        <h3>Research pathways</h3>
+        <ul class="modal-list" id="modalPathways"></ul>
+      </div>
+
+      <div class="modal-actions">
+        <a class="primary-button" id="modalEnterLink" href="/">Enter this hall</a>
+        <button class="quiet-button" id="modalFavoriteButton" type="button">Save to favorites</button>
+      </div>
+    </div>
+  </div>
+
+  <noscript>
+    <div class="noscript">
+      ARSHIF uses a small local JavaScript directory to display and search its halls.
+      Please enable JavaScript to use the interactive archive index.
+    </div>
+  </noscript>
+
+  <script>
+    "use strict";
+
+    /*
+      ARSHIF ROUTE DIRECTORY
+      ----------------------
+      Edit this single array to add, remove, rename, or redirect halls.
+      Every route is a normal independent folder, such as:
+      medical/index.html  ->  /medical/
+    */
+
+    const halls = [
+      {
+        id: "medical",
+        title: "Medical Hall",
+        category: "Health & Life",
+        symbol: "✚",
+        path: "/medical/",
+        description: "Human anatomy, medicine, public health, healing traditions, ethics, and the changing history of care.",
+        pathways: ["Anatomy and physiology", "History of medicine", "Public health", "Medical ethics", "Primary-source medical texts"]
+      },
+      {
+        id: "financial",
+        title: "Financial Hall",
+        category: "Civic & Practical",
+        symbol: "◈",
+        path: "/financial/",
+        description: "Personal finance, economic systems, public budgets, markets, labor, monetary history, and financial literacy.",
+        pathways: ["Personal financial literacy", "Economic history", "Public finance", "Markets and institutions", "Consumer protection"]
+      },
+      {
+        id: "entrepreneur",
+        title: "Entrepreneur Hall",
+        category: "Civic & Practical",
+        symbol: "↗",
+        path: "/entrepreneur/",
+        description: "Research, planning, ethics, design, operations, and resilient pathways for building useful enterprises.",
+        pathways: ["Idea validation", "Business models", "Ethical entrepreneurship", "Operations", "Community enterprise"]
+      },
+      {
+        id: "nonprofit",
+        title: "Nonprofit Hall",
+        category: "Civic & Practical",
+        symbol: "◎",
+        path: "/nonprofit/",
+        description: "Public service, governance, mission design, fundraising, compliance, community accountability, and impact.",
+        pathways: ["Formation and governance", "Mission and strategy", "Fundraising", "Compliance", "Impact measurement"]
+      },
+      {
+        id: "culinary",
+        title: "Culinary Hall",
+        category: "Culture & Daily Life",
+        symbol: "◒",
+        path: "/culinary/",
+        description: "Food history, culinary technique, agriculture, nutrition, preservation, trade, ritual, and cultural identity.",
+        pathways: ["Culinary foundations", "World foodways", "Food preservation", "Agriculture and trade", "Nutrition and culture"]
+      },
+      {
+        id: "poetry",
+        title: "Poetry Hall",
+        category: "Arts & Expression",
+        symbol: "❧",
+        path: "/poetry/",
+        description: "Poetic traditions, forms, voices, movements, performance, close reading, and the craft of language.",
+        pathways: ["World poetry", "Forms and technique", "Poetry movements", "Oral performance", "Writing practice"]
+      },
+      {
+        id: "art",
+        title: "Art Hall",
+        category: "Arts & Expression",
+        symbol: "✦",
+        path: "/art/",
+        description: "Visual culture across time: materials, movements, artists, criticism, conservation, and creative practice.",
+        pathways: ["Art history", "Studio methods", "Materials and conservation", "Visual analysis", "Professional practice"]
+      },
+      {
+        id: "heritage",
+        title: "Heritage Hall",
+        category: "Memory & Civilization",
+        symbol: "⌂",
+        path: "/heritage/",
+        description: "Family memory, archives, genealogy, place, cultural inheritance, historic preservation, and living tradition.",
+        pathways: ["Family archives", "Oral history", "Historic places", "Genealogy", "Cultural preservation"]
+      },
+      {
+        id: "collectable",
+        title: "Collectable Hall",
+        category: "Memory & Civilization",
+        symbol: "◇",
+        path: "/collectable/",
+        description: "Objects as evidence: provenance, classification, conservation, valuation, material culture, and collecting ethics.",
+        pathways: ["Material culture", "Provenance research", "Conservation", "Cataloging", "Ethics of collecting"]
+      },
+      {
+        id: "classics",
+        title: "Hall of World Classics",
+        category: "Texts & Ideas",
+        symbol: "Ⅳ",
+        path: "/classics/",
+        description: "Foundational works from civilizations around the world, read in historical and cultural context.",
+        pathways: ["Ancient epics", "Classical drama", "Philosophical texts", "Historical chronicles", "Comparative reading"]
+      },
+      {
+        id: "literature",
+        title: "Hall of World Literature",
+        category: "Texts & Ideas",
+        symbol: "¶",
+        path: "/literature/",
+        description: "Novels, stories, essays, drama, and literary movements across languages, nations, and centuries.",
+        pathways: ["Global literary traditions", "Literary movements", "Close reading", "Translation studies", "Public-domain texts"]
+      },
+      {
+        id: "philosophy",
+        title: "Hall of Philosophy",
+        category: "Texts & Ideas",
+        symbol: "Φ",
+        path: "/philosophy/",
+        description: "Questions of being, knowledge, ethics, logic, meaning, politics, beauty, mind, and human responsibility.",
+        pathways: ["Ethics", "Logic", "Epistemology", "Political philosophy", "Philosophy of mind"]
+      },
+      {
+        id: "theatre",
+        title: "Hall of Theatre",
+        category: "Arts & Expression",
+        symbol: "◐",
+        path: "/theatre/",
+        description: "Plays, performance traditions, dramatic structure, stagecraft, acting, directing, and theatre history.",
+        pathways: ["World drama", "Performance traditions", "Stagecraft", "Dramatic writing", "Theatre criticism"]
+      },
+      {
+        id: "mythology",
+        title: "Hall of Mythology",
+        category: "Memory & Civilization",
+        symbol: "☼",
+        path: "/mythology/",
+        description: "Creation stories, heroic cycles, deities, symbols, cosmologies, and comparative myth across cultures.",
+        pathways: ["Creation traditions", "Heroic cycles", "Sacred symbols", "Comparative mythology", "Myth and society"]
+      },
+      {
+        id: "travelogues",
+        title: "Hall of Travelogues & Exploration",
+        category: "Memory & Civilization",
+        symbol: "⌖",
+        path: "/travelogues/",
+        description: "Journeys, maps, encounters, exploration narratives, migration, exchange, and the ethics of observing others.",
+        pathways: ["Historic travel writing", "Cartography", "Migration", "Cross-cultural encounter", "Exploration ethics"]
+      },
+      {
+        id: "indigenous",
+        title: "Hall of Indigenous Oral Traditions",
+        category: "Memory & Civilization",
+        symbol: "◌",
+        path: "/indigenous/",
+        description: "Oral memory, story, song, place-based knowledge, language stewardship, and respectful cultural preservation.",
+        pathways: ["Oral history methods", "Language stewardship", "Story and place", "Community authority", "Ethical preservation"]
+      },
+      {
+        id: "science",
+        title: "Hall of the History of Science",
+        category: "Science & Systems",
+        symbol: "⚗",
+        path: "/science/",
+        description: "How observation, experiment, mathematics, institutions, tools, and debate shaped scientific knowledge.",
+        pathways: ["Scientific revolutions", "History of experimentation", "Instruments and measurement", "Science and society", "Primary scientific texts"]
+      },
+      {
+        id: "law",
+        title: "Hall of Law & Governance",
+        category: "Civic & Practical",
+        symbol: "⚖",
+        path: "/law/",
+        description: "Legal traditions, constitutions, institutions, rights, duties, public power, and civic accountability.",
+        pathways: ["Constitutional traditions", "Civil and human rights", "Legal history", "Public institutions", "Primary legal sources"]
+      },
+      {
+        id: "psychology",
+        title: "Hall of Psychology & Mind",
+        category: "Health & Life",
+        symbol: "Ψ",
+        path: "/psychology/",
+        description: "Mind, behavior, development, memory, emotion, cognition, relationships, and the history of psychological thought.",
+        pathways: ["Cognition", "Development", "Emotion", "Social psychology", "History and ethics"]
+      },
+      {
+        id: "holistic",
+        title: "Hall of Holistic & Traditional Medicine",
+        category: "Health & Life",
+        symbol: "☿",
+        path: "/holistic/",
+        description: "Traditional healing systems, plant knowledge, cultural context, evidence, safety, and responsible comparison.",
+        pathways: ["Traditional systems", "Ethnobotany", "Evidence and safety", "Cultural context", "Integrative-care history"]
+      },
+      {
+        id: "children",
+        title: "Children’s Medicinal Resource",
+        category: "Health & Life",
+        symbol: "❀",
+        path: "/children/",
+        description: "Age-appropriate learning about health, safety, plants, medicines, bodies, caregivers, and when to seek help.",
+        pathways: ["Body literacy", "Medicine safety", "Plant awareness", "Healthy habits", "Trusted adults and care"]
+      },
+      {
+        id: "languages",
+        title: "Hall of Language Learning",
+        category: "Texts & Ideas",
+        symbol: "AΩ",
+        path: "/languages/",
+        description: "Language families, writing systems, pronunciation, communication, translation, culture, and multilingual learning.",
+        pathways: ["World languages", "Writing systems", "Phonetics", "Translation", "Language and culture"]
+      },
+      {
+        id: "business",
+        title: "Hall of Business Management",
+        category: "Civic & Practical",
+        symbol: "▦",
+        path: "/business/",
+        description: "Leadership, operations, strategy, accounting, communication, ethics, teams, and organizational stewardship.",
+        pathways: ["Management foundations", "Operations", "Strategy", "Organizational behavior", "Business ethics"]
+      },
+      {
+        id: "gardening",
+        title: "Hall of Gardening",
+        category: "Earth & Ecology",
+        symbol: "♧",
+        path: "/gardening/",
+        description: "Soil, seeds, horticulture, food gardens, ecology, seasonal practice, stewardship, and community growing.",
+        pathways: ["Soil science", "Planting and propagation", "Horticulture", "Food gardens", "Ecological stewardship"]
+      },
+      {
+        id: "trees",
+        title: "Hall of Trees",
+        category: "Earth & Ecology",
+        symbol: "♜",
+        path: "/trees/",
+        description: "Ancient, sacred, medicinal, ecological, cultural, and symbolic trees from every region of the world.",
+        pathways: ["Tree identification", "Forest ecology", "Sacred trees", "Medicinal history", "Conservation"]
+      },
+      {
+        id: "connection",
+        title: "Archive for Human Connection",
+        category: "Human Experience",
+        symbol: "∞",
+        path: "/connection/",
+        description: "Relationships, rituals, emotions, everyday lives, intergenerational voices, and the social fabric of humanity.",
+        pathways: ["Everyday lives", "Rituals and traditions", "Languages of love", "Emotions atlas", "Voices across generations"]
+      },
+      {
+        id: "academy",
+        title: "Open Academy of Living Knowledge",
+        category: "Human Experience",
+        symbol: "△",
+        path: "/academy/",
+        description: "Open learning pathways, teaching toolkits, cross-cultural wisdom, multimedia study, and guided discovery.",
+        pathways: ["Open educational resources", "Teaching toolkits", "Guided courses", "Cross-cultural learning", "Community knowledge"]
+      },
+      {
+        id: "research",
+        title: "ARSHIF Research Gate",
+        category: "Science & Systems",
+        symbol: "⌕",
+        path: "/research/",
+        description: "A disciplined starting point for source discovery, comparison, note-making, verification, and research design.",
+        pathways: ["Research questions", "Source evaluation", "Primary-source discovery", "Comparative inquiry", "Research notebooks"]
+      }
+    ];
+
+    const storageKey = "arshif_favorite_halls_v1";
+
+    const state = {
+      query: "",
+      category: "All",
+      favoritesOnly: false,
+      favorites: loadFavorites(),
+      activeHallId: null
+    };
+
+    const hallGrid = document.getElementById("hallGrid");
+    const filters = document.getElementById("filters");
+    const archiveSearch = document.getElementById("archiveSearch");
+    const resultsLine = document.getElementById("resultsLine");
+    const emptyState = document.getElementById("emptyState");
+    const favoritesButton = document.getElementById("favoritesButton");
+    const favoriteCount = document.getElementById("favoriteCount");
+    const clearButton = document.getElementById("clearButton");
+    const randomButton = document.getElementById("randomButton");
+    const printButton = document.getElementById("printButton");
+
+    const menuButton = document.getElementById("menuButton");
+    const closeMenuButton = document.getElementById("closeMenuButton");
+    const siteMenu = document.getElementById("siteMenu");
+    const menuSearch = document.getElementById("menuSearch");
+    const menuLinks = document.getElementById("menuLinks");
+
+    const modal = document.getElementById("hallModal");
+    const modalTitle = document.getElementById("modalTitle");
+    const modalCategory = document.getElementById("modalCategory");
+    const modalDescription = document.getElementById("modalDescription");
+    const modalPathways = document.getElementById("modalPathways");
+    const modalEnterLink = document.getElementById("modalEnterLink");
+    const modalFavoriteButton = document.getElementById("modalFavoriteButton");
+    const closeModalButton = document.getElementById("closeModalButton");
+
+    let previousFocus = null;
+
+    function loadFavorites() {
+      try {
+        const saved = JSON.parse(localStorage.getItem(storageKey) || "[]");
+        return new Set(Array.isArray(saved) ? saved : []);
+      } catch {
+        return new Set();
+      }
+    }
+
+    function saveFavorites() {
+      try {
+        localStorage.setItem(storageKey, JSON.stringify([...state.favorites]));
+      } catch {
+        // The page remains fully usable when browser storage is unavailable.
+      }
+    }
+
+    function escapeHTML(value) {
+      return String(value)
+        .replaceAll("&", "&amp;")
+        .replaceAll("<", "&lt;")
+        .replaceAll(">", "&gt;")
+        .replaceAll('"', "&quot;")
+        .replaceAll("'", "&#039;");
+    }
+
+    function hallSearchText(hall) {
+      return [
+        hall.title,
+        hall.category,
+        hall.description,
+        ...hall.pathways
+      ].join(" ").toLowerCase();
+    }
+
+    function visibleHalls() {
+      const query = state.query.trim().toLowerCase();
+
+      return halls.filter((hall) => {
+        const matchesQuery = !query || hallSearchText(hall).includes(query);
+        const matchesCategory = state.category === "All" || hall.category === state.category;
+        const matchesFavorites = !state.favoritesOnly || state.favorites.has(hall.id);
+        return matchesQuery && matchesCategory && matchesFavorites;
+      });
+    }
+
+    function renderFilters() {
+      const categories = ["All", ...new Set(halls.map((hall) => hall.category))];
+
+      filters.innerHTML = categories.map((category) => `
+        <button
+          class="filter-button"
+          type="button"
+          data-category="${escapeHTML(category)}"
+          aria-pressed="${state.category === category}"
+        >
+          ${escapeHTML(category)}
+        </button>
+      `).join("");
+    }
+
+    function renderHalls() {
+      const displayed = visibleHalls();
+
+      hallGrid.innerHTML = displayed.map((hall) => {
+        const isFavorite = state.favorites.has(hall.id);
+
+        return `
+          <article class="hall-card" data-id="${escapeHTML(hall.id)}">
+            <div class="card-top">
+              <span class="hall-symbol" aria-hidden="true">${escapeHTML(hall.symbol)}</span>
+
+              <button
+                class="favorite-button"
+                type="button"
+                data-favorite="${escapeHTML(hall.id)}"
+                aria-label="${isFavorite ? "Remove" : "Add"} ${escapeHTML(hall.title)} ${isFavorite ? "from" : "to"} favorites"
+                aria-pressed="${isFavorite}"
+                title="${isFavorite ? "Remove from favorites" : "Save to favorites"}"
+              >
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true">
+                  <path d="m12 3 2.8 5.7 6.2.9-4.5 4.4 1.1 6.2L12 17.3 6.4 20.2 7.5 14 3 9.6l6.2-.9L12 3Z"/>
+                </svg>
+              </button>
+            </div>
+
+            <p class="hall-category">${escapeHTML(hall.category)}</p>
+            <h3>${escapeHTML(hall.title)}</h3>
+            <p class="hall-description">${escapeHTML(hall.description)}</p>
+
+            <div class="card-actions">
+              <a class="enter-link" href="${escapeHTML(hall.path)}">
+                Enter Hall <span aria-hidden="true">→</span>
+              </a>
+              <button class="details-button" type="button" data-details="${escapeHTML(hall.id)}">
+                Research Scope
+              </button>
+            </div>
+          </article>
+        `;
+      }).join("");
+
+      const count = displayed.length;
+      resultsLine.textContent = count === 1
+        ? "1 chamber shown."
+        : `${count} chambers shown.`;
+
+      emptyState.classList.toggle("is-visible", count === 0);
+      hallGrid.hidden = count === 0;
+
+      updateFavoriteCount();
+    }
+
+    function renderMenu(query = "") {
+      const normalized = query.trim().toLowerCase();
+      const matches = halls.filter((hall) => !normalized || hallSearchText(hall).includes(normalized));
+
+      menuLinks.innerHTML = matches.map((hall) => `
+        <a class="menu-link" href="${escapeHTML(hall.path)}">
+          <span class="menu-link-icon" aria-hidden="true">${escapeHTML(hall.symbol)}</span>
+          <span class="menu-link-copy">
+            <span class="menu-link-title">${escapeHTML(hall.title)}</span>
+            <span class="menu-link-category">${escapeHTML(hall.category)}</span>
+          </span>
+          <span class="menu-link-arrow" aria-hidden="true">→</span>
+        </a>
+      `).join("");
+    }
+
+    function updateFavoriteCount() {
+      const count = state.favorites.size;
+      favoriteCount.textContent = String(count);
+      favoriteCount.setAttribute("aria-label", `${count} favorite${count === 1 ? "" : "s"}`);
+      favoritesButton.setAttribute("aria-pressed", String(state.favoritesOnly));
+    }
+
+    function toggleFavorite(id) {
+      if (state.favorites.has(id)) {
+        state.favorites.delete(id);
+      } else {
+        state.favorites.add(id);
+      }
+
+      saveFavorites();
+      renderHalls();
+
+      if (state.activeHallId === id && modal.classList.contains("is-open")) {
+        updateModalFavoriteButton();
+      }
+    }
+
+    function clearArchiveControls() {
+      state.query = "";
+      state.category = "All";
+      state.favoritesOnly = false;
+      archiveSearch.value = "";
+      renderFilters();
+      renderHalls();
+      archiveSearch.focus();
+    }
+
+    function openMenu() {
+      previousFocus = document.activeElement;
+      document.body.classList.add("menu-open");
+      siteMenu.classList.add("is-open");
+      siteMenu.setAttribute("aria-hidden", "false");
+      menuButton.setAttribute("aria-expanded", "true");
+      menuButton.setAttribute("aria-label", "Close archive menu");
+      setTimeout(() => menuSearch.focus(), 40);
+    }
+
+    function closeMenu() {
+      document.body.classList.remove("menu-open");
+      siteMenu.classList.remove("is-open");
+      siteMenu.setAttribute("aria-hidden", "true");
+      menuButton.setAttribute("aria-expanded", "false");
+      menuButton.setAttribute("aria-label", "Open archive menu");
+      menuSearch.value = "";
+      renderMenu();
+
+      if (previousFocus && typeof previousFocus.focus === "function") {
+        previousFocus.focus();
+      }
+    }
+
+    function openModal(id) {
+      const hall = halls.find((item) => item.id === id);
+      if (!hall) return;
+
+      previousFocus = document.activeElement;
+      state.activeHallId = id;
+
+      modalCategory.textContent = hall.category;
+      modalTitle.textContent = hall.title;
+      modalDescription.textContent = hall.description;
+      modalPathways.innerHTML = hall.pathways
+        .map((pathway) => `<li>${escapeHTML(pathway)}</li>`)
+        .join("");
+      modalEnterLink.href = hall.path;
+
+      updateModalFavoriteButton();
+
+      modal.classList.add("is-open");
+      modal.setAttribute("aria-hidden", "false");
+      document.body.classList.add("modal-open");
+      setTimeout(() => closeModalButton.focus(), 40);
+    }
+
+    function updateModalFavoriteButton() {
+      const isFavorite = state.favorites.has(state.activeHallId);
+      modalFavoriteButton.textContent = isFavorite ? "Remove from favorites" : "Save to favorites";
+      modalFavoriteButton.setAttribute("aria-pressed", String(isFavorite));
+    }
+
+    function closeModal() {
+      modal.classList.remove("is-open");
+      modal.setAttribute("aria-hidden", "true");
+      document.body.classList.remove("modal-open");
+      state.activeHallId = null;
+
+      if (previousFocus && typeof previousFocus.focus === "function") {
+        previousFocus.focus();
+      }
+    }
+
+    function openRandomHall() {
+      const choices = visibleHalls().length ? visibleHalls() : halls;
+      const hall = choices[Math.floor(Math.random() * choices.length)];
+      openModal(hall.id);
+    }
+
+    filters.addEventListener("click", (event) => {
+      const button = event.target.closest("[data-category]");
+      if (!button) return;
+
+      state.category = button.dataset.category;
+      renderFilters();
+      renderHalls();
+    });
+
+    hallGrid.addEventListener("click", (event) => {
+      const favorite = event.target.closest("[data-favorite]");
+      if (favorite) {
+        toggleFavorite(favorite.dataset.favorite);
+        return;
+      }
+
+      const details = event.target.closest("[data-details]");
+      if (details) {
+        openModal(details.dataset.details);
+      }
+    });
+
+    archiveSearch.addEventListener("input", () => {
+      state.query = archiveSearch.value;
+      renderHalls();
+    });
+
+    favoritesButton.addEventListener("click", () => {
+      state.favoritesOnly = !state.favoritesOnly;
+      renderHalls();
+    });
+
+    clearButton.addEventListener("click", clearArchiveControls);
+    randomButton.addEventListener("click", openRandomHall);
+    printButton.addEventListener("click", () => window.print());
+
+    menuButton.addEventListener("click", () => {
+      if (siteMenu.classList.contains("is-open")) {
+        closeMenu();
+      } else {
+        openMenu();
+      }
+    });
+
+    closeMenuButton.addEventListener("click", closeMenu);
+
+    siteMenu.addEventListener("click", (event) => {
+      if (event.target === siteMenu) closeMenu();
+    });
+
+    menuSearch.addEventListener("input", () => renderMenu(menuSearch.value));
+
+    closeModalButton.addEventListener("click", closeModal);
+
+    modal.addEventListener("click", (event) => {
+      if (event.target === modal) closeModal();
+    });
+
+    modalFavoriteButton.addEventListener("click", () => {
+      if (state.activeHallId) toggleFavorite(state.activeHallId);
+    });
+
+    document.addEventListener("keydown", (event) => {
+      if (event.key !== "Escape") return;
+
+      if (modal.classList.contains("is-open")) {
+        closeModal();
+      } else if (siteMenu.classList.contains("is-open")) {
+        closeMenu();
+      }
+    });
+
+    document.getElementById("year").textContent = String(new Date().getFullYear());
+
+    renderFilters();
+    renderHalls();
+    renderMenu();
+  </script>
+
+  <style>
+    .visually-hidden {
+      position: absolute !important;
+      width: 1px !important;
+      height: 1px !important;
+      padding: 0 !important;
+      margin: -1px !important;
+      overflow: hidden !important;
+      clip: rect(0, 0, 0, 0) !important;
+      white-space: nowrap !important;
+      border: 0 !important;
+    }
+  </style>
+</body>
+</html>
