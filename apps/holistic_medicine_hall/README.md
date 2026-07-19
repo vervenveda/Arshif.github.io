@@ -1,6 +1,6 @@
 # 🌱 ARSHIF Holistic Medicine Hall
 
-> **An interactive educational portal exploring whole-person health through evidence-informed, integrative, and holistic approaches to wellness.**
+> *An interactive educational portal exploring whole-person health through evidence-informed, integrative, and holistic approaches to wellness.**
 
 
 I built this Holistic Medical Hall with a safety-first medical-education framework. NCCIH emphasizes that complementary approaches should not be used as a substitute for proven conventional care or as a reason to delay seeing a health care provider, and it also notes that safety depends on the specific therapy or product. The supplement sections are especially cautious because the FDA regulates dietary supplements differently from drugs, and the NIH’s Office of Dietary Supplements explains that most supplements do not require FDA approval before they are marketed. I also included MedlinePlus herb/supplement pathways for effectiveness, usual dosage, and drug-interaction research, plus WHO’s traditional, complementary, and integrative medicine framework emphasizing evidence, safety, quality, and respectful integration.
