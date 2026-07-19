@@ -4,6 +4,8 @@
 
 ---
 
+I built this Traditional Medicine Hall, a source vault around safety-forward references, including WHO, NCCIH, FDA, NIH Office of Dietary Supplements, and MedlinePlus. The portal specifically flags supplement and remedy cautions because the FDA notes that dietary supplements are not approved before marketing, MedlinePlus provides research pathways on herb/supplement interactions, and NCCIH warns that some Ayurvedic preparations have been found to contain toxic levels of heavy metals such as lead, mercury, or arsenic.
+
 ## 🌍 Overview
 
 **ARSHIF Traditional Medicine Hall** is a self-contained educational application designed to introduce learners to the history, philosophy, practices, and cultural significance of traditional medicine systems from across the globe.
