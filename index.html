@@ -1086,6 +1086,34 @@
       outline-offset: 3px;
     }
 
+
+    .menu-group-label {
+      margin: 1.15rem 0 0.45rem;
+      color: var(--gold-bright);
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 0.68rem;
+      font-weight: 700;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+    }
+
+    .menu-group-label:first-child {
+      margin-top: 0;
+    }
+
+    .network-card {
+      min-height: 280px;
+    }
+
+    .network-repo {
+      margin: -0.45rem 0 1.1rem;
+      color: var(--teal);
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 0.75rem;
+      letter-spacing: 0.07em;
+      overflow-wrap: anywhere;
+    }
+
     @media (max-width: 1000px) {
       .archive-principles {
         grid-template-columns: repeat(2, 1fr);
@@ -1304,7 +1332,7 @@
   <div class="menu-overlay" id="siteMenu" aria-hidden="true">
     <nav class="menu-panel" aria-label="Archive navigation">
       <div class="menu-top">
-        <h2 class="menu-title">Archive Index</h2>
+        <h2 class="menu-title">ARSHIF &amp; Site Index</h2>
         <button class="icon-button" id="closeMenuButton" type="button" aria-label="Close archive menu">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true">
             <path d="M5 5l14 14M19 5L5 19"/>
@@ -1313,7 +1341,7 @@
       </div>
 
       <p class="menu-intro">
-        Search the halls, archives, and research chambers of ARSHIF.
+        Search ARSHIF halls and the connected Verve N Veda public sites.
       </p>
 
       <label class="visually-hidden" for="menuSearch">Search menu</label>
@@ -1464,6 +1492,22 @@
       </div>
     </section>
 
+
+    <section class="section" id="network" aria-labelledby="networkTitle">
+      <div class="section-heading">
+        <div>
+          <p class="section-kicker">The Verve N Veda Network</p>
+          <h2 id="networkTitle">Continue through the connected archives.</h2>
+          <p class="section-copy">
+            Move between ARSHIF and the wider public ecosystem of learning, law, professional tools,
+            civic resources, weather, verification, community stewardship, reflection, and discovery.
+          </p>
+        </div>
+      </div>
+
+      <div class="hall-grid" id="networkGrid"></div>
+    </section>
+
     <section class="section">
       <div class="manifesto">
         <blockquote>
@@ -1485,10 +1529,10 @@
 
       <nav class="footer-links" aria-label="Footer navigation">
         <a href="#archive">Archive Index</a>
-        <a href="./research/">Research Gate</a>
-        <a href="./about/">About ARSHIF</a>
-        <a href="./privacy/">Privacy</a>
-        <a href="./license/">Rights</a>
+        <a href="#network">Connected Sites</a>
+        <a href="https://vervenveda.github.io/" target="_blank" rel="noopener noreferrer">Verve N Veda</a>
+        <a href="https://vervenveda.github.io/theverifier.github.io/" target="_blank" rel="noopener noreferrer">The Verifier</a>
+        <a href="https://vervenveda.github.io/PLERASearch.github.io/" target="_blank" rel="noopener noreferrer">PLERA Search</a>
       </nav>
     </div>
   </footer>
@@ -1541,40 +1585,13 @@
 
     const halls = [
       {
-        id: "medical",
-        title: "Medical Hall",
+        id: "childrens-medicine",
+        title: "Children’s Medicine Resource Portal",
         category: "Health & Life",
         symbol: "✚",
-        path: "./medical/",
-        description: "Human anatomy, medicine, public health, healing traditions, ethics, and the changing history of care.",
-        pathways: ["Anatomy and physiology", "History of medicine", "Public health", "Medical ethics", "Primary-source medical texts"]
-      },
-      {
-        id: "financial",
-        title: "Financial Hall",
-        category: "Civic & Practical",
-        symbol: "◈",
-        path: "./apps/financial_hall/",
-        description: "Personal finance, economic systems, public budgets, markets, labor, monetary history, and financial literacy.",
-        pathways: ["Personal financial literacy", "Economic history", "Public finance", "Markets and institutions", "Consumer protection"]
-      },
-      {
-        id: "entrepreneur",
-        title: "Entrepreneur Hall",
-        category: "Civic & Practical",
-        symbol: "↗",
-        path: "./entrepreneur/",
-        description: "Research, planning, ethics, design, operations, and resilient pathways for building useful enterprises.",
-        pathways: ["Idea validation", "Business models", "Ethical entrepreneurship", "Operations", "Community enterprise"]
-      },
-      {
-        id: "nonprofit",
-        title: "Nonprofit Hall",
-        category: "Civic & Practical",
-        symbol: "◎",
-        path: "./apps/nonprofit_hall/",
-        description: "Public service, governance, mission design, fundraising, compliance, community accountability, and impact.",
-        pathways: ["Formation and governance", "Mission and strategy", "Fundraising", "Compliance", "Impact measurement"]
+        path: "./apps/childrens_medicine_hall/",
+        description: "A safety-first educational resource for symptom literacy, medicine awareness, caregiver logs, source research, and printable family reports.",
+        pathways: ["Children’s health literacy", "Medicine safety", "Caregiver documentation", "Source research", "Printable family reports"]
       },
       {
         id: "culinary",
@@ -1582,8 +1599,44 @@
         category: "Culture & Daily Life",
         symbol: "◒",
         path: "./apps/culinary_hall/",
-        description: "Food history, culinary technique, agriculture, nutrition, preservation, trade, ritual, and cultural identity.",
-        pathways: ["Culinary foundations", "World foodways", "Food preservation", "Agriculture and trade", "Nutrition and culture"]
+        description: "World foodways, cooking and baking foundations, nutrition, preservation, agriculture, trade, ritual, and cultural identity.",
+        pathways: ["Culinary foundations", "World foodways", "Cooking and baking", "Food preservation", "Nutrition and culture"]
+      },
+      {
+        id: "financial",
+        title: "Financial Hall",
+        category: "Civic & Practical",
+        symbol: "◈",
+        path: "./apps/financial_hall/",
+        description: "A local-first financial education and certificate portal covering personal finance, institutions, markets, consumer protection, and public finance.",
+        pathways: ["Personal financial literacy", "Economic history", "Public finance", "Markets and institutions", "Consumer protection"]
+      },
+      {
+        id: "holistic-medicine",
+        title: "Holistic Medicine Hall",
+        category: "Health & Life",
+        symbol: "✧",
+        path: "./apps/holistic_medicine_hall/",
+        description: "Study whole-person wellness traditions, evidence standards, historical context, ethics, safety, and the relationship between complementary and conventional care.",
+        pathways: ["Whole-person wellness", "Evidence and safety", "Historical traditions", "Ethics of care", "Complementary approaches"]
+      },
+      {
+        id: "language",
+        title: "Language Hall",
+        category: "Texts & Ideas",
+        symbol: "文",
+        path: "./apps/language_hall/",
+        description: "Language learning, linguistics, writing systems, vocabulary, pronunciation, translation, cultural context, and communication across communities.",
+        pathways: ["Language foundations", "Writing systems", "Vocabulary and pronunciation", "Translation", "Language and culture"]
+      },
+      {
+        id: "nonprofit",
+        title: "Nonprofit Hall",
+        category: "Civic & Practical",
+        symbol: "◎",
+        path: "./apps/nonprofit_hall/",
+        description: "Public service, governance, mission design, fundraising, compliance, accountability, and sustainable community impact.",
+        pathways: ["Formation and governance", "Mission and strategy", "Fundraising", "Compliance", "Impact measurement"]
       },
       {
         id: "poetry",
@@ -1595,211 +1648,222 @@
         pathways: ["World poetry", "Forms and technique", "Poetry movements", "Oral performance", "Writing practice"]
       },
       {
-        id: "art",
-        title: "Art Hall",
-        category: "Arts & Expression",
-        symbol: "✦",
-        path: "./art/",
-        description: "Visual culture across time: materials, movements, artists, criticism, conservation, and creative practice.",
-        pathways: ["Art history", "Studio methods", "Materials and conservation", "Visual analysis", "Professional practice"]
+        id: "traditional-medicine",
+        title: "Traditional Medicine Hall",
+        category: "Health & Life",
+        symbol: "☤",
+        path: "./apps/traditional_medicine_hall/",
+        description: "Explore traditional healing systems in their historical and cultural settings with attention to evidence, safety, ethics, and respectful comparison.",
+        pathways: ["Healing traditions", "Cultural context", "Materia medica history", "Safety and evidence", "Comparative study"]
       },
       {
-        id: "heritage",
-        title: "Heritage Hall",
-        category: "Memory & Civilization",
-        symbol: "⌂",
-        path: "./heritage/",
-        description: "Family memory, archives, genealogy, place, cultural inheritance, historic preservation, and living tradition.",
-        pathways: ["Family archives", "Oral history", "Historic places", "Genealogy", "Cultural preservation"]
+        id: "business-hall",
+        title: "Business Management Hall",
+        category: "Civic & Practical",
+        symbol: "▦",
+        path: "./apps/business_hall_index.html",
+        description: "A certification-oriented study environment for management, operations, leadership, marketing, finance, ethics, and organizational strategy.",
+        pathways: ["Management foundations", "Operations", "Leadership", "Marketing and finance", "Business ethics"]
       },
       {
-        id: "collectable",
-        title: "Collectable Hall",
+        id: "business-hub",
+        title: "Business Resource Hub",
+        category: "Civic & Practical",
+        symbol: "⌘",
+        path: "./apps/business_hub_index.html",
+        description: "A practical business gateway connecting planning resources, operations tools, funding pathways, professional development, and support services.",
+        pathways: ["Business planning", "Operations resources", "Funding pathways", "Professional development", "Support services"]
+      },
+      {
+        id: "business-incubator",
+        title: "Business Incubator",
+        category: "Civic & Practical",
+        symbol: "↗",
+        path: "./apps/business_incubator_index.html",
+        description: "Develop an idea from early research through validation, planning, ethical launch, resilient operations, and community-centered growth.",
+        pathways: ["Idea validation", "Business models", "Launch planning", "Resilient operations", "Community enterprise"]
+      },
+      {
+        id: "exercise-log",
+        title: "Exercise Log",
+        category: "Health & Life",
+        symbol: "△",
+        path: "./apps/exercise_log_index.html",
+        description: "A private browser-based space for recording movement, routines, goals, reflections, and personal progress over time.",
+        pathways: ["Activity logging", "Routine planning", "Goal tracking", "Progress reflection", "Local browser records"]
+      },
+      {
+        id: "lost-works",
+        title: "Archive of Lost Works",
         category: "Memory & Civilization",
         symbol: "◇",
-        path: "./collectable/",
-        description: "Objects as evidence: provenance, classification, conservation, valuation, material culture, and collecting ethics.",
-        pathways: ["Material culture", "Provenance research", "Conservation", "Cataloging", "Ethics of collecting"]
+        path: "./apps/lost_works_index.html",
+        description: "Trace missing, fragmentary, suppressed, destroyed, or rediscovered works and consider what their absence reveals about history and memory.",
+        pathways: ["Lost literature", "Fragmentary evidence", "Destroyed archives", "Rediscovery", "Cultural memory"]
       },
       {
-        id: "classics",
-        title: "Hall of World Classics",
-        category: "Texts & Ideas",
-        symbol: "Ⅳ",
-        path: "./classics/",
-        description: "Foundational works from civilizations around the world, read in historical and cultural context.",
-        pathways: ["Ancient epics", "Classical drama", "Philosophical texts", "Historical chronicles", "Comparative reading"]
+        id: "mythology",
+        title: "Hall of Mythology",
+        category: "Memory & Civilization",
+        symbol: "☾",
+        path: "./apps/mythology_hall_index.html",
+        description: "Myths, symbols, cosmologies, heroes, sacred narratives, comparative traditions, and the cultural worlds that carried them.",
+        pathways: ["World mythologies", "Creation narratives", "Heroes and archetypes", "Symbols and ritual", "Comparative mythology"]
       },
       {
-        id: "literature",
-        title: "Hall of World Literature",
-        category: "Texts & Ideas",
-        symbol: "¶",
-        path: "./literature/",
-        description: "Novels, stories, essays, drama, and literary movements across languages, nations, and centuries.",
-        pathways: ["Global literary traditions", "Literary movements", "Close reading", "Translation studies", "Public-domain texts"]
+        id: "oral-traditions",
+        title: "Hall of Oral Traditions",
+        category: "Memory & Civilization",
+        symbol: "◉",
+        path: "./apps/oral_traditions_index.html",
+        description: "Storytelling, song, genealogy, testimony, performance, and community memory transmitted through living voices.",
+        pathways: ["Storytelling traditions", "Oral history", "Song and performance", "Genealogy and memory", "Preservation ethics"]
       },
       {
         id: "philosophy",
         title: "Hall of Philosophy",
         category: "Texts & Ideas",
         symbol: "Φ",
-        path: "./philosophy/",
+        path: "./apps/philosophy_Hall_index.html",
         description: "Questions of being, knowledge, ethics, logic, meaning, politics, beauty, mind, and human responsibility.",
         pathways: ["Ethics", "Logic", "Epistemology", "Political philosophy", "Philosophy of mind"]
+      },
+      {
+        id: "science",
+        title: "Hall of the History of Science",
+        category: "Science & Inquiry",
+        symbol: "⚗",
+        path: "./apps/science_hall_index.html",
+        description: "The development of observation, experiment, mathematics, instruments, institutions, debate, and scientific revolutions.",
+        pathways: ["Scientific method", "History of discovery", "Instruments and measurement", "Scientific institutions", "Ethics of science"]
       },
       {
         id: "theatre",
         title: "Hall of Theatre",
         category: "Arts & Expression",
         symbol: "◐",
-        path: "./theatre/",
-        description: "Plays, performance traditions, dramatic structure, stagecraft, acting, directing, and theatre history.",
-        pathways: ["World drama", "Performance traditions", "Stagecraft", "Dramatic writing", "Theatre criticism"]
+        path: "./apps/theatre_hall_index.html",
+        description: "Drama, performance, stagecraft, playwrights, theatrical traditions, criticism, and the social life of the stage.",
+        pathways: ["World theatre", "Playwriting", "Performance traditions", "Stagecraft", "Theatre criticism"]
       },
       {
-        id: "mythology",
-        title: "Hall of Mythology",
-        category: "Memory & Civilization",
-        symbol: "☼",
-        path: "./mythology/",
-        description: "Creation stories, heroic cycles, deities, symbols, cosmologies, and comparative myth across cultures.",
-        pathways: ["Creation traditions", "Heroic cycles", "Sacred symbols", "Comparative mythology", "Myth and society"]
-      },
-      {
-        id: "travelogues",
-        title: "Hall of Travelogues & Exploration",
+        id: "travel-exploration",
+        title: "Hall of Travel & Exploration",
         category: "Memory & Civilization",
         symbol: "⌖",
-        path: "./travelogues/",
-        description: "Journeys, maps, encounters, exploration narratives, migration, exchange, and the ethics of observing others.",
-        pathways: ["Historic travel writing", "Cartography", "Migration", "Cross-cultural encounter", "Exploration ethics"]
+        path: "./apps/travel_exploration_hall_index.html",
+        description: "Travel narratives, mapping, navigation, encounter, migration, expedition, colonial context, and the ethics of exploration.",
+        pathways: ["Travel writing", "Cartography", "Navigation", "Expeditions and encounter", "Ethics of exploration"]
       },
       {
-        id: "indigenous",
-        title: "Hall of Indigenous Oral Traditions",
-        category: "Memory & Civilization",
-        symbol: "◌",
-        path: "./indigenous/",
-        description: "Oral memory, story, song, place-based knowledge, language stewardship, and respectful cultural preservation.",
-        pathways: ["Oral history methods", "Language stewardship", "Story and place", "Community authority", "Ethical preservation"]
-      },
-      {
-        id: "science",
-        title: "Hall of the History of Science",
-        category: "Science & Systems",
-        symbol: "⚗",
-        path: "./science/",
-        description: "How observation, experiment, mathematics, institutions, tools, and debate shaped scientific knowledge.",
-        pathways: ["Scientific revolutions", "History of experimentation", "Instruments and measurement", "Science and society", "Primary scientific texts"]
-      },
-      {
-        id: "law",
-        title: "Hall of Law & Governance",
-        category: "Civic & Practical",
-        symbol: "⚖",
-        path: "./law/",
-        description: "Legal traditions, constitutions, institutions, rights, duties, public power, and civic accountability.",
-        pathways: ["Constitutional traditions", "Civil and human rights", "Legal history", "Public institutions", "Primary legal sources"]
-      },
-      {
-        id: "psychology",
-        title: "Hall of Psychology & Mind",
-        category: "Health & Life",
-        symbol: "Ψ",
-        path: "./psychology/",
-        description: "Mind, behavior, development, memory, emotion, cognition, relationships, and the history of psychological thought.",
-        pathways: ["Cognition", "Development", "Emotion", "Social psychology", "History and ethics"]
-      },
-      {
-        id: "holistic",
-        title: "Hall of Holistic & Traditional Medicine",
-        category: "Health & Life",
-        symbol: "☿",
-        path: "./apps/holistic_medicine_hall/",
-        description: "Traditional healing systems, plant knowledge, cultural context, evidence, safety, and responsible comparison.",
-        pathways: ["Traditional systems", "Ethnobotany", "Evidence and safety", "Cultural context", "Integrative-care history"]
-      },
-      {
-        id: "traditional-medicine",
-        title: "Traditional Medicine Hall",
-        category: "Health & Life",
-        symbol: "✥",
-        path: "./apps/traditional_medicine_hall/",
-        description: "A safety-first study of world healing traditions, historical practice, cultural context, evidence, ethics, and responsible source comparison.",
-        pathways: ["World healing traditions", "Historical medical systems", "Cultural context", "Evidence and safety", "Ethics and respectful study"]
-      },
-      {
-        id: "children",
-        title: "Children’s Medicinal Resource",
-        category: "Health & Life",
-        symbol: "❀",
-        path: "./apps/childrens_medicine_hall/",
-        description: "Age-appropriate learning about health, safety, plants, medicines, bodies, caregivers, and when to seek help.",
-        pathways: ["Body literacy", "Medicine safety", "Plant awareness", "Healthy habits", "Trusted adults and care"]
-      },
-      {
-        id: "languages",
-        title: "Hall of Language Learning",
+        id: "world-classics",
+        title: "Hall of World Classics",
         category: "Texts & Ideas",
-        symbol: "AΩ",
-        path: "./apps/language_hall/",
-        description: "Language families, writing systems, pronunciation, communication, translation, culture, and multilingual learning.",
-        pathways: ["World languages", "Writing systems", "Phonetics", "Translation", "Language and culture"]
+        symbol: "Ⅳ",
+        path: "./apps/world_classics_Hall_index.html",
+        description: "Foundational works from civilizations around the world, read through historical, cultural, literary, and comparative context.",
+        pathways: ["Ancient epics", "Classical drama", "Philosophical texts", "Historical chronicles", "Comparative reading"]
+      }
+    ];
+
+    const networkSites = [
+      {
+        title: "Firmament Law",
+        repo: "firmament.github.io",
+        url: "https://vervenveda.github.io/firmament.github.io/",
+        symbol: "⚖",
+        description: "Legal-information tools, evidence workspaces, family resources, and public reference collections."
       },
       {
-        id: "business",
-        title: "Hall of Business Management",
-        category: "Civic & Practical",
-        symbol: "▦",
-        path: "./business/",
-        description: "Leadership, operations, strategy, accounting, communication, ethics, teams, and organizational stewardship.",
-        pathways: ["Management foundations", "Operations", "Strategy", "Organizational behavior", "Business ethics"]
+        title: "Administration",
+        repo: "admin.github.io",
+        url: "https://vervenveda.github.io/admin.github.io/",
+        symbol: "⌘",
+        description: "Administrative controls, planning, project organization, and ecosystem management."
       },
       {
-        id: "gardening",
-        title: "Hall of Gardening",
-        category: "Earth & Ecology",
-        symbol: "♧",
-        path: "./gardening/",
-        description: "Soil, seeds, horticulture, food gardens, ecology, seasonal practice, stewardship, and community growing.",
-        pathways: ["Soil science", "Planting and propagation", "Horticulture", "Food gardens", "Ecological stewardship"]
+        title: "Arcade",
+        repo: "arcade.github.io",
+        url: "https://vervenveda.github.io/arcade.github.io/",
+        symbol: "✦",
+        description: "Games, puzzles, strategy, creativity, trivia, and discovery through play."
       },
       {
-        id: "trees",
-        title: "Hall of Trees",
-        category: "Earth & Ecology",
-        symbol: "♜",
-        path: "./trees/",
-        description: "Ancient, sacred, medicinal, ecological, cultural, and symbolic trees from every region of the world.",
-        pathways: ["Tree identification", "Forest ecology", "Sacred trees", "Medicinal history", "Conservation"]
+        title: "ProResource Hub",
+        repo: "proresource_hub.github.io",
+        url: "https://vervenveda.github.io/proresource_hub.github.io/",
+        symbol: "⌬",
+        description: "Professional browser tools for writing, coding, media, files, search, design, and productivity."
       },
       {
-        id: "connection",
-        title: "Archive for Human Connection",
-        category: "Human Experience",
-        symbol: "∞",
-        path: "./connection/",
-        description: "Relationships, rituals, emotions, everyday lives, intergenerational voices, and the social fabric of humanity.",
-        pathways: ["Everyday lives", "Rituals and traditions", "Languages of love", "Emotions atlas", "Voices across generations"]
+        title: "Preschool",
+        repo: "preschool.github.io",
+        url: "https://vervenveda.github.io/preschool.github.io/",
+        symbol: "☀",
+        description: "Early-learning activities, playful foundations, family participation, and child-centered exploration."
       },
       {
-        id: "academy",
-        title: "Open Academy of Living Knowledge",
-        category: "Human Experience",
-        symbol: "△",
-        path: "./academy/",
-        description: "Open learning pathways, teaching toolkits, cross-cultural wisdom, multimedia study, and guided discovery.",
-        pathways: ["Open educational resources", "Teaching toolkits", "Guided courses", "Cross-cultural learning", "Community knowledge"]
+        title: "One Nation for All",
+        repo: "onenationforall.github.io",
+        url: "https://vervenveda.github.io/onenationforall.github.io/",
+        symbol: "◫",
+        description: "Civic engagement, public policy, national dialogue, accountability, and unity-centered ideas."
       },
       {
-        id: "research",
-        title: "ARSHIF Research Gate",
-        category: "Science & Systems",
+        title: "Solanar",
+        repo: "solanar.github.io",
+        url: "https://vervenveda.github.io/solanar.github.io/",
+        symbol: "☼",
+        description: "Weather, earth science, environmental awareness, lunar information, and global observation."
+      },
+      {
+        title: "Khaemenes Academy",
+        repo: "khaemenesacademy.github.io",
+        url: "https://vervenveda.github.io/khaemenesacademy.github.io/",
+        symbol: "∆",
+        description: "Sovereign education portals, curriculum, student resources, and lifelong learning."
+      },
+      {
+        title: "The Verifier",
+        repo: "theverifier.github.io",
+        url: "https://vervenveda.github.io/theverifier.github.io/",
         symbol: "⌕",
-        path: "./research/",
-        description: "A disciplined starting point for source discovery, comparison, note-making, verification, and research design.",
-        pathways: ["Research questions", "Source evaluation", "Primary-source discovery", "Comparative inquiry", "Research notebooks"]
+        description: "Information literacy, news discovery, source comparison, verification, and research navigation."
+      },
+      {
+        title: "ARSHIF Archives",
+        repo: "Arshif.github.io",
+        url: "https://vervenveda.github.io/Arshif.github.io/",
+        symbol: "A",
+        description: "The living archive of human knowledge, deep research, cultural memory, and interdisciplinary inquiry."
+      },
+      {
+        title: "River to Road",
+        repo: "river_to_road.github.io",
+        url: "https://vervenveda.github.io/river_to_road.github.io/",
+        symbol: "♧",
+        description: "Environmental stewardship, community cleanup, local action, and restoration."
+      },
+      {
+        title: "Verve N Veda",
+        repo: "vervenveda.github.io",
+        url: "https://vervenveda.github.io/",
+        symbol: "V",
+        description: "The public front door to the Verve N Veda ecosystem and its shared resources."
+      },
+      {
+        title: "PLERA Search",
+        repo: "PLERASearch.github.io",
+        url: "https://vervenveda.github.io/PLERASearch.github.io/",
+        symbol: "◌",
+        description: "A broad search gateway connecting research, public resources, learning, and discovery tools."
+      },
+      {
+        title: "Sanctuary",
+        repo: "Sanctuary.github.io",
+        url: "https://vervenveda.github.io/Sanctuary.github.io/",
+        symbol: "☽",
+        description: "A quiet digital sanctuary for reflection, grounding, creativity, restoration, and personal space."
       }
     ];
 
@@ -1814,6 +1878,7 @@
     };
 
     const hallGrid = document.getElementById("hallGrid");
+    const networkGrid = document.getElementById("networkGrid");
     const filters = document.getElementById("filters");
     const archiveSearch = document.getElementById("archiveSearch");
     const resultsLine = document.getElementById("resultsLine");
@@ -1873,6 +1938,15 @@
         hall.category,
         hall.description,
         ...hall.pathways
+      ].join(" ").toLowerCase();
+    }
+
+    function siteSearchText(site) {
+      return [
+        site.title,
+        site.repo,
+        site.description,
+        "Verve N Veda Network"
       ].join(" ").toLowerCase();
     }
 
@@ -1956,17 +2030,58 @@
 
     function renderMenu(query = "") {
       const normalized = query.trim().toLowerCase();
-      const matches = halls.filter((hall) => !normalized || hallSearchText(hall).includes(normalized));
+      const matchingHalls = halls.filter((hall) => !normalized || hallSearchText(hall).includes(normalized));
+      const matchingSites = networkSites.filter((site) => !normalized || siteSearchText(site).includes(normalized));
 
-      menuLinks.innerHTML = matches.map((hall) => `
-        <a class="menu-link" href="${escapeHTML(hall.path)}">
-          <span class="menu-link-icon" aria-hidden="true">${escapeHTML(hall.symbol)}</span>
-          <span class="menu-link-copy">
-            <span class="menu-link-title">${escapeHTML(hall.title)}</span>
-            <span class="menu-link-category">${escapeHTML(hall.category)}</span>
-          </span>
-          <span class="menu-link-arrow" aria-hidden="true">→</span>
-        </a>
+      const hallMarkup = matchingHalls.length ? `
+        <div class="menu-group-label">ARSHIF Halls</div>
+        ${matchingHalls.map((hall) => `
+          <a class="menu-link" href="${escapeHTML(hall.path)}">
+            <span class="menu-link-icon" aria-hidden="true">${escapeHTML(hall.symbol)}</span>
+            <span class="menu-link-copy">
+              <span class="menu-link-title">${escapeHTML(hall.title)}</span>
+              <span class="menu-link-category">${escapeHTML(hall.category)}</span>
+            </span>
+            <span class="menu-link-arrow" aria-hidden="true">→</span>
+          </a>
+        `).join("")}
+      ` : "";
+
+      const siteMarkup = matchingSites.length ? `
+        <div class="menu-group-label">Verve N Veda Sites</div>
+        ${matchingSites.map((site) => `
+          <a class="menu-link" href="${escapeHTML(site.url)}" target="_blank" rel="noopener noreferrer">
+            <span class="menu-link-icon" aria-hidden="true">${escapeHTML(site.symbol)}</span>
+            <span class="menu-link-copy">
+              <span class="menu-link-title">${escapeHTML(site.title)}</span>
+              <span class="menu-link-category">${escapeHTML(site.repo)}</span>
+            </span>
+            <span class="menu-link-arrow" aria-hidden="true">↗</span>
+          </a>
+        `).join("")}
+      ` : "";
+
+      menuLinks.innerHTML = hallMarkup + siteMarkup || `
+        <div class="empty-state is-visible">No hall or connected site matched that search.</div>
+      `;
+    }
+
+    function renderNetwork() {
+      networkGrid.innerHTML = networkSites.map((site) => `
+        <article class="hall-card network-card">
+          <div class="card-top">
+            <span class="hall-symbol" aria-hidden="true">${escapeHTML(site.symbol)}</span>
+          </div>
+          <p class="hall-category">Connected Site</p>
+          <h3>${escapeHTML(site.title)}</h3>
+          <p class="hall-description">${escapeHTML(site.description)}</p>
+          <p class="network-repo">${escapeHTML(site.repo)}</p>
+          <div class="card-actions">
+            <a class="enter-link" href="${escapeHTML(site.url)}" target="_blank" rel="noopener noreferrer">
+              Open Site <span aria-hidden="true">↗</span>
+            </a>
+          </div>
+        </article>
       `).join("");
     }
 
@@ -2148,6 +2263,7 @@
 
     renderFilters();
     renderHalls();
+    renderNetwork();
     renderMenu();
   </script>
 
