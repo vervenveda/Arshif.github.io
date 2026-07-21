@@ -1,0 +1,1743 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Khaemenes Academy — Bible & History Parallels (12-Week Portal)</title>
+  <style>
+    :root{
+      --bg1:#fbf6ea;        /* parchment */
+      --bg2:#f3efe6;
+      --ink:#141316;
+      --muted:#5b5b63;
+      --card:#ffffffcc;
+      --card2:#ffffff;
+      --line:#e6dfcf;
+      --accent:#2b6cb0;
+      --accent2:#0f766e;
+      --warn:#b45309;
+      --radius:18px;
+      --radius2:26px;
+      --shadow: 0 10px 30px rgba(20,19,22,.10);
+      --shadow2: 0 6px 18px rgba(20,19,22,.10);
+      --fs: 22px; /* user preference: never tiny */
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji";
+      font-size: var(--fs);
+      line-height: 1.4;
+      color: var(--ink);
+      background: radial-gradient(1200px 700px at 20% 0%, #fff9ef 0%, transparent 70%),
+                  radial-gradient(900px 600px at 90% 10%, #f2fbff 0%, transparent 60%),
+                  linear-gradient(180deg, var(--bg1), var(--bg2));
+    }
+    a{color:var(--accent); text-decoration:none}
+    a:hover{text-decoration:underline}
+    .wrap{max-width:1100px; margin:0 auto; padding:18px 14px 70px}
+    header{
+      display:flex; align-items:flex-start; justify-content:space-between; gap:12px;
+      margin:10px 0 10px;
+    }
+    .title{
+      display:flex; flex-direction:column; gap:6px;
+    }
+    .title h1{
+      margin:0;
+      font-size: clamp(26px, 3.2vw, 40px);
+      letter-spacing: .2px;
+    }
+    .subtitle{
+      color:var(--muted);
+      font-size: 20px;
+      max-width: 70ch;
+    }
+    .pillrow{display:flex; flex-wrap:wrap; gap:10px; margin-top:6px}
+    .pill{
+      font-size: 18px;
+      padding:8px 12px;
+      border:1px solid var(--line);
+      background: #fff;
+      border-radius: 999px;
+      box-shadow: 0 2px 10px rgba(20,19,22,.05);
+      color: #23222a;
+    }
+
+    /* sticky posture */
+    .posture{
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      margin: 10px 0 14px;
+      border:1px solid var(--line);
+      background: linear-gradient(180deg, #ffffffee, #fffaf0ee);
+      backdrop-filter: blur(6px);
+      border-radius: var(--radius2);
+      box-shadow: var(--shadow2);
+      padding: 12px 14px;
+    }
+    .posture .row{
+      display:flex; align-items:flex-start; justify-content:space-between; gap:10px;
+    }
+    .posture h2{
+      margin:0 0 6px;
+      font-size: 20px;
+      letter-spacing: .2px;
+      color:#1f2937;
+    }
+    .posture p{
+      margin:0;
+      color:#2f2f36;
+      font-size: 20px;
+    }
+    .miniBtns{display:flex; gap:10px; flex-wrap:wrap; justify-content:flex-end}
+    .btn{
+      border:1px solid var(--line);
+      background:#fff;
+      color: var(--ink);
+      border-radius: 999px;
+      padding: 10px 14px;
+      font-weight: 700;
+      cursor:pointer;
+      box-shadow: 0 2px 10px rgba(20,19,22,.06);
+      font-size: 18px;
+    }
+    .btn:hover{transform: translateY(-1px)}
+    .btn:active{transform: translateY(0px)}
+    .btn.primary{
+      border-color: transparent;
+      background: linear-gradient(180deg, #2b6cb0, #1f5b97);
+      color:#fff;
+    }
+    .btn.good{
+      border-color: transparent;
+      background: linear-gradient(180deg, #0f766e, #0b5c56);
+      color:#fff;
+    }
+    .btn.warn{
+      border-color: transparent;
+      background: linear-gradient(180deg, #b45309, #8a3f06);
+      color:#fff;
+    }
+    .btn.ghost{
+      background: transparent;
+    }
+
+    .grid{
+      display:grid;
+      grid-template-columns: 320px 1fr;
+      gap: 14px;
+      align-items:start;
+    }
+    @media (max-width: 980px){
+      .grid{grid-template-columns: 1fr}
+    }
+
+    .card{
+      border:1px solid var(--line);
+      background: var(--card2);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      padding: 14px;
+    }
+    .card.soft{background: var(--card)}
+    .card h3{
+      margin:0 0 10px;
+      font-size: 22px;
+      letter-spacing:.2px;
+    }
+    .muted{color:var(--muted)}
+    .small{font-size:18px}
+    .hr{height:1px; background:var(--line); margin:12px 0}
+
+    /* left nav */
+    .navTop{
+      display:flex; align-items:center; justify-content:space-between; gap:10px;
+      margin-bottom: 10px;
+    }
+    .progress{
+      width:100%;
+      height: 12px;
+      border-radius: 999px;
+      background: #efe7d6;
+      overflow:hidden;
+      border: 1px solid var(--line);
+    }
+    .progress > div{
+      height: 100%;
+      width: 0%;
+      background: linear-gradient(90deg, var(--accent2), var(--accent));
+    }
+    .wklist{
+      display:flex; flex-direction:column; gap:8px;
+      max-height: 70vh;
+      overflow:auto;
+      padding-right: 4px;
+    }
+    .wkbtn{
+      text-align:left;
+      border:1px solid var(--line);
+      background:#fff;
+      border-radius: 14px;
+      padding: 10px 12px;
+      cursor:pointer;
+      box-shadow: 0 2px 10px rgba(20,19,22,.05);
+      display:flex; align-items:flex-start; justify-content:space-between; gap:10px;
+    }
+    .wkbtn:hover{transform: translateY(-1px)}
+    .wkbtn.active{
+      border-color: rgba(43,108,176,.35);
+      box-shadow: 0 10px 26px rgba(43,108,176,.14);
+      background: linear-gradient(180deg, #ffffff, #f6fbff);
+    }
+    .wkmeta{
+      display:flex; flex-direction:column; gap:2px;
+    }
+    .wkmeta .wktitle{
+      font-weight: 900;
+      font-size: 20px;
+    }
+    .wkmeta .wkidea{
+      font-size: 18px;
+      color: var(--muted);
+    }
+    .badge{
+      font-size: 16px;
+      padding: 6px 10px;
+      border-radius: 999px;
+      border: 1px solid var(--line);
+      background:#fff;
+      white-space:nowrap;
+    }
+    .badge.done{
+      border-color: rgba(15,118,110,.35);
+      background: rgba(15,118,110,.08);
+      color:#0b5c56;
+      font-weight: 900;
+    }
+
+    /* main lesson */
+    .lessonTop{
+      display:flex; flex-wrap:wrap; align-items:flex-start; justify-content:space-between; gap:12px;
+      margin-bottom: 6px;
+    }
+    .lessonTop h2{
+      margin:0;
+      font-size: clamp(24px, 2.8vw, 34px);
+      letter-spacing:.2px;
+    }
+    .lessonTools{display:flex; gap:10px; flex-wrap:wrap; justify-content:flex-end}
+    .chips{display:flex; gap:8px; flex-wrap:wrap; margin-top:8px}
+    .chip{
+      font-size: 16px;
+      padding: 6px 10px;
+      border-radius: 999px;
+      border: 1px solid var(--line);
+      background: #fff;
+      color:#2b2b34;
+    }
+
+    .section{
+      margin-top: 12px;
+      border:1px solid var(--line);
+      border-radius: var(--radius);
+      background:#fff;
+      padding: 12px;
+      box-shadow: 0 2px 10px rgba(20,19,22,.05);
+    }
+    .section h4{
+      margin:0 0 8px;
+      font-size: 22px;
+    }
+    .section p{margin: 0 0 10px}
+    .section ul{margin: 6px 0 0 22px}
+    .section li{margin: 6px 0}
+
+    .twoCols{
+      display:grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+    }
+    @media (max-width: 980px){ .twoCols{grid-template-columns:1fr} }
+
+    textarea, input[type="text"]{
+      width: 100%;
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      padding: 10px 12px;
+      font-size: 20px;
+      outline:none;
+      background:#fffdf7;
+    }
+    textarea{min-height: 110px; resize: vertical}
+    .fieldLabel{
+      font-size: 18px;
+      color: var(--muted);
+      margin: 10px 0 6px;
+      font-weight: 800;
+    }
+
+    /* quiz */
+    .q{
+      border:1px solid var(--line);
+      border-radius: 14px;
+      padding: 10px 12px;
+      background:#fff;
+      margin-top:10px;
+    }
+    .q .qhead{
+      display:flex; align-items:flex-start; justify-content:space-between; gap:10px;
+    }
+    .q .qtitle{
+      font-weight: 900;
+      font-size: 20px;
+    }
+    .q .qtype{
+      font-size: 16px;
+      padding: 6px 10px;
+      border-radius: 999px;
+      border: 1px solid var(--line);
+      background:#fffaf0;
+      color:#3b3b44;
+      white-space:nowrap;
+    }
+    .opts{margin-top:8px; display:flex; flex-direction:column; gap:8px}
+    label.opt{
+      display:flex; gap:10px; align-items:flex-start;
+      border:1px solid var(--line);
+      background:#fffdf7;
+      border-radius: 12px;
+      padding: 10px 10px;
+      cursor:pointer;
+    }
+    label.opt input{margin-top: 4px}
+    .key{
+      margin-top: 8px;
+      font-size: 18px;
+      color:#0b5c56;
+      font-weight: 900;
+      display:none;
+    }
+    .explain{
+      margin-top: 6px;
+      font-size: 18px;
+      color: var(--muted);
+      display:none;
+    }
+    .quizFooter{
+      display:flex; flex-wrap:wrap; align-items:center; justify-content:space-between; gap:10px;
+      margin-top: 10px;
+    }
+    .scoreBox{
+      border:1px solid var(--line);
+      background:#fffaf0;
+      border-radius: 14px;
+      padding: 10px 12px;
+      font-size: 18px;
+      color:#2b2b34;
+      box-shadow: 0 2px 10px rgba(20,19,22,.05);
+    }
+
+    .footNav{
+      display:flex; gap:10px; flex-wrap:wrap; justify-content:space-between;
+      margin-top: 12px;
+    }
+    .footNav .left, .footNav .right{
+      display:flex; gap:10px; flex-wrap:wrap;
+    }
+
+    /* timer */
+    .timer{
+      border:1px solid var(--line);
+      border-radius: 16px;
+      background: linear-gradient(180deg, #ffffff, #fffaf0);
+      padding: 10px 12px;
+      box-shadow: 0 2px 10px rgba(20,19,22,.06);
+      min-width: 260px;
+    }
+    .timerRow{
+      display:flex; align-items:center; justify-content:space-between; gap:10px;
+    }
+    .timerBig{
+      font-weight: 1000;
+      font-size: 24px;
+      letter-spacing: .3px;
+    }
+    .timerSmall{font-size: 16px; color: var(--muted); font-weight: 800}
+    .timerSeg{
+      margin-top: 8px;
+      font-size: 18px;
+      color:#2b2b34;
+      font-weight: 900;
+    }
+    select{
+      width:100%;
+      border:1px solid var(--line);
+      border-radius: 14px;
+      padding: 10px 12px;
+      font-size: 20px;
+      background:#fff;
+    }
+
+    /* hide scrollbars tastefully (doesn't break usability) */
+    .wklist{scrollbar-width: thin}
+    .wklist::-webkit-scrollbar{width:10px}
+    .wklist::-webkit-scrollbar-thumb{background:#e6dfcf; border-radius:10px}
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <header>
+      <div class="title">
+        <h1>📜 Bible & History Parallels — 12-Week Course Portal</h1>
+        <div class="subtitle">
+          A neutral, evidence-aware study that compares biblical claims with external sources (inscriptions, archives, archaeology, and ancient writers).
+          Progress saves locally on the learner’s device.
+        </div>
+        <div class="pillrow">
+          <div class="pill">Self-paced</div>
+          <div class="pill">12 weeks</div>
+          <div class="pill">Prayers + lesson flow</div>
+          <div class="pill">5-question homework quiz/week</div>
+        </div>
+      </div>
+    </header>
+
+    <div class="posture" id="posture">
+      <div class="row">
+        <div>
+          <h2>Course Posture Statement</h2>
+          <p>
+            We approach Scripture, history, and tradition with humility, honesty, and reverence.
+            Each week we distinguish between <b>(1) what the text says</b>, <b>(2) what external sources attest</b>,
+            and <b>(3) what remains debated</b>. Our aim is careful reading, fair evidence-handling, and faithful application—
+            without forcing conclusions beyond the data.
+          </p>
+        </div>
+        <div class="miniBtns">
+          <button class="btn" id="btnExport">Export Progress</button>
+          <button class="btn" id="btnImport">Import</button>
+          <button class="btn warn" id="btnReset">Reset</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="grid">
+      <!-- LEFT: weeks -->
+      <aside class="card soft">
+        <div class="navTop">
+          <div style="display:flex;flex-direction:column;gap:6px; width:100%">
+            <div style="display:flex; align-items:center; justify-content:space-between; gap:10px">
+              <div style="font-weight:1000">Course Weeks</div>
+              <div class="small muted" id="progText">0/12 complete</div>
+            </div>
+            <div class="progress" aria-label="progress bar"><div id="progBar"></div></div>
+          </div>
+        </div>
+        <div class="wklist" id="wklist"></div>
+        <div class="hr"></div>
+        <div class="small muted">
+          Tip: You can deep-link to a week using <b>?week=5</b> (for your trivia “Enter Portal” button).
+        </div>
+      </aside>
+
+      <!-- RIGHT: lesson -->
+      <main class="card" id="main">
+        <div class="lessonTop">
+          <div>
+            <h2 id="weekTitle">Week</h2>
+            <div class="chips" id="weekChips"></div>
+          </div>
+
+          <div class="lessonTools">
+            <div class="timer">
+              <div class="timerRow">
+                <div>
+                  <div class="timerSmall">Session Timer</div>
+                  <div class="timerBig" id="timerDisplay">00:00</div>
+                </div>
+                <div style="display:flex; gap:8px; flex-wrap:wrap; justify-content:flex-end">
+                  <button class="btn" id="timerStart">Start</button>
+                  <button class="btn" id="timerPause">Pause</button>
+                  <button class="btn" id="timerReset">Reset</button>
+                </div>
+              </div>
+              <div class="fieldLabel" style="margin-top:10px">Flow Format</div>
+              <select id="flowMode">
+                <option value="full">Full Flow (60 min) — your original timing</option>
+                <option value="compact">Compact Flow (30 min) — condensed</option>
+              </select>
+              <div class="timerSeg" id="timerSeg">Segment: —</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="section">
+          <h4>Welcome</h4>
+          <p id="welcomeText"></p>
+        </div>
+
+        <div class="section">
+          <h4>Opening Prayer</h4>
+          <p id="openingPrayer"></p>
+        </div>
+
+        <div class="section">
+          <h4>Read the Passage Out Loud</h4>
+          <p class="muted small">For copyright safety, this portal uses references (not full chapter text). Read from your preferred Bible translation.</p>
+          <ul id="passageList"></ul>
+        </div>
+
+        <div class="twoCols">
+          <div class="section">
+            <h4>Observe</h4>
+            <ul id="observeList"></ul>
+            <div class="fieldLabel">My observations</div>
+            <textarea id="noteObserve" placeholder="What stood out? repeated words? main point?"></textarea>
+          </div>
+
+          <div class="section">
+            <h4>Interpret</h4>
+            <ul id="interpretList"></ul>
+            <div class="fieldLabel">My interpretation notes</div>
+            <textarea id="noteInterpret" placeholder="What did it mean then? what does it teach about God/us?"></textarea>
+          </div>
+        </div>
+
+        <div class="section">
+          <h4>Apply</h4>
+          <ul id="applyList"></ul>
+          <div class="fieldLabel">My weekly plan</div>
+          <textarea id="noteApply" placeholder="What will I do this week? specific, small, honest steps."></textarea>
+        </div>
+
+        <div class="section">
+          <h4>Historical Parallels & Evidence Anchors</h4>
+          <p class="muted small">
+            These anchors are <b>external</b> sources often discussed alongside the biblical timeline. They may support context, names, places, or administrations—
+            but they rarely “prove” every detail. Use them carefully and fairly.
+          </p>
+          <ul id="anchorList"></ul>
+        </div>
+
+        <div class="section">
+          <h4>Deuterocanon / Second Temple Context Readings (clearly labeled)</h4>
+          <p class="muted small">
+            Different traditions include different collections. These are optional context readings; treat them as “background lenses” and label them honestly when you cite them.
+          </p>
+          <div class="twoCols">
+            <div>
+              <div class="fieldLabel">Hebrew Bible / Tanakh</div>
+              <ul id="ctxTanakh"></ul>
+              <div class="fieldLabel">Deuterocanon (Catholic/Orthodox)</div>
+              <ul id="ctxDeut"></ul>
+            </div>
+            <div>
+              <div class="fieldLabel">Second Temple Jewish Literature (broad category)</div>
+              <ul id="ctxSecondTemple"></ul>
+              <div class="fieldLabel">Greco-Roman / Ancient Historians</div>
+              <ul id="ctxGreco"></ul>
+            </div>
+          </div>
+        </div>
+
+        <div class="section">
+          <h4>Study Resources (Links)</h4>
+          <ul id="linkList"></ul>
+        </div>
+
+        <div class="section" id="quizSection">
+          <h4>Homework Quiz (5 Questions)</h4>
+          <div class="muted small">Auto-scores True/False + Multiple Choice. Essay questions are saved for reflection.</div>
+          <div id="quizWrap"></div>
+          <div class="quizFooter">
+            <div class="scoreBox" id="scoreBox">Auto-score: —</div>
+            <div style="display:flex; gap:10px; flex-wrap:wrap; justify-content:flex-end">
+              <button class="btn" id="btnSaveQuiz">Save Quiz</button>
+              <button class="btn primary" id="btnGrade">Submit & Show Key</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="section">
+          <h4>Closing Prayer</h4>
+          <p id="closingPrayer"></p>
+        </div>
+
+        <div class="footNav">
+          <div class="left">
+            <button class="btn" id="btnPrev">← Previous</button>
+            <button class="btn" id="btnNext">Next →</button>
+          </div>
+          <div class="right">
+            <button class="btn" id="btnPrint">Print Week</button>
+            <button class="btn good" id="btnComplete">Save & Mark Week Complete</button>
+          </div>
+        </div>
+
+        <div class="hr"></div>
+        <div class="small muted">
+          Local saving note: Wix embeds run inside your visitor’s browser. Progress is stored in <b>localStorage</b> on that device/browser.
+          To sync across devices, use Export/Import.
+        </div>
+      </main>
+    </div>
+  </div>
+
+<script>
+/* =========================
+   Khaemenes Academy Portal
+   Single-file | Wix-friendly
+   ========================= */
+
+const PORTAL_VERSION = "khaemenes_bible_history_portal_v1";
+const TRIVIA_URL = "https://www.khaemenesacademy.org/"; // optional: set your trivia/homepage link
+
+// --- Flow segments (timer labels only; your content stays the same) ---
+const FLOWS = {
+  full: [
+    {label:"Welcome", mins:5},
+    {label:"Read Aloud", mins:5},
+    {label:"Observe", mins:10},
+    {label:"Interpret", mins:15},
+    {label:"Apply", mins:15},
+    {label:"Pray", mins:10},
+  ],
+  compact: [
+    {label:"Welcome", mins:3},
+    {label:"Read Aloud", mins:3},
+    {label:"Observe", mins:6},
+    {label:"Interpret", mins:8},
+    {label:"Apply", mins:7},
+    {label:"Pray", mins:3},
+  ],
+};
+
+// --- COURSE DATA (12 weeks) ---
+const COURSE = {
+  title: "Bible & History Parallels (12 Weeks)",
+  globalLinks: [
+    {label:"British Museum — Collection Online", url:"https://www.britishmuseum.org/collection"},
+    {label:"Louvre — Collections Database", url:"https://collections.louvre.fr/en/"},
+    {label:"Israel Museum — Collections", url:"https://www.imj.org.il/en/collections"},
+    {label:"ORACC (Open Richly Annotated Cuneiform Corpus)", url:"https://oracc.museum.upenn.edu/"},
+    {label:"COJS (Center for Online Judaic Studies) — Primary-source Library", url:"https://cojs.org/"},
+    {label:"Perseus Digital Library (Greek/Latin texts)", url:"https://www.perseus.tufts.edu/"},
+  ],
+  weeks: [
+    {
+      id: 1,
+      title: "How We Compare Scripture & History",
+      bigIdea: "A fair method: text, context, and evidence.",
+      passages: ["Luke 1:1–4", "Deuteronomy 19:15", "1 Thessalonians 5:21", "Proverbs 18:17"],
+      welcome:
+        "Welcome to Week 1. Today we set a respectful method: we honor Scripture and we handle evidence carefully—without rushing to prove or dismiss. We will practice separating (a) the biblical claim, (b) external attestation, and (c) what remains uncertain.",
+      openingPrayer:
+        "Creator of Truth, give us clean hearts, clear minds, and humble speech. Teach us to love what is true, to reject pride, and to honor Your word with integrity. Guide this study in reverence and peace. Amen.",
+      observePrompts: [
+        "What does Luke 1:1–4 say about compiling accounts and verifying?",
+        "What does ‘test everything’ (1 Thess 5:21) imply about careful listening?",
+        "Where do you see warnings about bias, haste, or one-sided stories?"
+      ],
+      interpretNotes: [
+        "A ‘neutral’ posture doesn’t mean ‘faithless’—it means honest and careful.",
+        "Primary sources (inscriptions, tablets, coins) differ from later summaries.",
+        "Absence of evidence is not always evidence of absence; it depends on what we would reasonably expect to find."
+      ],
+      applyPractice: [
+        "Choose one claim this week (a person/place/date). Write: ‘Text says… External sources say… What’s debated…’",
+        "Practice charitable language: ‘Many scholars think…’ ‘A minority argues…’"
+      ],
+      closingPrayer:
+        "Father, keep us from pride and from fear. Let our study strengthen faithfulness, patience, and love. Teach us to speak truth with gentleness. Amen.",
+      anchors: [
+        {label:"Evidence Ladder (practice)", text:"Primary source → Translation → Context → Competing interpretations → Provisional conclusion."},
+      ],
+      context: {
+        tanakh: [{label:"Psalm 119:160", url:""}],
+        deut: [{label:"Wisdom 7:17–22 (wisdom and discernment)", url:""}],
+        secondTemple: [{label:"Dead Sea Scrolls overview (context background)", url:"https://www.deadseascrolls.org.il/"}],
+        greco: [{label:"How historians use sources (overview)", url:"https://www.britannica.com/topic/historiography"}]
+      },
+      links: [
+        {label:"British Museum — What is an ancient ‘foundation deposit’?", url:"https://www.britishmuseum.org/collection"},
+        {label:"COJS — Using primary sources (library)", url:"https://cojs.org/"}
+      ],
+      quiz: [
+        {id:"w1q1", type:"tf", prompt:"Primary sources are always perfectly clear and never need interpretation.", correct:"False", explain:"Even primary sources require translation, context, and careful reading."},
+        {id:"w1q2", type:"mc", prompt:"Which is an example of a primary source?", options:["A modern textbook chapter","A museum object page describing an inscribed tablet","A blog recap of an inscription","A social media thread"], correct:"A museum object page describing an inscribed tablet", explain:"Museum documentation of the object plus the artifact itself is closest to primary evidence."},
+        {id:"w1q3", type:"tf", prompt:"‘Absence of evidence’ can sometimes be meaningful, depending on what we would expect to find.", correct:"True", explain:"It depends on preservation, archaeology coverage, and reasonable expectations."},
+        {id:"w1q4", type:"mc", prompt:"Best practice when evidence is disputed is to…", options:["Pick the view you like most","State what’s known, what’s debated, and why","Ignore minority views always","Assume all scholars agree"], correct:"State what’s known, what’s debated, and why", explain:"This preserves honesty and clarity."},
+        {id:"w1q5", type:"essay", prompt:"In 4–6 sentences, describe how you will keep a humble, truth-focused posture in this course. What will you do when you encounter disagreement?"}
+      ]
+    },
+
+    {
+      id: 2,
+      title: "Egypt, ‘Israel,’ and the Early Timeline",
+      bigIdea: "What Egyptian sources do—and don’t—say.",
+      passages: ["Exodus 1:8–14", "Exodus 12:40–41", "Joshua 1:1–3", "Judges 2:10–12"],
+      welcome:
+        "Week 2 explores Egypt’s records and what they can contribute. We’ll look at how scholars handle Egyptian inscriptions, chronology, and the famous Merneptah Stele’s reference often read as ‘Israel.’",
+      openingPrayer:
+        "Creator, give us wisdom to handle ancient records carefully. Keep us from exaggeration and from cynicism. Teach us to love truth and to honor You in our learning. Amen.",
+      observePrompts: [
+        "What does Exodus emphasize about oppression and deliverance?",
+        "What does Judges 2 suggest about memory, faithfulness, and cycles?",
+        "What details are emphasized (names, numbers, time spans)?"
+      ],
+      interpretNotes: [
+        "Egyptian royal inscriptions often function as propaganda; they still carry historical value, but must be read with genre awareness.",
+        "The Merneptah Stele is widely discussed as an early extrabiblical reference to a group often read as ‘Israel’—but it does not explain origins or provide a full narrative."
+      ],
+      applyPractice: [
+        "Practice careful language: ‘This source is often cited as…’ ‘This could imply…’",
+        "Write one paragraph separating: text claim vs. what the stele directly says vs. what people infer."
+      ],
+      closingPrayer:
+        "Father, help us be faithful people who learn without pride. Teach us to honor You more than we honor being ‘right.’ Amen.",
+      anchors: [
+        {label:"Merneptah (Israel) Stele", text:"Often cited as an early Egyptian inscription with a reference widely read as ‘Israel’ (as a people-group).", url:"https://en.wikipedia.org/wiki/Merneptah_Stele"},
+        {label:"Global Egyptian Museum — Merneptah Stele listing (JE 31408)", text:"Catalog listing referencing ‘Stela of King Merenptah’ and its museum ID.", url:"https://www.globalegyptianmuseum.org/advanced_result.aspx?pag=287"},
+        {label:"Journal article (PDF) — Merneptah Stele discussion", text:"Example of scholarly debate around the stele and Israel’s early context.", url:"https://etsjets.org/wp-content/uploads/2019/09/files_JETS-PDFs_62_62-3_JETS_62.3_463-493_Bruce.pdf"}
+      ],
+      context: {
+        tanakh: [{label:"Deuteronomy 26:5–9", url:""}],
+        deut: [{label:"Wisdom 10 (deliverance theme)", url:""}],
+        secondTemple: [{label:"Second Temple timelines overview (context)", url:"https://www.britannica.com/topic/biblical-literature/The-Second-Temple-period"}],
+        greco: [{label:"How to read ancient royal inscriptions (genre basics)", url:"https://www.britishmuseum.org/collection"}]
+      },
+      links: [
+        {label:"Egypt Museum (overview page) — Victory Stele of Merneptah", url:"https://egypt-museum.com/victory-stele-of-merneptah/"},
+        {label:"Merneptah Stele (overview)", url:"https://en.wikipedia.org/wiki/Merneptah_Stele"}
+      ],
+      quiz: [
+        {id:"w2q1", type:"tf", prompt:"Egyptian royal inscriptions are always neutral ‘news reports.’", correct:"False", explain:"They often have political/religious aims; still useful, but genre-aware."},
+        {id:"w2q2", type:"mc", prompt:"The Merneptah Stele is commonly discussed because it…", options:["Is a New Testament manuscript","Mentions a group widely read as ‘Israel’ in an Egyptian text","Was written in Hebrew in Jerusalem","Lists the Ten Commandments"], correct:"Mentions a group widely read as ‘Israel’ in an Egyptian text", explain:"That reference is why it is often called the ‘Israel Stele.’"},
+        {id:"w2q3", type:"tf", prompt:"A single inscription can provide context without proving every narrative detail.", correct:"True", explain:"External anchors often confirm context or names rather than every event detail."},
+        {id:"w2q4", type:"mc", prompt:"Best evidence-handling is to…", options:["Treat one artifact as the whole story","Combine text + multiple sources + humility","Assume archaeology always confirms the Bible directly","Assume archaeology always disproves the Bible"], correct:"Combine text + multiple sources + humility", explain:"Balanced synthesis is stronger than single-point claims."},
+        {id:"w2q5", type:"essay", prompt:"Write 5–7 sentences: What is one careful conclusion you can make from the Merneptah Stele, and what is one conclusion you should avoid claiming?"}
+      ]
+    },
+
+    {
+      id: 3,
+      title: "Moab, Israel, and Neighbor Kingdoms",
+      bigIdea: "Reading rival accounts and border conflicts.",
+      passages: ["2 Kings 3", "Numbers 21:21–30", "Psalm 60 (superscription + theme)"],
+      welcome:
+        "Week 3 focuses on how neighboring kingdoms describe events, and how border conflicts appear in multiple traditions. We’ll use the Mesha Stele (Moabite Stone) as a major example discussed in relation to Moab and Israel.",
+      openingPrayer:
+        "Creator, teach us to read with discernment. Help us understand that multiple voices exist in history, and that we must be fair and truthful with each. Amen.",
+      observePrompts: [
+        "In 2 Kings 3, what is the conflict and how is it framed?",
+        "What repeated themes do you notice (victory, tribute, rebellion, deliverance)?"
+      ],
+      interpretNotes: [
+        "Victory stelae present a king’s perspective and may exaggerate.",
+        "Comparing rival accounts helps us see what is shared (names/places) and what is disputed (outcomes/claims)."
+      ],
+      applyPractice: [
+        "Write two summaries of the same episode: one from the biblical narrator’s view, one as a Moabite royal inscription might frame it.",
+        "Practice distinguishing ‘direct statement’ vs. ‘interpretation.’"
+      ],
+      closingPrayer:
+        "Father, make us people of honesty. Keep our hearts faithful, and our words clean. Amen.",
+      anchors: [
+        {label:"Louvre — Mesha Stele (collections database)", text:"Collection entry for the Mesha Stele (Moabite Stone).", url:"https://collections.louvre.fr/en/ark:/53355/cl010120339"},
+        {label:"British Museum — Cast of the Mesha Stele (Moabite Stone)", text:"BM entry for a cast of the Mesha Stele.", url:"https://www.britishmuseum.org/collection/object/W_C-204-A"}
+      ],
+      context: {
+        tanakh: [{label:"Isaiah 15–16 (Moab oracles)", url:""}],
+        deut: [{label:"Sirach 46–47 (historical reflection passages)", url:""}],
+        secondTemple: [{label:"Second Temple survey (context)", url:"https://www.britannica.com/topic/biblical-literature/The-Second-Temple-period"}],
+        greco: [{label:"What is a ‘victory stele’?", url:"https://www.britishmuseum.org/collection"}]
+      },
+      links: [
+        {label:"Louvre — Mesha Stele object page", url:"https://collections.louvre.fr/en/ark:/53355/cl010120339"},
+        {label:"Wikipedia — Mesha Stele overview", url:"https://en.wikipedia.org/wiki/Mesha_Stele"}
+      ],
+      quiz: [
+        {id:"w3q1", type:"tf", prompt:"A victory stele is designed to present a ruler’s achievements in the best possible light.", correct:"True", explain:"That’s why genre awareness matters."},
+        {id:"w3q2", type:"mc", prompt:"Where is the Mesha Stele cataloged online in an official museum collection?", options:["Louvre collections database","NASA archives","Library of Congress maps","UNESCO song registry"], correct:"Louvre collections database", explain:"The Louvre hosts a collections entry for the stele."},
+        {id:"w3q3", type:"tf", prompt:"Comparing accounts can help identify shared names/places even when stories disagree.", correct:"True", explain:"Shared anchors can still be meaningful."},
+        {id:"w3q4", type:"mc", prompt:"Best summary practice for disputed events is…", options:["Use absolute language to win debates","Describe what each source claims and note uncertainty","Ignore the Bible text","Ignore the external source"], correct:"Describe what each source claims and note uncertainty", explain:"This is the most honest approach."},
+        {id:"w3q5", type:"essay", prompt:"Choose one conflict detail in 2 Kings 3. Explain how a Moabite inscription might frame it differently, and why."}
+      ]
+    },
+
+    {
+      id: 4,
+      title: "Assyria, Kings, and Named Figures",
+      bigIdea: "When names line up across records.",
+      passages: ["1 Kings 22", "2 Kings 9–10", "Amos 1:3–2:3"],
+      welcome:
+        "Week 4 examines how Assyrian sources are used to discuss kings and campaigns, including records that mention places and rulers in the Levant. We’ll look at the Kurkh Stela and the Black Obelisk as commonly cited examples for name-and-context parallels.",
+      openingPrayer:
+        "Father, give us patience and honesty. Let us not twist words or cherry-pick. Teach us to seek what is true with clean hands and a humble heart. Amen.",
+      observePrompts: [
+        "What do the narratives emphasize about leadership and faithfulness?",
+        "What words repeat (prophet, king, covenant, judgment, repentance)?"
+      ],
+      interpretNotes: [
+        "Assyrian inscriptions often list campaigns and tribute; they can help anchor names and geopolitical context.",
+        "Even when names appear, we still avoid overclaiming what the inscription proves."
+      ],
+      applyPractice: [
+        "Write one careful sentence that uses the word ‘suggests’ instead of ‘proves.’",
+        "Identify one way a political record might omit a detail that matters to Scripture."
+      ],
+      closingPrayer:
+        "Creator, teach us to follow You—not human pride, not empire, not hype. Let our allegiance be faithful and humble. Amen.",
+      anchors: [
+        {label:"British Museum — Kurkh Stela (Shalmaneser III)", text:"BM object entry for the Kurkh Stela.", url:"https://www.britishmuseum.org/collection/object/W_1863-0619-2"},
+        {label:"British Museum — Black Obelisk (Shalmaneser III)", text:"BM object entry; includes scenes of tribute and captions.", url:"https://www.britishmuseum.org/collection/object/W_1848-1104-1"},
+        {label:"ORACC — Black Obelisk (context / translation projects)", text:"An ORACC project page discussing the Black Obelisk.", url:"https://oracc.museum.upenn.edu/nimrud/livesofobjects/blackobelisk/"}
+      ],
+      context: {
+        tanakh: [{label:"Hosea 10 (warning against pride and power)", url:""}],
+        deut: [{label:"Sirach 2 (steadfastness under testing)", url:""}],
+        secondTemple: [{label:"Second Temple survey (context)", url:"https://www.britannica.com/topic/biblical-literature/The-Second-Temple-period"}],
+        greco: [{label:"What is Neo-Assyrian royal inscription genre?", url:"https://www.britishmuseum.org/collection"}]
+      },
+      links: [
+        {label:"British Museum — Kurkh Stela object page", url:"https://www.britishmuseum.org/collection/object/W_1863-0619-2"},
+        {label:"British Museum — Black Obelisk object page", url:"https://www.britishmuseum.org/collection/object/W_1848-1104-1"}
+      ],
+      quiz: [
+        {id:"w4q1", type:"tf", prompt:"Assyrian sources can sometimes provide external context for names, places, or tribute relationships.", correct:"True", explain:"They can offer contextual anchors, used carefully."},
+        {id:"w4q2", type:"mc", prompt:"Which museum hosts an official object page for the Black Obelisk?", options:["British Museum","Smithsonian Air & Space","MoMA","Guggenheim"], correct:"British Museum", explain:"The British Museum maintains a collection entry for the Black Obelisk."},
+        {id:"w4q3", type:"tf", prompt:"If a king’s name appears in an inscription, it proves every detail of the biblical narrative about that king.", correct:"False", explain:"It may confirm context, not every narrative element."},
+        {id:"w4q4", type:"mc", prompt:"A good evidence statement sounds like…", options:["‘This settles the debate forever.’","‘This artifact may support the broader historical setting described.’","‘No one can disagree with this.’","‘Ignore everything that doesn’t fit.’"], correct:"‘This artifact may support the broader historical setting described.’", explain:"Careful, bounded conclusions are best."},
+        {id:"w4q5", type:"essay", prompt:"Write 5–7 sentences: Why does genre (royal propaganda vs narrative theology) matter when comparing Assyrian inscriptions with Scripture?"}
+      ]
+    },
+
+    {
+      id: 5,
+      title: "Hezekiah, Sennacherib, and the Assyrian Campaign",
+      bigIdea: "Multiple records for a major crisis.",
+      passages: ["2 Kings 18–19", "Isaiah 36–37", "2 Chronicles 32"],
+      welcome:
+        "Week 5 examines the Assyrian campaign against Judah and Jerusalem, often discussed with sources connected to Sennacherib and the siege of Lachish. We’ll compare what Scripture emphasizes with what Assyrian records emphasize.",
+      openingPrayer:
+        "Father, teach us courage that is rooted in You—not in politics, not in fear. Give us clarity, humility, and reverence. Amen.",
+      observePrompts: [
+        "What are the key events in 2 Kings 18–19?",
+        "What repeated words or themes appear (deliver, trust, blaspheme, fear)?"
+      ],
+      interpretNotes: [
+        "Assyrian annals often list conquests, tribute, and victories; biblical narratives often emphasize covenant, prayer, and deliverance.",
+        "Comparing accounts helps us see both political context and theological meaning."
+      ],
+      applyPractice: [
+        "Write one paragraph on how prayer functions in the narrative (who prays, when, why).",
+        "Choose one anxiety you have; write a ‘Hezekiah-style’ prayer (humble, specific, trust-based)."
+      ],
+      closingPrayer:
+        "Creator, teach us to pray with honesty and trust. Let us not be intimidated by power or fear. Amen.",
+      anchors: [
+        {label:"British Museum — Taylor Prism (Sennacherib Prism)", text:"BM object page describing campaigns and tribute from Hezekiah (701 BCE).", url:"https://www.britishmuseum.org/collection/object/W_1855-1003-1"},
+        {label:"British Museum — Lachish Relief (capture of Lachish)", text:"BM relief entry describing Sennacherib watching the capture of Lachish.", url:"https://www.britishmuseum.org/collection/object/W_1856-0909-14_7"},
+        {label:"British Museum — Lachish relief panel group entry", text:"BM entry for the broader Lachish wall panel relief set.", url:"https://www.britishmuseum.org/collection/object/W_1856-0909-14"}
+      ],
+      context: {
+        tanakh: [{label:"Micah 6:8", url:""}],
+        deut: [{label:"Wisdom 16–19 (deliverance themes)", url:""}],
+        secondTemple: [{label:"Second Temple survey (context)", url:"https://www.britannica.com/topic/biblical-literature/The-Second-Temple-period"}],
+        greco: [{label:"How to read annals/royal inscriptions", url:"https://www.britishmuseum.org/collection"}]
+      },
+      links: [
+        {label:"British Museum — Taylor Prism object page", url:"https://www.britishmuseum.org/collection/object/W_1855-1003-1"},
+        {label:"British Museum — Lachish relief (one panel) object page", url:"https://www.britishmuseum.org/collection/object/W_1856-0909-14_7"}
+      ],
+      quiz: [
+        {id:"w5q1", type:"tf", prompt:"The Taylor Prism is an Assyrian record associated with Sennacherib’s campaigns.", correct:"True", explain:"It is commonly discussed as an annals-style record (BM object page)."},
+        {id:"w5q2", type:"mc", prompt:"Which site’s capture is depicted in the British Museum’s Lachish reliefs?", options:["Lachish","Jericho","Nineveh","Alexandria"], correct:"Lachish", explain:"BM relief descriptions identify the capture of Lachish."},
+        {id:"w5q3", type:"tf", prompt:"The Bible and Assyrian annals always focus on the same themes and purposes.", correct:"False", explain:"They have different genres and aims (theological narrative vs royal propaganda)."},
+        {id:"w5q4", type:"mc", prompt:"A careful conclusion about multiple sources is…", options:["‘Both sources must match word-for-word or one is false.’","‘Different genres can describe the same era with different emphasis.’","‘External sources replace Scripture.’","‘Scripture should be read without context ever.’"], correct:"‘Different genres can describe the same era with different emphasis.’", explain:"Genre difference is expected in ancient literature."},
+        {id:"w5q5", type:"essay", prompt:"Write a short reflection prayer (6–10 lines) inspired by Hezekiah’s posture: humility, truth, and trust."}
+      ]
+    },
+
+    {
+      id: 6,
+      title: "Jerusalem Waterworks & the Siloam Inscription",
+      bigIdea: "Engineering, inscriptions, and lived reality.",
+      passages: ["2 Kings 20:20", "2 Chronicles 32:2–4, 30", "Psalm 46"],
+      welcome:
+        "Week 6 explores how physical infrastructure can illuminate the setting of biblical texts. We’ll look at the Siloam (Hezekiah’s Tunnel) inscription as a famous ancient Hebrew inscription describing a tunnel project and its completion.",
+      openingPrayer:
+        "Creator, thank You for wisdom and skill. Teach us to see Your providence in daily work, in planning, and in preparation. Amen.",
+      observePrompts: [
+        "What do these passages emphasize about preparation and trust?",
+        "How does Psalm 46 reframe fear into faith?"
+      ],
+      interpretNotes: [
+        "Inscriptions can be commemorative and personal; they may record technical achievements rather than theology.",
+        "Physical evidence can help us visualize daily life and pressures in a historical setting."
+      ],
+      applyPractice: [
+        "Identify one ‘tunnel’ in your life—something behind-the-scenes that prepares for trouble. Plan one step.",
+        "Pray Psalm 46 slowly once a day this week."
+      ],
+      closingPrayer:
+        "Father, make us steady. Teach us to prepare wisely and trust deeply. Amen.",
+      anchors: [
+        {label:"COJS — Hezekiah’s (Siloam) Tunnel Inscription", text:"Primary-source style overview and translation context.", url:"https://cojs.org/hezekiah-s_-or_siloam-_tunnel_inscription-_701_bce/"},
+        {label:"City of David — Siloam Inscription (overview)", text:"Background on discovery and description.", url:"https://cityofdavid.org.il/en/the-siloam-inscription-eng/"},
+        {label:"Israel Museum — Replica mention (collections)", text:"Replica collection entry.", url:"https://www.imj.org.il/en/collections/372810-0"}
+      ],
+      context: {
+        tanakh: [{label:"Nehemiah 2:11–18 (planning and rebuilding)", url:""}],
+        deut: [{label:"Sirach 38:1–15 (wisdom and practical life)", url:""}],
+        secondTemple: [{label:"Second Temple overview (context)", url:"https://www.britannica.com/topic/biblical-literature/The-Second-Temple-period"}],
+        greco: [{label:"Ancient engineering in the Levant (general)", url:"https://www.britishmuseum.org/collection"}]
+      },
+      links: [
+        {label:"COJS — Siloam Tunnel Inscription", url:"https://cojs.org/hezekiah-s_-or_siloam-_tunnel_inscription-_701_bce/"},
+        {label:"Wikipedia — Siloam inscription overview", url:"https://en.wikipedia.org/wiki/Siloam_inscription"}
+      ],
+      quiz: [
+        {id:"w6q1", type:"tf", prompt:"The Siloam Inscription is associated with a water tunnel in Jerusalem traditionally linked with Hezekiah’s era.", correct:"True", explain:"It is widely discussed in that context (COJS / City of David)."},
+        {id:"w6q2", type:"mc", prompt:"The inscription is known for describing…", options:["A list of kings of Rome","Two teams meeting while digging a tunnel","The Ten Commandments","A New Testament sermon"], correct:"Two teams meeting while digging a tunnel", explain:"That ‘meeting moment’ is central to its popular description."},
+        {id:"w6q3", type:"tf", prompt:"Physical infrastructure evidence can help us visualize pressures and daily life behind the narratives.", correct:"True", explain:"It can contextualize without replacing the text."},
+        {id:"w6q4", type:"mc", prompt:"Best posture toward a technical inscription is…", options:["Make it say more than it says","Read it in its genre and context","Ignore it because it isn’t theological","Assume it proves every Bible verse"], correct:"Read it in its genre and context", explain:"Genre-aware reading stays honest."},
+        {id:"w6q5", type:"essay", prompt:"Write 5–7 sentences: How does Psalm 46 shape your response to historical crisis narratives like Hezekiah’s?"}
+      ]
+    },
+
+    {
+      id: 7,
+      title: "Babylon, Jerusalem (597 BCE), and Royal Archives",
+      bigIdea: "Chronicles and conquest records.",
+      passages: ["2 Kings 24:8–17", "Jeremiah 29:1–7", "Psalm 137"],
+      welcome:
+        "Week 7 examines Babylonian records often discussed alongside the fall of Jerusalem and the exile. We’ll use the Babylonian Chronicle tablet (commonly cited regarding 597 BCE) as a key example of how imperial archives recorded events.",
+      openingPrayer:
+        "Creator, be near to the brokenhearted and the displaced. Teach us to seek truth and to practice faithfulness in hard seasons. Amen.",
+      observePrompts: [
+        "What does 2 Kings 24 emphasize about leadership and consequence?",
+        "What does Jeremiah 29 teach about faithful living in exile?"
+      ],
+      interpretNotes: [
+        "Chronicles can list events succinctly; the biblical text explores meaning and covenant implications.",
+        "Comparing sources can help anchor dates and imperial context."
+      ],
+      applyPractice: [
+        "Choose one instruction from Jeremiah 29 and apply it this week (pray, build, seek peace).",
+        "Write a short lament (Psalm 137 style) that stays honest but avoids hatred."
+      ],
+      closingPrayer:
+        "Father, teach us endurance and faithfulness. Help us seek the good of our community while remaining devoted to You. Amen.",
+      anchors: [
+        {label:"British Museum — Babylonian Chronicle tablet (Jerusalem 597 BCE mention in curator notes)", text:"BM object page with curator comments referencing Nebuchadnezzar’s campaign against Jerusalem in 597 BCE.", url:"https://www.britishmuseum.org/collection/object/W_1896-0409-51"},
+        {label:"COJS — Babylonian Chronicle: ‘Nebuchadnezzar besieges Jerusalem, 597 BCE’", text:"Context and translation discussion for this chronicle tablet.", url:"https://cojs.org/the_babylonian_chronicle_-chronicle_5-_nebuchadnezzar_besieges_jerusalem-_597_bce/"}
+      ],
+      context: {
+        tanakh: [{label:"Lamentations 1–3 (exile lament)", url:""}],
+        deut: [{label:"Baruch 1–2 (context; tradition-dependent)", url:""}],
+        secondTemple: [{label:"Second Temple overview (context)", url:"https://www.britannica.com/topic/biblical-literature/The-Second-Temple-period"}],
+        greco: [{label:"Babylonian chronicles background", url:"https://www.britishmuseum.org/collection"}]
+      },
+      links: [
+        {label:"British Museum — Babylonian Chronicle tablet object page", url:"https://www.britishmuseum.org/collection/object/W_1896-0409-51"},
+        {label:"COJS — Chronicle 5 (597 BCE) page", url:"https://cojs.org/the_babylonian_chronicle_-chronicle_5-_nebuchadnezzar_besieges_jerusalem-_597_bce/"}
+      ],
+      quiz: [
+        {id:"w7q1", type:"tf", prompt:"The Babylonian Chronicle tablet is an example of an external source sometimes used to discuss the 597 BCE Jerusalem event.", correct:"True", explain:"BM curator notes and COJS discuss it in that context."},
+        {id:"w7q2", type:"mc", prompt:"Jeremiah 29 urges exiles to…", options:["Do nothing and wait only","Seek the peace of the city and pray","Revolt immediately at any cost","Abandon faith practices"], correct:"Seek the peace of the city and pray", explain:"Jeremiah 29:7 is a key instruction."},
+        {id:"w7q3", type:"tf", prompt:"Chronicle-style records usually include long theological reflections.", correct:"False", explain:"They tend to be terse; genre differs from Scripture’s narrative/theology."},
+        {id:"w7q4", type:"mc", prompt:"A careful use of the Chronicle is to…", options:["Claim it proves everything about exile life","Use it to anchor context/date while reading Scripture for meaning","Reject it as useless","Use it to attack other believers"], correct:"Use it to anchor context/date while reading Scripture for meaning", explain:"That is the balanced approach."},
+        {id:"w7q5", type:"essay", prompt:"Write 6–10 sentences: What does exile teach about faithfulness, and how can communities practice ‘seeking peace’ today?"}
+      ]
+    },
+
+    {
+      id: 8,
+      title: "Exile Daily Life: Jehoiachin and Ration Lists",
+      bigIdea: "Names in administrative texts.",
+      passages: ["2 Kings 25:27–30", "Jeremiah 52:31–34", "Daniel 1:1–7"],
+      welcome:
+        "Week 8 focuses on administrative texts—ration lists and archives that record people receiving provisions. These are often discussed alongside the biblical note about Jehoiachin’s treatment in Babylon.",
+      openingPrayer:
+        "Creator, You see the forgotten and the displaced. Teach us compassion and truth. Give us endurance in seasons we do not choose. Amen.",
+      observePrompts: [
+        "What details appear in 2 Kings 25:27–30 about Jehoiachin’s situation?",
+        "What themes appear in Daniel 1 about identity, faithfulness, and pressure?"
+      ],
+      interpretNotes: [
+        "Administrative records can preserve small but important details (names, rations, titles).",
+        "Even small records can anchor context, while Scripture provides theological framing."
+      ],
+      applyPractice: [
+        "Write one concrete ‘faithfulness under pressure’ practice for this week.",
+        "Reflect on identity: what do you refuse to compromise?"
+      ],
+      closingPrayer:
+        "Father, keep us faithful when we are pressured to conform. Strengthen our devotion and our mercy. Amen.",
+      anchors: [
+        {label:"COJS — Babylonian Ration List: King Jehoiachin in exile (592/1 BCE)", text:"COJS page describing ration texts for ‘Ya’u-kīnu, king of the land of Yahudu.’", url:"https://cojs.org/babylonian_ration_list-_king_jehoiakhin_in_exile-_592-1_bce/"},
+        {label:"Wikipedia — Jehoiachin’s Rations Tablets (overview)", text:"Overview of these ration tablets and their typical discussion points.", url:"https://en.wikipedia.org/wiki/Jehoiachin%27s_Rations_Tablets"}
+      ],
+      context: {
+        tanakh: [{label:"Esther 4:14 (faithfulness in exile)", url:""}],
+        deut: [{label:"Baruch 3 (wisdom in exile; tradition-dependent)", url:""}],
+        secondTemple: [{label:"Second Temple overview (context)", url:"https://www.britannica.com/topic/biblical-literature/The-Second-Temple-period"}],
+        greco: [{label:"How archives preserve everyday life", url:"https://www.britishmuseum.org/collection"}]
+      },
+      links: [
+        {label:"COJS — Jehoiachin ration list page", url:"https://cojs.org/babylonian_ration_list-_king_jehoiakhin_in_exile-_592-1_bce/"},
+        {label:"British Museum — examples of Babylonian administrative tablets", url:"https://www.britishmuseum.org/collection"}
+      ],
+      quiz: [
+        {id:"w8q1", type:"tf", prompt:"Administrative records can be valuable even when they are ‘boring,’ because they preserve names and real-life details.", correct:"True", explain:"That’s one reason ration lists can matter."},
+        {id:"w8q2", type:"mc", prompt:"2 Kings 25:27–30 emphasizes that Jehoiachin…", options:["Became Pharaoh","Was shown favor and given a regular allowance","Conquered Babylon","Wrote the Psalms"], correct:"Was shown favor and given a regular allowance", explain:"That’s the narrative detail often compared with ration/allowance evidence."},
+        {id:"w8q3", type:"tf", prompt:"If an archive lists rations for a named person, it automatically proves every story about that person.", correct:"False", explain:"It may support identity/context, not every narrative detail."},
+        {id:"w8q4", type:"mc", prompt:"A fair use of ration texts is…", options:["Overclaiming","Mocking faith","Using them to add historical texture and check plausibility","Ignoring Scripture"], correct:"Using them to add historical texture and check plausibility", explain:"This supports careful synthesis."},
+        {id:"w8q5", type:"essay", prompt:"Write 5–7 sentences: What does ‘faithfulness in exile’ look like in your life right now?"}
+      ]
+    },
+
+    {
+      id: 9,
+      title: "Persia, Return, and the Cyrus Cylinder",
+      bigIdea: "Imperial policy and restoration language.",
+      passages: ["Ezra 1:1–4", "2 Chronicles 36:22–23", "Isaiah 44:28–45:7"],
+      welcome:
+        "Week 9 studies the shift from Babylon to Persia and how imperial policies affected displaced peoples. The Cyrus Cylinder is often discussed as a foundation inscription describing Cyrus’s conquest and restoration actions in Babylonian terms.",
+      openingPrayer:
+        "Creator, You rule over nations and empires. Teach us to trust You rather than systems. Give us gratitude and humility. Amen.",
+      observePrompts: [
+        "What does Ezra 1 emphasize about return and rebuilding?",
+        "What themes appear in Isaiah 45 about God’s sovereignty?"
+      ],
+      interpretNotes: [
+        "Imperial inscriptions use their own religious/political language; biblical texts frame events through covenant and prophecy.",
+        "Comparisons require care: similar themes can appear with different purposes."
+      ],
+      applyPractice: [
+        "Write one ‘rebuild’ commitment for this week (prayer life, relationships, discipline).",
+        "Practice gratitude: list 7 mercies you’ve received."
+      ],
+      closingPrayer:
+        "Father, thank You for guiding history. Teach us to rebuild with clean hands and humble hearts. Amen.",
+      anchors: [
+        {label:"British Museum — Cyrus Cylinder (object page)", text:"BM description of the Cyrus Cylinder as a Babylonian account of Cyrus’s conquest and restoration actions.", url:"https://www.britishmuseum.org/collection/object/W_1880-0617-1941"},
+        {label:"Getty — Cyrus Cylinder exhibition page (context)", text:"Background overview and public-facing context for the object.", url:"https://www.getty.edu/art/exhibitions/cyrus_cylinder/"}
+      ],
+      context: {
+        tanakh: [{label:"Nehemiah 1–2 (prayer + rebuilding)", url:""}],
+        deut: [{label:"2 Maccabees 1 (letters/context; tradition-dependent)", url:""}],
+        secondTemple: [{label:"Second Temple overview (context)", url:"https://www.britannica.com/topic/biblical-literature/The-Second-Temple-period"}],
+        greco: [{label:"Foundation deposits (general)", url:"https://www.britishmuseum.org/collection"}]
+      },
+      links: [
+        {label:"British Museum — Cyrus Cylinder object page", url:"https://www.britishmuseum.org/collection/object/W_1880-0617-1941"},
+        {label:"Wikipedia — Cyrus Cylinder overview", url:"https://en.wikipedia.org/wiki/Cyrus_Cylinder"}
+      ],
+      quiz: [
+        {id:"w9q1", type:"tf", prompt:"The Cyrus Cylinder is a royal inscription in the name of Cyrus, connected to the Persian conquest of Babylon.", correct:"True", explain:"BM describes it as a Babylonian account of conquest and restoration actions."},
+        {id:"w9q2", type:"mc", prompt:"Ezra 1 presents the return as…", options:["A random accident","A response to a proclamation and God’s stirring","A Greek philosophical experiment","A Roman tax reform"], correct:"A response to a proclamation and God’s stirring", explain:"Ezra 1 emphasizes God’s action and the proclamation."},
+        {id:"w9q3", type:"tf", prompt:"Imperial inscriptions and biblical texts always use identical theological language.", correct:"False", explain:"They arise from different communities and aims."},
+        {id:"w9q4", type:"mc", prompt:"A careful comparison should…", options:["Force identical meanings","Note similarities while respecting differences in purpose","Ignore historical context","Reject all comparisons"], correct:"Note similarities while respecting differences in purpose", explain:"This preserves honesty."},
+        {id:"w9q5", type:"essay", prompt:"Write 5–8 sentences: How does Isaiah 45 shape your view of God’s sovereignty in history, regardless of politics?"}
+      ]
+    },
+
+    {
+      id: 10,
+      title: "Second Temple World: Deuterocanon & Historical Context",
+      bigIdea: "What different traditions preserve as ‘context.’",
+      passages: ["Daniel 7", "Zechariah 9–14 (selected)", "Malachi 3–4"],
+      welcome:
+        "Week 10 gives context for the centuries between the Persian era and the New Testament. We’ll clearly label Deuterocanon/Apocrypha readings by tradition, and we’ll discuss why some communities include certain books and others don’t.",
+      openingPrayer:
+        "Creator, keep us respectful across traditions. Teach us to handle texts with honesty and peace. Help us learn without hostility. Amen.",
+      observePrompts: [
+        "What hopes and expectations do late prophetic texts express?",
+        "What themes appear about faithfulness under pressure?"
+      ],
+      interpretNotes: [
+        "‘Deuterocanon’ typically refers to books recognized as Scripture in Catholic/Orthodox traditions but not in many Protestant canons.",
+        "Second Temple literature is a broad category: it includes varied genres and communities."
+      ],
+      applyPractice: [
+        "Practice transparent labels: ‘In Catholic/Orthodox tradition…’ ‘In Protestant tradition…’",
+        "Read one deuterocanonical chapter as historical/devotional context and write what it clarifies—and what it does not."
+      ],
+      closingPrayer:
+        "Father, make us peacemakers. Teach us to love truth and love people. Keep our speech clean and our hearts humble. Amen.",
+      anchors: [
+        {label:"Britannica — Second Temple period overview", text:"General background on the Second Temple era.", url:"https://www.britannica.com/topic/biblical-literature/The-Second-Temple-period"},
+        {label:"Dead Sea Scrolls Digital Library (overview)", text:"A public portal for DSS background and images.", url:"https://www.deadseascrolls.org.il/"}
+      ],
+      context: {
+        tanakh: [{label:"Daniel 9 (prayer + exile reflection)", url:""}],
+        deut: [{label:"1 Maccabees 1–4 (context; Catholic/Orthodox)", url:"https://en.wikipedia.org/wiki/Books_of_the_Maccabees"},
+               {label:"Sirach 2 (steadfastness)", url:""}],
+        secondTemple: [{label:"Dead Sea Scrolls portal", url:"https://www.deadseascrolls.org.il/"}],
+        greco: [{label:"Perseus — Hellenistic/Roman context texts (library)", url:"https://www.perseus.tufts.edu/"}]
+      },
+      links: [
+        {label:"Britannica — Second Temple period", url:"https://www.britannica.com/topic/biblical-literature/The-Second-Temple-period"},
+        {label:"Dead Sea Scrolls — official portal", url:"https://www.deadseascrolls.org.il/"}
+      ],
+      quiz: [
+        {id:"w10q1", type:"tf", prompt:"Different Christian traditions have different canonical lists.", correct:"True", explain:"That’s why labeling by tradition matters."},
+        {id:"w10q2", type:"mc", prompt:"‘Deuterocanon’ is most often used to describe…", options:["Books found only in the New Testament","Books recognized in Catholic/Orthodox canons but not in many Protestant canons","Only Dead Sea Scroll fragments","Only modern commentaries"], correct:"Books recognized in Catholic/Orthodox canons but not in many Protestant canons", explain:"That is the common usage in many church contexts."},
+        {id:"w10q3", type:"tf", prompt:"Second Temple literature is a single, uniform book written by one author.", correct:"False", explain:"It is a broad category with multiple communities and genres."},
+        {id:"w10q4", type:"mc", prompt:"Best practice when citing tradition-dependent texts is to…", options:["Hide the tradition label","State the tradition clearly","Use it to insult others","Claim everyone agrees"], correct:"State the tradition clearly", explain:"Transparency builds trust and clarity."},
+        {id:"w10q5", type:"essay", prompt:"Write 6–10 sentences: Why might ‘context readings’ be helpful even when different communities disagree about canon?"}
+      ]
+    },
+
+    {
+      id: 11,
+      title: "New Testament Anchors: Pilate, Gallio, Erastus",
+      bigIdea: "Administration, geography, and dated markers.",
+      passages: ["Luke 3:1–2", "Acts 18:12–17", "Romans 16:23"],
+      welcome:
+        "Week 11 looks at a few commonly cited New Testament-era anchors: inscriptions mentioning Pontius Pilate, Gallio, and Erastus. These examples often help students understand Roman administration and dating windows—without proving every narrative detail.",
+      openingPrayer:
+        "Creator, thank You for grounding faith in real places and real people. Teach us careful reading, clean speech, and humility. Amen.",
+      observePrompts: [
+        "What is Luke doing in Luke 3:1–2 with rulers and offices?",
+        "What does Acts 18 emphasize about legal proceedings and public order?"
+      ],
+      interpretNotes: [
+        "Inscriptions can confirm offices/titles and geographic settings.",
+        "Acts uses officials and provinces to frame travel narratives; archaeology can sometimes help anchor chronology windows."
+      ],
+      applyPractice: [
+        "Write one paragraph: what does it mean to ‘give an orderly account’ (Luke’s aim)?",
+        "Apply: practice accurate speech. Do not repeat claims you haven’t checked."
+      ],
+      closingPrayer:
+        "Father, make us truthful people. Keep us from careless speech and from arrogance. Teach us to honor You in the way we talk about evidence. Amen.",
+      anchors: [
+        {label:"Israel Museum — Pilate inscription (official collection entry)", text:"Official collection entry for the Latin dedicatory inscription mentioning Pontius Pilate.", url:"https://www.imj.org.il/en/collections/395572-0"},
+        {label:"K.C. Hanson — Gallio inscription text/overview", text:"Educational transcription/translation resource for the Delphi (Gallio) inscription.", url:"https://www.kchanson.com/ANCDOCS/greek/gallio.html"},
+        {label:"Erastus inscription overview (educational)", text:"Background discussion on Erastus inscription context.", url:"https://ferrelljenkins.blog/2013/10/23/the-erastus-inscription-at-corinth/"}
+      ],
+      context: {
+        tanakh: [{label:"Proverbs 12:22 (truthful lips)", url:""}],
+        deut: [{label:"Wisdom 1:1–5 (love righteousness)", url:""}],
+        secondTemple: [{label:"Second Temple overview (context)", url:"https://www.britannica.com/topic/biblical-literature/The-Second-Temple-period"}],
+        greco: [{label:"Perseus — Roman history texts (library)", url:"https://www.perseus.tufts.edu/"}
+        ]
+      },
+      links: [
+        {label:"Israel Museum — Pilate inscription entry", url:"https://www.imj.org.il/en/collections/395572-0"},
+        {label:"Gallio inscription resource", url:"https://www.kchanson.com/ANCDOCS/greek/gallio.html"}
+      ],
+      quiz: [
+        {id:"w11q1", type:"tf", prompt:"Luke 3:1–2 names rulers/offices as part of setting the historical context.", correct:"True", explain:"Luke uses rulers and titles to frame time/place."},
+        {id:"w11q2", type:"mc", prompt:"The Pilate inscription collection entry is hosted by…", options:["Israel Museum","British Museum","Louvre","Metropolitan Museum of Art"], correct:"Israel Museum", explain:"The Israel Museum has an official collection entry."},
+        {id:"w11q3", type:"tf", prompt:"An inscription mentioning an official can help anchor a time window without proving every narrative detail.", correct:"True", explain:"Anchors support context rather than total proof."},
+        {id:"w11q4", type:"mc", prompt:"Acts 18:12–17 includes which official as a key figure in the scene?", options:["Gallio","Herod the Great","Nebuchadnezzar","Cyrus"], correct:"Gallio", explain:"Gallio is the proconsul in Acts 18."},
+        {id:"w11q5", type:"essay", prompt:"Write 6–10 sentences: Why does careful sourcing matter for faith, credibility, and peace in conversation?"}
+      ]
+    },
+
+    {
+      id: 12,
+      title: "Synthesis: Build a Humble Timeline",
+      bigIdea: "Putting it together without overclaiming.",
+      passages: ["Acts 17:11", "Psalm 25:4–5", "John 14:6", "James 3:13–18"],
+      welcome:
+        "Week 12 is synthesis. You will build a simple timeline and write a ‘bounded conclusion’ paragraph: what seems strong, what seems plausible, and what remains uncertain. We close by reinforcing wisdom, peace, and integrity.",
+      openingPrayer:
+        "Creator of Truth, guide us into wisdom. Keep us from boasting, from contempt, and from fear. Teach us to be faithful and humble. Amen.",
+      observePrompts: [
+        "What does Acts 17:11 commend about daily examination?",
+        "What does James 3 teach about wisdom and gentleness?"
+      ],
+      interpretNotes: [
+        "A strong conclusion is specific, sourced, and modest in scope.",
+        "A faithful conclusion can be confident in God while still honest about historical uncertainties."
+      ],
+      applyPractice: [
+        "Create a 12-line timeline (one line per week). Add one anchor source link for each line.",
+        "Write one ‘peace pledge’ for how you will talk about evidence with others."
+      ],
+      closingPrayer:
+        "Father, seal this learning with wisdom and peace. Make us doers of Your word, not merely discussers. Let our lives reflect Yahushua’s humility and love. Amen.",
+      anchors: [
+        {label:"Build your anchor list", text:"Choose 6–12 external anchors you can cite honestly, with links and notes on limits."}
+      ],
+      context: {
+        tanakh: [{label:"Psalm 139:23–24", url:""}],
+        deut: [{label:"Wisdom 9 (prayer for wisdom)", url:""}],
+        secondTemple: [{label:"Second Temple overview (context)", url:"https://www.britannica.com/topic/biblical-literature/The-Second-Temple-period"}],
+        greco: [{label:"How to cite sources (basic)", url:"https://www.britannica.com/topic/bibliography"}]
+      },
+      links: [
+        {label:"Perseus Digital Library (for primary ancient texts)", url:"https://www.perseus.tufts.edu/"},
+        {label:"COJS (primary source library)", url:"https://cojs.org/"}
+      ],
+      quiz: [
+        {id:"w12q1", type:"tf", prompt:"A good conclusion is willing to say ‘I don’t know’ when the evidence is unclear.", correct:"True", explain:"Humility is part of truthfulness."},
+        {id:"w12q2", type:"mc", prompt:"Acts 17:11 commends people who…", options:["Avoid checking claims","Examine things daily to see if they are so","Only follow charismatic teachers","Refuse to read"], correct:"Examine things daily to see if they are so", explain:"That’s the Berean pattern."},
+        {id:"w12q3", type:"tf", prompt:"Being ‘fact-based’ means being harsh or arrogant.", correct:"False", explain:"James 3 links wisdom with gentleness and peace."},
+        {id:"w12q4", type:"mc", prompt:"A ‘bounded’ conclusion should…", options:["Claim certainty beyond the data","State scope/limits and cite sources","Mock other views","Hide sources"], correct:"State scope/limits and cite sources", explain:"That’s the most trustworthy style."},
+        {id:"w12q5", type:"essay", prompt:"Final essay: In 10–14 sentences, summarize what this course taught you about Scripture, history, humility, and faithful living."}
+      ]
+    }
+  ]
+};
+
+// =========================
+// State + persistence
+// =========================
+function loadState(){
+  try{
+    const raw = localStorage.getItem(PORTAL_VERSION);
+    if(!raw) return {
+      currentWeek: 1,
+      flowMode: "full",
+      completed: {},
+      notes: {},
+      quiz: {},
+      quizScored: {}
+    };
+    const st = JSON.parse(raw);
+    // sanity
+    st.currentWeek = clampInt(st.currentWeek || 1, 1, COURSE.weeks.length);
+    st.flowMode = st.flowMode === "compact" ? "compact" : "full";
+    st.completed = st.completed || {};
+    st.notes = st.notes || {};
+    st.quiz = st.quiz || {};
+    st.quizScored = st.quizScored || {};
+    return st;
+  }catch(e){
+    return {
+      currentWeek: 1, flowMode:"full", completed:{}, notes:{}, quiz:{}, quizScored:{}
+    };
+  }
+}
+function saveState(){ localStorage.setItem(PORTAL_VERSION, JSON.stringify(STATE)); }
+
+let STATE = loadState();
+
+// =========================
+// Helpers
+// =========================
+const $ = (sel, root=document)=>root.querySelector(sel);
+const $$ = (sel, root=document)=>Array.from(root.querySelectorAll(sel));
+function esc(s){
+  return String(s ?? "")
+    .replaceAll("&","&amp;")
+    .replaceAll("<","&lt;")
+    .replaceAll(">","&gt;")
+    .replaceAll('"',"&quot;")
+    .replaceAll("'","&#039;");
+}
+function clampInt(n, min, max){
+  n = parseInt(n,10); if(Number.isNaN(n)) n = min;
+  return Math.max(min, Math.min(max, n));
+}
+function hrefOrSpan(item){
+  if(item.url){
+    const u = item.url;
+    const label = esc(item.label);
+    return `<a href="${esc(u)}" target="_blank" rel="noopener">${label}</a>`;
+  }
+  return `<span>${esc(item.label)}</span>`;
+}
+function countCompleted(){
+  let c = 0;
+  for(const w of COURSE.weeks){
+    if(STATE.completed[String(w.id)]) c++;
+  }
+  return c;
+}
+function setQueryWeek(weekId){
+  const url = new URL(window.location.href);
+  url.searchParams.set("week", String(weekId));
+  window.history.replaceState({}, "", url.toString());
+}
+
+// =========================
+// Render navigation
+// =========================
+function renderNav(){
+  const list = $("#wklist");
+  list.innerHTML = "";
+
+  const completedCount = countCompleted();
+  $("#progText").textContent = `${completedCount}/${COURSE.weeks.length} complete`;
+  $("#progBar").style.width = `${Math.round((completedCount/COURSE.weeks.length)*100)}%`;
+
+  for(const w of COURSE.weeks){
+    const done = !!STATE.completed[String(w.id)];
+    const btn = document.createElement("button");
+    btn.className = "wkbtn" + (w.id === STATE.currentWeek ? " active" : "");
+    btn.type = "button";
+    btn.innerHTML = `
+      <div class="wkmeta">
+        <div class="wktitle">Week ${w.id}: ${esc(w.title)}</div>
+        <div class="wkidea">${esc(w.bigIdea)}</div>
+      </div>
+      <div class="badge ${done ? "done":""}">${done ? "✓ Done" : "•"}</div>
+    `;
+    btn.addEventListener("click", ()=>{
+      STATE.currentWeek = w.id;
+      saveState();
+      setQueryWeek(w.id);
+      renderAll();
+      window.scrollTo({top:0, behavior:"smooth"});
+    });
+    list.appendChild(btn);
+  }
+}
+
+// =========================
+// Render week content
+// =========================
+function getWeek(){
+  return COURSE.weeks.find(x => x.id === STATE.currentWeek) || COURSE.weeks[0];
+}
+function getNoteKey(weekId, which){ return `w${weekId}_${which}`; }
+
+function renderWeek(){
+  const w = getWeek();
+
+  $("#weekTitle").textContent = `Week ${w.id}: ${w.title}`;
+  $("#weekChips").innerHTML = `
+    <span class="chip">Big Idea: ${esc(w.bigIdea)}</span>
+    <span class="chip">Auto-saves locally</span>
+    <span class="chip">Week ${w.id} of ${COURSE.weeks.length}</span>
+  `;
+
+  $("#welcomeText").textContent = w.welcome;
+  $("#openingPrayer").textContent = w.openingPrayer;
+
+  // passages
+  const pList = $("#passageList");
+  pList.innerHTML = "";
+  (w.passages || []).forEach(ref=>{
+    const li = document.createElement("li");
+    li.textContent = ref;
+    pList.appendChild(li);
+  });
+
+  // observe/interpret/apply
+  const oList = $("#observeList"); oList.innerHTML = "";
+  (w.observePrompts || []).forEach(t=>{
+    const li = document.createElement("li"); li.textContent = t; oList.appendChild(li);
+  });
+
+  const iList = $("#interpretList"); iList.innerHTML = "";
+  (w.interpretNotes || []).forEach(t=>{
+    const li = document.createElement("li"); li.textContent = t; iList.appendChild(li);
+  });
+
+  const aList = $("#applyList"); aList.innerHTML = "";
+  (w.applyPractice || []).forEach(t=>{
+    const li = document.createElement("li"); li.textContent = t; aList.appendChild(li);
+  });
+
+  // notes fields
+  $("#noteObserve").value = STATE.notes[getNoteKey(w.id,"observe")] || "";
+  $("#noteInterpret").value = STATE.notes[getNoteKey(w.id,"interpret")] || "";
+  $("#noteApply").value = STATE.notes[getNoteKey(w.id,"apply")] || "";
+
+  // anchors
+  const an = $("#anchorList");
+  an.innerHTML = "";
+  (w.anchors || []).forEach(item=>{
+    const li = document.createElement("li");
+    const label = esc(item.label);
+    const text = esc(item.text || "");
+    const url = item.url;
+    li.innerHTML = url
+      ? `<b>${label}</b>: ${text} — <a href="${esc(url)}" target="_blank" rel="noopener">open</a>`
+      : `<b>${label}</b>: ${text}`;
+    an.appendChild(li);
+  });
+
+  // context readings
+  const c = w.context || {};
+  function fillCtx(id, arr){
+    const ul = $(id);
+    ul.innerHTML = "";
+    (arr || []).forEach(it=>{
+      const li = document.createElement("li");
+      li.innerHTML = it.url
+        ? `<a href="${esc(it.url)}" target="_blank" rel="noopener">${esc(it.label)}</a>`
+        : esc(it.label);
+      ul.appendChild(li);
+    });
+  }
+  fillCtx("#ctxTanakh", c.tanakh);
+  fillCtx("#ctxDeut", c.deut);
+  fillCtx("#ctxSecondTemple", c.secondTemple);
+  fillCtx("#ctxGreco", c.greco);
+
+  // links (global + week)
+  const links = $("#linkList");
+  links.innerHTML = "";
+  const allLinks = [...(COURSE.globalLinks || []), ...(w.links || [])];
+  allLinks.forEach(L=>{
+    const li = document.createElement("li");
+    li.innerHTML = `<a href="${esc(L.url)}" target="_blank" rel="noopener">${esc(L.label)}</a>`;
+    links.appendChild(li);
+  });
+
+  // quiz
+  renderQuiz(w);
+
+  // closing prayer
+  $("#closingPrayer").textContent = w.closingPrayer;
+
+  // buttons state
+  $("#btnPrev").disabled = (w.id === 1);
+  $("#btnNext").disabled = (w.id === COURSE.weeks.length);
+}
+
+// =========================
+// Quiz render + grade
+// =========================
+function quizKey(weekId){ return `w${weekId}`; }
+
+function getQuizAnswers(weekId){
+  return STATE.quiz[quizKey(weekId)] || {};
+}
+function setQuizAnswers(weekId, answers){
+  STATE.quiz[quizKey(weekId)] = answers;
+  saveState();
+}
+function setQuizScored(weekId, scored){
+  STATE.quizScored[quizKey(weekId)] = scored;
+  saveState();
+}
+function getQuizScored(weekId){
+  return STATE.quizScored[quizKey(weekId)] || {autoScore:null, autoTotal:null, showKey:false};
+}
+
+function renderQuiz(w){
+  const wrap = $("#quizWrap");
+  wrap.innerHTML = "";
+  const answers = getQuizAnswers(w.id);
+  const scored = getQuizScored(w.id);
+
+  let autoTotal = 0;
+  (w.quiz || []).forEach(q=>{
+    const qDiv = document.createElement("div");
+    qDiv.className = "q";
+    const typeLabel = q.type === "tf" ? "True/False" : (q.type === "mc" ? "Multiple Choice" : "Essay");
+    qDiv.innerHTML = `
+      <div class="qhead">
+        <div class="qtitle">${esc(q.prompt)}</div>
+        <div class="qtype">${typeLabel}</div>
+      </div>
+    `;
+
+    const keyDiv = document.createElement("div");
+    keyDiv.className = "key";
+    keyDiv.textContent = `Answer: ${q.correct ?? "—"}`;
+
+    const exDiv = document.createElement("div");
+    exDiv.className = "explain";
+    exDiv.textContent = q.explain || "";
+
+    if(q.type === "essay"){
+      const ta = document.createElement("textarea");
+      ta.placeholder = "Write your answer here… (saved locally)";
+      ta.value = answers[q.id] || "";
+      ta.addEventListener("input", ()=>{
+        answers[q.id] = ta.value;
+        setQuizAnswers(w.id, answers);
+      });
+      qDiv.appendChild(document.createElement("div")).className = "fieldLabel";
+      qDiv.lastChild.textContent = "Essay response";
+      qDiv.appendChild(ta);
+    } else {
+      autoTotal++;
+      const opts = document.createElement("div");
+      opts.className = "opts";
+      const optionList = (q.type === "tf") ? ["True","False"] : (q.options || []);
+      optionList.forEach(optText=>{
+        const id = `${w.id}_${q.id}_${optText}`.replace(/\s+/g,"_");
+        const label = document.createElement("label");
+        label.className = "opt";
+        label.innerHTML = `
+          <input type="radio" name="${esc(q.id)}" value="${esc(optText)}" ${answers[q.id]===optText ? "checked":""} />
+          <div>${esc(optText)}</div>
+        `;
+        label.addEventListener("change", (e)=>{
+          const v = label.querySelector("input").value;
+          answers[q.id] = v;
+          setQuizAnswers(w.id, answers);
+        });
+        opts.appendChild(label);
+      });
+      qDiv.appendChild(opts);
+    }
+
+    qDiv.appendChild(keyDiv);
+    qDiv.appendChild(exDiv);
+    wrap.appendChild(qDiv);
+  });
+
+  // score box
+  if(scored.autoScore === null){
+    $("#scoreBox").textContent = "Auto-score: —";
+  } else {
+    $("#scoreBox").textContent = `Auto-score: ${scored.autoScore}/${scored.autoTotal} (essays saved)`;
+  }
+
+  // show key?
+  if(scored.showKey){
+    $$(".key", wrap).forEach(el=>el.style.display="block");
+    $$(".explain", wrap).forEach(el=>el.style.display = el.textContent.trim() ? "block" : "none");
+  } else {
+    $$(".key", wrap).forEach(el=>el.style.display="none");
+    $$(".explain", wrap).forEach(el=>el.style.display="none");
+  }
+}
+
+function gradeQuiz(){
+  const w = getWeek();
+  const answers = getQuizAnswers(w.id);
+  let autoScore = 0;
+  let autoTotal = 0;
+
+  (w.quiz || []).forEach(q=>{
+    if(q.type === "essay") return;
+    autoTotal++;
+    const given = answers[q.id];
+    if(given && String(given).trim() === String(q.correct).trim()) autoScore++;
+  });
+
+  setQuizScored(w.id, {autoScore, autoTotal, showKey:true});
+  renderQuiz(w);
+}
+
+// =========================
+// Notes autosave
+// =========================
+function wireNotes(){
+  const w = getWeek();
+  const obs = $("#noteObserve");
+  const inter = $("#noteInterpret");
+  const app = $("#noteApply");
+
+  function save(which, val){
+    const key = getNoteKey(getWeek().id, which);
+    STATE.notes[key] = val;
+    saveState();
+  }
+  obs.oninput = ()=>save("observe", obs.value);
+  inter.oninput = ()=>save("interpret", inter.value);
+  app.oninput = ()=>save("apply", app.value);
+}
+
+// =========================
+// Completion + navigation
+// =========================
+function markComplete(){
+  const w = getWeek();
+  STATE.completed[String(w.id)] = true;
+  saveState();
+  renderNav();
+}
+
+function goWeek(delta){
+  const next = clampInt(STATE.currentWeek + delta, 1, COURSE.weeks.length);
+  STATE.currentWeek = next;
+  saveState();
+  setQueryWeek(next);
+  renderAll();
+  window.scrollTo({top:0, behavior:"smooth"});
+}
+
+// =========================
+// Export / Import
+// =========================
+function download(filename, text){
+  const a = document.createElement("a");
+  a.setAttribute("href", "data:application/json;charset=utf-8," + encodeURIComponent(text));
+  a.setAttribute("download", filename);
+  document.body.appendChild(a);
+  a.click();
+  a.remove();
+}
+function exportProgress(){
+  const payload = {
+    portal: PORTAL_VERSION,
+    exportedAt: new Date().toISOString(),
+    state: STATE
+  };
+  download("khaemenes-bible-history-progress.json", JSON.stringify(payload, null, 2));
+}
+function importProgress(){
+  const input = document.createElement("input");
+  input.type = "file";
+  input.accept = "application/json";
+  input.onchange = async ()=>{
+    const file = input.files && input.files[0];
+    if(!file) return;
+    const text = await file.text();
+    try{
+      const data = JSON.parse(text);
+      if(!data || !data.state) throw new Error("Invalid file.");
+      // shallow validate
+      STATE = data.state;
+      saveState();
+      // normalize
+      STATE = loadState();
+      renderAll();
+      alert("Imported successfully.");
+    }catch(e){
+      alert("Import failed. Please choose a valid exported progress file.");
+    }
+  };
+  input.click();
+}
+
+function resetAll(){
+  const phrase = prompt("Type RESET to clear all saved progress on this device:");
+  if(phrase !== "RESET") return;
+  localStorage.removeItem(PORTAL_VERSION);
+  STATE = loadState();
+  stopTimer(true);
+  renderAll();
+  alert("Progress cleared.");
+}
+
+// =========================
+// Timer
+// =========================
+let timer = {
+  running:false,
+  t0:0,
+  elapsed:0, // ms
+  tick:null
+};
+
+function fmtTime(ms){
+  ms = Math.max(0, ms|0);
+  const s = Math.floor(ms/1000);
+  const mm = String(Math.floor(s/60)).padStart(2,"0");
+  const ss = String(s%60).padStart(2,"0");
+  return `${mm}:${ss}`;
+}
+
+function currentFlow(){
+  return FLOWS[STATE.flowMode] || FLOWS.full;
+}
+function totalFlowMs(){
+  return currentFlow().reduce((acc,seg)=>acc + seg.mins*60*1000, 0);
+}
+function currentSegmentLabel(ms){
+  const flow = currentFlow();
+  let t = 0;
+  for(const seg of flow){
+    const segMs = seg.mins*60*1000;
+    if(ms < t + segMs) return seg.label;
+    t += segMs;
+  }
+  return flow[flow.length-1]?.label || "—";
+}
+
+function renderTimer(){
+  $("#timerDisplay").textContent = fmtTime(timer.elapsed);
+  $("#timerSeg").textContent = `Segment: ${currentSegmentLabel(timer.elapsed)}`;
+}
+
+function startTimer(){
+  if(timer.running) return;
+  timer.running = true;
+  timer.t0 = performance.now();
+  timer.tick = setInterval(()=>{
+    const now = performance.now();
+    timer.elapsed += (now - timer.t0);
+    timer.t0 = now;
+
+    // keep it from growing infinitely (cap at total flow; still usable)
+    const cap = totalFlowMs();
+    if(timer.elapsed > cap) timer.elapsed = cap;
+
+    renderTimer();
+  }, 250);
+}
+function pauseTimer(){
+  if(!timer.running) return;
+  timer.running = false;
+  clearInterval(timer.tick);
+  timer.tick = null;
+}
+function stopTimer(reset=false){
+  pauseTimer();
+  if(reset){
+    timer.elapsed = 0;
+    renderTimer();
+  }
+}
+function wireTimer(){
+  $("#timerStart").onclick = startTimer;
+  $("#timerPause").onclick = pauseTimer;
+  $("#timerReset").onclick = ()=>stopTimer(true);
+  $("#flowMode").value = STATE.flowMode;
+  $("#flowMode").onchange = ()=>{
+    STATE.flowMode = $("#flowMode").value === "compact" ? "compact" : "full";
+    saveState();
+    // keep elapsed within new cap
+    const cap = totalFlowMs();
+    if(timer.elapsed > cap) timer.elapsed = cap;
+    renderTimer();
+  };
+  renderTimer();
+}
+
+// =========================
+// Main render
+// =========================
+function renderAll(){
+  renderNav();
+  renderWeek();
+  wireNotes();
+}
+
+function init(){
+  // allow deep-link week
+  const url = new URL(window.location.href);
+  const w = url.searchParams.get("week");
+  if(w){
+    STATE.currentWeek = clampInt(w, 1, COURSE.weeks.length);
+    saveState();
+  }
+
+  // posture buttons
+  $("#btnExport").onclick = exportProgress;
+  $("#btnImport").onclick = importProgress;
+  $("#btnReset").onclick = resetAll;
+
+  // nav buttons
+  $("#btnPrev").onclick = ()=>goWeek(-1);
+  $("#btnNext").onclick = ()=>goWeek(+1);
+  $("#btnPrint").onclick = ()=>window.print();
+  $("#btnComplete").onclick = ()=>{
+    // always save notes + quiz just in case
+    saveState();
+    markComplete();
+    alert(`Week ${STATE.currentWeek} saved & marked complete.`);
+  };
+
+  // quiz buttons
+  $("#btnSaveQuiz").onclick = ()=>{ saveState(); alert("Quiz saved."); };
+  $("#btnGrade").onclick = gradeQuiz;
+
+  // timer
+  wireTimer();
+
+  renderAll();
+}
+init();
+</script>
+</body>
+</html>
