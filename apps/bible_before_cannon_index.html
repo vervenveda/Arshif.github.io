@@ -1,0 +1,1338 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>The Bible Before Canon <br> 8-Week Class Portal</title>
+
+  <!-- Optional font (remove if you want fully offline) -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+
+  <style>
+    :root{
+      --bg0:#050712;
+      --bg1:#0b1220;
+      --bg2:#0f1b2f;
+
+      --card: rgba(255,255,255,0.06);
+      --card2: rgba(255,255,255,0.085);
+      --stroke: rgba(255,255,255,0.14);
+
+      --text:#f2f4f8;
+      --muted:#c7cfdd;
+      --soft:#aab4c6;
+
+      --accent:#86f0d7;
+      --accent2:#7fb3ff;
+      --good:#7CFFB2;
+      --warn:#ffd27d;
+      --bad:#ff8a8a;
+
+      --r11: 11px;
+      --r21: 21px;
+
+      --shadow: 0 18px 55px rgba(0,0,0,0.35);
+
+      /* Readability preference */
+      --base: 22px; /* never smaller than 22px */
+      --max: 1120px;
+    }
+
+    html,body{height:100%;}
+    body{
+      margin:0;
+      font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      font-size: var(--base);
+      line-height: 1.35;
+      color: var(--text);
+      background:
+        radial-gradient(950px 440px at 18% 10%, rgba(134,240,215,0.12), transparent 60%),
+        radial-gradient(950px 440px at 82% 15%, rgba(127,179,255,0.12), transparent 60%),
+        linear-gradient(180deg, var(--bg0), var(--bg1) 40%, var(--bg2));
+      overflow-x:hidden;
+    }
+
+    a{color: var(--accent2); text-decoration:none;}
+    a:hover{text-decoration:underline;}
+
+    .wrap{
+      max-width: var(--max);
+      margin: 0 auto;
+      padding: 18px 14px 60px;
+    }
+
+    header{
+      text-align:center;
+      padding: 16px 12px 10px;
+    }
+    .title{
+      margin: 0 0 8px;
+      font-size: clamp(28px, 3.6vw, 46px);
+      font-weight: 900;
+      letter-spacing: 0.2px;
+    }
+    .subtitle{
+      margin: 0 auto 12px;
+      max-width: 78ch;
+      color: var(--muted);
+    }
+
+    .topbar{
+      display:flex;
+      justify-content:center;
+      gap:10px;
+      flex-wrap:wrap;
+      margin: 10px 0 14px;
+    }
+    .btn{
+      border:1px solid var(--stroke);
+      background: linear-gradient(180deg, rgba(255,255,255,0.10), rgba(255,255,255,0.04));
+      color: var(--text);
+      padding: 10px 14px;
+      border-radius: var(--r21);
+      cursor:pointer;
+      font-size: 20px;
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      box-shadow: 0 10px 24px rgba(0,0,0,0.18);
+      user-select:none;
+    }
+    .btn:hover{transform: translateY(-1px); border-color: rgba(255,255,255,0.24);}
+    .btn:active{transform: translateY(0px);}
+    .btn.secondary{background: rgba(255,255,255,0.05);}
+    .btn.good{border-color: rgba(124,255,178,0.40);}
+    .btn.danger{border-color: rgba(255,138,138,0.40);}
+
+    .layout{
+      display:grid;
+      grid-template-columns: 340px 1fr;
+      gap: 14px;
+      align-items:start;
+      margin-top: 10px;
+    }
+
+    .panel{
+      background: var(--card);
+      border: 1px solid var(--stroke);
+      border-radius: var(--r21);
+      box-shadow: var(--shadow);
+      overflow:hidden;
+    }
+
+    .panel h2{
+      margin:0;
+      padding: 14px 14px 10px;
+      font-size: 24px;
+      border-bottom: 1px solid rgba(255,255,255,0.10);
+    }
+
+    .weeklist{
+      padding: 10px;
+      display:flex;
+      flex-direction:column;
+      gap:10px;
+    }
+
+    .weekbtn{
+      text-align:left;
+      width:100%;
+      border:1px solid var(--stroke);
+      border-radius: var(--r21);
+      padding: 12px 12px;
+      cursor:pointer;
+      background: rgba(255,255,255,0.06);
+      color: var(--text);
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      gap:10px;
+      font-size: 20px;
+    }
+    .weekbtn:hover{background: rgba(255,255,255,0.085);}
+    .weekbtn[aria-current="true"]{
+      outline: 2px solid rgba(134,240,215,0.35);
+      background: rgba(134,240,215,0.10);
+    }
+
+    .tag{
+      font-size: 16px;
+      padding: 6px 10px;
+      border-radius: 999px;
+      border: 1px solid rgba(255,255,255,0.16);
+      color: var(--muted);
+      background: rgba(0,0,0,0.12);
+      white-space:nowrap;
+    }
+    .tag.locked{border-color: rgba(255,210,125,0.35); color: var(--warn);}
+    .tag.done{border-color: rgba(124,255,178,0.35); color: var(--good);}
+
+    .progress{
+      padding: 12px 14px 16px;
+      color: var(--muted);
+      border-top: 1px solid rgba(255,255,255,0.10);
+      font-size: 19px;
+    }
+    .bar{
+      height: 10px;
+      border-radius: 999px;
+      background: rgba(255,255,255,0.10);
+      overflow:hidden;
+      margin-top: 8px;
+      border: 1px solid rgba(255,255,255,0.12);
+    }
+    .bar > div{
+      height: 100%;
+      width: 0%;
+      background: linear-gradient(90deg, rgba(134,240,215,0.9), rgba(127,179,255,0.9));
+    }
+
+    .content{
+      padding: 14px;
+    }
+
+    .hero{
+      background: var(--card2);
+      border:1px solid rgba(255,255,255,0.16);
+      border-radius: var(--r21);
+      padding: 14px;
+      margin-bottom: 12px;
+    }
+    .hero .kicker{
+      color: var(--muted);
+      font-size: 18px;
+      margin-bottom: 8px;
+    }
+    .hero .heading{
+      font-size: 30px;
+      font-weight: 900;
+      margin: 0 0 8px;
+    }
+    .hero .idea{
+      margin: 0;
+      color: var(--text);
+    }
+
+    .grid2{
+      display:grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+      margin: 12px 0;
+    }
+
+    .card{
+      background: rgba(255,255,255,0.06);
+      border:1px solid rgba(255,255,255,0.14);
+      border-radius: var(--r21);
+      padding: 14px;
+    }
+
+    .card h3{
+      margin: 0 0 8px;
+      font-size: 24px;
+    }
+
+    ul{margin: 8px 0 0 22px;}
+    li{margin: 6px 0;}
+
+    .seg{
+      border-radius: var(--r21);
+      border: 1px solid rgba(255,255,255,0.14);
+      background: rgba(255,255,255,0.055);
+      padding: 12px 14px;
+      margin: 10px 0;
+    }
+    .seghead{
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      gap:10px;
+      flex-wrap:wrap;
+      margin-bottom: 6px;
+    }
+    .segtitle{
+      font-weight: 900;
+      font-size: 22px;
+    }
+    .segtime{
+      font-size: 16px;
+      color: var(--muted);
+      border:1px solid rgba(255,255,255,0.16);
+      border-radius: 999px;
+      padding: 5px 10px;
+    }
+
+    .prayerBox{
+      background: rgba(134,240,215,0.08);
+      border: 1px solid rgba(134,240,215,0.22);
+    }
+
+    .quiz .q{
+      margin: 12px 0;
+      padding: 12px;
+      border-radius: var(--r21);
+      border: 1px solid rgba(255,255,255,0.14);
+      background: rgba(0,0,0,0.08);
+    }
+    .quiz .qtitle{
+      font-weight: 900;
+      margin-bottom: 8px;
+    }
+    label.option{
+      display:block;
+      margin: 8px 0;
+      color: var(--text);
+      cursor:pointer;
+    }
+    input[type="radio"]{transform: scale(1.2); margin-right: 10px;}
+
+    textarea{
+      width:100%;
+      min-height: 110px;
+      resize: vertical;
+      padding: 10px 12px;
+      border-radius: var(--r11);
+      border: 1px solid rgba(255,255,255,0.18);
+      background: rgba(255,255,255,0.06);
+      color: var(--text);
+      font-size: 20px;
+      outline:none;
+    }
+    textarea:focus{border-color: rgba(127,179,255,0.55);}
+
+    .row{
+      display:flex;
+      gap:10px;
+      flex-wrap:wrap;
+      align-items:center;
+      margin-top: 10px;
+    }
+    .statusline{
+      color: var(--muted);
+      font-size: 18px;
+    }
+    .score{
+      font-weight: 900;
+      color: var(--good);
+    }
+
+    details{
+      margin-top: 10px;
+      border:1px solid rgba(255,255,255,0.12);
+      border-radius: var(--r21);
+      padding: 10px 12px;
+      background: rgba(255,255,255,0.04);
+    }
+    summary{
+      cursor:pointer;
+      font-weight: 900;
+    }
+
+    .foot{
+      text-align:center;
+      color: var(--muted);
+      margin-top: 18px;
+      font-size: 18px;
+    }
+
+    @media (max-width: 980px){
+      .layout{grid-template-columns: 1fr;}
+      .grid2{grid-template-columns: 1fr;}
+    }
+  </style>
+</head>
+
+<body>
+  <div class="wrap">
+    <header>
+      <h1 class="title">The Bible Before Canon</h1>
+      <p class="subtitle">
+        A self-paced 8-week course exploring how Scripture functioned <b>before</b> a finalized canon list existed:
+        scroll culture, textual families, translations, Second Temple literature, early Jesus movement writings,
+        and how communities recognized authoritative books over time. Progress saves on this device.
+      </p>
+
+      <div class="topbar">
+        <button class="btn secondary" id="btnPrint">🖨️ Print Lesson</button>
+        <button class="btn secondary" id="btnExport">⬇️ Export Progress</button>
+        <button class="btn danger" id="btnReset">↺ Reset</button>
+      </div>
+    </header>
+
+    <div class="layout">
+      <aside class="panel">
+        <h2>Weeks</h2>
+        <div class="weeklist" id="weekList"></div>
+        <div class="progress">
+          <div id="progressText">Progress: 0 / 8 complete</div>
+          <div class="bar"><div id="progressBar"></div></div>
+        </div>
+      </aside>
+
+      <main class="panel">
+        <div class="content" id="content"></div>
+      </main>
+    </div>
+
+    <div class="foot">
+      Thank You for Visiting
+    </div>
+  </div>
+
+<script>
+/* =========================================================
+   STORAGE
+========================================================= */
+const STORAGE_KEY = "bibleBeforeCanon_portal_v1";
+
+/* =========================================================
+   RESOURCES
+   (kept broad + reputable; you can swap/add your favorites)
+========================================================= */
+const RESOURCES = [
+  { name:"BibleProject — How the Bible Came to Be", url:"https://bibleproject.com/" },
+  { name:"Biblical Archaeology Society (articles)", url:"https://www.biblicalarchaeology.org/" },
+  { name:"SBL (Society of Biblical Literature)", url:"https://www.sbl-site.org/" },
+  { name:"BibleGateway (passage lookup)", url:"https://www.biblegateway.com/" },
+  { name:"STEPBible (study tools)", url:"https://www.stepbible.org/" }
+];
+
+function gatewayUrl(ref){
+  return "https://www.biblegateway.com/passage/?search=" + encodeURIComponent(ref);
+}
+
+/* =========================================================
+   COURSE: 8 WEEKS (from scratch)
+   Structure: 30-min flow
+   (Welcome 2 • Read 3 • Observe 6 • Interpret 8 • Apply 6 • Pray 5)
+========================================================= */
+const LESSONS = [
+  {
+    week: 1,
+    title: "What Is ‘Canon’—and What Came Before It?",
+    bigIdea: "Before a fixed list, Scripture functioned as a trusted library used in worship, teaching, and community life.",
+    goals: [
+      "Define canon vs Scripture vs tradition",
+      "Understand why ‘a single moment of canonization’ is an oversimplification",
+      "Learn the basic timeline (scrolls → collections → lists → consensus)"
+    ],
+    passages: ["Luke 24:44", "2 Timothy 3:14–17", "2 Peter 3:15–16"],
+    openingPrayer: "Lord, give us humility and clarity. Help us seek truth without fear, and grow in love for Your Word and for You. Amen.",
+    flow: [
+      { name:"Welcome", mins:2, prompts:[
+        "Set tone: this course is historical + devotional—truth with peace.",
+        "Define the key question: ‘How did communities recognize Scripture?’"
+      ]},
+      { name:"Read the Passage Out Loud", mins:3, prompts:[
+        "Read the passages slowly; note what counts as ‘Scripture’ in each."
+      ]},
+      { name:"Observe", mins:6, prompts:[
+        "List words: ‘Scripture’, ‘Law/Prophets/Psalms’, ‘writings’, ‘letters’.",
+        "What authority do these texts claim or assume?",
+        "What is being taught about reading and interpreting?"
+      ]},
+      { name:"Interpret", mins:8, prompts:[
+        "What did ‘Scripture’ mean in Jesus’ time vs later church usage?",
+        "Why might communities need to name/recognize authoritative books?",
+        "How does trust form: usage, teaching, worship, testing?"
+      ]},
+      { name:"Apply", mins:6, prompts:[
+        "Name one fear or assumption you bring to canon questions.",
+        "Write one sentence: ‘Studying origins will strengthen my faith by…’",
+        "Choose one habit: read with context, not just quotes."
+      ]},
+      { name:"Pray", mins:5, prompts:[
+        "Ask God for truth, patience, and deeper love for His voice.",
+        "Pray for unity and gentleness in how we discuss differences."
+      ]}
+    ],
+    quiz: {
+      tf: { q:"Canon refers to a recognized list of authoritative books.", a:true },
+      mc1: { q:"Which is the best description of ‘before canon’?", options:[
+        "Nothing was trusted as Scripture yet",
+        "One bound Bible existed everywhere",
+        "Authoritative writings existed, but lists and collections varied"
+      ], a:2 },
+      mc2: { q:"A helpful way to describe canon formation is…", options:[
+        "Instant invention by one meeting",
+        "A process of recognition over time",
+        "A secret code only scholars know"
+      ], a:1 },
+      essay1: { q:"In your own words, what is the difference between ‘Scripture’ and ‘canon’?" },
+      essay2: { q:"What do you hope changes in you after this 8-week course?" },
+      key: {
+        tf:"True.",
+        mc1:"Authoritative writings existed, but lists and collections varied.",
+        mc2:"A process of recognition over time.",
+        essayGuidance:[
+          "Scripture: sacred writings used as God’s Word; Canon: defined list recognized by a community.",
+          "Look for honest goals: peace, clarity, better reading habits, stronger faith."
+        ]
+      }
+    }
+  },
+
+  {
+    week: 2,
+    title: "Scroll Culture, Scribes, and the Shape of the Hebrew Scriptures",
+    bigIdea: "Israel’s Scriptures grew through covenant history, prophetic witness, and careful preservation in scroll form.",
+    goals: [
+      "Understand why scrolls matter (cost, copying, access)",
+      "Meet the roles of scribes and readers",
+      "See how ‘Torah/Prophets/Writings’ became a meaningful shape"
+    ],
+    passages: ["Deuteronomy 31:24–26", "Nehemiah 8:1–8", "Psalm 119:97–105"],
+    openingPrayer: "God of covenant, thank You for faithful preservation. Teach us to honor Your Word and respond with obedience and love. Amen.",
+    flow: [
+      { name:"Welcome", mins:2, prompts:[
+        "Imagine Scripture as scrolls in a community, not personal shelves at home.",
+        "Ask: ‘Who heard Scripture read? How did it shape life?’"
+      ]},
+      { name:"Read the Passage Out Loud", mins:3, prompts:[
+        "Read Deut 31, Neh 8, Psalm 119 selections."
+      ]},
+      { name:"Observe", mins:6, prompts:[
+        "Who handles the text? Who explains it? Who responds?",
+        "What actions show reverence (standing, listening, weeping, rejoicing)?",
+        "What does Psalm 119 say Scripture does?"
+      ]},
+      { name:"Interpret", mins:8, prompts:[
+        "Why is public reading + explanation central to spiritual formation?",
+        "What might preservation require (time, training, community trust)?",
+        "How does covenant shape what is remembered and copied?"
+      ]},
+      { name:"Apply", mins:6, prompts:[
+        "Choose one practice: read slowly; summarize; obey one insight.",
+        "What would change if you treated Scripture as ‘heard and lived’?",
+        "Write one ‘next step’ commitment for this week."
+      ]},
+      { name:"Pray", mins:5, prompts:[
+        "Thank God for preservation; ask for responsive obedience.",
+        "Pray for teachers and readers in your community."
+      ]}
+    ],
+    quiz: {
+      tf: { q:"Nehemiah 8 shows Scripture being read publicly and explained to the people.", a:true },
+      mc1: { q:"A major difference between scroll culture and modern Bibles is…", options:[
+        "Scrolls were cheap and common",
+        "Access depended more on community reading and trained scribes",
+        "People never discussed Scripture"
+      ], a:1 },
+      mc2: { q:"Psalm 119 portrays God’s Word primarily as…", options:[
+        "A burden only",
+        "A lamp/light for guidance",
+        "A rumor"
+      ], a:1 },
+      essay1: { q:"How does public reading + explanation shape a community differently than private reading alone?" },
+      essay2: { q:"Name one way you will ‘hear and live’ Scripture this week." },
+      key: {
+        tf:"True.",
+        mc1:"Access depended more on community reading and trained scribes.",
+        mc2:"A lamp/light for guidance.",
+        essayGuidance:[
+          "Look for: shared understanding, accountability, unity, correction, worship.",
+          "Application should be concrete (time/place/action)."
+        ]
+      }
+    }
+  },
+
+  {
+    week: 3,
+    title: "Textual Families and Variants: Why Some Copies Differ",
+    bigIdea: "Before standardization, faithful copying still produced variant readings—usually small, sometimes meaningful—inviting careful study.",
+    goals: [
+      "Understand what a ‘textual variant’ is",
+      "Learn why variants happen (copying, spelling, harmonization, mistakes)",
+      "Practice reading with context and humility"
+    ],
+    passages: ["Jeremiah 36:1–4", "Matthew 4:4", "Acts 17:10–12"],
+    openingPrayer: "Lord, make us careful and honest readers. Help us seek truth, avoid pride, and grow wiser through study. Amen.",
+    flow: [
+      { name:"Welcome", mins:2, prompts:[
+        "Today is about transmission: copying, collecting, comparing.",
+        "Remind: variants are expected in hand-copied texts."
+      ]},
+      { name:"Read the Passage Out Loud", mins:3, prompts:[
+        "Read Jeremiah 36, Matthew 4:4, Acts 17."
+      ]},
+      { name:"Observe", mins:6, prompts:[
+        "What does Jeremiah 36 show about writing and rewriting?",
+        "How does Jesus treat Scripture in Matthew 4?",
+        "What do the Bereans do with teaching in Acts 17?"
+      ]},
+      { name:"Interpret", mins:8, prompts:[
+        "Why would careful communities compare teaching to Scripture?",
+        "How can ‘study’ be faithful rather than skeptical?",
+        "What do these texts teach about God’s Word and human handling?"
+      ]},
+      { name:"Apply", mins:6, prompts:[
+        "Choose one tool/habit: read a whole chapter; take notes; ask ‘context?’",
+        "Where might you need more patience before forming conclusions?",
+        "Write a ‘study vow’ (humble, slow, honest)."
+      ]},
+      { name:"Pray", mins:5, prompts:[
+        "Ask for wisdom and careful speech about hard topics.",
+        "Pray for clarity without argument spirit."
+      ]}
+    ],
+    quiz: {
+      tf: { q:"A ‘variant’ means every manuscript is completely different.", a:false },
+      mc1: { q:"Acts 17 praises the Bereans because they…", options:[
+        "Rejected all teaching immediately",
+        "Checked teaching against the Scriptures",
+        "Never read Scripture"
+      ], a:1 },
+      mc2: { q:"Jeremiah 36 shows that the message of God can be…", options:[
+        "Written down and preserved",
+        "Only spoken and never recorded",
+        "Unimportant"
+      ], a:0 },
+      essay1: { q:"Why can faithful copying still result in small differences across manuscripts?" },
+      essay2: { q:"What does it look like to study carefully without becoming cynical?" },
+      key: {
+        tf:"False. Variants are differences in wording—often small—across copies.",
+        mc1:"Checked teaching against the Scriptures.",
+        mc2:"Written down and preserved.",
+        essayGuidance:[
+          "Reasons: human error, spelling, repeated lines, marginal notes, harmonizing parallels.",
+          "Faithful study: prayer, context, charity, willingness to learn."
+        ]
+      }
+    }
+  },
+
+  {
+    week: 4,
+    title: "Translation and the Septuagint: Scripture in Another Language",
+    bigIdea: "As God’s people spread across languages, translation became a bridge—shaping how Scripture was heard and quoted.",
+    goals: [
+      "Understand why translation became necessary",
+      "Learn how translation affects phrasing and quotations",
+      "Appreciate unity without demanding identical wording"
+    ],
+    passages: ["Genesis 11:1–9", "Luke 4:16–21", "Romans 15:4"],
+    openingPrayer: "God of all nations, thank You that Your Word reaches every tongue. Give us gratitude, clarity, and unity. Amen.",
+    flow: [
+      { name:"Welcome", mins:2, prompts:[
+        "Set frame: translation is not a threat—it's a mission tool.",
+        "Ask: ‘Why do communities translate sacred texts?’"
+      ]},
+      { name:"Read the Passage Out Loud", mins:3, prompts:[
+        "Read Genesis 11; Luke 4; Romans 15."
+      ]},
+      { name:"Observe", mins:6, prompts:[
+        "What is the ‘language’ theme in Genesis 11?",
+        "How does Jesus read Scripture in Luke 4 (public reading)?",
+        "What does Romans 15 say about Scripture’s purpose?"
+      ]},
+      { name:"Interpret", mins:8, prompts:[
+        "Why might quotes differ slightly between languages?",
+        "How does translation serve worship and discipleship?",
+        "How should we respond to differences across translations?"
+      ]},
+      { name:"Apply", mins:6, prompts:[
+        "Pick a passage; compare 2 translations; note differences without panic.",
+        "Write one principle: ‘Difference ≠ contradiction when…’",
+        "Choose one translation you’ll use consistently for a month."
+      ]},
+      { name:"Pray", mins:5, prompts:[
+        "Pray for translators, teachers, and global church communities.",
+        "Ask God to make you a clear communicator of truth."
+      ]}
+    ],
+    quiz: {
+      tf: { q:"Translations sometimes differ in phrasing even when meaning is similar.", a:true },
+      mc1: { q:"Luke 4 shows Jesus engaging Scripture primarily by…", options:[
+        "Ignoring it",
+        "Reading and applying it publicly",
+        "Hiding it"
+      ], a:1 },
+      mc2: { q:"Romans 15:4 teaches Scripture was written for…", options:[
+        "Entertainment only",
+        "Our instruction and hope",
+        "Confusion"
+      ], a:1 },
+      essay1: { q:"Why is translation a gift for discipleship and mission?" },
+      essay2: { q:"How will you respond when you see two translations phrase something differently?" },
+      key: {
+        tf:"True.",
+        mc1:"Reading and applying it publicly.",
+        mc2:"Our instruction and hope.",
+        essayGuidance:[
+          "Gift: access, teaching, worship, reaching nations.",
+          "Response: compare, seek context, ask teachers/tools, remain calm."
+        ]
+      }
+    }
+  },
+
+  {
+    week: 5,
+    title: "Second Temple Literature: A Wider Sacred ‘Bookshelf’",
+    bigIdea: "Ancient communities read many religious writings; some became central Scripture, others remained helpful but not canon.",
+    goals: [
+      "Understand ‘helpful writings’ vs ‘canon’ categories",
+      "Learn why some texts were used locally but not universally",
+      "Practice discernment without dismissiveness"
+    ],
+    passages: ["Jude 20–23", "1 Thessalonians 5:19–22", "Proverbs 2:1–6"],
+    openingPrayer: "Lord, give us discernment. Teach us to test what we hear, hold fast to what is good, and walk in wisdom. Amen.",
+    flow: [
+      { name:"Welcome", mins:2, prompts:[
+        "Frame: communities had many religious writings and teachings.",
+        "Goal: learn wise categories—Scripture, helpful, local, disputed."
+      ]},
+      { name:"Read the Passage Out Loud", mins:3, prompts:[
+        "Read Jude 20–23; 1 Thess 5; Proverbs 2."
+      ]},
+      { name:"Observe", mins:6, prompts:[
+        "List commands: build up, pray, keep, rescue, test, hold fast.",
+        "What does ‘test everything’ suggest about discernment?",
+        "How does wisdom function (Prov 2)?"
+      ]},
+      { name:"Interpret", mins:8, prompts:[
+        "Why would early communities need careful testing of teachings?",
+        "What does it mean to ‘hold fast’ without being harsh?",
+        "How does wisdom protect unity and truth?"
+      ]},
+      { name:"Apply", mins:6, prompts:[
+        "Write your discernment checklist: source, message, fruit, consistency.",
+        "Choose one topic you’ll study with more patience.",
+        "Practice: ‘I can be careful and kind at the same time.’"
+      ]},
+      { name:"Pray", mins:5, prompts:[
+        "Pray for wisdom and protection from confusion.",
+        "Pray for gentle courage to help others."
+      ]}
+    ],
+    quiz: {
+      tf: { q:"1 Thessalonians 5 encourages believers to test everything and hold fast to what is good.", a:true },
+      mc1: { q:"A wise way to describe non-canonical religious writings is…", options:[
+        "Always evil",
+        "Sometimes helpful, but not universally recognized as Scripture",
+        "Always equal to Scripture"
+      ], a:1 },
+      mc2: { q:"Proverbs 2 presents wisdom as something we should…", options:[
+        "Ignore",
+        "Seek and treasure",
+        "Fear and avoid"
+      ], a:1 },
+      essay1: { q:"What categories help you stay grounded when you encounter ‘extra’ religious writings or claims?" },
+      essay2: { q:"Describe one situation where discernment + kindness must work together." },
+      key: {
+        tf:"True.",
+        mc1:"Sometimes helpful, but not universally recognized as Scripture.",
+        mc2:"Seek and treasure.",
+        essayGuidance:[
+          "Categories: Scripture/canon, helpful commentary, tradition, speculation, local usage.",
+          "Kind discernment: truth with gentleness, not ridicule."
+        ]
+      }
+    }
+  },
+
+  {
+    week: 6,
+    title: "The Earliest Jesus Movement: Scripture + Oral Teaching + Letters",
+    bigIdea: "The earliest churches lived by Israel’s Scriptures while Jesus’ teachings and apostolic letters spread and were shared.",
+    goals: [
+      "See how early Christians used ‘Scripture’ (Israel’s Scriptures)",
+      "Understand why letters were copied and circulated",
+      "Recognize worship reading as a key engine of collection"
+    ],
+    passages: ["Colossians 4:16", "1 Timothy 4:13", "Acts 2:42"],
+    openingPrayer: "Jesus, thank You for Your church. Teach us to receive Your Word with gratitude, and to live it with love and courage. Amen.",
+    flow: [
+      { name:"Welcome", mins:2, prompts:[
+        "Think: house churches, letters, public reading, shared teaching.",
+        "Ask: ‘How would a church preserve teaching without printing presses?’"
+      ]},
+      { name:"Read the Passage Out Loud", mins:3, prompts:[
+        "Read Col 4:16; 1 Tim 4:13; Acts 2:42."
+      ]},
+      { name:"Observe", mins:6, prompts:[
+        "What does Colossians 4:16 say about letter sharing?",
+        "What practices does 1 Timothy 4:13 emphasize?",
+        "What are the pillars of church life in Acts 2:42?"
+      ]},
+      { name:"Interpret", mins:8, prompts:[
+        "Why would communities circulate letters widely?",
+        "How does public reading shape shared belief?",
+        "What does this suggest about early authority and teaching?"
+      ]},
+      { name:"Apply", mins:6, prompts:[
+        "Pick one habit: read aloud at home; summarize; discuss.",
+        "Write: ‘My community grows when we devote ourselves to…’",
+        "Choose one person to encourage with a Scripture-based message."
+      ]},
+      { name:"Pray", mins:5, prompts:[
+        "Pray for your local church and teachers.",
+        "Ask God to deepen devotion to Scripture and prayer."
+      ]}
+    ],
+    quiz: {
+      tf: { q:"Colossians 4:16 suggests early churches shared apostolic letters between communities.", a:true },
+      mc1: { q:"Acts 2:42 lists early church devotions including…", options:[
+        "Apostles’ teaching, fellowship, breaking bread, prayers",
+        "Only private meditation",
+        "Avoiding community"
+      ], a:0 },
+      mc2: { q:"1 Timothy 4:13 emphasizes…", options:[
+        "Reading Scripture publicly and teaching",
+        "Stopping all study",
+        "Only music"
+      ], a:0 },
+      essay1: { q:"Why would public reading be essential in a world without personal Bible ownership for most people?" },
+      essay2: { q:"What practice will you adopt to make Scripture more ‘heard’ in your household/community?" },
+      key: {
+        tf:"True.",
+        mc1:"Apostles’ teaching, fellowship, breaking bread, prayers.",
+        mc2:"Reading Scripture publicly and teaching.",
+        essayGuidance:[
+          "Access + formation + shared memory + unity.",
+          "Practical habit examples: read aloud, family devo, small group."
+        ]
+      }
+    }
+  },
+
+  {
+    week: 7,
+    title: "Disputes, Tests, and Early ‘Lists’",
+    bigIdea: "Communities weighed writings by apostolic connection, faithfulness, and wide use—especially when controversies forced clarity.",
+    goals: [
+      "Learn why disputes can accelerate clarity",
+      "Understand core criteria used by early churches",
+      "Practice ‘testing’ without cynicism"
+    ],
+    passages: ["Galatians 1:6–9", "1 John 4:1–3", "Luke 1:1–4"],
+    openingPrayer: "God of truth, keep us steady. Help us test teachings with courage and love, and hold fast to what is faithful. Amen.",
+    flow: [
+      { name:"Welcome", mins:2, prompts:[
+        "When competing claims arise, communities ask: ‘What is trustworthy?’",
+        "Frame criteria: apostolic roots, faithful teaching, broad use."
+      ]},
+      { name:"Read the Passage Out Loud", mins:3, prompts:[
+        "Read Gal 1; 1 John 4; Luke 1."
+      ]},
+      { name:"Observe", mins:6, prompts:[
+        "What does Galatians warn about?",
+        "What does 1 John command regarding ‘spirits/teachings’?",
+        "What does Luke 1 emphasize (eyewitnesses, careful account)?"
+      ]},
+      { name:"Interpret", mins:8, prompts:[
+        "Why do false teachings harm communities?",
+        "How does careful testimony build trust?",
+        "How do criteria protect unity and truth?"
+      ]},
+      { name:"Apply", mins:6, prompts:[
+        "Write your ‘truth test’: Scripture, Christ-centeredness, fruit, humility.",
+        "Name one claim you’ll verify before sharing online.",
+        "Commit to truth + gentleness together."
+      ]},
+      { name:"Pray", mins:5, prompts:[
+        "Ask for discernment and humility.",
+        "Pray for protection from confusion and division."
+      ]}
+    ],
+    quiz: {
+      tf: { q:"1 John 4 encourages believers to test teachings rather than accept everything automatically.", a:true },
+      mc1: { q:"Luke 1 highlights that the Gospel account is…", options:[
+        "A careless rumor",
+        "A carefully investigated account",
+        "A secret code"
+      ], a:1 },
+      mc2: { q:"Galatians 1 warns against…", options:[
+        "Any questions at all",
+        "A different gospel",
+        "Reading Scripture"
+      ], a:1 },
+      essay1: { q:"List 2–3 criteria early communities might use to recognize trustworthy writings." },
+      essay2: { q:"How will you personally ‘test’ information before believing or sharing it?" },
+      key: {
+        tf:"True.",
+        mc1:"A carefully investigated account.",
+        mc2:"A different gospel.",
+        essayGuidance:[
+          "Criteria: apostolic origin, consistency with Christ-centered faith, widespread use in worship, endurance over time.",
+          "Personal testing: source quality, cross-checking, context, prayer."
+        ]
+      }
+    }
+  },
+
+  {
+    week: 8,
+    title: "From Recognition to Canon: Why Traditions Differ Today",
+    bigIdea: "Canon lists stabilized over time, and Christian traditions inherited different collections—yet share a common center in Christ.",
+    goals: [
+      "Understand ‘recognition over time’ as a model",
+      "Learn why some canons differ across traditions",
+      "Build a peaceful, faithful posture for continued study"
+    ],
+    passages: ["John 20:30–31", "Romans 15:4", "Revelation 22:18–19"],
+    openingPrayer: "Lord, anchor us in Christ. Give us confidence without pride, curiosity without fear, and love that builds up. Amen.",
+    flow: [
+      { name:"Welcome", mins:2, prompts:[
+        "This week closes with unity + clarity: core message, careful history.",
+        "Acknowledge differences without hostility."
+      ]},
+      { name:"Read the Passage Out Loud", mins:3, prompts:[
+        "Read John 20; Romans 15; Revelation 22."
+      ]},
+      { name:"Observe", mins:6, prompts:[
+        "What purpose does John 20 state for the Gospel?",
+        "What does Romans 15 say Scripture gives?",
+        "What warning exists in Revelation 22?"
+      ]},
+      { name:"Interpret", mins:8, prompts:[
+        "Why might communities guard their received texts carefully?",
+        "How can differences in tradition be discussed with charity?",
+        "What is the shared center that forms unity?"
+      ]},
+      { name:"Apply", mins:6, prompts:[
+        "Write your ‘posture statement’ for future study (humble, faithful).",
+        "Choose one next topic (manuscripts, translations, early history).",
+        "Make a plan: 10 minutes/week ongoing study."
+      ]},
+      { name:"Pray", mins:5, prompts:[
+        "Thank God for His Word and the witness of the church.",
+        "Pray for truth, unity, and deeper love for Christ."
+      ]}
+    ],
+    quiz: {
+      tf: { q:"Different Christian traditions have historically used slightly different canon lists.", a:true },
+      mc1: { q:"John 20:30–31 says the Gospel’s purpose is that you may…", options:[
+        "Win arguments",
+        "Believe and have life in His name",
+        "Avoid learning"
+      ], a:1 },
+      mc2: { q:"A wise posture toward canon discussions is…", options:[
+        "Panic",
+        "Curiosity with humility and charity",
+        "Mocking anyone who differs"
+      ], a:1 },
+      essay1: { q:"What is one truth you learned that makes you read Scripture more carefully?" },
+      essay2: { q:"Write your ‘posture statement’ for future study (3–5 sentences)." },
+      key: {
+        tf:"True.",
+        mc1:"Believe and have life in His name.",
+        mc2:"Curiosity with humility and charity.",
+        essayGuidance:[
+          "Look for: context reading, patience, historical awareness, Christ-centered unity.",
+          "Posture statement: humble, prayerful, truth-seeking, loving."
+        ]
+      }
+    }
+  }
+];
+
+/* =========================================================
+   STATE
+========================================================= */
+function defaultState(){
+  return {
+    currentWeek: 1,
+    completedWeeks: Array(LESSONS.length).fill(false),
+    quiz: {} // quiz[week] = answers + submittedAt + objective score
+  };
+}
+
+function loadState(){
+  try{
+    const raw = localStorage.getItem(STORAGE_KEY);
+    if(!raw) return defaultState();
+    const st = JSON.parse(raw);
+    if(!st || typeof st !== "object") return defaultState();
+    if(!Array.isArray(st.completedWeeks) || st.completedWeeks.length !== LESSONS.length){
+      st.completedWeeks = Array(LESSONS.length).fill(false);
+    }
+    if(typeof st.currentWeek !== "number") st.currentWeek = 1;
+    if(!st.quiz || typeof st.quiz !== "object") st.quiz = {};
+    st.currentWeek = Math.min(Math.max(1, st.currentWeek), LESSONS.length);
+    return st;
+  }catch(e){
+    return defaultState();
+  }
+}
+
+let state = loadState();
+
+function saveState(){
+  localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
+}
+
+/* =========================================================
+   RENDER
+========================================================= */
+const weekListEl = document.getElementById("weekList");
+const contentEl = document.getElementById("content");
+const progressTextEl = document.getElementById("progressText");
+const progressBarEl = document.getElementById("progressBar");
+
+function escapeHtml(str){
+  return String(str ?? "")
+    .replaceAll("&","&amp;")
+    .replaceAll("<","&lt;")
+    .replaceAll(">","&gt;")
+    .replaceAll('"',"&quot;")
+    .replaceAll("'","&#039;");
+}
+
+function isUnlocked(week){
+  if(week === 1) return true;
+  return state.completedWeeks[week - 2] === true;
+}
+
+function renderWeekList(){
+  weekListEl.innerHTML = "";
+  for(const lesson of LESSONS){
+    const wk = lesson.week;
+    const unlocked = isUnlocked(wk);
+    const completed = state.completedWeeks[wk - 1] === true;
+
+    const btn = document.createElement("button");
+    btn.className = "weekbtn";
+    btn.setAttribute("aria-current", (wk === state.currentWeek) ? "true" : "false");
+    btn.disabled = !unlocked;
+    btn.title = unlocked ? `Open Week ${wk}` : `Complete Week ${wk-1} to unlock.`;
+
+    const left = document.createElement("div");
+    left.innerHTML = `<b>Week ${wk}</b>
+      <div style="color:var(--muted); font-size:18px; margin-top:4px;">${escapeHtml(lesson.title)}</div>`;
+
+    const right = document.createElement("div");
+    const tag = document.createElement("span");
+    tag.className = "tag " + (completed ? "done" : (unlocked ? "" : "locked"));
+    tag.textContent = completed ? "✓ Complete" : (unlocked ? "Open" : "Locked");
+    right.appendChild(tag);
+
+    btn.appendChild(left);
+    btn.appendChild(right);
+
+    btn.addEventListener("click", () => {
+      state.currentWeek = wk;
+      saveState();
+      renderAll();
+      window.scrollTo({top:0, behavior:"smooth"});
+    });
+
+    weekListEl.appendChild(btn);
+  }
+}
+
+function renderProgress(){
+  const done = state.completedWeeks.filter(Boolean).length;
+  progressTextEl.textContent = `Progress: ${done} / ${LESSONS.length} complete`;
+  const pct = Math.round((done / LESSONS.length) * 100);
+  progressBarEl.style.width = pct + "%";
+}
+
+function speakText(text){
+  try{
+    if(!("speechSynthesis" in window)) {
+      alert("Text-to-speech is not supported in this browser.");
+      return;
+    }
+    window.speechSynthesis.cancel();
+    const u = new SpeechSynthesisUtterance(text);
+    u.rate = 0.95;
+    u.pitch = 1.0;
+    u.volume = 1.0;
+    window.speechSynthesis.speak(u);
+  }catch(e){
+    alert("Unable to play text-to-speech on this device.");
+  }
+}
+
+function renderQuizQuestions(lesson, saved){
+  const tfVal = (saved.tf ?? "");
+  const mc1Val = (saved.mc1 ?? "");
+  const mc2Val = (saved.mc2 ?? "");
+  const essay1Val = (saved.essay1 ?? "");
+  const essay2Val = (saved.essay2 ?? "");
+
+  return `
+    <div class="q">
+      <div class="qtitle">1) True / False</div>
+      <div style="margin-bottom:10px;">${escapeHtml(lesson.quiz.tf.q)}</div>
+      <label class="option"><input type="radio" name="tf" value="true" ${tfVal==="true"?"checked":""}/> True</label>
+      <label class="option"><input type="radio" name="tf" value="false" ${tfVal==="false"?"checked":""}/> False</label>
+    </div>
+
+    <div class="q">
+      <div class="qtitle">2) Multiple Choice</div>
+      <div style="margin-bottom:10px;">${escapeHtml(lesson.quiz.mc1.q)}</div>
+      ${lesson.quiz.mc1.options.map((opt,i)=>`
+        <label class="option"><input type="radio" name="mc1" value="${i}" ${String(mc1Val)===String(i)?"checked":""}/> ${escapeHtml(opt)}</label>
+      `).join("")}
+    </div>
+
+    <div class="q">
+      <div class="qtitle">3) Multiple Choice</div>
+      <div style="margin-bottom:10px;">${escapeHtml(lesson.quiz.mc2.q)}</div>
+      ${lesson.quiz.mc2.options.map((opt,i)=>`
+        <label class="option"><input type="radio" name="mc2" value="${i}" ${String(mc2Val)===String(i)?"checked":""}/> ${escapeHtml(opt)}</label>
+      `).join("")}
+    </div>
+
+    <div class="q">
+      <div class="qtitle">4) Essay Response</div>
+      <div style="margin-bottom:10px;">${escapeHtml(lesson.quiz.essay1.q)}</div>
+      <textarea name="essay1" placeholder="Write your response here...">${escapeHtml(essay1Val)}</textarea>
+    </div>
+
+    <div class="q">
+      <div class="qtitle">5) Essay Response</div>
+      <div style="margin-bottom:10px;">${escapeHtml(lesson.quiz.essay2.q)}</div>
+      <textarea name="essay2" placeholder="Write your response here...">${escapeHtml(essay2Val)}</textarea>
+    </div>
+  `;
+}
+
+function readQuizForm(){
+  const form = document.getElementById("quizForm");
+  if(!form) return {};
+  const fd = new FormData(form);
+  return {
+    tf: fd.get("tf") || "",
+    mc1: fd.get("mc1") || "",
+    mc2: fd.get("mc2") || "",
+    essay1: (fd.get("essay1") || "").toString().trim(),
+    essay2: (fd.get("essay2") || "").toString().trim()
+  };
+}
+
+function validateQuizAnswers(a){
+  const missing = [];
+  if(!a.tf) missing.push("True/False");
+  if(a.mc1 === "") missing.push("Multiple Choice #1");
+  if(a.mc2 === "") missing.push("Multiple Choice #2");
+  if(!a.essay1) missing.push("Essay #1");
+  if(!a.essay2) missing.push("Essay #2");
+  return missing;
+}
+
+function scoreObjective(quiz, answers){
+  let score = 0;
+  let max = 3; // TF + MC1 + MC2
+  const tfAns = (answers.tf === "true");
+  if(tfAns === quiz.tf.a) score++;
+
+  const mc1Ans = parseInt(answers.mc1,10);
+  if(mc1Ans === quiz.mc1.a) score++;
+
+  const mc2Ans = parseInt(answers.mc2,10);
+  if(mc2Ans === quiz.mc2.a) score++;
+
+  return {score, max};
+}
+
+function renderContent(){
+  const lesson = LESSONS.find(x => x.week === state.currentWeek);
+  if(!lesson){ contentEl.innerHTML = "<p>Lesson not found.</p>"; return; }
+
+  const wk = lesson.week;
+  if(!isUnlocked(wk)){
+    contentEl.innerHTML = `
+      <div class="hero">
+        <div class="kicker">Week ${wk}</div>
+        <div class="heading">${escapeHtml(lesson.title)}</div>
+        <p class="idea">This week is locked. Complete Week ${wk-1} to unlock it.</p>
+      </div>
+    `;
+    return;
+  }
+
+  const savedQuiz = state.quiz[wk] || {};
+  const submittedAt = savedQuiz.submittedAt ? new Date(savedQuiz.submittedAt) : null;
+
+  const passagesHtml = lesson.passages.map(ref => `
+    <li>
+      <span>${escapeHtml(ref)}</span>
+      <span style="opacity:.9;"> — </span>
+      <a href="${gatewayUrl(ref)}" target="_blank" rel="noopener">Open passage</a>
+    </li>
+  `).join("");
+
+  const goalsHtml = (lesson.goals || []).map(g => `<li>${escapeHtml(g)}</li>`).join("");
+
+  const resourcesHtml = RESOURCES.map(r =>
+    `<a href="${r.url}" target="_blank" rel="noopener">🔗 ${escapeHtml(r.name)}</a>`
+  ).join("");
+
+  const flowHtml = lesson.flow.map(seg => `
+    <div class="seg">
+      <div class="seghead">
+        <div class="segtitle">${escapeHtml(seg.name)}</div>
+        <div class="segtime">${seg.mins} min</div>
+      </div>
+      <ul>${seg.prompts.map(p => `<li>${escapeHtml(p)}</li>`).join("")}</ul>
+    </div>
+  `).join("");
+
+  contentEl.innerHTML = `
+    <div class="hero">
+      <div class="kicker">Week ${wk} of ${LESSONS.length} • Self-paced</div>
+      <div class="heading">${escapeHtml(lesson.title)}</div>
+      <p class="idea"><b>Big idea:</b> ${escapeHtml(lesson.bigIdea)}</p>
+    </div>
+
+    <div class="grid2">
+      <div class="card prayerBox">
+        <h3>Opening Prayer</h3>
+        <p style="margin:0;">${escapeHtml(lesson.openingPrayer)}</p>
+        <div class="row">
+          <button class="btn secondary" id="btnReadPrayer">🔊 Read Aloud</button>
+        </div>
+      </div>
+
+      <div class="card">
+        <h3>Week Goals</h3>
+        <ul style="margin-top:10px;">
+          ${goalsHtml}
+        </ul>
+      </div>
+    </div>
+
+    <div class="card">
+      <h3>Key Passages</h3>
+      <ul style="margin-top:10px;">
+        ${passagesHtml}
+      </ul>
+      <div style="margin-top:10px; color:var(--muted); font-size:18px;">
+        Scripture text is not embedded; choose any translation you prefer.
+      </div>
+    </div>
+
+    <div class="card">
+      <h3>30-Minute Session Flow</h3>
+      <div style="color:var(--muted); font-size:18px; margin-bottom:10px;">
+        Welcome (2) • Read (3) • Observe (6) • Interpret (8) • Apply (6) • Pray (5)
+      </div>
+      ${flowHtml}
+    </div>
+
+    <div class="card">
+      <h3>Online Study Resources</h3>
+      <div>${resourcesHtml}</div>
+      <div style="margin-top:8px; color:var(--muted); font-size:18px;">
+        Optional support for background, timelines, and study tools.
+      </div>
+    </div>
+
+    <div class="card quiz">
+      <h3>Homework Quiz (5 Questions)</h3>
+      <div class="statusline" id="quizStatus">
+        ${submittedAt ? `Last submitted: <b>${submittedAt.toLocaleString()}</b>` : "Not submitted yet."}
+      </div>
+
+      <form id="quizForm" autocomplete="off">
+        ${renderQuizQuestions(lesson, savedQuiz)}
+        <div class="row">
+          <button class="btn good" type="submit">✅ Submit Homework</button>
+          <button class="btn secondary" type="button" id="btnSaveDraft">💾 Save Draft</button>
+          <span class="statusline" id="scoreLine"></span>
+        </div>
+      </form>
+
+      <details>
+        <summary>Answer Key (Self-Check / Teacher)</summary>
+        <div style="margin-top:10px; color:var(--muted); font-size:18px;">
+          <div><b>True/False:</b> ${escapeHtml(lesson.quiz.key.tf)}</div>
+          <div style="margin-top:6px;"><b>MC #1:</b> ${escapeHtml(lesson.quiz.key.mc1)}</div>
+          <div style="margin-top:6px;"><b>MC #2:</b> ${escapeHtml(lesson.quiz.key.mc2)}</div>
+          <div style="margin-top:10px;"><b>Essay guidance:</b></div>
+          <ul>${lesson.quiz.key.essayGuidance.map(x => `<li>${escapeHtml(x)}</li>`).join("")}</ul>
+        </div>
+      </details>
+    </div>
+  `;
+
+  document.getElementById("btnReadPrayer").addEventListener("click", () => speakText(lesson.openingPrayer));
+
+  const btnSaveDraft = document.getElementById("btnSaveDraft");
+  const scoreLine = document.getElementById("scoreLine");
+
+  btnSaveDraft.addEventListener("click", () => {
+    const draft = readQuizForm();
+    state.quiz[wk] = { ...(state.quiz[wk]||{}), ...draft };
+    saveState();
+    scoreLine.innerHTML = `<span style="color:var(--muted);">Draft saved.</span>`;
+  });
+
+  document.getElementById("quizForm").addEventListener("submit", (e) => {
+    e.preventDefault();
+    const answers = readQuizForm();
+    const missing = validateQuizAnswers(answers);
+    if(missing.length){
+      alert("Please answer all questions before submitting:\n\n- " + missing.join("\n- "));
+      return;
+    }
+
+    const {score, max} = scoreObjective(lesson.quiz, answers);
+    const payload = {
+      ...answers,
+      scoreObj: { score, max },
+      submittedAt: new Date().toISOString()
+    };
+
+    state.quiz[wk] = payload;
+    state.completedWeeks[wk - 1] = true;
+
+    if(wk < LESSONS.length) state.currentWeek = wk + 1;
+
+    saveState();
+    renderAll();
+
+    alert(`Homework submitted!\n\nObjective score: ${score} / ${max}\n(Essays are saved for review.)`);
+  });
+
+  if(savedQuiz.scoreObj){
+    scoreLine.innerHTML = `Objective score: <span class="score">${savedQuiz.scoreObj.score} / ${savedQuiz.scoreObj.max}</span> • Essays saved`;
+  }
+}
+
+function renderAll(){
+  renderWeekList();
+  renderProgress();
+  renderContent();
+}
+renderAll();
+
+/* =========================================================
+   TOP BUTTONS
+========================================================= */
+document.getElementById("btnPrint").addEventListener("click", () => window.print());
+
+document.getElementById("btnReset").addEventListener("click", () => {
+  const ok = confirm("Reset all progress and saved answers on this device?");
+  if(!ok) return;
+  localStorage.removeItem(STORAGE_KEY);
+  state = defaultState();
+  saveState();
+  renderAll();
+  window.scrollTo({top:0, behavior:"smooth"});
+});
+
+document.getElementById("btnExport").addEventListener("click", () => {
+  const payload = {
+    exportedAt: new Date().toISOString(),
+    app: "The Bible Before Canon Portal",
+    version: "v1",
+    state
+  };
+  const blob = new Blob([JSON.stringify(payload, null, 2)], {type:"application/json"});
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement("a");
+  a.href = url;
+  a.download = "bible-before-canon-progress.json";
+  document.body.appendChild(a);
+  a.click();
+  a.remove();
+  URL.revokeObjectURL(url);
+});
+</script>
+</body>
+</html>
