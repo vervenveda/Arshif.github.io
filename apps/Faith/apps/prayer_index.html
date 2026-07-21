@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Prayer for Today</title>
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<link href="https://fonts.googleapis.com/css2?family=EB+Garamond:wght@500;700&display=swap" rel="stylesheet">
+<style>
+  body {
+    background: #191c24;
+    color: #f7f3ea;
+    font-family: 'EB Garamond', serif;
+    margin: 0; padding: 0;
+    min-height: 100vh;
+    display: flex; align-items: center; justify-content: center;
+  }
+  .prayer-wrap {
+    background: linear-gradient(120deg,#f9f7ef 90%,#d9b878 100%);
+    color: #2e251a;
+    max-width: 340px;
+    width: 96vw;
+    border-radius: 21px;
+    box-shadow: 0 8px 27px #0007;
+    padding: 27px 17px 22px 17px;
+    margin: 36px 0;
+  }
+  h1 {
+    font-size: 1.44em;
+    color: #85692e;
+    margin: 0 0 7px 0;
+    text-align: center;
+    font-family: 'EB Garamond', serif;
+    letter-spacing: 1.1px;
+  }
+  .date {
+    text-align: center;
+    color: #b89252;
+    font-size: 1em;
+    margin-bottom: 16px;
+    letter-spacing: 0.5px;
+  }
+  .prayer-box {
+    background: #fffdf6e0;
+    border-radius: 12px;
+    padding: 15px 13px 15px 14px;
+    min-height: 90px;
+    font-size: 1.13em;
+    color: #322b23;
+    margin-bottom: 10px;
+    white-space: pre-line;
+    transition: background 0.19s;
+  }
+  textarea {
+    width: 100%;
+    min-height: 70px;
+    border-radius: 9px;
+    border: 1.2px solid #c3a45d;
+    background: #f7f3ea;
+    color: #322b23;
+    font-size: 1.05em;
+    padding: 9px 8px;
+    font-family: inherit;
+    margin-bottom: 11px;
+    box-sizing: border-box;
+    resize: none;
+    outline: none;
+    transition: border 0.16s;
+  }
+  textarea:focus { border-color: #ad7c28; }
+  .btn-row { display: flex; gap: 8px; justify-content: flex-end; }
+  button {
+    padding: 9px 17px;
+    border-radius: 11px;
+    border: none;
+    background: linear-gradient(90deg, #c3a45d, #d9b878);
+    color: #191c24;
+    font-family: 'EB Garamond', serif;
+    font-size: 1em;
+    cursor: pointer;
+    font-weight: 700;
+    box-shadow: 0 2px 6px #b8925221;
+    transition: background 0.14s;
+  }
+  button:active { background: #ad7c28; }
+  .edit-link {
+    display: block;
+    margin: 8px auto 0 auto;
+    color: #b89252;
+    font-size: 0.98em;
+    text-align: center;
+    cursor: pointer;
+    text-decoration: underline;
+    transition: color 0.16s;
+  }
+  .edit-link:hover { color: #85692e; }
+  .copyright {
+    margin-top: 22px;
+    text-align: center;
+    color: #b89252;
+    font-size: 0.93em;
+    opacity: 0.72;
+    letter-spacing: 0.5px;
+  }
+  @media(max-width:420px){
+    .prayer-wrap{padding:14px 2vw 12vw;}
+    h1{font-size:1.15em;}
+    .date{font-size:0.93em;}
+    textarea,.prayer-box{font-size:1em;}
+  }
+</style>
+</head>
+<body>
+  <div class="prayer-wrap">
+    <h1>Prayer for Today</h1>
+    <div class="date" id="prayerDate"></div>
+    <div id="prayerView" class="prayer-box"></div>
+    <form id="prayerForm" style="display:none;">
+      <textarea id="prayerInput"></textarea>
+      <div class="btn-row">
+        <button type="submit">Save Prayer</button>
+        <button type="button" onclick="cancelEdit()">Cancel</button>
+      </div>
+    </form>
+    <span class="edit-link" id="editBtn">Edit or Write Your Prayer</span>
+    <div class="copyright">© Verve N Veda & Hope</div>
+  </div>
+<script>
+  // Set today's date label
+  const today = new Date();
+  document.getElementById('prayerDate').textContent =
+    today.toLocaleDateString(undefined,{weekday:'long',month:'short',day:'numeric',year:'numeric'});
+
+  // Default prayer
+  const defaultPrayer = `May every soul and every hand,
+Each hidden force and open strand,
+Receive today what they truly deserve,
+Not from my knowing, but from Yours above.
+
+Only the Creator sees the heart's intent,
+Measures every shadow, every light unspent.
+So let the scales be balanced, and let each one see
+Their portion returned, seven by seven, by seven, by three.
+
+Not from my will, nor out of spite,
+But in the justice of Your sight.
+Let mercy, truth, and just deserts
+be woven through this day,
+For every person, every power, Let it be so, I pray.`;
+
+  // Get localStorage or default
+  const STORAGE_KEY = "prayerForToday";
+  let prayer = localStorage.getItem(STORAGE_KEY) || defaultPrayer;
+
+  // Elements
+  const viewDiv = document.getElementById('prayerView');
+  const editBtn = document.getElementById('editBtn');
+  const prayerForm = document.getElementById('prayerForm');
+  const prayerInput = document.getElementById('prayerInput');
+
+  function showPrayer() {
+    viewDiv.textContent = prayer;
+    prayerForm.style.display = "none";
+    viewDiv.style.display = "block";
+    editBtn.style.display = "block";
+  }
+
+  function editPrayer() {
+    prayerInput.value = prayer;
+    viewDiv.style.display = "none";
+    prayerForm.style.display = "block";
+    editBtn.style.display = "none";
+    prayerInput.focus();
+  }
+
+  function cancelEdit() {
+    showPrayer();
+  }
+
+  prayerForm.onsubmit = function(e) {
+    e.preventDefault();
+    prayer = prayerInput.value.trim() || defaultPrayer;
+    localStorage.setItem(STORAGE_KEY, prayer);
+    showPrayer();
+  };
+
+  editBtn.onclick = editPrayer;
+  showPrayer();
+</script>
+</body>
+</html>
