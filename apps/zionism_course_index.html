@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mini-Course: Module 1 - Origins</title>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #f7f7f7;
+        margin: 0;
+        padding: 0;
+    }
+    header {
+        background-color: #2c3e50;
+        color: white;
+        padding: 20px;
+        text-align: center;
+    }
+    main {
+        padding: 20px;
+        max-width: 900px;
+        margin: auto;
+    }
+    h2 {
+        color: #34495e;
+    }
+    .timeline {
+        position: relative;
+        max-width: 800px;
+        margin: 20px 0;
+    }
+    .timeline::after {
+        content: '';
+        position: absolute;
+        width: 4px;
+        background-color: #3498db;
+        top: 0;
+        bottom: 0;
+        left: 50%;
+        margin-left: -2px;
+    }
+    .event {
+        padding: 10px 40px;
+        position: relative;
+        background-color: inherit;
+        width: 50%;
+    }
+    .event.left {
+        left: 0;
+    }
+    .event.right {
+        left: 50%;
+    }
+    .event::after {
+        content: '';
+        position: absolute;
+        width: 20px;
+        height: 20px;
+        right: -10px;
+        background-color: #3498db;
+        border: 4px solid #f7f7f7;
+        top: 15px;
+        border-radius: 50%;
+        z-index: 1;
+    }
+    .event.right::after {
+        left: -10px;
+    }
+    .fact-box {
+        background-color: #ecf0f1;
+        padding: 10px;
+        margin: 10px 0;
+        border-left: 5px solid #3498db;
+        cursor: pointer;
+    }
+    .fact-content {
+        display: none;
+        padding: 10px;
+        background-color: #bdc3c7;
+        margin-top: 5px;
+    }
+    footer {
+        text-align: center;
+        padding: 20px;
+        background-color: #2c3e50;
+        color: white;
+        margin-top: 40px;
+    }
+</style>
+</head>
+<body>
+
+<header>
+    <h1>Mini-Course: <br>
+      Origins of Israel and Zionism</h1>
+</header>
+
+<main>
+    <section>
+        <h2>Introduction</h2>
+        <p>
+            This module provides a neutral overview of the origins of Zionism, the British Mandate in Palestine, and the establishment of the State of Israel in 1948.
+            All information is based on historical records and widely documented sources.
+        </p>
+    </section>
+
+    <section>
+        <h2>Key Facts</h2>
+
+        <div class="fact-box" onclick="toggleFact('fact1')">
+            What is Zionism?
+        </div>
+        <div class="fact-content" id="fact1">
+            Zionism emerged in late-19th-century Europe as a political and cultural movement advocating for the establishment of a Jewish homeland. It was a response to widespread antisemitism and persecution.
+        </div>
+
+        <div class="fact-box" onclick="toggleFact('fact2')">
+            British Mandate in Palestine
+        </div>
+        <div class="fact-content" id="fact2">
+            After World War I, Britain administered Palestine under a League of Nations mandate from 1920 to 1948. British policies influenced migration, land ownership, and tensions between Jewish and Arab communities.
+        </div>
+
+        <div class="fact-box" onclick="toggleFact('fact3')">
+            United Nations Partition Plan
+        </div>
+        <div class="fact-content" id="fact3">
+            In 1947, the UN proposed partitioning Palestine into separate Jewish and Arab states, with Jerusalem under international administration. The plan was accepted by Jewish leaders and rejected by Arab leaders.
+        </div>
+
+        <div class="fact-box" onclick="toggleFact('fact4')">
+            Declaration of the State of Israel
+        </div>
+        <div class="fact-content" id="fact4">
+            On May 14, 1948, Jewish leaders declared the independence of Israel. This followed decades of Zionist organization, immigration, and political lobbying.
+        </div>
+    </section>
+
+    <section>
+        <h2>Timeline of Key Events</h2>
+        <div class="timeline">
+            <div class="event left">
+                <h3>1897 - First Zionist Congress</h3>
+                <p>The First Zionist Congress convened in Basel, Switzerland, marking the formal beginning of the Zionist movement.</p>
+            </div>
+            <div class="event right">
+                <h3>1917 - Balfour Declaration</h3>
+                <p>Britain expressed support for "a national home for the Jewish people" in Palestine, while pledging to respect the rights of existing communities.</p>
+            </div>
+            <div class="event left">
+                <h3>1920-1948 - British Mandate</h3>
+                <p>Britain administered Palestine, managing immigration, land policies, and communal tensions between Jewish and Arab populations.</p>
+            </div>
+            <div class="event right">
+                <h3>1947 - UN Partition Plan</h3>
+                <p>The UN proposed dividing Palestine into Jewish and Arab states. Jewish leadership accepted, Arab leadership rejected.</p>
+            </div>
+            <div class="event left">
+                <h3>1948 - Declaration of Independence</h3>
+                <p>The State of Israel was declared on May 14, 1948, followed by conflict with neighboring Arab states.</p>
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <h2>Reflection</h2>
+        <p>
+            Consider how ideology, colonial administration, and international decisions intersected in the establishment of Israel. Think critically about the historical causes and consequences, without attributing all outcomes to a single factor.
+        </p>
+    </section>
+</main>
+
+<footer>
+    &copy; 2025 Educational Mini-Course
+</footer>
+
+<script>
+function toggleFact(id) {
+    const content = document.getElementById(id);
+    content.style.display = content.style.display === 'block' ? 'none' : 'block';
+}
+</script>
+
+</body>
+</html>
