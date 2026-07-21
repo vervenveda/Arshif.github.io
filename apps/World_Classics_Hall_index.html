@@ -1,0 +1,3643 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>ARSHIF · Hall of World Classics</title>
+<style>
+  #arshif-classics-app {
+    --awc-bg: #090704;
+    --awc-panel: rgba(20, 15, 10, 0.92);
+    --awc-panel-2: rgba(34, 25, 15, 0.88);
+    --awc-parchment: #efe1bf;
+    --awc-parchment-2: #dec993;
+    --awc-gold: #d6aa48;
+    --awc-gold-2: #f5d37a;
+    --awc-ink: #241908;
+    --awc-muted: #c7b58b;
+    --awc-soft: rgba(255, 230, 158, 0.12);
+    --awc-border: rgba(214, 170, 72, 0.35);
+    --awc-shadow: 0 24px 80px rgba(0,0,0,0.56);
+    --awc-radius: 22px;
+    min-height: 100vh;
+    color: #f9efd0;
+    font-family: Georgia, 'Times New Roman', serif;
+    background:
+      radial-gradient(circle at 18% 8%, rgba(214,170,72,0.17), transparent 28%),
+      radial-gradient(circle at 88% 18%, rgba(131,89,27,0.16), transparent 30%),
+      linear-gradient(135deg, #050403 0%, #140d07 48%, #070504 100%);
+    padding: 24px;
+    box-sizing: border-box;
+    isolation: isolate;
+  }
+
+  #arshif-classics-app * { box-sizing: border-box; }
+  #arshif-classics-app a { color: inherit; }
+  #arshif-classics-app button, #arshif-classics-app input, #arshif-classics-app textarea { font: inherit; }
+
+  #arshif-classics-app .awc-shell {
+    max-width: 1222px;
+    margin: 0 auto;
+  }
+
+  #arshif-classics-app .awc-hero {
+    position: relative;
+    overflow: hidden;
+    border: 1px solid var(--awc-border);
+    border-radius: 30px;
+    background:
+      linear-gradient(120deg, rgba(255,255,255,0.05), rgba(255,255,255,0.015)),
+      radial-gradient(circle at top left, rgba(214,170,72,0.18), transparent 38%),
+      rgba(10, 7, 4, 0.78);
+    box-shadow: var(--awc-shadow);
+    padding: clamp(24px, 5vw, 58px);
+  }
+
+  #arshif-classics-app .awc-hero:before {
+    content: "";
+    position: absolute;
+    inset: -2px;
+    background-image:
+      linear-gradient(rgba(214,170,72,0.04) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(214,170,72,0.035) 1px, transparent 1px);
+    background-size: 44px 44px;
+    opacity: 0.55;
+    pointer-events: none;
+  }
+
+  #arshif-classics-app .awc-kicker {
+    position: relative;
+    display: inline-flex;
+    gap: 10px;
+    align-items: center;
+    text-transform: uppercase;
+    letter-spacing: 0.18em;
+    color: var(--awc-gold-2);
+    font-size: 0.78rem;
+    border: 1px solid var(--awc-border);
+    border-radius: 999px;
+    padding: 8px 12px;
+    background: rgba(0,0,0,0.28);
+  }
+
+  #arshif-classics-app h1 {
+    position: relative;
+    margin: 18px 0 12px;
+    font-size: clamp(2.45rem, 8vw, 5.8rem);
+    line-height: 0.92;
+    letter-spacing: -0.055em;
+    color: #fff5d7;
+    text-shadow: 0 0 28px rgba(214,170,72,0.24);
+  }
+
+  #arshif-classics-app .awc-subtitle {
+    position: relative;
+    max-width: 850px;
+    color: #d8c89d;
+    font-size: clamp(1rem, 2.2vw, 1.28rem);
+    line-height: 1.65;
+    margin: 0;
+  }
+
+  #arshif-classics-app .awc-stats {
+    position: relative;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-top: 24px;
+  }
+
+  #arshif-classics-app .awc-stat {
+    border: 1px solid var(--awc-border);
+    background: rgba(255, 236, 180, 0.075);
+    border-radius: 16px;
+    padding: 10px 14px;
+    color: #f4e5bd;
+    min-width: 130px;
+  }
+
+  #arshif-classics-app .awc-stat strong { display:block; color: var(--awc-gold-2); font-size: 1.26rem; }
+  #arshif-classics-app .awc-stat span { color: var(--awc-muted); font-size: 0.82rem; }
+
+  #arshif-classics-app .awc-control-panel {
+    margin: 22px 0;
+    border: 1px solid var(--awc-border);
+    border-radius: var(--awc-radius);
+    background: var(--awc-panel);
+    padding: 18px;
+    box-shadow: 0 18px 60px rgba(0,0,0,0.25);
+  }
+
+  #arshif-classics-app .awc-search-row {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 14px;
+    align-items: center;
+    margin-bottom: 14px;
+  }
+
+  #arshif-classics-app .awc-search {
+    width: 100%;
+    border: 1px solid rgba(214,170,72,0.42);
+    background: rgba(0,0,0,0.34);
+    color: #fff7df;
+    outline: none;
+    border-radius: 16px;
+    padding: 13px 15px;
+    box-shadow: inset 0 0 0 1px rgba(255,255,255,0.03);
+  }
+
+  #arshif-classics-app .awc-search::placeholder { color: rgba(247,225,173,0.55); }
+
+  #arshif-classics-app .awc-count {
+    white-space: nowrap;
+    color: var(--awc-muted);
+    font-size: 0.92rem;
+    border: 1px solid rgba(214,170,72,0.27);
+    border-radius: 999px;
+    padding: 12px 14px;
+    background: rgba(255,255,255,0.04);
+  }
+
+  #arshif-classics-app .awc-filter-group { margin: 14px 0 0; }
+  #arshif-classics-app .awc-filter-title {
+    color: var(--awc-gold-2);
+    font-size: 0.78rem;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    margin: 0 0 9px;
+  }
+
+  #arshif-classics-app .awc-chips { display:flex; flex-wrap:wrap; gap:8px; }
+  #arshif-classics-app .awc-chip {
+    border: 1px solid rgba(214,170,72,0.32);
+    border-radius: 999px;
+    padding: 9px 12px;
+    background: rgba(255,255,255,0.045);
+    color: #eadbb4;
+    cursor: pointer;
+    transition: transform .16s ease, background .16s ease, border-color .16s ease, color .16s ease;
+  }
+  #arshif-classics-app .awc-chip:hover { transform: translateY(-1px); border-color: rgba(245,211,122,0.66); }
+  #arshif-classics-app .awc-chip.is-active {
+    color: #1c1206;
+    background: linear-gradient(135deg, var(--awc-gold-2), var(--awc-gold));
+    border-color: transparent;
+    box-shadow: 0 9px 24px rgba(214,170,72,0.16);
+  }
+
+  #arshif-classics-app .awc-grid {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 16px;
+  }
+
+  #arshif-classics-app .awc-card {
+    position: relative;
+    min-height: 268px;
+    display:flex;
+    flex-direction:column;
+    justify-content:space-between;
+    overflow:hidden;
+    border: 1px solid rgba(214,170,72,0.35);
+    border-radius: 22px;
+    background:
+      linear-gradient(155deg, rgba(255,255,255,0.09), rgba(255,255,255,0.02)),
+      radial-gradient(circle at top right, rgba(214,170,72,0.16), transparent 35%),
+      var(--awc-panel-2);
+    box-shadow: 0 18px 50px rgba(0,0,0,0.28);
+    padding: 16px;
+    transition: transform .18s ease, border-color .18s ease, box-shadow .18s ease;
+  }
+
+  #arshif-classics-app .awc-card:hover {
+    transform: translateY(-4px);
+    border-color: rgba(245,211,122,0.68);
+    box-shadow: 0 24px 70px rgba(0,0,0,0.42);
+  }
+
+  #arshif-classics-app .awc-card:before {
+    content:"";
+    position:absolute;
+    top:0; left:0; right:0;
+    height: 4px;
+    background: linear-gradient(90deg, transparent, var(--awc-gold-2), transparent);
+    opacity:.68;
+  }
+
+  #arshif-classics-app .awc-ribbon {
+    display:inline-flex;
+    max-width: 100%;
+    align-items:center;
+    gap:6px;
+    color: #241705;
+    background: linear-gradient(135deg, var(--awc-gold-2), #b88428);
+    padding: 7px 10px;
+    border-radius: 999px;
+    font-size: 0.77rem;
+    box-shadow: 0 8px 20px rgba(214,170,72,0.16);
+  }
+
+  #arshif-classics-app .awc-badge {
+    display:inline-flex;
+    align-items:center;
+    margin-top: 9px;
+    color: #f5e7c2;
+    border: 1px solid rgba(245,211,122,0.28);
+    background: rgba(0,0,0,0.24);
+    border-radius: 999px;
+    padding: 6px 9px;
+    font-size: .78rem;
+  }
+
+  #arshif-classics-app .awc-card h2 {
+    color: #fff2cd;
+    font-size: 1.32rem;
+    line-height: 1.08;
+    margin: 16px 0 8px;
+    letter-spacing: -0.02em;
+  }
+
+  #arshif-classics-app .awc-meta {
+    color: #cdbb91;
+    line-height: 1.45;
+    font-size: 0.94rem;
+    margin:0;
+  }
+
+  #arshif-classics-app .awc-tagline {
+    display:flex; flex-wrap:wrap; gap:6px;
+    margin-top: 12px;
+  }
+  #arshif-classics-app .awc-mini-tag {
+    color:#d8c89d;
+    background: rgba(255,255,255,0.055);
+    border:1px solid rgba(214,170,72,0.17);
+    border-radius:999px;
+    padding:4px 7px;
+    font-size:.72rem;
+  }
+
+  #arshif-classics-app .awc-open {
+    width:100%;
+    margin-top: 18px;
+    border: 0;
+    color: #211607;
+    font-weight: 700;
+    letter-spacing: .02em;
+    cursor:pointer;
+    border-radius: 14px;
+    padding: 11px 12px;
+    background: linear-gradient(135deg, var(--awc-gold-2), var(--awc-gold));
+    box-shadow: 0 12px 30px rgba(214,170,72,0.18);
+  }
+  #arshif-classics-app .awc-open:hover { filter: brightness(1.06); }
+
+  #arshif-classics-app .awc-empty {
+    display:none;
+    border: 1px dashed rgba(214,170,72,.36);
+    border-radius: 22px;
+    padding: 28px;
+    text-align:center;
+    color: var(--awc-muted);
+    background: rgba(0,0,0,0.22);
+  }
+
+  #arshif-classics-app .awc-overlay {
+    position: fixed;
+    inset: 0;
+    display:none;
+    z-index: 9998;
+    background: rgba(0,0,0,0.52);
+    backdrop-filter: blur(3px);
+  }
+
+  #arshif-classics-app .awc-overlay.is-open { display:block; }
+
+  #arshif-classics-app .awc-dossier {
+    position: fixed;
+    z-index: 9999;
+    top: 7vh;
+    left: 50%;
+    transform: translateX(-50%);
+    width: min(920px, calc(100vw - 30px));
+    max-height: 86vh;
+    display:none;
+    border: 1px solid rgba(214,170,72,0.52);
+    border-radius: 24px;
+    overflow:hidden;
+    box-shadow: var(--awc-shadow);
+    background: #140e08;
+  }
+  #arshif-classics-app .awc-dossier.is-open { display:block; }
+
+  #arshif-classics-app .awc-dossier-head {
+    cursor: move;
+    user-select:none;
+    display:flex;
+    align-items:flex-start;
+    justify-content:space-between;
+    gap: 14px;
+    padding: 16px 18px;
+    border-bottom: 1px solid rgba(214,170,72,0.28);
+    background:
+      linear-gradient(135deg, rgba(245,211,122,0.19), rgba(255,255,255,0.03)),
+      #161008;
+  }
+
+  #arshif-classics-app .awc-dossier-title { margin:0; color:#fff3d2; font-size:1.4rem; }
+  #arshif-classics-app .awc-dossier-sub { margin: 5px 0 0; color:var(--awc-muted); font-size:.92rem; }
+
+  #arshif-classics-app .awc-close {
+    flex: 0 0 auto;
+    border:1px solid rgba(214,170,72,.34);
+    background: rgba(0,0,0,.25);
+    color:#ffe6a0;
+    border-radius: 12px;
+    padding: 8px 10px;
+    cursor:pointer;
+  }
+
+  #arshif-classics-app .awc-dossier-body {
+    overflow:auto;
+    max-height: calc(86vh - 72px);
+    padding: 18px;
+    background:
+      radial-gradient(circle at 10% 0%, rgba(214,170,72,0.12), transparent 25%),
+      linear-gradient(90deg, rgba(0,0,0,0.10), rgba(255,255,255,0.02)),
+      var(--awc-parchment);
+    color: var(--awc-ink);
+  }
+
+  #arshif-classics-app .awc-dossier-grid {
+    display:grid;
+    grid-template-columns: minmax(0, 1.2fr) minmax(260px, .8fr);
+    gap: 16px;
+  }
+
+  #arshif-classics-app .awc-section {
+    border:1px solid rgba(75,50,15,0.20);
+    background: rgba(255,250,235,0.52);
+    border-radius: 18px;
+    padding: 15px;
+    box-shadow: inset 0 0 18px rgba(85,47,8,.06);
+  }
+  #arshif-classics-app .awc-section + .awc-section { margin-top: 14px; }
+  #arshif-classics-app .awc-section h3 {
+    margin:0 0 9px;
+    color:#4a2f0e;
+    font-size: .94rem;
+    letter-spacing:.12em;
+    text-transform:uppercase;
+  }
+  #arshif-classics-app .awc-section p { margin:0; line-height:1.55; }
+  #arshif-classics-app .awc-facts { display:grid; gap:8px; }
+  #arshif-classics-app .awc-fact {
+    display:grid;
+    grid-template-columns: 120px 1fr;
+    gap: 10px;
+    border-bottom: 1px solid rgba(75,50,15,0.12);
+    padding-bottom: 8px;
+  }
+  #arshif-classics-app .awc-fact:last-child { border-bottom:0; padding-bottom:0; }
+  #arshif-classics-app .awc-fact b { color:#5c3c12; }
+
+  #arshif-classics-app .awc-theme-list { display:flex; flex-wrap:wrap; gap:7px; }
+  #arshif-classics-app .awc-theme {
+    border:1px solid rgba(82,54,13,.19);
+    border-radius:999px;
+    padding:6px 9px;
+    background: rgba(255,255,255,.38);
+  }
+
+  #arshif-classics-app .awc-links { display:grid; gap:8px; }
+  #arshif-classics-app .awc-link {
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    gap:10px;
+    text-decoration:none;
+    color:#3b260d;
+    background: rgba(255,255,255,.45);
+    border:1px solid rgba(82,54,13,.18);
+    border-radius: 12px;
+    padding: 10px;
+  }
+  #arshif-classics-app .awc-link:hover { background: rgba(255,255,255,.75); }
+
+  #arshif-classics-app .awc-notes {
+    width:100%; min-height: 170px; resize: vertical;
+    border: 1px solid rgba(82,54,13,.25);
+    border-radius: 14px;
+    padding: 12px;
+    color:#241908;
+    background: rgba(255,252,241,.75);
+    outline:none;
+  }
+
+  #arshif-classics-app .awc-note-row {
+    display:flex; justify-content:space-between; gap:10px; align-items:center; margin-top:9px;
+  }
+  #arshif-classics-app .awc-save-status { color:#5b421d; font-size:.88rem; }
+  #arshif-classics-app .awc-small-btn {
+    border:1px solid rgba(82,54,13,.25);
+    background:#f3deb0;
+    color:#2a1a08;
+    border-radius:999px;
+    padding:8px 10px;
+    cursor:pointer;
+  }
+
+  #arshif-classics-app .awc-footer {
+    margin: 26px 0 0;
+    color: rgba(239,225,191,0.72);
+    text-align:center;
+    font-size:.92rem;
+  }
+
+  @media (max-width: 1100px) {
+    #arshif-classics-app .awc-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  }
+  @media (max-width: 780px) {
+    #arshif-classics-app { padding: 14px; }
+    #arshif-classics-app .awc-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    #arshif-classics-app .awc-search-row { grid-template-columns: 1fr; }
+    #arshif-classics-app .awc-count { width:max-content; }
+    #arshif-classics-app .awc-dossier-grid { grid-template-columns: 1fr; }
+    #arshif-classics-app .awc-fact { grid-template-columns: 1fr; gap:3px; }
+    #arshif-classics-app .awc-dossier { top: 3vh !important; left: 15px !important; right:15px; transform:none !important; width: calc(100vw - 30px); }
+  }
+  @media (max-width: 520px) {
+    #arshif-classics-app .awc-grid { grid-template-columns: 1fr; }
+    #arshif-classics-app .awc-hero { border-radius: 22px; }
+    #arshif-classics-app .awc-card { min-height: auto; }
+  }
+</style>
+</head>
+<body>
+<div id="arshif-classics-app" data-arshif-portal="hall-of-world-classics">
+  <div class="awc-shell">
+    <header class="awc-hero" aria-labelledby="awc-title">
+      <div class="awc-kicker">ARSHIF · World Literature Collection</div>
+      <h1 id="awc-title">Hall of World Classics</h1>
+      <p class="awc-subtitle">A quiet gathering of works that shaped civilizations. From epic poetry and philosophy to novels, drama, sacred wisdom, and oral traditions, these books continue to speak across languages, centuries, and cultures.</p>
+      <div class="awc-stats" aria-label="Collection summary">
+        <div class="awc-stat"><strong id="awc-total-stat">0</strong><span>preloaded classics</span></div>
+        <div class="awc-stat"><strong>🌍</strong><span>civilization badges</span></div>
+        
+        <div class="awc-stat"><strong>Local</strong><span>browser-saved notes</span></div>
+      </div>
+    </header>
+
+    <section class="awc-control-panel" aria-label="Search and filters">
+      <div class="awc-search-row">
+        <input id="awc-search" class="awc-search" type="search" placeholder="Search by title, author, civilization, language, era, or theme…" autocomplete="off" />
+        <div class="awc-count"><span id="awc-visible-count">0</span> visible</div>
+      </div>
+      <div class="awc-filter-group">
+        <p class="awc-filter-title">Categories</p>
+        <div class="awc-chips" id="awc-category-chips"></div>
+      </div>
+      <div class="awc-filter-group">
+        <p class="awc-filter-title">Era · Form · Tradition</p>
+        <div class="awc-chips" id="awc-tag-chips"></div>
+      </div>
+    </section>
+
+    <main>
+      <div id="awc-grid" class="awc-grid" aria-live="polite"></div>
+      <div id="awc-empty" class="awc-empty">No classics match that search and filter combination. Try clearing the search or choosing All.</div>
+    </main>
+    <p class="awc-footer">ARSHIF Hall of World Classics · scoped portal section · no external libraries · dossiers open in a draggable archive window.</p>
+  </div>
+
+  <div id="awc-overlay" class="awc-overlay" aria-hidden="true"></div>
+  <section id="awc-dossier" class="awc-dossier" role="dialog" aria-modal="true" aria-labelledby="awc-dossier-title">
+    <div id="awc-dossier-head" class="awc-dossier-head">
+      <div>
+        <h2 id="awc-dossier-title" class="awc-dossier-title">Dossier</h2>
+        <p id="awc-dossier-sub" class="awc-dossier-sub">Historical record</p>
+      </div>
+      <button class="awc-close" id="awc-close" type="button" aria-label="Close dossier">✕</button>
+    </div>
+    <div class="awc-dossier-body">
+      <div class="awc-dossier-grid">
+        <div>
+          <section class="awc-section">
+            <h3>Historical Context</h3>
+            <p id="awc-context"></p>
+          </section>
+          <section class="awc-section">
+            <h3>Major Themes</h3>
+            <div id="awc-themes" class="awc-theme-list"></div>
+          </section>
+          <section class="awc-section">
+            <h3>Recommended Translation / Edition</h3>
+            <p id="awc-translation"></p>
+          </section>
+          <section class="awc-section">
+            <h3>Personal Notes</h3>
+            <textarea id="awc-notes" class="awc-notes" placeholder="Write your reading notes, quotes to revisit, teaching ideas, or ARSHIF annotations here…"></textarea>
+            <div class="awc-note-row">
+              <span id="awc-save-status" class="awc-save-status">Notes save locally in this browser.</span>
+              <button id="awc-clear-notes" class="awc-small-btn" type="button">Clear notes</button>
+            </div>
+          </section>
+        </div>
+        <aside>
+          <section class="awc-section">
+            <h3>Dossier Facts</h3>
+            <div class="awc-facts" id="awc-facts"></div>
+          </section>
+          <section class="awc-section">
+            <h3>External Reading Links</h3>
+            <div id="awc-links" class="awc-links"></div>
+          </section>
+        </aside>
+      </div>
+    </div>
+  </section>
+</div>
+<script>
+(function() {
+  'use strict';
+  var works = [
+  {
+    "id": "the-epic-of-gilgamesh",
+    "title": "The Epic of Gilgamesh",
+    "ribbon": "Ancient Mesopotamia",
+    "civ": "Mesopotamian",
+    "category": "Ancient Epics",
+    "tags": "ancient epic mesopotamia poetry",
+    "meta": "The oldest surviving epic tradition.",
+    "author": "Anonymous court poets and scribes",
+    "language": "Akkadian, with older Sumerian materials",
+    "date": "c. 2100–1200 BCE",
+    "manuscripts": "Clay tablets from Mesopotamian libraries, especially Nineveh.",
+    "context": "A king of Uruk confronts friendship, grief, tyranny, wilderness, and the limits of mortality.",
+    "themes": [
+      "friendship",
+      "mortality",
+      "kingship",
+      "the wild and the city"
+    ],
+    "translation": "Look for a modern scholarly translation with tablet notes and variant readings.",
+    "links": [
+      {
+        "label": "Project Gutenberg search",
+        "url": "https://www.gutenberg.org/ebooks/search/?query=The+Epic+of+Gilgamesh"
+      },
+      {
+        "label": "Wikisource search",
+        "url": "https://en.wikisource.org/wiki/Special:Search?search=The+Epic+of+Gilgamesh"
+      },
+      {
+        "label": "Open Library search",
+        "url": "https://openlibrary.org/search?q=The+Epic+of+Gilgamesh"
+      }
+    ]
+  },
+  {
+    "id": "iliad",
+    "title": "Iliad",
+    "ribbon": "Ancient Greece",
+    "civ": "Greek",
+    "category": "Ancient Epics",
+    "tags": "ancient classical epic greek war poetry",
+    "meta": "Wrath, honor, and war before Troy.",
+    "author": "Traditionally attributed to Homer",
+    "language": "Ancient Greek",
+    "date": "c. 8th century BCE",
+    "manuscripts": "Medieval manuscripts and papyri preserve a long oral tradition.",
+    "context": "An epic of the Trojan War centered on Achilles, rage, honor, grief, and the human cost of glory.",
+    "themes": [
+      "rage",
+      "honor",
+      "war",
+      "fate",
+      "lament"
+    ],
+    "translation": "Richmond Lattimore, Robert Fagles, Caroline Alexander, or Emily Wilson depending on tone.",
+    "links": [
+      {
+        "label": "Perseus Scaife Iliad",
+        "url": "https://scaife.perseus.org/library/urn:cts:greekLit:tlg0012.tlg001/"
+      },
+      {
+        "label": "Project Gutenberg search",
+        "url": "https://www.gutenberg.org/ebooks/search/?query=Iliad"
+      },
+      {
+        "label": "Wikisource search",
+        "url": "https://en.wikisource.org/wiki/Special:Search?search=Iliad"
+      },
+      {
+        "label": "Open Library search",
+        "url": "https://openlibrary.org/search?q=Iliad"
+      }
+    ]
+  },
+  {
+    "id": "odyssey",
+    "title": "Odyssey",
+    "ribbon": "Ancient Greece",
+    "civ": "Greek",
+    "category": "Ancient Epics",
+    "tags": "ancient classical epic greek journey poetry",
+    "meta": "A homecoming epic of memory and identity.",
+    "author": "Traditionally attributed to Homer",
+    "language": "Ancient Greek",
+    "date": "c. 8th century BCE",
+    "manuscripts": "Papyri and medieval manuscripts preserve multiple textual histories.",
+    "context": "Odysseus wanders through islands, monsters, enchantments, and tests while Ithaca waits under pressure.",
+    "themes": [
+      "homecoming",
+      "hospitality",
+      "identity",
+      "storytelling",
+      "endurance"
+    ],
+    "translation": "Emily Wilson, Robert Fagles, or Richmond Lattimore.",
+    "links": [
+      {
+        "label": "Perseus Scaife Odyssey",
+        "url": "https://scaife.perseus.org/library/urn:cts:greekLit:tlg0012.tlg002/"
+      },
+      {
+        "label": "Project Gutenberg search",
+        "url": "https://www.gutenberg.org/ebooks/search/?query=Odyssey"
+      },
+      {
+        "label": "Wikisource search",
+        "url": "https://en.wikisource.org/wiki/Special:Search?search=Odyssey"
+      },
+      {
+        "label": "Open Library search",
+        "url": "https://openlibrary.org/search?q=Odyssey"
+      }
+    ]
+  },
+  {
+    "id": "mahabharata",
+    "title": "Mahabharata",
+    "ribbon": "Ancient India",
+    "civ": "Indian",
+    "category": "Ancient Epics",
+    "tags": "ancient epic indian sanskrit philosophy sacred",
+    "meta": "A vast epic of kinship, law, war, and dharma.",
+    "author": "Attributed to Vyasa; developed over centuries",
+    "language": "Sanskrit",
+    "date": "c. 400 BCE–400 CE",
+    "manuscripts": "Numerous regional manuscript traditions and recensions.",
+    "context": "A monumental epic surrounding the Kurukshetra war, containing mythology, ethics, politics, and the Bhagavad Gita.",
+    "themes": [
+      "dharma",
+      "family conflict",
+      "fate",
+      "war",
+      "sacred duty"
+    ],
+    "translation": "Use an abridged literary version first, then a scholarly multi-volume translation.",
+    "links": [
+      {
+        "label": "Project Gutenberg search",
+        "url": "https://www.gutenberg.org/ebooks/search/?query=Mahabharata"
+      },
+      {
+        "label": "Wikisource search",
+        "url": "https://en.wikisource.org/wiki/Special:Search?search=Mahabharata"
+      },
+      {
+        "label": "Open Library search",
+        "url": "https://openlibrary.org/search?q=Mahabharata"
+      }
+    ]
+  },
+  {
+    "id": "ramayana",
+    "title": "Ramayana",
+    "ribbon": "Ancient India",
+    "civ": "Indian",
+    "category": "Ancient Epics",
+    "tags": "ancient epic indian sanskrit sacred",
+    "meta": "A journey of exile, devotion, and return.",
+    "author": "Attributed to Valmiki",
+    "language": "Sanskrit",
+    "date": "c. 500 BCE–100 BCE, with later layers",
+    "manuscripts": "Sanskrit manuscripts and many regional retellings across Asia.",
+    "context": "Rama, Sita, Lakshmana, and Hanuman move through exile, abduction, war, and restoration.",
+    "themes": [
+      "duty",
+      "devotion",
+      "exile",
+      "loyalty",
+      "kingship"
+    ],
+    "translation": "R. K. Narayan for a readable entry; Goldman for scholarly study.",
+    "links": [
+      {
+        "label": "Project Gutenberg search",
+        "url": "https://www.gutenberg.org/ebooks/search/?query=Ramayana"
+      },
+      {
+        "label": "Wikisource search",
+        "url": "https://en.wikisource.org/wiki/Special:Search?search=Ramayana"
+      },
+      {
+        "label": "Open Library search",
+        "url": "https://openlibrary.org/search?q=Ramayana"
+      }
+    ]
+  },
+  {
+    "id": "shahnameh",
+    "title": "Shahnameh",
+    "ribbon": "Persian Epic",
+    "civ": "Persian",
+    "category": "Ancient Epics",
+    "tags": "medieval epic persian poetry kings heroes",
+    "meta": "The Persian Book of Kings.",
+    "author": "Ferdowsi",
+    "language": "New Persian",
+    "date": "c. 977–1010 CE",
+    "manuscripts": "Illuminated manuscripts and manuscript copies across Persianate courts.",
+    "context": "A sweeping royal and heroic history of Iran from mythical origins to the Arab conquest.",
+    "themes": [
+      "kingship",
+      "heroism",
+      "loss",
+      "justice",
+      "cultural memory"
+    ],
+    "translation": "Dick Davis is accessible; Warner and Warner is expansive.",
+    "links": [
+      {
+        "label": "Project Gutenberg search",
+        "url": "https://www.gutenberg.org/ebooks/search/?query=Shahnameh"
+      },
+      {
+        "label": "Wikisource search",
+        "url": "https://en.wikisource.org/wiki/Special:Search?search=Shahnameh"
+      },
+      {
+        "label": "Open Library search",
+        "url": "https://openlibrary.org/search?q=Shahnameh"
+      }
+    ]
+  },
+  {
+    "id": "popol-vuh",
+    "title": "Popol Vuh",
+    "ribbon": "Maya Tradition",
+    "civ": "Maya",
+    "category": "Americas",
+    "tags": "americas maya sacred epic oral tradition ancient",
+    "meta": "The Kʼicheʼ Maya book of creation and hero twins.",
+    "author": "Kʼicheʼ Maya tradition; written by Indigenous authors after conquest",
+    "language": "Kʼicheʼ Maya",
+    "date": "16th century written form, rooted in older oral traditions",
+    "manuscripts": "A key colonial-era manuscript copied and translated by Francisco Ximénez.",
+    "context": "Creation, genealogy, mythic trials, and the Hero Twins preserve a world of sacred narrative.",
+    "themes": [
+      "creation",
+      "underworld",
+      "cosmic order",
+      "resilience",
+      "ancestry"
+    ],
+    "translation": "Dennis Tedlock or Allen J. Christenson for study.",
+    "links": [
+      {
+        "label": "Project Gutenberg search",
+        "url": "https://www.gutenberg.org/ebooks/search/?query=Popol+Vuh"
+      },
+      {
+        "label": "Wikisource search",
+        "url": "https://en.wikisource.org/wiki/Special:Search?search=Popol+Vuh"
+      },
+      {
+        "label": "Open Library search",
+        "url": "https://openlibrary.org/search?q=Popol+Vuh"
+      }
+    ]
+  },
+  {
+    "id": "beowulf",
+    "title": "Beowulf",
+    "ribbon": "Anglo-Saxon England",
+    "civ": "English",
+    "category": "Ancient Epics",
+    "tags": "medieval epic old english norse germanic monster poetry",
+    "meta": "An Old English heroic poem of monsters and kings.",
+    "author": "Anonymous",
+    "language": "Old English",
+    "date": "c. 8th–11th century",
+    "manuscripts": "Survives in the Nowell Codex, damaged by fire in 1731.",
+    "context": "Beowulf battles Grendel, Grendel’s mother, and a dragon while the poem reflects on fame, doom, and fragile kingdoms.",
+    "themes": [
+      "heroism",
+      "monsters",
+      "mortality",
+      "loyalty",
+      "fate"
+    ],
+    "translation": "Seamus Heaney, Maria Dahvana Headley, or R. M. Liuzza.",
+    "links": [
+      {
+        "label": "Project Gutenberg search",
+        "url": "https://www.gutenberg.org/ebooks/search/?query=Beowulf"
+      },
+      {
+        "label": "Wikisource search",
+        "url": "https://en.wikisource.org/wiki/Special:Search?search=Beowulf"
+      },
+      {
+        "label": "Open Library search",
+        "url": "https://openlibrary.org/search?q=Beowulf"
+      }
+    ]
+  },
+  {
+    "id": "sundiata-epic",
+    "title": "Sundiata Epic",
+    "ribbon": "Mande Oral Tradition",
+    "civ": "Mande / West African",
+    "category": "African Traditions",
+    "tags": "african oral epic mande mali medieval",
+    "meta": "The founding epic of the Mali Empire.",
+    "author": "Griots and Mande oral historians",
+    "language": "Mande languages",
+    "date": "13th-century events preserved orally",
+    "manuscripts": "Living oral performance traditions, with written transcriptions in modern editions.",
+    "context": "The story of Sundiata Keita’s rise, exile, return, and founding of imperial Mali.",
+    "themes": [
+      "exile",
+      "destiny",
+      "memory",
+      "leadership",
+      "oral history"
+    ],
+    "translation": "D. T. Niane’s prose version is a common entry point.",
+    "links": [
+      {
+        "label": "Project Gutenberg search",
+        "url": "https://www.gutenberg.org/ebooks/search/?query=Sundiata+Epic"
+      },
+      {
+        "label": "Wikisource search",
+        "url": "https://en.wikisource.org/wiki/Special:Search?search=Sundiata+Epic"
+      },
+      {
+        "label": "Open Library search",
+        "url": "https://openlibrary.org/search?q=Sundiata+Epic"
+      }
+    ]
+  },
+  {
+    "id": "the-mwindo-epic",
+    "title": "The Mwindo Epic",
+    "ribbon": "Nyanga Tradition",
+    "civ": "Central African",
+    "category": "African Traditions",
+    "tags": "african oral epic nyanga congo hero",
+    "meta": "A Central African heroic cycle.",
+    "author": "Nyanga oral tradition",
+    "language": "Nyanga",
+    "date": "Oral tradition, published in modern transcription",
+    "manuscripts": "Known through performances recorded and translated in the twentieth century.",
+    "context": "Mwindo is a miraculous child-hero whose journey unfolds through song, magic, confrontation, and reconciliation.",
+    "themes": [
+      "hero birth",
+      "family conflict",
+      "magic",
+      "community",
+      "restoration"
+    ],
+    "translation": "Daniel Biebuyck and Kahombo C. Mateene’s edition is widely used.",
+    "links": [
+      {
+        "label": "Project Gutenberg search",
+        "url": "https://www.gutenberg.org/ebooks/search/?query=The+Mwindo+Epic"
+      },
+      {
+        "label": "Wikisource search",
+        "url": "https://en.wikisource.org/wiki/Special:Search?search=The+Mwindo+Epic"
+      },
+      {
+        "label": "Open Library search",
+        "url": "https://openlibrary.org/search?q=The+Mwindo+Epic"
+      }
+    ]
+  },
+  {
+    "id": "kebra-nagast",
+    "title": "Kebra Nagast",
+    "ribbon": "Ethiopian Sacred History",
+    "civ": "Ethiopian",
+    "category": "African Traditions",
+    "tags": "african medieval sacred epic ethiopian geez",
+    "meta": "The Glory of the Kings.",
+    "author": "Anonymous compilers",
+    "language": "Geʽez",
+    "date": "14th century compilation, based on older traditions",
+    "manuscripts": "Ethiopian manuscripts preserve the royal-sacred narrative.",
+    "context": "A foundational Ethiopian work linking the Queen of Sheba, Solomon, Menelik, and sacred kingship.",
+    "themes": [
+      "sacred kingship",
+      "covenant",
+      "lineage",
+      "faith",
+      "nation"
+    ],
+    "translation": "E. A. Wallis Budge is public-domain but dated; use modern notes when possible.",
+    "links": [
+      {
+        "label": "Project Gutenberg search",
+        "url": "https://www.gutenberg.org/ebooks/search/?query=Kebra+Nagast"
+      },
+      {
+        "label": "Wikisource search",
+        "url": "https://en.wikisource.org/wiki/Special:Search?search=Kebra+Nagast"
+      },
+      {
+        "label": "Open Library search",
+        "url": "https://openlibrary.org/search?q=Kebra+Nagast"
+      }
+    ]
+  },
+  {
+    "id": "the-book-of-dede-korkut",
+    "title": "The Book of Dede Korkut",
+    "ribbon": "Oghuz Turkic Tradition",
+    "civ": "Turkic",
+    "category": "Ancient Epics",
+    "tags": "medieval epic turkic oral tradition",
+    "meta": "Heroic tales of the Oghuz Turks.",
+    "author": "Oral tradition; attributed narrator Dede Korkut",
+    "language": "Oghuz Turkic",
+    "date": "15th–16th century manuscripts from older oral tales",
+    "manuscripts": "Dresden and Vatican manuscripts are central witnesses.",
+    "context": "A cycle of heroic tales involving warriors, family honor, conflict, and wise counsel.",
+    "themes": [
+      "heroism",
+      "kinship",
+      "honor",
+      "counsel",
+      "frontier life"
+    ],
+    "translation": "Geoffrey Lewis translation is a useful English entry.",
+    "links": [
+      {
+        "label": "Project Gutenberg search",
+        "url": "https://www.gutenberg.org/ebooks/search/?query=The+Book+of+Dede+Korkut"
+      },
+      {
+        "label": "Wikisource search",
+        "url": "https://en.wikisource.org/wiki/Special:Search?search=The+Book+of+Dede+Korkut"
+      },
+      {
+        "label": "Open Library search",
+        "url": "https://openlibrary.org/search?q=The+Book+of+Dede+Korkut"
+      }
+    ]
+  },
+  {
+    "id": "kalevala",
+    "title": "Kalevala",
+    "ribbon": "Finnish Oral Epic",
+    "civ": "Finnish",
+    "category": "Ancient Epics",
+    "tags": "modern epic oral finnish poetry folklore",
+    "meta": "A national epic shaped from oral songs.",
+    "author": "Compiled by Elias Lönnrot",
+    "language": "Finnish/Karelian oral poetry",
+    "date": "1835; expanded 1849",
+    "manuscripts": "Collected from singers and arranged into a literary epic.",
+    "context": "The Kalevala gathers creation songs, heroes, magic, craft, and mythic rivalry into a poetic national epic.",
+    "themes": [
+      "creation",
+      "song magic",
+      "craft",
+      "rivalry",
+      "identity"
+    ],
+    "translation": "Keith Bosley or Eino Friberg for English readers.",
+    "links": [
+      {
+        "label": "Project Gutenberg search",
+        "url": "https://www.gutenberg.org/ebooks/search/?query=Kalevala"
+      },
+      {
+        "label": "Wikisource search",
+        "url": "https://en.wikisource.org/wiki/Special:Search?search=Kalevala"
+      },
+      {
+        "label": "Open Library search",
+        "url": "https://openlibrary.org/search?q=Kalevala"
+      }
+    ]
+  },
+  {
+    "id": "the-tale-of-the-heike",
+    "title": "The Tale of the Heike",
+    "ribbon": "Medieval Japan",
+    "civ": "Japanese",
+    "category": "Eastern Classics",
+    "tags": "medieval epic japanese war buddhist",
+    "meta": "The rise and fall of the Taira clan.",
+    "author": "Anonymous; performed by biwa hōshi storytellers",
+    "language": "Classical Japanese",
+    "date": "13th century",
+    "manuscripts": "Multiple manuscript lineages and performance traditions.",
+    "context": "A war tale shaped by Buddhist impermanence, political collapse, and the sorrow of vanished power.",
+    "themes": [
+      "impermanence",
+      "war",
+      "clan rivalry",
+      "grief",
+      "honor"
+    ],
+    "translation": "Royall Tyler or Helen Craig McCullough.",
+    "links": [
+      {
+        "label": "Project Gutenberg search",
+        "url": "https://www.gutenberg.org/ebooks/search/?query=The+Tale+of+the+Heike"
+      },
+      {
+        "label": "Wikisource search",
+        "url": "https://en.wikisource.org/wiki/Special:Search?search=The+Tale+of+the+Heike"
+      },
+      {
+        "label": "Open Library search",
+        "url": "https://openlibrary.org/search?q=The+Tale+of+the+Heike"
+      }
+    ]
+  },
+  {
+    "id": "the-song-of-roland",
+    "title": "The Song of Roland",
+    "ribbon": "Medieval France",
+    "civ": "French",
+    "category": "Ancient Epics",
+    "tags": "medieval epic french chivalry poetry",
+    "meta": "A chanson de geste of loyalty and sacrifice.",
+    "author": "Anonymous",
+    "language": "Old French",
+    "date": "c. 11th century",
+    "manuscripts": "The Oxford manuscript is a central witness.",
+    "context": "Roland’s last stand at Roncevaux becomes a heroic meditation on fealty, courage, empire, and martyrdom.",
+    "themes": [
+      "loyalty",
+      "sacrifice",
+      "chivalry",
+      "faith",
+      "war"
+    ],
+    "translation": "Glyn Burgess or Dorothy Sayers.",
+    "links": [
+      {
+        "label": "Project Gutenberg search",
+        "url": "https://www.gutenberg.org/ebooks/search/?query=The+Song+of+Roland"
+      },
+      {
+        "label": "Wikisource search",
+        "url": "https://en.wikisource.org/wiki/Special:Search?search=The+Song+of+Roland"
+      },
+      {
+        "label": "Open Library search",
+        "url": "https://openlibrary.org/search?q=The+Song+of+Roland"
+      }
+    ]
+  },
+  {
+    "id": "nibelungenlied",
+    "title": "Nibelungenlied",
+    "ribbon": "Medieval Germanic",
+    "civ": "Germanic",
+    "category": "Ancient Epics",
+    "tags": "medieval epic german norse heroic poetry",
+    "meta": "A heroic tragedy of dragons, treasure, and revenge.",
+    "author": "Anonymous",
+    "language": "Middle High German",
+    "date": "c. 1200 CE",
+    "manuscripts": "Several manuscripts preserve variant versions.",
+    "context": "Siegfried, Kriemhild, Hagen, and the Burgundians move through heroic glory into catastrophic revenge.",
+    "themes": [
+      "revenge",
+      "treasure",
+      "betrayal",
+      "heroic doom",
+      "courtly power"
+    ],
+    "translation": "A. T. Hatto or Burton Raffel.",
+    "links": [
+      {
+        "label": "Project Gutenberg search",
+        "url": "https://www.gutenberg.org/ebooks/search/?query=Nibelungenlied"
+      },
+      {
+        "label": "Wikisource search",
+        "url": "https://en.wikisource.org/wiki/Special:Search?search=Nibelungenlied"
+      },
+      {
+        "label": "Open Library search",
+        "url": "https://openlibrary.org/search?q=Nibelungenlied"
+      }
+    ]
+  },
+  {
+    "id": "aeneid",
+    "title": "Aeneid",
+    "ribbon": "Ancient Rome",
+    "civ": "Roman",
+    "category": "Ancient Epics",
+    "tags": "ancient classical epic roman latin empire",
+    "meta": "Rome’s origin epic.",
+    "author": "Virgil",
+    "language": "Latin",
+    "date": "29–19 BCE",
+    "manuscripts": "Ancient and medieval manuscript traditions preserve the poem.",
+    "context": "Aeneas flees Troy and journeys toward Italy, carrying loss, duty, and imperial destiny.",
+    "themes": [
+      "duty",
+      "empire",
+      "exile",
+      "piety",
+      "founding myth"
+    ],
+    "translation": "Robert Fagles, Sarah Ruden, or David Ferry.",
+    "links": [
+      {
+        "label": "Project Gutenberg search",
+        "url": "https://www.gutenberg.org/ebooks/search/?query=Aeneid"
+      },
+      {
+        "label": "Wikisource search",
+        "url": "https://en.wikisource.org/wiki/Special:Search?search=Aeneid"
+      },
+      {
+        "label": "Open Library search",
+        "url": "https://openlibrary.org/search?q=Aeneid"
+      }
+    ]
+  },
+  {
+    "id": "the-analects",
+    "title": "The Analects",
+    "ribbon": "Chinese Philosophy",
+    "civ": "Chinese",
+    "category": "Philosophy",
+    "tags": "ancient classical philosophy chinese ethics",
+    "meta": "Sayings associated with Confucius and his disciples.",
+    "author": "Confucius and later disciples/compilers",
+    "language": "Classical Chinese",
+    "date": "Compiled c. 475–221 BCE",
+    "manuscripts": "Transmitted through early Chinese textual traditions.",
+    "context": "A collection of brief teachings on ethics, learning, ritual, government, and humane conduct.",
+    "themes": [
+      "ethics",
+      "ritual",
+      "learning",
+      "government",
+      "virtue"
+    ],
+    "translation": "D. C. Lau, Edward Slingerland, or Ames and Rosemont.",
+    "links": [
+      {
+        "label": "Project Gutenberg search",
+        "url": "https://www.gutenberg.org/ebooks/search/?query=The+Analects"
+      },
+      {
+        "label": "Wikisource search",
+        "url": "https://en.wikisource.org/wiki/Special:Search?search=The+Analects"
+      },
+      {
+        "label": "Open Library search",
+        "url": "https://openlibrary.org/search?q=The+Analects"
+      }
+    ]
+  },
+  {
+    "id": "tao-te-ching",
+    "title": "Tao Te Ching",
+    "ribbon": "Chinese Philosophy",
+    "civ": "Chinese",
+    "category": "Philosophy",
+    "tags": "ancient classical philosophy chinese daoism poetry",
+    "meta": "A compact classic of the Way.",
+    "author": "Traditionally attributed to Laozi",
+    "language": "Classical Chinese",
+    "date": "c. 4th century BCE, debated",
+    "manuscripts": "Mawangdui and Guodian manuscripts are important witnesses.",
+    "context": "A poetic philosophical text on the Dao, non-forcing action, simplicity, power, and paradox.",
+    "themes": [
+      "the Way",
+      "simplicity",
+      "non-action",
+      "paradox",
+      "power"
+    ],
+    "translation": "D. C. Lau, Ursula K. Le Guin, Red Pine, or Roger Ames.",
+    "links": [
+      {
+        "label": "Project Gutenberg search",
+        "url": "https://www.gutenberg.org/ebooks/search/?query=Tao+Te+Ching"
+      },
+      {
+        "label": "Wikisource search",
+        "url": "https://en.wikisource.org/wiki/Special:Search?search=Tao+Te+Ching"
+      },
+      {
+        "label": "Open Library search",
+        "url": "https://openlibrary.org/search?q=Tao+Te+Ching"
+      }
+    ]
+  },
+  {
+    "id": "meditations",
+    "title": "Meditations",
+    "ribbon": "Roman Stoicism",
+    "civ": "Roman",
+    "category": "Philosophy",
+    "tags": "classical philosophy roman stoic journal",
+    "meta": "A private notebook of Stoic practice.",
+    "author": "Marcus Aurelius",
+    "language": "Greek",
+    "date": "c. 170–180 CE",
+    "manuscripts": "Medieval manuscript transmission preserves the text.",
+    "context": "An emperor’s reflections on discipline, mortality, duty, attention, and inner freedom.",
+    "themes": [
+      "stoicism",
+      "mortality",
+      "discipline",
+      "duty",
+      "self-command"
+    ],
+    "translation": "Gregory Hays for modern readability; Robin Waterfield for notes.",
+    "links": [
+      {
+        "label": "Project Gutenberg search",
+        "url": "https://www.gutenberg.org/ebooks/search/?query=Meditations"
+      },
+      {
+        "label": "Wikisource search",
+        "url": "https://en.wikisource.org/wiki/Special:Search?search=Meditations"
+      },
+      {
+        "label": "Open Library search",
+        "url": "https://openlibrary.org/search?q=Meditations"
+      }
+    ]
+  },
+  {
+    "id": "republic",
+    "title": "Republic",
+    "ribbon": "Ancient Greece",
+    "civ": "Greek",
+    "category": "Philosophy",
+    "tags": "ancient classical philosophy greek politics justice",
+    "meta": "A dialogue on justice and the ideal city.",
+    "author": "Plato",
+    "language": "Ancient Greek",
+    "date": "c. 375 BCE",
+    "manuscripts": "Ancient papyri and medieval manuscripts preserve the Platonic corpus.",
+    "context": "Socrates and interlocutors ask what justice is, how a city should be ordered, and how the soul is formed.",
+    "themes": [
+      "justice",
+      "education",
+      "politics",
+      "truth",
+      "the soul"
+    ],
+    "translation": "G. M. A. Grube/Reeve or Allan Bloom.",
+    "links": [
+      {
+        "label": "Project Gutenberg search",
+        "url": "https://www.gutenberg.org/ebooks/search/?query=Republic"
+      },
+      {
+        "label": "Wikisource search",
+        "url": "https://en.wikisource.org/wiki/Special:Search?search=Republic"
+      },
+      {
+        "label": "Open Library search",
+        "url": "https://openlibrary.org/search?q=Republic"
+      }
+    ]
+  },
+  {
+    "id": "bhagavad-gita",
+    "title": "Bhagavad Gita",
+    "ribbon": "Sacred Philosophy",
+    "civ": "Indian",
+    "category": "Philosophy",
+    "tags": "ancient philosophy indian sanskrit sacred epic",
+    "meta": "A dialogue on action, devotion, and duty.",
+    "author": "Part of the Mahabharata; attributed to Vyasa’s tradition",
+    "language": "Sanskrit",
+    "date": "c. 2nd century BCE–2nd century CE",
+    "manuscripts": "Preserved within Mahabharata manuscript traditions.",
+    "context": "On a battlefield, Krishna instructs Arjuna on action, knowledge, devotion, and spiritual discipline.",
+    "themes": [
+      "dharma",
+      "action",
+      "devotion",
+      "knowledge",
+      "liberation"
+    ],
+    "translation": "Eknath Easwaran, Barbara Stoler Miller, or Winthrop Sargeant.",
+    "links": [
+      {
+        "label": "Project Gutenberg search",
+        "url": "https://www.gutenberg.org/ebooks/search/?query=Bhagavad+Gita"
+      },
+      {
+        "label": "Wikisource search",
+        "url": "https://en.wikisource.org/wiki/Special:Search?search=Bhagavad+Gita"
+      },
+      {
+        "label": "Open Library search",
+        "url": "https://openlibrary.org/search?q=Bhagavad+Gita"
+      }
+    ]
+  },
+  {
+    "id": "upanishads",
+    "title": "Upanishads",
+    "ribbon": "Indian Sacred Philosophy",
+    "civ": "Indian",
+    "category": "Philosophy",
+    "tags": "ancient philosophy indian sanskrit sacred wisdom",
+    "meta": "Philosophical teachings from the Vedic tradition.",
+    "author": "Multiple sages and schools",
+    "language": "Sanskrit",
+    "date": "c. 800–300 BCE for principal Upanishads",
+    "manuscripts": "Vedic oral preservation and later manuscript traditions.",
+    "context": "Dialogues and teachings exploring self, ultimate reality, knowledge, sacrifice, and liberation.",
+    "themes": [
+      "self",
+      "ultimate reality",
+      "knowledge",
+      "liberation",
+      "teaching"
+    ],
+    "translation": "Patrick Olivelle or Eknath Easwaran.",
+    "links": [
+      {
+        "label": "Project Gutenberg search",
+        "url": "https://www.gutenberg.org/ebooks/search/?query=Upanishads"
+      },
+      {
+        "label": "Wikisource search",
+        "url": "https://en.wikisource.org/wiki/Special:Search?search=Upanishads"
+      },
+      {
+        "label": "Open Library search",
+        "url": "https://openlibrary.org/search?q=Upanishads"
+      }
+    ]
+  },
+  {
+    "id": "dhammapada",
+    "title": "Dhammapada",
+    "ribbon": "Buddhist Wisdom Text",
+    "civ": "Indian / Buddhist",
+    "category": "Philosophy",
+    "tags": "ancient philosophy buddhist pali poetry wisdom",
+    "meta": "Verses of Buddhist ethical wisdom.",
+    "author": "Theravāda Buddhist tradition",
+    "language": "Pali",
+    "date": "c. 3rd century BCE or later compilation",
+    "manuscripts": "Preserved in the Pali Canon and manuscript traditions.",
+    "context": "A compact collection of verses on mind, conduct, suffering, restraint, and awakening.",
+    "themes": [
+      "mind",
+      "ethics",
+      "awakening",
+      "discipline",
+      "impermanence"
+    ],
+    "translation": "Gil Fronsdal or Eknath Easwaran.",
+    "links": [
+      {
+        "label": "Project Gutenberg search",
+        "url": "https://www.gutenberg.org/ebooks/search/?query=Dhammapada"
+      },
+      {
+        "label": "Wikisource search",
+        "url": "https://en.wikisource.org/wiki/Special:Search?search=Dhammapada"
+      },
+      {
+        "label": "Open Library search",
+        "url": "https://openlibrary.org/search?q=Dhammapada"
+      }
+    ]
+  },
+  {
+    "id": "zhuangzi",
+    "title": "Zhuangzi",
+    "ribbon": "Chinese Daoist Classic",
+    "civ": "Chinese",
+    "category": "Philosophy",
+    "tags": "classical philosophy chinese daoism stories",
+    "meta": "Daoist parables of transformation and freedom.",
+    "author": "Zhuang Zhou and later writers",
+    "language": "Classical Chinese",
+    "date": "4th–3rd century BCE layers",
+    "manuscripts": "Received text formed through early Chinese editorial history.",
+    "context": "A playful philosophical work of dream, paradox, debate, humor, and spiritual freedom.",
+    "themes": [
+      "transformation",
+      "freedom",
+      "perspective",
+      "nature",
+      "paradox"
+    ],
+    "translation": "Burton Watson or Brook Ziporyn.",
+    "links": [
+      {
+        "label": "Project Gutenberg search",
+        "url": "https://www.gutenberg.org/ebooks/search/?query=Zhuangzi"
+      },
+      {
+        "label": "Wikisource search",
+        "url": "https://en.wikisource.org/wiki/Special:Search?search=Zhuangzi"
+      },
+      {
+        "label": "Open Library search",
+        "url": "https://openlibrary.org/search?q=Zhuangzi"
+      }
+    ]
+  },
+  {
+    "id": "the-art-of-war",
+    "title": "The Art of War",
+    "ribbon": "Chinese Strategy Classic",
+    "civ": "Chinese",
+    "category": "Philosophy",
+    "tags": "ancient philosophy strategy chinese military",
+    "meta": "A strategic classic about conflict and perception.",
+    "author": "Sunzi / Sun Tzu",
+    "language": "Classical Chinese",
+    "date": "traditionally c. 5th century BCE",
+    "manuscripts": "Bamboo-slip manuscripts and received textual traditions.",
+    "context": "A concise study of strategy, terrain, discipline, deception, and the costs of conflict.",
+    "themes": [
+      "strategy",
+      "leadership",
+      "discipline",
+      "perception",
+      "conflict"
+    ],
+    "translation": "Samuel B. Griffith, Roger Ames, or Ralph Sawyer.",
+    "links": [
+      {
+        "label": "Project Gutenberg search",
+        "url": "https://www.gutenberg.org/ebooks/search/?query=The+Art+of+War"
+      },
+      {
+        "label": "Wikisource search",
+        "url": "https://en.wikisource.org/wiki/Special:Search?search=The+Art+of+War"
+      },
+      {
+        "label": "Open Library search",
+        "url": "https://openlibrary.org/search?q=The+Art+of+War"
+      }
+    ]
+  },
+  {
+    "id": "enchiridion",
+    "title": "Enchiridion",
+    "ribbon": "Greek Stoicism",
+    "civ": "Greek / Roman",
+    "category": "Philosophy",
+    "tags": "classical philosophy stoic greek manual",
+    "meta": "A short manual of Stoic practice.",
+    "author": "Epictetus, compiled by Arrian",
+    "language": "Greek",
+    "date": "c. 2nd century CE",
+    "manuscripts": "Preserved through late antique and medieval manuscripts.",
+    "context": "A practical guide to distinguishing what is within our control and training the judgment.",
+    "themes": [
+      "control",
+      "discipline",
+      "freedom",
+      "judgment",
+      "resilience"
+    ],
+    "translation": "Robin Hard or Elizabeth Carter for public-domain flavor.",
+    "links": [
+      {
+        "label": "Project Gutenberg search",
+        "url": "https://www.gutenberg.org/ebooks/search/?query=Enchiridion"
+      },
+      {
+        "label": "Wikisource search",
+        "url": "https://en.wikisource.org/wiki/Special:Search?search=Enchiridion"
+      },
+      {
+        "label": "Open Library search",
+        "url": "https://openlibrary.org/search?q=Enchiridion"
+      }
+    ]
+  },
+  {
+    "id": "the-prince",
+    "title": "The Prince",
+    "ribbon": "Italian Renaissance",
+    "civ": "Italian",
+    "category": "Philosophy",
+    "tags": "early modern philosophy politics italian power",
+    "meta": "A sharp Renaissance work on power.",
+    "author": "Niccolò Machiavelli",
+    "language": "Italian",
+    "date": "1513; published 1532",
+    "manuscripts": "Early manuscripts and print history after Machiavelli’s death.",
+    "context": "A compact and controversial analysis of rule, statecraft, fortune, fear, virtue, and political survival.",
+    "themes": [
+      "power",
+      "statecraft",
+      "fortune",
+      "leadership",
+      "realism"
+    ],
+    "translation": "Harvey Mansfield or George Bull.",
+    "links": [
+      {
+        "label": "Project Gutenberg search",
+        "url": "https://www.gutenberg.org/ebooks/search/?query=The+Prince"
+      },
+      {
+        "label": "Wikisource search",
+        "url": "https://en.wikisource.org/wiki/Special:Search?search=The+Prince"
+      },
+      {
+        "label": "Open Library search",
+        "url": "https://openlibrary.org/search?q=The+Prince"
+      }
+    ]
+  },
+  {
+    "id": "confessions",
+    "title": "Confessions",
+    "ribbon": "Late Antique North Africa",
+    "civ": "African / Latin",
+    "category": "Philosophy",
+    "tags": "classical philosophy autobiography christian latin african",
+    "meta": "A spiritual autobiography and philosophical prayer.",
+    "author": "Augustine of Hippo",
+    "language": "Latin",
+    "date": "c. 397–400 CE",
+    "manuscripts": "Medieval manuscript transmission across Christian monastic culture.",
+    "context": "A searching account of memory, desire, sin, conversion, time, and the restless human heart.",
+    "themes": [
+      "memory",
+      "conversion",
+      "time",
+      "desire",
+      "grace"
+    ],
+    "translation": "Sarah Ruden, Henry Chadwick, or Maria Boulding.",
+    "links": [
+      {
+        "label": "Project Gutenberg search",
+        "url": "https://www.gutenberg.org/ebooks/search/?query=Confessions"
+      },
+      {
+        "label": "Wikisource search",
+        "url": "https://en.wikisource.org/wiki/Special:Search?search=Confessions"
+      },
+      {
+        "label": "Open Library search",
+        "url": "https://openlibrary.org/search?q=Confessions"
+      }
+    ]
+  },
+  {
+    "id": "oedipus-rex",
+    "title": "Oedipus Rex",
+    "ribbon": "Ancient Greek Drama",
+    "civ": "Greek",
+    "category": "Drama",
+    "tags": "ancient drama greek tragedy fate",
+    "meta": "A tragedy of knowledge, power, and fate.",
+    "author": "Sophocles",
+    "language": "Ancient Greek",
+    "date": "c. 429 BCE",
+    "manuscripts": "Preserved in manuscript traditions of Greek drama.",
+    "context": "Oedipus investigates a plague and discovers that the truth he seeks is bound to his own identity.",
+    "themes": [
+      "fate",
+      "knowledge",
+      "blindness",
+      "truth",
+      "power"
+    ],
+    "translation": "Robert Fagles, David Grene, or Bryan Doerries.",
+    "links": [
+      {
+        "label": "Project Gutenberg search",
+        "url": "https://www.gutenberg.org/ebooks/search/?query=Oedipus+Rex"
+      },
+      {
+        "label": "Wikisource search",
+        "url": "https://en.wikisource.org/wiki/Special:Search?search=Oedipus+Rex"
+      },
+      {
+        "label": "Open Library search",
+        "url": "https://openlibrary.org/search?q=Oedipus+Rex"
+      }
+    ]
+  },
+  {
+    "id": "antigone",
+    "title": "Antigone",
+    "ribbon": "Ancient Greek Drama",
+    "civ": "Greek",
+    "category": "Drama",
+    "tags": "ancient drama greek tragedy law family",
+    "meta": "A tragedy of law, conscience, and burial.",
+    "author": "Sophocles",
+    "language": "Ancient Greek",
+    "date": "c. 441 BCE",
+    "manuscripts": "Manuscripts preserve the Theban plays outside their original trilogy context.",
+    "context": "Antigone defies Creon’s decree to honor her brother, forcing conflict between state law and sacred duty.",
+    "themes": [
+      "conscience",
+      "law",
+      "family",
+      "burial",
+      "authority"
+    ],
+    "translation": "Seamus Heaney adaptation or David Grene.",
+    "links": [
+      {
+        "label": "Project Gutenberg search",
+        "url": "https://www.gutenberg.org/ebooks/search/?query=Antigone"
+      },
+      {
+        "label": "Wikisource search",
+        "url": "https://en.wikisource.org/wiki/Special:Search?search=Antigone"
+      },
+      {
+        "label": "Open Library search",
+        "url": "https://openlibrary.org/search?q=Antigone"
+      }
+    ]
+  },
+  {
+    "id": "the-bacchae",
+    "title": "The Bacchae",
+    "ribbon": "Ancient Greek Drama",
+    "civ": "Greek",
+    "category": "Drama",
+    "tags": "ancient drama greek tragedy dionysus ritual",
+    "meta": "A tragedy of ecstasy and denial.",
+    "author": "Euripides",
+    "language": "Ancient Greek",
+    "date": "c. 405 BCE",
+    "manuscripts": "Preserved in the manuscript tradition of Euripides.",
+    "context": "Dionysus returns to Thebes, and Pentheus’s resistance leads to ritual frenzy and catastrophe.",
+    "themes": [
+      "ecstasy",
+      "divinity",
+      "denial",
+      "ritual",
+      "identity"
+    ],
+    "translation": "William Arrowsmith or C. K. Williams.",
+    "links": [
+      {
+        "label": "Project Gutenberg search",
+        "url": "https://www.gutenberg.org/ebooks/search/?query=The+Bacchae"
+      },
+      {
+        "label": "Wikisource search",
+        "url": "https://en.wikisource.org/wiki/Special:Search?search=The+Bacchae"
+      },
+      {
+        "label": "Open Library search",
+        "url": "https://openlibrary.org/search?q=The+Bacchae"
+      }
+    ]
+  },
+  {
+    "id": "the-recognition-of-akuntal",
+    "title": "The Recognition of Śakuntalā",
+    "ribbon": "Classical India",
+    "civ": "Indian",
+    "category": "Drama",
+    "tags": "classical drama indian sanskrit romance",
+    "meta": "A Sanskrit drama of love, memory, and recognition.",
+    "author": "Kālidāsa",
+    "language": "Sanskrit",
+    "date": "c. 4th–5th century CE",
+    "manuscripts": "Preserved in Sanskrit manuscript traditions with regional variants.",
+    "context": "Śakuntalā and King Duṣyanta are separated by curse and memory before recognition restores the bond.",
+    "themes": [
+      "love",
+      "memory",
+      "nature",
+      "royal duty",
+      "recognition"
+    ],
+    "translation": "Barbara Stoler Miller or Arthur Ryder.",
+    "links": [
+      {
+        "label": "Project Gutenberg search",
+        "url": "https://www.gutenberg.org/ebooks/search/?query=The+Recognition+of+Śakuntalā"
+      },
+      {
+        "label": "Wikisource search",
+        "url": "https://en.wikisource.org/wiki/Special:Search?search=The+Recognition+of+Śakuntalā"
+      },
+      {
+        "label": "Open Library search",
+        "url": "https://openlibrary.org/search?q=The+Recognition+of+Śakuntalā"
+      }
+    ]
+  },
+  {
+    "id": "the-peony-pavilion",
+    "title": "The Peony Pavilion",
+    "ribbon": "Ming China",
+    "civ": "Chinese",
+    "category": "Drama",
+    "tags": "early modern drama chinese ming romance",
+    "meta": "A dream-love masterpiece of Ming drama.",
+    "author": "Tang Xianzu",
+    "language": "Chinese",
+    "date": "1598",
+    "manuscripts": "Print and performance traditions preserve the play.",
+    "context": "A young woman’s dream of love becomes so powerful that desire, death, and life cross boundaries.",
+    "themes": [
+      "dreams",
+      "love",
+      "resurrection",
+      "desire",
+      "art"
+    ],
+    "translation": "Cyril Birch or modern performance translations.",
+    "links": [
+      {
+        "label": "Project Gutenberg search",
+        "url": "https://www.gutenberg.org/ebooks/search/?query=The+Peony+Pavilion"
+      },
+      {
+        "label": "Wikisource search",
+        "url": "https://en.wikisource.org/wiki/Special:Search?search=The+Peony+Pavilion"
+      },
+      {
+        "label": "Open Library search",
+        "url": "https://openlibrary.org/search?q=The+Peony+Pavilion"
+      }
+    ]
+  },
+  {
+    "id": "hamlet",
+    "title": "Hamlet",
+    "ribbon": "Elizabethan England",
+    "civ": "English",
+    "category": "Drama",
+    "tags": "early modern drama english tragedy shakespeare",
+    "meta": "A tragedy of grief, delay, and revenge.",
+    "author": "William Shakespeare",
+    "language": "English",
+    "date": "c. 1600–1601",
+    "manuscripts": "Quarto and First Folio versions preserve textual differences.",
+    "context": "Prince Hamlet confronts a ghost, corruption, conscience, performance, and the burden of action.",
+    "themes": [
+      "grief",
+      "revenge",
+      "performance",
+      "conscience",
+      "corruption"
+    ],
+    "translation": "Arden, Folger, or Oxford annotated editions.",
+    "links": [
+      {
+        "label": "Project Gutenberg search",
+        "url": "https://www.gutenberg.org/ebooks/search/?query=Hamlet"
+      },
+      {
+        "label": "Wikisource search",
+        "url": "https://en.wikisource.org/wiki/Special:Search?search=Hamlet"
+      },
+      {
+        "label": "Open Library search",
+        "url": "https://openlibrary.org/search?q=Hamlet"
+      }
+    ]
+  },
+  {
+    "id": "king-lear",
+    "title": "King Lear",
+    "ribbon": "Jacobean England",
+    "civ": "English",
+    "category": "Drama",
+    "tags": "early modern drama english tragedy shakespeare",
+    "meta": "A tragedy of power, age, and recognition.",
+    "author": "William Shakespeare",
+    "language": "English",
+    "date": "c. 1605–1606",
+    "manuscripts": "Quarto and Folio versions differ in important ways.",
+    "context": "Lear divides his kingdom and enters a storm of betrayal, madness, truth, and late tenderness.",
+    "themes": [
+      "power",
+      "family",
+      "madness",
+      "suffering",
+      "recognition"
+    ],
+    "translation": "Arden, Folger, or Oxford annotated editions.",
+    "links": [
+      {
+        "label": "Project Gutenberg search",
+        "url": "https://www.gutenberg.org/ebooks/search/?query=King+Lear"
+      },
+      {
+        "label": "Wikisource search",
+        "url": "https://en.wikisource.org/wiki/Special:Search?search=King+Lear"
+      },
+      {
+        "label": "Open Library search",
+        "url": "https://openlibrary.org/search?q=King+Lear"
+      }
+    ]
+  },
+  {
+    "id": "faust",
+    "title": "Faust",
+    "ribbon": "German Classic",
+    "civ": "German",
+    "category": "Drama",
+    "tags": "modern drama german poetry philosophy",
+    "meta": "A dramatic poem of striving and temptation.",
+    "author": "Johann Wolfgang von Goethe",
+    "language": "German",
+    "date": "Part I 1808; Part II 1832",
+    "manuscripts": "Goethe’s long composition history and editions shape the work.",
+    "context": "Faust’s bargain with Mephistopheles becomes a vast meditation on desire, knowledge, guilt, and redemption.",
+    "themes": [
+      "striving",
+      "temptation",
+      "knowledge",
+      "desire",
+      "redemption"
+    ],
+    "translation": "Walter Kaufmann, David Luke, or Martin Greenberg.",
+    "links": [
+      {
+        "label": "Project Gutenberg search",
+        "url": "https://www.gutenberg.org/ebooks/search/?query=Faust"
+      },
+      {
+        "label": "Wikisource search",
+        "url": "https://en.wikisource.org/wiki/Special:Search?search=Faust"
+      },
+      {
+        "label": "Open Library search",
+        "url": "https://openlibrary.org/search?q=Faust"
+      }
+    ]
+  },
+  {
+    "id": "a-doll-s-house",
+    "title": "A Doll's House",
+    "ribbon": "Modern Norwegian Drama",
+    "civ": "Norwegian",
+    "category": "Drama",
+    "tags": "modern drama norwegian realism gender",
+    "meta": "A modern drama of marriage and selfhood.",
+    "author": "Henrik Ibsen",
+    "language": "Norwegian",
+    "date": "1879",
+    "manuscripts": "Early printed editions and performance history.",
+    "context": "Nora’s domestic life cracks open under debt, secrecy, and the demand for personal dignity.",
+    "themes": [
+      "marriage",
+      "freedom",
+      "gender",
+      "truth",
+      "selfhood"
+    ],
+    "translation": "Michael Meyer or modern stage translations.",
+    "links": [
+      {
+        "label": "Project Gutenberg search",
+        "url": "https://www.gutenberg.org/ebooks/search/?query=A+Doll's+House"
+      },
+      {
+        "label": "Wikisource search",
+        "url": "https://en.wikisource.org/wiki/Special:Search?search=A+Doll's+House"
+      },
+      {
+        "label": "Open Library search",
+        "url": "https://openlibrary.org/search?q=A+Doll's+House"
+      }
+    ]
+  },
+  {
+    "id": "the-cherry-orchard",
+    "title": "The Cherry Orchard",
+    "ribbon": "Russian Drama",
+    "civ": "Russian",
+    "category": "Drama",
+    "tags": "modern drama russian chekhov social change",
+    "meta": "A play of memory, land, and social change.",
+    "author": "Anton Chekhov",
+    "language": "Russian",
+    "date": "1904",
+    "manuscripts": "Printed and stage traditions preserve Chekhov’s final play.",
+    "context": "A family estate is sold as old orders fade and new realities arrive with quiet force.",
+    "themes": [
+      "memory",
+      "class change",
+      "loss",
+      "land",
+      "inaction"
+    ],
+    "translation": "Carol Rocamora or Laurence Senelick.",
+    "links": [
+      {
+        "label": "Project Gutenberg search",
+        "url": "https://www.gutenberg.org/ebooks/search/?query=The+Cherry+Orchard"
+      },
+      {
+        "label": "Wikisource search",
+        "url": "https://en.wikisource.org/wiki/Special:Search?search=The+Cherry+Orchard"
+      },
+      {
+        "label": "Open Library search",
+        "url": "https://openlibrary.org/search?q=The+Cherry+Orchard"
+      }
+    ]
+  },
+  {
+    "id": "divine-comedy",
+    "title": "Divine Comedy",
+    "ribbon": "Medieval Italy",
+    "civ": "Italian",
+    "category": "Poetry",
+    "tags": "medieval poetry italian epic christian vision",
+    "meta": "A journey through Hell, Purgatory, and Paradise.",
+    "author": "Dante Alighieri",
+    "language": "Italian",
+    "date": "c. 1308–1321",
+    "manuscripts": "Hundreds of manuscripts preserve a rich textual tradition.",
+    "context": "Dante’s pilgrimage through the afterlife becomes a vast poem of justice, love, politics, memory, and grace.",
+    "themes": [
+      "justice",
+      "love",
+      "exile",
+      "vision",
+      "salvation"
+    ],
+    "translation": "Hollander, Mandelbaum, or Dorothy Sayers.",
+    "links": [
+      {
+        "label": "Project Gutenberg search",
+        "url": "https://www.gutenberg.org/ebooks/search/?query=Divine+Comedy"
+      },
+      {
+        "label": "Wikisource search",
+        "url": "https://en.wikisource.org/wiki/Special:Search?search=Divine+Comedy"
+      },
+      {
+        "label": "Open Library search",
+        "url": "https://openlibrary.org/search?q=Divine+Comedy"
+      }
+    ]
+  },
+  {
+    "id": "canterbury-tales",
+    "title": "Canterbury Tales",
+    "ribbon": "Medieval England",
+    "civ": "English",
+    "category": "Poetry",
+    "tags": "medieval poetry english tales pilgrimage satire",
+    "meta": "A pilgrimage frame filled with voices.",
+    "author": "Geoffrey Chaucer",
+    "language": "Middle English",
+    "date": "late 14th century",
+    "manuscripts": "The Ellesmere and Hengwrt manuscripts are especially important.",
+    "context": "Pilgrims tell tales that range from sacred to bawdy, revealing medieval society through performance and satire.",
+    "themes": [
+      "pilgrimage",
+      "storytelling",
+      "satire",
+      "class",
+      "voice"
+    ],
+    "translation": "Nevill Coghill for modern verse; Riverside Chaucer for study.",
+    "links": [
+      {
+        "label": "Project Gutenberg search",
+        "url": "https://www.gutenberg.org/ebooks/search/?query=Canterbury+Tales"
+      },
+      {
+        "label": "Wikisource search",
+        "url": "https://en.wikisource.org/wiki/Special:Search?search=Canterbury+Tales"
+      },
+      {
+        "label": "Open Library search",
+        "url": "https://openlibrary.org/search?q=Canterbury+Tales"
+      }
+    ]
+  },
+  {
+    "id": "paradise-lost",
+    "title": "Paradise Lost",
+    "ribbon": "English Epic",
+    "civ": "English",
+    "category": "Poetry",
+    "tags": "early modern poetry english epic biblical",
+    "meta": "An English epic of fall, rebellion, and freedom.",
+    "author": "John Milton",
+    "language": "English",
+    "date": "1667; revised 1674",
+    "manuscripts": "Early printed editions preserve the text.",
+    "context": "Milton retells the fall of humanity through cosmic rebellion, temptation, obedience, and liberty.",
+    "themes": [
+      "fall",
+      "freedom",
+      "rebellion",
+      "obedience",
+      "cosmic order"
+    ],
+    "translation": "Alastair Fowler or John Leonard annotated editions.",
+    "links": [
+      {
+        "label": "Project Gutenberg search",
+        "url": "https://www.gutenberg.org/ebooks/search/?query=Paradise+Lost"
+      },
+      {
+        "label": "Wikisource search",
+        "url": "https://en.wikisource.org/wiki/Special:Search?search=Paradise+Lost"
+      },
+      {
+        "label": "Open Library search",
+        "url": "https://openlibrary.org/search?q=Paradise+Lost"
+      }
+    ]
+  },
+  {
+    "id": "leaves-of-grass",
+    "title": "Leaves of Grass",
+    "ribbon": "American Poetry",
+    "civ": "American",
+    "category": "Poetry",
+    "tags": "modern poetry american democracy self",
+    "meta": "A democratic poetic self-portrait.",
+    "author": "Walt Whitman",
+    "language": "English",
+    "date": "1855, expanded through 1892",
+    "manuscripts": "Multiple lifetime editions show Whitman’s revisions.",
+    "context": "Whitman’s expanding book sings body, labor, democracy, death, nature, and the many-voiced American self.",
+    "themes": [
+      "democracy",
+      "body",
+      "self",
+      "labor",
+      "nature"
+    ],
+    "translation": "Use the 1855 edition for origin, or the deathbed edition for fullness.",
+    "links": [
+      {
+        "label": "Project Gutenberg search",
+        "url": "https://www.gutenberg.org/ebooks/search/?query=Leaves+of+Grass"
+      },
+      {
+        "label": "Wikisource search",
+        "url": "https://en.wikisource.org/wiki/Special:Search?search=Leaves+of+Grass"
+      },
+      {
+        "label": "Open Library search",
+        "url": "https://openlibrary.org/search?q=Leaves+of+Grass"
+      }
+    ]
+  },
+  {
+    "id": "masnavi",
+    "title": "Masnavi",
+    "ribbon": "Persian Sufi Poetry",
+    "civ": "Persian",
+    "category": "Poetry",
+    "tags": "medieval poetry persian sufi spiritual tales",
+    "meta": "A vast Sufi poem of teaching stories.",
+    "author": "Jalal al-Din Rumi",
+    "language": "Persian",
+    "date": "13th century",
+    "manuscripts": "Manuscripts across Persianate and Sufi communities preserve the poem.",
+    "context": "The Masnavi uses story, humor, longing, and parable to explore love, self, and the divine.",
+    "themes": [
+      "love",
+      "spiritual longing",
+      "parable",
+      "transformation",
+      "teaching"
+    ],
+    "translation": "Jawid Mojaddedi or Reynold A. Nicholson.",
+    "links": [
+      {
+        "label": "Project Gutenberg search",
+        "url": "https://www.gutenberg.org/ebooks/search/?query=Masnavi"
+      },
+      {
+        "label": "Wikisource search",
+        "url": "https://en.wikisource.org/wiki/Special:Search?search=Masnavi"
+      },
+      {
+        "label": "Open Library search",
+        "url": "https://openlibrary.org/search?q=Masnavi"
+      }
+    ]
+  },
+  {
+    "id": "rubaiyat-of-omar-khayyam",
+    "title": "Rubaiyat of Omar Khayyam",
+    "ribbon": "Persian Quatrains",
+    "civ": "Persian",
+    "category": "Poetry",
+    "tags": "medieval poetry persian quatrains philosophy",
+    "meta": "Quatrains of time, wine, and transience.",
+    "author": "Omar Khayyam tradition; famously adapted by Edward FitzGerald",
+    "language": "Persian",
+    "date": "11th–12th century attributed tradition",
+    "manuscripts": "Manuscript attribution is complex and debated.",
+    "context": "Short quatrains meditate on impermanence, pleasure, skepticism, and cosmic mystery.",
+    "themes": [
+      "time",
+      "mortality",
+      "pleasure",
+      "skepticism",
+      "mystery"
+    ],
+    "translation": "Compare FitzGerald’s adaptation with modern literal translations.",
+    "links": [
+      {
+        "label": "Project Gutenberg search",
+        "url": "https://www.gutenberg.org/ebooks/search/?query=Rubaiyat+of+Omar+Khayyam"
+      },
+      {
+        "label": "Wikisource search",
+        "url": "https://en.wikisource.org/wiki/Special:Search?search=Rubaiyat+of+Omar+Khayyam"
+      },
+      {
+        "label": "Open Library search",
+        "url": "https://openlibrary.org/search?q=Rubaiyat+of+Omar+Khayyam"
+      }
+    ]
+  },
+  {
+    "id": "gitanjali",
+    "title": "Gitanjali",
+    "ribbon": "Bengali Poetry",
+    "civ": "Indian / Bengali",
+    "category": "Poetry",
+    "tags": "modern poetry indian bengali spiritual songs",
+    "meta": "Song offerings of devotion and wonder.",
+    "author": "Rabindranath Tagore",
+    "language": "Bengali; author’s English version",
+    "date": "1910 Bengali; 1912 English",
+    "manuscripts": "Printed editions and author translations shaped international reception.",
+    "context": "Lyric poems of devotion, nature, surrender, and spiritual intimacy.",
+    "themes": [
+      "devotion",
+      "nature",
+      "song",
+      "surrender",
+      "spirit"
+    ],
+    "translation": "Read Tagore’s English Gitanjali alongside newer Bengali-informed editions.",
+    "links": [
+      {
+        "label": "Project Gutenberg search",
+        "url": "https://www.gutenberg.org/ebooks/search/?query=Gitanjali"
+      },
+      {
+        "label": "Wikisource search",
+        "url": "https://en.wikisource.org/wiki/Special:Search?search=Gitanjali"
+      },
+      {
+        "label": "Open Library search",
+        "url": "https://openlibrary.org/search?q=Gitanjali"
+      }
+    ]
+  },
+  {
+    "id": "the-book-of-songs",
+    "title": "The Book of Songs",
+    "ribbon": "Ancient China",
+    "civ": "Chinese",
+    "category": "Poetry",
+    "tags": "ancient poetry chinese classical anthology songs",
+    "meta": "The Shijing, an ancient anthology of songs.",
+    "author": "Anonymous singers and court compilers",
+    "language": "Classical Chinese",
+    "date": "c. 11th–7th centuries BCE; compiled later",
+    "manuscripts": "Preserved as one of the Confucian classics.",
+    "context": "Court hymns, folk songs, ritual poems, and political voices form a foundational Chinese poetic collection.",
+    "themes": [
+      "song",
+      "ritual",
+      "court",
+      "love",
+      "labor"
+    ],
+    "translation": "Arthur Waley or newer annotated versions.",
+    "links": [
+      {
+        "label": "Project Gutenberg search",
+        "url": "https://www.gutenberg.org/ebooks/search/?query=The+Book+of+Songs"
+      },
+      {
+        "label": "Wikisource search",
+        "url": "https://en.wikisource.org/wiki/Special:Search?search=The+Book+of+Songs"
+      },
+      {
+        "label": "Open Library search",
+        "url": "https://openlibrary.org/search?q=The+Book+of+Songs"
+      }
+    ]
+  },
+  {
+    "id": "li-bai-selected-poems",
+    "title": "Li Bai Selected Poems",
+    "ribbon": "Tang China",
+    "civ": "Chinese",
+    "category": "Poetry",
+    "tags": "classical poetry chinese tang nature wine exile",
+    "meta": "High Tang lyric brilliance.",
+    "author": "Li Bai / Li Po",
+    "language": "Classical Chinese",
+    "date": "701–762 CE",
+    "manuscripts": "Preserved through Tang and later anthologies.",
+    "context": "Li Bai’s poems move through moonlight, mountains, wine, friendship, exile, and celestial imagination.",
+    "themes": [
+      "nature",
+      "friendship",
+      "wine",
+      "exile",
+      "imagination"
+    ],
+    "translation": "David Hinton or Arthur Cooper.",
+    "links": [
+      {
+        "label": "Project Gutenberg search",
+        "url": "https://www.gutenberg.org/ebooks/search/?query=Li+Bai+Selected+Poems"
+      },
+      {
+        "label": "Wikisource search",
+        "url": "https://en.wikisource.org/wiki/Special:Search?search=Li+Bai+Selected+Poems"
+      },
+      {
+        "label": "Open Library search",
+        "url": "https://openlibrary.org/search?q=Li+Bai+Selected+Poems"
+      }
+    ]
+  },
+  {
+    "id": "du-fu-selected-poems",
+    "title": "Du Fu Selected Poems",
+    "ribbon": "Tang China",
+    "civ": "Chinese",
+    "category": "Poetry",
+    "tags": "classical poetry chinese tang history suffering",
+    "meta": "Poetry of history, conscience, and care.",
+    "author": "Du Fu",
+    "language": "Classical Chinese",
+    "date": "712–770 CE",
+    "manuscripts": "Preserved through Chinese anthologies and commentaries.",
+    "context": "Du Fu’s poems combine personal hardship, political collapse, compassion, and technical mastery.",
+    "themes": [
+      "history",
+      "suffering",
+      "family",
+      "duty",
+      "craft"
+    ],
+    "translation": "David Hinton, Stephen Owen, or Burton Watson.",
+    "links": [
+      {
+        "label": "Project Gutenberg search",
+        "url": "https://www.gutenberg.org/ebooks/search/?query=Du+Fu+Selected+Poems"
+      },
+      {
+        "label": "Wikisource search",
+        "url": "https://en.wikisource.org/wiki/Special:Search?search=Du+Fu+Selected+Poems"
+      },
+      {
+        "label": "Open Library search",
+        "url": "https://openlibrary.org/search?q=Du+Fu+Selected+Poems"
+      }
+    ]
+  },
+  {
+    "id": "metamorphoses",
+    "title": "Metamorphoses",
+    "ribbon": "Ancient Rome",
+    "civ": "Roman",
+    "category": "Poetry",
+    "tags": "ancient poetry roman latin myth transformation",
+    "meta": "A mythic poem of transformation.",
+    "author": "Ovid",
+    "language": "Latin",
+    "date": "c. 8 CE",
+    "manuscripts": "Manuscripts preserve the poem through medieval and Renaissance reception.",
+    "context": "A continuous mythological poem where bodies, cities, gods, and stories transform across time.",
+    "themes": [
+      "transformation",
+      "desire",
+      "myth",
+      "art",
+      "violence"
+    ],
+    "translation": "Allen Mandelbaum, Charles Martin, or A. D. Melville.",
+    "links": [
+      {
+        "label": "Project Gutenberg search",
+        "url": "https://www.gutenberg.org/ebooks/search/?query=Metamorphoses"
+      },
+      {
+        "label": "Wikisource search",
+        "url": "https://en.wikisource.org/wiki/Special:Search?search=Metamorphoses"
+      },
+      {
+        "label": "Open Library search",
+        "url": "https://openlibrary.org/search?q=Metamorphoses"
+      }
+    ]
+  },
+  {
+    "id": "mart-n-fierro",
+    "title": "Martín Fierro",
+    "ribbon": "Argentine Gaucho Classic",
+    "civ": "Argentine / American",
+    "category": "Poetry",
+    "tags": "modern poetry americas argentina gaucho epic",
+    "meta": "A foundational gaucho poem.",
+    "author": "José Hernández",
+    "language": "Spanish",
+    "date": "1872 and 1879",
+    "manuscripts": "Printed editions and oral-cultural reception shaped its status.",
+    "context": "The gaucho Martín Fierro speaks exile, injustice, frontier violence, and national identity.",
+    "themes": [
+      "exile",
+      "frontier",
+      "justice",
+      "voice",
+      "identity"
+    ],
+    "translation": "Frank G. Carrino and Alberto J. Carlos for English translation.",
+    "links": [
+      {
+        "label": "Project Gutenberg search",
+        "url": "https://www.gutenberg.org/ebooks/search/?query=Martín+Fierro"
+      },
+      {
+        "label": "Wikisource search",
+        "url": "https://en.wikisource.org/wiki/Special:Search?search=Martín+Fierro"
+      },
+      {
+        "label": "Open Library search",
+        "url": "https://openlibrary.org/search?q=Martín+Fierro"
+      }
+    ]
+  },
+  {
+    "id": "don-quixote",
+    "title": "Don Quixote",
+    "ribbon": "Spanish Golden Age",
+    "civ": "Spanish",
+    "category": "Novels",
+    "tags": "early modern novel spanish satire chivalry",
+    "meta": "The great comic novel of books and reality.",
+    "author": "Miguel de Cervantes",
+    "language": "Spanish",
+    "date": "Part I 1605; Part II 1615",
+    "manuscripts": "Early printed editions; textual variants across printings.",
+    "context": "A reader of romances becomes a knight-errant, transforming roads, inns, windmills, and neighbors through imagination.",
+    "themes": [
+      "imagination",
+      "satire",
+      "friendship",
+      "reality",
+      "books"
+    ],
+    "translation": "Edith Grossman, John Rutherford, or Tobias Smollett for historic flavor.",
+    "links": [
+      {
+        "label": "Project Gutenberg search",
+        "url": "https://www.gutenberg.org/ebooks/search/?query=Don+Quixote"
+      },
+      {
+        "label": "Wikisource search",
+        "url": "https://en.wikisource.org/wiki/Special:Search?search=Don+Quixote"
+      },
+      {
+        "label": "Open Library search",
+        "url": "https://openlibrary.org/search?q=Don+Quixote"
+      }
+    ]
+  },
+  {
+    "id": "the-tale-of-genji",
+    "title": "The Tale of Genji",
+    "ribbon": "Classical Japan",
+    "civ": "Japanese",
+    "category": "Eastern Classics",
+    "tags": "classical novel japanese court romance psychology",
+    "meta": "Often called the first major psychological novel.",
+    "author": "Murasaki Shikibu",
+    "language": "Classical Japanese",
+    "date": "early 11th century",
+    "manuscripts": "Manuscript traditions and commentaries preserve the Heian masterpiece.",
+    "context": "Court life, love, impermanence, status, art, and memory unfold around Genji and generations after him.",
+    "themes": [
+      "impermanence",
+      "court life",
+      "love",
+      "memory",
+      "aesthetics"
+    ],
+    "translation": "Royall Tyler, Edward Seidensticker, or Dennis Washburn.",
+    "links": [
+      {
+        "label": "Project Gutenberg search",
+        "url": "https://www.gutenberg.org/ebooks/search/?query=The+Tale+of+Genji"
+      },
+      {
+        "label": "Wikisource search",
+        "url": "https://en.wikisource.org/wiki/Special:Search?search=The+Tale+of+Genji"
+      },
+      {
+        "label": "Open Library search",
+        "url": "https://openlibrary.org/search?q=The+Tale+of+Genji"
+      }
+    ]
+  },
+  {
+    "id": "journey-to-the-west",
+    "title": "Journey to the West",
+    "ribbon": "Ming China",
+    "civ": "Chinese",
+    "category": "Eastern Classics",
+    "tags": "early modern novel chinese buddhist adventure monkey",
+    "meta": "A comic pilgrimage adventure.",
+    "author": "Attributed to Wu Cheng’en",
+    "language": "Chinese",
+    "date": "16th century",
+    "manuscripts": "Ming print tradition and later editions.",
+    "context": "The monk Xuanzang journeys west with Monkey, Pigsy, Sandy, and a dragon-horse through trials of discipline and transformation.",
+    "themes": [
+      "pilgrimage",
+      "transformation",
+      "comedy",
+      "discipline",
+      "redemption"
+    ],
+    "translation": "Anthony C. Yu complete; Arthur Waley abridged Monkey.",
+    "links": [
+      {
+        "label": "Project Gutenberg search",
+        "url": "https://www.gutenberg.org/ebooks/search/?query=Journey+to+the+West"
+      },
+      {
+        "label": "Wikisource search",
+        "url": "https://en.wikisource.org/wiki/Special:Search?search=Journey+to+the+West"
+      },
+      {
+        "label": "Open Library search",
+        "url": "https://openlibrary.org/search?q=Journey+to+the+West"
+      }
+    ]
+  },
+  {
+    "id": "one-thousand-and-one-nights",
+    "title": "One Thousand and One Nights",
+    "ribbon": "Arabic Literary Tradition",
+    "civ": "Arabic",
+    "category": "Eastern Classics",
+    "tags": "medieval stories arabic persian indian frame tales",
+    "meta": "A legendary frame-tale collection.",
+    "author": "Layered Arabic, Persian, Indian, and other traditions",
+    "language": "Arabic",
+    "date": "compiled over many centuries; medieval manuscripts",
+    "manuscripts": "Manuscripts and printed editions vary greatly by region and era.",
+    "context": "Scheherazade’s storytelling frames voyages, wonders, jokes, romances, dangers, and survival through narrative art.",
+    "themes": [
+      "storytelling",
+      "survival",
+      "wonder",
+      "justice",
+      "desire"
+    ],
+    "translation": "Husain Haddawy for literary selection; Malcolm Lyons for breadth.",
+    "links": [
+      {
+        "label": "Project Gutenberg search",
+        "url": "https://www.gutenberg.org/ebooks/search/?query=One+Thousand+and+One+Nights"
+      },
+      {
+        "label": "Wikisource search",
+        "url": "https://en.wikisource.org/wiki/Special:Search?search=One+Thousand+and+One+Nights"
+      },
+      {
+        "label": "Open Library search",
+        "url": "https://openlibrary.org/search?q=One+Thousand+and+One+Nights"
+      }
+    ]
+  },
+  {
+    "id": "the-count-of-monte-cristo",
+    "title": "The Count of Monte Cristo",
+    "ribbon": "French Classic",
+    "civ": "French",
+    "category": "Novels",
+    "tags": "modern novel french revenge adventure justice",
+    "meta": "A grand novel of betrayal and revenge.",
+    "author": "Alexandre Dumas",
+    "language": "French",
+    "date": "1844–1846 serial publication",
+    "manuscripts": "Serial print history and later book editions.",
+    "context": "Edmond Dantès is betrayed, imprisoned, transformed, and returns as an architect of justice and revenge.",
+    "themes": [
+      "revenge",
+      "justice",
+      "identity",
+      "patience",
+      "mercy"
+    ],
+    "translation": "Robin Buss translation is strong for modern readers.",
+    "links": [
+      {
+        "label": "Project Gutenberg search",
+        "url": "https://www.gutenberg.org/ebooks/search/?query=The+Count+of+Monte+Cristo"
+      },
+      {
+        "label": "Wikisource search",
+        "url": "https://en.wikisource.org/wiki/Special:Search?search=The+Count+of+Monte+Cristo"
+      },
+      {
+        "label": "Open Library search",
+        "url": "https://openlibrary.org/search?q=The+Count+of+Monte+Cristo"
+      }
+    ]
+  },
+  {
+    "id": "les-mis-rables",
+    "title": "Les Misérables",
+    "ribbon": "French Classic",
+    "civ": "French",
+    "category": "Novels",
+    "tags": "modern novel french justice poverty revolution",
+    "meta": "A vast novel of justice, mercy, and social suffering.",
+    "author": "Victor Hugo",
+    "language": "French",
+    "date": "1862",
+    "manuscripts": "Nineteenth-century print editions and manuscript materials.",
+    "context": "Jean Valjean’s life intersects with law, poverty, revolution, love, and redemption in nineteenth-century France.",
+    "themes": [
+      "mercy",
+      "law",
+      "poverty",
+      "revolution",
+      "redemption"
+    ],
+    "translation": "Julie Rose or Norman Denny.",
+    "links": [
+      {
+        "label": "Project Gutenberg search",
+        "url": "https://www.gutenberg.org/ebooks/search/?query=Les+Misérables"
+      },
+      {
+        "label": "Wikisource search",
+        "url": "https://en.wikisource.org/wiki/Special:Search?search=Les+Misérables"
+      },
+      {
+        "label": "Open Library search",
+        "url": "https://openlibrary.org/search?q=Les+Misérables"
+      }
+    ]
+  },
+  {
+    "id": "war-and-peace",
+    "title": "War and Peace",
+    "ribbon": "Russian Classic",
+    "civ": "Russian",
+    "category": "Novels",
+    "tags": "modern novel russian history war family",
+    "meta": "A panoramic novel of history and private life.",
+    "author": "Leo Tolstoy",
+    "language": "Russian",
+    "date": "1865–1869",
+    "manuscripts": "Serial publication and later editions preserve revisions.",
+    "context": "Families, armies, salons, battlefields, and inward awakenings move through the Napoleonic wars.",
+    "themes": [
+      "history",
+      "family",
+      "war",
+      "freedom",
+      "time"
+    ],
+    "translation": "Pevear and Volokhonsky, Briggs, or Maude.",
+    "links": [
+      {
+        "label": "Project Gutenberg search",
+        "url": "https://www.gutenberg.org/ebooks/search/?query=War+and+Peace"
+      },
+      {
+        "label": "Wikisource search",
+        "url": "https://en.wikisource.org/wiki/Special:Search?search=War+and+Peace"
+      },
+      {
+        "label": "Open Library search",
+        "url": "https://openlibrary.org/search?q=War+and+Peace"
+      }
+    ]
+  },
+  {
+    "id": "crime-and-punishment",
+    "title": "Crime and Punishment",
+    "ribbon": "Russian Classic",
+    "civ": "Russian",
+    "category": "Novels",
+    "tags": "modern novel russian psychology crime guilt",
+    "meta": "A psychological novel of guilt and grace.",
+    "author": "Fyodor Dostoevsky",
+    "language": "Russian",
+    "date": "1866",
+    "manuscripts": "Serialized text and print editions.",
+    "context": "Raskolnikov’s crime draws him into fever, ideology, conscience, poverty, and the possibility of confession.",
+    "themes": [
+      "guilt",
+      "poverty",
+      "ideology",
+      "conscience",
+      "redemption"
+    ],
+    "translation": "Michael Katz, Oliver Ready, or Pevear and Volokhonsky.",
+    "links": [
+      {
+        "label": "Project Gutenberg search",
+        "url": "https://www.gutenberg.org/ebooks/search/?query=Crime+and+Punishment"
+      },
+      {
+        "label": "Wikisource search",
+        "url": "https://en.wikisource.org/wiki/Special:Search?search=Crime+and+Punishment"
+      },
+      {
+        "label": "Open Library search",
+        "url": "https://openlibrary.org/search?q=Crime+and+Punishment"
+      }
+    ]
+  },
+  {
+    "id": "the-brothers-karamazov",
+    "title": "The Brothers Karamazov",
+    "ribbon": "Russian Classic",
+    "civ": "Russian",
+    "category": "Novels",
+    "tags": "modern novel russian faith family philosophy",
+    "meta": "A family tragedy and philosophical novel.",
+    "author": "Fyodor Dostoevsky",
+    "language": "Russian",
+    "date": "1879–1880",
+    "manuscripts": "Serial publication shortly before the author’s death.",
+    "context": "The Karamazov family becomes a stage for faith, doubt, sensuality, justice, and moral responsibility.",
+    "themes": [
+      "faith",
+      "doubt",
+      "family",
+      "justice",
+      "responsibility"
+    ],
+    "translation": "Michael Katz, Pevear and Volokhonsky, or Ignat Avsey.",
+    "links": [
+      {
+        "label": "Project Gutenberg search",
+        "url": "https://www.gutenberg.org/ebooks/search/?query=The+Brothers+Karamazov"
+      },
+      {
+        "label": "Wikisource search",
+        "url": "https://en.wikisource.org/wiki/Special:Search?search=The+Brothers+Karamazov"
+      },
+      {
+        "label": "Open Library search",
+        "url": "https://openlibrary.org/search?q=The+Brothers+Karamazov"
+      }
+    ]
+  },
+  {
+    "id": "moby-dick",
+    "title": "Moby-Dick",
+    "ribbon": "American Classic",
+    "civ": "American",
+    "category": "Novels",
+    "tags": "modern novel american sea obsession whaling",
+    "meta": "A sea epic of obsession and metaphysics.",
+    "author": "Herman Melville",
+    "language": "English",
+    "date": "1851",
+    "manuscripts": "Early British and American editions differ.",
+    "context": "Ishmael joins the Pequod under Captain Ahab, whose hunt for the white whale becomes cosmic obsession.",
+    "themes": [
+      "obsession",
+      "nature",
+      "fate",
+      "knowledge",
+      "community"
+    ],
+    "translation": "Northwestern-Newberry or Norton Critical Edition.",
+    "links": [
+      {
+        "label": "Project Gutenberg search",
+        "url": "https://www.gutenberg.org/ebooks/search/?query=Moby-Dick"
+      },
+      {
+        "label": "Wikisource search",
+        "url": "https://en.wikisource.org/wiki/Special:Search?search=Moby-Dick"
+      },
+      {
+        "label": "Open Library search",
+        "url": "https://openlibrary.org/search?q=Moby-Dick"
+      }
+    ]
+  },
+  {
+    "id": "dream-of-the-red-chamber",
+    "title": "Dream of the Red Chamber",
+    "ribbon": "Qing China",
+    "civ": "Chinese",
+    "category": "Eastern Classics",
+    "tags": "early modern novel chinese qing family dream",
+    "meta": "A monumental Chinese family novel.",
+    "author": "Cao Xueqin; later editorial completion attributed to Gao E",
+    "language": "Chinese",
+    "date": "mid-18th century",
+    "manuscripts": "Manuscript versions and later printed 120-chapter editions.",
+    "context": "A great household’s decline unfolds through love, poetry, dreams, family politics, and spiritual allegory.",
+    "themes": [
+      "family",
+      "decline",
+      "love",
+      "dreams",
+      "illusion"
+    ],
+    "translation": "David Hawkes and John Minford, The Story of the Stone.",
+    "links": [
+      {
+        "label": "Project Gutenberg search",
+        "url": "https://www.gutenberg.org/ebooks/search/?query=Dream+of+the+Red+Chamber"
+      },
+      {
+        "label": "Wikisource search",
+        "url": "https://en.wikisource.org/wiki/Special:Search?search=Dream+of+the+Red+Chamber"
+      },
+      {
+        "label": "Open Library search",
+        "url": "https://openlibrary.org/search?q=Dream+of+the+Red+Chamber"
+      }
+    ]
+  },
+  {
+    "id": "things-fall-apart",
+    "title": "Things Fall Apart",
+    "ribbon": "Modern African Classic",
+    "civ": "Igbo / Nigerian",
+    "category": "African Traditions",
+    "tags": "modern novel african igbo colonialism tradition",
+    "meta": "A landmark modern African novel.",
+    "author": "Chinua Achebe",
+    "language": "English, shaped by Igbo oral forms",
+    "date": "1958",
+    "manuscripts": "Modern print publication; copyright protected.",
+    "context": "Okonkwo’s life and Igbo community are transformed under internal pressures and colonial intrusion.",
+    "themes": [
+      "tradition",
+      "colonialism",
+      "masculinity",
+      "change",
+      "community"
+    ],
+    "translation": "Use an authorized modern edition with notes; full text may require library or purchase.",
+    "links": [
+      {
+        "label": "Project Gutenberg search",
+        "url": "https://www.gutenberg.org/ebooks/search/?query=Things+Fall+Apart"
+      },
+      {
+        "label": "Wikisource search",
+        "url": "https://en.wikisource.org/wiki/Special:Search?search=Things+Fall+Apart"
+      },
+      {
+        "label": "Open Library search",
+        "url": "https://openlibrary.org/search?q=Things+Fall+Apart"
+      }
+    ]
+  },
+  {
+    "id": "pride-and-prejudice",
+    "title": "Pride and Prejudice",
+    "ribbon": "English Classic",
+    "civ": "English",
+    "category": "Novels",
+    "tags": "modern novel english marriage manners satire",
+    "meta": "A brilliant novel of manners and judgment.",
+    "author": "Jane Austen",
+    "language": "English",
+    "date": "1813",
+    "manuscripts": "Early print editions and manuscript fragments.",
+    "context": "Elizabeth Bennet and Mr. Darcy move through pride, prejudice, family pressure, money, and self-knowledge.",
+    "themes": [
+      "judgment",
+      "marriage",
+      "class",
+      "wit",
+      "self-knowledge"
+    ],
+    "translation": "Oxford, Penguin, or Norton annotated editions.",
+    "links": [
+      {
+        "label": "Project Gutenberg search",
+        "url": "https://www.gutenberg.org/ebooks/search/?query=Pride+and+Prejudice"
+      },
+      {
+        "label": "Wikisource search",
+        "url": "https://en.wikisource.org/wiki/Special:Search?search=Pride+and+Prejudice"
+      },
+      {
+        "label": "Open Library search",
+        "url": "https://openlibrary.org/search?q=Pride+and+Prejudice"
+      }
+    ]
+  },
+  {
+    "id": "frankenstein",
+    "title": "Frankenstein",
+    "ribbon": "English Romantic Classic",
+    "civ": "English",
+    "category": "Novels",
+    "tags": "modern novel gothic science creation ethics",
+    "meta": "A modern myth of creation and responsibility.",
+    "author": "Mary Shelley",
+    "language": "English",
+    "date": "1818; revised 1831",
+    "manuscripts": "1818 and 1831 editions differ in tone and framing.",
+    "context": "Victor Frankenstein creates life and refuses responsibility, unleashing grief, loneliness, pursuit, and ethical terror.",
+    "themes": [
+      "creation",
+      "responsibility",
+      "loneliness",
+      "science",
+      "monstrosity"
+    ],
+    "translation": "Read both 1818 and 1831 versions if possible.",
+    "links": [
+      {
+        "label": "Project Gutenberg search",
+        "url": "https://www.gutenberg.org/ebooks/search/?query=Frankenstein"
+      },
+      {
+        "label": "Wikisource search",
+        "url": "https://en.wikisource.org/wiki/Special:Search?search=Frankenstein"
+      },
+      {
+        "label": "Open Library search",
+        "url": "https://openlibrary.org/search?q=Frankenstein"
+      }
+    ]
+  },
+  {
+    "id": "jane-eyre",
+    "title": "Jane Eyre",
+    "ribbon": "English Classic",
+    "civ": "English",
+    "category": "Novels",
+    "tags": "modern novel english gothic feminism selfhood",
+    "meta": "A novel of conscience and self-respect.",
+    "author": "Charlotte Brontë",
+    "language": "English",
+    "date": "1847",
+    "manuscripts": "Victorian print editions and reception history.",
+    "context": "Jane’s path from orphanhood to love tests independence, morality, faith, and inner equality.",
+    "themes": [
+      "selfhood",
+      "love",
+      "faith",
+      "class",
+      "conscience"
+    ],
+    "translation": "Norton, Penguin, or Oxford annotated editions.",
+    "links": [
+      {
+        "label": "Project Gutenberg search",
+        "url": "https://www.gutenberg.org/ebooks/search/?query=Jane+Eyre"
+      },
+      {
+        "label": "Wikisource search",
+        "url": "https://en.wikisource.org/wiki/Special:Search?search=Jane+Eyre"
+      },
+      {
+        "label": "Open Library search",
+        "url": "https://openlibrary.org/search?q=Jane+Eyre"
+      }
+    ]
+  },
+  {
+    "id": "wuthering-heights",
+    "title": "Wuthering Heights",
+    "ribbon": "English Classic",
+    "civ": "English",
+    "category": "Novels",
+    "tags": "modern novel english gothic passion revenge",
+    "meta": "A fierce gothic novel of passion and haunting.",
+    "author": "Emily Brontë",
+    "language": "English",
+    "date": "1847",
+    "manuscripts": "Early editions and later editorial changes by Charlotte Brontë.",
+    "context": "Catherine, Heathcliff, and two households become bound in love, revenge, inheritance, and wild landscape.",
+    "themes": [
+      "passion",
+      "revenge",
+      "class",
+      "haunting",
+      "landscape"
+    ],
+    "translation": "Oxford, Penguin, or Norton annotated editions.",
+    "links": [
+      {
+        "label": "Project Gutenberg search",
+        "url": "https://www.gutenberg.org/ebooks/search/?query=Wuthering+Heights"
+      },
+      {
+        "label": "Wikisource search",
+        "url": "https://en.wikisource.org/wiki/Special:Search?search=Wuthering+Heights"
+      },
+      {
+        "label": "Open Library search",
+        "url": "https://openlibrary.org/search?q=Wuthering+Heights"
+      }
+    ]
+  },
+  {
+    "id": "the-scarlet-letter",
+    "title": "The Scarlet Letter",
+    "ribbon": "American Classic",
+    "civ": "American",
+    "category": "Novels",
+    "tags": "modern novel american puritan guilt symbol",
+    "meta": "A symbolic novel of sin and social judgment.",
+    "author": "Nathaniel Hawthorne",
+    "language": "English",
+    "date": "1850",
+    "manuscripts": "Nineteenth-century print editions.",
+    "context": "Hester Prynne’s public punishment becomes a meditation on shame, secrecy, strength, and community judgment.",
+    "themes": [
+      "shame",
+      "symbol",
+      "sin",
+      "community",
+      "resilience"
+    ],
+    "translation": "Norton Critical or Oxford editions.",
+    "links": [
+      {
+        "label": "Project Gutenberg search",
+        "url": "https://www.gutenberg.org/ebooks/search/?query=The+Scarlet+Letter"
+      },
+      {
+        "label": "Wikisource search",
+        "url": "https://en.wikisource.org/wiki/Special:Search?search=The+Scarlet+Letter"
+      },
+      {
+        "label": "Open Library search",
+        "url": "https://openlibrary.org/search?q=The+Scarlet+Letter"
+      }
+    ]
+  },
+  {
+    "id": "madame-bovary",
+    "title": "Madame Bovary",
+    "ribbon": "French Classic",
+    "civ": "French",
+    "category": "Novels",
+    "tags": "modern novel french realism desire provincial life",
+    "meta": "A realist novel of desire and illusion.",
+    "author": "Gustave Flaubert",
+    "language": "French",
+    "date": "1856 serial; 1857 book",
+    "manuscripts": "Publication history includes a famous obscenity trial.",
+    "context": "Emma Bovary seeks romance beyond provincial life, colliding with debt, fantasy, and social constraint.",
+    "themes": [
+      "desire",
+      "illusion",
+      "realism",
+      "debt",
+      "provincial life"
+    ],
+    "translation": "Lydia Davis, Francis Steegmuller, or Margaret Mauldon.",
+    "links": [
+      {
+        "label": "Project Gutenberg search",
+        "url": "https://www.gutenberg.org/ebooks/search/?query=Madame+Bovary"
+      },
+      {
+        "label": "Wikisource search",
+        "url": "https://en.wikisource.org/wiki/Special:Search?search=Madame+Bovary"
+      },
+      {
+        "label": "Open Library search",
+        "url": "https://openlibrary.org/search?q=Madame+Bovary"
+      }
+    ]
+  },
+  {
+    "id": "anna-karenina",
+    "title": "Anna Karenina",
+    "ribbon": "Russian Classic",
+    "civ": "Russian",
+    "category": "Novels",
+    "tags": "modern novel russian love society family",
+    "meta": "A novel of love, society, and moral searching.",
+    "author": "Leo Tolstoy",
+    "language": "Russian",
+    "date": "1875–1877 serial publication",
+    "manuscripts": "Serial and book editions reflect Tolstoy’s revisions.",
+    "context": "Anna’s passion and Levin’s searching unfold across family, agriculture, society, faith, and judgment.",
+    "themes": [
+      "love",
+      "family",
+      "society",
+      "faith",
+      "judgment"
+    ],
+    "translation": "Rosamund Bartlett, Pevear and Volokhonsky, or Maude.",
+    "links": [
+      {
+        "label": "Project Gutenberg search",
+        "url": "https://www.gutenberg.org/ebooks/search/?query=Anna+Karenina"
+      },
+      {
+        "label": "Wikisource search",
+        "url": "https://en.wikisource.org/wiki/Special:Search?search=Anna+Karenina"
+      },
+      {
+        "label": "Open Library search",
+        "url": "https://openlibrary.org/search?q=Anna+Karenina"
+      }
+    ]
+  },
+  {
+    "id": "the-trial",
+    "title": "The Trial",
+    "ribbon": "Modern European Classic",
+    "civ": "German-language / Czech",
+    "category": "Modern Classics",
+    "tags": "modern novel kafka law absurd bureaucracy",
+    "meta": "A parable of law and bewilderment.",
+    "author": "Franz Kafka",
+    "language": "German",
+    "date": "written 1914–1915; published 1925",
+    "manuscripts": "Posthumously edited from Kafka’s manuscript materials.",
+    "context": "Josef K. is arrested without clear charge and enters a dreamlike system of law, guilt, and unreachable authority.",
+    "themes": [
+      "law",
+      "guilt",
+      "bureaucracy",
+      "absurdity",
+      "alienation"
+    ],
+    "translation": "Breon Mitchell or Mike Mitchell.",
+    "links": [
+      {
+        "label": "Project Gutenberg search",
+        "url": "https://www.gutenberg.org/ebooks/search/?query=The+Trial"
+      },
+      {
+        "label": "Wikisource search",
+        "url": "https://en.wikisource.org/wiki/Special:Search?search=The+Trial"
+      },
+      {
+        "label": "Open Library search",
+        "url": "https://openlibrary.org/search?q=The+Trial"
+      }
+    ]
+  },
+  {
+    "id": "pedro-p-ramo",
+    "title": "Pedro Páramo",
+    "ribbon": "Mexican Classic",
+    "civ": "Mexican / American",
+    "category": "Americas",
+    "tags": "modern novel americas mexican memory ghosts",
+    "meta": "A ghostly landmark of Latin American fiction.",
+    "author": "Juan Rulfo",
+    "language": "Spanish",
+    "date": "1955",
+    "manuscripts": "Modern print publication; copyright protected in many places.",
+    "context": "Juan Preciado enters Comala seeking his father and hears a town of memory, violence, desire, and the dead.",
+    "themes": [
+      "memory",
+      "ghosts",
+      "violence",
+      "fatherhood",
+      "land"
+    ],
+    "translation": "Margaret Sayers Peden translation; use authorized edition.",
+    "links": [
+      {
+        "label": "Project Gutenberg search",
+        "url": "https://www.gutenberg.org/ebooks/search/?query=Pedro+Páramo"
+      },
+      {
+        "label": "Wikisource search",
+        "url": "https://en.wikisource.org/wiki/Special:Search?search=Pedro+Páramo"
+      },
+      {
+        "label": "Open Library search",
+        "url": "https://openlibrary.org/search?q=Pedro+Páramo"
+      }
+    ]
+  },
+  {
+    "id": "the-tale-of-the-bamboo-cutter",
+    "title": "The Tale of the Bamboo Cutter",
+    "ribbon": "Classical Japan",
+    "civ": "Japanese",
+    "category": "Eastern Classics",
+    "tags": "classical tale japanese folklore moon prose",
+    "meta": "An early Japanese prose tale of the moon princess.",
+    "author": "Anonymous",
+    "language": "Classical Japanese",
+    "date": "c. 9th–10th century",
+    "manuscripts": "Manuscript traditions preserve the tale.",
+    "context": "A bamboo cutter finds a radiant child who grows into Princess Kaguya and resists earthly possession.",
+    "themes": [
+      "wonder",
+      "impermanence",
+      "courtship",
+      "moon",
+      "departure"
+    ],
+    "translation": "Use a modern annotated translation of Taketori monogatari.",
+    "links": [
+      {
+        "label": "Project Gutenberg search",
+        "url": "https://www.gutenberg.org/ebooks/search/?query=The+Tale+of+the+Bamboo+Cutter"
+      },
+      {
+        "label": "Wikisource search",
+        "url": "https://en.wikisource.org/wiki/Special:Search?search=The+Tale+of+the+Bamboo+Cutter"
+      },
+      {
+        "label": "Open Library search",
+        "url": "https://openlibrary.org/search?q=The+Tale+of+the+Bamboo+Cutter"
+      }
+    ]
+  },
+  {
+    "id": "the-pillow-book",
+    "title": "The Pillow Book",
+    "ribbon": "Heian Japan",
+    "civ": "Japanese",
+    "category": "Eastern Classics",
+    "tags": "classical japanese essays court women lists",
+    "meta": "A brilliant courtly miscellany.",
+    "author": "Sei Shōnagon",
+    "language": "Classical Japanese",
+    "date": "c. 1002",
+    "manuscripts": "Manuscript traditions and later editions preserve variant forms.",
+    "context": "Lists, observations, wit, seasonal images, and court life create an intimate aesthetic world.",
+    "themes": [
+      "aesthetics",
+      "court life",
+      "lists",
+      "wit",
+      "attention"
+    ],
+    "translation": "Meredith McKinney or Ivan Morris.",
+    "links": [
+      {
+        "label": "Project Gutenberg search",
+        "url": "https://www.gutenberg.org/ebooks/search/?query=The+Pillow+Book"
+      },
+      {
+        "label": "Wikisource search",
+        "url": "https://en.wikisource.org/wiki/Special:Search?search=The+Pillow+Book"
+      },
+      {
+        "label": "Open Library search",
+        "url": "https://openlibrary.org/search?q=The+Pillow+Book"
+      }
+    ]
+  },
+  {
+    "id": "narrative-of-the-life-of-frederick-douglass",
+    "title": "Narrative of the Life of Frederick Douglass",
+    "ribbon": "American Testimony",
+    "civ": "American",
+    "category": "Americas",
+    "tags": "modern autobiography american slavery freedom rhetoric",
+    "meta": "A classic narrative of slavery and freedom.",
+    "author": "Frederick Douglass",
+    "language": "English",
+    "date": "1845",
+    "manuscripts": "Nineteenth-century print editions and later revisions.",
+    "context": "Douglass recounts enslavement, literacy, resistance, escape, and the moral force of testimony.",
+    "themes": [
+      "freedom",
+      "literacy",
+      "slavery",
+      "testimony",
+      "resistance"
+    ],
+    "translation": "Use the 1845 narrative with historical notes.",
+    "links": [
+      {
+        "label": "Project Gutenberg search",
+        "url": "https://www.gutenberg.org/ebooks/search/?query=Narrative+of+the+Life+of+Frederick+Douglass"
+      },
+      {
+        "label": "Wikisource search",
+        "url": "https://en.wikisource.org/wiki/Special:Search?search=Narrative+of+the+Life+of+Frederick+Douglass"
+      },
+      {
+        "label": "Open Library search",
+        "url": "https://openlibrary.org/search?q=Narrative+of+the+Life+of+Frederick+Douglass"
+      }
+    ]
+  },
+  {
+    "id": "incidents-in-the-life-of-a-slave-girl",
+    "title": "Incidents in the Life of a Slave Girl",
+    "ribbon": "American Testimony",
+    "civ": "American",
+    "category": "Americas",
+    "tags": "modern autobiography american slavery women freedom",
+    "meta": "A powerful narrative of slavery, gender, and freedom.",
+    "author": "Harriet Jacobs / Linda Brent",
+    "language": "English",
+    "date": "1861",
+    "manuscripts": "Nineteenth-century print publication and later recovery.",
+    "context": "Jacobs tells of captivity, motherhood, sexual coercion, hiding, endurance, and liberation.",
+    "themes": [
+      "freedom",
+      "motherhood",
+      "slavery",
+      "gender",
+      "testimony"
+    ],
+    "translation": "Jean Fagan Yellin edition is important for context.",
+    "links": [
+      {
+        "label": "Project Gutenberg search",
+        "url": "https://www.gutenberg.org/ebooks/search/?query=Incidents+in+the+Life+of+a+Slave+Girl"
+      },
+      {
+        "label": "Wikisource search",
+        "url": "https://en.wikisource.org/wiki/Special:Search?search=Incidents+in+the+Life+of+a+Slave+Girl"
+      },
+      {
+        "label": "Open Library search",
+        "url": "https://openlibrary.org/search?q=Incidents+in+the+Life+of+a+Slave+Girl"
+      }
+    ]
+  },
+  {
+    "id": "the-tale-of-kieu",
+    "title": "The Tale of Kieu",
+    "ribbon": "Vietnamese Classic",
+    "civ": "Vietnamese",
+    "category": "Eastern Classics",
+    "tags": "early modern poetry vietnamese novel verse fate",
+    "meta": "A Vietnamese verse-novel of fate and endurance.",
+    "author": "Nguyễn Du",
+    "language": "Vietnamese chữ Nôm",
+    "date": "early 19th century",
+    "manuscripts": "Manuscript and print traditions in chữ Nôm and quốc ngữ.",
+    "context": "Thúy Kiều’s beauty, sacrifice, displacement, and resilience make this a central Vietnamese classic.",
+    "themes": [
+      "fate",
+      "sacrifice",
+      "beauty",
+      "resilience",
+      "family"
+    ],
+    "translation": "Huỳnh Sanh Thông or Vladislav Zhukov.",
+    "links": [
+      {
+        "label": "Project Gutenberg search",
+        "url": "https://www.gutenberg.org/ebooks/search/?query=The+Tale+of+Kieu"
+      },
+      {
+        "label": "Wikisource search",
+        "url": "https://en.wikisource.org/wiki/Special:Search?search=The+Tale+of+Kieu"
+      },
+      {
+        "label": "Open Library search",
+        "url": "https://openlibrary.org/search?q=The+Tale+of+Kieu"
+      }
+    ]
+  },
+  {
+    "id": "if-divination-verses",
+    "title": "Ifá Divination Verses",
+    "ribbon": "Yoruba Sacred Oral Tradition",
+    "civ": "Yoruba",
+    "category": "African Traditions",
+    "tags": "african oral poetry yoruba philosophy sacred",
+    "meta": "A living corpus of Yoruba wisdom literature.",
+    "author": "Yoruba oral tradition and babalawo lineages",
+    "language": "Yoruba",
+    "date": "Ancient oral tradition; written records modern",
+    "manuscripts": "Preserved through memorized verses, performance, divination practice, and scholarship.",
+    "context": "Odu Ifá verses encode stories, ethics, cosmology, ritual knowledge, and practical counsel.",
+    "themes": [
+      "wisdom",
+      "cosmology",
+      "ethics",
+      "oral memory",
+      "destiny"
+    ],
+    "translation": "Use scholarly selections by Wande Abimbola and related Yoruba studies.",
+    "links": [
+      {
+        "label": "Project Gutenberg search",
+        "url": "https://www.gutenberg.org/ebooks/search/?query=Ifá+Divination+Verses"
+      },
+      {
+        "label": "Wikisource search",
+        "url": "https://en.wikisource.org/wiki/Special:Search?search=Ifá+Divination+Verses"
+      },
+      {
+        "label": "Open Library search",
+        "url": "https://openlibrary.org/search?q=Ifá+Divination+Verses"
+      }
+    ]
+  },
+  {
+    "id": "the-forest-of-a-thousand-daemons",
+    "title": "The Forest of a Thousand Daemons",
+    "ribbon": "Yoruba Modern Classic",
+    "civ": "Yoruba / Nigerian",
+    "category": "African Traditions",
+    "tags": "modern novel african yoruba fantasy oral tradition",
+    "meta": "A pioneering Yoruba-language fantasy narrative.",
+    "author": "D. O. Fagunwa",
+    "language": "Yoruba",
+    "date": "1938",
+    "manuscripts": "Modern print publication; translated into English later.",
+    "context": "A hunter’s journey through enchanted landscapes draws on Yoruba oral storytelling, moral testing, and wonder.",
+    "themes": [
+      "journey",
+      "wonder",
+      "morality",
+      "orality",
+      "forest"
+    ],
+    "translation": "Wole Soyinka’s English translation is well known.",
+    "links": [
+      {
+        "label": "Project Gutenberg search",
+        "url": "https://www.gutenberg.org/ebooks/search/?query=The+Forest+of+a+Thousand+Daemons"
+      },
+      {
+        "label": "Wikisource search",
+        "url": "https://en.wikisource.org/wiki/Special:Search?search=The+Forest+of+a+Thousand+Daemons"
+      },
+      {
+        "label": "Open Library search",
+        "url": "https://openlibrary.org/search?q=The+Forest+of+a+Thousand+Daemons"
+      }
+    ]
+  },
+  {
+    "id": "the-conference-of-the-birds",
+    "title": "The Conference of the Birds",
+    "ribbon": "Persian Sufi Classic",
+    "civ": "Persian",
+    "category": "Poetry",
+    "tags": "medieval poetry persian sufi allegory birds",
+    "meta": "A mystical allegory of the soul’s journey.",
+    "author": "Farid ud-Din Attar",
+    "language": "Persian",
+    "date": "c. 1177 CE",
+    "manuscripts": "Persian manuscript traditions preserve the poem.",
+    "context": "Birds seek the Simurgh through valleys of longing, surrender, bewilderment, and annihilation of ego.",
+    "themes": [
+      "quest",
+      "soul",
+      "surrender",
+      "unity",
+      "allegory"
+    ],
+    "translation": "Dick Davis or Afkham Darbandi and Dick Davis.",
+    "links": [
+      {
+        "label": "Project Gutenberg search",
+        "url": "https://www.gutenberg.org/ebooks/search/?query=The+Conference+of+the+Birds"
+      },
+      {
+        "label": "Wikisource search",
+        "url": "https://en.wikisource.org/wiki/Special:Search?search=The+Conference+of+the+Birds"
+      },
+      {
+        "label": "Open Library search",
+        "url": "https://openlibrary.org/search?q=The+Conference+of+the+Birds"
+      }
+    ]
+  }
+];
+
+  var root = document.getElementById('arshif-classics-app');
+  var grid = root.querySelector('#awc-grid');
+  var empty = root.querySelector('#awc-empty');
+  var search = root.querySelector('#awc-search');
+  var catChips = root.querySelector('#awc-category-chips');
+  var tagChips = root.querySelector('#awc-tag-chips');
+  var visibleCount = root.querySelector('#awc-visible-count');
+  var totalStat = root.querySelector('#awc-total-stat');
+  var overlay = root.querySelector('#awc-overlay');
+  var dossier = root.querySelector('#awc-dossier');
+  var dossierHead = root.querySelector('#awc-dossier-head');
+  var closeBtn = root.querySelector('#awc-close');
+  var activeCategory = 'all';
+  var activeTag = 'all';
+  var currentWork = null;
+  var noteTimer = null;
+
+  var categories = ['All','Ancient Epics','Philosophy','Drama','Poetry','Novels','Eastern Classics','African Traditions','Americas','Modern Classics'];
+  var tags = ['All','Ancient','Classical','Medieval','Early Modern','Modern','Epic','Novel','Poetry','Drama','Philosophy','Sacred','Oral Tradition'];
+
+  function escapeHTML(value) {
+    return String(value == null ? '' : value).replace(/[&<>"']/g, function(ch) {
+      return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#039;'}[ch];
+    });
+  }
+
+  function normalized(value) { return String(value || '').toLowerCase().trim(); }
+
+  function makeChip(label, type) {
+    var btn = document.createElement('button');
+    btn.type = 'button';
+    btn.className = 'awc-chip' + (label === 'All' ? ' is-active' : '');
+    btn.textContent = label;
+    btn.dataset.value = normalized(label).replace(/\s+/g, '-');
+    btn.addEventListener('click', function() {
+      if (type === 'category') {
+        activeCategory = btn.dataset.value;
+        Array.prototype.forEach.call(catChips.children, function(child) { child.classList.remove('is-active'); });
+      } else {
+        activeTag = btn.dataset.value;
+        Array.prototype.forEach.call(tagChips.children, function(child) { child.classList.remove('is-active'); });
+      }
+      btn.classList.add('is-active');
+      applyFilters();
+    });
+    return btn;
+  }
+
+  function renderChips() {
+    categories.forEach(function(c) { catChips.appendChild(makeChip(c, 'category')); });
+    tags.forEach(function(t) { tagChips.appendChild(makeChip(t, 'tag')); });
+  }
+
+  function tagToChip(tag) { return normalized(tag).replace(/\s+/g, '-'); }
+
+  function renderCards() {
+    totalStat.textContent = works.length;
+    grid.innerHTML = works.map(function(w) {
+      var tags = w.tags.split(/\s+/).slice(0, 5).map(function(t) { return '<span class="awc-mini-tag">' + escapeHTML(t) + '</span>'; }).join('');
+      var searchable = [w.title, w.ribbon, w.civ, w.category, w.tags, w.meta, w.author, w.language, w.date, w.context, (w.themes || []).join(' ')].join(' ');
+      return '<article class="awc-card" data-id="' + escapeHTML(w.id) + '" data-category="' + tagToChip(w.category) + '" data-tags="' + escapeHTML(w.tags) + '" data-search="' + escapeHTML(normalized(searchable)) + '">' +
+        '<div><div class="awc-ribbon">Ribbon · ' + escapeHTML(w.ribbon) + '</div>' +
+        '<div class="awc-badge">🌍 ' + escapeHTML(w.civ) + '</div>' +
+        '<h2>' + escapeHTML(w.title) + '</h2>' +
+        '<p class="awc-meta">' + escapeHTML(w.meta) + '</p>' +
+        '<div class="awc-tagline">' + tags + '</div></div>' +
+        '<button class="awc-open" type="button" data-open="' + escapeHTML(w.id) + '">Open Dossier</button>' +
+      '</article>';
+    }).join('');
+    grid.addEventListener('click', function(e) {
+      var btn = e.target.closest('[data-open]');
+      if (!btn) return;
+      var found = works.find(function(w) { return w.id === btn.dataset.open; });
+      if (found) openDossier(found);
+    });
+    applyFilters();
+  }
+
+  function applyFilters() {
+    var q = normalized(search.value);
+    var cards = Array.prototype.slice.call(grid.children);
+    var shown = 0;
+    cards.forEach(function(card) {
+      var catMatch = activeCategory === 'all' || card.dataset.category === activeCategory;
+      var rawTags = ' ' + normalized(card.dataset.tags).replace(/-/g, ' ') + ' ';
+      var tagValue = activeTag.replace(/-/g, ' ');
+      var tagMatch = activeTag === 'all' || rawTags.indexOf(' ' + tagValue + ' ') !== -1 || card.dataset.category === activeTag;
+      var searchMatch = !q || card.dataset.search.indexOf(q) !== -1;
+      var ok = catMatch && tagMatch && searchMatch;
+      card.style.display = ok ? '' : 'none';
+      if (ok) shown += 1;
+    });
+    visibleCount.textContent = shown;
+    empty.style.display = shown ? 'none' : 'block';
+  }
+
+  function fact(label, value) {
+    return '<div class="awc-fact"><b>' + escapeHTML(label) + '</b><span>' + escapeHTML(value) + '</span></div>';
+  }
+
+  function openDossier(w) {
+    currentWork = w;
+    root.querySelector('#awc-dossier-title').textContent = w.title;
+    root.querySelector('#awc-dossier-sub').textContent = '🌍 ' + w.civ + ' · ' + w.ribbon + ' · ' + w.category;
+    root.querySelector('#awc-context').textContent = w.context;
+    root.querySelector('#awc-translation').textContent = w.translation;
+    root.querySelector('#awc-themes').innerHTML = (w.themes || []).map(function(t) { return '<span class="awc-theme">' + escapeHTML(t) + '</span>'; }).join('');
+    root.querySelector('#awc-facts').innerHTML =
+      fact('Author', w.author) + fact('Language', w.language) + fact('Date', w.date) + fact('Manuscripts', w.manuscripts);
+    root.querySelector('#awc-links').innerHTML = (w.links || []).map(function(link) {
+      return '<a class="awc-link" href="' + escapeHTML(link.url) + '" target="_blank" rel="noopener noreferrer"><span>' + escapeHTML(link.label) + '</span><span>↗</span></a>';
+    }).join('');
+    var notes = root.querySelector('#awc-notes');
+    notes.value = localStorage.getItem('arshif-world-classics-note-' + w.id) || '';
+    root.querySelector('#awc-save-status').textContent = notes.value ? 'Saved note loaded.' : 'Notes save locally in this browser.';
+    overlay.classList.add('is-open');
+    dossier.classList.add('is-open');
+    overlay.setAttribute('aria-hidden', 'false');
+    if (window.innerWidth > 780) {
+      dossier.style.left = '50%';
+      dossier.style.top = '7vh';
+      dossier.style.transform = 'translateX(-50%)';
+    }
+  }
+
+  function closeDossier() {
+    overlay.classList.remove('is-open');
+    dossier.classList.remove('is-open');
+    overlay.setAttribute('aria-hidden', 'true');
+  }
+
+  function wireNotes() {
+    var notes = root.querySelector('#awc-notes');
+    var status = root.querySelector('#awc-save-status');
+    notes.addEventListener('input', function() {
+      if (!currentWork) return;
+      clearTimeout(noteTimer);
+      status.textContent = 'Saving…';
+      noteTimer = setTimeout(function() {
+        localStorage.setItem('arshif-world-classics-note-' + currentWork.id, notes.value);
+        status.textContent = 'Saved locally.';
+      }, 220);
+    });
+    root.querySelector('#awc-clear-notes').addEventListener('click', function() {
+      if (!currentWork) return;
+      notes.value = '';
+      localStorage.removeItem('arshif-world-classics-note-' + currentWork.id);
+      status.textContent = 'Notes cleared.';
+    });
+  }
+
+  function wireDrag() {
+    var dragging = false, startX = 0, startY = 0, startLeft = 0, startTop = 0;
+    dossierHead.addEventListener('pointerdown', function(e) {
+      if (e.target.closest('button')) return;
+      if (window.innerWidth <= 780) return;
+      dragging = true;
+      dossierHead.setPointerCapture(e.pointerId);
+      var rect = dossier.getBoundingClientRect();
+      startX = e.clientX; startY = e.clientY; startLeft = rect.left; startTop = rect.top;
+      dossier.style.transform = 'none';
+      dossier.style.left = rect.left + 'px';
+      dossier.style.top = rect.top + 'px';
+    });
+    dossierHead.addEventListener('pointermove', function(e) {
+      if (!dragging) return;
+      var dx = e.clientX - startX;
+      var dy = e.clientY - startY;
+      var nextLeft = Math.max(8, Math.min(window.innerWidth - dossier.offsetWidth - 8, startLeft + dx));
+      var nextTop = Math.max(8, Math.min(window.innerHeight - 80, startTop + dy));
+      dossier.style.left = nextLeft + 'px';
+      dossier.style.top = nextTop + 'px';
+    });
+    dossierHead.addEventListener('pointerup', function(e) { dragging = false; try { dossierHead.releasePointerCapture(e.pointerId); } catch(err) {} });
+    dossierHead.addEventListener('pointercancel', function() { dragging = false; });
+  }
+
+  search.addEventListener('input', applyFilters);
+  closeBtn.addEventListener('click', closeDossier);
+  overlay.addEventListener('click', closeDossier);
+  document.addEventListener('keydown', function(e) { if (e.key === 'Escape') closeDossier(); });
+
+  renderChips();
+  renderCards();
+  wireNotes();
+  wireDrag();
+})();
+</script>
+</body>
+</html>
