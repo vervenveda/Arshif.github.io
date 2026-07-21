@@ -1,0 +1,1500 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Truth Tribe Kids — Explorer & Class Portal</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+
+  <!-- Fonts (optional; remove for fully offline use) -->
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600&family=Cormorant+Garamond:wght@400;500;600&display=swap" rel="stylesheet">
+
+  <style>
+    :root{
+      --parchment:#f7f3ea;
+      --parchment-soft:#f0e9dc;
+      --gold:#d9b878;
+      --gold-deep:#b89252;
+      --gold-root:#7a5a28;
+      --midnight:#050713;
+      --midnight-soft:#191b2a;
+      --ink:#fdfaf2;
+      --ink-soft:#e1d8c0;
+
+      --shell-radius:33px;
+      --card-radius:21px;
+      --shadow-shell:0 27px 72px rgba(0,0,0,0.9);
+      --shadow-card:0 18px 44px rgba(0,0,0,0.8);
+    }
+
+    *,*::before,*::after{
+      box-sizing:border-box;
+    }
+
+    html,body{
+      margin:0;
+      padding:0;
+      min-height:100vh;
+      font-family:'Cormorant Garamond',system-ui,-apple-system,'Segoe UI',serif;
+      background:radial-gradient(circle at top,#f9f3e3 0%,#e6d6b3 40%,#cfb68b 72%,#b89c6f 100%);
+      color:var(--parchment);
+    }
+
+    body{
+      display:flex;
+      flex-direction:column;
+      align-items:center;
+      padding:33px 11px 55px;
+      text-align:center;
+    }
+
+    .shell{
+      width:100%;
+      max-width:1110px;
+      margin:0 auto 33px;
+      padding:33px 27px 33px;
+      border-radius:var(--shell-radius);
+      background:linear-gradient(180deg,var(--midnight-soft) 0%,var(--midnight) 80%);
+      border:1px solid rgba(60,43,18,0.7);
+      box-shadow:var(--shadow-shell);
+      color:var(--parchment);
+    }
+
+    .shell--teacher{
+      max-width:1188px;
+      border-radius:33px;
+      padding:33px 27px 33px;
+    }
+
+    .section-header{
+      margin:0 0 24px;
+    }
+
+    .title-main{
+      font-family:'Cinzel','Times New Roman',serif;
+      font-size:27px;
+      letter-spacing:0.18em;
+      text-transform:uppercase;
+      margin:0 0 9px;
+    }
+
+    .title-tag{
+      font-family:'Cinzel','Times New Roman',serif;
+      font-size:18px;
+      letter-spacing:0.16em;
+      text-transform:uppercase;
+      color:var(--gold);
+      margin:0 0 12px;
+    }
+
+    .section-sub{
+      max-width:777px;
+      margin:0 auto;
+      font-size:18px;
+      line-height:1.7;
+      color:var(--parchment-soft);
+    }
+
+    .section-sub span{
+      color:var(--gold);
+      font-weight:600;
+    }
+
+    .section-note{
+      margin-top:11px;
+      font-size:14px;
+      color:var(--ink-soft);
+    }
+
+    /* Faith buttons row */
+
+    .faith-row{
+      margin:27px auto 18px;
+      display:flex;
+      flex-wrap:wrap;
+      justify-content:center;
+      gap:11px;
+    }
+
+    .faith-btn{
+      border:none;
+      border-radius:999px;
+      padding:9px 21px;
+      font-size:15px;
+      letter-spacing:0.12em;
+      text-transform:uppercase;
+      cursor:pointer;
+      background:rgba(255,255,255,0.06);
+      color:var(--parchment);
+      border:2px solid rgba(217,184,120,0.55);
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      gap:7px;
+      white-space:normal;
+      line-height:1.4;
+      box-shadow:0 9px 27px rgba(0,0,0,0.6);
+      transition:background .18s,transform .2s,box-shadow .2s,color .18s,border-color .18s;
+      max-width:100%;
+    }
+
+    .faith-btn-symbol{
+      font-size:18px;
+    }
+
+    .faith-btn.active{
+      background:linear-gradient(135deg,var(--gold),var(--gold-deep));
+      color:#050713;
+      border-color:var(--gold-deep);
+      transform:translateY(-1px);
+      box-shadow:0 12px 33px rgba(0,0,0,0.85);
+    }
+
+    .faith-btn:hover{
+      transform:translateY(-1px);
+      box-shadow:0 12px 33px rgba(0,0,0,0.85);
+    }
+
+    /* Lesson card */
+
+    .lesson-card{
+      margin:0 auto;
+      max-width:888px;
+      padding:24px 21px 21px;
+      border-radius:var(--card-radius);
+      background:radial-gradient(circle at top,#242743 0%,#060712 72%);
+      border:1px solid rgba(247,243,234,0.16);
+      box-shadow:var(--shadow-card);
+      text-align:left;
+    }
+
+    .lesson-header{
+      text-align:center;
+      margin-bottom:18px;
+    }
+
+    .lesson-title-line{
+      display:flex;
+      flex-direction:column;
+      align-items:center;
+      gap:7px;
+    }
+
+    .lesson-symbol{
+      font-size:27px;
+    }
+
+    .lesson-name{
+      font-family:'Cinzel','Times New Roman',serif;
+      font-size:21px;
+      margin:0;
+      letter-spacing:0.14em;
+      text-transform:uppercase;
+    }
+
+    .lesson-region{
+      font-size:14px;
+      color:var(--ink-soft);
+      margin:0;
+    }
+
+    .lesson-summary{
+      margin-top:11px;
+      font-size:18px;
+      line-height:1.7;
+      color:var(--parchment-soft);
+    }
+
+    .lesson-columns{
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
+      gap:18px;
+      margin-top:18px;
+    }
+
+    .lesson-block-title{
+      font-family:'Cinzel','Times New Roman',serif;
+      font-size:15px;
+      margin:0 0 6px;
+      letter-spacing:0.12em;
+      text-transform:uppercase;
+      color:var(--gold);
+    }
+
+    .lesson-list{
+      list-style:none;
+      padding:0;
+      margin:0;
+      font-size:16px;
+      line-height:1.6;
+      color:var(--parchment);
+    }
+
+    .lesson-list li+li{
+      margin-top:4px;
+    }
+
+    .lesson-footnote{
+      margin-top:14px;
+      font-size:13px;
+      line-height:1.6;
+      color:var(--ink-soft);
+      text-align:center;
+    }
+
+    .lesson-footnote span{
+      color:var(--gold);
+    }
+
+    /* Compare panel */
+
+    .compare-shell{
+      margin:24px auto 0;
+      max-width:888px;
+      text-align:left;
+    }
+
+    .compare-header{
+      margin-bottom:11px;
+      text-align:center;
+    }
+
+    .compare-title{
+      font-family:'Cinzel','Times New Roman',serif;
+      font-size:18px;
+      margin:0 0 4px;
+      letter-spacing:0.13em;
+      text-transform:uppercase;
+      color:var(--parchment);
+    }
+
+    .compare-sub{
+      font-size:14px;
+      color:var(--ink-soft);
+      max-width:666px;
+      margin:0 auto;
+      line-height:1.6;
+    }
+
+    .compare-row{
+      margin-top:18px;
+      display:flex;
+      flex-wrap:wrap;
+      gap:11px;
+      justify-content:center;
+      align-items:center;
+    }
+
+    .compare-select{
+      min-width:180px;
+      max-width:240px;
+      padding:7px 11px;
+      border-radius:999px;
+      border:1px solid rgba(247,243,234,0.2);
+      background:rgba(3,4,13,0.9);
+      color:var(--parchment);
+      font-size:15px;
+    }
+
+    .compare-btn{
+      border-radius:999px;
+      border:1px solid rgba(217,184,120,0.7);
+      padding:9px 21px;
+      font-size:13px;
+      letter-spacing:0.13em;
+      text-transform:uppercase;
+      background:rgba(255,255,255,0.04);
+      color:var(--parchment);
+      cursor:pointer;
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      gap:6px;
+      box-shadow:0 9px 27px rgba(0,0,0,0.7);
+      transition:background .18s,transform .18s,box-shadow .18s,color .18s;
+      white-space:nowrap;
+    }
+
+    .compare-btn:hover{
+      background:linear-gradient(135deg,var(--gold),var(--gold-deep));
+      color:#050713;
+      transform:translateY(-1px);
+      box-shadow:0 12px 33px rgba(0,0,0,0.85);
+    }
+
+    .compare-card{
+      margin:18px auto 0;
+      padding:18px 18px 16px;
+      border-radius:21px;
+      background:rgba(9,11,24,0.95);
+      border:1px solid rgba(247,243,234,0.18);
+      box-shadow:var(--shadow-card);
+      font-size:15px;
+      color:var(--parchment-soft);
+    }
+
+    .compare-card h3{
+      font-family:'Cinzel','Times New Roman',serif;
+      font-size:18px;
+      margin:0 0 7px;
+      letter-spacing:0.12em;
+      text-transform:uppercase;
+      text-align:center;
+      color:var(--parchment);
+    }
+
+    .compare-values{
+      list-style:none;
+      padding:0;
+      margin:9px 0 7px;
+      font-size:15px;
+      line-height:1.6;
+    }
+
+    .compare-values li+li{
+      margin-top:4px;
+    }
+
+    .compare-note{
+      font-size:13px;
+      color:var(--ink-soft);
+      text-align:center;
+      margin-top:7px;
+    }
+
+    /* Teacher portal */
+
+    .teacher-label{
+      margin-top:18px;
+      font-size:14px;
+      color:var(--ink-soft);
+      text-align:center;
+    }
+
+    .grade-row{
+      margin:14px auto 18px;
+      display:flex;
+      flex-wrap:wrap;
+      justify-content:center;
+      gap:9px;
+    }
+
+    .grade-pill{
+      border:none;
+      border-radius:999px;
+      padding:7px 18px;
+      font-size:14px;
+      letter-spacing:0.12em;
+      text-transform:uppercase;
+      cursor:pointer;
+      background:rgba(255,255,255,0.06);
+      color:var(--parchment);
+      border:2px solid rgba(217,184,120,0.4);
+      transition:background .18s,transform .18s,box-shadow .18s,color .18s;
+    }
+
+    .grade-pill:hover{
+      transform:translateY(-1px);
+      box-shadow:0 9px 24px rgba(0,0,0,0.6);
+    }
+
+    .grade-pill.active{
+      background:linear-gradient(135deg,var(--gold),var(--gold-deep));
+      color:#050713;
+      box-shadow:0 9px 27px rgba(0,0,0,0.75);
+    }
+
+    .units-grid{
+      margin-top:18px;
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+      gap:18px;
+      text-align:left;
+    }
+
+    .unit-card{
+      padding:18px 16px 16px;
+      border-radius:21px;
+      background:rgba(7,8,19,0.95);
+      border:1px solid rgba(247,243,234,0.16);
+      box-shadow:var(--shadow-card);
+    }
+
+    .unit-title{
+      font-family:'Cinzel','Times New Roman',serif;
+      font-size:18px;
+      margin:0 0 4px;
+    }
+
+    .unit-meta{
+      font-size:13px;
+      color:var(--ink-soft);
+      margin:0 0 7px;
+    }
+
+    .unit-overview{
+      font-size:15px;
+      line-height:1.6;
+      color:var(--parchment-soft);
+      margin:0 0 9px;
+    }
+
+    .unit-toggle{
+      margin-top:7px;
+      border-radius:999px;
+      border:1px solid rgba(217,184,120,0.7);
+      padding:6px 14px;
+      font-size:12px;
+      letter-spacing:0.11em;
+      text-transform:uppercase;
+      background:rgba(255,255,255,0.03);
+      color:var(--parchment);
+      cursor:pointer;
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      gap:6px;
+      transition:background .18s,transform .18s,box-shadow .18s,color .18s;
+    }
+
+    .unit-toggle:hover{
+      background:linear-gradient(135deg,var(--gold),var(--gold-deep));
+      color:#050713;
+      transform:translateY(-1px);
+      box-shadow:0 9px 24px rgba(0,0,0,0.7);
+    }
+
+    .unit-details{
+      margin-top:11px;
+      padding-top:9px;
+      border-top:1px dashed rgba(247,243,234,0.25);
+      font-size:14px;
+      line-height:1.6;
+    }
+
+    .unit-heading{
+      font-family:'Cinzel','Times New Roman',serif;
+      font-size:14px;
+      letter-spacing:0.11em;
+      text-transform:uppercase;
+      color:var(--gold);
+      margin:7px 0 4px;
+    }
+
+    .unit-list{
+      list-style:disc;
+      padding-left:21px;
+      margin:0;
+    }
+
+    .unit-list li+li{
+      margin-top:3px;
+    }
+
+    .teacher-subsection-title{
+      font-family:'Cinzel','Times New Roman',serif;
+      font-size:18px;
+      margin:24px 0 7px;
+      letter-spacing:0.14em;
+      text-transform:uppercase;
+      text-align:center;
+      color:var(--parchment);
+    }
+
+    .teacher-subsection-text{
+      font-size:14px;
+      color:var(--parchment-soft);
+      max-width:777px;
+      margin:0 auto 14px;
+      line-height:1.6;
+      text-align:center;
+    }
+
+    /* Quiz panel */
+
+    .quiz-panel{
+      margin:0 auto;
+      max-width:666px;
+      padding:18px 18px 16px;
+      border-radius:21px;
+      background:rgba(7,8,19,0.97);
+      border:1px solid rgba(247,243,234,0.18);
+      box-shadow:var(--shadow-card);
+      text-align:left;
+      font-size:15px;
+    }
+
+    .quiz-question{
+      font-weight:600;
+      margin:0 0 11px;
+    }
+
+    .quiz-options{
+      list-style:none;
+      padding:0;
+      margin:0 0 11px;
+    }
+
+    .quiz-options li+li{
+      margin-top:6px;
+    }
+
+    .quiz-btn-row{
+      display:flex;
+      flex-wrap:wrap;
+      gap:9px;
+      justify-content:flex-start;
+      align-items:center;
+      margin-top:4px;
+    }
+
+    .quiz-btn{
+      border-radius:999px;
+      border:1px solid rgba(217,184,120,0.7);
+      padding:6px 14px;
+      font-size:13px;
+      letter-spacing:0.11em;
+      text-transform:uppercase;
+      background:rgba(255,255,255,0.04);
+      color:var(--parchment);
+      cursor:pointer;
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      transition:background .18s,transform .18s,box-shadow .18s,color .18s;
+    }
+
+    .quiz-btn:hover{
+      background:linear-gradient(135deg,var(--gold),var(--gold-deep));
+      color:#050713;
+      transform:translateY(-1px);
+      box-shadow:0 9px 24px rgba(0,0,0,0.7);
+    }
+
+    .quiz-feedback{
+      font-size:14px;
+      margin-top:7px;
+    }
+
+    .quiz-score{
+      margin-top:9px;
+      font-size:14px;
+      color:var(--ink-soft);
+    }
+
+    .reflection-list{
+      list-style:disc;
+      padding-left:21px;
+      margin:9px auto 0;
+      text-align:left;
+      max-width:720px;
+      font-size:14px;
+      line-height:1.6;
+      color:var(--parchment-soft);
+    }
+
+    .reflection-list li+li{
+      margin-top:4px;
+    }
+
+    @media (max-width:720px){
+      body{
+        padding:24px 9px 44px;
+      }
+      .shell,
+      .shell--teacher{
+        padding:27px 18px 27px;
+        border-radius:27px;
+      }
+      .title-main{
+        font-size:24px;
+      }
+      .section-sub{
+        font-size:16px;
+      }
+      .lesson-summary{
+        font-size:16px;
+      }
+      .lesson-columns{
+        grid-template-columns:1fr;
+      }
+      .compare-row{
+        flex-direction:column;
+      }
+      .quiz-panel{
+        padding:16px 14px 14px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- KIDS VIEW -->
+  <section class="shell" aria-label="Truth Tribe Kids — World Faith Explorer">
+    <header class="section-header">
+      <h1 class="title-main">TRUTH TRIBE KIDS</h1>
+      <p class="title-tag">WORLD FAITH EXPLORER</p>
+      <p class="section-sub">
+        A gentle map of some of the world&rsquo;s big faith families.
+        Click a button to see a quick kid-friendly lesson.
+        <span>All of them are asking big questions about where we come from and how we should live.</span>
+      </p>
+      <p class="section-note">
+        For grown-ups: this is a simple overview, not a full theology. Scroll down for the Class Portal with units, quizzes,
+        and reflection prompts.
+      </p>
+    </header>
+
+    <!-- Faith selection -->
+    <div id="faithRow" class="faith-row" aria-label="Choose a faith family"></div>
+
+    <!-- Lesson card -->
+    <article id="lessonCard" class="lesson-card" aria-live="polite">
+      <div class="lesson-header">
+        <div class="lesson-title-line">
+          <div class="lesson-symbol">🌍</div>
+          <h2 class="lesson-name">Choose a Path to Explore</h2>
+          <p class="lesson-region">Tap a button above to learn about a faith family.</p>
+        </div>
+        <p class="lesson-summary">
+          Each card will tell you a little bit about what that group believes about God or the Divine,
+          how they tell the story of creation, and how they try to live in a kind and loving way.
+        </p>
+      </div>
+      <div class="lesson-columns">
+        <section>
+          <h3 class="lesson-block-title">What You&rsquo;ll See</h3>
+          <ul class="lesson-list">
+            <li>Names they use for God or the Holy.</li>
+            <li>Their special books or stories.</li>
+            <li>A short peek at how they tell the creation story.</li>
+          </ul>
+        </section>
+        <section>
+          <h3 class="lesson-block-title">How to Use This</h3>
+          <ul class="lesson-list">
+            <li>Read together as a family or class.</li>
+            <li>Talk about what feels similar or different to your own faith.</li>
+            <li>Remember: learning about others can help us be kinder neighbors.</li>
+          </ul>
+        </section>
+      </div>
+      <p class="lesson-footnote">
+        <span>Truth Tribe Reminder:</span> No single card can explain everything about a faith.
+        People inside each tradition may describe things in different ways.
+      </p>
+    </article>
+
+    <!-- Compare panel -->
+    <section class="compare-shell" aria-label="Compare two faiths">
+      <div class="compare-header">
+        <h2 class="compare-title">Compare Two Paths</h2>
+        <p class="compare-sub">
+          Choose any two faith families and see some gentle ways they both encourage kindness, care, or peace.
+          This is a starter list, not a full map.
+        </p>
+      </div>
+      <div class="compare-row">
+        <select id="compareA" class="compare-select" aria-label="First faith to compare">
+          <option value="">First path…</option>
+        </select>
+        <select id="compareB" class="compare-select" aria-label="Second faith to compare">
+          <option value="">Second path…</option>
+        </select>
+        <button id="compareBtn" type="button" class="compare-btn">
+          Show what they share
+        </button>
+      </div>
+      <div id="compareResult" class="compare-card" aria-live="polite" style="display:none;"></div>
+    </section>
+
+    <p class="teacher-label">
+      Grown-ups &amp; teachers: scroll down for lesson units, quiz prompts, and reflection ideas.
+    </p>
+  </section>
+
+  <!-- TEACHER / CLASS PORTAL -->
+  <section class="shell shell--teacher" aria-label="Truth Tribe Class Portal">
+    <header class="section-header">
+      <h2 class="title-main">TRUTH TRIBE</h2>
+      <p class="title-tag">CLASS PORTAL</p>
+      <p class="section-sub">
+        A simple curriculum shell you can grow over time:
+        <span>grade-band units, kid-safe quizzes, and reflection prompts</span> that sit beside your own family or school faith tradition.
+      </p>
+    </header>
+
+    <!-- Grade band selector -->
+    <div class="grade-row" aria-label="Grade band selector">
+      <button class="grade-pill active" data-band="K-2" type="button">K–2</button>
+      <button class="grade-pill" data-band="3-5" type="button">3–5</button>
+      <button class="grade-pill" data-band="6-8" type="button">6–8</button>
+    </div>
+
+    <!-- Curriculum units -->
+    <div id="unitsGrid" class="units-grid" aria-live="polite"></div>
+
+    <!-- Quiz & Reflections -->
+    <h3 class="teacher-subsection-title">Quiz & Reflection Hub</h3>
+    <p class="teacher-subsection-text">
+      This sample quiz bank is gentle and big-picture, focused on respect and understanding.
+      Use it as a starting point; feel free to adapt wording for your context.
+    </p>
+
+    <div id="quizPanel" class="quiz-panel" aria-live="polite">
+      <p class="quiz-question" id="quizQuestion">
+        Click &ldquo;Start Quiz&rdquo; to begin a short 5-question check-in.
+      </p>
+      <ul class="quiz-options" id="quizOptions"></ul>
+      <div class="quiz-btn-row">
+        <button id="quizStartBtn" class="quiz-btn" type="button">Start Quiz</button>
+        <button id="quizCheckBtn" class="quiz-btn" type="button" style="display:none;">Check Answer</button>
+        <button id="quizNextBtn" class="quiz-btn" type="button" style="display:none;">Next</button>
+      </div>
+      <div id="quizFeedback" class="quiz-feedback"></div>
+      <div id="quizScore" class="quiz-score"></div>
+    </div>
+
+    <h4 class="teacher-subsection-title" style="font-size:16px;">Reflection Prompts</h4>
+    <p class="teacher-subsection-text">
+      Copy/paste these into journals, slides, or exit tickets. Adjust language for your grade band.
+    </p>
+    <ul class="reflection-list">
+      <li>What is one kind or beautiful idea you heard today from another faith&rsquo;s story?</li>
+      <li>What is something your own family or tradition teaches that feels similar?</li>
+      <li>How can learning about other people&rsquo;s beliefs help us be better neighbors or classmates?</li>
+      <li>If you could ask someone from one of these traditions a respectful question, what would you ask?</li>
+      <li>What is one way you can show kindness or care for creation this week?</li>
+    </ul>
+  </section>
+
+  <script>
+    /* === FAITH DATA (Kid lessons + shared values) === */
+    const FAITHS = [
+      {
+        id:'christianity',
+        name:'Christianity',
+        symbol:'✝️',
+        region:'Worldwide · Began in the Middle East',
+        shortSummary:
+          'Christians believe in one God who created the heavens and the earth and who came close to us in Jesus. They see creation, the Cross, and the Resurrection as part of one big rescue story.',
+        namesForGod:[
+          'God, the Lord',
+          'The Trinity: Father, Son, and Holy Spirit'
+        ],
+        sacredTexts:[
+          'The Bible (Old and New Testaments)',
+          'Stories about Jesus in the Gospels'
+        ],
+        creationView:[
+          'God created the world on purpose, called it “good,” and made humans in God’s image.',
+          'Some Christians read Genesis as poetic; others more literally, but all see God as Creator.'
+        ],
+        howToLive:[
+          'Love God and love your neighbor (the Great Commandment).',
+          'Follow Jesus’s example: kindness, forgiveness, care for the poor and hurting.'
+        ],
+        coreValues:['care_for_others','honesty','peace','respect_for_creation']
+      },
+      {
+        id:'judaism',
+        name:'Judaism',
+        symbol:'✡️',
+        region:'Worldwide · Roots in the Land of Israel',
+        shortSummary:
+          'Jews believe in one God who made a covenant (special promise) with the people of Israel. They remember God’s care in creation, Exodus, and daily life through prayer, study, and celebrations.',
+        namesForGod:[
+          'Adonai (the Lord)',
+          'HaShem (“the Name”)'
+        ],
+        sacredTexts:[
+          'The Tanakh (Hebrew Bible), especially the Torah',
+          'Many writings of rabbis, like the Talmud and Midrash'
+        ],
+        creationView:[
+          'God creates the world by speaking in Genesis, bringing light, land, and life into order.',
+          'Shabbat (the Sabbath) remembers God’s rest and invites people to rest and delight too.'
+        ],
+        howToLive:[
+          'Keep mitzvot (commandments) such as justice, honesty, and care for others.',
+          'Remember God through prayer, study, and holidays like Shabbat and Passover.'
+        ],
+        coreValues:['care_for_others','justice','gratitude','honesty']
+      },
+      {
+        id:'islam',
+        name:'Islam',
+        symbol:'☪️',
+        region:'Worldwide · Began in the Arabian Peninsula',
+        shortSummary:
+          'Muslims believe in one God, Allah, who created everything and guides people through prophets, including Muhammad. Life is a gift and a trust from God.',
+        namesForGod:[
+          'Allah (Arabic for “God”)',
+          'Many beautiful names, like The Merciful, The Just'
+        ],
+        sacredTexts:[
+          'The Qur’an (believed to be God’s word revealed to Muhammad)',
+          'Hadith: sayings and actions of the Prophet Muhammad'
+        ],
+        creationView:[
+          'Allah creates the heavens and the earth with wisdom and purpose.',
+          'Humans are God’s stewards (khalifah) on earth, meant to care for creation.'
+        ],
+        howToLive:[
+          'Remember Allah and follow the Five Pillars (like prayer and charity).',
+          'Live with honesty, mercy, and fairness toward others.'
+        ],
+        coreValues:['care_for_others','justice','gratitude','respect_for_creation']
+      },
+      {
+        id:'hinduism',
+        name:'Hindu Traditions',
+        symbol:'🕉️',
+        region:'Mostly India & South Asia · Also worldwide',
+        shortSummary:
+          'Hinduism is a family of many traditions and stories. Many Hindus believe in one divine reality that appears in many forms, and in a universe that moves through cycles of creation and renewal.',
+        namesForGod:[
+          'Brahman (ultimate reality)',
+          'Many deities like Vishnu, Shiva, Devi'
+        ],
+        sacredTexts:[
+          'Vedas and Upanishads',
+          'Epics like the Mahabharata and Ramayana'
+        ],
+        creationView:[
+          'Some writings describe the universe as coming and going in great cycles.',
+          'Poems like the Nasadiya Sukta even ask whether anyone fully knows how creation began.'
+        ],
+        howToLive:[
+          'Live according to dharma (right living, duty, and harmony).',
+          'Practice devotion, meditation, and kindness to other beings.'
+        ],
+        coreValues:['care_for_others','peace','respect_for_life']
+      },
+      {
+        id:'buddhism',
+        name:'Buddhism',
+        symbol:'☸️',
+        region:'Asia & Worldwide · Began in India',
+        shortSummary:
+          'Buddhists focus less on who created the world and more on how to end suffering. They follow the teachings of the Buddha about wisdom, compassion, and mindfulness.',
+        namesForGod:[
+          'Many Buddhists do not focus on a creator God.',
+          'They speak more about the Dharma (the teaching) and awakening.'
+        ],
+        sacredTexts:[
+          'Many collections of sutras (teachings of the Buddha)',
+          'Different schools have different main texts'
+        ],
+        creationView:[
+          'Often see the universe as having no single beginning; it changes and flows over long ages.',
+          'The main question is: “How can beings wake up and be free from suffering?”'
+        ],
+        howToLive:[
+          'Practice the Noble Eightfold Path (wise action, speech, and more).',
+          'Grow compassion for all living beings.'
+        ],
+        coreValues:['care_for_others','peace','respect_for_life']
+      },
+      {
+        id:'sikhism',
+        name:'Sikhism',
+        symbol:'🪯',
+        region:'Punjab region & Worldwide',
+        shortSummary:
+          'Sikhs believe in one God who is without form yet very close, who created and cares for all. They follow the teachings of the ten Gurus, gathered in their holy book.',
+        namesForGod:[
+          'Waheguru (“Wonderful Teacher”)',
+          'Many names that point to the One Creator'
+        ],
+        sacredTexts:[
+          'Guru Granth Sahib (the Sikh scripture)',
+          'Sikh hymns and daily prayers'
+        ],
+        creationView:[
+          'God creates everything by divine command and is present in all of creation.',
+          'The world is a place to remember God and serve others.'
+        ],
+        howToLive:[
+          'Live truthfully, work honestly, share with others (seva, or service).',
+          'Stand for equality and justice for all people.'
+        ],
+        coreValues:['care_for_others','service','justice','honesty']
+      },
+      {
+        id:'indigenous',
+        name:'Indigenous & First Nations Traditions',
+        symbol:'🪶',
+        region:'Many lands across the world',
+        shortSummary:
+          'Indigenous traditions are very diverse. Many tell creation stories that link people, land, animals, water, and sky as one family.',
+        namesForGod:[
+          'Different nations use different names (Great Spirit, Creator, many more).',
+          'Many speak of sacred ancestors or beings connected to the land.'
+        ],
+        sacredTexts:[
+          'Stories carried by elders and communities (often spoken, not written).',
+          'Songs, dances, and ceremonies that remember creation.'
+        ],
+        creationView:[
+          'Creation stories often show the land being shaped by Creator or ancestral beings.',
+          'People are called to live in balance with the land, animals, and each other.'
+        ],
+        howToLive:[
+          'Honor elders, land, and community.',
+          'Share, listen, and walk gently on the earth.'
+        ],
+        coreValues:['care_for_others','respect_for_creation','gratitude']
+      },
+      {
+        id:'east-asian',
+        name:'East Asian Wisdom Traditions',
+        symbol:'🌸',
+        region:'China, Korea, Japan & beyond',
+        shortSummary:
+          'In East Asia, traditions like Confucianism, Daoism, and Shinto speak about heaven, earth, harmony, and spirits. Some tell creation stories; many teach how to live in balance.',
+        namesForGod:[
+          'Terms like Heaven (Tian), the Way (Dao), or many kami (spirits) in Shinto.',
+          'Different paths emphasize different names and ideas.'
+        ],
+        sacredTexts:[
+          'Confucian classics like the Analects',
+          'Daoist texts like the Dao De Jing',
+          'Shinto myths in works like the Kojiki'
+        ],
+        creationView:[
+          'Some stories speak of sky and land separating, or islands being formed.',
+          'Many teachings focus on living in harmony with nature and community.'
+        ],
+        howToLive:[
+          'Show respect, care for family and community.',
+          'Seek harmony with nature and the “Way” (the right path).'
+        ],
+        coreValues:['care_for_others','peace','respect_for_creation']
+      },
+      {
+        id:'many-more',
+        name:'Many More Paths',
+        symbol:'🌟',
+        region:'Everywhere',
+        shortSummary:
+          'There are many more faiths and smaller traditions in the world than we can fit on one screen. This card is a reminder that the story is bigger than any list.',
+        namesForGod:[
+          'Different peoples use many beautiful names for the Holy.',
+          'Some focus on God, some on ancestors, some on the goodness of life itself.'
+        ],
+        sacredTexts:[
+          'Local scriptures, chants, and treasured stories.',
+          'Memories passed down in families and communities.'
+        ],
+        creationView:[
+          'Some tell of world-trees, cosmic eggs, or sacred mountains.',
+          'Some teach that creation is still unfolding right now.'
+        ],
+        howToLive:[
+          'Most call people to be kind, fair, and thankful.',
+          'Listening well is one way to show respect for every story.'
+        ],
+        coreValues:['care_for_others','gratitude','respect_for_life']
+      }
+    ];
+
+    const VALUE_LABELS = {
+      care_for_others:'Caring for people who need help',
+      honesty:'Telling the truth and being trustworthy',
+      peace:'Trying not to harm others and making peace',
+      respect_for_creation:'Caring for the earth and all creatures',
+      respect_for_life:'Seeing life as precious',
+      justice:'Wanting people to be treated fairly',
+      service:'Serving others and sharing what we have',
+      gratitude:'Being thankful for life and gifts'
+    };
+
+    /* === KIDS VIEW WIRING === */
+    const faithRowEl = document.getElementById('faithRow');
+    const lessonCardEl = document.getElementById('lessonCard');
+    const compareAEl = document.getElementById('compareA');
+    const compareBEl = document.getElementById('compareB');
+    const compareBtnEl = document.getElementById('compareBtn');
+    const compareResultEl = document.getElementById('compareResult');
+
+    function createFaithButtons(){
+      FAITHS.forEach(faith => {
+        const btn = document.createElement('button');
+        btn.type = 'button';
+        btn.className = 'faith-btn';
+        btn.dataset.id = faith.id;
+        btn.innerHTML = `
+          <span class="faith-btn-symbol">${faith.symbol}</span>
+          <span>${faith.name}</span>
+        `;
+        btn.addEventListener('click', () => {
+          setActiveFaith(faith.id);
+        });
+        faithRowEl.appendChild(btn);
+      });
+    }
+
+    function setActiveFaith(id){
+      const faith = FAITHS.find(f => f.id === id);
+      if(!faith) return;
+
+      // Update button states
+      const buttons = faithRowEl.querySelectorAll('.faith-btn');
+      buttons.forEach(btn => {
+        btn.classList.toggle('active', btn.dataset.id === id);
+      });
+
+      const namesList = (faith.namesForGod || []).map(item => `<li>${item}</li>`).join('');
+      const textsList = (faith.sacredTexts || []).map(item => `<li>${item}</li>`).join('');
+      const creationList = (faith.creationView || []).map(item => `<li>${item}</li>`).join('');
+      const liveList = (faith.howToLive || []).map(item => `<li>${item}</li>`).join('');
+
+      lessonCardEl.innerHTML = `
+        <div class="lesson-header">
+          <div class="lesson-title-line">
+            <div class="lesson-symbol">${faith.symbol}</div>
+            <h2 class="lesson-name">${faith.name}</h2>
+            <p class="lesson-region">${faith.region}</p>
+          </div>
+          <p class="lesson-summary">${faith.shortSummary}</p>
+        </div>
+        <div class="lesson-columns">
+          <section>
+            <h3 class="lesson-block-title">Names for God or the Holy</h3>
+            <ul class="lesson-list">
+              ${namesList}
+            </ul>
+          </section>
+          <section>
+            <h3 class="lesson-block-title">Sacred Texts & Stories</h3>
+            <ul class="lesson-list">
+              ${textsList}
+            </ul>
+          </section>
+          <section>
+            <h3 class="lesson-block-title">How They Tell Creation</h3>
+            <ul class="lesson-list">
+              ${creationList}
+            </ul>
+          </section>
+          <section>
+            <h3 class="lesson-block-title">How Followers Try to Live</h3>
+            <ul class="lesson-list">
+              ${liveList}
+            </ul>
+          </section>
+        </div>
+        <p class="lesson-footnote">
+          <span>Gentle Reminder:</span> Not everyone inside a faith explains things exactly the same way.
+          These are simple starter notes to help kids learn and ask kind questions.
+        </p>
+      `;
+    }
+
+    /* === COMPARE PANEL === */
+    function populateCompareSelects(){
+      FAITHS.forEach(faith => {
+        const optA = document.createElement('option');
+        optA.value = faith.id;
+        optA.textContent = faith.name;
+        compareAEl.appendChild(optA);
+
+        const optB = document.createElement('option');
+        optB.value = faith.id;
+        optB.textContent = faith.name;
+        compareBEl.appendChild(optB);
+      });
+    }
+
+    function showCompare(){
+      const idA = compareAEl.value;
+      const idB = compareBEl.value;
+
+      if(!idA || !idB){
+        compareResultEl.style.display = 'block';
+        compareResultEl.innerHTML = `
+          <h3>Please choose two paths</h3>
+          <p class="compare-note">Pick any two different faith families to see some shared values.</p>
+        `;
+        return;
+      }
+      if(idA === idB){
+        compareResultEl.style.display = 'block';
+        compareResultEl.innerHTML = `
+          <h3>Try Two Different Paths</h3>
+          <p class="compare-note">Choose two different faiths so we can look for gentle similarities.</p>
+        `;
+        return;
+      }
+
+      const faithA = FAITHS.find(f => f.id === idA);
+      const faithB = FAITHS.find(f => f.id === idB);
+      if(!faithA || !faithB) return;
+
+      const setA = new Set(faithA.coreValues || []);
+      const shared = (faithB.coreValues || []).filter(v => setA.has(v));
+      let valuesHTML = '';
+
+      if(shared.length){
+        valuesHTML = shared.map(v => {
+          const label = VALUE_LABELS[v] || v;
+          return `<li>Both encourage <strong>${label}</strong>.</li>`;
+        }).join('');
+      } else {
+        valuesHTML = `
+          <li>Both have people who are trying, in their own ways, to live kindly and wisely.</li>
+        `;
+      }
+
+      compareResultEl.style.display = 'block';
+      compareResultEl.innerHTML = `
+        <h3>${faithA.name} &amp; ${faithB.name}</h3>
+        <ul class="compare-values">
+          ${valuesHTML}
+        </ul>
+        <p class="compare-note">
+          These are only a few shared ideas. Each tradition has many more teachings and stories,
+          and people may live them out in different ways.
+        </p>
+      `;
+    }
+
+    compareBtnEl.addEventListener('click', showCompare);
+
+    /* === CURRICULUM DATA === */
+    const CURRICULUM_UNITS = [
+      {
+        id:'k2-beginnings',
+        gradeBand:'K-2',
+        title:'We All Wonder About Beginnings',
+        overview:'Students hear simple creation stories from their own tradition and one or two others, noticing that many peoples wonder where the world and we ourselves come from.',
+        essentialQuestion:'What does it mean that our world and our lives are a gift?',
+        focusFaiths:['Family tradition','Christianity','Judaism','Indigenous stories'],
+        keyConcepts:[
+          'Many peoples have stories about how the world began.',
+          'Creation stories can teach us about how to treat people and the earth.'
+        ],
+        activities:[
+          'Read a short creation story from your own tradition (or a family favorite picture book).',
+          'Share a gentle summary of one other creation story using the Kids Explorer cards.',
+          'Have students draw “The world as a gift” and share one thing they are thankful for.'
+        ],
+        reflections:[
+          'What is one part of a creation story that you liked?',
+          'What is something in the world you feel thankful for today?'
+        ]
+      },
+      {
+        id:'k2-kindness',
+        gradeBand:'K-2',
+        title:'Kindness in Many Paths',
+        overview:'Students explore how many faiths talk about kindness, helping others, and caring for the world.',
+        essentialQuestion:'How can I show kindness wherever I go?',
+        focusFaiths:['Christianity','Islam','Sikhism','Many More Paths'],
+        keyConcepts:[
+          'Different faiths use different words but often encourage similar kind actions.',
+          'We can practice kindness no matter what we believe.'
+        ],
+        activities:[
+          'Use the Compare panel to look at shared values for two paths.',
+          'Make a class chart titled “Ways to Help Others” inspired by the cards.',
+          'Role-play simple kindness scenes (sharing, comforting, including someone).'
+        ],
+        reflections:[
+          'What is one way you can help someone this week?',
+          'How would our classroom feel if everyone practiced kindness?'
+        ]
+      },
+      {
+        id:'35-stories-windows',
+        gradeBand:'3-5',
+        title:'Creation Stories as Windows',
+        overview:'Students read short, age-appropriate versions of creation stories from several traditions and compare themes (order from chaos, goodness of creation, humans as caretakers).',
+        essentialQuestion:'What can creation stories show us about how people see the world and our place in it?',
+        focusFaiths:['Christianity','Judaism','Islam','Hindu Traditions','Indigenous stories'],
+        keyConcepts:[
+          'Creation stories often talk about light, water, land, living things, and humans.',
+          'Stories can teach responsibility toward the earth and other people.'
+        ],
+        activities:[
+          'Assign small groups different faith cards from the Kids Explorer and have them create “story posters.”',
+          'Do a Venn diagram comparing two creation stories (for example, Genesis and a local Indigenous story).',
+          'Discuss how each story suggests we should treat people and the earth.'
+        ],
+        reflections:[
+          'What is one similarity you noticed between two creation stories?',
+          'Did anything surprise you or make you think in a new way?'
+        ]
+      },
+      {
+        id:'35-care-earth',
+        gradeBand:'3-5',
+        title:'Caring for Earth Together',
+        overview:'Students focus on teachings about caring for creation found across multiple traditions, then plan one small class project.',
+        essentialQuestion:'How can we care for our shared world together?',
+        focusFaiths:['Islam','Sikhism','Indigenous traditions','East Asian wisdom'],
+        keyConcepts:[
+          'Many faiths teach about caring for land, water, animals, and people.',
+          'Small actions can reflect big beliefs about gratitude and respect.'
+        ],
+        activities:[
+          'Use Compare to highlight “respect_for_creation” type values.',
+          'Brainstorm a list of class actions: litter clean-up, plant care, water saving, etc.',
+          'Choose one action and “commission” the class to carry it out for a week.'
+        ],
+        reflections:[
+          'What is one thing you learned about caring for the earth from another tradition?',
+          'How did it feel to take action together?'
+        ]
+      },
+      {
+        id:'68-thoughtful-compare',
+        gradeBand:'6-8',
+        title:'Thoughtful Comparisons',
+        overview:'Students learn basic guidelines for respectful study of religions and practice comparing beliefs about creation and human responsibility without stereotyping.',
+        essentialQuestion:'How can we talk about religious differences in a way that is truthful and kind?',
+        focusFaiths:['All cards as needed'],
+        keyConcepts:[
+          'People within a tradition may believe or practice differently from one another.',
+          'It is possible to notice similarities and differences without saying one group is “all the same.”'
+        ],
+        activities:[
+          'Co-create class norms for talking about religion (no mocking, speak from “I,” etc.).',
+          'Use the Compare tool to generate shared values, then have students write neutral comparison sentences.',
+          'Have students create a short “How to Be Respectful When Learning About Faiths” mini-poster.'
+        ],
+        reflections:[
+          'What guideline for respectful conversation feels most important to you?',
+          'How can you respond if you hear someone speak carelessly about another faith?'
+        ]
+      },
+      {
+        id:'68-holidays-light',
+        gradeBand:'6-8',
+        title:'Holidays of Light & Hope',
+        overview:'Students investigate holidays across traditions that celebrate light, liberation, or new beginnings, connecting them to creation and new-creation themes.',
+        essentialQuestion:'Why do so many traditions celebrate light and new beginnings?',
+        focusFaiths:['Judaism','Christianity','Hindu traditions','Buddhism','“Many More Paths”'],
+        keyConcepts:[
+          'Holidays often remember key stories of rescue, new life, or the victory of light over darkness.',
+          'Learning about others’ holidays can grow respect and understanding.'
+        ],
+        activities:[
+          'Assign small groups to research one “holiday of light” using teacher-approved sources.',
+          'Have each group create a one-page overview: name, when it happens, story, key symbols.',
+          'Discuss gentle similarities and real differences between the holidays.'
+        ],
+        reflections:[
+          'Which holiday did you learn about today, and what is one symbol from it?',
+          'What is one holiday your family or community celebrates, and what does it remember?'
+        ]
+      }
+    ];
+
+    /* === QUIZ DATA (Sample 5 questions) === */
+    const QUIZ_BANK = [
+      {
+        q:'What is one big idea that many faiths share?',
+        options:[
+          'Only one group has to be kind.',
+          'Many groups teach kindness and care for others.',
+          'Most faiths say people should never help anyone.'
+        ],
+        correct:1,
+        explain:'Across many traditions, caring for others is seen as important, even if the words are different.'
+      },
+      {
+        q:'What does a creation story usually talk about?',
+        options:[
+          'Only what people eat for dinner.',
+          'How people travel to space.',
+          'How the world and life began, and what that might mean.'
+        ],
+        correct:2,
+        explain:'Creation stories explain beginnings and can teach about how to live.'
+      },
+      {
+        q:'Why is it helpful to learn about other people’s beliefs?',
+        options:[
+          'So we can make fun of them.',
+          'So we can better understand and respect our neighbors.',
+          'So we can tell everyone they are wrong.'
+        ],
+        correct:1,
+        explain:'Learning about others can help us show respect, kindness, and wisdom.'
+      },
+      {
+        q:'What is a good way to talk about religions in class?',
+        options:[
+          'Speak carefully and kindly, and remember that people within a group may differ.',
+          'Use only jokes and nicknames for groups.',
+          'Assume everyone in a religion thinks exactly the same thing.'
+        ],
+        correct:0,
+        explain:'Respectful language and avoiding stereotypes are key.'
+      },
+      {
+        q:'What can you do if a story or belief is different from yours?',
+        options:[
+          'Listen, ask respectful questions, and share your own view kindly.',
+          'Yell until everyone agrees with you.',
+          'Refuse to listen at all.'
+        ],
+        correct:0,
+        explain:'Listening and gentle sharing can help everyone learn, even when we disagree.'
+      }
+    ];
+
+    /* === TEACHER PORTAL WIRING === */
+    const unitsGridEl = document.getElementById('unitsGrid');
+    const gradePills = document.querySelectorAll('.grade-pill');
+
+    let currentBand = 'K-2';
+
+    function renderUnits(){
+      unitsGridEl.innerHTML = '';
+      const units = CURRICULUM_UNITS.filter(u => u.gradeBand === currentBand);
+      if(!units.length){
+        unitsGridEl.innerHTML = '<p style="grid-column:1 / -1;font-size:14px;color:var(--ink-soft);text-align:center;">No units yet for this band.</p>';
+        return;
+      }
+
+      units.forEach(unit => {
+        const card = document.createElement('article');
+        card.className = 'unit-card';
+        card.dataset.id = unit.id;
+
+        const focus = unit.focusFaiths ? unit.focusFaiths.join(', ') : '';
+
+        card.innerHTML = `
+          <h3 class="unit-title">${unit.title}</h3>
+          <p class="unit-meta">${unit.gradeBand} · Focus: ${focus}</p>
+          <p class="unit-overview">${unit.overview}</p>
+          <button class="unit-toggle" type="button">Open Lesson Plan</button>
+          <div class="unit-details" style="display:none;">
+            <p class="unit-heading">Essential Question</p>
+            <p>${unit.essentialQuestion}</p>
+            <p class="unit-heading">Key Concepts</p>
+            <ul class="unit-list">
+              ${(unit.keyConcepts || []).map(k => `<li>${k}</li>`).join('')}
+            </ul>
+            <p class="unit-heading">Suggested Activities</p>
+            <ul class="unit-list">
+              ${(unit.activities || []).map(a => `<li>${a}</li>`).join('')}
+            </ul>
+            <p class="unit-heading">Reflection Prompts</p>
+            <ul class="unit-list">
+              ${(unit.reflections || []).map(r => `<li>${r}</li>`).join('')}
+            </ul>
+          </div>
+        `;
+        const toggleBtn = card.querySelector('.unit-toggle');
+        const details = card.querySelector('.unit-details');
+        toggleBtn.addEventListener('click', () => {
+          const open = details.style.display === 'block';
+          details.style.display = open ? 'none' : 'block';
+          toggleBtn.textContent = open ? 'Open Lesson Plan' : 'Close Lesson Plan';
+        });
+
+        unitsGridEl.appendChild(card);
+      });
+    }
+
+    gradePills.forEach(btn => {
+      btn.addEventListener('click', () => {
+        gradePills.forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        currentBand = btn.getAttribute('data-band') || 'K-2';
+        renderUnits();
+      });
+    });
+
+    /* === QUIZ WIRING === */
+    const quizQuestionEl = document.getElementById('quizQuestion');
+    const quizOptionsEl = document.getElementById('quizOptions');
+    const quizStartBtn = document.getElementById('quizStartBtn');
+    const quizCheckBtn = document.getElementById('quizCheckBtn');
+    const quizNextBtn = document.getElementById('quizNextBtn');
+    const quizFeedbackEl = document.getElementById('quizFeedback');
+    const quizScoreEl = document.getElementById('quizScore');
+
+    let quizIndex = 0;
+    let quizScore = 0;
+    let quizInProgress = false;
+
+    function renderQuizQuestion(){
+      const item = QUIZ_BANK[quizIndex];
+      quizQuestionEl.textContent = `Q${quizIndex+1}. ${item.q}`;
+      quizOptionsEl.innerHTML = item.options.map((opt, i) => `
+        <li>
+          <label>
+            <input type="radio" name="quizOption" value="${i}" />
+            ${opt}
+          </label>
+        </li>
+      `).join('');
+      quizFeedbackEl.textContent = '';
+      quizScoreEl.textContent = `Score: ${quizScore} / ${QUIZ_BANK.length}`;
+    }
+
+    function startQuiz(){
+      quizIndex = 0;
+      quizScore = 0;
+      quizInProgress = true;
+      quizStartBtn.style.display = 'none';
+      quizCheckBtn.style.display = 'inline-flex';
+      quizNextBtn.style.display = 'none';
+      renderQuizQuestion();
+    }
+
+    function checkQuizAnswer(){
+      const item = QUIZ_BANK[quizIndex];
+      const selected = document.querySelector('input[name="quizOption"]:checked');
+      if(!selected){
+        quizFeedbackEl.textContent = 'Please choose an answer before checking.';
+        return;
+      }
+      const val = parseInt(selected.value, 10);
+      if(val === item.correct){
+        quizScore++;
+        quizFeedbackEl.textContent = 'That is a thoughtful choice. ✅ ' + item.explain;
+      }else{
+        quizFeedbackEl.textContent = 'Not quite, let\'s look again. ℹ️ ' + item.explain;
+      }
+      quizScoreEl.textContent = `Score: ${quizScore} / ${QUIZ_BANK.length}`;
+      quizCheckBtn.style.display = 'none';
+      quizNextBtn.style.display = 'inline-flex';
+    }
+
+    function nextQuizQuestion(){
+      quizIndex++;
+      if(quizIndex >= QUIZ_BANK.length){
+        quizInProgress = false;
+        quizQuestionEl.textContent = 'Quiz finished. Thank you for thinking carefully.';
+        quizOptionsEl.innerHTML = '';
+        quizFeedbackEl.textContent = '';
+        quizScoreEl.textContent = `Final score: ${quizScore} / ${QUIZ_BANK.length}`;
+        quizStartBtn.textContent = 'Restart Quiz';
+        quizStartBtn.style.display = 'inline-flex';
+        quizCheckBtn.style.display = 'none';
+        quizNextBtn.style.display = 'none';
+      }else{
+        quizCheckBtn.style.display = 'inline-flex';
+        quizNextBtn.style.display = 'none';
+        renderQuizQuestion();
+      }
+    }
+
+    quizStartBtn.addEventListener('click', startQuiz);
+    quizCheckBtn.addEventListener('click', checkQuizAnswer);
+    quizNextBtn.addEventListener('click', nextQuizQuestion);
+
+    /* === INITIAL RENDER === */
+    createFaithButtons();
+    populateCompareSelects();
+    renderUnits();
+    // Kids view starts in intro mode; quiz waits for Start.
+
+  </script>
+</body>
+</html>
