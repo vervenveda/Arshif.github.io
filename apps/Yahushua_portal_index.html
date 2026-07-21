@@ -1,0 +1,637 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Yahushua Learning Portal — ARSHIF Edition</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Cormorant+brandon Grotesque:wght@400;500;600&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    :root{
+      --parchment:#f7f3ea;
+      --parchment-soft:#f0e9dc;
+      --ink:#2a2015;
+      --ink-soft:#5c4a32;
+      --gold:#d9b878;
+      --gold-deep:#b89252;
+      --midnight:#0b1020;
+      --panel:#141726;
+      --accent:#7a5a28;
+      --radius-main:21px;
+      --radius-soft:14px;
+      --shadow-main:0 27px 72px rgba(0,0,0,0.75);
+    }
+
+    *{box-sizing:border-box;}
+
+    body{
+      margin:0;
+      min-height:100vh;
+      background:
+        radial-gradient(circle at top,#2a2740 0%,#050712 65%);
+      font-family:'Poppins',system-ui,-apple-system,'Brandon Grotesque',sans-serif;
+      color:var(--ink);
+      display:flex;
+      justify-content:center;
+      align-items:flex-start;
+      padding:33px 14px 42px;
+    }
+
+    .yah-shell{
+      width:100%;
+      max-width:1333px; /* 108 = sacred multiple */
+      background:
+        linear-gradient(135deg,#181827,#10131f);
+      border-radius:var(--radius-main);
+      box-shadow:var(--shadow-main);
+      border:1px solid rgba(217,184,120,0.55);
+      color:var(--parchment);
+      display:flex;
+      flex-direction:column;
+      overflow:hidden;
+    }
+
+    .yah-header{
+      padding:24px 24px 24px;
+      border-bottom:1px solid rgba(247,243,234,0.12);
+      text-align:center;
+      background:radial-gradient(circle at top,#23233a 0%,#10131f 70%);
+    }
+
+    .yah-header h1{
+      margin:0 0 7px;
+      font-family:'Cinzel','Brandon Grotesque',serif;
+      font-size:44px;
+      letter-spacing:0.16em;
+      text-transform:uppercase;
+    }
+
+    .yah-header .tagline{
+      font-size:13px;
+      letter-spacing:0.16em;
+      text-transform:uppercase;
+      color:var(--gold);
+      margin-bottom:7px;
+    }
+
+    .yah-header .sub{
+      max-width:720px;
+      margin:0 auto;
+      font-size:14px;
+      line-height:1.7;
+      color:var(--parchment-soft);
+    }
+
+    .yah-body{
+      display:flex;
+      gap:0;
+      padding:0;
+      min-height:444px;
+    }
+
+    /* Left navigation / timeline */
+    .yah-nav{
+      width:333px;
+      border-right:5px solid rgba(247,243,234,0.12);
+      padding:24px 24px 24px;
+      background:linear-gradient(180deg,#141827 0%,#0c0f1c 100%);
+    }
+
+    .yah-nav-title{
+      font-family:'Cinzel','Times New Roman',serif;
+      font-size:24px;
+      letter-spacing:0.12em;
+      text-transform:uppercase;
+      margin:0 0 11px;
+      color:var(--gold);
+    }
+
+    .yah-nav-note{
+      font-size:24px;
+      color:var(--parchment-soft);
+      margin:0 0 14px;
+      line-height:1.5;
+    }
+
+    .yah-nav-list{
+      display:flex;
+      flex-direction:column;
+      gap:11px;
+      margin:0;
+      padding:0;
+      list-style:none;
+    }
+
+    .yah-nav-btn{
+      width:100%;
+      text-align:center;
+      border:none;
+      border-radius:999px;
+      padding:11px 14px;
+      background:rgba(255,255,255,0.03);
+      color:var(--parchment);
+      cursor:pointer;
+      font-size:24px;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:9px;
+      letter-spacing:0.04em;
+      text-transform:uppercase;
+      transition:background .18s,transform .18s,box-shadow .18s;
+      border:1px solid rgba(217,184,120,0.18);
+    }
+
+    .yah-nav-btn span.label{
+      flex:1;
+      white-space:normal;
+    }
+
+    .yah-nav-btn span.badge{
+      font-size:11px;
+      padding:2px 7px;
+      border-radius:777px;
+      border:1px solid rgba(217,184,120,0.6);
+      color:var(--gold);
+    }
+
+    .yah-nav-btn:hover{
+      background:rgba(255,255,255,0.07);
+      transform:translateY(-1px);
+      box-shadow:0 7px 21px rgba(0,0,0,0.45);
+    }
+
+    .yah-nav-btn.active{
+      background:linear-gradient(135deg,var(--gold),var(--gold-deep));
+      color:#1a1309;
+      box-shadow:0 9px 27px rgba(0,0,0,0.6);
+    }
+
+    .yah-nav-btn.active span.badge{
+      border-color:#1a1309;
+      background:#1a1309;
+      color:var(--gold);
+    }
+
+    /* Main reading panel */
+    .yah-main{
+      flex:1;
+      padding:21px 22px 24px;
+      background:radial-gradient(circle at top,#1a1c2b 0%,#080912 72%);
+      display:flex;
+      flex-direction:column;
+      gap:12px;
+    }
+
+    .yah-section-title{
+      font-family:'Cinzel','Times New Roman',serif;
+      font-size:24px;
+      letter-spacing:0.08em;
+      text-transform:uppercase;
+      margin:0 0 6px;
+      color:var(--gold);
+    }
+
+    .yah-section-tag{
+      font-size:12px;
+      letter-spacing:0.16em;
+      text-transform:uppercase;
+      color:var(--parchment-soft);
+      margin-bottom:14px;
+    }
+
+    .yah-section-body{
+      font-size:15px;
+      line-height:1.7;
+      color:var(--parchment-soft);
+    }
+
+    .yah-section-body p{
+      margin:0 0 10px;
+    }
+
+    .yah-pill-row{
+      display:flex;
+      flex-wrap:wrap;
+      gap:7px;
+      margin:6px 0 10px;
+    }
+
+    .yah-pill{
+      border-radius:777px;
+      border:1px solid rgba(217,184,120,0.55);
+      padding:5px 11px;
+      font-size:12px;
+      letter-spacing:0.08em;
+      text-transform:uppercase;
+      color:var(--gold);
+      background:rgba(0,0,0,0.18);
+    }
+
+    .yah-timeline{
+      margin:6px 0 4px;
+      padding-left:0;
+      list-style:none;
+      font-size:14px;
+      color:var(--parchment-soft);
+    }
+
+    .yah-timeline li{
+      margin-bottom:5px;
+      position:relative;
+      padding-left:18px;
+    }
+
+    .yah-timeline li::before{
+      content:'•';
+      position:absolute;
+      left:3px;
+      top:0;
+      color:var(--gold);
+    }
+
+    .yah-note{
+      font-size:12px;
+      color:var(--parchment-soft);
+      opacity:0.9;
+      margin-top:6px;
+    }
+
+    .yah-footer{
+      border-top:1px solid rgba(247,243,234,0.12);
+      padding:10px 18px 12px;
+      font-size:12px;
+      color:var(--parchment-soft);
+      text-align:center;
+      background:#10121f;
+    }
+
+    .yah-footer span{
+      color:var(--gold);
+    }
+
+    @media (max-width:800px){
+      .yah-body{
+        flex-direction:column;
+      }
+      .yah-nav{
+        width:100%;
+        border-right:none;
+        border-bottom:1px solid rgba(247,243,234,0.14);
+      }
+      .yah-nav-btn{
+        font-size:13px;
+      }
+    }
+
+    @media (max-width:540px){
+      body{
+        padding:21px 8px 30px;
+      }
+      .yah-shell{
+        border-radius:18px;
+      }
+      .yah-header h1{
+        font-size:27px;
+        letter-spacing:0.12em;
+      }
+    }
+  </style>
+</head>
+<body>
+<div class="yah-shell">
+  <header class="yah-header">
+    <h1>Yahushua Portal</h1>
+    <div class="tagline">ARSHIF · The Life & Prophecies Thereof</div>
+    <p class="sub">
+      A gentle study room for the story of Yahushua — his world, his life, his teachings,
+      and the prophecies that surround him. This space is for learning, comparison, and
+      reverent reflection, not for argument.
+    </p>
+  </header>
+
+  <div class="yah-body">
+    <!-- LEFT: NAV / TIMELINE -->
+    <aside class="yah-nav">
+      <h2 class="yah-nav-title">Learning Path</h2>
+      <p class="yah-nav-note">
+        Walk the sections in order, or tap any chapter that calls your heart today.
+      </p>
+      <ul class="yah-nav-list" id="yahNav"></ul>
+    </aside>
+
+    <!-- RIGHT: MAIN READING AREA -->
+    <main class="yah-main">
+      <h2 class="yah-section-title" id="sectionTitle">Loading…</h2>
+      <div class="yah-section-tag" id="sectionTag"></div>
+      <div class="yah-section-body" id="sectionBody"></div>
+    </main>
+  </div>
+
+  <footer class="yah-footer">
+    ARSHIF · <span>Palimpsest Library</span> — Yahushua Study Portal (alpha).
+  </footer>
+</div>
+
+<script>
+  /* ================================
+     Yahushua Study Sections
+     ================================ */
+
+  const yahSections = [
+    {
+      id:'overview',
+      title:'Who is Yahushua?',
+      tag:'Start here',
+      pills:['Historical figure','Messiah in Christian faith','Honored prophet in Islam'],
+      html:`
+        <p>
+          “Yahushua” (often rendered Yeshua or Jesus) refers to a first-century
+          Jewish teacher from the land of Israel/Palestine. He lived under Roman
+          occupation, spoke Aramaic, moved among ordinary people, and preached
+          about the kingdom of God.
+        </p>
+        <p>
+          For many Christians, Yahushua is the promised Messiah and the Son of God,
+          whose life, death, and resurrection bring salvation. For Muslims, ʿĪsā
+          ibn Maryam is a mighty prophet and Messiah, born of Mary, honored but not
+          worshiped as God. Jewish and historical-critical scholars study him as a
+          Jewish teacher within Second Temple Judaism.
+        </p>
+        <p>
+          This portal does not try to erase any tradition. It simply lays out the
+          major lines of his story so that seekers can read, compare, and pray.
+        </p>
+      `
+    },
+    {
+      id:'context',
+      title:'The World of Yahushua',
+      tag:'Second Temple background',
+      pills:['Second Temple Judaism','Roman Empire','Galilee & Judea'],
+      html:`
+        <p>
+          Yahushua was born into a Jewish people living under foreign rule. The
+          Second Temple stood in Jerusalem; priests, teachers of the Law, and
+          various groups (Pharisees, Sadducees, Essenes, zealots) debated how best
+          to live faithfully to the God of Israel.
+        </p>
+        <ul class="yah-timeline">
+          <li><strong>Roman occupation:</strong> Heavy taxes and military presence shaped daily life.</li>
+          <li><strong>Temple & synagogues:</strong> The Temple was the center of sacrifice;
+              synagogues were local centers of prayer and teaching.</li>
+          <li><strong>Longing for deliverance:</strong> Many hoped for a Messiah —
+              an anointed leader — who would restore justice and covenant faithfulness.</li>
+        </ul>
+        <p>
+          Yahushua’s teaching about the “kingdom of God” spoke into this longing:
+          a reign not only of politics, but of mercy, truth, and inward transformation.
+        </p>
+      `
+    },
+    {
+      id:'timeline',
+      title:'Life Journey',
+      tag:'From birth to resurrection',
+      pills:['Birth & childhood','Public ministry','Cross & empty tomb'],
+      html:`
+        <p>
+          The exact dates are debated, but most scholars place Yahushua’s life roughly
+          in the first third of the first century CE.
+        </p>
+        <ul class="yah-timeline">
+          <li><strong>Birth & early years:</strong> Accounts in Matthew and Luke describe his
+              birth in Bethlehem, his mother Mary, and early signs of calling.
+              He grows up in Nazareth in Galilee.</li>
+          <li><strong>Baptism & calling:</strong> As an adult, he is baptized by John the Baptist
+              in the Jordan River, a moment many traditions see as the public beginning
+              of his mission.</li>
+          <li><strong>Teaching & healing:</strong> For several years he travels through towns and
+              villages, teaching in synagogues and open fields, healing the sick,
+              welcoming the poor and excluded.</li>
+          <li><strong>Final week in Jerusalem:</strong> During a Passover season he enters
+              Jerusalem, confronts religious and political tensions, and shares a
+              final meal with his disciples.</li>
+          <li><strong>Crucifixion:</strong> He is arrested, tried under Roman authority, and
+              executed by crucifixion — a punishment for rebels and outsiders.</li>
+          <li><strong>Resurrection faith:</strong> His followers proclaim that God raised him
+              from the dead and that they encountered him alive, which becomes the
+              foundation of early Christian faith.</li>
+        </ul>
+        <p class="yah-note">
+          Different communities emphasize different moments, but almost all accounts
+          circle around these turning points.
+        </p>
+      `
+    },
+    {
+      id:'teachings',
+      title:'Teachings & Parables',
+      tag:'Kingdom, mercy, justice',
+      pills:['Sermon on the Mount','Parables','Love of God & neighbor'],
+      html:`
+        <p>
+          Yahushua is remembered above all as a teacher. His words come to us in
+          collections like the Sermon on the Mount (Matthew 5–7) and in many parables —
+          short stories with spiritual depth.
+        </p>
+        <ul class="yah-timeline">
+          <li><strong>Kingdom of God:</strong> He announces that God’s reign is near — not only
+              in future judgment, but in the present transformation of hearts and
+              communities.</li>
+          <li><strong>Love command:</strong> He sums up the Law as loving God with all one’s being
+              and loving one’s neighbor as oneself, extending even to love of enemies.</li>
+          <li><strong>Parables:</strong> Stories like the Good Samaritan, the Prodigal Son, and
+              the Mustard Seed reveal a kingdom that lifts the poor, welcomes the
+              outsider, and begins in small, hidden ways.</li>
+          <li><strong>Prayer & trust:</strong> He teaches disciples to pray “Our Father…”, to
+              forgive, and to trust the Father’s care even in hardship.</li>
+        </ul>
+        <p>
+          Across traditions, even when interpretations differ, many recognize in these
+          teachings a deep call to compassion, humility, and justice.
+        </p>
+      `
+    },
+    {
+      id:'prophecies',
+      title:'Prophecies & Expectations',
+      tag:'Before, during, and after his life',
+      pills:['Hebrew Scriptures','Messianic hope','Early interpretations'],
+      html:`
+        <p>
+          Followers of Yahushua soon began to read the Hebrew Scriptures (Tanakh)
+          in light of his life. They saw patterns and prophecies that, in their
+          eyes, pointed toward him.
+        </p>
+        <ul class="yah-timeline">
+          <li><strong>Messiah theme:</strong> Passages about an anointed king from David’s line,
+              a suffering servant, or a righteous teacher are linked to Yahushua in
+              Christian readings.</li>
+          <li><strong>Birth & mission:</strong> Some see hints of his birth and mission in
+              prophetic texts about light coming to the nations, or a child bringing
+              peace and justice.</li>
+          <li><strong>Death & vindication:</strong> Songs of a suffering righteous one who is
+              later vindicated by God are read as foreshadowing the cross and
+              resurrection.</li>
+        </ul>
+        <p class="yah-note">
+          Other Jewish and scholarly readings do not connect these passages to Yahushua.
+          ARSHIF’s Palimpsest Library is a place to hold these different readings side
+          by side with honesty.
+        </p>
+      `
+    },
+    {
+      id:'cross',
+      title:'Cross & Resurrection',
+      tag:'Turning point of Christian faith',
+      pills:['Crucifixion under Rome','Empty tomb reports','Meaning & mystery'],
+      html:`
+        <p>
+          Yahushua’s execution by crucifixion is one of the most historically
+          secure events in the story. The earliest Christian writings then claim
+          that God raised him from the dead.
+        </p>
+        <ul class="yah-timeline">
+          <li><strong>Crucifixion:</strong> Condemned under the Roman governor Pontius Pilate,
+              Yahushua is crucified outside Jerusalem. The Gospels interpret this
+              as both human injustice and part of God’s redemptive plan.</li>
+          <li><strong>Burial & empty tomb:</strong> He is buried; women followers later find the
+              tomb open and hear that he has risen.</li>
+          <li><strong>Appearances:</strong> Early communities preserve accounts of encounters
+              with the risen Yahushua — to individuals, groups, and gatherings of
+              disciples.</li>
+        </ul>
+        <p>
+          For Christian faith, the cross and resurrection are the heart of the
+          good news: that God enters suffering, overcomes death, and opens a path
+          of reconciliation. Other traditions honor him differently but still see
+          in his story a sign of God’s power and mercy.
+        </p>
+      `
+    },
+    {
+      id:'names',
+      title:'Names & Titles',
+      tag:'How different communities speak of him',
+      pills:['Yahushua / Yeshua / Jesus','Messiah / Christ','Son of Man / Word'],
+      html:`
+        <p>
+          Across languages and traditions, many names gather around this one life.
+        </p>
+        <ul class="yah-timeline">
+          <li><strong>Yahushua / Yeshua:</strong> A Hebrew/Aramaic form related to “Yah saves”
+              or “Yahweh is salvation.”</li>
+          <li><strong>Jesus:</strong> The common English form, through Greek (Iēsous) and Latin.</li>
+          <li><strong>Titles:</strong> Messiah (Christ), Son of Man, Son of God, Teacher, Lord,
+              Prophet, Word of God — each title carries layers of meaning and
+              theology.</li>
+        </ul>
+        <p class="yah-note">
+          ARSHIF uses “Yahushua” here to honor the Semitic roots of his name while
+          recognizing and respecting the many forms used by communities worldwide.
+        </p>
+      `
+    },
+    {
+      id:'perspectives',
+      title:'Different Lenses, One Story',
+      tag:'Jewish, Christian, Muslim & historical views',
+      pills:['Jewish studies','Christian theology','Islamic tradition'],
+      html:`
+        <p>
+          The same life is seen through many lenses:
+        </p>
+        <ul class="yah-timeline">
+          <li><strong>Christian traditions:</strong> Confess Yahushua as Lord, Messiah, and Son
+              of God, whose death and resurrection bring salvation and new life.</li>
+          <li><strong>Jewish perspectives:</strong> See him as a Jewish teacher within their
+              own history. Some view him as a misunderstood reformer; others focus
+              on the long story of Jewish–Christian relations.</li>
+          <li><strong>Islamic tradition:</strong> Honors ʿĪsā as Messiah and prophet, born of
+              Mary by God’s command, performing signs by God’s permission, but not
+              crucified in the way Christian narratives describe.</li>
+          <li><strong>Historical-critical study:</strong> Seeks to reconstruct what can be
+              known about Yahushua using historical methods, comparing sources and
+              contexts.</li>
+        </ul>
+        <p>
+          This portal doesn’t resolve all differences; instead, it invites
+          humility: to listen, to learn, and to let the light of his life call
+          each heart deeper into truth and mercy.
+        </p>
+      `
+    }
+  ];
+
+  /* ================================
+     Rendering Logic
+     ================================ */
+
+  const navEl = document.getElementById('yahNav');
+  const titleEl = document.getElementById('sectionTitle');
+  const tagEl = document.getElementById('sectionTag');
+  const bodyEl = document.getElementById('sectionBody');
+
+  function renderNav(){
+    navEl.innerHTML = '';
+    yahSections.forEach((sec, idx)=>{
+      const li = document.createElement('li');
+
+      const btn = document.createElement('button');
+      btn.type = 'button';
+      btn.className = 'yah-nav-btn';
+      btn.dataset.sectionId = sec.id;
+
+      const label = document.createElement('span');
+      label.className = 'label';
+      label.textContent = sec.title;
+
+      const badge = document.createElement('span');
+      badge.className = 'badge';
+      badge.textContent = idx+1 < 10 ? '0'+(idx+1) : (idx+1);
+
+      btn.appendChild(label);
+      btn.appendChild(badge);
+
+      btn.addEventListener('click', ()=>{
+        setActiveSection(sec.id);
+      });
+
+      li.appendChild(btn);
+      navEl.appendChild(li);
+    });
+  }
+
+  function setActiveSection(id){
+    const sec = yahSections.find(s => s.id === id) || yahSections[0];
+    titleEl.textContent = sec.title;
+    tagEl.textContent = sec.tag || '';
+    bodyEl.innerHTML = '';
+
+    if(sec.pills && sec.pills.length){
+      const pillsRow = document.createElement('div');
+      pillsRow.className = 'yah-pill-row';
+      sec.pills.forEach(text=>{
+        const pill = document.createElement('span');
+        pill.className = 'yah-pill';
+        pill.textContent = text;
+        pillsRow.appendChild(pill);
+      });
+      bodyEl.appendChild(pillsRow);
+    }
+
+    const wrapper = document.createElement('div');
+    wrapper.innerHTML = sec.html;
+    bodyEl.appendChild(wrapper);
+
+    document.querySelectorAll('.yah-nav-btn').forEach(btn=>{
+      btn.classList.toggle('active', btn.dataset.sectionId === sec.id);
+    });
+  }
+
+  renderNav();
+  setActiveSection('overview');
+</script>
+</body>
+</html>
