@@ -1,0 +1,1348 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Foundations of Faith — Self-Paced Bible Study Portal</title>
+
+  <!-- Optional font (safe for Wix embed). Remove if you prefer fully offline. -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root{
+      --bg0:#070b12;
+      --bg1:#0b1220;
+      --bg2:#0f1b2f;
+      --card: rgba(255,255,255,0.06);
+      --card2: rgba(255,255,255,0.085);
+      --stroke: rgba(255,255,255,0.14);
+      --text:#f2f4f8;
+      --muted:#c7cfdd;
+      --soft:#aab4c6;
+      --accent:#86f0d7;
+      --accent2:#7fb3ff;
+      --warn:#ffd27d;
+      --good:#7CFFB2;
+      --bad:#ff8a8a;
+
+      --r11: 11px;
+      --r21: 21px;
+
+      --shadow: 0 18px 55px rgba(0,0,0,0.35);
+      --max: 1100px;
+
+      /* User preference: big, readable */
+      --base: 22px; /* never smaller than 22px */
+    }
+
+    html,body{height:100%;}
+    body{
+      margin:0;
+      font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      font-size: var(--base);
+      line-height: 1.35;
+      color: var(--text);
+      background:
+        radial-gradient(900px 420px at 20% 10%, rgba(134,240,215,0.12), transparent 60%),
+        radial-gradient(900px 420px at 80% 15%, rgba(127,179,255,0.12), transparent 60%),
+        linear-gradient(180deg, var(--bg0), var(--bg1) 35%, var(--bg2));
+      overflow-x:hidden;
+    }
+
+    a{color: var(--accent2); text-decoration:none;}
+    a:hover{text-decoration:underline;}
+
+    .wrap{
+      max-width: var(--max);
+      margin: 0 auto;
+      padding: 18px 14px 60px;
+    }
+
+    header{
+      text-align:center;
+      padding: 18px 12px 8px;
+    }
+    .title{
+      font-size: clamp(28px, 3.5vw, 44px);
+      font-weight: 800;
+      letter-spacing: 0.2px;
+      margin: 0 0 6px;
+    }
+    .subtitle{
+      color: var(--muted);
+      margin: 0 auto 14px;
+      max-width: 70ch;
+    }
+
+    .topbar{
+      display:flex;
+      gap:10px;
+      justify-content:center;
+      flex-wrap:wrap;
+      margin: 10px 0 14px;
+    }
+
+    .btn{
+      border:1px solid var(--stroke);
+      background: linear-gradient(180deg, rgba(255,255,255,0.10), rgba(255,255,255,0.04));
+      color: var(--text);
+      padding: 10px 14px;
+      border-radius: var(--r21);
+      cursor:pointer;
+      font-size: 20px;
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      box-shadow: 0 10px 24px rgba(0,0,0,0.18);
+      user-select:none;
+    }
+    .btn:hover{transform: translateY(-1px); border-color: rgba(255,255,255,0.24);}
+    .btn:active{transform: translateY(0px);}
+    .btn.secondary{background: rgba(255,255,255,0.05);}
+    .btn.danger{border-color: rgba(255,138,138,0.45);}
+    .btn.good{border-color: rgba(124,255,178,0.45);}
+
+    .layout{
+      display:grid;
+      grid-template-columns: 320px 1fr;
+      gap: 14px;
+      align-items:start;
+      margin-top: 10px;
+    }
+
+    .panel{
+      background: var(--card);
+      border: 1px solid var(--stroke);
+      border-radius: var(--r21);
+      box-shadow: var(--shadow);
+      overflow:hidden;
+    }
+
+    .panel h2{
+      margin:0;
+      padding: 14px 14px 10px;
+      font-size: 24px;
+      border-bottom: 1px solid rgba(255,255,255,0.10);
+    }
+
+    .weeklist{
+      padding: 10px;
+      display:flex;
+      flex-direction:column;
+      gap:10px;
+    }
+
+    .weekbtn{
+      text-align:left;
+      width:100%;
+      border:1px solid var(--stroke);
+      border-radius: var(--r21);
+      padding: 12px 12px;
+      cursor:pointer;
+      background: rgba(255,255,255,0.06);
+      color: var(--text);
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      gap:10px;
+      font-size: 20px;
+    }
+    .weekbtn:hover{background: rgba(255,255,255,0.085);}
+    .weekbtn[aria-current="true"]{
+      outline: 2px solid rgba(134,240,215,0.35);
+      background: rgba(134,240,215,0.10);
+    }
+
+    .tag{
+      font-size: 16px;
+      padding: 6px 10px;
+      border-radius: 999px;
+      border: 1px solid rgba(255,255,255,0.16);
+      color: var(--muted);
+      background: rgba(0,0,0,0.12);
+      white-space:nowrap;
+    }
+    .tag.locked{border-color: rgba(255,210,125,0.35); color: var(--warn);}
+    .tag.done{border-color: rgba(124,255,178,0.35); color: var(--good);}
+
+    .progress{
+      padding: 12px 14px 16px;
+      color: var(--muted);
+      border-top: 1px solid rgba(255,255,255,0.10);
+      font-size: 19px;
+    }
+    .bar{
+      height: 10px;
+      border-radius: 999px;
+      background: rgba(255,255,255,0.10);
+      overflow:hidden;
+      margin-top: 8px;
+      border: 1px solid rgba(255,255,255,0.12);
+    }
+    .bar > div{
+      height: 100%;
+      width: 0%;
+      background: linear-gradient(90deg, rgba(134,240,215,0.9), rgba(127,179,255,0.9));
+    }
+
+    .content{
+      padding: 14px;
+    }
+
+    .hero{
+      background: var(--card2);
+      border:1px solid rgba(255,255,255,0.16);
+      border-radius: var(--r21);
+      padding: 14px;
+      margin-bottom: 12px;
+    }
+
+    .hero .kicker{
+      color: var(--muted);
+      font-size: 18px;
+      margin-bottom: 8px;
+    }
+    .hero .heading{
+      font-size: 30px;
+      font-weight: 800;
+      margin: 0 0 8px;
+    }
+    .hero .idea{
+      margin: 0;
+      color: var(--text);
+    }
+
+    .grid2{
+      display:grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+      margin: 12px 0;
+    }
+
+    .card{
+      background: rgba(255,255,255,0.06);
+      border:1px solid rgba(255,255,255,0.14);
+      border-radius: var(--r21);
+      padding: 14px;
+    }
+
+    .card h3{
+      margin: 0 0 8px;
+      font-size: 24px;
+    }
+
+    ul{margin: 8px 0 0 22px;}
+    li{margin: 6px 0;}
+
+    .flow{
+      margin-top: 10px;
+    }
+
+    .flow .note{
+      color: var(--muted);
+      font-size: 18px;
+      margin: 0 0 10px;
+    }
+
+    .seg{
+      border-radius: var(--r21);
+      border: 1px solid rgba(255,255,255,0.14);
+      background: rgba(255,255,255,0.055);
+      padding: 12px 14px;
+      margin: 10px 0;
+    }
+    .seghead{
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      gap:10px;
+      flex-wrap:wrap;
+      margin-bottom: 6px;
+    }
+    .segtitle{
+      font-weight: 800;
+      font-size: 22px;
+    }
+    .segtime{
+      font-size: 16px;
+      color: var(--muted);
+      border:1px solid rgba(255,255,255,0.16);
+      border-radius: 999px;
+      padding: 5px 10px;
+    }
+
+    .prayerBox{
+      background: rgba(134,240,215,0.08);
+      border: 1px solid rgba(134,240,215,0.22);
+    }
+
+    .quiz{
+      margin-top: 14px;
+    }
+    .quiz h3{margin-top:0;}
+    .q{
+      margin: 12px 0;
+      padding: 12px;
+      border-radius: var(--r21);
+      border: 1px solid rgba(255,255,255,0.14);
+      background: rgba(0,0,0,0.08);
+    }
+    .q .qtitle{
+      font-weight: 800;
+      margin-bottom: 8px;
+    }
+    label.option{
+      display:block;
+      margin: 8px 0;
+      color: var(--text);
+      cursor:pointer;
+    }
+    input[type="radio"], input[type="checkbox"]{transform: scale(1.2); margin-right: 10px;}
+
+    textarea{
+      width:100%;
+      min-height: 110px;
+      resize: vertical;
+      padding: 10px 12px;
+      border-radius: var(--r11);
+      border: 1px solid rgba(255,255,255,0.18);
+      background: rgba(255,255,255,0.06);
+      color: var(--text);
+      font-size: 20px;
+      outline:none;
+    }
+    textarea:focus{border-color: rgba(127,179,255,0.55);}
+
+    .row{
+      display:flex;
+      gap:10px;
+      flex-wrap:wrap;
+      align-items:center;
+      margin-top: 10px;
+    }
+
+    .statusline{
+      color: var(--muted);
+      font-size: 18px;
+    }
+
+    .score{
+      font-weight: 800;
+      color: var(--good);
+    }
+
+    details{
+      margin-top: 10px;
+      border:1px solid rgba(255,255,255,0.12);
+      border-radius: var(--r21);
+      padding: 10px 12px;
+      background: rgba(255,255,255,0.04);
+    }
+    summary{
+      cursor:pointer;
+      font-weight: 800;
+    }
+
+    .resources a{
+      display:inline-block;
+      margin: 6px 10px 0 0;
+    }
+
+    .foot{
+      text-align:center;
+      color: var(--muted);
+      margin-top: 18px;
+      font-size: 18px;
+    }
+
+    @media (max-width: 980px){
+      .layout{grid-template-columns: 1fr;}
+      .grid2{grid-template-columns: 1fr;}
+    }
+  </style>
+</head>
+
+<body>
+  <div class="wrap">
+    <header>
+      <h1 class="title">Foundations of Faith</h1>
+      <p class="subtitle">
+        A self-paced, 8-week Bible study portal for general teaching. Each lesson follows a <b>30-minute session flow</b>,
+        includes guided prompts, and ends with a 5-question homework quiz. Progress saves on this device.
+      </p>
+
+      <div class="topbar">
+        <button class="btn secondary" id="btnPrint" title="Print the current lesson">🖨️ Print Lesson</button>
+        <button class="btn secondary" id="btnExport" title="Export your progress as a JSON file">⬇️ Export Progress</button>
+        <button class="btn danger" id="btnReset" title="Reset all progress on this device">↺ Reset Progress</button>
+      </div>
+    </header>
+
+    <div class="layout">
+      <!-- Left: Weeks -->
+      <aside class="panel">
+        <h2>Weeks</h2>
+        <div class="weeklist" id="weekList"></div>
+        <div class="progress">
+          <div id="progressText">Progress: 0 / 8 complete</div>
+          <div class="bar"><div id="progressBar"></div></div>
+        </div>
+      </aside>
+
+      <!-- Right: Content -->
+      <main class="panel">
+        <div class="content" id="content"></div>
+      </main>
+    </div>
+
+    <div class="foot">
+      Thank You for Visiting
+    </div>
+  </div>
+
+<script>
+/* =========================================================
+   DATA: 8 lessons + quizzes (TF + 2 MC + 2 Essay)
+   Note: Scripture text is not embedded (translation licensing varies).
+         Instead, we provide references + quick lookup links.
+========================================================= */
+
+const RESOURCES = [
+  { name: "BibleProject (videos & themes)", url: "https://bibleproject.com/" },
+  { name: "BibleGateway (passage lookup)", url: "https://www.biblegateway.com/" },
+  { name: "Blue Letter Bible (tools, lexicon)", url: "https://www.blueletterbible.org/" },
+  { name: "YouVersion Bible App (reading plans)", url: "https://www.youversion.com/the-bible-app/" },
+  { name: "STEPBible (study tools)", url: "https://www.stepbible.org/" }
+];
+
+// Helper to build a BibleGateway lookup url for a reference string
+function gatewayUrl(ref){
+  return "https://www.biblegateway.com/passage/?search=" + encodeURIComponent(ref);
+}
+
+const LESSONS = [
+  {
+    week: 1,
+    title: "The Gospel: What God Has Done",
+    bigIdea: "The gospel is Jesus’ life, death, and resurrection for sinners—received by faith.",
+    passages: ["1 Corinthians 15:1–4", "Romans 3:23–26", "Ephesians 2:8–10"],
+    openingPrayer:
+      "Father, thank You for the good news of Jesus. Give us clear hearts to hear Your Word, humble faith to receive grace, and courage to live as people made new. In Jesus’ name, amen.",
+    flow: [
+      { name:"Welcome", mins:2, prompts:[
+        "Set the tone: we’re here to know God, not just collect facts.",
+        "Invite everyone to be honest: questions are welcome."
+      ]},
+      { name:"Read the Passage Out Loud", mins:3, prompts:[
+        "Read the passages slowly (or assign readers).",
+        "Notice what stands out on first hearing."
+      ]},
+      { name:"Observe", mins:6, prompts:[
+        "What words or ideas repeat (grace, faith, sin, Christ, risen)?",
+        "What is the main claim of each passage?",
+        "What does the text say—not what we assume it says?"
+      ]},
+      { name:"Interpret", mins:8, prompts:[
+        "What problem is being addressed (sin, guilt, separation)?",
+        "What did this mean to the original audience?",
+        "What does this teach about God’s character and rescue?"
+      ]},
+      { name:"Apply", mins:6, prompts:[
+        "Where do you drift into earning God’s love?",
+        "What would it look like to rest in grace this week?",
+        "Write one sentence: ‘Because of Jesus, I can…’"
+      ]},
+      { name:"Pray", mins:5, prompts:[
+        "Thank God for grace; confess self-reliance; ask for faith.",
+        "Pray for one person who needs the hope of the gospel."
+      ]}
+    ],
+    quiz: {
+      tf: { q:"Salvation is a gift received by faith, not earned by works.", a:true },
+      mc1: {
+        q:"Which passage contains a clear summary of the gospel message (death, burial, resurrection)?",
+        options:["Ephesians 2:8–10", "1 Corinthians 15:1–4", "Romans 3:23–26"],
+        a:1
+      },
+      mc2: {
+        q:"According to Ephesians 2:8–10, we are saved by…",
+        options:["Good works that impress God", "Grace through faith", "Perfect obedience to the law"],
+        a:1
+      },
+      essay1: { q:"In your own words, what is the gospel?" },
+      essay2: { q:"What is one practical way you will ‘rest in grace’ this week?" },
+      key: {
+        tf:"True. Salvation is God’s gift; we respond with faith.",
+        mc1:"1 Corinthians 15:1–4",
+        mc2:"Grace through faith",
+        essayGuidance:[
+          "Look for: Jesus’ saving work (cross + resurrection), our need (sin), our response (faith/repentance).",
+          "Application examples: prayer, confession, forgiving others, resisting performance-based identity."
+        ]
+      }
+    }
+  },
+
+  {
+    week: 2,
+    title: "The Bible: God Speaks",
+    bigIdea: "Scripture is God-breathed, trustworthy, and meant to shape our lives.",
+    passages: ["2 Timothy 3:16–17", "Psalm 19:7–11", "Hebrews 4:12"],
+    openingPrayer:
+      "Lord, open our eyes to see wonderful things in Your Word. Give us teachable hearts, steady attention, and a desire to obey with joy. Amen.",
+    flow: [
+      { name:"Welcome", mins:2, prompts:[
+        "We’re not just reading words—we’re listening to God.",
+        "Ask: ‘What do you hope God will do in you through Scripture?’"
+      ]},
+      { name:"Read the Passage Out Loud", mins:3, prompts:[
+        "Read each passage slowly; pause briefly between them."
+      ]},
+      { name:"Observe", mins:6, prompts:[
+        "List what Scripture is ‘for’ in 2 Timothy 3:16–17.",
+        "What benefits does Psalm 19 claim?",
+        "What images describe God’s Word in Hebrews 4:12?"
+      ]},
+      { name:"Interpret", mins:8, prompts:[
+        "Why would early Christians need confidence in Scripture?",
+        "How does God’s Word both comfort and confront?",
+        "What does this teach about truth and authority?"
+      ]},
+      { name:"Apply", mins:6, prompts:[
+        "What’s one obstacle to consistency (time, guilt, confusion)?",
+        "Pick a simple plan (10 minutes/day in Mark or John).",
+        "What would change if you treated Scripture as daily guidance?"
+      ]},
+      { name:"Pray", mins:5, prompts:[
+        "Ask for hunger, understanding, and obedience.",
+        "Pray for someone who feels far from God’s Word."
+      ]}
+    ],
+    quiz: {
+      tf: { q:"According to 2 Timothy 3:16–17, Scripture is useful for training in righteousness.", a:true },
+      mc1: {
+        q:"Psalm 19 says God’s Word is more desirable than…",
+        options:["Gold and sweeter than honey", "Music and poetry", "Power and fame"],
+        a:0
+      },
+      mc2: {
+        q:"Hebrews 4:12 describes God’s Word as…",
+        options:["Only comforting", "Living and active", "Outdated and symbolic"],
+        a:1
+      },
+      essay1: { q:"Describe one way Scripture has guided or corrected you (or could, if you’re new)." },
+      essay2: { q:"What is your realistic Bible plan for this week (when/where/how)?" },
+      key: {
+        tf:"True.",
+        mc1:"Gold and honey (Psalm 19:10).",
+        mc2:"Living and active.",
+        essayGuidance:[
+          "Look for honest reflection + a concrete plan.",
+          "Encourage small, repeatable habits over big guilt-driven goals."
+        ]
+      }
+    }
+  },
+
+  {
+    week: 3,
+    title: "God’s Nature: Father, Son, Spirit",
+    bigIdea: "God is one, yet eternally Father, Son, and Spirit—worthy of worship and trust.",
+    passages: ["Matthew 28:18–20", "John 1:1–14", "2 Corinthians 13:14"],
+    openingPrayer:
+      "Holy God—Father, Son, and Spirit—draw us near. Help us know You truly and love You deeply. Teach us to pray, worship, and live in Your presence. Amen.",
+    flow: [
+      { name:"Welcome", mins:2, prompts:[
+        "We’re studying who God is—not just ideas about God.",
+        "Invite reverence and simplicity: we can know truly, even if not exhaustively."
+      ]},
+      { name:"Read the Passage Out Loud", mins:3, prompts:[
+        "Read Matthew 28 first; then John 1; then 2 Corinthians 13:14."
+      ]},
+      { name:"Observe", mins:6, prompts:[
+        "What names appear together (Father, Son, Spirit)?",
+        "What does John say about ‘the Word’?",
+        "What gifts are associated with each Person in 2 Corinthians 13:14?"
+      ]},
+      { name:"Interpret", mins:8, prompts:[
+        "Why does it matter that Jesus is truly God?",
+        "What does ‘the Word became flesh’ teach about God’s closeness?",
+        "How does the Trinity shape Christian life (love, unity, mission)?"
+      ]},
+      { name:"Apply", mins:6, prompts:[
+        "How can you pray more intentionally (to the Father, through the Son, by the Spirit)?",
+        "What changes when God is not distant but present?",
+        "Choose one way to worship this week (gratitude, obedience, service)."
+      ]},
+      { name:"Pray", mins:5, prompts:[
+        "Praise God for who He is; ask for deeper trust and joy.",
+        "Pray for unity and love in your relationships."
+      ]}
+    ],
+    quiz: {
+      tf: { q:"John 1 teaches that ‘the Word’ existed before creation.", a:true },
+      mc1: {
+        q:"Matthew 28:19 includes baptism in the name of…",
+        options:["Jesus only", "The Father, Son, and Holy Spirit", "The angels and saints"],
+        a:1
+      },
+      mc2: {
+        q:"John 1:14 says the Word became…",
+        options:["A symbol", "Flesh", "A distant voice"],
+        a:1
+      },
+      essay1: { q:"Why does Jesus being fully God and fully man matter for faith and salvation?" },
+      essay2: { q:"Write a short prayer addressing the Father, through the Son, by the Spirit." },
+      key: {
+        tf:"True.",
+        mc1:"The Father, Son, and Holy Spirit.",
+        mc2:"Flesh.",
+        essayGuidance:[
+          "Look for: Jesus reveals God, bridges God & humanity, saves truly (not merely as example).",
+          "Prayer: simple, sincere, triune awareness."
+        ]
+      }
+    }
+  },
+
+  {
+    week: 4,
+    title: "Sin & the Human Condition",
+    bigIdea: "Sin isn’t only ‘bad actions’—it’s a heart condition that separates us from God.",
+    passages: ["Genesis 3:1–13", "Romans 5:12", "Isaiah 53:6"],
+    openingPrayer:
+      "God of mercy, give us honesty about sin without despair, and hope in Your forgiveness. Lead us into true repentance and freedom. Amen.",
+    flow: [
+      { name:"Welcome", mins:2, prompts:[
+        "Today is honest, not condemning. God exposes to heal."
+      ]},
+      { name:"Read the Passage Out Loud", mins:3, prompts:[
+        "Read Genesis 3 carefully; notice the dialogue and choices."
+      ]},
+      { name:"Observe", mins:6, prompts:[
+        "What tactics does the serpent use (doubt, distortion)?",
+        "What happens immediately after sin (hiding, blame, fear)?",
+        "What do Romans 5:12 and Isaiah 53:6 say about universality?"
+      ]},
+      { name:"Interpret", mins:8, prompts:[
+        "What does sin do to trust, relationships, and identity?",
+        "Why is ‘hiding’ such a common response?",
+        "What does this teach about our need for rescue?"
+      ]},
+      { name:"Apply", mins:6, prompts:[
+        "Where do you most tend to hide (busyness, defensiveness, perfectionism)?",
+        "What is one confession you can bring to God this week?",
+        "What step of repentance (turning) will you practice?"
+      ]},
+      { name:"Pray", mins:5, prompts:[
+        "Confess honestly; receive God’s forgiveness.",
+        "Ask for courage to repair one relationship if needed."
+      ]}
+    ],
+    quiz: {
+      tf: { q:"In Genesis 3, one immediate result of sin is hiding and blame.", a:true },
+      mc1: {
+        q:"Romans 5:12 teaches that sin entered the world through…",
+        options:["A prophet", "One man", "A government"],
+        a:1
+      },
+      mc2: {
+        q:"Isaiah 53:6 says we have all…",
+        options:["Always obeyed", "Gone astray like sheep", "Never sinned"],
+        a:1
+      },
+      essay1: { q:"Describe a modern ‘hiding’ pattern people use today. Why is it tempting?" },
+      essay2: { q:"What is one repentance step you will take this week (specific and realistic)?" },
+      key: {
+        tf:"True.",
+        mc1:"One man (Adam).",
+        mc2:"Gone astray like sheep.",
+        essayGuidance:[
+          "Examples: overwork, excuses, blaming, numbing, social media persona.",
+          "Repentance step: confession, accountability, restitution, prayer, boundary."
+        ]
+      }
+    }
+  },
+
+  {
+    week: 5,
+    title: "Salvation: Grace Through Faith",
+    bigIdea: "We are saved by God’s mercy, not our performance; faith unites us to Christ.",
+    passages: ["John 3:1–18", "Romans 10:9–13", "Titus 3:3–7"],
+    openingPrayer:
+      "Jesus, thank You for saving mercy. Help us trust You, not ourselves. Give us assurance, joy, and a life that reflects Your love. Amen.",
+    flow: [
+      { name:"Welcome", mins:2, prompts:[
+        "Clarify terms: grace (gift), faith (trust), repentance (turning)."
+      ]},
+      { name:"Read the Passage Out Loud", mins:3, prompts:[
+        "Read John 3 slowly; note ‘born again’ language."
+      ]},
+      { name:"Observe", mins:6, prompts:[
+        "What does Jesus say is necessary in John 3?",
+        "What does Romans 10 emphasize (confess, believe)?",
+        "What does Titus 3 say we are saved by (not works, mercy)?"
+      ]},
+      { name:"Interpret", mins:8, prompts:[
+        "Why is ‘new birth’ more than moral improvement?",
+        "How does faith differ from mere agreement?",
+        "What does God’s love look like in John 3:16?"
+      ]},
+      { name:"Apply", mins:6, prompts:[
+        "Where do you seek ‘assurance’ from performance?",
+        "How can you practice simple trust today?",
+        "Write a short testimony outline (before / how / after)."
+      ]},
+      { name:"Pray", mins:5, prompts:[
+        "Ask God for assurance and deeper trust.",
+        "Pray for someone to encounter God’s mercy."
+      ]}
+    ],
+    quiz: {
+      tf: { q:"Titus 3 teaches we are saved because of righteous deeds we have done.", a:false },
+      mc1: {
+        q:"John 3 describes entering God’s kingdom as being…",
+        options:["Born again / born of the Spirit", "Highly educated", "Perfectly consistent"],
+        a:0
+      },
+      mc2: {
+        q:"Romans 10:9–13 connects salvation with…",
+        options:["Confessing Jesus as Lord and believing God raised Him", "Never making mistakes", "Having the right personality"],
+        a:0
+      },
+      essay1: { q:"What is the difference between ‘believing facts about Jesus’ and ‘trusting Jesus’?" },
+      essay2: { q:"Write (or refine) a 3-part testimony: before, how you met Christ, after." },
+      key: {
+        tf:"False. Titus 3 says ‘not because of works… but according to His mercy.’",
+        mc1:"Born again / born of the Spirit.",
+        mc2:"Confessing and believing.",
+        essayGuidance:[
+          "Trust involves surrender, reliance, relationship; not just information.",
+          "Testimony: simple, honest, Jesus-centered."
+        ]
+      }
+    }
+  },
+
+  {
+    week: 6,
+    title: "The Holy Spirit & New Life",
+    bigIdea: "The Spirit indwells believers, transforms desires, and empowers holy living.",
+    passages: ["John 14:15–27", "Galatians 5:16–26", "Romans 8:1–17"],
+    openingPrayer:
+      "Holy Spirit, lead us into truth. Shape our desires, strengthen our weakness, and form Christlike love in us. Amen.",
+    flow: [
+      { name:"Welcome", mins:2, prompts:[
+        "The Spirit is not a force—He is God, present with believers."
+      ]},
+      { name:"Read the Passage Out Loud", mins:3, prompts:[
+        "Read Galatians 5 slowly; listen for contrasts."
+      ]},
+      { name:"Observe", mins:6, prompts:[
+        "What does Jesus promise in John 14 (Helper/Comforter)?",
+        "What contrast appears in Galatians 5 (flesh vs Spirit)?",
+        "What does Romans 8 say about condemnation and adoption?"
+      ]},
+      { name:"Interpret", mins:8, prompts:[
+        "Why does transformation require more than willpower?",
+        "How does adoption change identity and prayer (‘Abba’)?",
+        "What does the Spirit produce over time (fruit)?"
+      ]},
+      { name:"Apply", mins:6, prompts:[
+        "Choose one fruit to pray for this week (patience, peace, etc.).",
+        "Name one trigger where you want Spirit-led responses.",
+        "Practice a ‘pause and pray’ habit once per day."
+      ]},
+      { name:"Pray", mins:5, prompts:[
+        "Ask for filling, guidance, and a growing fruit of the Spirit.",
+        "Pray for freedom from shame and condemnation."
+      ]}
+    ],
+    quiz: {
+      tf: { q:"Romans 8:1 teaches there is no condemnation for those in Christ Jesus.", a:true },
+      mc1: {
+        q:"Galatians 5 teaches believers should…",
+        options:["Walk by the Spirit", "Ignore desire entirely", "Earn salvation by effort"],
+        a:0
+      },
+      mc2: {
+        q:"John 14 describes the Spirit as the…",
+        options:["Helper / Comforter", "Judge only", "Stranger to believers"],
+        a:0
+      },
+      essay1: { q:"Pick one fruit of the Spirit. What would it look like in your real week?" },
+      essay2: { q:"Describe one situation where you want to ‘pause and pray’ before reacting." },
+      key: {
+        tf:"True.",
+        mc1:"Walk by the Spirit.",
+        mc2:"Helper / Comforter.",
+        essayGuidance:[
+          "Look for concrete examples (home, work, online interactions).",
+          "Encourage small steps + prayer + accountability."
+        ]
+      }
+    }
+  },
+
+  {
+    week: 7,
+    title: "The Church: Community & Formation",
+    bigIdea: "The church is Christ’s body—meant for worship, growth, service, and care.",
+    passages: ["Acts 2:42–47", "Hebrews 10:24–25", "1 Corinthians 12:12–27"],
+    openingPrayer:
+      "Lord, make us a people of love and unity. Teach us to encourage one another, serve with humility, and grow together in Christ. Amen.",
+    flow: [
+      { name:"Welcome", mins:2, prompts:[
+        "Church is not an event only—it’s a people shaped by Jesus."
+      ]},
+      { name:"Read the Passage Out Loud", mins:3, prompts:[
+        "Read Acts 2; then Hebrews 10; then 1 Corinthians 12."
+      ]},
+      { name:"Observe", mins:6, prompts:[
+        "List marks of the early church in Acts 2:42–47.",
+        "What does Hebrews 10 command (stir up love, meet together)?",
+        "What metaphor appears in 1 Corinthians 12 (body, many parts)?"
+      ]},
+      { name:"Interpret", mins:8, prompts:[
+        "Why is isolation spiritually risky?",
+        "How do different gifts strengthen the whole body?",
+        "What does healthy community look like (truth + grace)?"
+      ]},
+      { name:"Apply", mins:6, prompts:[
+        "Who can you encourage this week (text, call, prayer)?",
+        "What is one way you can serve with your strengths?",
+        "If you’re disconnected, what’s one reconnection step?"
+      ]},
+      { name:"Pray", mins:5, prompts:[
+        "Pray for unity, healing, and maturity in your church/community.",
+        "Pray for those who feel unseen or alone."
+      ]}
+    ],
+    quiz: {
+      tf: { q:"Acts 2 shows believers devoted to teaching, fellowship, and prayer.", a:true },
+      mc1: {
+        q:"Hebrews 10:24–25 emphasizes…",
+        options:["Avoiding community", "Stirring up love and good works", "Only private faith"],
+        a:1
+      },
+      mc2: {
+        q:"1 Corinthians 12 compares the church to a…",
+        options:["Business", "Body", "Government"],
+        a:1
+      },
+      essay1: { q:"What is one ‘gift/strength’ you can use to serve others (even in a small way)?" },
+      essay2: { q:"Describe a healthy church/community practice you want to participate in more." },
+      key: {
+        tf:"True.",
+        mc1:"Stirring up love and good works.",
+        mc2:"Body.",
+        essayGuidance:[
+          "Strengths: listening, hospitality, teaching, helping, organizing, generosity, prayer.",
+          "Practices: worship, serving, small group, accountability, encouragement."
+        ]
+      }
+    }
+  },
+
+  {
+    week: 8,
+    title: "Mission, Hope, and the Return of Christ",
+    bigIdea: "We live on mission now, with unshakable hope that Jesus will renew all things.",
+    passages: ["Matthew 28:18–20", "2 Corinthians 5:17–21", "Revelation 21:1–5"],
+    openingPrayer:
+      "King Jesus, send us with Your love. Give us courage, compassion, and hope. Help us live as ambassadors of reconciliation and citizens of Your coming kingdom. Amen.",
+    flow: [
+      { name:"Welcome", mins:2, prompts:[
+        "Mission flows from love, not pressure. Hope fuels endurance."
+      ]},
+      { name:"Read the Passage Out Loud", mins:3, prompts:[
+        "Read Matthew 28, then 2 Corinthians 5, then Revelation 21."
+      ]},
+      { name:"Observe", mins:6, prompts:[
+        "What authority does Jesus claim in Matthew 28?",
+        "What identity is given in 2 Corinthians 5 (new creation, ambassador)?",
+        "What promises stand out in Revelation 21 (no more tears, renewal)?"
+      ]},
+      { name:"Interpret", mins:8, prompts:[
+        "What does it mean to be an ‘ambassador’ of Christ?",
+        "How does future hope reshape present anxiety?",
+        "What does God’s final renewal say about His character?"
+      ]},
+      { name:"Apply", mins:6, prompts:[
+        "Choose one person to pray for by name this week.",
+        "Plan one act of care + one honest gospel conversation step.",
+        "Write: ‘My hope is anchored in…’"
+      ]},
+      { name:"Pray", mins:5, prompts:[
+        "Pray for boldness, gentleness, and open doors.",
+        "Pray for renewed hope and endurance."
+      ]}
+    ],
+    quiz: {
+      tf: { q:"Revelation 21 promises God will wipe away every tear.", a:true },
+      mc1: {
+        q:"Matthew 28:18 says Jesus has…",
+        options:["Some authority", "All authority", "No authority"],
+        a:1
+      },
+      mc2: {
+        q:"2 Corinthians 5 describes believers as…",
+        options:["Judges of everyone", "Ambassadors of reconciliation", "People with no mission"],
+        a:1
+      },
+      essay1: { q:"Who is one person you will pray for and care for this week? What’s your first step?" },
+      essay2: { q:"How does future hope (Rev 21) change how you face stress today?" },
+      key: {
+        tf:"True.",
+        mc1:"All authority.",
+        mc2:"Ambassadors of reconciliation.",
+        essayGuidance:[
+          "Look for: specific name (or initials), specific care step, prayer plan.",
+          "Hope application: peace, courage, patience, perspective, compassion."
+        ]
+      }
+    }
+  }
+];
+
+/* =========================================================
+   STATE (localStorage)
+========================================================= */
+const STORAGE_KEY = "foundationsOfFaith_v1";
+
+function defaultState(){
+  return {
+    currentWeek: 1,
+    completedWeeks: Array(LESSONS.length).fill(false),
+    quiz: {} // quiz[week] = { tf, mc1, mc2, essay1, essay2, scoreObj, submittedAt }
+  };
+}
+
+function loadState(){
+  try{
+    const raw = localStorage.getItem(STORAGE_KEY);
+    if(!raw) return defaultState();
+    const st = JSON.parse(raw);
+
+    // basic repair if structure changes
+    if(!st || typeof st !== "object") return defaultState();
+    if(!Array.isArray(st.completedWeeks) || st.completedWeeks.length !== LESSONS.length){
+      st.completedWeeks = Array(LESSONS.length).fill(false);
+    }
+    if(typeof st.currentWeek !== "number") st.currentWeek = 1;
+    if(!st.quiz || typeof st.quiz !== "object") st.quiz = {};
+    st.currentWeek = Math.min(Math.max(1, st.currentWeek), LESSONS.length);
+    return st;
+  }catch(e){
+    return defaultState();
+  }
+}
+
+function saveState(){
+  localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
+}
+
+let state = loadState();
+
+/* =========================================================
+   RENDER
+========================================================= */
+const weekListEl = document.getElementById("weekList");
+const contentEl = document.getElementById("content");
+const progressTextEl = document.getElementById("progressText");
+const progressBarEl = document.getElementById("progressBar");
+
+function isUnlocked(week){
+  // Week 1 always unlocked; otherwise unlocked if previous completed
+  if(week === 1) return true;
+  return state.completedWeeks[week - 2] === true;
+}
+
+function renderWeekList(){
+  weekListEl.innerHTML = "";
+  for(const lesson of LESSONS){
+    const wk = lesson.week;
+    const unlocked = isUnlocked(wk);
+    const completed = state.completedWeeks[wk - 1] === true;
+
+    const btn = document.createElement("button");
+    btn.className = "weekbtn";
+    btn.setAttribute("aria-current", (wk === state.currentWeek) ? "true" : "false");
+    btn.disabled = !unlocked;
+    btn.title = unlocked ? "Open week " + wk : "Complete the previous week to unlock.";
+
+    const left = document.createElement("div");
+    left.innerHTML = `<b>Week ${wk}</b><div style="color:var(--muted); font-size:18px; margin-top:4px;">${escapeHtml(lesson.title)}</div>`;
+
+    const right = document.createElement("div");
+    const tag = document.createElement("span");
+    tag.className = "tag " + (completed ? "done" : (unlocked ? "" : "locked"));
+    tag.textContent = completed ? "✓ Complete" : (unlocked ? "Open" : "Locked");
+    right.appendChild(tag);
+
+    btn.appendChild(left);
+    btn.appendChild(right);
+
+    btn.addEventListener("click", () => {
+      state.currentWeek = wk;
+      saveState();
+      renderAll();
+      window.scrollTo({top:0, behavior:"smooth"});
+    });
+
+    weekListEl.appendChild(btn);
+  }
+}
+
+function renderProgress(){
+  const done = state.completedWeeks.filter(Boolean).length;
+  progressTextEl.textContent = `Progress: ${done} / ${LESSONS.length} complete`;
+  const pct = Math.round((done / LESSONS.length) * 100);
+  progressBarEl.style.width = pct + "%";
+}
+
+function renderContent(){
+  const lesson = LESSONS.find(x => x.week === state.currentWeek);
+  if(!lesson){ contentEl.innerHTML = "<p>Lesson not found.</p>"; return; }
+
+  const wk = lesson.week;
+  const unlocked = isUnlocked(wk);
+  if(!unlocked){
+    contentEl.innerHTML = `
+      <div class="hero">
+        <div class="kicker">Week ${wk}</div>
+        <div class="heading">${escapeHtml(lesson.title)}</div>
+        <p class="idea">This week is locked. Complete Week ${wk-1} to unlock it.</p>
+      </div>
+    `;
+    return;
+  }
+
+  const savedQuiz = state.quiz[wk] || {};
+  const submittedAt = savedQuiz.submittedAt ? new Date(savedQuiz.submittedAt) : null;
+
+  const passagesHtml = lesson.passages.map(ref => {
+    return `<li>
+      <span>${escapeHtml(ref)}</span>
+      <span style="opacity:.9;"> — </span>
+      <a href="${gatewayUrl(ref)}" target="_blank" rel="noopener">Open passage</a>
+    </li>`;
+  }).join("");
+
+  const resourcesHtml = RESOURCES.map(r =>
+    `<a href="${r.url}" target="_blank" rel="noopener">🔗 ${escapeHtml(r.name)}</a>`
+  ).join("");
+
+  const flowHtml = lesson.flow.map(seg => `
+    <div class="seg">
+      <div class="seghead">
+        <div class="segtitle">${escapeHtml(seg.name)}</div>
+        <div class="segtime">${seg.mins} min</div>
+      </div>
+      <ul>
+        ${seg.prompts.map(p => `<li>${escapeHtml(p)}</li>`).join("")}
+      </ul>
+    </div>
+  `).join("");
+
+  // Quiz UI
+  contentEl.innerHTML = `
+    <div class="hero">
+      <div class="kicker">Week ${wk} of ${LESSONS.length} • Self-paced</div>
+      <div class="heading">${escapeHtml(lesson.title)}</div>
+      <p class="idea"><b>Big idea:</b> ${escapeHtml(lesson.bigIdea)}</p>
+    </div>
+
+    <div class="grid2">
+      <div class="card prayerBox">
+        <h3>Opening Prayer</h3>
+        <p style="margin:0;">${escapeHtml(lesson.openingPrayer)}</p>
+        <div class="row">
+          <button class="btn secondary" id="btnReadPrayer">🔊 Read Aloud</button>
+        </div>
+      </div>
+
+      <div class="card">
+        <h3>Key Passages</h3>
+        <ul style="margin-top:10px;">
+          ${passagesHtml}
+        </ul>
+        <div style="margin-top:10px; color:var(--muted); font-size:18px;">
+          Use any translation you prefer. (Links open BibleGateway.)
+        </div>
+      </div>
+    </div>
+
+    <div class="card flow">
+      <h3>30-Minute Session Flow</h3>
+      <p class="note">
+        Same structure as your teaching template, adjusted to total 30 minutes:
+        Welcome (2) • Read (3) • Observe (6) • Interpret (8) • Apply (6) • Pray (5)
+      </p>
+      ${flowHtml}
+    </div>
+
+    <div class="card resources">
+      <h3>Online Study Resources</h3>
+      <div>${resourcesHtml}</div>
+      <div style="margin-top:8px; color:var(--muted); font-size:18px;">
+        Optional helpers: themes, cross-references, word studies, reading plans.
+      </div>
+    </div>
+
+    <div class="card quiz" id="quizCard">
+      <h3>Homework Quiz (5 Questions)</h3>
+      <div class="statusline" id="quizStatus">
+        ${submittedAt ? `Last submitted: <b>${submittedAt.toLocaleString()}</b>` : "Not submitted yet."}
+      </div>
+
+      <form id="quizForm" autocomplete="off">
+        ${renderQuizQuestions(lesson, savedQuiz)}
+        <div class="row">
+          <button class="btn good" type="submit">✅ Submit Homework</button>
+          <button class="btn secondary" type="button" id="btnSaveDraft">💾 Save Draft</button>
+          <span class="statusline" id="scoreLine"></span>
+        </div>
+      </form>
+
+      <details>
+        <summary>Answer Key (Teacher / Self-Check)</summary>
+        <div style="margin-top:10px; color:var(--muted); font-size:18px;">
+          <div><b>True/False:</b> ${escapeHtml(lesson.quiz.key.tf)}</div>
+          <div style="margin-top:6px;"><b>MC #1:</b> ${escapeHtml(lesson.quiz.key.mc1)}</div>
+          <div style="margin-top:6px;"><b>MC #2:</b> ${escapeHtml(lesson.quiz.key.mc2)}</div>
+          <div style="margin-top:10px;"><b>Essay guidance:</b></div>
+          <ul>
+            ${lesson.quiz.key.essayGuidance.map(x => `<li>${escapeHtml(x)}</li>`).join("")}
+          </ul>
+        </div>
+      </details>
+    </div>
+  `;
+
+  // Buttons
+  const btnReadPrayer = document.getElementById("btnReadPrayer");
+  btnReadPrayer.addEventListener("click", () => speakText(lesson.openingPrayer));
+
+  // Quiz handlers
+  const quizForm = document.getElementById("quizForm");
+  const btnSaveDraft = document.getElementById("btnSaveDraft");
+  const scoreLine = document.getElementById("scoreLine");
+
+  btnSaveDraft.addEventListener("click", () => {
+    const draft = readQuizForm(wk);
+    state.quiz[wk] = { ...(state.quiz[wk]||{}), ...draft };
+    saveState();
+    scoreLine.innerHTML = `<span style="color:var(--muted);">Draft saved.</span>`;
+  });
+
+  quizForm.addEventListener("submit", (e) => {
+    e.preventDefault();
+    const answers = readQuizForm(wk);
+
+    // Require all answers before submit
+    const missing = validateQuizAnswers(answers);
+    if(missing.length){
+      alert("Please answer all questions before submitting:\n\n- " + missing.join("\n- "));
+      return;
+    }
+
+    const {score, max} = scoreObjective(lesson.quiz, answers);
+    const payload = {
+      ...answers,
+      scoreObj: { score, max },
+      submittedAt: new Date().toISOString()
+    };
+
+    state.quiz[wk] = payload;
+
+    // Mark week complete on submit
+    state.completedWeeks[wk - 1] = true;
+
+    // Auto-advance to next week if exists
+    if(wk < LESSONS.length){
+      state.currentWeek = wk + 1;
+    }
+
+    saveState();
+    renderAll();
+
+    // Show quick feedback (objective only)
+    alert(`Homework submitted!\n\nObjective score: ${score} / ${max}\n(Essays are saved for review.)`);
+  });
+
+  // If already submitted, show score line
+  if(savedQuiz.scoreObj){
+    scoreLine.innerHTML = `Objective score: <span class="score">${savedQuiz.scoreObj.score} / ${savedQuiz.scoreObj.max}</span> • Essays saved`;
+  }
+}
+
+function renderQuizQuestions(lesson, saved){
+  const wk = lesson.week;
+
+  const tfVal = (saved.tf ?? "");
+  const mc1Val = (saved.mc1 ?? "");
+  const mc2Val = (saved.mc2 ?? "");
+  const essay1Val = (saved.essay1 ?? "");
+  const essay2Val = (saved.essay2 ?? "");
+
+  return `
+    <div class="q">
+      <div class="qtitle">1) True / False</div>
+      <div style="margin-bottom:10px;">${escapeHtml(lesson.quiz.tf.q)}</div>
+      <label class="option">
+        <input type="radio" name="tf" value="true" ${tfVal==="true"?"checked":""}/> True
+      </label>
+      <label class="option">
+        <input type="radio" name="tf" value="false" ${tfVal==="false"?"checked":""}/> False
+      </label>
+    </div>
+
+    <div class="q">
+      <div class="qtitle">2) Multiple Choice</div>
+      <div style="margin-bottom:10px;">${escapeHtml(lesson.quiz.mc1.q)}</div>
+      ${lesson.quiz.mc1.options.map((opt,i)=>`
+        <label class="option">
+          <input type="radio" name="mc1" value="${i}" ${String(mc1Val)===String(i)?"checked":""}/> ${escapeHtml(opt)}
+        </label>
+      `).join("")}
+    </div>
+
+    <div class="q">
+      <div class="qtitle">3) Multiple Choice</div>
+      <div style="margin-bottom:10px;">${escapeHtml(lesson.quiz.mc2.q)}</div>
+      ${lesson.quiz.mc2.options.map((opt,i)=>`
+        <label class="option">
+          <input type="radio" name="mc2" value="${i}" ${String(mc2Val)===String(i)?"checked":""}/> ${escapeHtml(opt)}
+        </label>
+      `).join("")}
+    </div>
+
+    <div class="q">
+      <div class="qtitle">4) Essay Response</div>
+      <div style="margin-bottom:10px;">${escapeHtml(lesson.quiz.essay1.q)}</div>
+      <textarea name="essay1" placeholder="Write your response here...">${escapeHtml(essay1Val)}</textarea>
+    </div>
+
+    <div class="q">
+      <div class="qtitle">5) Essay Response</div>
+      <div style="margin-bottom:10px;">${escapeHtml(lesson.quiz.essay2.q)}</div>
+      <textarea name="essay2" placeholder="Write your response here...">${escapeHtml(essay2Val)}</textarea>
+    </div>
+  `;
+}
+
+function readQuizForm(week){
+  const form = document.getElementById("quizForm");
+  if(!form) return {};
+  const fd = new FormData(form);
+
+  return {
+    tf: fd.get("tf") || "",
+    mc1: fd.get("mc1") || "",
+    mc2: fd.get("mc2") || "",
+    essay1: (fd.get("essay1") || "").toString().trim(),
+    essay2: (fd.get("essay2") || "").toString().trim()
+  };
+}
+
+function validateQuizAnswers(a){
+  const missing = [];
+  if(!a.tf) missing.push("True/False");
+  if(a.mc1 === "") missing.push("Multiple Choice #1");
+  if(a.mc2 === "") missing.push("Multiple Choice #2");
+  if(!a.essay1) missing.push("Essay #1");
+  if(!a.essay2) missing.push("Essay #2");
+  return missing;
+}
+
+function scoreObjective(quiz, answers){
+  let score = 0;
+  let max = 3; // TF + MC1 + MC2
+  const tfAns = (answers.tf === "true");
+  if(tfAns === quiz.tf.a) score++;
+
+  const mc1Ans = parseInt(answers.mc1,10);
+  if(mc1Ans === quiz.mc1.a) score++;
+
+  const mc2Ans = parseInt(answers.mc2,10);
+  if(mc2Ans === quiz.mc2.a) score++;
+
+  return {score, max};
+}
+
+/* =========================================================
+   UTIL
+========================================================= */
+function escapeHtml(str){
+  return String(str ?? "")
+    .replaceAll("&","&amp;")
+    .replaceAll("<","&lt;")
+    .replaceAll(">","&gt;")
+    .replaceAll('"',"&quot;")
+    .replaceAll("'","&#039;");
+}
+
+function speakText(text){
+  try{
+    if(!("speechSynthesis" in window)) {
+      alert("Text-to-speech is not supported in this browser.");
+      return;
+    }
+    window.speechSynthesis.cancel();
+    const u = new SpeechSynthesisUtterance(text);
+    u.rate = 0.95;
+    u.pitch = 1.0;
+    u.volume = 1.0;
+    window.speechSynthesis.speak(u);
+  }catch(e){
+    alert("Unable to play text-to-speech on this device.");
+  }
+}
+
+/* =========================================================
+   TOP BUTTONS
+========================================================= */
+document.getElementById("btnPrint").addEventListener("click", () => window.print());
+
+document.getElementById("btnReset").addEventListener("click", () => {
+  const ok = confirm("Reset all progress and saved answers on this device?");
+  if(!ok) return;
+  localStorage.removeItem(STORAGE_KEY);
+  state = defaultState();
+  saveState();
+  renderAll();
+  window.scrollTo({top:0, behavior:"smooth"});
+});
+
+document.getElementById("btnExport").addEventListener("click", () => {
+  const payload = {
+    exportedAt: new Date().toISOString(),
+    app: "Foundations of Faith Portal",
+    version: "v1",
+    state
+  };
+  const blob = new Blob([JSON.stringify(payload, null, 2)], {type:"application/json"});
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement("a");
+  a.href = url;
+  a.download = "foundations-of-faith-progress.json";
+  document.body.appendChild(a);
+  a.click();
+  a.remove();
+  URL.revokeObjectURL(url);
+});
+
+/* =========================================================
+   MAIN
+========================================================= */
+function renderAll(){
+  renderWeekList();
+  renderProgress();
+  renderContent();
+}
+renderAll();
+</script>
+</body>
+</html>
