@@ -1,0 +1,1118 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Text, Transmission & Canon — 12-Week Course Portal</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700&family=Inter:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --bg:#fbf7ef;
+      --card:#ffffff;
+      --ink:#151515;
+      --muted:#5b5b5b;
+      --accent:#1b4d7a;
+      --accent2:#8a6b2a;
+      --border:rgba(0,0,0,.12);
+      --shadow:0 10px 28px rgba(0,0,0,.08);
+      --r:18px;
+      --pad:18px;
+      --max:980px;
+      --font: 18px;
+    }
+    .dark{
+      --bg:#0c1118;
+      --card:#121a24;
+      --ink:#f5f1e7;
+      --muted:#c7c0b3;
+      --accent:#7dd3fc;
+      --accent2:#f7d38c;
+      --border:rgba(255,255,255,.14);
+      --shadow:0 12px 34px rgba(0,0,0,.35);
+    }
+    html,body{height:100%}
+    body{
+      margin:0;
+      font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Arial;
+      background: radial-gradient(1200px 700px at 20% -10%, rgba(27,77,122,.12), transparent 60%),
+                  radial-gradient(900px 600px at 110% 10%, rgba(138,107,42,.10), transparent 55%),
+                  var(--bg);
+      color:var(--ink);
+      font-size: var(--font);
+      line-height:1.35;
+    }
+    a{color:var(--accent); text-decoration:none}
+    a:hover{text-decoration:underline}
+    .wrap{max-width:var(--max); margin:0 auto; padding:16px}
+    .topbar{
+      display:flex; gap:10px; align-items:center; justify-content:space-between;
+      padding:14px 14px; border:1px solid var(--border); border-radius:var(--r);
+      background: linear-gradient(180deg, rgba(255,255,255,.65), rgba(255,255,255,.35));
+      box-shadow: var(--shadow);
+      position: sticky; top: 10px; z-index: 50;
+      backdrop-filter: blur(10px);
+    }
+    .dark .topbar{
+      background: linear-gradient(180deg, rgba(18,26,36,.75), rgba(18,26,36,.45));
+    }
+    .brand{
+      display:flex; gap:10px; align-items:center; min-width: 240px;
+    }
+    .sig{
+      width:38px; height:38px; border-radius:12px;
+      border:1px solid var(--border);
+      display:grid; place-items:center;
+      font-family:Cinzel,serif; font-weight:700;
+      background: linear-gradient(180deg, rgba(27,77,122,.18), rgba(138,107,42,.10));
+    }
+    .titleblock{display:flex; flex-direction:column}
+    .titleblock .t{font-family:Cinzel,serif; font-weight:700; letter-spacing:.3px; font-size:18px}
+    .titleblock .s{color:var(--muted); font-size:14px; margin-top:2px}
+
+    .controls{display:flex; gap:8px; align-items:center; flex-wrap:wrap; justify-content:flex-end}
+    .btn, select{
+      font: inherit;
+      border:1px solid var(--border);
+      background: var(--card);
+      color: var(--ink);
+      border-radius: 999px;
+      padding:10px 14px;
+      cursor:pointer;
+    }
+    .btn:hover{transform:translateY(-1px)}
+    .btn.primary{
+      background: linear-gradient(180deg, rgba(27,77,122,.18), rgba(27,77,122,.08));
+      border-color: rgba(27,77,122,.35);
+    }
+    .btn.gold{
+      background: linear-gradient(180deg, rgba(138,107,42,.20), rgba(138,107,42,.10));
+      border-color: rgba(138,107,42,.35);
+    }
+    .grid{
+      display:grid;
+      grid-template-columns: 1.05fr .95fr;
+      gap: 14px;
+      margin-top: 14px;
+    }
+    @media (max-width: 980px){
+      .grid{grid-template-columns: 1fr}
+      .brand{min-width:auto}
+    }
+    .card{
+      border:1px solid var(--border);
+      background: var(--card);
+      border-radius: var(--r);
+      box-shadow: var(--shadow);
+      padding: var(--pad);
+    }
+    h2,h3{margin:0 0 10px 0; font-family:Cinzel,serif; letter-spacing:.2px}
+    h2{font-size:20px}
+    h3{font-size:18px}
+    .muted{color:var(--muted)}
+    .pillrow{display:flex; flex-wrap:wrap; gap:8px; margin:10px 0 0}
+    .pill{
+      display:inline-flex; align-items:center; gap:8px;
+      padding:8px 12px; border-radius:999px;
+      border:1px solid var(--border);
+      background: rgba(255,255,255,.6);
+      color: var(--ink);
+      font-size:14px;
+    }
+    .dark .pill{background: rgba(0,0,0,.18)}
+    .hr{height:1px; background:var(--border); margin:12px 0}
+    .kpi{display:flex; gap:10px; flex-wrap:wrap}
+    .kpi .box{
+      flex:1; min-width: 190px;
+      border:1px dashed var(--border);
+      border-radius: 14px;
+      padding: 10px 12px;
+    }
+    .kpi .big{font-weight:700; font-size:18px}
+    .kpi .small{color:var(--muted); font-size:14px; margin-top:2px}
+
+    details{border:1px solid var(--border); border-radius:14px; padding:10px 12px; background: rgba(255,255,255,.55)}
+    .dark details{background: rgba(0,0,0,.18)}
+    details summary{cursor:pointer; font-weight:700}
+    .list{margin:8px 0 0 0; padding-left: 18px}
+    .list li{margin:6px 0}
+    textarea, input[type="text"]{
+      width:100%;
+      box-sizing:border-box;
+      font: inherit;
+      padding:12px 12px;
+      border-radius:14px;
+      border:1px solid var(--border);
+      background: rgba(255,255,255,.75);
+      color: var(--ink);
+      outline:none;
+    }
+    .dark textarea, .dark input[type="text"]{background: rgba(0,0,0,.22)}
+    textarea{min-height:92px; resize:vertical}
+    .q{
+      border:1px solid var(--border);
+      border-radius:14px;
+      padding:12px;
+      margin:10px 0;
+      background: rgba(255,255,255,.55);
+    }
+    .dark .q{background: rgba(0,0,0,.18)}
+    .q .qt{font-weight:700; margin-bottom:8px}
+    .q label{display:block; margin:6px 0; cursor:pointer}
+    .q small{color:var(--muted)}
+    .score{
+      border:1px solid var(--border);
+      border-radius:14px;
+      padding:10px 12px;
+      background: linear-gradient(180deg, rgba(27,77,122,.12), rgba(138,107,42,.08));
+    }
+    .foot{
+      margin:18px 0 10px;
+      text-align:center;
+      color:var(--muted);
+      font-size:14px;
+    }
+    .tiny{font-size:14px}
+    .badge{
+      display:inline-flex; align-items:center; gap:8px;
+      padding:8px 12px;
+      border-radius:14px;
+      border:1px solid var(--border);
+      background: rgba(27,77,122,.08);
+    }
+    .danger{
+      background: rgba(180,50,50,.10);
+      border-color: rgba(180,50,50,.25);
+    }
+  </style>
+</head>
+<body>
+<div class="wrap">
+  <div class="topbar" id="topbar">
+    <div class="brand">
+      <div class="sig">TC</div>
+      <div class="titleblock">
+        <div class="t">Text, Transmission & Canon</div>
+        <div class="s">12-week evidence-first study • self-paced</div>
+      </div>
+    </div>
+    <div class="controls">
+      <select id="weekSel" title="Select week"></select>
+      <button class="btn" id="toggleMode">Dark</button>
+      <button class="btn gold" id="toggleTiming">30-min</button>
+      <button class="btn" id="resetLocal">Reset</button>
+    </div>
+  </div>
+
+  <!-- Course Posture Statement (permanently visible at the top) -->
+  <div class="card" style="margin-top:14px">
+    <h2>Course Posture Statement</h2>
+    <div class="badge">
+      <strong>We will:</strong>
+      <span class="muted">follow manuscript evidence, separate fact from inference, and treat all traditions respectfully.</span>
+    </div>
+    <div class="hr"></div>
+    <div class="tiny">
+      This course examines how biblical texts were copied, translated, and canonized. When variants exist, we will:
+      (1) identify the variant, (2) compare the evidence, (3) summarize what scholars can responsibly conclude,
+      and (4) apply it to a faithful prayer life without claiming motives we cannot prove.
+    </div>
+  </div>
+
+  <div class="grid">
+    <div class="card">
+      <div class="kpi">
+        <div class="box">
+          <div class="big" id="wkTitle">Week</div>
+          <div class="small" id="wkTheme">Theme</div>
+        </div>
+        <div class="box">
+          <div class="big" id="wkProgress">Progress</div>
+          <div class="small muted" id="wkHint">Saved locally in your browser</div>
+        </div>
+      </div>
+
+      <div class="hr"></div>
+
+      <h3>Opening Prayer</h3>
+      <div class="muted tiny" id="openingPrayer"></div>
+
+      <div class="hr"></div>
+
+      <h3>Session Flow (<span id="timingLabel">30 minutes</span>)</h3>
+      <div id="flow"></div>
+
+      <div class="hr"></div>
+
+      <h3>Primary Reading (references)</h3>
+      <ul class="list" id="primaryReading"></ul>
+
+      <h3>Variant / “What changed?” Focus</h3>
+      <ul class="list" id="variantFocus"></ul>
+
+      <details style="margin-top:12px" open>
+        <summary>Deuterocanon & Second Temple Context Readings (clearly labeled)</summary>
+        <div class="tiny muted" style="margin-top:8px">
+          These are for historical context; traditions differ on canon status.
+        </div>
+        <div class="hr"></div>
+        <div id="contextReadings"></div>
+      </details>
+
+      <div class="hr"></div>
+
+      <h3>Observe • Interpret • Apply</h3>
+      <div class="tiny muted">Write short notes — these save automatically.</div>
+
+      <div class="q">
+        <div class="qt">Observe (What does it say?)</div>
+        <textarea id="noteObserve" placeholder="Repeated words? main point? structure?"></textarea>
+      </div>
+      <div class="q">
+        <div class="qt">Interpret (What did it mean then?)</div>
+        <textarea id="noteInterpret" placeholder="Historical setting? audience? what does it teach about God/us?"></textarea>
+      </div>
+      <div class="q">
+        <div class="qt">Apply (What will I do this week?)</div>
+        <textarea id="noteApply" placeholder="One concrete action + one prayer request + one practice."></textarea>
+      </div>
+
+      <div class="q">
+        <div class="qt">Closing Prayer</div>
+        <textarea id="notePray" placeholder="Write your closing prayer here."></textarea>
+      </div>
+
+      <div class="pillrow">
+        <button class="btn primary" id="markComplete">Mark Week Complete</button>
+        <button class="btn" id="copyNotes">Copy Notes</button>
+      </div>
+
+      <div class="hr"></div>
+
+      <h3>Online Study Resources</h3>
+      <ul class="list">
+        <li><a href="https://classic.net.bible.org/" target="_blank" rel="noopener">NET Bible (notes + textual footnotes)</a></li>
+        <li><a href="https://www.biblegateway.com/" target="_blank" rel="noopener">BibleGateway (compare translations quickly)</a></li>
+        <li><a href="https://www.newadvent.org/fathers/" target="_blank" rel="noopener">Church Fathers (primary-source translations)</a></li>
+        <li><a href="https://christianhistoryinstitute.org/" target="_blank" rel="noopener">Christian History Institute (historical explainers)</a></li>
+      </ul>
+      <div class="tiny muted">
+        Tip: when you see brackets or a footnote in a Bible, don’t panic, learn what evidence the note is pointing to.
+      </div>
+    </div>
+
+    <div class="card">
+      <h2>Homework Quiz (5 questions)</h2>
+      <div class="muted tiny">Includes TF, MC, and essay-style responses. Answers save locally.</div>
+
+      <div id="quiz"></div>
+
+      <div class="pillrow">
+        <button class="btn primary" id="gradeQuiz">Grade Objective</button>
+        <button class="btn" id="clearQuiz">Clear Quiz</button>
+      </div>
+
+      <div class="hr"></div>
+
+      <div class="score" id="scoreBox">
+        <div><strong>Objective Score:</strong> <span id="scoreText">—</span></div>
+        <div class="tiny muted">Essay items are not auto-graded (by design).</div>
+      </div>
+
+      <div class="hr"></div>
+
+      <h3>Course Map</h3>
+      <div class="tiny muted">Jump to any week, but the sequence is designed to build carefully.</div>
+      <ol class="list" id="courseMap"></ol>
+
+      <div class="hr"></div>
+
+      <div class="badge danger tiny">
+        <strong>Neutrality guard:</strong>
+        <span>We name evidence, not enemies. We don’t claim intent without proof.</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="foot">Self-paced portal • Local-only saving • Built for You</div>
+</div>
+
+<script>
+/* -----------------------------
+   Local storage helpers
+------------------------------*/
+const LS_KEY = "canon_course_v1";
+function loadState(){
+  try{
+    return JSON.parse(localStorage.getItem(LS_KEY)) || {};
+  }catch(e){ return {}; }
+}
+function saveState(s){
+  localStorage.setItem(LS_KEY, JSON.stringify(s));
+}
+function uidFor(weekIndex){ return "w" + String(weekIndex+1).padStart(2,"0"); }
+
+/* -----------------------------
+   Course data (12 weeks)
+------------------------------*/
+const COURSE = [
+  {
+    title: "What Is a ‘Textual Variant’?",
+    theme: "How copying/translation works • how to read footnotes • why variants exist",
+    openingPrayer: "Creator, grant us honesty, humility, and clarity. Teach us to love truth, and to practice faith with understanding. In Yahushua’s name, amen.",
+    flow30: [
+      ["Welcome", "2 min", "Set posture: evidence-first, respectful, calm."],
+      ["Read", "4 min", "Read the references aloud (use your preferred translation)."],
+      ["Observe", "6 min", "Note repeated words, structure, what’s emphasized."],
+      ["Interpret", "8 min", "What did it mean to the first hearers/readers?"],
+      ["Apply", "6 min", "One practice: how will I respond this week?"],
+      ["Pray", "4 min", "Close with a prayer shaped by what you learned."]
+    ],
+    flow60: [
+      ["Welcome", "5 min", "Posture + overview."],
+      ["Read", "5 min", "Read aloud."],
+      ["Observe", "10 min", "What does it say?"],
+      ["Interpret", "15 min", "What did it mean then?"],
+      ["Apply", "15 min", "What will I do this week?"],
+      ["Pray", "10 min", "Close in prayer."]
+    ],
+    primaryReading: [
+      "2 Timothy 3:14–17 (Scripture & formation)",
+      "Luke 1:1–4 (careful transmission)",
+      "Matthew 17:14–20 (set-up for 17:21 discussion)"
+    ],
+    variantFocus: [
+      "Matthew 17:21 — absent in many key witnesses; likely later harmonization from Mark 9:29.",
+      "How to interpret bracketed/footnoted verses without fear."
+    ],
+    context: {
+      catholicOrthodoxDeuterocanon: [
+        "Sirach 1 (wisdom posture)",
+        "Wisdom of Solomon 7 (wisdom & purity)"
+      ],
+      secondTempleJewish: [
+        "Dead Sea Scrolls (general concept): scribal culture & community texts (overview reading)",
+        "1 Enoch 1 (apocalyptic tone as historical background)"
+      ],
+      apostolicFathers: [
+        "Didache 1 (ethics + community instruction)"
+      ]
+    },
+    quiz: [
+      {type:"tf", prompt:"Textual variants exist because manuscripts were hand-copied for centuries.", answer:true},
+      {type:"mc", prompt:"A ‘textual footnote’ in many Bibles usually indicates…", options:[
+        "A printing error in your copy",
+        "A difference in manuscript evidence or translation decision",
+        "A secret doctrine hidden from believers",
+        "A modern editor rewriting theology"
+      ], answerIndex:1},
+      {type:"mc", prompt:"Matthew 17:21 is often footnoted/bracketed because…", options:[
+        "It is in all early manuscripts with no dispute",
+        "Many important manuscripts do not contain it",
+        "Greek has no word for fasting",
+        "It was invented in the 1900s"
+      ], answerIndex:1},
+      {type:"essay", prompt:"In your own words: What is a textual variant, and why doesn’t it automatically mean ‘corruption’?", placeholder:"Write 4–8 sentences."},
+      {type:"essay", prompt:"What is one faithful, practical way to respond when you see brackets/footnotes in Scripture?", placeholder:"Write 3–6 sentences."}
+    ]
+  },
+  {
+    title: "Scribal Habits: Harmonization & Liturgical Expansion",
+    theme: "How additions happen • why doxologies appear • ‘easier’ vs ‘harder’ readings",
+    openingPrayer: "Creator, keep us from cynicism and from naivety. Teach us discernment, and love for Your truth. Amen.",
+    primaryReading: [
+      "Matthew 6:9–13 (the Lord’s Prayer)",
+      "Romans 12:1–2 (renewed mind & discernment)"
+    ],
+    variantFocus: [
+      "Matthew 6:13 doxology (‘For yours is the kingdom…’) — often present in later manuscripts; commonly treated as a liturgical expansion."
+    ],
+    context: {
+      catholicOrthodoxDeuterocanon: ["Tobit 12 (prayer language & piety)"],
+      secondTempleJewish: ["Jubilees 1 (community identity themes, as background)"],
+      apostolicFathers: ["Didache 8 (early Christian prayer practice)"]
+    },
+    quiz: [
+      {type:"tf", prompt:"Scribes sometimes expanded texts with worship/liturgical phrases used in church life.", answer:true},
+      {type:"mc", prompt:"The Lord’s Prayer doxology (‘For yours is the kingdom…’) is often considered…", options:[
+        "Universally original to Matthew in all early manuscripts",
+        "A later liturgical addition appearing in many manuscripts",
+        "A Hebrew phrase mistranslated into Greek",
+        "A verse that only exists in Aramaic"
+      ], answerIndex:1},
+      {type:"mc", prompt:"A common scribal tendency is ‘harmonization,’ meaning…", options:[
+        "Making one Gospel read more like a parallel in another Gospel",
+        "Changing all names into titles",
+        "Removing all prayer references",
+        "Translating Greek into Latin"
+      ], answerIndex:0},
+      {type:"essay", prompt:"Why might a church community *add* a doxology to a prayer text over time? Give two reasons.", placeholder:"Write 3–8 sentences."},
+      {type:"essay", prompt:"How can we value worship tradition while still being honest about manuscript evidence?", placeholder:"Write 3–7 sentences."}
+    ]
+  },
+  {
+    title: "Prayer & Fasting Variants (What the Evidence Actually Shows)",
+    theme: "Mark 9:29 • 1 Cor 7:5 • building doctrine from multiple passages",
+    openingPrayer: "Creator, teach us spiritual discipline with wisdom. Make us steady, not sensational. Amen.",
+    primaryReading: [
+      "Mark 9:14–29 (deliverance narrative)",
+      "1 Corinthians 7:1–5 (marriage & devotion)",
+      "Matthew 6:16–18 (fasting taught explicitly)"
+    ],
+    variantFocus: [
+      "Mark 9:29 — many witnesses add ‘and fasting’; NET argues shorter reading is earlier.",
+      "1 Corinthians 7:5 — some manuscripts add ‘and fasting’ alongside prayer."
+    ],
+    context: {
+      catholicOrthodoxDeuterocanon: ["Judith 9 (prayer in crisis)"],
+      secondTempleJewish: ["1 Enoch 10 (intercession motifs as background)"],
+      apostolicFathers: ["Didache 7 (fasting in community practice)"]
+    },
+    quiz: [
+      {type:"tf", prompt:"Even if a fasting phrase is a later addition in one verse, Scripture teaches fasting elsewhere.", answer:true},
+      {type:"mc", prompt:"According to many textual notes, ‘and fasting’ in Mark 9:29 is often viewed as…", options:[
+        "Original and undisputed",
+        "A later motivated expansion in many manuscripts",
+        "A mistranslation of ‘prayer’",
+        "A quote from the Psalms"
+      ], answerIndex:1},
+      {type:"mc", prompt:"A good method for doctrine is to…", options:[
+        "Build everything on one disputed line only",
+        "Use the whole counsel of Scripture, including undisputed passages",
+        "Reject all footnoted verses as useless",
+        "Assume all scribes had evil motives"
+      ], answerIndex:1},
+      {type:"essay", prompt:"Write a short personal plan: how will you practice prayer this week? (Optional: fasting, if appropriate.)", placeholder:"Write 4–10 sentences."},
+      {type:"essay", prompt:"How does Matthew 6:16–18 shape a healthy approach to fasting?", placeholder:"Write 3–7 sentences."}
+    ]
+  },
+  {
+    title: "How the New Testament Canon Took Shape",
+    theme: "Early lists • what ‘canon’ means • boundaries and recognition",
+    openingPrayer: "Creator, thank You for preserving Your word through history. Give us wisdom to understand the path it traveled. Amen.",
+    primaryReading: [
+      "Luke 24:44–49 (Law/Prophets/Writings framework)",
+      "2 Peter 3:15–16 (letters recognized as Scripture in early community)"
+    ],
+    variantFocus: [
+      "Canon formation is not one moment — it’s recognition over time, with lists and debates."
+    ],
+    context: {
+      catholicOrthodoxDeuterocanon: ["2 Maccabees 2 (collecting writings as a historical theme)"],
+      secondTempleJewish: ["4 Ezra 14 (traditions about writings, as historical context)"],
+      apostolicFathers: ["1 Clement (early Christian writing used widely)"]
+    },
+    quiz: [
+      {type:"tf", prompt:"The term ‘canon’ refers to a recognized set/standard of authoritative writings.", answer:true},
+      {type:"mc", prompt:"Athanasius’ Festal Letter 39 (AD 367) is famous because it…", options:[
+        "Invented the Bible for the first time in history",
+        "Lists the 27-book New Testament canon in a clear way",
+        "Was written in English originally",
+        "Was produced by a medieval printing press"
+      ], answerIndex:1},
+      {type:"mc", prompt:"Canon recognition historically involved…", options:[
+        "Only one council decision with no earlier usage",
+        "Usage in churches, debates, and lists over time",
+        "A single manuscript with no variants",
+        "Eliminating all older translations"
+      ], answerIndex:1},
+      {type:"essay", prompt:"Why is it more accurate to say the canon was ‘recognized’ rather than ‘manufactured’?", placeholder:"Write 4–8 sentences."},
+      {type:"essay", prompt:"What posture helps us study canon history without losing faith?", placeholder:"Write 3–6 sentences."}
+    ]
+  },
+  {
+    title: "Traditions & the Deuterocanon",
+    theme: "Why traditions differ • what ‘Deuterocanon’ means • clarity without hostility",
+    openingPrayer: "Creator, make us truthful and gentle. Keep us from pride. Let history teach us humility. Amen.",
+    primaryReading: [
+      "Romans 14:1–6 (charity in disputed matters)",
+      "1 Thessalonians 5:21 (test everything; hold fast to good)"
+    ],
+    variantFocus: [
+      "Different Christian traditions receive different ‘Old Testament’ lists; learn the labels and history calmly."
+    ],
+    context: {
+      catholicOrthodoxDeuterocanon: ["Wisdom 2", "Sirach 24", "Tobit 4"],
+      secondTempleJewish: ["Dead Sea Scrolls (community texts as historical background)"],
+      apostolicFathers: ["Shepherd of Hermas (example of widely-read early writing)"]
+    },
+    quiz: [
+      {type:"tf", prompt:"Christians across history have differed on some book lists, especially around the Deuterocanon.", answer:true},
+      {type:"mc", prompt:"‘Deuterocanonical’ typically refers to…", options:[
+        "Books received as canonical in some traditions but not all",
+        "A second New Testament written in secret",
+        "Only books found at Qumran",
+        "Modern devotional books"
+      ], answerIndex:0},
+      {type:"mc", prompt:"A wise way to discuss tradition differences is to…", options:[
+        "Mock people who disagree",
+        "Use accurate labels and primary sources, and keep charity",
+        "Assume bad motives immediately",
+        "Refuse to read any history"
+      ], answerIndex:1},
+      {type:"essay", prompt:"Write a respectful 5–7 sentence explanation of how traditions can differ without hatred.", placeholder:"Write 5–7 sentences."},
+      {type:"essay", prompt:"What is one benefit of reading Second Temple context texts as history (even if you don’t treat them as canon)?", placeholder:"Write 3–6 sentences."}
+    ]
+  },
+  {
+    title: "Mark 16 Endings",
+    theme: "Multiple endings • why editions bracket passages • how to teach responsibly",
+    openingPrayer: "Creator, give us courage to be honest and wisdom to be faithful. Amen.",
+    primaryReading: [
+      "Mark 16 (read the whole chapter in your Bible)",
+      "Acts 1:1–8 (resurrection witness & mission)"
+    ],
+    variantFocus: [
+      "Mark 16:9–20 — manuscript evidence shows multiple endings; learn what editors do and why."
+    ],
+    context: {
+      catholicOrthodoxDeuterocanon: ["2 Maccabees 7 (resurrection hope themes)"],
+      secondTempleJewish: ["4 Ezra 7 (resurrection themes, as historical background)"],
+      apostolicFathers: ["Ignatius letters (early resurrection confession tone)"]
+    },
+    quiz: [
+      {type:"tf", prompt:"Some manuscripts of Mark end earlier than Mark 16:9–20.", answer:true},
+      {type:"mc", prompt:"When a Bible brackets Mark 16:9–20, it usually means…", options:[
+        "The passage is proven false historically",
+        "The manuscript evidence is complex and the ending is disputed",
+        "Mark never wrote any Gospel",
+        "All churches reject resurrection"
+      ], answerIndex:1},
+      {type:"mc", prompt:"A responsible teaching approach is to…", options:[
+        "Hide the footnotes and forbid questions",
+        "Explain the evidence and avoid building unique doctrine only on disputed text",
+        "Assume every bracket means fraud",
+        "Only read one manuscript"
+      ], answerIndex:1},
+      {type:"essay", prompt:"How would you explain a bracketed passage to a teenager without fear-mongering?", placeholder:"Write 4–8 sentences."},
+      {type:"essay", prompt:"What doctrines of resurrection/mission are strongly taught elsewhere (undisputed passages)?", placeholder:"List 2–4 references and explain briefly."}
+    ]
+  },
+  {
+    title: "John 7:53–8:11 (Woman Caught in Adultery)",
+    theme: "Floating passages • why stories move • how communities preserved beloved narratives",
+    openingPrayer: "Creator, teach us mercy and truth together. Amen.",
+    primaryReading: [
+      "John 7–8 (read in your Bible; note brackets/footnotes)",
+      "Micah 6:8 (justice, mercy, humility)"
+    ],
+    variantFocus: [
+      "John 7:53–8:11 — often bracketed/relocated; learn what that indicates (and what it doesn’t)."
+    ],
+    context: {
+      catholicOrthodoxDeuterocanon: ["Sirach 2 (steadfastness & humility)"],
+      secondTempleJewish: ["Testament of the Twelve Patriarchs (ethical tone as background)"],
+      apostolicFathers: ["Didache 4 (ethics and discipline)"]
+    },
+    quiz: [
+      {type:"tf", prompt:"A passage can be beloved and ancient yet still have complex manuscript placement.", answer:true},
+      {type:"mc", prompt:"When a story appears in different locations in manuscripts, it suggests…", options:[
+        "It must be modern fiction",
+        "Transmission history is complex; scribes sometimes relocated material",
+        "Greek has no word for mercy",
+        "All manuscripts are identical"
+      ], answerIndex:1},
+      {type:"mc", prompt:"The best posture for studying this is…", options:[
+        "Panic and despair",
+        "Careful honesty + faith + mercy",
+        "Mocking questions",
+        "Declaring motives without evidence"
+      ], answerIndex:1},
+      {type:"essay", prompt:"What does this story (wherever placed) teach about mercy and repentance?", placeholder:"Write 4–8 sentences."},
+      {type:"essay", prompt:"How would you teach ‘evidence-first’ without turning faith into cynicism?", placeholder:"Write 3–7 sentences."}
+    ]
+  },
+  {
+    title: "Narrative Expansions: John 5:4 & Luke 22:43–44",
+    theme: "Explanatory additions • why scribes clarify • compassion for readers",
+    openingPrayer: "Creator, help us learn with patience. Keep our hearts soft and our minds clear. Amen.",
+    primaryReading: [
+      "John 5:1–9 (healing at Bethesda)",
+      "Luke 22:39–46 (Gethsemane)"
+    ],
+    variantFocus: [
+      "John 5:3b–4 — angel-stirring explanation often footnoted as later.",
+      "Luke 22:43–44 — angel/sweat detail; mixed manuscript evidence; often bracketed."
+    ],
+    context: {
+      catholicOrthodoxDeuterocanon: ["Wisdom 3 (suffering & hope)"],
+      secondTempleJewish: ["1 Enoch 60 (angelic motifs as background)"],
+      apostolicFathers: ["Polycarp (steadfastness themes)"]
+    },
+    quiz: [
+      {type:"tf", prompt:"Scribes sometimes added explanatory notes that later became part of the copied text.", answer:true},
+      {type:"mc", prompt:"A likely reason for adding John 5:4-style material is…", options:[
+        "To help readers understand why people waited at the pool",
+        "To remove all miracles",
+        "To eliminate prayer from Scripture",
+        "To change Greek into Latin"
+      ], answerIndex:0},
+      {type:"mc", prompt:"Bracketed verses often indicate…", options:[
+        "The editor is hiding the Bible",
+        "A known textual dispute presented transparently",
+        "The passage is illegal to read",
+        "A translation typo"
+      ], answerIndex:1},
+      {type:"essay", prompt:"How can explanatory additions happen without assuming malicious intent?", placeholder:"Write 4–7 sentences."},
+      {type:"essay", prompt:"What does Gethsemane teach you about obedience and prayer in suffering?", placeholder:"Write 4–8 sentences."}
+    ]
+  },
+  {
+    title: "Confessional Additions: Acts 8:37 & Luke 23:34",
+    theme: "Baptism confession lines • forgiveness sayings • how early preaching shaped copying",
+    openingPrayer: "Creator, let forgiveness live in us. Let confession be sincere. Amen.",
+    primaryReading: [
+      "Acts 8:26–40 (Ethiopian official)",
+      "Luke 23:33–38 (crucifixion scene)"
+    ],
+    variantFocus: [
+      "Acts 8:37 — confession verse absent in many key witnesses; appears in later tradition.",
+      "Luke 23:34a — forgiveness saying bracketed; evidence both ways; NET discusses insertion possibility."
+    ],
+    context: {
+      catholicOrthodoxDeuterocanon: ["Tobit 4 (ethics & generosity)"],
+      secondTempleJewish: ["4 Ezra 9 (repentance themes as background)"],
+      apostolicFathers: ["1 Clement (church teaching language)"]
+    },
+    quiz: [
+      {type:"tf", prompt:"Acts 8:37 is frequently footnoted because early manuscript support is limited.", answer:true},
+      {type:"mc", prompt:"Why might a confession line be added in copying traditions?", options:[
+        "To remove faith from baptism",
+        "To align the narrative with church baptism practice and catechesis",
+        "To hide the Gospel",
+        "To deny Yahushua"
+      ], answerIndex:1},
+      {type:"mc", prompt:"Luke 23:34a is bracketed in some editions because…", options:[
+        "No manuscripts contain it",
+        "Some important early witnesses lack it, but it strongly fits Lukan themes",
+        "It is a modern invention",
+        "Luke is not Scripture"
+      ], answerIndex:1},
+      {type:"essay", prompt:"How do you personally practice forgiveness toward enemies? Be specific.", placeholder:"Write 4–8 sentences."},
+      {type:"essay", prompt:"Explain how ‘theme fit’ and ‘manuscript evidence’ can sometimes pull in different directions.", placeholder:"Write 4–8 sentences."}
+    ]
+  },
+  {
+    title: "High-Theology Variants: 1 Tim 3:16 & 1 John 5:7–8",
+    theme: "Doctrinal pressure points • how to teach without sensationalism",
+    openingPrayer: "Creator, keep us reverent. Let truth lead. Let pride die. Amen.",
+    primaryReading: [
+      "1 Timothy 3:14–16 (mystery of godliness)",
+      "1 John 5:6–12 (witness language)"
+    ],
+    variantFocus: [
+      "1 Tim 3:16 — ‘God’ vs ‘who’ (footnoted in many editions).",
+      "1 John 5:7–8 — ‘heavenly witnesses’ phrase present in some later tradition."
+    ],
+    context: {
+      catholicOrthodoxDeuterocanon: ["Wisdom 7 (language of purity & divine wisdom)"],
+      secondTempleJewish: ["Qumran community texts (witness/community identity, overview)"],
+      apostolicFathers: ["Ignatius (early high confession of Messiah)"]
+    },
+    quiz: [
+      {type:"tf", prompt:"Some variants touch theology, but core doctrines usually rest on many passages, not one line.", answer:true},
+      {type:"mc", prompt:"A responsible approach to a theological variant is…", options:[
+        "Base everything on the disputed reading alone",
+        "Teach the evidence and also show the broader scriptural basis",
+        "Declare all manuscripts corrupted",
+        "Refuse to read footnotes"
+      ], answerIndex:1},
+      {type:"mc", prompt:"The ‘Comma Johanneum’ (1 John 5:7–8 expansion) is commonly understood as…", options:[
+        "Original to all early Greek manuscripts",
+        "A later expansion in some transmission lines",
+        "A Hebrew poem",
+        "A passage from Acts"
+      ], answerIndex:1},
+      {type:"essay", prompt:"Why is ‘doctrine from the whole of Scripture’ a stabilizing principle in variant discussions?", placeholder:"Write 4–8 sentences."},
+      {type:"essay", prompt:"How will you keep your heart reverent while studying difficult historical details?", placeholder:"Write 3–7 sentences."}
+    ]
+  },
+  {
+    title: "John 1:18 and Translation Choices",
+    theme: "‘unique one’ • ‘only-begotten Son/God’ • why translations differ",
+    openingPrayer: "Creator, let us see Your light and learn with humility. Amen.",
+    primaryReading: [
+      "John 1:1–18 (Prologue)",
+      "Colossians 1:15–20 (Messiah’s supremacy)"
+    ],
+    variantFocus: [
+      "John 1:18 — ‘only-begotten Son’ vs ‘unique one, himself God’ in different traditions; why ‘harder reading’ matters."
+    ],
+    context: {
+      catholicOrthodoxDeuterocanon: ["Sirach 24 (wisdom language)"],
+      secondTempleJewish: ["Wisdom motifs in Second Temple literature (overview reading)"],
+      apostolicFathers: ["1 Clement (Scripture usage patterns, overview)"]
+    },
+    quiz: [
+      {type:"tf", prompt:"Translation differences can reflect different manuscript bases and how Greek is understood.", answer:true},
+      {type:"mc", prompt:"John 1:18 is debated primarily because…", options:[
+        "John’s Gospel never existed",
+        "Manuscripts differ between readings like ‘Son’ and ‘God/unique one’",
+        "Greek cannot express ‘only’",
+        "All translations are identical"
+      ], answerIndex:1},
+      {type:"mc", prompt:"A useful principle in textual criticism is ‘the harder reading’ because…", options:[
+        "Scribes tend to make texts harder to understand",
+        "Scribes often smooth/clarify difficult readings over time",
+        "Hard readings are always wrong",
+        "Only Latin matters"
+      ], answerIndex:1},
+      {type:"essay", prompt:"How would you explain to someone why faithful Bibles can differ in wording yet still proclaim the same Messiah?", placeholder:"Write 5–9 sentences."},
+      {type:"essay", prompt:"Write a short doxology/prayer based on John 1:14–18 themes.", placeholder:"Write 3–8 sentences."}
+    ]
+  },
+  {
+    title: "Putting It Together: Faithful Reading With Footnotes",
+    theme: "How to teach this to families • how to keep prayer life strong • what we can conclude responsibly",
+    openingPrayer: "Creator, seal in us what is true, and make us doers of the word. Keep us close to You. In Yahushua’s name, amen.",
+    primaryReading: [
+      "James 1:19–27 (doers, not hearers only)",
+      "Psalm 119:105 (word as lamp)"
+    ],
+    variantFocus: [
+      "Review: prayer/fasting variants; major bracketed passages; theology variants — and a calm method for teaching."
+    ],
+    context: {
+      catholicOrthodoxDeuterocanon: ["Wisdom 3 (hope & endurance)"],
+      secondTempleJewish: ["4 Ezra 14 (writings and memory, as historical theme)"],
+      apostolicFathers: ["Didache 8 (prayer practice review)"]
+    },
+    quiz: [
+      {type:"tf", prompt:"It is possible to be evidence-honest and spiritually faithful at the same time.", answer:true},
+      {type:"mc", prompt:"When you see a footnote, the best next step is…", options:[
+        "Ignore it forever",
+        "Read the note, compare translations, and avoid panic",
+        "Assume the Bible is fake",
+        "Assume the translator is evil"
+      ], answerIndex:1},
+      {type:"mc", prompt:"A safe teaching rule is…", options:[
+        "Build unique doctrine only on a heavily disputed line",
+        "Use disputed passages carefully and confirm with multiple undisputed texts",
+        "Never discuss manuscripts",
+        "Only read one translation forever"
+      ], answerIndex:1},
+      {type:"essay", prompt:"Write your personal ‘method’ in 5 steps for handling claims of ‘removed verses.’", placeholder:"Example: identify claim → check footnote → check manuscript notes → compare passages → pray/apply."},
+      {type:"essay", prompt:"What is your biggest takeaway from this course, and what practice will you keep?", placeholder:"Write 4–8 sentences."}
+    ]
+  }
+];
+
+// Ensure we have exactly 12 weeks (we currently have 11 objects above).
+// Add a dedicated Canon milestone week that anchors Athanasius/councils as history.
+COURSE.splice(5, 0, {
+  title: "Primary Sources: Athanasius & Councils (Canon Milestones)",
+  theme: "What the sources actually say • reading primary texts calmly",
+  openingPrayer: "Creator, let history sharpen our discernment, not harden our hearts. Amen.",
+  primaryReading: [
+    "Athanasius Festal Letter 39 (primary source excerpt — see Church Fathers link)",
+    "Luke 11:1–13 (prayer life stays central)"
+  ],
+  variantFocus: [
+    "Canon milestones: Athanasius (AD 367) lists the NT books; later councils record lists in their contexts.",
+    "Goal: read sources directly rather than repeating rumors."
+  ],
+  context: {
+    catholicOrthodoxDeuterocanon: ["Baruch 3 (wisdom themes)"],
+    secondTempleJewish: ["Prologue to Sirach (translation & transmission themes)"],
+    apostolicFathers: ["Muratorian Fragment (overview reading as early canon list tradition)"]
+  },
+  quiz: [
+    {type:"tf", prompt:"Canon lists can be studied using primary sources (letters, council canons, historical records).", answer:true},
+    {type:"mc", prompt:"Athanasius’ Festal Letter 39 is dated to…", options:[
+      "AD 367",
+      "AD 67",
+      "AD 1367",
+      "AD 1967"
+    ], answerIndex:0},
+    {type:"mc", prompt:"A reliable habit in canon discussions is to…", options:[
+      "Only trust viral videos",
+      "Read primary sources and compare historians",
+      "Assume every tradition is lying",
+      "Refuse to check citations"
+    ], answerIndex:1},
+    {type:"essay", prompt:"Why do people confuse ‘canon history’ with ‘textual variants,’ and how will you keep them distinct?", placeholder:"Write 4–8 sentences."},
+    {type:"essay", prompt:"Write a short prayer asking for truth and humility as you study.", placeholder:"Write 3–6 sentences."}
+  ]
+});
+
+/* -----------------------------
+   UI wiring
+------------------------------*/
+let state = loadState();
+let dark = !!state.darkMode;
+let use30 = (state.timing || "30") === "30";
+let current = state.currentWeek ?? 0;
+
+function applyMode(){
+  document.body.classList.toggle("dark", dark);
+  document.getElementById("toggleMode").textContent = dark ? "Light" : "Dark";
+}
+function applyTimingBtn(){
+  document.getElementById("toggleTiming").textContent = use30 ? "30-min" : "60-min";
+  document.getElementById("timingLabel").textContent = use30 ? "30 minutes" : "60 minutes";
+}
+
+function setWeek(i){
+  current = Math.max(0, Math.min(COURSE.length-1, i));
+  state.currentWeek = current; saveState(state);
+  render();
+}
+
+function esc(s){ return (s||"").replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c])); }
+
+function render(){
+  const w = COURSE[current];
+  document.getElementById("weekSel").value = String(current);
+
+  const wid = uidFor(current);
+  const done = !!(state.done && state.done[wid]);
+
+  document.getElementById("wkTitle").textContent = `Week ${current+1}: ${w.title}`;
+  document.getElementById("wkTheme").textContent = w.theme;
+  document.getElementById("wkProgress").textContent = done ? "Completed ✅" : "In progress";
+
+  document.getElementById("openingPrayer").textContent = w.openingPrayer;
+
+  // Flow
+  const flow = (use30 ? w.flow30 : w.flow60);
+  const flowEl = document.getElementById("flow");
+  flowEl.innerHTML = "";
+  flow.forEach(([name,time,desc])=>{
+    const div = document.createElement("div");
+    div.className = "q";
+    div.innerHTML = `<div class="qt">${esc(name)} <small>• ${esc(time)}</small></div><div class="tiny muted">${esc(desc)}</div>`;
+    flowEl.appendChild(div);
+  });
+
+  // Readings
+  const pr = document.getElementById("primaryReading");
+  pr.innerHTML = "";
+  w.primaryReading.forEach(x=>{
+    const li=document.createElement("li"); li.textContent=x; pr.appendChild(li);
+  });
+  const vf = document.getElementById("variantFocus");
+  vf.innerHTML = "";
+  w.variantFocus.forEach(x=>{
+    const li=document.createElement("li"); li.textContent=x; vf.appendChild(li);
+  });
+
+  // Context readings labeled
+  const ctx = document.getElementById("contextReadings");
+  const c = w.context || {};
+  ctx.innerHTML = `
+    <div class="q">
+      <div class="qt">Catholic / Orthodox Deuterocanon</div>
+      <ul class="list">${(c.catholicOrthodoxDeuterocanon||[]).map(x=>`<li>${esc(x)}</li>`).join("") || "<li class='muted'>—</li>"}</ul>
+    </div>
+    <div class="q">
+      <div class="qt">Second Temple Jewish Literature (historical context)</div>
+      <ul class="list">${(c.secondTempleJewish||[]).map(x=>`<li>${esc(x)}</li>`).join("") || "<li class='muted'>—</li>"}</ul>
+    </div>
+    <div class="q">
+      <div class="qt">Apostolic Fathers / Early Church Context</div>
+      <ul class="list">${(c.apostolicFathers||[]).map(x=>`<li>${esc(x)}</li>`).join("") || "<li class='muted'>—</li>"}</ul>
+    </div>
+  `;
+
+  // Notes
+  state.notes = state.notes || {};
+  state.notes[wid] = state.notes[wid] || {observe:"", interpret:"", apply:"", pray:""};
+  const n = state.notes[wid];
+
+  const o = document.getElementById("noteObserve");
+  const it = document.getElementById("noteInterpret");
+  const ap = document.getElementById("noteApply");
+  const py = document.getElementById("notePray");
+
+  o.value = n.observe || "";
+  it.value = n.interpret || "";
+  ap.value = n.apply || "";
+  py.value = n.pray || "";
+
+  function wireNote(el,key){
+    el.oninput = ()=>{
+      state.notes[wid][key] = el.value;
+      saveState(state);
+    };
+  }
+  wireNote(o,"observe");
+  wireNote(it,"interpret");
+  wireNote(ap,"apply");
+  wireNote(py,"pray");
+
+  // Quiz
+  state.quiz = state.quiz || {};
+  state.quiz[wid] = state.quiz[wid] || {};
+  const qState = state.quiz[wid];
+  const quizEl = document.getElementById("quiz");
+  quizEl.innerHTML = "";
+
+  w.quiz.forEach((q, idx)=>{
+    const qid = `${wid}_q${idx}`;
+    const wrap = document.createElement("div");
+    wrap.className = "q";
+    wrap.innerHTML = `<div class="qt">Q${idx+1}. ${esc(q.prompt)}</div>`;
+
+    if(q.type==="tf"){
+      const val = qState[qid];
+      wrap.innerHTML += `
+        <label><input type="radio" name="${qid}" value="true" ${val==="true"?"checked":""}/> True</label>
+        <label><input type="radio" name="${qid}" value="false" ${val==="false"?"checked":""}/> False</label>
+      `;
+    }else if(q.type==="mc"){
+      const val = qState[qid];
+      q.options.forEach((opt, oi)=>{
+        wrap.innerHTML += `
+          <label><input type="radio" name="${qid}" value="${oi}" ${String(val)===String(oi)?"checked":""}/> ${esc(opt)}</label>
+        `;
+      });
+    }else if(q.type==="essay"){
+      const val = qState[qid] || "";
+      wrap.innerHTML += `<textarea data-essay="${qid}" placeholder="${esc(q.placeholder||"Write here...")}">${esc(val)}</textarea>
+                         <div class="tiny muted" style="margin-top:6px">Essay responses are saved locally and can be reviewed later.</div>`;
+    }
+
+    quizEl.appendChild(wrap);
+
+    // Wire radios/textarea
+    setTimeout(()=>{
+      const radios = quizEl.querySelectorAll(`input[name="${qid}"]`);
+      radios.forEach(r=>{
+        r.addEventListener("change", ()=>{
+          qState[qid] = r.value;
+          saveState(state);
+        });
+      });
+      const ta = quizEl.querySelector(`textarea[data-essay="${qid}"]`);
+      if(ta){
+        ta.addEventListener("input", ()=>{
+          qState[qid] = ta.value;
+          saveState(state);
+        });
+      }
+    }, 0);
+  });
+
+  // Score display reset
+  document.getElementById("scoreText").textContent = "—";
+
+  // Course map
+  const map = document.getElementById("courseMap");
+  map.innerHTML = "";
+  COURSE.forEach((wk, i)=>{
+    const li = document.createElement("li");
+    const isDone = !!(state.done && state.done[uidFor(i)]);
+    li.innerHTML = `<span style="cursor:pointer; text-decoration:underline">${esc(`Week ${i+1}: ${wk.title}`)}</span> ${isDone ? "✅" : ""}`;
+    li.querySelector("span").onclick = ()=> setWeek(i);
+    map.appendChild(li);
+  });
+
+  // Update timing button label
+  applyTimingBtn();
+}
+
+/* -----------------------------
+   Events
+------------------------------*/
+const weekSel = document.getElementById("weekSel");
+weekSel.innerHTML = COURSE.map((w,i)=>`<option value="${i}">Week ${i+1}</option>`).join("");
+weekSel.addEventListener("change", ()=> setWeek(parseInt(weekSel.value,10)));
+
+document.getElementById("toggleMode").onclick = ()=>{
+  dark = !dark;
+  state.darkMode = dark;
+  saveState(state);
+  applyMode();
+};
+
+document.getElementById("toggleTiming").onclick = ()=>{
+  use30 = !use30;
+  state.timing = use30 ? "30" : "60";
+  saveState(state);
+  applyTimingBtn();
+  render();
+};
+
+document.getElementById("markComplete").onclick = ()=>{
+  state.done = state.done || {};
+  const wid = uidFor(current);
+  state.done[wid] = true;
+  saveState(state);
+  render();
+};
+
+document.getElementById("copyNotes").onclick = async ()=>{
+  const wid = uidFor(current);
+  const w = COURSE[current];
+  const n = (state.notes && state.notes[wid]) || {};
+  const text =
+`Week ${current+1}: ${w.title}
+Theme: ${w.theme}
+
+Observe:
+${n.observe||""}
+
+Interpret:
+${n.interpret||""}
+
+Apply:
+${n.apply||""}
+
+Prayer:
+${n.pray||""}
+`;
+  try{
+    await navigator.clipboard.writeText(text);
+    alert("Notes copied to clipboard ✅");
+  }catch(e){
+    alert("Copy failed (browser restrictions). You can manually select and copy your notes.");
+  }
+};
+
+document.getElementById("gradeQuiz").onclick = ()=>{
+  const w = COURSE[current];
+  const wid = uidFor(current);
+  const qState = (state.quiz && state.quiz[wid]) || {};
+  let total=0, correct=0;
+
+  w.quiz.forEach((q, idx)=>{
+    if(q.type==="essay") return;
+    total++;
+    const qid = `${wid}_q${idx}`;
+    const val = qState[qid];
+
+    if(q.type==="tf"){
+      const ans = q.answer ? "true" : "false";
+      if(val === ans) correct++;
+    }else if(q.type==="mc"){
+      if(String(val) === String(q.answerIndex)) correct++;
+    }
+  });
+
+  const pct = total ? Math.round((correct/total)*100) : 0;
+  document.getElementById("scoreText").textContent = `${correct}/${total} (${pct}%)`;
+};
+
+document.getElementById("clearQuiz").onclick = ()=>{
+  const wid = uidFor(current);
+  if(!confirm("Clear quiz answers for this week?")) return;
+  state.quiz = state.quiz || {};
+  state.quiz[wid] = {};
+  saveState(state);
+  render();
+};
+
+document.getElementById("resetLocal").onclick = ()=>{
+  if(!confirm("Reset ALL saved progress/notes/quizzes for this course on this device?")) return;
+  localStorage.removeItem(LS_KEY);
+  state = loadState();
+  dark = false; use30 = true; current = 0;
+  applyMode();
+  render();
+};
+
+/* Init */
+applyMode();
+render();
+</script>
+</body>
+</html>
