@@ -1,0 +1,861 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Biblical Web Directory — Integral Study Resources</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+
+  <!-- Optional fonts (can be removed for fully offline use) -->
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600&family=Cormorant+Garamond:wght@400;500;600&display=swap" rel="stylesheet">
+
+  <style>
+    :root{
+      --parchment:#f7f3ea;
+      --parchment-soft:#f0e9dc;
+      --gold:#d9b878;
+      --gold-deep:#b89252;
+      --gold-root:#7a5a28;
+      --midnight-bg:#050713;
+      --midnight-soft:#171829;
+      --ink-soft:#e6dfcf;
+      --accent-pill:#212335;
+      --radius-shell:66px;
+      --radius-card:33px;
+      --shadow-shell:0 24px 72px rgba(0,0,0,0.85);
+      --shadow-card:0 14px 44px rgba(0,0,0,0.7);
+    }
+
+    *,*::before,*::after{
+      box-sizing:border-box;
+    }
+
+    html,body{
+      margin:0;
+      padding:0;
+      min-height:100%;
+      font-family:'Cormorant Garamond',system-ui,-apple-system,'Segoe UI',serif;
+      background:radial-gradient(circle at top,#f9f3e3 0%,#e6d6b3 40%,#cfb68b 72%,#b89c6f 100%);
+      color:var(--parchment);
+    }
+
+    body{
+      display:flex;
+      flex-direction:column;
+      align-items:center;
+    }
+
+    /* Shell */
+
+    .dir-shell{
+      width:100%;
+      display:flex;
+      justify-content:center;
+      padding:66px 14px 77px;
+    }
+
+    .dir-inner{
+      width:100%;
+      max-width:1222px;
+      margin:0 auto;
+      padding:44px 33px 44px;
+      border-radius:var(--radius-shell);
+      background:linear-gradient(180deg,#191b2a 0%,#050713 72%);
+      border:1px solid rgba(60,43,18,0.55);
+      box-shadow:var(--shadow-shell);
+    }
+
+    /* Header */
+
+    .dir-header{
+      text-align:center;
+      margin-bottom:24px;
+      color:var(--parchment);
+    }
+
+    .dir-title{
+      font-family:'Cinzel','Times New Roman',serif;
+      font-size:32px;
+      letter-spacing:0.18em;
+      text-transform:uppercase;
+      margin:0 0 11px;
+    }
+
+    .dir-tag{
+      font-size:18px;
+      letter-spacing:0.16em;
+      text-transform:uppercase;
+      color:var(--gold);
+      margin:0 0 16px;
+    }
+
+    .dir-sub{
+      max-width:900px;
+      margin:0 auto 21px;
+      font-size:16px;
+      line-height:1.7;
+      color:var(--parchment-soft);
+    }
+
+    .dir-cta-row{
+      display:flex;
+      flex-wrap:wrap;
+      justify-content:center;
+      gap:11px;
+      align-items:center;
+      margin-top:9px;
+    }
+
+    .pill-link,
+    .pill-btn{
+      border:none;
+      border-radius:1111px;
+      padding:11px 30px;
+      font-size:13px;
+      letter-spacing:0.14em;
+      text-transform:uppercase;
+      cursor:pointer;
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      white-space:normal;
+      line-height:1.4;
+      background:linear-gradient(135deg,var(--gold),var(--gold-deep));
+      color:#050713;
+      box-shadow:0 9px 33px rgba(0,0,0,0.55);
+      text-decoration:none;
+      transition:transform .24s,box-shadow .24s,background .24s,color .24s;
+    }
+
+    .pill-link:hover,
+    .pill-btn:hover{
+      transform:translateY(-1px);
+      box-shadow:0 14px 44px rgba(0,0,0,0.7);
+      color:#050713;
+    }
+
+    .dir-note{
+      font-size:13px;
+      color:var(--ink-soft);
+    }
+
+    /* Controls */
+
+    .dir-controls{
+      margin:24px 0 14px;
+      border-radius:21px;
+      padding:16px 18px 18px;
+      background:rgba(11,14,33,0.98);
+      border:1px solid rgba(244,244,233,0.08);
+    }
+
+    .dir-controls-row{
+      display:flex;
+      flex-wrap:wrap;
+      gap:14px;
+      align-items:center;
+      justify-content:space-between;
+    }
+
+    .control-group{
+      display:flex;
+      flex-wrap:wrap;
+      gap:11px;
+      align-items:center;
+    }
+
+    .control-label{
+      font-size:14px;
+      color:var(--ink-soft);
+      letter-spacing:0.12em;
+      text-transform:uppercase;
+    }
+
+    .dir-select{
+      min-width:180px;
+      border-radius:777px;
+      border:1px solid rgba(247,243,234,0.16);
+      padding:7px 14px;
+      font-size:14px;
+      background:rgba(4,7,22,0.95);
+      color:var(--parchment);
+    }
+
+    .dir-search{
+      flex:1 1 240px;
+      min-width:0;
+      border-radius:777px;
+      border:1px solid rgba(247,243,234,0.16);
+      padding:8px 16px;
+      font-size:14px;
+      background:rgba(3,5,18,0.95);
+      color:var(--parchment);
+    }
+
+    .dir-search::placeholder{
+      color:rgba(199,191,168,0.85);
+    }
+
+    .dir-count{
+      margin-top:11px;
+      font-size:13px;
+      color:var(--ink-soft);
+      text-align:right;
+    }
+
+    /* Grid & cards */
+
+    .dir-grid{
+      margin-top:24px;
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+      gap:22px;
+    }
+
+    .dir-card{
+      position:relative;
+      overflow:hidden;
+      padding:18px 16px 18px;
+      border-radius:var(--radius-card);
+      background:var(--midnight-soft);
+      border:1px solid rgba(247,243,234,0.13);
+      box-shadow:var(--shadow-card);
+      color:var(--parchment);
+      display:flex;
+      flex-direction:column;
+      min-height:210px;
+    }
+
+    .card-top{
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      gap:9px;
+      margin-bottom:7px;
+    }
+
+    .meta-chips{
+      display:flex;
+      flex-wrap:wrap;
+      gap:6px;
+      align-items:center;
+    }
+
+    .chip{
+      font-size:10px;
+      letter-spacing:0.12em;
+      text-transform:uppercase;
+      padding:4px 9px;
+      border-radius:999px;
+      background:var(--accent-pill);
+      color:var(--parchment-soft);
+      white-space:nowrap;
+    }
+
+    .chip-cat{
+      background:linear-gradient(135deg,var(--gold),var(--gold-root));
+      color:#050713;
+    }
+
+    .chip-access{
+      border:1px solid rgba(217,184,120,0.5);
+    }
+
+    .dir-title-small{
+      font-family:'Cinzel','Times New Roman',serif;
+      font-size:18px;
+      margin:3px 0 4px;
+    }
+
+    .dir-type{
+      font-size:13px;
+      color:var(--ink-soft);
+      margin:0 0 7px;
+    }
+
+    .dir-summary{
+      font-size:14px;
+      line-height:1.6;
+      margin:0 0 8px;
+    }
+
+    .dir-tags{
+      font-size:12px;
+      color:var(--ink-soft);
+      margin:0 0 10px;
+    }
+
+    .visit-btn{
+      margin-top:auto;
+      align-self:flex-start;
+      border-radius:777px;
+      border:1px solid rgba(217,184,120,0.65);
+      padding:6px 13px;
+      font-size:11px;
+      letter-spacing:0.11em;
+      text-transform:uppercase;
+      text-decoration:none;
+      background:rgba(255,255,255,0.03);
+      color:var(--parchment);
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      gap:6px;
+      transition:background .18s,transform .18s,box-shadow .18s,color .18s;
+      max-width:100%;
+      white-space:nowrap;
+    }
+
+    .visit-btn::after{
+      content:'↗';
+      font-size:11px;
+    }
+
+    .visit-btn:hover{
+      background:linear-gradient(135deg,var(--gold),var(--gold-deep));
+      color:#050713;
+      transform:translateY(-1px);
+      box-shadow:0 9px 24px rgba(0,0,0,0.6);
+    }
+
+    .empty-state{
+      grid-column:1 / -1;
+      text-align:center;
+      font-size:14px;
+      color:var(--ink-soft);
+      padding:18px 0 6px;
+    }
+
+    @media (max-width:800px){
+      .dir-inner{
+        padding:30px 18px 30px;
+        border-radius:27px;
+      }
+      .dir-title{
+        font-size:24px;
+        letter-spacing:0.14em;
+      }
+      .dir-sub{
+        font-size:15px;
+      }
+      .dir-controls-row{
+        flex-direction:column;
+        align-items:stretch;
+      }
+      .dir-count{
+        text-align:left;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<section class="dir-shell">
+  <div class="dir-inner">
+    <header class="dir-header">
+      <h1 class="dir-title">BIBLICAL WEB DIRECTORY</h1>
+      <p class="dir-tag">INTEGRAL TEXTS · STUDY · LANGUAGES · HISTORY</p>
+      <p class="dir-sub">
+        A curated directory of widely used, integrity-focused biblical resources:
+        Bible texts and apps, study suites, original-language tools, Jewish
+        text libraries, archaeology, and academic archives. Use this as a
+        neutral starting point to compare, test, and build your own study path.
+      </p>
+      <div class="dir-cta-row">
+        <a href="https://www.vervenveda.com/testament"
+           class="pill-link"
+           target="_blank"
+           rel="noopener noreferrer">
+          Open THE TESTAMENT Portal
+        </a>
+        <span class="dir-note">
+          All links open in a new tab. No tracking or data leaves this module.
+        </span>
+      </div>
+    </header>
+
+    <!-- Controls -->
+    <section class="dir-controls" aria-label="Directory filters">
+      <div class="dir-controls-row">
+        <div class="control-group">
+          <span class="control-label">Category</span>
+          <select id="categoryFilter" class="dir-select">
+            <option value="all">All categories</option>
+            <option value="bible-texts">Bible texts &amp; apps</option>
+            <option value="study">Study &amp; commentaries</option>
+            <option value="languages">Original languages &amp; lexicon</option>
+            <option value="jewish">Jewish texts &amp; Tanakh</option>
+            <option value="academic">Academic &amp; journals</option>
+            <option value="archaeology">Archaeology &amp; background</option>
+            <option value="manuscripts">Manuscripts &amp; text criticism</option>
+            <option value="software">Software &amp; platforms</option>
+          </select>
+        </div>
+
+        <div class="control-group">
+          <span class="control-label">Tradition</span>
+          <select id="traditionFilter" class="dir-select">
+            <option value="all">All traditions</option>
+            <option value="christian">Christian (multi)</option>
+            <option value="catholic">Catholic</option>
+            <option value="jewish">Jewish</option>
+            <option value="interfaith">Interfaith / academic</option>
+            <option value="software">Software / tools</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="dir-controls-row" style="margin-top:12px;">
+        <input id="dirSearch" class="dir-search" type="search"
+               placeholder="Search by site name, summary, or tags…"
+               aria-label="Search directory" />
+      </div>
+
+      <div id="dirCount" class="dir-count"></div>
+    </section>
+
+    <!-- Grid -->
+    <section id="dirGrid" class="dir-grid" aria-live="polite"></section>
+  </div>
+</section>
+
+<script>
+  // === Data: curated integral biblical sites ===
+  const directorySources = [
+    /* Bible texts & apps (Christian multi) */
+    {
+      id: "biblegateway",
+      name: "Bible Gateway",
+      url: "https://www.biblegateway.com/",
+      category: "bible-texts",
+      traditionKey: "christian",
+      tradition: "Christian · multi-denominational",
+      access: "Free + premium",
+      type: "Multi-translation Bible · reading · audio",
+      tags: ["multi-translation","audio","reading plans","search"],
+      summary: "Large online Bible site with dozens of translations, audio, and reading tools for personal study."
+    },
+    {
+      id: "biblehub",
+      name: "Bible Hub",
+      url: "https://biblehub.com/",
+      category: "bible-texts",
+      traditionKey: "christian",
+      tradition: "Christian · multi-denominational",
+      access: "Free",
+      type: "Parallel Bible · interlinear · tools",
+      tags: ["parallel","interlinear","commentary","lexicon"],
+      summary: "Parallel Bible with many translations, interlinear views, and linked commentaries and lexicons."
+    },
+    {
+      id: "youversion",
+      name: "Bible.com (YouVersion)",
+      url: "https://www.bible.com/",
+      category: "bible-texts",
+      traditionKey: "christian",
+      tradition: "Christian · multi-denominational",
+      access: "Free (web + apps)",
+      type: "Global Bible app & website",
+      tags: ["mobile app","reading plans","audio","2,000+ languages"],
+      summary: "Online and mobile Bible platform with thousands of translations, reading plans, and community features."
+    },
+    {
+      id: "netbible",
+      name: "NET Bible with Notes",
+      url: "https://netbible.org/",
+      category: "bible-texts",
+      traditionKey: "christian",
+      tradition: "Christian · evangelical",
+      access: "Free",
+      type: "English translation with translator notes",
+      tags: ["translation","translator notes","study"],
+      summary: "Modern English translation accompanied by extensive translator notes that explain textual and lexical choices."
+    },
+    {
+      id: "esvonline",
+      name: "ESV Bible Online",
+      url: "https://www.esv.org/",
+      category: "bible-texts",
+      traditionKey: "christian",
+      tradition: "Christian · evangelical",
+      access: "Free (account for extras)",
+      type: "English Standard Version · online",
+      tags: ["esv","reading","search"],
+      summary: "Official online text of the ESV Bible with basic search and reading tools."
+    },
+    {
+      id: "newadvent",
+      name: "New Advent Bible",
+      url: "https://www.newadvent.org/bible/",
+      category: "bible-texts",
+      traditionKey: "catholic",
+      tradition: "Catholic",
+      access: "Free",
+      type: "Vulgate + English with encyclopedia",
+      tags: ["catholic","vulgate","encyclopedia"],
+      summary: "Latin Vulgate and English Bible plus the Catholic Encyclopedia and early church documents for background reading."
+    },
+
+    /* Study & commentaries */
+    {
+      id: "blueletter",
+      name: "Blue Letter Bible",
+      url: "https://www.blueletterbible.org/",
+      category: "study",
+      traditionKey: "christian",
+      tradition: "Christian · evangelical",
+      access: "Free",
+      type: "Study suite · commentaries · lexicon",
+      tags: ["interlinear","Strong’s","commentary","lexicon"],
+      summary: "Study suite offering interlinear Bibles, Strong’s numbers, lexicons, and many classic public-domain commentaries."
+    },
+    {
+      id: "biblestudytools",
+      name: "Bible Study Tools",
+      url: "https://www.biblestudytools.com/",
+      category: "study",
+      traditionKey: "christian",
+      tradition: "Christian · multi-denominational",
+      access: "Free (registration optional)",
+      type: "Commentaries · dictionaries · devotionals",
+      tags: ["commentaries","encyclopedias","devotionals"],
+      summary: "Aggregator of commentaries, dictionaries, concordances, and reading plans from a range of evangelical traditions."
+    },
+    {
+      id: "bibleorg",
+      name: "Bible.org",
+      url: "https://bible.org/",
+      category: "study",
+      traditionKey: "christian",
+      tradition: "Christian · evangelical",
+      access: "Free",
+      type: "Articles · NET notes · courses",
+      tags: ["articles","courses","NET notes"],
+      summary: "Home of NET Bible notes plus thousands of articles, sermon manuscripts, and study courses."
+    },
+    {
+      id: "preceptaustin",
+      name: "Precept Austin",
+      url: "https://www.preceptaustin.org/",
+      category: "study",
+      traditionKey: "christian",
+      tradition: "Christian · evangelical",
+      access: "Free",
+      type: "Verse-by-verse notes & word studies",
+      tags: ["commentary","word studies","greek","hebrew"],
+      summary: "Extensive verse-by-verse commentary collections and word studies compiled from many classic resources."
+    },
+    {
+      id: "gotquestions",
+      name: "GotQuestions.org",
+      url: "https://www.gotquestions.org/",
+      category: "study",
+      traditionKey: "christian",
+      tradition: "Christian · evangelical",
+      access: "Free",
+      type: "Topical Q&A",
+      tags: ["questions","apologetics","topics"],
+      summary: "Topical Q&A articles addressing biblical passages and theological questions from an evangelical perspective."
+    },
+    {
+      id: "bibleproject",
+      name: "The Bible Project",
+      url: "https://bibleproject.com/",
+      category: "study",
+      traditionKey: "interfaith",
+      tradition: "Christian-rooted · literary / canonical focus",
+      access: "Free (donation supported)",
+      type: "Videos · theme studies · visual overviews",
+      tags: ["videos","themes","podcast","visual"],
+      summary: "Nonprofit producing animated videos, podcasts, and study notes that trace themes and literary structure across Scripture."
+    },
+    {
+      id: "enduringword",
+      name: "Enduring Word Commentary",
+      url: "https://enduringword.com/",
+      category: "study",
+      traditionKey: "christian",
+      tradition: "Christian · pastoral",
+      access: "Free",
+      type: "Pastoral commentary",
+      tags: ["commentary","devotional","teaching prep"],
+      summary: "Accessible, pastoral commentary on every book of the Bible, often used for teaching and devotional study."
+    },
+
+    /* Original languages & lexicon */
+    {
+      id: "stepbible",
+      name: "STEP Bible (Tyndale House)",
+      url: "https://www.stepbible.org/",
+      category: "languages",
+      traditionKey: "interfaith",
+      tradition: "Interdenominational · academic",
+      access: "Free",
+      type: "Original languages · interlinear · parsing",
+      tags: ["greek","hebrew","interlinear","morphology"],
+      summary: "Free original-language Bible with interlinear text, morphology, dictionaries, and flexible search tools."
+    },
+    {
+      id: "ancienthebrew",
+      name: "Ancient Hebrew Research Center",
+      url: "https://www.ancient-hebrew.org/",
+      category: "languages",
+      traditionKey: "interfaith",
+      tradition: "Interfaith / independent",
+      access: "Free + books",
+      type: "Ancient Hebrew lexicon & studies",
+      tags: ["Hebrew","lexicon","culture","roots"],
+      summary: "Resource hub for ancient Hebrew language and culture, including Benner’s Lexicon of Biblical Hebrew and word studies."
+    },
+    {
+      id: "openscriptures",
+      name: "Open Scriptures Hebrew Bible (OSHB)",
+      url: "https://hb.openscriptures.org/",
+      category: "languages",
+      traditionKey: "interfaith",
+      tradition: "Interdenominational · academic",
+      access: "Free / open data",
+      type: "Morphologically tagged Hebrew Bible",
+      tags: ["Hebrew","morphology","open data"],
+      summary: "Open-source Hebrew Bible based on the Westminster Leningrad Codex with lemma and morphology tagging for detailed study."
+    },
+    {
+      id: "perseus",
+      name: "Perseus Digital Library",
+      url: "https://www.perseus.tufts.edu/hopper/",
+      category: "languages",
+      traditionKey: "interfaith",
+      tradition: "Classics / academic",
+      access: "Free",
+      type: "Greek & Latin corpora with tools",
+      tags: ["Greek","Latin","lexicon","classical"],
+      summary: "Large collection of Greek and Latin texts with morphological tools and lexicons, often used to study word usage behind NT Greek."
+    },
+
+    /* Jewish texts & Tanakh */
+    {
+      id: "sefaria",
+      name: "Sefaria",
+      url: "https://www.sefaria.org/",
+      category: "jewish",
+      traditionKey: "jewish",
+      tradition: "Jewish",
+      access: "Free",
+      type: "Tanakh, Talmud & commentaries",
+      tags: ["Tanakh","rabbinic","Hebrew","source sheets"],
+      summary: "Free, collaborative library of Jewish texts—Hebrew Bible, Talmud, commentaries, and modern works—with powerful linking tools."
+    },
+    {
+      id: "chabadtanach",
+      name: "Chabad.org — Tanach with Rashi",
+      url: "https://www.chabad.org/library/bible_cdo/aid/63255",
+      category: "jewish",
+      traditionKey: "jewish",
+      tradition: "Jewish · Chabad",
+      access: "Free",
+      type: "Hebrew / English Tanakh with classic commentary",
+      tags: ["Tanach","Rashi","commentary"],
+      summary: "Online Tanakh with Hebrew text, English translation, and classic rabbinic commentary (notably Rashi) in parallel."
+    },
+    {
+      id: "torahclass",
+      name: "TorahClass.com",
+      url: "https://torahclass.com/",
+      category: "jewish",
+      traditionKey: "interfaith",
+      tradition: "Bridge: Jewish background for Christian readers",
+      access: "Free",
+      type: "Torah and NT teaching with Jewish context",
+      tags: ["Torah","Jewish context","Christian teaching"],
+      summary: "Teaching site that emphasizes the Jewish context of both Tanakh and New Testament for Christian readers."
+    },
+
+    /* Academic, archaeology, manuscripts */
+    {
+      id: "bas",
+      name: "Biblical Archaeology Society / Review",
+      url: "https://www.biblicalarchaeology.org/",
+      category: "archaeology",
+      traditionKey: "interfaith",
+      tradition: "Non-denominational",
+      access: "Free articles + subscription magazine",
+      type: "Archaeology & historical background",
+      tags: ["archaeology","history","Dead Sea Scrolls"],
+      summary: "Nonprofit society and magazine connecting archaeological discoveries to the world of the Bible, with articles for lay readers and students."
+    },
+    {
+      id: "bibstudiesuk",
+      name: "BiblicalStudies.org.uk",
+      url: "https://biblicalstudies.org.uk/",
+      category: "academic",
+      traditionKey: "interfaith",
+      tradition: "Interdenominational · academic",
+      access: "Free",
+      type: "Digitized books & articles",
+      tags: ["journals","monographs","theses"],
+      summary: "Repository of digitized books, journal articles, and theses in biblical studies and related theology disciplines."
+    },
+    {
+      id: "tyndalehouse",
+      name: "Tyndale House & Tyndale Bulletin",
+      url: "https://www.tyndalehouse.com/",
+      category: "academic",
+      traditionKey: "interfaith",
+      tradition: "Evangelical · academic",
+      access: "Free articles + library info",
+      type: "Research center & peer-reviewed journal",
+      tags: ["journal","research","Hebrew","Greek"],
+      summary: "Cambridge-based research center in biblical studies, home of the Tyndale Bulletin and other scholarly resources."
+    },
+    {
+      id: "csntm",
+      name: "Center for the Study of New Testament Manuscripts (CSNTM)",
+      url: "https://www.csntm.org/",
+      category: "manuscripts",
+      traditionKey: "interfaith",
+      tradition: "Interdenominational · academic",
+      access: "Free",
+      type: "High-resolution NT manuscript images",
+      tags: ["manuscripts","Greek NT","images"],
+      summary: "Digital library of high-resolution photographs of Greek New Testament manuscripts used for textual criticism and research."
+    },
+
+    /* Software and platforms */
+    {
+      id: "logos",
+      name: "Logos Bible Software / Web App",
+      url: "https://app.logos.com/",
+      category: "software",
+      traditionKey: "software",
+      tradition: "Software platform",
+      access: "Freemium (free core + paid library)",
+      type: "Advanced Bible study platform",
+      tags: ["software","library","original languages"],
+      summary: "Full-featured digital library and Bible study environment with integrated commentaries, language tools, and research features."
+    },
+    {
+      id: "sabda",
+      name: "SABDA Bible (Indonesia)",
+      url: "https://alkitab.sabda.org/",
+      category: "software",
+      traditionKey: "software",
+      tradition: "Software · Indonesian focus",
+      access: "Free",
+      type: "Multilingual Bible software & web tools",
+      tags: ["Indonesian","multi-language","software"],
+      summary: "Integrated Bible study platform centered on Indonesian and regional languages, with many modules and tools for local churches."
+    }
+  ];
+
+  const categoryLabels = {
+    "bible-texts": "Bible texts & apps",
+    "study": "Study & commentaries",
+    "languages": "Original languages & lexicon",
+    "jewish": "Jewish texts & Tanakh",
+    "academic": "Academic & journals",
+    "archaeology": "Archaeology & background",
+    "manuscripts": "Manuscripts & text criticism",
+    "software": "Software & platforms"
+  };
+
+  const traditionLabels = {
+    christian: "Christian (multi)",
+    catholic: "Catholic",
+    jewish: "Jewish",
+    interfaith: "Interfaith / academic",
+    software: "Software / tools"
+  };
+
+  // === State ===
+  let currentCategory = "all";
+  let currentTradition = "all";
+
+  // === DOM refs ===
+  const gridEl = document.getElementById("dirGrid");
+  const searchEl = document.getElementById("dirSearch");
+  const catFilterEl = document.getElementById("categoryFilter");
+  const tradFilterEl = document.getElementById("traditionFilter");
+  const countEl = document.getElementById("dirCount");
+
+  function renderGrid(){
+    const query = (searchEl.value || "").trim().toLowerCase();
+    gridEl.innerHTML = "";
+    let visible = 0;
+
+    directorySources.forEach(src => {
+      if(currentCategory !== "all" && src.category !== currentCategory) return;
+      if(currentTradition !== "all" && src.traditionKey !== currentTradition) return;
+
+      const haystack = (src.name + " " + src.summary + " " + src.type + " " + (src.tags || []).join(" "))
+        .toLowerCase();
+      if(query && !haystack.includes(query)) return;
+
+      visible++;
+
+      const card = document.createElement("article");
+      card.className = "dir-card";
+
+      const catLabel = categoryLabels[src.category] || "";
+      const tagsLine = src.tags && src.tags.length
+        ? `<p class="dir-tags">Tags: ${src.tags.join(" · ")}</p>`
+        : "";
+
+      card.innerHTML = `
+        <div class="card-top">
+          <div class="meta-chips">
+            <span class="chip chip-cat">${catLabel}</span>
+            <span class="chip">${src.tradition}</span>
+            <span class="chip chip-access">${src.access}</span>
+          </div>
+        </div>
+        <h2 class="dir-title-small">${src.name}</h2>
+        <p class="dir-type">${src.type}</p>
+        <p class="dir-summary">${src.summary}</p>
+        ${tagsLine}
+        <a class="visit-btn" href="${src.url}" target="_blank" rel="noopener noreferrer">
+          Visit site
+        </a>
+      `;
+
+      gridEl.appendChild(card);
+    });
+
+    if(!visible){
+      gridEl.innerHTML = '<p class="empty-state">No matches yet. Try a different category, tradition, or search term.</p>';
+    }
+
+    if(countEl){
+      const total = directorySources.length;
+      const text = visible === total
+        ? `Showing all ${total} resources.`
+        : `Showing ${visible} of ${total} resources.`;
+      countEl.textContent = text;
+    }
+  }
+
+  // === Events ===
+  if(catFilterEl){
+    catFilterEl.addEventListener("change", () => {
+      currentCategory = catFilterEl.value || "all";
+      renderGrid();
+    });
+  }
+
+  if(tradFilterEl){
+    tradFilterEl.addEventListener("change", () => {
+      currentTradition = tradFilterEl.value || "all";
+      renderGrid();
+    });
+  }
+
+  if(searchEl){
+    searchEl.addEventListener("input", () => {
+      renderGrid();
+    });
+  }
+
+  // Initial render
+  renderGrid();
+</script>
+
+</body>
+</html>
