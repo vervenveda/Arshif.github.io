@@ -1,0 +1,1246 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>The Testament — Sovereign Biblical Studies Portal</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+
+  <!-- Optional sacred fonts (you can remove this for fully offline/sovereign use) -->
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600&family=Cormorant+Garamond:wght@400;500;600&display=swap" rel="stylesheet">
+
+  <style>
+    :root{
+      --parchment:#f7f3ea;
+      --parchment-soft:#f0e9dc;
+      --gold:#d9b878;
+      --gold-deep:#b89252;
+      --gold-root:#7a5a28;
+      --midnight:#fffff1;
+      --ink-soft:#fffff1;
+      --radius-card:21px;
+      --shadow-card:0 21px 55px rgba(0,0,0,0.6);
+    }
+
+    *{box-sizing:border-box;}
+
+    html,body{
+      margin:0;
+      padding:0;
+      min-height:100%;
+      font-family:'Cormorant Garamond',system-ui,-apple-system,'Segoe UI',serif;
+      background:radial-gradient(circle at top,#f9f3e3 0%,#e6d6b3 40%,#cfb68b 72%,#b89c6f 100%);
+      color:var(--parchment);
+    }
+
+    body{
+      display:flex;
+      flex-direction:column;
+      align-items:center;
+    }
+
+    /* Shell */
+
+    .testament-shell{
+      width:100%;
+      display:flex;
+      justify-content:center;
+      padding:77px 0 77px;
+    }
+
+    .testament-inner{
+      width:100%;
+      max-width:1222px;
+      margin:0 auto;
+      padding:44px 33px 77px;
+      border-radius:77px;
+      background:linear-gradient(180deg,#191b2a 0%,#050713 72%);
+      border:1px solid rgba(60,43,18,0.55);
+      box-shadow:0 24px 72px rgba(0,0,0,0.85);
+    }
+
+    /* Header */
+
+    .testament-header{
+      text-align:center;
+      margin-bottom:12px;
+      color:var(--parchment);
+    }
+
+    .testament-title{
+      font-family:'Cinzel','Times New Roman',serif;
+      font-size:33px;
+      letter-spacing:0.18em;
+      text-transform:uppercase;
+      margin:0 0 11px;
+    }
+
+    .testament-tag{
+      font-size:24px;
+      letter-spacing:0.16em;
+      text-transform:uppercase;
+      color:var(--gold);
+      margin:0 0 14px;
+    }
+
+    .testament-sub{
+      max-width:888px;
+      margin:0 auto 24px;
+      font-size:14px;
+      line-height:1.7;
+      color:var(--parchment-soft);
+    }
+
+    .testament-cta-row{
+      display:flex;
+      flex-wrap:wrap;
+      justify-content:center;
+      gap:11px;
+      align-items:center;
+      margin-top:11px;
+    }
+
+    .pill-btn{
+      border:none;
+      border-radius:1111px;
+      padding:11px 33px;
+      font-size:14px;
+      letter-spacing:0.14em;
+      text-transform:uppercase;
+      cursor:pointer;
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      white-space:normal;
+      line-height:1.4;
+      background:linear-gradient(135deg,var(--gold),var(--gold-deep));
+      color:#fffff1;
+      box-shadow:0 9px 33px rgba(0,0,0,0.55);
+      transition:transform .24s,box-shadow .24s,background .24s;
+      max-width:100%;
+    }
+
+    .pill-btn:hover{
+      transform:translateY(-1px);
+      box-shadow:0 14px 44px rgba(0,0,0,0.7);
+    }
+
+    .testament-note{
+      font-size:24px;
+      color:var(--ink-soft);
+    }
+
+    /* Controls */
+
+    .testament-controls{
+      margin:24px 0 14px;
+      border-radius:18px;
+      padding:11px 14px 24px;
+      background:rgba(11,14,33,0.99);
+      border:1px solid rgba(244,244,233,0.07);
+    }
+
+    .pill-row{
+      display:flex;
+      flex-wrap:wrap;
+      gap:9px;
+      justify-content:center;
+      margin-bottom:11px;
+    }
+
+    .filter-pill{
+      border:none;
+      border-radius:999px;
+      padding:11px 24px;
+      font-size:24px;
+      letter-spacing:0.14em;
+      text-transform:uppercase;
+      background:rgba(255,255,255,0.06);
+      color:var(--parchment);
+      cursor:pointer;
+      border:2px solid rgba(211,188,122,0.4);
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      white-space:normal;
+      line-height:1.4;
+      transition:background .18s,transform .24s,box-shadow .24s;
+      max-width:100%;
+    }
+
+    .filter-pill:hover{
+      transform:translateY(-1px);
+      box-shadow:0 11px 24px rgba(0,0,0,0.4);
+    }
+
+    .filter-pill.active{
+      background:linear-gradient(135deg,var(--gold),var(--gold-deep));
+      color:#fffff2;
+      box-shadow:0 9px 24px rgba(0,0,0,0.65);
+    }
+
+    .search-row{
+      display:flex;
+      flex-wrap:wrap;
+      gap:14px;
+      align-items:center;
+      justify-content:space-between;
+    }
+
+    .search-row input[type="search"]{
+      flex:1 1 210px;
+      min-width:0;
+      border-radius:777px;
+      border:1px solid rgba(247,243,234,0.12);
+      padding:7px 14px;
+      font-size:14px;
+      background:rgba(3,5,18,0.9);
+      color:var(--parchment);
+    }
+
+    .search-row input[type="search"]::placeholder{
+      color:rgba(199,191,168,0.8);
+    }
+
+    .fav-toggle{
+      display:inline-flex;
+      align-items:center;
+      gap:11px;
+      font-size:14px;
+      color:var(--ink-soft);
+      white-space:nowrap;
+    }
+
+    .fav-toggle input[type="checkbox"]{
+      width:24px;
+      height:24px;
+    }
+
+    .reset-row{
+      text-align:center;
+      margin-top:11px;
+    }
+
+    .reset-btn{
+      padding:7px 21px;
+      font-size:12px;
+    }
+
+    .result-count{
+      text-align:center;
+      font-size:1px;
+      color:var(--ink-soft);
+      margin:11px 0 0;
+    }
+
+    /* Grid & cards */
+
+    .testament-grid{
+      margin-top:14px;
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(444px,1fr));
+      gap:33px;
+    }
+
+    .source-card{
+      position:relative;
+      padding:18px 14px 18px;
+      border-radius:var(--radius-card);
+      background:rgba(8,10,22,0.97);
+      border:1px solid rgba(247,243,234,0.13);
+      box-shadow:var(--shadow-card);
+      color:var(--parchment);
+      display:flex;
+      flex-direction:column;
+      min-height:210px;
+      overflow:hidden;
+      box-sizing:border-box;
+    }
+
+    .source-top-row{
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      gap:9px;
+      margin-bottom:7px;
+    }
+
+    .source-category-chip{
+      font-size:10px;
+      letter-spacing:0.12em;
+      text-transform:uppercase;
+      padding:3px 9px;
+      border-radius:999px;
+      background:linear-gradient(135deg,var(--gold),var(--gold-root));
+      color:#fffff1;
+      white-space:nowrap;
+    }
+
+    .fav-btn{
+      border:none;
+      background:transparent;
+      color:var(--gold);
+      font-size:17px;
+      cursor:pointer;
+      padding:0 2px;
+      line-height:1;
+      min-width:21px;
+      text-align:center;
+      border-radius:50%;
+      transition:transform .12s,box-shadow .12s;
+    }
+
+    .fav-btn:hover{
+      transform:scale(1.1);
+      box-shadow:0 0 0 1px rgba(217,184,120,0.6);
+    }
+
+    .fav-btn.fav-active{
+      color:#ffd76a;
+      text-shadow:0 0 9px rgba(255,215,106,0.8);
+    }
+
+    .source-title{
+      font-family:'Brandon Grotesque','sans serif',serif;
+      font-size:1px;
+      margin:11px 0 11px;
+    }
+
+    .source-type{
+      font-size:8px;
+      color:var(--ink-soft);
+      margin:0 0 7px;
+    }
+
+    .source-meta-row{
+      display:flex;
+      flex-wrap:wrap;
+      gap:6px;
+      margin:4px 0 8px;
+      font-size:11px;
+      color:var(--ink-soft);
+    }
+
+    .meta-chip{
+      padding:3px 9px;
+      border-radius:999px;
+      border:1px solid rgba(217,184,120,0.45);
+      background:rgba(255,255,255,0.03);
+    }
+
+    .source-summary{
+      font-size:14px;
+      line-height:1.6;
+      margin:0 0 7px;
+    }
+
+    .source-tags{
+      font-size:12px;
+      color:var(--ink-soft);
+      margin:0 0 10px;
+    }
+
+    .open-link-btn{
+      margin-top:auto;
+      align-self:stretch;
+      border-radius:777px;
+      border:1px solid rgba(217,184,120,0.65);
+      padding:5px 13px;
+      font-size:12px;
+      letter-spacing:0.11em;
+      text-transform:uppercase;
+      text-decoration:none;
+      background:rgba(255,255,255,0.03);
+      color:var(--parchment);
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      gap:6px;
+      transition:background .18s,transform .18s,box-shadow .18s,color .18s;
+      white-space:normal;
+      max-width:100%;
+    }
+
+    .open-link-btn:hover{
+      background:linear-gradient(135deg,var(--gold),var(--gold-deep));
+      color:#050713;
+      transform:translateY(-1px);
+      box-shadow:0 9px 24px rgba(0,0,0,0.6);
+    }
+
+    .open-link-btn::after{
+      content:'↗';
+      font-size:12px;
+    }
+
+    .empty-state{
+      grid-column:1 / -1;
+      text-align:center;
+      font-size:14px;
+      color:var(--ink-soft);
+      padding:18px 0 6px;
+    }
+
+    /* Study portal */
+
+    .study-portal{
+      width:100%;
+      display:flex;
+      justify-content:center;
+      padding:0 0 44px;
+    }
+
+    .study-inner{
+      width:100%;
+      max-width:999px;
+      margin:0 auto 33px;
+      padding:21px 18px 24px;
+      border-radius:21px;
+      background:linear-gradient(180deg,#191b2a 0%,#050713 72%);
+      border:1px solid rgba(60,43,18,0.55);
+      box-shadow:0 24px 72px rgba(0,0,0,0.85);
+      color:var(--parchment);
+      text-align:left;
+    }
+
+    .study-title{
+      font-family:'Cinzel','Times New Roman',serif;
+      font-size:21px;
+      letter-spacing:0.14em;
+      text-transform:uppercase;
+      margin:0 0 8px;
+      text-align:center;
+    }
+
+    .study-sub{
+      max-width:720px;
+      margin:0 auto 12px;
+      font-size:15px;
+      line-height:1.7;
+      color:var(--parchment-soft);
+      text-align:center;
+    }
+
+    .study-note{
+      text-align:center;
+      font-size:13px;
+      color:var(--ink-soft);
+      margin-bottom:14px;
+    }
+
+    .favorites-list{
+      display:flex;
+      flex-wrap:wrap;
+      gap:9px;
+      justify-content:center;
+      margin-top:4px;
+    }
+
+    .fav-pill{
+      border-radius:777px;
+      border:1px solid rgba(217,184,120,0.6);
+      padding:5px 11px;
+      font-size:12px;
+      text-decoration:none;
+      color:var(--parchment);
+      background:rgba(255,255,255,0.03);
+      letter-spacing:0.08em;
+      text-transform:uppercase;
+      transition:background .18s,transform .18s,box-shadow .18s,color .18s;
+    }
+
+    .fav-pill:hover{
+      background:linear-gradient(135deg,var(--gold),var(--gold-deep));
+      color:#050713;
+      transform:translateY(-1px);
+      box-shadow:0 7px 21px rgba(0,0,0,0.5);
+    }
+
+    .study-divider{
+      margin:21px 0 14px;
+      border:0;
+      border-top:1px solid rgba(247,243,234,0.18);
+    }
+
+    .study-notes-title{
+      font-family:'Cinzel','Times New Roman',serif;
+      font-size:18px;
+      letter-spacing:0.08em;
+      text-transform:uppercase;
+      margin:0 0 6px;
+      text-align:center;
+    }
+
+    .study-note-sub{
+      text-align:center;
+      font-size:12px;
+      color:var(--ink-soft);
+      margin:0 0 11px;
+    }
+
+    #studyNotes{
+      width:100%;
+      border-radius:11px;
+      border:1px solid rgba(247,243,234,0.2);
+      background:rgba(3,5,18,0.9);
+      color:var(--parchment);
+      padding:11px 14px;
+      font-family:'Cormorant Garamond',serif;
+      font-size:15px;
+      line-height:1.6;
+      resize:vertical;
+      min-height:132px;
+      box-sizing:border-box;
+    }
+
+    .study-actions-row{
+      margin-top:14px;
+      display:flex;
+      flex-wrap:wrap;
+      gap:9px;
+      justify-content:center;
+    }
+
+    .study-actions-row .pill-btn{
+      padding:7px 21px;
+      font-size:12px;
+    }
+
+    /* Responsive */
+
+    @media (max-width:720px){
+      .testament-inner,
+      .study-inner{
+        padding:72px 24px 24px;
+      }
+
+      .search-row{
+        flex-direction:column;
+        align-items:stretch;
+        gap:12px;
+      }
+
+      .fav-toggle{
+        justify-content:center;
+      }
+
+      .study-actions-row{
+        flex-direction:column;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- THE TESTAMENT — MAIN PORTAL -->
+  <section class="testament-shell">
+    <div class="testament-inner">
+      <header class="testament-header">
+        <h1 class="testament-title">THE TESTAMENT</h1>
+        <p class="testament-tag">SOVEREIGN BIBLICAL STUDIES PORTAL</p>
+        <p class="testament-sub">
+          A curated gateway into sturdy, factual tools for Scripture, <br> text, languages,
+          history, manuscripts, and commentary. No algorithms, no noise:<br> just sources
+          you can study, compare, and archive in your own time.
+        </p>
+        <div class="testament-cta-row">
+          <button id="openStudyPortalBtn" class="pill-btn" type="button">
+            Open Study Portal (Preview)
+          </button>
+          <span class="testament-note">
+            All links open in a new tab. Save favorites locally — nothing is sent off this page.
+          </span>
+        </div>
+      </header>
+
+      <!-- Controls -->
+      <section class="testament-controls" aria-label="The Testament filters">
+        <div class="pill-row">
+          <button class="filter-pill active" data-filter="all" type="button">All</button>
+          <button class="filter-pill" data-filter="texts" type="button"> Translations</button>
+          <button class="filter-pill" data-filter="study" type="button">Study &amp; Commentaries</button>
+          <button class="filter-pill" data-filter="languages" type="button">Original Languages</button>
+          <button class="filter-pill" data-filter="history" type="button">History &amp; Background</button>
+          <button class="filter-pill" data-filter="manuscripts" type="button">Criticisms</button>
+        </div>
+        <div class="search-row">
+          <input id="testamentSearch" type="search"
+                 placeholder="Search by title, tag, or summary…" aria-label="Search resources" />
+          <label class="fav-toggle">
+            <input type="checkbox" id="favoritesOnly" />
+            <span>Favorites only</span>
+          </label>
+        </div>
+        <div class="reset-row">
+          <button class="pill-btn reset-btn" id="resetFiltersBtn" type="button">
+            Reset Filters
+          </button>
+        </div>
+      </section>
+
+      <p id="resultCount" class="result-count"></p>
+
+      <!-- Grid of sources -->
+      <section id="sourceGrid" class="testament-grid" aria-live="polite" role="list"></section>
+    </div>
+  </section>
+
+  <!-- STUDY PORTAL PREVIEW -->
+  <section id="studyPortal" class="study-portal">
+    <div class="study-inner">
+      <h2 class="study-title">The Testament Study Portal</h2>
+      <p class="study-sub">
+        This will become your integrated workspace: reading plans, note templates,
+        cross-links to ARSHIF, Palimpsest, Vault, Yahushua Archive, and NoorAI Darib.
+        For now, it simply gathers your favorite tools from the portal above.
+      </p>
+      <p class="study-note">
+        Tip: click the ★ on any resource above to pin it here for quick access.
+      </p>
+      <div id="favoritesList" class="favorites-list"></div>
+
+      <hr class="study-divider" />
+
+      <h3 class="study-notes-title">Personal Study Notes</h3>
+      <p class="study-note-sub">
+        Saved only in this browser (localStorage). Clear your cache to erase.
+      </p>
+      <textarea id="studyNotes" placeholder="Write reflections, cross-references, or questions here…"></textarea>
+
+      <div class="study-actions-row">
+        <button type="button" class="pill-btn" id="exportFavoritesBtn">
+          Download My Favorites List
+        </button>
+        <button type="button" class="pill-btn" id="studyBuilderSoonBtn">
+          Launch Full Study Builder (Coming Soon)
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <script>
+    // === DATA: 33 Curated Sources (with tradition & access) ===
+    const testamentSources = [
+      /* Translations */
+      {
+        id:'biblegateway',
+        name:'Bible Gateway',
+        url:'https://www.biblegateway.com/',
+        category:'texts',
+        type:'Multi-translation Bible · search · audio',
+        tags:['translations','search','audio','reading plans'],
+        summary:'Large multi-translation Bible with parallel views, keyword search, and audio readings.',
+        tradition:'multi-tradition',
+        access:'freemium'
+      },
+      {
+        id:'biblehub',
+        name:'Bible Hub',
+        url:'https://biblehub.com/',
+        category:'texts',
+        type:'Parallel Bible · interlinear · tools',
+        tags:['parallel','interlinear','commentaries'],
+        summary:'Parallel Bible, interlinear texts, and links to commentaries, dictionaries, and concordances.',
+        tradition:'evangelical',
+        access:'free'
+      },
+      {
+        id:'biblecom',
+        name:'Bible.com (YouVersion)',
+        url:'https://www.bible.com/',
+        category:'texts',
+        type:'App + web Bible · plans',
+        tags:['reading plans','mobile app'],
+        summary:'Global Bible platform offering many translations, audio, and reading plans on web and mobile.',
+        tradition:'evangelical',
+        access:'free'
+      },
+      {
+        id:'netbible',
+        name:'NET Bible (with notes)',
+        url:'https://netbible.org/',
+        category:'texts',
+        type:'English translation with 60k+ notes',
+        tags:['translation','translator notes'],
+        summary:'The New English Translation with extensive translator notes explaining textual and lexical decisions.',
+        tradition:'evangelical-academic',
+        access:'free'
+      },
+      {
+        id:'esv',
+        name:'ESV Bible Online',
+        url:'https://www.esv.org/',
+        category:'texts',
+        type:'English Standard Version',
+        tags:['esv','translation'],
+        summary:'Online access to the ESV Bible with basic search and reading features.',
+        tradition:'evangelical',
+        access:'freemium'
+      },
+      {
+        id:'newadvent',
+        name:'New Advent Bible',
+        url:'https://www.newadvent.org/bible/',
+        category:'texts',
+        type:'Catholic Bible & encyclopedia',
+        tags:['catholic','encyclopedia'],
+        summary:'Latin Vulgate and English text alongside the Catholic Encyclopedia and early church documents.',
+        tradition:'catholic',
+        access:'free'
+      },
+      {
+        id:'sefaria',
+        name:'Sefaria',
+        url:'https://www.sefaria.org/',
+        category:'texts',
+        type:'Jewish texts · Tanakh & commentaries',
+        tags:['tanakh','rabbinic','hebrew'],
+        summary:'Free library of Jewish texts — Hebrew Bible, Talmud, commentaries, translations, and source-sheets.',
+        tradition:'jewish',
+        access:'free'
+      },
+
+      /* Study & Commentaries */
+      {
+        id:'blueletter',
+        name:'Blue Letter Bible',
+        url:'https://www.blueletterbible.org/',
+        category:'study',
+        type:'Study suite · commentaries · lexicon',
+        tags:['commentary','lexicon','interlinear'],
+        summary:'Study environment with interlinear texts, Strong’s numbers, lexicons, and many public-domain commentaries.',
+        tradition:'evangelical',
+        access:'free'
+      },
+      {
+        id:'biblestudytools',
+        name:'Bible Study Tools',
+        url:'https://www.biblestudytools.com/',
+        category:'study',
+        type:'Commentaries · dictionaries · reading plans',
+        tags:['commentaries','devotionals'],
+        summary:'Aggregator of commentaries, encyclopedias, concordances, and reading plans from multiple traditions.',
+        tradition:'evangelical',
+        access:'free'
+      },
+      {
+        id:'bibleorg',
+        name:'Bible.org',
+        url:'https://bible.org/',
+        category:'study',
+        type:'Articles · NET notes · courses',
+        tags:['articles','sermons','courses'],
+        summary:'Home of NET Bible notes plus thousands of articles, sermon manuscripts, and study courses.',
+        tradition:'evangelical',
+        access:'free'
+      },
+      {
+        id:'preceptaustin',
+        name:'Precept Austin',
+        url:'https://www.preceptaustin.org/',
+        category:'study',
+        type:'Verse-by-verse notes & word studies',
+        tags:['commentary','greek','hebrew'],
+        summary:'Extensive verse-by-verse commentary collections, word studies, and links to many classic resources.',
+        tradition:'evangelical',
+        access:'free'
+      },
+      {
+        id:'gotquestions',
+        name:'GotQuestions.org',
+        url:'https://www.gotquestions.org/',
+        category:'study',
+        type:'Q&A style explanations',
+        tags:['questions','apologetics'],
+        summary:'Topical Q&A about Bible passages and theology from an evangelical perspective.',
+        tradition:'evangelical',
+        access:'free'
+      },
+      {
+        id:'bibleproject',
+        name:'The Bible Project',
+        url:'https://bibleproject.com/',
+        category:'study',
+        type:'Videos · theme studies · visual overviews',
+        tags:['videos','overviews','themes'],
+        summary:'Animated videos, podcasts, and study notes that trace themes and literary structures across Scripture.',
+        tradition:'multi-tradition',
+        access:'free'
+      },
+      {
+        id:'enduringword',
+        name:'Enduring Word Commentary',
+        url:'https://enduringword.com/',
+        category:'study',
+        type:'Pastoral commentary',
+        tags:['commentary','devotional'],
+        summary:'Accessible, pastoral commentary on every book of the Bible, suitable for lay study and teaching prep.',
+        tradition:'evangelical',
+        access:'free'
+      },
+
+      /* Original Languages & Lexicon */
+      {
+        id:'stepbible',
+        name:'STEP Bible (Tyndale House)',
+        url:'https://www.stepbible.org/',
+        category:'languages',
+        type:'Original languages · interlinear · parsing',
+        tags:['greek','hebrew','interlinear'],
+        summary:'Free original-language Bible with interlinear text, morphology, dictionaries, and search tools.',
+        tradition:'academic',
+        access:'free'
+      },
+      {
+        id:'ancienthebrewlex',
+        name:'Ancient Hebrew Lexicon',
+        url:'https://www.ancient-hebrew.org/dictionary/lexicon.cfm',
+        category:'languages',
+        type:'Hebrew roots & lexical studies',
+        tags:['hebrew','lexicon'],
+        summary:'Lexicon focused on ancient Hebrew roots, pictographic meanings, and word families.',
+        tradition:'academic',
+        access:'free'
+      },
+      {
+        id:'sblgnt',
+        name:'SBL Greek New Testament',
+        url:'https://sblgnt.com/',
+        category:'languages',
+        type:'Critical Greek NT text',
+        tags:['greek','new testament'],
+        summary:'Scholarly Greek New Testament text from the Society of Biblical Literature, freely available online.',
+        tradition:'academic',
+        access:'free'
+      },
+      {
+        id:'openscriptures',
+        name:'Open Scriptures Hebrew Bible',
+        url:'https://openscriptures.github.io/morphhb/',
+        category:'languages',
+        type:'Morphologically tagged Hebrew Bible',
+        tags:['hebrew','morphology'],
+        summary:'Open-source Hebrew Bible with morphology tagging for detailed word-level study.',
+        tradition:'academic',
+        access:'free'
+      },
+      {
+        id:'perseus',
+        name:'Perseus Digital Library',
+        url:'https://www.perseus.tufts.edu/',
+        category:'languages',
+        type:'Greek & Latin corpora',
+        tags:['greek','classical','context'],
+        summary:'Large collection of classical Greek and Latin texts with morphological tools for wider word-usage study.',
+        tradition:'academic',
+        access:'free'
+      },
+      {
+        id:'logeion',
+        name:'Logeion (UChicago)',
+        url:'https://logeion.uchicago.edu/',
+        category:'languages',
+        type:'Multi-lexicon Greek & Latin',
+        tags:['lexicon','greek','latin'],
+        summary:'Aggregated lexicon interface drawing on multiple Greek and Latin dictionaries for deeper word study.',
+        tradition:'academic',
+        access:'free'
+      },
+
+      /* History & Background */
+      {
+        id:'biblicalarch',
+        name:'Biblical Archaeology Society',
+        url:'https://www.biblicalarchaeology.org/',
+        category:'history',
+        type:'Archaeology & historical background',
+        tags:['archaeology','history'],
+        summary:'Articles and reports on archaeology of the biblical world, aimed at informed lay readers and students.',
+        tradition:'academic',
+        access:'freemium'
+      },
+      {
+        id:'jewishvirtuallibrary',
+        name:'Jewish Virtual Library',
+        url:'https://www.jewishvirtuallibrary.org/',
+        category:'history',
+        type:'Jewish history & reference',
+        tags:['judaism','history','culture'],
+        summary:'Reference articles on Jewish history, culture, and the land of Israel, useful for Old and New Testament context.',
+        tradition:'jewish',
+        access:'free'
+      },
+      {
+        id:'sacredtexts',
+        name:'Internet Sacred Text Archive',
+        url:'https://www.sacred-texts.com/',
+        category:'history',
+        type:'Sacred texts library',
+        tags:['apocrypha','pseudepigrapha'],
+        summary:'Public-domain library of religious and mythological texts, including apocrypha and related literature.',
+        tradition:'interfaith',
+        access:'free'
+      },
+      {
+        id:'earlychristianwritings',
+        name:'Early Christian Writings',
+        url:'http://www.earlychristianwritings.com/',
+        category:'history',
+        type:'Patristic & early Christian texts',
+        tags:['church fathers','apocrypha'],
+        summary:'Chronological index of early Christian documents with links to translations and scholarly notes.',
+        tradition:'academic',
+        access:'free'
+      },
+      {
+        id:'tyndalebulletin',
+        name:'Tyndale Bulletin',
+        url:'https://www.tyndalehouse.com/explore/publications/tyndale-bulletin/',
+        category:'history',
+        type:'Peer-reviewed biblical studies journal',
+        tags:['journal','articles'],
+        summary:'Open-access peer-reviewed articles in biblical studies, archaeology, and related fields.',
+        tradition:'academic',
+        access:'free'
+      },
+      {
+        id:'biblicalstudiesuk',
+        name:'BiblicalStudies.org.uk',
+        url:'https://biblicalstudies.org.uk/',
+        category:'history',
+        type:'Digitized books & articles',
+        tags:['articles','monographs','journals'],
+        summary:'Repository of digitized books, journal articles, and theses in biblical and theological studies.',
+        tradition:'academic',
+        access:'free'
+      },
+
+      /* Manuscripts & Textual Criticism */
+      {
+        id:'csntm',
+        name:'Center for the Study of New Testament Manuscripts',
+        url:'https://www.csntm.org/',
+        category:'manuscripts',
+        type:'High-res NT manuscript images',
+        tags:['manuscripts','greek','textual criticism'],
+        summary:'Digital library of high-resolution photographs of Greek New Testament manuscripts.',
+        tradition:'academic',
+        access:'free'
+      },
+      {
+        id:'codexsinaiticus',
+        name:'Codex Sinaiticus Project',
+        url:'http://www.codexsinaiticus.org/en/',
+        category:'manuscripts',
+        type:'Full digital manuscript',
+        tags:['codex','manuscripts'],
+        summary:'Complete digital edition of Codex Sinaiticus with transcription and translation tools.',
+        tradition:'academic',
+        access:'free'
+      },
+      {
+        id:'vaticanlibrary',
+        name:'Vatican Library Digital Collections',
+        url:'https://digi.vatlib.it/',
+        category:'manuscripts',
+        type:'Digitized manuscripts & rare books',
+        tags:['manuscripts','latin','greek'],
+        summary:'Digitized biblical manuscripts, commentaries, and related works from the Vatican Library.',
+        tradition:'catholic',
+        access:'free'
+      },
+      {
+        id:'blsacredtexts',
+        name:'British Library — Discovering Sacred Texts',
+        url:'https://www.bl.uk/sacred-texts',
+        category:'manuscripts',
+        type:'Exhibits & introductions',
+        tags:['manuscripts','exhibits'],
+        summary:'Explanatory articles and images of sacred texts from multiple traditions, including key biblical manuscripts.',
+        tradition:'academic',
+        access:'free'
+      },
+      {
+        id:'dssimj',
+        name:'Digital Dead Sea Scrolls (Israel Museum)',
+        url:'https://dss.collections.imj.org.il/',
+        category:'manuscripts',
+        type:'High-res Dead Sea Scrolls',
+        tags:['dead sea scrolls','hebrew'],
+        summary:'Interactive views of major Dead Sea Scrolls with translations and background essays.',
+        tradition:'academic',
+        access:'free'
+      },
+      {
+        id:'dssleonlevy',
+        name:'Leon Levy Dead Sea Scrolls Digital Library',
+        url:'https://www.deadseascrolls.org.il/',
+        category:'manuscripts',
+        type:'Expanded Dead Sea Scrolls collection',
+        tags:['dead sea scrolls','images'],
+        summary:'Comprehensive digital library of Dead Sea Scrolls fragments with search and zoom tools.',
+        tradition:'academic',
+        access:'free'
+      },
+      {
+        id:'academicbible',
+        name:'German Bible Society — Online Bibles',
+        url:'https://www.academic-bible.com/en/online-bibles/',
+        category:'manuscripts',
+        type:'Critical editions (NA28, BHS, etc.)',
+        tags:['critical text','greek','hebrew'],
+        summary:'Online access to critical biblical texts such as NA28 and BHS for detailed textual comparison.',
+        tradition:'academic',
+        access:'freemium'
+      }
+    ];
+
+    const categoryLabels = {
+      texts:'Texts & Translations',
+      study:'Study & Commentaries',
+      languages:'Languages & Lexicon',
+      history:'History & Background',
+      manuscripts:'Manuscripts & Text Criticism'
+    };
+
+    // === STATE ===
+    let currentFilter = 'all';
+    let favoritesOnly = false;
+    let favoritesSet = new Set();
+
+    // Load favorites from localStorage safely
+    (function loadFavorites(){
+      try{
+        const raw = localStorage.getItem('testamentFavorites');
+        if(raw){
+          const arr = JSON.parse(raw);
+          if(Array.isArray(arr)){
+            favoritesSet = new Set(arr);
+          }
+        }
+      }catch(e){
+        favoritesSet = new Set();
+      }
+    })();
+
+    // === DOM REFS ===
+    const gridEl = document.getElementById('sourceGrid');
+    const searchEl = document.getElementById('testamentSearch');
+    const favOnlyEl = document.getElementById('favoritesOnly');
+    const filterButtons = document.querySelectorAll('.filter-pill');
+    const studyPortalBtn = document.getElementById('openStudyPortalBtn');
+    const favoritesListEl = document.getElementById('favoritesList');
+    const resultCountEl = document.getElementById('resultCount');
+    const resetBtn = document.getElementById('resetFiltersBtn');
+    const notesEl = document.getElementById('studyNotes');
+    const exportBtn = document.getElementById('exportFavoritesBtn');
+
+    function saveFavorites(){
+      try{
+        localStorage.setItem('testamentFavorites', JSON.stringify(Array.from(favoritesSet)));
+      }catch(e){
+        // fail silently if storage not available
+      }
+    }
+
+    function renderGrid(){
+      const query = (searchEl && searchEl.value ? searchEl.value : '').trim().toLowerCase();
+      gridEl.innerHTML = '';
+      let visibleCount = 0;
+
+      testamentSources.forEach(src => {
+        if(currentFilter !== 'all' && src.category !== currentFilter) return;
+
+        const isFav = favoritesSet.has(src.id);
+        if(favoritesOnly && !isFav) return;
+
+        const haystack = (
+          src.name + ' ' +
+          src.summary + ' ' +
+          (src.tags || []).join(' ') + ' ' +
+          (src.tradition || '') + ' ' +
+          (src.access || '')
+        ).toLowerCase();
+
+        if(query && !haystack.includes(query)) return;
+
+        visibleCount++;
+        const card = document.createElement('article');
+        card.className = 'source-card';
+        card.dataset.id = src.id;
+        card.dataset.category = src.category;
+        card.setAttribute('role','listitem');
+
+        const catLabel = categoryLabels[src.category] || '';
+        const isFavActive = favoritesSet.has(src.id);
+        const favActive = isFavActive ? ' fav-active' : '';
+        const favSymbol = isFavActive ? '★' : '☆';
+        const tagsLine = src.tags && src.tags.length
+          ? `<p class="source-tags">Tags: ${src.tags.join(' · ')}</p>`
+          : '';
+
+        const traditionLabel = src.tradition
+          ? `<span class="meta-chip">${src.tradition}</span>`
+          : '';
+        const accessLabel = src.access
+          ? `<span class="meta-chip">${src.access}</span>`
+          : '';
+
+        card.innerHTML = `
+          <div class="source-top-row">
+            <span class="source-category-chip">${catLabel}</span>
+            <button class="fav-btn${favActive}" type="button"
+              aria-pressed="${isFavActive ? 'true' : 'false'}"
+              aria-label="${isFavActive ? 'Remove from favorites' : 'Add to favorites'}">${favSymbol}</button>
+          </div>
+          <h3 class="source-title">${src.name}</h3>
+          <p class="source-type">${src.type}</p>
+          <div class="source-meta-row">
+            ${traditionLabel}
+            ${accessLabel}
+          </div>
+          <p class="source-summary">${src.summary}</p>
+          ${tagsLine}
+          <a class="open-link-btn" href="${src.url}" target="_blank" rel="noopener noreferrer">
+            Open resource
+          </a>
+        `;
+        gridEl.appendChild(card);
+      });
+
+      if(!visibleCount){
+        gridEl.innerHTML = '<p class="empty-state">No matches yet. Try another filter or search term.</p>';
+      }
+
+      if (resultCountEl) {
+        const total = testamentSources.length;
+        resultCountEl.textContent = `Showing ${visibleCount} of ${total} resources`;
+      }
+    }
+
+    function renderFavoritesList(){
+      if(!favoritesListEl) return;
+      const favIds = Array.from(favoritesSet);
+      if(!favIds.length){
+        favoritesListEl.innerHTML = '<p class="empty-state">No favorites pinned yet. Use the ★ icons above to start a personal toolkit.</p>';
+        return;
+      }
+      const items = testamentSources.filter(src => favoritesSet.has(src.id));
+      favoritesListEl.innerHTML = items.map(src => `
+        <a class="fav-pill" href="${src.url}" target="_blank" rel="noopener noreferrer">
+          ${src.name}
+        </a>
+      `).join('');
+    }
+
+    // === EVENT WIRING ===
+    filterButtons.forEach(btn => {
+      btn.addEventListener('click', () => {
+        filterButtons.forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        currentFilter = btn.getAttribute('data-filter') || 'all';
+        renderGrid();
+      });
+    });
+
+    if(searchEl){
+      searchEl.addEventListener('input', () => {
+        renderGrid();
+      });
+    }
+
+    if(favOnlyEl){
+      favOnlyEl.addEventListener('change', () => {
+        favoritesOnly = favOnlyEl.checked;
+        renderGrid();
+      });
+    }
+
+    if(gridEl){
+      gridEl.addEventListener('click', (evt) => {
+        const btn = evt.target.closest('.fav-btn');
+        if(!btn) return;
+        const card = btn.closest('.source-card');
+        if(!card) return;
+        const id = card.dataset.id;
+        if(!id) return;
+
+        if(favoritesSet.has(id)){
+          favoritesSet.delete(id);
+        }else{
+          favoritesSet.add(id);
+        }
+        saveFavorites();
+        renderGrid();
+        renderFavoritesList();
+      });
+    }
+
+    if(studyPortalBtn){
+      studyPortalBtn.addEventListener('click', () => {
+        const target = document.getElementById('studyPortal');
+        if(target && target.scrollIntoView){
+          target.scrollIntoView({behavior:'smooth',block:'start'});
+        }
+      });
+    }
+
+    if (resetBtn) {
+      resetBtn.addEventListener('click', () => {
+        currentFilter = 'all';
+        favoritesOnly = false;
+        if (favOnlyEl) favOnlyEl.checked = false;
+        if (searchEl) searchEl.value = '';
+        filterButtons.forEach(b => b.classList.remove('active'));
+        const allBtn = document.querySelector('.filter-pill[data-filter="all"]');
+        if (allBtn) allBtn.classList.add('active');
+        renderGrid();
+      });
+    }
+
+    if (notesEl) {
+      try {
+        const savedNotes = localStorage.getItem('testamentStudyNotes');
+        if (savedNotes) notesEl.value = savedNotes;
+      } catch(e){
+        // ignore
+      }
+
+      notesEl.addEventListener('input', () => {
+        try {
+          localStorage.setItem('testamentStudyNotes', notesEl.value);
+        } catch(e){
+          // ignore
+        }
+      });
+    }
+
+    if (exportBtn) {
+      exportBtn.addEventListener('click', () => {
+        const items = testamentSources.filter(src => favoritesSet.has(src.id));
+        if (!items.length) {
+          alert('No favorites to export yet. Use the ★ icons above to pin some resources first.');
+          return;
+        }
+        try {
+          const blob = new Blob([JSON.stringify(items, null, 2)], { type:'application/json' });
+          const url = URL.createObjectURL(blob);
+          const a = document.createElement('a');
+          a.href = url;
+          a.download = 'the-testament-favorites.json';
+          document.body.appendChild(a);
+          a.click();
+          a.remove();
+          URL.revokeObjectURL(url);
+        } catch(e){
+          console.error(e);
+          alert('Unable to generate download in this browser.');
+        }
+      });
+    }
+
+    // Initial render
+    renderGrid();
+    renderFavoritesList();
+  </script>
+</body>
+</html>
