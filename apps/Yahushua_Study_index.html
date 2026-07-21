@@ -1,0 +1,1231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<title>Yahushua Course Portal — ARSHIF Deep Study Edition</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<style>
+/* ==========================================================
+   ARSHIF Yahushua Course Portal
+   Fully scoped CSS. No external libraries. No external fonts.
+   ========================================================== */
+html, body {
+  margin: 0;
+  min-height: 100%;
+}
+body {
+  background:
+    radial-gradient(circle at top, rgba(93,72,41,.42), transparent 30%),
+    linear-gradient(135deg, #05060c 0%, #111322 45%, #05060c 100%);
+  color: #f7f3ea;
+}
+#arshifYahushuaCourse {
+  --ay-parchment: #f7f3ea;
+  --ay-parchment-2: #eee3cf;
+  --ay-ink: #2a2015;
+  --ay-muted: #cdbd9e;
+  --ay-gold: #d9b878;
+  --ay-gold-2: #b89252;
+  --ay-amber: #ffe2a6;
+  --ay-obsidian: #080a12;
+  --ay-midnight: #111423;
+  --ay-panel: rgba(20, 23, 38, .94);
+  --ay-panel-2: rgba(255, 255, 255, .045);
+  --ay-line: rgba(217, 184, 120, .30);
+  --ay-line-soft: rgba(247, 243, 234, .11);
+  --ay-green: #9abf91;
+  --ay-red: #d88975;
+  --ay-blue: #9bb8d7;
+  --ay-shadow: 0 28px 80px rgba(0,0,0,.72);
+  --ay-radius: 24px;
+  box-sizing: border-box;
+  width: min(1440px, calc(100% - 24px));
+  margin: 28px auto 48px;
+  font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  color: var(--ay-parchment);
+}
+#arshifYahushuaCourse *,
+#arshifYahushuaCourse *::before,
+#arshifYahushuaCourse *::after {
+  box-sizing: border-box;
+}
+#arshifYahushuaCourse button,
+#arshifYahushuaCourse input,
+#arshifYahushuaCourse textarea,
+#arshifYahushuaCourse select {
+  font: inherit;
+}
+#arshifYahushuaCourse a {
+  color: var(--ay-amber);
+}
+#arshifYahushuaCourse .ay-shell {
+  border: 1px solid rgba(217,184,120,.48);
+  border-radius: var(--ay-radius);
+  overflow: hidden;
+  box-shadow: var(--ay-shadow);
+  background:
+    linear-gradient(180deg, rgba(255,255,255,.035), transparent 24%),
+    radial-gradient(circle at top left, rgba(217,184,120,.16), transparent 28%),
+    linear-gradient(145deg, #151727 0%, #080a12 100%);
+}
+#arshifYahushuaCourse .ay-top {
+  padding: 30px 24px 24px;
+  text-align: center;
+  border-bottom: 1px solid var(--ay-line-soft);
+  position: relative;
+}
+#arshifYahushuaCourse .ay-kicker {
+  margin: 0 0 8px;
+  color: var(--ay-gold);
+  text-transform: uppercase;
+  letter-spacing: .22em;
+  font-size: 12px;
+  font-weight: 700;
+}
+#arshifYahushuaCourse h1 {
+  margin: 0;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: clamp(2rem, 5vw, 4.8rem);
+  line-height: .98;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  color: var(--ay-parchment);
+}
+#arshifYahushuaCourse .ay-subtitle {
+  max-width: 920px;
+  margin: 16px auto 0;
+  color: var(--ay-parchment-2);
+  line-height: 1.7;
+  font-size: 15px;
+}
+#arshifYahushuaCourse .ay-header-actions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 22px;
+}
+#arshifYahushuaCourse .ay-btn {
+  border: 1px solid var(--ay-line);
+  background: rgba(255,255,255,.055);
+  color: var(--ay-parchment);
+  padding: 10px 14px;
+  border-radius: 999px;
+  cursor: pointer;
+  transition: transform .18s ease, background .18s ease, box-shadow .18s ease;
+}
+#arshifYahushuaCourse .ay-btn:hover {
+  transform: translateY(-1px);
+  background: rgba(255,255,255,.09);
+  box-shadow: 0 10px 22px rgba(0,0,0,.28);
+}
+#arshifYahushuaCourse .ay-btn.primary {
+  background: linear-gradient(135deg, var(--ay-gold), var(--ay-gold-2));
+  color: #190f05;
+  border-color: rgba(255, 226, 166, .7);
+  font-weight: 800;
+}
+#arshifYahushuaCourse .ay-btn.danger {
+  color: #ffe1d7;
+  border-color: rgba(216,137,117,.45);
+}
+#arshifYahushuaCourse .ay-dashboard {
+  display: grid;
+  grid-template-columns: 310px minmax(0, 1fr);
+  min-height: 760px;
+}
+#arshifYahushuaCourse .ay-sidebar {
+  border-right: 1px solid var(--ay-line-soft);
+  background: linear-gradient(180deg, rgba(13,15,28,.98), rgba(8,10,18,.98));
+  padding: 18px;
+}
+#arshifYahushuaCourse .ay-panel-title {
+  margin: 0 0 10px;
+  font-family: Georgia, "Times New Roman", serif;
+  text-transform: uppercase;
+  letter-spacing: .13em;
+  color: var(--ay-gold);
+  font-size: 16px;
+}
+#arshifYahushuaCourse .ay-progress-card {
+  border: 1px solid var(--ay-line);
+  border-radius: 18px;
+  padding: 14px;
+  background: rgba(255,255,255,.045);
+  margin-bottom: 16px;
+}
+#arshifYahushuaCourse .ay-progress-bar {
+  width: 100%;
+  height: 12px;
+  background: rgba(255,255,255,.08);
+  border-radius: 999px;
+  overflow: hidden;
+  border: 1px solid rgba(217,184,120,.22);
+  margin: 10px 0 6px;
+}
+#arshifYahushuaCourse .ay-progress-fill {
+  height: 100%;
+  width: 0%;
+  background: linear-gradient(90deg, var(--ay-gold-2), var(--ay-gold), var(--ay-amber));
+  transition: width .25s ease;
+}
+#arshifYahushuaCourse .ay-small {
+  color: var(--ay-muted);
+  font-size: 12px;
+  line-height: 1.5;
+}
+#arshifYahushuaCourse .ay-search {
+  width: 100%;
+  border-radius: 999px;
+  border: 1px solid var(--ay-line);
+  background: rgba(0,0,0,.25);
+  color: var(--ay-parchment);
+  padding: 12px 14px;
+  outline: none;
+  margin: 10px 0 12px;
+}
+#arshifYahushuaCourse .ay-tabs,
+#arshifYahushuaCourse .ay-filter-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+#arshifYahushuaCourse .ay-tab,
+#arshifYahushuaCourse .ay-chip {
+  border: 1px solid rgba(217,184,120,.28);
+  background: rgba(255,255,255,.035);
+  color: var(--ay-parchment-2);
+  border-radius: 999px;
+  cursor: pointer;
+}
+#arshifYahushuaCourse .ay-tab {
+  padding: 9px 12px;
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: .08em;
+}
+#arshifYahushuaCourse .ay-chip {
+  padding: 7px 10px;
+  font-size: 12px;
+}
+#arshifYahushuaCourse .ay-tab.active,
+#arshifYahushuaCourse .ay-chip.active {
+  background: linear-gradient(135deg, var(--ay-gold), var(--ay-gold-2));
+  color: #1a1006;
+  font-weight: 800;
+}
+#arshifYahushuaCourse .ay-module-list {
+  display: grid;
+  gap: 9px;
+  margin-top: 12px;
+  max-height: 450px;
+  overflow: auto;
+  padding-right: 4px;
+}
+#arshifYahushuaCourse .ay-module-button {
+  width: 100%;
+  text-align: left;
+  border: 1px solid rgba(217,184,120,.20);
+  background: rgba(255,255,255,.035);
+  color: var(--ay-parchment);
+  border-radius: 14px;
+  padding: 10px;
+  cursor: pointer;
+}
+#arshifYahushuaCourse .ay-module-button.active {
+  border-color: rgba(255,226,166,.75);
+  background: rgba(217,184,120,.16);
+}
+#arshifYahushuaCourse .ay-module-button .num {
+  color: var(--ay-gold);
+  font-size: 12px;
+  margin-right: 6px;
+}
+#arshifYahushuaCourse .ay-module-button .meta {
+  display: block;
+  color: var(--ay-muted);
+  font-size: 11px;
+  margin-top: 4px;
+}
+#arshifYahushuaCourse .ay-main {
+  min-width: 0;
+  padding: 18px;
+  background:
+    radial-gradient(circle at top right, rgba(217,184,120,.10), transparent 28%),
+    linear-gradient(180deg, #111423 0%, #090b13 100%);
+}
+#arshifYahushuaCourse .ay-view {
+  display: none;
+}
+#arshifYahushuaCourse .ay-view.active {
+  display: block;
+}
+#arshifYahushuaCourse .ay-card {
+  border: 1px solid var(--ay-line-soft);
+  border-radius: 20px;
+  background: rgba(255,255,255,.045);
+  padding: clamp(14px, 2vw, 22px);
+  box-shadow: 0 16px 44px rgba(0,0,0,.26);
+}
+#arshifYahushuaCourse .ay-course-hero {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 280px;
+  gap: 16px;
+  margin-bottom: 16px;
+}
+#arshifYahushuaCourse .ay-title-row {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 14px;
+  flex-wrap: wrap;
+}
+#arshifYahushuaCourse h2,
+#arshifYahushuaCourse h3 {
+  font-family: Georgia, "Times New Roman", serif;
+}
+#arshifYahushuaCourse h2 {
+  margin: 0 0 6px;
+  font-size: clamp(1.6rem, 3vw, 2.7rem);
+  color: var(--ay-amber);
+}
+#arshifYahushuaCourse h3 {
+  margin: 20px 0 8px;
+  color: var(--ay-gold);
+  letter-spacing: .04em;
+}
+#arshifYahushuaCourse .ay-meta-line {
+  color: var(--ay-muted);
+  text-transform: uppercase;
+  letter-spacing: .12em;
+  font-size: 12px;
+}
+#arshifYahushuaCourse .ay-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 54px;
+  height: 54px;
+  border-radius: 18px;
+  border: 1px solid rgba(217,184,120,.55);
+  color: var(--ay-amber);
+  font-size: 24px;
+  background: rgba(0,0,0,.20);
+}
+#arshifYahushuaCourse .ay-pills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin: 12px 0;
+}
+#arshifYahushuaCourse .ay-pill {
+  display: inline-block;
+  border-radius: 999px;
+  border: 1px solid rgba(217,184,120,.34);
+  color: var(--ay-gold);
+  background: rgba(0,0,0,.22);
+  padding: 6px 10px;
+  font-size: 12px;
+  letter-spacing: .06em;
+  text-transform: uppercase;
+}
+#arshifYahushuaCourse .ay-text {
+  color: var(--ay-parchment-2);
+  line-height: 1.75;
+  font-size: 15px;
+}
+#arshifYahushuaCourse .ay-grid-2 {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0,1fr));
+  gap: 14px;
+}
+#arshifYahushuaCourse .ay-grid-3 {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0,1fr));
+  gap: 14px;
+}
+#arshifYahushuaCourse ul.ay-clean {
+  margin: 8px 0 0;
+  padding-left: 20px;
+  color: var(--ay-parchment-2);
+  line-height: 1.65;
+}
+#arshifYahushuaCourse .ay-reading-list {
+  display: grid;
+  gap: 8px;
+}
+#arshifYahushuaCourse .ay-reading-list a {
+  display: block;
+  border: 1px solid rgba(217,184,120,.22);
+  background: rgba(0,0,0,.18);
+  border-radius: 12px;
+  padding: 10px;
+  text-decoration: none;
+}
+#arshifYahushuaCourse .ay-quiz-box {
+  margin-top: 18px;
+  border-top: 1px solid var(--ay-line-soft);
+  padding-top: 16px;
+}
+#arshifYahushuaCourse .ay-question {
+  border: 1px solid rgba(217,184,120,.18);
+  border-radius: 16px;
+  padding: 14px;
+  margin-bottom: 12px;
+  background: rgba(0,0,0,.17);
+}
+#arshifYahushuaCourse .ay-question strong {
+  color: var(--ay-amber);
+}
+#arshifYahushuaCourse .ay-choice {
+  display: block;
+  width: 100%;
+  text-align: left;
+  margin-top: 8px;
+  border: 1px solid rgba(247,243,234,.12);
+  border-radius: 11px;
+  padding: 9px 10px;
+  color: var(--ay-parchment);
+  background: rgba(255,255,255,.04);
+  cursor: pointer;
+}
+#arshifYahushuaCourse .ay-choice.correct {
+  border-color: rgba(154,191,145,.8);
+  background: rgba(154,191,145,.16);
+}
+#arshifYahushuaCourse .ay-choice.wrong {
+  border-color: rgba(216,137,117,.8);
+  background: rgba(216,137,117,.16);
+}
+#arshifYahushuaCourse .ay-feedback {
+  color: var(--ay-muted);
+  font-size: 13px;
+  margin-top: 8px;
+  min-height: 1.3em;
+}
+#arshifYahushuaCourse textarea.ay-notes {
+  width: 100%;
+  min-height: 160px;
+  resize: vertical;
+  border-radius: 16px;
+  padding: 13px;
+  border: 1px solid var(--ay-line);
+  background: #f6efe0;
+  color: #2a2015;
+  line-height: 1.55;
+}
+#arshifYahushuaCourse .ay-status {
+  color: var(--ay-muted);
+  font-size: 12px;
+  margin-top: 7px;
+}
+#arshifYahushuaCourse .ay-timeline {
+  position: relative;
+  display: grid;
+  gap: 10px;
+}
+#arshifYahushuaCourse .ay-time-item {
+  display: grid;
+  grid-template-columns: 130px minmax(0, 1fr);
+  gap: 12px;
+  border: 1px solid rgba(217,184,120,.18);
+  border-radius: 16px;
+  padding: 13px;
+  background: rgba(255,255,255,.04);
+}
+#arshifYahushuaCourse .ay-time-date {
+  color: var(--ay-gold);
+  font-weight: 800;
+}
+#arshifYahushuaCourse .ay-prophecy-table,
+#arshifYahushuaCourse .ay-report-table {
+  width: 100%;
+  border-collapse: collapse;
+  overflow: hidden;
+  border-radius: 16px;
+  font-size: 14px;
+}
+#arshifYahushuaCourse .ay-prophecy-table th,
+#arshifYahushuaCourse .ay-prophecy-table td,
+#arshifYahushuaCourse .ay-report-table th,
+#arshifYahushuaCourse .ay-report-table td {
+  border: 1px solid rgba(217,184,120,.18);
+  padding: 10px;
+  vertical-align: top;
+  color: var(--ay-parchment-2);
+}
+#arshifYahushuaCourse .ay-prophecy-table th,
+#arshifYahushuaCourse .ay-report-table th {
+  background: rgba(217,184,120,.14);
+  color: var(--ay-amber);
+  text-align: left;
+}
+#arshifYahushuaCourse .ay-source-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 12px;
+}
+#arshifYahushuaCourse .ay-source-card {
+  border: 1px solid rgba(217,184,120,.22);
+  border-radius: 16px;
+  background: rgba(255,255,255,.045);
+  padding: 14px;
+  display: flex;
+  flex-direction: column;
+  min-height: 210px;
+}
+#arshifYahushuaCourse .ay-source-card h3 {
+  margin-top: 0;
+  font-size: 18px;
+}
+#arshifYahushuaCourse .ay-source-card .type {
+  color: var(--ay-blue);
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: .08em;
+}
+#arshifYahushuaCourse .ay-source-card p {
+  color: var(--ay-parchment-2);
+  line-height: 1.55;
+  flex: 1;
+}
+#arshifYahushuaCourse .ay-glossary-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0,1fr));
+  gap: 12px;
+}
+#arshifYahushuaCourse .ay-term {
+  border: 1px solid rgba(217,184,120,.18);
+  border-radius: 16px;
+  padding: 13px;
+  background: rgba(255,255,255,.04);
+}
+#arshifYahushuaCourse .ay-term strong {
+  display: block;
+  color: var(--ay-amber);
+  margin-bottom: 5px;
+}
+#arshifYahushuaCourse .ay-empty {
+  color: var(--ay-muted);
+  padding: 16px;
+  border: 1px dashed rgba(217,184,120,.3);
+  border-radius: 14px;
+}
+#arshifYahushuaCourse .ay-dossier {
+  position: fixed;
+  z-index: 9999;
+  right: 24px;
+  top: 90px;
+  width: min(720px, calc(100vw - 28px));
+  max-height: calc(100vh - 120px);
+  display: none;
+  border: 1px solid rgba(217,184,120,.6);
+  border-radius: 22px;
+  overflow: hidden;
+  background:
+    linear-gradient(180deg, rgba(255,255,255,.06), transparent 20%),
+    #111322;
+  box-shadow: 0 35px 90px rgba(0,0,0,.76);
+}
+#arshifYahushuaCourse .ay-dossier.open {
+  display: block;
+}
+#arshifYahushuaCourse .ay-dossier-head {
+  cursor: grab;
+  padding: 14px 16px;
+  border-bottom: 1px solid rgba(217,184,120,.24);
+  background: linear-gradient(135deg, rgba(217,184,120,.18), rgba(0,0,0,.15));
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+#arshifYahushuaCourse .ay-dossier-head:active {
+  cursor: grabbing;
+}
+#arshifYahushuaCourse .ay-dossier-body {
+  padding: 16px;
+  overflow: auto;
+  max-height: calc(100vh - 205px);
+}
+#arshifYahushuaCourse .ay-close {
+  border: 1px solid rgba(217,184,120,.45);
+  background: rgba(0,0,0,.22);
+  color: var(--ay-parchment);
+  border-radius: 999px;
+  width: 36px;
+  height: 36px;
+  cursor: pointer;
+}
+#arshifYahushuaCourse .ay-footer {
+  padding: 14px 18px;
+  text-align: center;
+  border-top: 1px solid var(--ay-line-soft);
+  color: var(--ay-muted);
+  font-size: 12px;
+  background: #080a12;
+}
+@media (max-width: 1050px) {
+  #arshifYahushuaCourse .ay-dashboard {
+    grid-template-columns: 1fr;
+  }
+  #arshifYahushuaCourse .ay-sidebar {
+    border-right: none;
+    border-bottom: 1px solid var(--ay-line-soft);
+  }
+  #arshifYahushuaCourse .ay-module-list {
+    max-height: 260px;
+  }
+  #arshifYahushuaCourse .ay-course-hero {
+    grid-template-columns: 1fr;
+  }
+  #arshifYahushuaCourse .ay-source-grid,
+  #arshifYahushuaCourse .ay-glossary-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+@media (max-width: 720px) {
+  #arshifYahushuaCourse {
+    width: calc(100% - 12px);
+    margin: 8px auto 28px;
+  }
+  #arshifYahushuaCourse .ay-top {
+    padding: 22px 14px 18px;
+  }
+  #arshifYahushuaCourse .ay-sidebar,
+  #arshifYahushuaCourse .ay-main {
+    padding: 12px;
+  }
+  #arshifYahushuaCourse .ay-grid-2,
+  #arshifYahushuaCourse .ay-grid-3,
+  #arshifYahushuaCourse .ay-source-grid,
+  #arshifYahushuaCourse .ay-glossary-grid {
+    grid-template-columns: 1fr;
+  }
+  #arshifYahushuaCourse .ay-time-item {
+    grid-template-columns: 1fr;
+  }
+  #arshifYahushuaCourse .ay-prophecy-table,
+  #arshifYahushuaCourse .ay-prophecy-table thead,
+  #arshifYahushuaCourse .ay-prophecy-table tbody,
+  #arshifYahushuaCourse .ay-prophecy-table tr,
+  #arshifYahushuaCourse .ay-prophecy-table th,
+  #arshifYahushuaCourse .ay-prophecy-table td {
+    display: block;
+  }
+  #arshifYahushuaCourse .ay-prophecy-table thead {
+    display: none;
+  }
+  #arshifYahushuaCourse .ay-prophecy-table td::before {
+    content: attr(data-label);
+    display: block;
+    color: var(--ay-gold);
+    font-weight: 800;
+    margin-bottom: 4px;
+  }
+  #arshifYahushuaCourse .ay-dossier {
+    left: 8px !important;
+    right: 8px !important;
+    top: 56px !important;
+    width: auto;
+  }
+}
+@media print {
+  body { background: #fff; color: #000; }
+  #arshifYahushuaCourse { width: 100%; margin: 0; color: #000; }
+  #arshifYahushuaCourse .ay-sidebar,
+  #arshifYahushuaCourse .ay-header-actions,
+  #arshifYahushuaCourse .ay-footer,
+  #arshifYahushuaCourse .ay-btn,
+  #arshifYahushuaCourse .ay-dossier { display: none !important; }
+  #arshifYahushuaCourse .ay-shell,
+  #arshifYahushuaCourse .ay-card { box-shadow: none; border-color: #999; background: #fff; color: #000; }
+  #arshifYahushuaCourse .ay-dashboard { display: block; min-height: auto; }
+  #arshifYahushuaCourse .ay-main { background: #fff; color: #000; }
+  #arshifYahushuaCourse .ay-text,
+  #arshifYahushuaCourse ul.ay-clean,
+  #arshifYahushuaCourse .ay-meta-line,
+  #arshifYahushuaCourse .ay-small { color: #222; }
+}
+</style>
+</head>
+<body>
+<div id="arshifYahushuaCourse">
+  <div class="ay-shell">
+    <header class="ay-top">
+      <p class="ay-kicker">ARSHIF · Palimpsest Library · Sacred History Classroom</p>
+      <h1>Yahushua Course Portal</h1>
+      <p class="ay-subtitle">
+        A comprehensive, self-contained learning portal on Yahushua / Yeshua / Jesus:
+        historical setting, Gospel narratives, Hebrew Scripture connections, Second Temple Judaism,
+        Passion and resurrection proclamation, early witnesses, Islamic perspectives, global reception,
+        quizzes, notes, source library, and printable progress.
+      </p>
+      <div class="ay-header-actions">
+        <button class="ay-btn primary" id="ayBeginBtn">Begin Course</button>
+        <button class="ay-btn" data-tab="timeline">Open Timeline</button>
+        <button class="ay-btn" data-tab="prophecy">Open Prophecy Matrix</button>
+        <button class="ay-btn" data-tab="sources">Open Source Library</button>
+        <button class="ay-btn" id="ayPrintBtn">Print Progress</button>
+      </div>
+    </header>
+
+    <div class="ay-dashboard">
+      <aside class="ay-sidebar" aria-label="Course controls">
+        <section class="ay-progress-card">
+          <h2 class="ay-panel-title">Course Progress</h2>
+          <div class="ay-progress-bar" aria-label="Progress bar"><div class="ay-progress-fill" id="ayProgressFill"></div></div>
+          <div class="ay-small" id="ayProgressText">0 of 0 modules completed.</div>
+          <div class="ay-header-actions" style="justify-content:flex-start;margin-top:12px">
+            <button class="ay-btn" id="ayDownloadBtn">Download Notes</button>
+            <button class="ay-btn danger" id="ayResetBtn">Reset</button>
+          </div>
+        </section>
+
+        <h2 class="ay-panel-title">Study Chambers</h2>
+        <div class="ay-tabs" id="ayTabs">
+          <button class="ay-tab active" data-tab="course">Course</button>
+          <button class="ay-tab" data-tab="timeline">Timeline</button>
+          <button class="ay-tab" data-tab="prophecy">Prophecy</button>
+          <button class="ay-tab" data-tab="sources">Sources</button>
+          <button class="ay-tab" data-tab="glossary">Glossary</button>
+          <button class="ay-tab" data-tab="report">Report</button>
+        </div>
+
+        <input class="ay-search" id="aySearch" placeholder="Search modules, sources, glossary..." />
+
+        <h2 class="ay-panel-title">Filter Lessons</h2>
+        <div class="ay-filter-row" id="ayFilters"></div>
+
+        <div class="ay-module-list" id="ayModuleList" aria-label="Course modules"></div>
+      </aside>
+
+      <main class="ay-main">
+        <section class="ay-view active" id="view-course">
+          <div id="ayCourseView"></div>
+        </section>
+
+        <section class="ay-view" id="view-timeline">
+          <div class="ay-card">
+            <h2>Historical Timeline</h2>
+            <p class="ay-text">A study timeline with broad date ranges. Dates for Jesus' birth and crucifixion are debated; this portal preserves approximate scholarly ranges and narrative sequence.</p>
+            <div class="ay-timeline" id="ayTimeline"></div>
+          </div>
+        </section>
+
+        <section class="ay-view" id="view-prophecy">
+          <div class="ay-card">
+            <h2>Prophecy Matrix</h2>
+            <p class="ay-text">
+              This matrix distinguishes original context, Christian reception, and interpretive caution.
+              It is designed to teach fulfillment readings responsibly without erasing Jewish readings.
+            </p>
+            <div id="ayProphecy"></div>
+          </div>
+        </section>
+
+        <section class="ay-view" id="view-sources">
+          <div class="ay-card">
+            <h2 id="sourceLibrary">Source Library</h2>
+            <p class="ay-text">Primary readings, manuscript resources, scholarly context, ancient external witnesses, and comparative scripture links. External links open only when online; the portal itself uses no external libraries.</p>
+            <div class="ay-source-grid" id="aySources"></div>
+          </div>
+        </section>
+
+        <section class="ay-view" id="view-glossary">
+          <div class="ay-card">
+            <h2>Glossary of Key Terms</h2>
+            <div class="ay-glossary-grid" id="ayGlossary"></div>
+          </div>
+        </section>
+
+        <section class="ay-view" id="view-report">
+          <div class="ay-card">
+            <h2>Student Progress Report</h2>
+            <p class="ay-text">This report is stored locally in this browser. Use Print Progress to save as PDF from your browser print dialog.</p>
+            <div id="ayReport"></div>
+          </div>
+        </section>
+      </main>
+    </div>
+
+    <footer class="ay-footer">
+      ARSHIF · Yahushua Course Portal · Deep Study Edition · Pure Vanilla HTML/CSS/JavaScript · Notes and scores save locally in the browser.
+    </footer>
+  </div>
+
+  <section class="ay-dossier" id="ayDossier" aria-label="Draggable dossier" role="dialog">
+    <div class="ay-dossier-head" id="ayDossierHead">
+      <div>
+        <div class="ay-meta-line" id="ayDossierMeta">Dossier</div>
+        <strong id="ayDossierTitle">Open Dossier</strong>
+      </div>
+      <button class="ay-close" id="ayDossierClose" aria-label="Close dossier">×</button>
+    </div>
+    <div class="ay-dossier-body" id="ayDossierBody"></div>
+  </section>
+</div>
+
+<script>
+(function(){
+  "use strict";
+
+  const DATA = {"modules": [{"id": "orientation", "title": "Orientation: Yahushua, Yeshua, Jesus", "era": "Course Method", "lens": "Orientation", "tags": ["method", "names", "study"], "badge": "שער", "level": "Foundations", "overview": "Begin with names, methods, and humility. Yahushua/Yeshua/Jesus is studied here as a first-century Jewish teacher, the Messiah confessed by Christians, a prophet honored in Islam, and a figure examined by historians.", "objectives": ["Distinguish faith claims, historical claims, and textual interpretation.", "Recognize why names differ across Hebrew/Aramaic, Greek, Latin, Arabic, and English.", "Set a respectful tone for learning across traditions."], "readings": [{"label": "Matthew 1:1-17 — Genealogy of Jesus", "url": "https://www.biblegateway.com/passage/?search=Matthew%201%3A1-17&version=KJV"}, {"label": "USCCB Introduction to Matthew", "url": "https://bible.usccb.org/bible/matthew/0"}], "lesson": "The name Jesus comes through Greek and Latin forms, while Yeshua is the likely late Second Temple Jewish form. Yahushua is used in this portal devotionally to foreground Hebrew roots. A careful course separates what a tradition confesses from what a historian can test. Those lenses can sit side by side without mockery or erasure.", "activity": "Create a three-column notebook page titled History, Scripture, and Faith. Add one question you have for each column.", "quiz": [{"q": "What is the main method of this course?", "choices": ["Only one tradition is allowed", "Compare sources respectfully while naming lenses", "Replace all faith with archaeology", "Avoid all primary texts"], "answer": 1, "explain": "The portal keeps history, scripture, and faith lenses distinct but in conversation."}, {"q": "Why does the portal use Yahushua/Yeshua/Jesus together?", "choices": ["They are unrelated people", "They reflect language and tradition layers", "Only English matters", "Only Latin matters"], "answer": 1, "explain": "The names reflect Semitic, Greek/Latin, English, and devotional traditions."}]}, {"id": "land", "title": "Land, Empires & Languages", "era": "1st century CE", "lens": "History", "tags": ["geography", "aramaic", "rome", "galilee"], "badge": "ארץ", "level": "Foundations", "overview": "Place Yahushua in Galilee, Judea, Samaria, the Decapolis, and Jerusalem under Roman imperial power.", "objectives": ["Locate Galilee, Judea, Jerusalem, the Jordan, and the Sea of Galilee.", "Explain how Rome, Herodian rulers, and local Jewish life overlapped.", "Identify Aramaic, Hebrew, Greek, and Latin as languages in the world of the New Testament."], "readings": [{"label": "Bible Odyssey — Galilee", "url": "https://www.bibleodyssey.org/dictionary/galilee/"}, {"label": "Bible Odyssey — The Language and Bible of Jesus", "url": "https://www.bibleodyssey.org/video-gallery/the-language-and-bible-of-jesus/"}], "lesson": "Yahushua's world was multilingual and politically layered. Galilean village life, Jerusalem Temple worship, Roman taxation, Herodian client kings, synagogue teaching, and pilgrimage festivals all shaped the setting of the Gospels.", "activity": "Sketch a simple map: Nazareth, Capernaum, Jordan River, Jerusalem, Bethlehem, and Caesarea Maritima.", "quiz": [{"q": "Which language was likely common in Jesus' daily Galilean setting?", "choices": ["Old English", "Aramaic", "Sanskrit", "Mandarin"], "answer": 1, "explain": "Aramaic was likely the common vernacular among many first-century Jews in Galilee."}, {"q": "Why does geography matter for Gospel study?", "choices": ["It does not matter", "It helps connect stories to travel, politics, and local communities", "It proves every interpretation", "It replaces theology"], "answer": 1, "explain": "Geography provides historical texture for the narratives."}]}, {"id": "second-temple", "title": "Second Temple Judaism", "era": "516 BCE–70 CE", "lens": "History", "tags": ["temple", "synagogue", "pharisees", "sadducees", "essenes"], "badge": "היכל", "level": "Foundations", "overview": "Study the Temple, Torah, purity, prayer, festivals, and diverse Jewish movements before 70 CE.", "objectives": ["Describe the role of the Jerusalem Temple.", "Compare Pharisees, Sadducees, Essenes, and other Jewish streams carefully.", "Explain why the destruction of the Temple in 70 CE became a turning point."], "readings": [{"label": "Bible Odyssey — The Jewish Context of Jesus", "url": "https://www.bibleodyssey.org/articles/the-jewish-context-of-jesus/"}, {"label": "Bible Odyssey — First-Century Synagogues", "url": "https://www.bibleodyssey.org/articles/first-century-synagogues/"}, {"label": "Digital Dead Sea Scrolls", "url": "https://dss.collections.imj.org.il/"}], "lesson": "Jesus did not stand outside Judaism. His disputes, prayers, festival pilgrimages, scripture use, and kingdom language belong inside Jewish life in the late Second Temple period. The Temple stood at the center, while synagogues, households, villages, and sectarian communities also shaped daily religious practice.", "activity": "Make a comparison chart: Temple, synagogue, household, wilderness community.", "quiz": [{"q": "What stood at the center of Jewish sacrificial worship in Jesus' time?", "choices": ["The Jerusalem Temple", "The Roman Senate", "The Acropolis", "The Nile Delta"], "answer": 0, "explain": "The Second Temple in Jerusalem was central to Jewish sacrificial and pilgrimage life."}, {"q": "What is a careful way to speak about Pharisees and Sadducees?", "choices": ["As cartoon villains", "As Jewish groups with different teachings and social roles", "As Roman soldiers", "As modern political parties"], "answer": 1, "explain": "The course avoids caricature and treats each group historically."}]}, {"id": "source-methods", "title": "How We Know: Sources & Genres", "era": "Texts and traditions", "lens": "Text", "tags": ["gospels", "paul", "sources", "genre"], "badge": "כתב", "level": "Foundations", "overview": "Learn the difference between Gospel, letter, creed, ancient biography, prophecy, oral tradition, and later reception.", "objectives": ["Identify the canonical Gospels and Pauline letters as early Christian sources.", "Recognize that the Gospels are theological narratives rooted in memory and scripture.", "Name non-Christian references such as Josephus and Tacitus without overstating them."], "readings": [{"label": "Bible Odyssey — What Is a Gospel?", "url": "https://www.bibleodyssey.org/articles/what-is-a-gospel/"}, {"label": "1 Corinthians 15:1-11", "url": "https://www.biblegateway.com/passage/?search=1%20Corinthians%2015%3A1-11&version=KJV"}], "lesson": "The Gospels are not modern biographies, yet they are not random legends either. They preserve proclamation, memory, scripture-shaped storytelling, geography, controversy, parable, and worship. Paul's letters are earlier than the finished Gospel texts and show what early communities already confessed.", "activity": "Choose one Gospel opening and identify its genre signals: genealogy, proclamation, preface, or cosmic prologue.", "quiz": [{"q": "Which source is usually considered among the earliest Christian writings?", "choices": ["A medieval hymn", "Paul's letters", "A modern novel", "A Renaissance painting"], "answer": 1, "explain": "Paul's letters predate the final written forms of the canonical Gospels."}, {"q": "What is a Gospel in this course?", "choices": ["A modern newspaper report", "A theological narrative of Jesus' life and meaning", "A Roman law code", "A mathematical proof"], "answer": 1, "explain": "Gospels proclaim Jesus through narrative, memory, scripture, and theology."}]}, {"id": "nativity", "title": "Genealogies, Birth & Childhood", "era": "Matthew 1–2; Luke 1–2", "lens": "Text", "tags": ["birth", "mary", "joseph", "bethlehem", "nazareth"], "badge": "כוכב", "level": "Core", "overview": "Compare Matthew and Luke on ancestry, Mary, Joseph, Bethlehem, Nazareth, angels, shepherds, magi, and danger under Herod.", "objectives": ["Compare Matthew's genealogy with Luke's narrative emphases.", "Identify Bethlehem and Nazareth themes.", "Discuss theological motifs: Davidic hope, humble birth, divine announcement, and rescue."], "readings": [{"label": "Matthew 1–2", "url": "https://www.biblegateway.com/passage/?search=Matthew%201-2&version=KJV"}, {"label": "Luke 1–2", "url": "https://www.biblegateway.com/passage/?search=Luke%201-2&version=KJV"}], "lesson": "Matthew and Luke give different birth narratives, each rich with scripture, danger, promise, and worship. Matthew emphasizes Davidic genealogy, dreams, magi, Herod, and Egypt. Luke emphasizes Mary, Elizabeth, songs of praise, shepherds, the Temple, and the poor receiving good news.", "activity": "Create two columns: Matthew's nativity symbols and Luke's nativity symbols.", "quiz": [{"q": "Which Gospel includes the visit of the magi?", "choices": ["Matthew", "Mark", "John", "Philemon"], "answer": 0, "explain": "The magi appear in Matthew 2."}, {"q": "Which Gospel emphasizes shepherds and songs like the Magnificat?", "choices": ["Luke", "Mark", "Romans", "Revelation"], "answer": 0, "explain": "Luke's infancy narrative includes shepherds and poetic canticles."}]}, {"id": "john-baptist", "title": "John the Baptist, Baptism & Wilderness", "era": "Early ministry", "lens": "History/Text", "tags": ["john", "baptism", "wilderness", "repentance"], "badge": "מים", "level": "Core", "overview": "Explore John the Baptist as a prophetic wilderness figure and the baptism that opens Jesus' public ministry.", "objectives": ["Explain John's message of repentance and preparation.", "Connect baptism with wilderness, Jordan, and prophetic renewal.", "Compare Gospel accounts of the baptism and temptation."], "readings": [{"label": "Mark 1:1-13", "url": "https://www.biblegateway.com/passage/?search=Mark%201%3A1-13&version=KJV"}, {"label": "Matthew 3–4", "url": "https://www.biblegateway.com/passage/?search=Matthew%203-4&version=KJV"}], "lesson": "John appears as a wilderness prophet calling Israel to repentance. Jesus' baptism marks a threshold: public calling, divine affirmation, and movement into testing. The wilderness scene echoes Israel's story, Moses, Elijah, and the hope of renewal.", "activity": "Write a short reflection: What does wilderness symbolize in scripture?", "quiz": [{"q": "Where does John baptize in the Gospel tradition?", "choices": ["Jordan River region", "Athens", "Rome", "Babylon"], "answer": 0, "explain": "John is associated with the Jordan and wilderness."}, {"q": "What follows Jesus' baptism in several Gospel accounts?", "choices": ["Wilderness testing", "Coronation in Rome", "A sea voyage to Spain", "A census in Athens"], "answer": 0, "explain": "The baptism is followed by wilderness temptation/testing."}]}, {"id": "kingdom-galilee", "title": "Galilee Ministry & the Kingdom of God", "era": "Public ministry", "lens": "Teaching", "tags": ["kingdom", "galilee", "healing", "synagogue"], "badge": "מלכות", "level": "Core", "overview": "Study Jesus' proclamation of the kingdom of God in villages, synagogues, homes, and open spaces.", "objectives": ["Define kingdom of God as divine reign, justice, restoration, and mercy.", "Identify Capernaum, Nazareth, and Galilee as major ministry settings.", "Connect teaching, healing, and table fellowship."], "readings": [{"label": "Mark 1:14-45", "url": "https://www.biblegateway.com/passage/?search=Mark%201%3A14-45&version=KJV"}, {"label": "Luke 4:14-30", "url": "https://www.biblegateway.com/passage/?search=Luke%204%3A14-30&version=KJV"}], "lesson": "Jesus' announcement of God's kingdom was not an abstract slogan. It appeared through teaching, healing, forgiveness, exorcism, meals with outsiders, and public acts that challenged ordinary assumptions about holiness and status.", "activity": "List five signs of the kingdom in one Gospel chapter.", "quiz": [{"q": "What phrase summarizes much of Jesus' proclamation?", "choices": ["The kingdom of God", "The glory of Caesar", "The fall of Athens", "The empire of Babylon"], "answer": 0, "explain": "The kingdom of God is central to Jesus' message."}, {"q": "Where does much of the early public ministry occur?", "choices": ["Galilee", "Britain", "India", "Carthage"], "answer": 0, "explain": "The Synoptic Gospels place much early ministry in Galilee."}]}, {"id": "miracles", "title": "Signs, Healings & Deliverance", "era": "Public ministry", "lens": "Text/Tradition", "tags": ["miracles", "healing", "signs", "compassion"], "badge": "רפא", "level": "Core", "overview": "Examine miracles as compassion stories, signs of the kingdom, and contested events in the narratives.", "objectives": ["Classify healing, nature, provision, and deliverance stories.", "Discuss miracle stories without flattening faith or skepticism.", "Identify how signs point beyond spectacle to restoration."], "readings": [{"label": "Mark 2", "url": "https://www.biblegateway.com/passage/?search=Mark%202&version=KJV"}, {"label": "John 9", "url": "https://www.biblegateway.com/passage/?search=John%209&version=KJV"}], "lesson": "Miracle narratives are never just displays of power. They raise questions about mercy, Sabbath, authority, purity, exclusion, faith, and who gets restored to community. John often calls miracles signs, meaning they point to deeper identity and revelation.", "activity": "Choose one healing story. Identify the person healed, the obstacle, the restoration, and the controversy.", "quiz": [{"q": "In John, miracles are often called what?", "choices": ["Signs", "Taxes", "Decrees", "Ships"], "answer": 0, "explain": "John often frames miracles as signs."}, {"q": "What theme often appears with healing stories?", "choices": ["Restoration to community", "Imperial conquest", "Maritime law", "Astronomy"], "answer": 0, "explain": "Healings often restore people physically, socially, and spiritually."}]}, {"id": "parables", "title": "Parables: Stories that Open the Kingdom", "era": "Public ministry", "lens": "Teaching", "tags": ["parables", "good-samaritan", "prodigal", "mustard"], "badge": "משל", "level": "Core", "overview": "Study the short, layered stories Jesus used to reveal and unsettle the heart.", "objectives": ["Define parable as a teaching story with layered meaning.", "Analyze Good Samaritan, Prodigal Son, Sower, Mustard Seed, and Vineyard themes.", "Recognize reversal, mercy, judgment, and hidden growth."], "readings": [{"label": "Luke 10:25-37 — Good Samaritan", "url": "https://www.biblegateway.com/passage/?search=Luke%2010%3A25-37&version=KJV"}, {"label": "Luke 15 — Lost sheep, coin, and son", "url": "https://www.biblegateway.com/passage/?search=Luke%2015&version=KJV"}, {"label": "Matthew 13 — Kingdom parables", "url": "https://www.biblegateway.com/passage/?search=Matthew%2013&version=KJV"}], "lesson": "Parables invite the listener into a decision. They can comfort, expose, reverse expectations, and reveal God's nearness through ordinary images: seed, bread, debt, road, field, feast, family, and lost things found.", "activity": "Rewrite one parable in a modern setting while preserving its moral tension.", "quiz": [{"q": "Which parable asks who truly acted as neighbor?", "choices": ["Good Samaritan", "Tower of Babel", "Noah's Ark", "David and Goliath"], "answer": 0, "explain": "The Good Samaritan reframes neighbor-love around mercy."}, {"q": "What image does Jesus use for small beginnings of the kingdom?", "choices": ["Mustard seed", "Iron chariot", "Golden calf", "Roman shield"], "answer": 0, "explain": "The mustard seed depicts hidden growth from small beginnings."}]}, {"id": "sermon", "title": "Sermon on the Mount / Plain", "era": "Matthew 5–7; Luke 6", "lens": "Teaching", "tags": ["ethics", "beatitudes", "prayer", "enemy-love"], "badge": "הר", "level": "Core", "overview": "Explore Jesus' central ethical teaching: blessing, righteousness, prayer, enemy-love, generosity, and wise foundations.", "objectives": ["Identify Beatitudes and their kingdom reversal.", "Explain intensified righteousness: anger, lust, truth-telling, retaliation, enemy-love.", "Study the Lord's Prayer as a model of trust and justice."], "readings": [{"label": "Matthew 5–7", "url": "https://www.biblegateway.com/passage/?search=Matthew%205-7&version=KJV"}, {"label": "Luke 6:17-49", "url": "https://www.biblegateway.com/passage/?search=Luke%206%3A17-49&version=KJV"}], "lesson": "The Sermon is not a gentle slogan collection. It is a radical portrait of life under God's reign: mercy for enemies, secret generosity, truthful speech, pure-hearted devotion, and a house built on practiced obedience.", "activity": "Choose one teaching from Matthew 5–7 and write a real-life scenario where it becomes difficult.", "quiz": [{"q": "Which prayer is taught in the Sermon on the Mount?", "choices": ["The Lord's Prayer", "The Prayer of Jabez", "Hannah's Song", "Psalm 151"], "answer": 0, "explain": "Matthew 6 contains the Lord's Prayer."}, {"q": "What image closes Matthew 7?", "choices": ["House on rock and sand", "A shipwreck at Malta", "A golden statue", "A burning chariot"], "answer": 0, "explain": "Jesus contrasts hearing and doing with building on rock or sand."}]}, {"id": "discipleship", "title": "Disciples, Women, Children & Outsiders", "era": "Public ministry", "lens": "Community", "tags": ["disciples", "women", "poor", "outsiders", "table"], "badge": "עם", "level": "Core", "overview": "Study the people around Jesus: Twelve, women supporters, children, sinners, tax collectors, Samaritans, Gentiles, and the poor.", "objectives": ["Identify the Twelve and broader disciple circles.", "Explore Gospel scenes involving women and children.", "Discuss why table fellowship became controversial."], "readings": [{"label": "Luke 8:1-3", "url": "https://www.biblegateway.com/passage/?search=Luke%208%3A1-3&version=KJV"}, {"label": "Mark 10:13-16", "url": "https://www.biblegateway.com/passage/?search=Mark%2010%3A13-16&version=KJV"}, {"label": "Luke 19:1-10", "url": "https://www.biblegateway.com/passage/?search=Luke%2019%3A1-10&version=KJV"}], "lesson": "Jesus forms a community that breaks social expectations. The Gospels remember named women, children received as examples, meals with the morally suspect, and outsiders who become models of faith.", "activity": "Make a character web of people who follow, fund, challenge, or seek Jesus.", "quiz": [{"q": "What action often creates controversy around Jesus?", "choices": ["Eating with outsiders", "Building aqueducts", "Minting coins", "Writing Latin poems"], "answer": 0, "explain": "Table fellowship with tax collectors and sinners becomes a recurring dispute."}, {"q": "How does Jesus treat children in Mark 10?", "choices": ["He welcomes and blesses them", "He ignores them", "He sends them to Rome", "He asks them for taxes"], "answer": 0, "explain": "Mark 10 presents Jesus welcoming children."}]}, {"id": "titles", "title": "Names & Titles: Messiah, Son of Man, Word", "era": "Scripture and theology", "lens": "Theology/Text", "tags": ["messiah", "christ", "son-of-man", "logos", "lord"], "badge": "שם", "level": "Core", "overview": "Trace the meanings of Messiah/Christ, Son of David, Son of Man, Son of God, Lord, Prophet, Lamb, and Word.", "objectives": ["Explain Messiah and Christ as anointed-one language.", "Connect Son of Man with Gospel usage and Danielic imagery.", "Compare Synoptic and Johannine title patterns."], "readings": [{"label": "John 1:1-18", "url": "https://www.biblegateway.com/passage/?search=John%201%3A1-18&version=KJV"}, {"label": "Daniel 7", "url": "https://www.sefaria.org/Daniel.7?lang=bi"}, {"label": "Bible Odyssey — Christ", "url": "https://www.bibleodyssey.org/articles/christ/"}], "lesson": "Titles do not function like modern surnames. They are scriptural, political, devotional, and theological claims. 'Christ' is not Jesus' last name; it means anointed one. 'Lord' can carry everyday respect, imperial resonance, and divine confession depending on context.", "activity": "Create title cards: title, literal meaning, key passage, question it raises.", "quiz": [{"q": "What does Christ/Messiah mean?", "choices": ["Anointed one", "Carpenter only", "Roman citizen", "Greek island"], "answer": 0, "explain": "Christos/Messiah means anointed one."}, {"q": "Which Gospel opens with the Word/Logos prologue?", "choices": ["John", "Mark", "Ruth", "Acts"], "answer": 0, "explain": "John 1 opens with the Logos/Word."}]}, {"id": "prophecy", "title": "Prophecy Matrix: Promise, Pattern & Fulfillment", "era": "Hebrew Scriptures and reception", "lens": "Prophecy", "tags": ["isaiah", "micah", "psalms", "zechariah", "daniel", "fulfillment"], "badge": "נביא", "level": "Deep Dive", "overview": "Study messianic readings alongside Jewish contextual readings, distinguishing direct prediction, typology, pattern, and later interpretation.", "objectives": ["Compare Christian fulfillment readings with Jewish and historical-critical readings.", "Define typology and sensus plenior without forcing agreement.", "Examine Isaiah, Psalms, Micah, Zechariah, Daniel, and Hosea references."], "readings": [{"label": "Isaiah 7", "url": "https://www.sefaria.org/Isaiah.7?lang=bi"}, {"label": "Isaiah 53", "url": "https://www.sefaria.org/Isaiah.53?lang=bi"}, {"label": "Psalm 22", "url": "https://www.sefaria.org/Psalms.22?lang=bi"}, {"label": "Micah 5", "url": "https://www.sefaria.org/Micah.5?lang=bi"}, {"label": "Zechariah 9", "url": "https://www.sefaria.org/Zechariah.9?lang=bi"}], "lesson": "Prophecy study requires care. Some passages are read by Christians as direct prophecy. Others function as patterns, echoes, or typological fulfillment. Jewish traditions often understand these texts in their original historical settings or in broader Israel-centered ways. A responsible portal shows both the receiving tradition and the original-context question.", "activity": "Open the Prophecy Matrix tab. Choose three rows and write: original context, Gospel connection, interpretive caution.", "quiz": [{"q": "What is typology?", "choices": ["A pattern where earlier scripture shapes later meaning", "A tax category", "A Roman road", "A musical instrument"], "answer": 0, "explain": "Typology reads events/persons/texts as patterns fulfilled or intensified later."}, {"q": "Why include Jewish readings in a prophecy course?", "choices": ["To argue less honestly", "To honor original context and avoid erasure", "To remove Christian interpretation", "To avoid scripture"], "answer": 1, "explain": "Responsible study honors original context and interpretive diversity."}]}, {"id": "jerusalem", "title": "Jerusalem, Temple Action & Final Week", "era": "Passover week", "lens": "History/Text", "tags": ["jerusalem", "temple", "passover", "final-week"], "badge": "ירושלם", "level": "Deep Dive", "overview": "Follow the entry into Jerusalem, Temple conflict, public teaching, Passover setting, and rising danger.", "objectives": ["Identify Passover as the final-week setting in the Gospels.", "Analyze the Temple action and controversies.", "Connect symbolic acts with prophetic traditions."], "readings": [{"label": "Mark 11–13", "url": "https://www.biblegateway.com/passage/?search=Mark%2011-13&version=KJV"}, {"label": "Zechariah 9:9", "url": "https://www.sefaria.org/Zechariah.9.9?lang=bi"}], "lesson": "The final week unfolds in Jerusalem, where symbolic action and public teaching collide with political and religious tensions. Pilgrimage crowds, Roman surveillance, priestly authority, and Passover memory all intensify the narrative.", "activity": "Build a day-by-day Holy Week timeline using one Gospel.", "quiz": [{"q": "Which festival frames the final week in the Gospel narratives?", "choices": ["Passover", "Saturnalia", "Olympic Games", "Pentecost only"], "answer": 0, "explain": "The Passion narratives are set around Passover."}, {"q": "What city anchors the final week?", "choices": ["Jerusalem", "Alexandria", "Damascus", "Antioch"], "answer": 0, "explain": "The final week centers in Jerusalem."}]}, {"id": "last-supper", "title": "Last Supper, Covenant & Gethsemane", "era": "Passion narrative", "lens": "Text/Theology", "tags": ["last-supper", "covenant", "passover", "gethsemane"], "badge": "כוס", "level": "Deep Dive", "overview": "Study the final meal, bread and cup, betrayal, prayer, and surrender.", "objectives": ["Compare Synoptic Last Supper accounts with John's farewell focus.", "Explain covenant language and meal symbolism.", "Reflect on Gethsemane as grief, obedience, and abandonment."], "readings": [{"label": "Mark 14", "url": "https://www.biblegateway.com/passage/?search=Mark%2014&version=KJV"}, {"label": "John 13–17", "url": "https://www.biblegateway.com/passage/?search=John%2013-17&version=KJV"}], "lesson": "The final meal becomes the seedbed of Eucharistic/communion traditions. The Synoptics emphasize bread, cup, covenant, and Passover. John emphasizes foot washing, love, farewell teaching, and prayer.", "activity": "Create a symbol chart: bread, cup, towel, garden, kiss, rooster.", "quiz": [{"q": "Which Gospel emphasizes foot washing at the final meal?", "choices": ["John", "Mark", "Jonah", "Hebrews"], "answer": 0, "explain": "John 13 features the foot washing."}, {"q": "What place is associated with Jesus' anguished prayer before arrest?", "choices": ["Gethsemane", "Athens", "Caesarea Philippi", "Nineveh"], "answer": 0, "explain": "Gethsemane is the prayer setting before arrest."}]}, {"id": "trial", "title": "Trials: Authorities, Crowds & Rome", "era": "Passion narrative", "lens": "History/Text", "tags": ["trial", "pilate", "sanhedrin", "rome", "crucifixion"], "badge": "משפט", "level": "Deep Dive", "overview": "Study Jewish leadership scenes, Roman authority, Pilate, Herod Antipas in Luke, Barabbas, and the charge of kingship.", "objectives": ["Distinguish narrative theology from later blame narratives.", "Identify Pilate as Roman prefect/governor in Judea.", "Explain crucifixion as Roman execution tied to public shame and political order."], "readings": [{"label": "John 18–19", "url": "https://www.biblegateway.com/passage/?search=John%2018-19&version=KJV"}, {"label": "Bible Odyssey — Pontius Pilate", "url": "https://www.bibleodyssey.org/articles/pontius-pilate/"}], "lesson": "The Passion stories must be taught with care because they have been misused to justify antisemitism. Historically, crucifixion was Roman power. The Gospel narratives also include intra-Jewish conflict, theological interpretation, fear, crowd dynamics, and a kingship charge that Rome would understand politically.", "activity": "Write a safeguard statement: How can a class teach the Passion without blaming Jewish people collectively?", "quiz": [{"q": "Who had Roman authority connected to Jesus' execution in the Gospels?", "choices": ["Pontius Pilate", "Julius Caesar", "Nero as emperor at that time", "Alexander"], "answer": 0, "explain": "The Gospels place Jesus' execution under Pontius Pilate."}, {"q": "Why teach the Passion carefully?", "choices": ["Because later misuse harmed Jewish communities", "Because it is unimportant", "Because Rome did not exist", "Because it is only poetry"], "answer": 0, "explain": "Careful teaching avoids collective blame and acknowledges historical misuse."}]}, {"id": "cross", "title": "Crucifixion: History, Suffering & Meaning", "era": "c. 30s CE", "lens": "History/Theology", "tags": ["cross", "suffering", "atonement", "rome"], "badge": "עץ", "level": "Deep Dive", "overview": "Explore crucifixion as Roman execution and the many Christian interpretations of the cross.", "objectives": ["Name crucifixion as a Roman public execution practice.", "Compare atonement images: sacrifice, victory, ransom, example, reconciliation, solidarity.", "Hold historical trauma and theological hope together."], "readings": [{"label": "Mark 15", "url": "https://www.biblegateway.com/passage/?search=Mark%2015&version=KJV"}, {"label": "Psalm 22", "url": "https://www.sefaria.org/Psalms.22?lang=bi"}, {"label": "Tacitus, Annals 15.44 via Perseus", "url": "https://www.perseus.tufts.edu/hopper/text?doc=Tac.%20Ann.%2015.44"}], "lesson": "The cross is both an execution and a theological center. Historically, Rome used crucifixion as public terror and humiliation. Christian traditions later speak of the cross through many images: Passover lamb, suffering servant, victory over evil, ransom, forgiveness, and God's solidarity with suffering.", "activity": "Create a wheel of cross meanings with six spokes. Add a passage for each.", "quiz": [{"q": "Which empire used crucifixion as public execution in Jesus' setting?", "choices": ["Rome", "Ming China", "Aztec Empire", "Victorian Britain"], "answer": 0, "explain": "Crucifixion in the Passion narratives is Roman execution."}, {"q": "Which Psalm is often connected to the Passion because of its suffering imagery?", "choices": ["Psalm 22", "Psalm 1", "Psalm 150", "Psalm 119 only"], "answer": 0, "explain": "Psalm 22 is often read in connection with the Passion."}]}, {"id": "resurrection", "title": "Burial, Empty Tomb & Resurrection Proclamation", "era": "Easter faith", "lens": "Text/Faith", "tags": ["resurrection", "empty-tomb", "women", "paul"], "badge": "אור", "level": "Deep Dive", "overview": "Compare burial traditions, women at the tomb, appearances, and Paul's early resurrection summary.", "objectives": ["Identify women as first witnesses in Gospel resurrection narratives.", "Compare Gospel appearance traditions with 1 Corinthians 15.", "Distinguish historical investigation from faith proclamation."], "readings": [{"label": "Mark 16; Matthew 28; Luke 24; John 20", "url": "https://www.biblegateway.com/passage/?search=Mark%2016%3B%20Matthew%2028%3B%20Luke%2024%3B%20John%2020&version=KJV"}, {"label": "1 Corinthians 15", "url": "https://www.biblegateway.com/passage/?search=1%20Corinthians%2015&version=KJV"}], "lesson": "Resurrection is the turning point of Christian proclamation. Historians can analyze claims, witnesses, traditions, and community formation. Faith confesses more: that God raised Jesus and opened new creation. The Gospels preserve women at the tomb, fear, joy, recognition, doubt, mission, and worship.", "activity": "Compare one detail from each Gospel resurrection account.", "quiz": [{"q": "Who are prominent first witnesses at the tomb in Gospel narratives?", "choices": ["Women followers", "Roman senators", "Babylonian kings", "Greek philosophers"], "answer": 0, "explain": "Women followers are prominent in the tomb narratives."}, {"q": "Which chapter gives Paul's extended resurrection teaching?", "choices": ["1 Corinthians 15", "Genesis 3", "Acts 27", "Romans 16 only"], "answer": 0, "explain": "1 Corinthians 15 is central for resurrection proclamation."}]}, {"id": "acts-paul", "title": "From Yahushua Movement to Early Church", "era": "30s–60s CE", "lens": "History/Text", "tags": ["acts", "paul", "pentecost", "early-church"], "badge": "רוח", "level": "Deep Dive", "overview": "Study Pentecost, Jerusalem, mission to Gentiles, Paul, councils, persecution, and house gatherings.", "objectives": ["Trace movement from Jerusalem to wider Mediterranean contexts.", "Explain how Gentile inclusion became a major early question.", "Identify letters as pastoral responses to real communities."], "readings": [{"label": "Acts 2", "url": "https://www.biblegateway.com/passage/?search=Acts%202&version=KJV"}, {"label": "Acts 15", "url": "https://www.biblegateway.com/passage/?search=Acts%2015&version=KJV"}, {"label": "Galatians 2–3", "url": "https://www.biblegateway.com/passage/?search=Galatians%202-3&version=KJV"}], "lesson": "The early movement remained rooted in Israel's story while wrestling with Gentile inclusion. Acts and Paul preserve debates about Torah, table fellowship, circumcision, Spirit, faithfulness, and community identity.", "activity": "Draw a route map from Jerusalem to Antioch, Asia Minor, Greece, and Rome.", "quiz": [{"q": "Which book narrates Pentecost and early mission?", "choices": ["Acts", "Ruth", "Esther", "Job"], "answer": 0, "explain": "Acts narrates Pentecost and early Christian mission."}, {"q": "What major question did early communities debate?", "choices": ["Gentile inclusion and Torah observance", "Modern internet access", "Roman football rules", "The printing press"], "answer": 0, "explain": "Gentile inclusion was a major early issue."}]}, {"id": "outside-witnesses", "title": "Extra-Biblical Witnesses: Josephus, Tacitus, Pliny, Suetonius", "era": "1st–2nd century CE", "lens": "History", "tags": ["josephus", "tacitus", "pliny", "suetonius", "evidence"], "badge": "עד", "level": "Research", "overview": "Read outside references carefully: valuable, brief, debated, and often focused more on early Christians than on Jesus directly.", "objectives": ["Summarize Josephus' references and authenticity debates.", "Summarize Tacitus' report of Christus and Nero's persecution.", "Avoid overstating what external sources prove."], "readings": [{"label": "Josephus, Antiquities 18 via UChicago", "url": "https://penelope.uchicago.edu/josephus/ant-18.html"}, {"label": "Perseus Catalog — Jewish Antiquities", "url": "https://catalog.perseus.org/catalog/urn:cts:greekLit:tlg0526.tlg001"}, {"label": "Tacitus, Annals 15.44 via Perseus", "url": "https://www.perseus.tufts.edu/hopper/text?doc=Tac.%20Ann.%2015.44"}], "lesson": "Josephus and Tacitus are important but should be used modestly. Josephus' Testimonium has long authenticity debates, with many scholars seeing a core reference later touched by Christian copying. Tacitus writes about Christus' execution under Pilate in the context of Nero and Rome's Christians.", "activity": "Create a source reliability card: author, date, purpose, what it says, limits.", "quiz": [{"q": "Which Jewish historian is associated with Antiquities of the Jews?", "choices": ["Josephus", "Tacitus", "Homer", "Virgil"], "answer": 0, "explain": "Josephus wrote Jewish Antiquities."}, {"q": "What is the caution about external witnesses?", "choices": ["They are useful but brief and must not be overstated", "They are all modern forgeries", "They replace the Gospels entirely", "They mention every detail of Jesus' life"], "answer": 0, "explain": "External witnesses are useful but limited."}]}, {"id": "manuscripts", "title": "Manuscripts, Transmission & Translation", "era": "Ancient to modern", "lens": "Text", "tags": ["manuscripts", "dead-sea-scrolls", "translation", "canon"], "badge": "מגילה", "level": "Research", "overview": "Understand how texts survive: scrolls, codices, fragments, copying, translation, variants, and canon formation.", "objectives": ["Identify Dead Sea Scrolls as crucial Second Temple Jewish manuscripts.", "Explain why translation choices matter.", "Introduce textual variants without fear."], "readings": [{"label": "Great Isaiah Scroll", "url": "https://dss.collections.imj.org.il/isaiah"}, {"label": "Leon Levy Dead Sea Scrolls Digital Library", "url": "https://www.deadseascrolls.org.il/?locale=en_US"}], "lesson": "Ancient texts survive through copying. Variants are not an embarrassment; they are the footprint of transmission. The Dead Sea Scrolls are especially important for understanding Jewish scripture and diversity near the time of Jesus, even though they do not directly narrate Jesus' life.", "activity": "Compare two translations of Isaiah 53 or John 1 and note interpretive differences.", "quiz": [{"q": "What are textual variants?", "choices": ["Differences among manuscript copies", "Only modern typos in blogs", "Roman taxes", "Maps"], "answer": 0, "explain": "Variants are differences among manuscript witnesses."}, {"q": "Why are the Dead Sea Scrolls useful here?", "choices": ["They illuminate Second Temple Jewish texts and contexts", "They are written by Jesus", "They contain the entire New Testament", "They are medieval paintings"], "answer": 0, "explain": "They illuminate Jewish textual culture around the era."}]}, {"id": "islam", "title": "ʿĪsā ibn Maryam in Islam", "era": "Qur'anic and Islamic tradition", "lens": "Comparative", "tags": ["islam", "quran", "isa", "maryam", "comparative"], "badge": "مريم", "level": "Comparative", "overview": "Study Jesus in the Qur'an and Islamic tradition: Messiah, Word from God, prophet, son of Mary, signs, and differing crucifixion interpretation.", "objectives": ["Identify key Qur'anic titles for Jesus/ʿĪsā.", "Compare birth, signs, and crucifixion teachings with Christian narratives.", "Practice respectful comparative reading."], "readings": [{"label": "Qur'an 3:45 — Messiah, Jesus son of Mary", "url": "https://quran.com/en/ali-imran/45"}, {"label": "Qur'an 4:157 — Crucifixion difference", "url": "https://quran.com/en/an-nisa/157"}, {"label": "Qur'an 19 — Maryam", "url": "https://quran.com/en/maryam"}], "lesson": "Islam honors ʿĪsā ibn Maryam deeply, while rejecting worship of him as God. The Qur'an calls him Messiah, a Word from God, and son of Mary. It affirms miraculous birth and signs, while diverging sharply from Christian tradition over crucifixion and divine sonship.", "activity": "Create a respectful compare/contrast table: Christian, Muslim, Jewish/historical lenses.", "quiz": [{"q": "How is Jesus named in Arabic Islamic tradition?", "choices": ["ʿĪsā ibn Maryam", "Caesar Augustus", "Pontius Pilate", "Socrates"], "answer": 0, "explain": "ʿĪsā ibn Maryam means Jesus, son of Mary."}, {"q": "What is a key difference in Qur'an 4:157?", "choices": ["It denies that they killed or crucified him in the Christian narrative sense", "It contains the Sermon on the Mount", "It is a Roman tax list", "It names the Twelve apostles"], "answer": 0, "explain": "Qur'an 4:157 is central to Islamic difference on crucifixion."}]}, {"id": "jewish-perspectives", "title": "Jewish Readings & Christian Responsibility", "era": "Ancient to modern", "lens": "Comparative", "tags": ["jewish", "antisemitism", "context", "ethics"], "badge": "שלום", "level": "Comparative", "overview": "Honor Jesus' Jewishness while confronting harmful Christian readings that blamed Jewish people collectively.", "objectives": ["Recognize Jesus, his first followers, and the Gospel world as Jewish.", "Avoid anachronistic portrayals of Judaism as lifeless legalism.", "State clearly why collective blame is false and dangerous."], "readings": [{"label": "Bible Odyssey — Recognizing the Jewishness of Jesus", "url": "https://www.bibleodyssey.org/podcast-gallery/recognizing-the-jewishness-of-jesus/"}, {"label": "Bible Odyssey — Jewish Context of Jesus", "url": "https://www.bibleodyssey.org/articles/the-jewish-context-of-jesus/"}], "lesson": "Jesus' Jewishness is not a footnote; it is essential. A responsible course resists replacement caricatures and teaches the Passion without collective blame. It acknowledges that Christian interpretation has sometimes harmed Jewish communities and commits to truth, repair, and precision.", "activity": "Rewrite one anti-Jewish stereotype as a historically responsible sentence.", "quiz": [{"q": "Why is Jesus' Jewishness central?", "choices": ["His teachings, scripture, festivals, and world were Jewish", "He lived in medieval Europe", "He spoke modern English", "It is irrelevant"], "answer": 0, "explain": "Jesus belongs within the Jewish world of the late Second Temple period."}, {"q": "What should the course avoid?", "choices": ["Collective blame and caricature", "Primary sources", "Historical context", "Respect"], "answer": 0, "explain": "The course explicitly rejects collective blame and caricature."}]}, {"id": "global-memory", "title": "Global Memory: Art, Worship & Culture", "era": "2,000 years of reception", "lens": "Reception", "tags": ["art", "liturgy", "global", "music", "culture"], "badge": "אמן", "level": "Reception", "overview": "Trace how Jesus has been remembered through icons, hymns, murals, manuscripts, liberation movements, films, and local cultures worldwide.", "objectives": ["Distinguish historical Jesus study from reception history.", "Identify how cultures portray Jesus with local visual language.", "Evaluate art as theology, memory, and community identity."], "readings": [{"label": "The Met — Heilbrunn Timeline of Art History: Christianity themes", "url": "https://www.metmuseum.org/toah/"}, {"label": "Project Gutenberg — Bible search", "url": "https://www.gutenberg.org/ebooks/search/?query=bible"}], "lesson": "Every generation paints, sings, argues, prays, and reimagines Jesus. Reception history studies that long memory: Byzantine icons, Ethiopian manuscripts, Black church preaching, Latin American liberation theology, European passion music, Indigenous reinterpretations, and modern film.", "activity": "Choose one artwork of Jesus from any culture. Describe what it emphasizes and what it leaves out.", "quiz": [{"q": "What is reception history?", "choices": ["How later communities remember and interpret a figure or text", "A receipt from a store", "A Roman census", "A manuscript error only"], "answer": 0, "explain": "Reception history studies later interpretation and cultural memory."}, {"q": "Why do images of Jesus vary globally?", "choices": ["Communities use local visual languages to express meaning", "There was only one camera image", "All artists copied one Roman coin", "Images are not theology"], "answer": 0, "explain": "Sacred art often translates meaning through local culture."}]}, {"id": "capstone", "title": "Capstone: Build an ARSHIF Dossier", "era": "Research practice", "lens": "Capstone", "tags": ["capstone", "research", "portfolio", "dossier"], "badge": "חותם", "level": "Capstone", "overview": "Complete the course by building a dossier on one theme: parables, Mary, Pilate, Isaiah, Resurrection, Galilee, Islamic Jesus, or global art.", "objectives": ["Ask a focused research question.", "Use at least one primary text and two scholarly/contextual resources.", "Present history, scripture, interpretation, and reflection separately."], "readings": [{"label": "Course Source Library inside this portal", "url": "#sourceLibrary"}, {"label": "Digital Dead Sea Scrolls", "url": "https://dss.collections.imj.org.il/"}, {"label": "Bible Odyssey", "url": "https://www.bibleodyssey.org/"}], "lesson": "A true ARSHIF dossier preserves the layers. Do not flatten the story into one sentence. Gather context, primary texts, manuscript/data notes, interpretive traditions, contested questions, and your own reverent reflection.", "activity": "Create a final dossier with five sections: Question, Sources, Historical Context, Interpretive Traditions, Personal Reflection.", "quiz": [{"q": "What belongs in a strong capstone dossier?", "choices": ["A focused question and sourced layers", "Only a meme", "Only one unsourced opinion", "No primary texts"], "answer": 0, "explain": "The capstone requires clear question, sources, context, interpretation, and reflection."}, {"q": "What should be separated in research notes?", "choices": ["History, scripture, interpretation, and reflection", "All ideas into one blur", "Facts from sources never cited", "Questions from answers"], "answer": 0, "explain": "Separating lenses keeps the dossier honest and useful."}]}], "prophecies": [{"text": "Genesis 12:3 / 22:18", "theme": "Blessing to nations", "gospel": "Matthew 1; Galatians 3", "christian": "Jesus as seed of Abraham through whom blessing reaches nations.", "caution": "Original covenant context concerns Abraham and his descendants; later Christian use is interpretive expansion."}, {"text": "Deuteronomy 18:15-19", "theme": "Prophet like Moses", "gospel": "Acts 3:22; John 6", "christian": "Jesus as Moses-like prophet and deliverer.", "caution": "Jewish readings often apply this to prophetic succession in Israel."}, {"text": "2 Samuel 7", "theme": "Davidic covenant", "gospel": "Matthew 1; Luke 1", "christian": "Jesus as Son of David and royal Messiah.", "caution": "Original context concerns David's dynasty and Jerusalem kingship."}, {"text": "Psalm 2", "theme": "Anointed son/king", "gospel": "Mark 1:11; Acts 4", "christian": "Jesus as Messiah/King/Son in royal language.", "caution": "Ancient royal psalm; 'son' language has historical enthronement setting."}, {"text": "Psalm 22", "theme": "Suffering righteous one", "gospel": "Mark 15; Matthew 27; John 19", "christian": "Passion imagery connected to crucifixion and vindication.", "caution": "Psalm is a lament of a sufferer; Gospel writers use it scripturally."}, {"text": "Psalm 110", "theme": "Lord at God's right hand", "gospel": "Mark 12:35-37; Hebrews 1", "christian": "Exalted Messiah sharing divine authority.", "caution": "Royal and priestly interpretations vary."}, {"text": "Isaiah 7:14", "theme": "Child sign / Immanuel", "gospel": "Matthew 1", "christian": "Matthew connects Immanuel motif to Jesus' birth.", "caution": "Original setting is the Syro-Ephraimite crisis; translation and referent are debated."}, {"text": "Isaiah 9:1-7", "theme": "Light in Galilee, royal child", "gospel": "Matthew 4", "christian": "Jesus' Galilean ministry as light to those in darkness.", "caution": "Original royal and historical context should be studied first."}, {"text": "Isaiah 11", "theme": "Branch from Jesse, Spirit-filled ruler", "gospel": "Luke 4; Romans 15", "christian": "Messianic peace and justice fulfilled in Christ.", "caution": "Jewish readings often remain future-oriented and Israel-centered."}, {"text": "Isaiah 40:3", "theme": "Voice in wilderness", "gospel": "Mark 1; John 1", "christian": "John the Baptist as preparer of the way.", "caution": "Original context announces comfort and return from exile."}, {"text": "Isaiah 52:13–53:12", "theme": "Suffering servant", "gospel": "Acts 8; 1 Peter 2", "christian": "Jesus' suffering and vindication as servant pattern.", "caution": "Jewish readings often identify the servant with Israel or a righteous remnant."}, {"text": "Micah 5:2", "theme": "Bethlehem ruler", "gospel": "Matthew 2", "christian": "Birthplace tradition tied to Davidic ruler hope.", "caution": "Text's historical setting and chapter divisions require close reading."}, {"text": "Zechariah 9:9", "theme": "King riding a donkey", "gospel": "Mark 11; Matthew 21; John 12", "christian": "Triumphal entry as enacted fulfillment.", "caution": "Prophetic royal imagery in Zechariah speaks to restoration and peace."}, {"text": "Zechariah 12:10", "theme": "Looking on the pierced one", "gospel": "John 19", "christian": "John connects piercing language to crucifixion.", "caution": "Hebrew text and interpretive traditions vary."}, {"text": "Daniel 7:13-14", "theme": "One like a son of man", "gospel": "Mark 14; Matthew 24", "christian": "Son of Man title connected to suffering and exaltation.", "caution": "Daniel's apocalyptic symbolism has corporate and messianic readings."}, {"text": "Hosea 11:1", "theme": "Out of Egypt", "gospel": "Matthew 2", "christian": "Matthew reads Jesus' childhood as recapitulating Israel's story.", "caution": "Original text refers to Israel's exodus; Matthew uses typology."}], "timeline": [{"date": "c. 6–4 BCE?", "title": "Birth traditions", "detail": "Matthew and Luke locate Jesus' birth under Herodian/Roman-era conditions; dates remain debated."}, {"date": "Early 1st c.", "title": "Nazareth upbringing", "detail": "Gospels associate Jesus with Nazareth in Galilee."}, {"date": "c. 20s–30s CE", "title": "John the Baptist", "detail": "Jesus is baptized by John and begins public proclamation."}, {"date": "Public ministry", "title": "Galilee and surrounding regions", "detail": "Teaching, healing, parables, table fellowship, and debates unfold."}, {"date": "Passover season", "title": "Jerusalem final week", "detail": "Entry, Temple action, teaching controversies, final meal, arrest."}, {"date": "c. 30s CE", "title": "Crucifixion under Pilate", "detail": "Roman execution under Pontius Pilate is central to the Gospel Passion narratives and later non-Christian references."}, {"date": "After crucifixion", "title": "Resurrection proclamation", "detail": "Followers proclaim that God raised Jesus; appearances and mission shape early communities."}, {"date": "30s–60s CE", "title": "Earliest movement", "detail": "Jerusalem, Antioch, Paul, Gentile inclusion, letters, and mission."}, {"date": "70 CE", "title": "Temple destroyed", "detail": "Roman destruction of the Second Temple reshapes Jewish and Christian memory."}, {"date": "1st–2nd c.", "title": "Gospels and external witnesses", "detail": "Gospels are written and copied; Josephus, Tacitus, Pliny, and others mention Jesus-related movements."}], "glossary": [{"term": "Yahushua / Yeshua / Jesus", "def": "Related name forms used across Semitic, Greek/Latin, English, and devotional traditions."}, {"term": "Messiah / Christ", "def": "Anointed one; a title loaded with royal, priestly, prophetic, and political meanings."}, {"term": "Second Temple Judaism", "def": "Jewish life and literature during the era of the Second Temple, ending with its destruction in 70 CE."}, {"term": "Gospel", "def": "A theological narrative proclaiming Jesus' life, death, resurrection, and meaning."}, {"term": "Synoptic Gospels", "def": "Matthew, Mark, and Luke, so called because they share many stories and structures."}, {"term": "Logos", "def": "Greek term translated Word in John 1, carrying meanings of speech, reason, order, and divine self-expression."}, {"term": "Son of Man", "def": "A title Jesus uses frequently; connected by many interpreters to Danielic/apocalyptic imagery."}, {"term": "Kingdom of God", "def": "God's reign, rule, justice, mercy, restoration, and transforming presence."}, {"term": "Parable", "def": "A concise teaching story or comparison that opens layered moral and spiritual insight."}, {"term": "Typology", "def": "An interpretive pattern where earlier scripture/events are seen as anticipating or shaping later fulfillment."}, {"term": "Passover", "def": "Jewish festival remembering deliverance from Egypt; the Passion narratives are set around it."}, {"term": "Crucifixion", "def": "Roman public execution by suspension, used as terror, humiliation, and political control."}, {"term": "Resurrection", "def": "Christian proclamation that God raised Jesus from the dead; central to early Christian faith."}, {"term": "Testimonium Flavianum", "def": "The debated passage in Josephus' Antiquities that refers to Jesus."}, {"term": "ʿĪsā ibn Maryam", "def": "Arabic Qur'anic name/title: Jesus, son of Mary."}, {"term": "Dossier", "def": "An ARSHIF research packet with context, sources, themes, interpretive cautions, and notes."}], "sources": [{"id": "matthew", "title": "Gospel of Matthew", "type": "Primary Scripture", "period": "1st c. CE tradition/text", "url": "https://www.biblegateway.com/passage/?search=Matthew&version=KJV", "note": "Genealogy, teaching blocks, fulfillment motifs, Passion and resurrection."}, {"id": "mark", "title": "Gospel of Mark", "type": "Primary Scripture", "period": "1st c. CE tradition/text", "url": "https://www.biblegateway.com/passage/?search=Mark&version=KJV", "note": "Fast-moving narrative of kingdom proclamation, conflict, suffering, and discipleship."}, {"id": "luke", "title": "Gospel of Luke", "type": "Primary Scripture", "period": "1st c. CE tradition/text", "url": "https://www.biblegateway.com/passage/?search=Luke&version=KJV", "note": "Birth songs, Spirit, poor and outsiders, parables, Jerusalem journey."}, {"id": "john", "title": "Gospel of John", "type": "Primary Scripture", "period": "1st c. CE tradition/text", "url": "https://www.biblegateway.com/passage/?search=John&version=KJV", "note": "Logos, signs, long discourses, passion, resurrection appearances."}, {"id": "paul-1cor15", "title": "1 Corinthians 15", "type": "Primary Scripture", "period": "Pauline letter", "url": "https://www.biblegateway.com/passage/?search=1%20Corinthians%2015&version=KJV", "note": "Early resurrection proclamation and theological argument."}, {"id": "isaiah-scroll", "title": "Great Isaiah Scroll", "type": "Manuscript Resource", "period": "c. 125 BCE", "url": "https://dss.collections.imj.org.il/isaiah", "note": "One of the oldest substantial witnesses to Isaiah."}, {"id": "dss", "title": "Leon Levy Dead Sea Scrolls Digital Library", "type": "Manuscript Resource", "period": "Second Temple era", "url": "https://www.deadseascrolls.org.il/?locale=en_US", "note": "Digitized scroll fragments and metadata."}, {"id": "sefaria-isaiah53", "title": "Sefaria — Isaiah 53", "type": "Hebrew Bible / Tanakh", "period": "Ancient Israel / reception", "url": "https://www.sefaria.org/Isaiah.53?lang=bi", "note": "Useful for comparing Hebrew and English traditions."}, {"id": "sefaria-ps22", "title": "Sefaria — Psalm 22", "type": "Hebrew Bible / Tanakh", "period": "Ancient Israel / reception", "url": "https://www.sefaria.org/Psalms.22?lang=bi", "note": "Important in Passion reception."}, {"id": "sefaria-dan7", "title": "Sefaria — Daniel 7", "type": "Hebrew Bible / Tanakh", "period": "Apocalyptic text", "url": "https://www.sefaria.org/Daniel.7?lang=bi", "note": "Important for Son of Man interpretation."}, {"id": "bibleodyssey-jewish", "title": "Bible Odyssey — Jewish Context of Jesus", "type": "Scholarly Context", "period": "Modern educational resource", "url": "https://www.bibleodyssey.org/articles/the-jewish-context-of-jesus/", "note": "Strong context for Jesus inside Jewish life."}, {"id": "bibleodyssey-gospel", "title": "Bible Odyssey — What Is a Gospel?", "type": "Scholarly Context", "period": "Modern educational resource", "url": "https://www.bibleodyssey.org/articles/what-is-a-gospel/", "note": "Introduces Gospel genre questions."}, {"id": "bibleodyssey-synagogue", "title": "Bible Odyssey — First-Century Synagogues", "type": "Scholarly Context", "period": "Modern educational resource", "url": "https://www.bibleodyssey.org/articles/first-century-synagogues/", "note": "Context for synagogue scenes."}, {"id": "bibleodyssey-aramaic", "title": "Bible Odyssey — Aramaic Literature in Dead Sea Scrolls", "type": "Scholarly Context", "period": "Modern educational resource", "url": "https://www.bibleodyssey.org/articles/aramaic-literature-in-the-dead-sea-scrolls/", "note": "Language context for Jewish Palestine."}, {"id": "bibleodyssey-christ", "title": "Bible Odyssey — Christ", "type": "Scholarly Context", "period": "Modern educational resource", "url": "https://www.bibleodyssey.org/articles/christ/", "note": "Messiah/Christ titles and context."}, {"id": "pilate", "title": "Bible Odyssey — Pontius Pilate", "type": "Scholarly Context", "period": "Modern educational resource", "url": "https://www.bibleodyssey.org/articles/pontius-pilate/", "note": "Pilate as Roman governor/prefect in Judea."}, {"id": "josephus", "title": "Josephus — Antiquities 18", "type": "Ancient External Witness", "period": "1st c. CE author", "url": "https://penelope.uchicago.edu/josephus/ant-18.html", "note": "Includes debated reference to Jesus and John the Baptist."}, {"id": "perseus-josephus", "title": "Perseus Catalog — Jewish Antiquities", "type": "Ancient External Witness", "period": "1st c. CE author", "url": "https://catalog.perseus.org/catalog/urn:cts:greekLit:tlg0526.tlg001", "note": "Catalog and text record for Josephus."}, {"id": "tacitus", "title": "Tacitus — Annals 15.44", "type": "Ancient External Witness", "period": "early 2nd c. CE author", "url": "https://www.perseus.tufts.edu/hopper/text?doc=Tac.%20Ann.%2015.44", "note": "Roman reference to Christus and Christians under Nero."}, {"id": "quran3", "title": "Qur'an 3:45", "type": "Islamic Scripture", "period": "Qur'anic text", "url": "https://quran.com/en/ali-imran/45", "note": "Announces Messiah, Jesus son of Mary, as a Word from God."}, {"id": "quran4", "title": "Qur'an 4:157", "type": "Islamic Scripture", "period": "Qur'anic text", "url": "https://quran.com/en/an-nisa/157", "note": "Key text for Islamic difference on crucifixion."}, {"id": "quran19", "title": "Qur'an 19 — Maryam", "type": "Islamic Scripture", "period": "Qur'anic text", "url": "https://quran.com/en/maryam", "note": "Mary and Jesus in Qur'anic narrative."}, {"id": "usccb-matthew", "title": "USCCB — Introduction to Matthew", "type": "Bible Study Resource", "period": "Modern church resource", "url": "https://bible.usccb.org/bible/matthew/0", "note": "Helpful Gospel overview and notes."}, {"id": "project-gutenberg", "title": "Project Gutenberg — Bible search", "type": "Open Text Library", "period": "Digital library", "url": "https://www.gutenberg.org/ebooks/search/?query=bible", "note": "Public-domain Bible-related texts and translations."}], "findings": ["Your alpha already has a working navigation renderer and eight core sections.", "It imports Google Fonts, so it is not fully self-contained.", "The CSS uses :root and body globally, so it can collide if pasted inside another portal.", "The left nav note and buttons are set to 24px, which can feel oversized on desktop and crowded on mobile.", "The content is devotional and useful, but it is not yet a course engine: no objectives, readings, quizzes, progress, search, glossary, source library, or dossier/notes system."], "generated": "2026-07-04"};
+  const STORAGE_KEY = "arshif-yahushua-course-v1";
+  const state = {
+    tab: "course",
+    filter: "All",
+    search: "",
+    activeModule: DATA.modules[0].id,
+    progress: loadProgress()
+  };
+
+  const el = {
+    tabs: document.getElementById("ayTabs"),
+    filters: document.getElementById("ayFilters"),
+    moduleList: document.getElementById("ayModuleList"),
+    search: document.getElementById("aySearch"),
+    courseView: document.getElementById("ayCourseView"),
+    timeline: document.getElementById("ayTimeline"),
+    prophecy: document.getElementById("ayProphecy"),
+    sources: document.getElementById("aySources"),
+    glossary: document.getElementById("ayGlossary"),
+    report: document.getElementById("ayReport"),
+    progressFill: document.getElementById("ayProgressFill"),
+    progressText: document.getElementById("ayProgressText"),
+    dossier: document.getElementById("ayDossier"),
+    dossierHead: document.getElementById("ayDossierHead"),
+    dossierTitle: document.getElementById("ayDossierTitle"),
+    dossierMeta: document.getElementById("ayDossierMeta"),
+    dossierBody: document.getElementById("ayDossierBody")
+  };
+
+  function safeText(value){
+    return String(value ?? "").replace(/[&<>"']/g, function(ch){
+      return ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#039;"})[ch];
+    });
+  }
+
+  function loadProgress(){
+    try {
+      const raw = localStorage.getItem(STORAGE_KEY);
+      if(raw) return JSON.parse(raw);
+    } catch(err) {}
+    return { completed: {}, quiz: {}, notes: {}, globalNotes: "" };
+  }
+
+  function saveProgress(){
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(state.progress));
+    renderProgress();
+    if(state.tab === "report") renderReport();
+  }
+
+  function moduleIndex(id){
+    return DATA.modules.findIndex(m => m.id === id);
+  }
+
+  function getActiveModule(){
+    return DATA.modules.find(m => m.id === state.activeModule) || DATA.modules[0];
+  }
+
+  function allFilters(){
+    const f = new Set(["All"]);
+    DATA.modules.forEach(m => {
+      f.add(m.lens);
+      m.tags.forEach(t => f.add(t));
+    });
+    return Array.from(f);
+  }
+
+  function matchesSearch(obj, fields){
+    if(!state.search.trim()) return true;
+    const q = state.search.toLowerCase();
+    return fields.map(k => {
+      const v = obj[k];
+      return Array.isArray(v) ? v.join(" ") : String(v ?? "");
+    }).join(" ").toLowerCase().includes(q);
+  }
+
+  function filteredModules(){
+    return DATA.modules.filter(m => {
+      const f = state.filter === "All" || m.lens === state.filter || m.tags.includes(state.filter);
+      const s = matchesSearch(m, ["title","era","lens","tags","overview","lesson"]);
+      return f && s;
+    });
+  }
+
+  function setTab(tab){
+    state.tab = tab;
+    document.querySelectorAll("#arshifYahushuaCourse .ay-tab").forEach(btn => btn.classList.toggle("active", btn.dataset.tab === tab));
+    document.querySelectorAll("#arshifYahushuaCourse .ay-view").forEach(v => v.classList.remove("active"));
+    const view = document.getElementById("view-" + tab);
+    if(view) view.classList.add("active");
+    if(tab === "timeline") renderTimeline();
+    if(tab === "prophecy") renderProphecy();
+    if(tab === "sources") renderSources();
+    if(tab === "glossary") renderGlossary();
+    if(tab === "report") renderReport();
+  }
+
+  function renderFilters(){
+    el.filters.innerHTML = allFilters().map(f => `<button class="ay-chip ${f === state.filter ? "active" : ""}" data-filter="${safeText(f)}">${safeText(f)}</button>`).join("");
+  }
+
+  function renderModuleList(){
+    const mods = filteredModules();
+    el.moduleList.innerHTML = mods.length ? mods.map((m) => {
+      const idx = moduleIndex(m.id) + 1;
+      const done = state.progress.completed[m.id] ? "✓" : "";
+      return `<button class="ay-module-button ${m.id === state.activeModule ? "active" : ""}" data-module="${m.id}">
+        <span class="num">${String(idx).padStart(2,"0")}</span>${safeText(m.title)} <span style="float:right;color:var(--ay-green)">${done}</span>
+        <span class="meta">${safeText(m.lens)} · ${safeText(m.level)} · ${safeText(m.era)}</span>
+      </button>`;
+    }).join("") : `<div class="ay-empty">No modules match this search/filter.</div>`;
+  }
+
+  function renderCourse(){
+    const m = getActiveModule();
+    const idx = moduleIndex(m.id) + 1;
+    const completed = !!state.progress.completed[m.id];
+    const quizScore = state.progress.quiz[m.id]?.score;
+    const notes = state.progress.notes[m.id] || "";
+    const readLinks = m.readings.map(r => `<a href="${safeText(r.url)}" target="_blank" rel="noopener">${safeText(r.label)} ↗</a>`).join("");
+    el.courseView.innerHTML = `
+      <div class="ay-course-hero">
+        <article class="ay-card">
+          <div class="ay-title-row">
+            <div>
+              <div class="ay-meta-line">Module ${String(idx).padStart(2,"0")} · ${safeText(m.lens)} · ${safeText(m.level)} · ${safeText(m.era)}</div>
+              <h2>${safeText(m.title)}</h2>
+            </div>
+            <span class="ay-badge" aria-hidden="true">${safeText(m.badge)}</span>
+          </div>
+          <p class="ay-text">${safeText(m.overview)}</p>
+          <div class="ay-pills">${m.tags.map(t => `<span class="ay-pill">${safeText(t)}</span>`).join("")}</div>
+          <div class="ay-header-actions" style="justify-content:flex-start">
+            <button class="ay-btn primary" id="ayCompleteBtn">${completed ? "Completed ✓" : "Mark Complete"}</button>
+            <button class="ay-btn" id="ayDossierBtn">Open Dossier</button>
+            <button class="ay-btn" id="ayNextBtn">Next Lesson</button>
+          </div>
+          ${quizScore !== undefined ? `<p class="ay-small">Saved quiz score: ${quizScore} / ${m.quiz.length}</p>` : ""}
+        </article>
+        <aside class="ay-card">
+          <h3>Required Reading</h3>
+          <div class="ay-reading-list">${readLinks}</div>
+          <p class="ay-small">Links are reference doors. The portal works offline; external readings open when connected.</p>
+        </aside>
+      </div>
+
+      <section class="ay-grid-2">
+        <article class="ay-card">
+          <h3>Learning Objectives</h3>
+          <ul class="ay-clean">${m.objectives.map(o => `<li>${safeText(o)}</li>`).join("")}</ul>
+        </article>
+        <article class="ay-card">
+          <h3>Studio Activity</h3>
+          <p class="ay-text">${safeText(m.activity)}</p>
+        </article>
+      </section>
+
+      <article class="ay-card" style="margin-top:14px">
+        <h3>Lesson Chamber</h3>
+        <p class="ay-text">${safeText(m.lesson)}</p>
+      </article>
+
+      <article class="ay-card" style="margin-top:14px">
+        <h3>Personal Notes</h3>
+        <textarea class="ay-notes" id="ayModuleNotes" placeholder="Write your reflection, prayer, research notes, source questions, or class observations here...">${safeText(notes)}</textarea>
+        <div class="ay-status" id="ayNotesStatus">Notes save automatically in this browser.</div>
+      </article>
+
+      <article class="ay-card ay-quiz-box">
+        <h3>Lesson Quiz</h3>
+        <div id="ayQuiz"></div>
+        <button class="ay-btn primary" id="aySaveQuizBtn">Save Quiz Score</button>
+        <span class="ay-status" id="ayQuizStatus"></span>
+      </article>
+    `;
+    renderQuiz(m);
+    document.getElementById("ayCompleteBtn").addEventListener("click", () => {
+      state.progress.completed[m.id] = !state.progress.completed[m.id];
+      saveProgress();
+      renderAll();
+    });
+    document.getElementById("ayDossierBtn").addEventListener("click", () => openModuleDossier(m));
+    document.getElementById("ayNextBtn").addEventListener("click", () => {
+      const next = DATA.modules[(idx) % DATA.modules.length];
+      state.activeModule = next.id;
+      renderAll();
+      setTab("course");
+    });
+    document.getElementById("ayModuleNotes").addEventListener("input", (ev) => {
+      state.progress.notes[m.id] = ev.target.value;
+      saveProgress();
+      const status = document.getElementById("ayNotesStatus");
+      status.textContent = "Saved at " + new Date().toLocaleTimeString();
+    });
+  }
+
+  function renderQuiz(m){
+    const box = document.getElementById("ayQuiz");
+    const existing = state.progress.quiz[m.id] || { answers: [] };
+    box.innerHTML = m.quiz.map((q, qi) => `
+      <div class="ay-question" data-q="${qi}">
+        <strong>${qi+1}. ${safeText(q.q)}</strong>
+        ${q.choices.map((c, ci) => `<button class="ay-choice" data-q="${qi}" data-choice="${ci}">${safeText(c)}</button>`).join("")}
+        <div class="ay-feedback" id="feedback-${qi}"></div>
+      </div>
+    `).join("");
+    box.querySelectorAll(".ay-choice").forEach(btn => {
+      btn.addEventListener("click", () => {
+        const qi = Number(btn.dataset.q);
+        const ci = Number(btn.dataset.choice);
+        existing.answers[qi] = ci;
+        const q = m.quiz[qi];
+        const group = box.querySelectorAll(`.ay-choice[data-q="${qi}"]`);
+        group.forEach(choice => {
+          const val = Number(choice.dataset.choice);
+          choice.classList.toggle("correct", val === q.answer);
+          choice.classList.toggle("wrong", val === ci && ci !== q.answer);
+        });
+        document.getElementById("feedback-" + qi).textContent = (ci === q.answer ? "Correct. " : "Review. ") + q.explain;
+      });
+    });
+    document.getElementById("aySaveQuizBtn").addEventListener("click", () => {
+      let score = 0;
+      m.quiz.forEach((q, i) => { if(existing.answers[i] === q.answer) score++; });
+      state.progress.quiz[m.id] = { answers: existing.answers, score, total: m.quiz.length };
+      saveProgress();
+      document.getElementById("ayQuizStatus").textContent = ` Saved: ${score} / ${m.quiz.length}`;
+      renderModuleList();
+    });
+  }
+
+  function openModuleDossier(m){
+    const relatedSources = DATA.sources.filter(s => {
+      const hay = (s.title + " " + s.type + " " + s.note).toLowerCase();
+      return m.tags.some(t => hay.includes(t.replace("-"," "))) || m.readings.some(r => r.label.includes(s.title.split(" ")[0]));
+    }).slice(0, 6);
+    openDossier(
+      m.title,
+      `${m.lens} · ${m.level} · ${m.era}`,
+      `
+      <p class="ay-text">${safeText(m.overview)}</p>
+      <h3>Historical / Textual Context</h3>
+      <p class="ay-text">${safeText(m.lesson)}</p>
+      <h3>Objectives</h3>
+      <ul class="ay-clean">${m.objectives.map(o => `<li>${safeText(o)}</li>`).join("")}</ul>
+      <h3>Reading Doors</h3>
+      <div class="ay-reading-list">${m.readings.map(r => `<a href="${safeText(r.url)}" target="_blank" rel="noopener">${safeText(r.label)} ↗</a>`).join("")}</div>
+      ${relatedSources.length ? `<h3>Related Source Library Cards</h3><ul class="ay-clean">${relatedSources.map(s => `<li><strong>${safeText(s.title)}:</strong> ${safeText(s.note)}</li>`).join("")}</ul>` : ""}
+      <h3>Dossier Prompt</h3>
+      <p class="ay-text">${safeText(m.activity)}</p>
+      `
+    );
+  }
+
+  function openSourceDossier(s){
+    openDossier(
+      s.title,
+      `${s.type} · ${s.period}`,
+      `<p class="ay-text">${safeText(s.note)}</p>
+       <div class="ay-reading-list"><a href="${safeText(s.url)}" target="_blank" rel="noopener">Open source link ↗</a></div>
+       <h3>Research Questions</h3>
+       <ul class="ay-clean">
+         <li>Who created or preserved this source?</li>
+         <li>What does it directly say, and what does it not say?</li>
+         <li>What interpretive tradition uses it, and how?</li>
+         <li>What caution should be kept in the margin?</li>
+       </ul>`
+    );
+  }
+
+  function openDossier(title, meta, body){
+    el.dossierTitle.textContent = title;
+    el.dossierMeta.textContent = meta;
+    el.dossierBody.innerHTML = body;
+    el.dossier.classList.add("open");
+  }
+
+  function renderTimeline(){
+    el.timeline.innerHTML = DATA.timeline.map(item => `
+      <div class="ay-time-item">
+        <div class="ay-time-date">${safeText(item.date)}</div>
+        <div><strong>${safeText(item.title)}</strong><p class="ay-text" style="margin:6px 0 0">${safeText(item.detail)}</p></div>
+      </div>
+    `).join("");
+  }
+
+  function renderProphecy(){
+    const rows = DATA.prophecies.filter(p => matchesSearch(p, ["text","theme","gospel","christian","caution"]));
+    el.prophecy.innerHTML = rows.length ? `
+      <table class="ay-prophecy-table">
+        <thead><tr><th>Text</th><th>Theme</th><th>Gospel / NT Link</th><th>Christian Reading</th><th>Interpretive Caution</th></tr></thead>
+        <tbody>
+          ${rows.map(p => `<tr>
+            <td data-label="Text">${safeText(p.text)}</td>
+            <td data-label="Theme">${safeText(p.theme)}</td>
+            <td data-label="Gospel / NT Link">${safeText(p.gospel)}</td>
+            <td data-label="Christian Reading">${safeText(p.christian)}</td>
+            <td data-label="Interpretive Caution">${safeText(p.caution)}</td>
+          </tr>`).join("")}
+        </tbody>
+      </table>` : `<div class="ay-empty">No prophecy rows match this search.</div>`;
+  }
+
+  function renderSources(){
+    const rows = DATA.sources.filter(s => matchesSearch(s, ["title","type","period","note"]));
+    el.sources.innerHTML = rows.length ? rows.map(s => `
+      <article class="ay-source-card">
+        <div class="type">${safeText(s.type)}</div>
+        <h3>${safeText(s.title)}</h3>
+        <p><strong>${safeText(s.period)}</strong><br>${safeText(s.note)}</p>
+        <div class="ay-header-actions" style="justify-content:flex-start;margin-top:auto">
+          <a class="ay-btn" href="${safeText(s.url)}" target="_blank" rel="noopener">Read ↗</a>
+          <button class="ay-btn" data-source="${safeText(s.id)}">Dossier</button>
+        </div>
+      </article>
+    `).join("") : `<div class="ay-empty">No sources match this search.</div>`;
+    el.sources.querySelectorAll("[data-source]").forEach(btn => {
+      btn.addEventListener("click", () => {
+        const s = DATA.sources.find(x => x.id === btn.dataset.source);
+        if(s) openSourceDossier(s);
+      });
+    });
+  }
+
+  function renderGlossary(){
+    const rows = DATA.glossary.filter(g => matchesSearch(g, ["term","def"]));
+    el.glossary.innerHTML = rows.length ? rows.map(g => `
+      <div class="ay-term"><strong>${safeText(g.term)}</strong><span class="ay-text">${safeText(g.def)}</span></div>
+    `).join("") : `<div class="ay-empty">No glossary terms match this search.</div>`;
+  }
+
+  function renderReport(){
+    const completedCount = DATA.modules.filter(m => state.progress.completed[m.id]).length;
+    const totalQuizEarned = DATA.modules.reduce((sum,m) => sum + (state.progress.quiz[m.id]?.score || 0), 0);
+    const totalQuizPossible = DATA.modules.reduce((sum,m) => sum + (m.quiz.length || 0), 0);
+    el.report.innerHTML = `
+      <div class="ay-grid-3">
+        <div class="ay-card"><h3>Modules Completed</h3><p class="ay-text">${completedCount} / ${DATA.modules.length}</p></div>
+        <div class="ay-card"><h3>Quiz Points</h3><p class="ay-text">${totalQuizEarned} / ${totalQuizPossible}</p></div>
+        <div class="ay-card"><h3>Generated</h3><p class="ay-text">${new Date().toLocaleString()}</p></div>
+      </div>
+      <div style="overflow:auto;margin-top:14px">
+        <table class="ay-report-table">
+          <thead><tr><th>#</th><th>Module</th><th>Completed</th><th>Quiz</th><th>Notes</th></tr></thead>
+          <tbody>
+            ${DATA.modules.map((m,i) => {
+              const q = state.progress.quiz[m.id];
+              const n = (state.progress.notes[m.id] || "").trim();
+              return `<tr><td>${i+1}</td><td>${safeText(m.title)}</td><td>${state.progress.completed[m.id] ? "Yes" : "No"}</td><td>${q ? q.score + " / " + q.total : "—"}</td><td>${n ? "Saved" : "—"}</td></tr>`;
+            }).join("")}
+          </tbody>
+        </table>
+      </div>`;
+  }
+
+  function renderProgress(){
+    const count = DATA.modules.filter(m => state.progress.completed[m.id]).length;
+    const percent = Math.round((count / DATA.modules.length) * 100);
+    el.progressFill.style.width = percent + "%";
+    el.progressText.textContent = `${count} of ${DATA.modules.length} modules completed · ${percent}%`;
+  }
+
+  function renderAll(){
+    renderFilters();
+    renderModuleList();
+    if(state.tab === "course") renderCourse();
+    if(state.tab === "timeline") renderTimeline();
+    if(state.tab === "prophecy") renderProphecy();
+    if(state.tab === "sources") renderSources();
+    if(state.tab === "glossary") renderGlossary();
+    if(state.tab === "report") renderReport();
+    renderProgress();
+  }
+
+  el.tabs.addEventListener("click", (ev) => {
+    const btn = ev.target.closest("[data-tab]");
+    if(btn) setTab(btn.dataset.tab);
+  });
+  document.querySelectorAll("#arshifYahushuaCourse .ay-header-actions [data-tab]").forEach(btn => {
+    btn.addEventListener("click", () => setTab(btn.dataset.tab));
+  });
+  el.filters.addEventListener("click", (ev) => {
+    const btn = ev.target.closest("[data-filter]");
+    if(btn) {
+      state.filter = btn.dataset.filter;
+      renderAll();
+    }
+  });
+  el.moduleList.addEventListener("click", (ev) => {
+    const btn = ev.target.closest("[data-module]");
+    if(btn) {
+      state.activeModule = btn.dataset.module;
+      setTab("course");
+      renderAll();
+    }
+  });
+  el.search.addEventListener("input", () => {
+    state.search = el.search.value;
+    renderAll();
+  });
+  document.getElementById("ayBeginBtn").addEventListener("click", () => {
+    state.activeModule = DATA.modules[0].id;
+    setTab("course");
+    renderAll();
+  });
+  document.getElementById("ayPrintBtn").addEventListener("click", () => {
+    setTab("report");
+    setTimeout(() => window.print(), 100);
+  });
+  document.getElementById("ayDownloadBtn").addEventListener("click", () => {
+    const payload = {
+      portal: "ARSHIF Yahushua Course Portal",
+      generated: new Date().toISOString(),
+      progress: state.progress,
+      modules: DATA.modules.map(m => ({id:m.id,title:m.title}))
+    };
+    const blob = new Blob([JSON.stringify(payload, null, 2)], {type:"application/json"});
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement("a");
+    a.href = url;
+    a.download = "arshif-yahushua-course-notes.json";
+    document.body.appendChild(a);
+    a.click();
+    a.remove();
+    URL.revokeObjectURL(url);
+  });
+  document.getElementById("ayResetBtn").addEventListener("click", () => {
+    if(confirm("Reset all local progress, notes, and quiz scores for this portal?")) {
+      state.progress = { completed: {}, quiz: {}, notes: {}, globalNotes: "" };
+      saveProgress();
+      renderAll();
+    }
+  });
+  document.getElementById("ayDossierClose").addEventListener("click", () => el.dossier.classList.remove("open"));
+
+  // Draggable dossier
+  let drag = null;
+  el.dossierHead.addEventListener("pointerdown", (ev) => {
+    if(ev.target.closest("button")) return;
+    const rect = el.dossier.getBoundingClientRect();
+    drag = { x: ev.clientX - rect.left, y: ev.clientY - rect.top };
+    el.dossierHead.setPointerCapture(ev.pointerId);
+  });
+  el.dossierHead.addEventListener("pointermove", (ev) => {
+    if(!drag) return;
+    const left = Math.max(8, Math.min(window.innerWidth - el.dossier.offsetWidth - 8, ev.clientX - drag.x));
+    const top = Math.max(8, Math.min(window.innerHeight - 80, ev.clientY - drag.y));
+    el.dossier.style.left = left + "px";
+    el.dossier.style.top = top + "px";
+    el.dossier.style.right = "auto";
+  });
+  el.dossierHead.addEventListener("pointerup", () => drag = null);
+  el.dossierHead.addEventListener("pointercancel", () => drag = null);
+
+  renderAll();
+})();
+</script>
+</body>
+</html>
