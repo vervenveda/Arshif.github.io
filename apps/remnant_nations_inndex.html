@@ -1,0 +1,1455 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>The Remnant & The Nations — 8-Week Class Portal</title>
+
+  <!-- Optional font (remove for fully offline) -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800;900&display=swap" rel="stylesheet">
+
+  <style>
+    :root{
+      --bg0:#050712;
+      --bg1:#0b1220;
+      --bg2:#0f1b2f;
+
+      --card: rgba(255,255,255,0.06);
+      --card2: rgba(255,255,255,0.085);
+      --stroke: rgba(255,255,255,0.14);
+
+      --text:#f2f4f8;
+      --muted:#c7cfdd;
+      --soft:#aab4c6;
+
+      --accent:#86f0d7;
+      --accent2:#7fb3ff;
+      --good:#7CFFB2;
+      --warn:#ffd27d;
+      --bad:#ff8a8a;
+
+      --r11: 11px;
+      --r21: 21px;
+
+      --shadow: 0 18px 55px rgba(0,0,0,0.35);
+
+      --base: 22px;         /* never smaller than 22px */
+      --max: 1180px;
+    }
+
+    html,body{height:100%;}
+    body{
+      margin:0;
+      font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      font-size: var(--base);
+      line-height: 1.35;
+      color: var(--text);
+      background:
+        radial-gradient(950px 440px at 18% 10%, rgba(134,240,215,0.12), transparent 60%),
+        radial-gradient(950px 440px at 82% 15%, rgba(127,179,255,0.12), transparent 60%),
+        linear-gradient(180deg, var(--bg0), var(--bg1) 40%, var(--bg2));
+      overflow-x:hidden;
+    }
+
+    a{color: var(--accent2); text-decoration:none;}
+    a:hover{text-decoration:underline;}
+    code{color:var(--accent);}
+
+    .wrap{
+      max-width: var(--max);
+      margin: 0 auto;
+      padding: 0 14px 70px;
+    }
+
+    /* ===============================
+       STICKY POSTURE STATEMENT
+    =============================== */
+    .posture{
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      backdrop-filter: blur(10px);
+      background: linear-gradient(180deg, rgba(5,7,18,0.94), rgba(11,18,32,0.88));
+      border-bottom: 1px solid rgba(255,255,255,0.10);
+    }
+    .postureInner{
+      max-width: var(--max);
+      margin: 0 auto;
+      padding: 12px 14px;
+      display:flex;
+      gap:12px;
+      align-items:flex-start;
+      justify-content:space-between;
+      flex-wrap:wrap;
+    }
+    .postureText{
+      flex: 1 1 560px;
+      min-width: 280px;
+      color: var(--text);
+      font-size: 19px;
+      line-height: 1.35;
+    }
+    .postureText b{color:var(--accent);}
+    .postureActions{
+      display:flex;
+      gap:10px;
+      flex-wrap:wrap;
+      align-items:center;
+      justify-content:flex-end;
+    }
+    .tiny{
+      font-size: 16px;
+      color: var(--muted);
+      border: 1px solid rgba(255,255,255,0.14);
+      border-radius: 999px;
+      padding: 6px 10px;
+      background: rgba(0,0,0,0.14);
+      white-space:nowrap;
+      user-select:none;
+      cursor:pointer;
+    }
+    .tiny:hover{border-color: rgba(255,255,255,0.26);}
+    .tiny.good{border-color: rgba(124,255,178,0.35); color: var(--good);}
+    .tiny.warn{border-color: rgba(255,210,125,0.35); color: var(--warn);}
+
+    /* ===============================
+       HEADER
+    =============================== */
+    header{
+      text-align:center;
+      padding: 18px 0 10px;
+      margin-top: 12px;
+    }
+    .title{
+      margin: 0 0 8px;
+      font-size: clamp(28px, 3.6vw, 48px);
+      font-weight: 900;
+      letter-spacing: 0.2px;
+    }
+    .subtitle{
+      margin: 0 auto 12px;
+      max-width: 82ch;
+      color: var(--muted);
+      font-size: 20px;
+    }
+
+    .topbar{
+      display:flex;
+      justify-content:center;
+      gap:10px;
+      flex-wrap:wrap;
+      margin: 12px 0 12px;
+    }
+    .btn{
+      border:1px solid var(--stroke);
+      background: linear-gradient(180deg, rgba(255,255,255,0.10), rgba(255,255,255,0.04));
+      color: var(--text);
+      padding: 10px 14px;
+      border-radius: var(--r21);
+      cursor:pointer;
+      font-size: 20px;
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      box-shadow: 0 10px 24px rgba(0,0,0,0.18);
+      user-select:none;
+    }
+    .btn:hover{transform: translateY(-1px); border-color: rgba(255,255,255,0.24);}
+    .btn:active{transform: translateY(0px);}
+    .btn.secondary{background: rgba(255,255,255,0.05);}
+    .btn.good{border-color: rgba(124,255,178,0.40);}
+    .btn.danger{border-color: rgba(255,138,138,0.40);}
+
+    /* ===============================
+       LAYOUT
+    =============================== */
+    .layout{
+      display:grid;
+      grid-template-columns: 360px 1fr;
+      gap: 14px;
+      align-items:start;
+      margin-top: 10px;
+    }
+    .panel{
+      background: var(--card);
+      border: 1px solid var(--stroke);
+      border-radius: var(--r21);
+      box-shadow: var(--shadow);
+      overflow:hidden;
+    }
+    .panel h2{
+      margin:0;
+      padding: 14px 14px 10px;
+      font-size: 24px;
+      border-bottom: 1px solid rgba(255,255,255,0.10);
+    }
+    .weeklist{
+      padding: 10px;
+      display:flex;
+      flex-direction:column;
+      gap:10px;
+    }
+    .weekbtn{
+      text-align:left;
+      width:100%;
+      border:1px solid var(--stroke);
+      border-radius: var(--r21);
+      padding: 12px 12px;
+      cursor:pointer;
+      background: rgba(255,255,255,0.06);
+      color: var(--text);
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      gap:10px;
+      font-size: 20px;
+    }
+    .weekbtn:hover{background: rgba(255,255,255,0.085);}
+    .weekbtn[aria-current="true"]{
+      outline: 2px solid rgba(134,240,215,0.35);
+      background: rgba(134,240,215,0.10);
+    }
+    .tag{
+      font-size: 16px;
+      padding: 6px 10px;
+      border-radius: 999px;
+      border: 1px solid rgba(255,255,255,0.16);
+      color: var(--muted);
+      background: rgba(0,0,0,0.12);
+      white-space:nowrap;
+    }
+    .tag.locked{border-color: rgba(255,210,125,0.35); color: var(--warn);}
+    .tag.done{border-color: rgba(124,255,178,0.35); color: var(--good);}
+
+    .progress{
+      padding: 12px 14px 16px;
+      color: var(--muted);
+      border-top: 1px solid rgba(255,255,255,0.10);
+      font-size: 19px;
+    }
+    .bar{
+      height: 10px;
+      border-radius: 999px;
+      background: rgba(255,255,255,0.10);
+      overflow:hidden;
+      margin-top: 8px;
+      border: 1px solid rgba(255,255,255,0.12);
+    }
+    .bar > div{
+      height: 100%;
+      width: 0%;
+      background: linear-gradient(90deg, rgba(134,240,215,0.9), rgba(127,179,255,0.9));
+    }
+
+    .content{
+      padding: 14px;
+    }
+    .hero{
+      background: var(--card2);
+      border:1px solid rgba(255,255,255,0.16);
+      border-radius: var(--r21);
+      padding: 14px;
+      margin-bottom: 12px;
+    }
+    .hero .kicker{
+      color: var(--muted);
+      font-size: 18px;
+      margin-bottom: 8px;
+    }
+    .hero .heading{
+      font-size: 30px;
+      font-weight: 900;
+      margin: 0 0 8px;
+    }
+    .hero .idea{
+      margin: 0;
+      color: var(--text);
+    }
+
+    .grid2{
+      display:grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+      margin: 12px 0;
+    }
+
+    .card{
+      background: rgba(255,255,255,0.06);
+      border:1px solid rgba(255,255,255,0.14);
+      border-radius: var(--r21);
+      padding: 14px;
+    }
+    .card h3{
+      margin: 0 0 8px;
+      font-size: 24px;
+    }
+
+    ul{margin: 8px 0 0 22px;}
+    li{margin: 6px 0;}
+
+    .seg{
+      border-radius: var(--r21);
+      border: 1px solid rgba(255,255,255,0.14);
+      background: rgba(255,255,255,0.055);
+      padding: 12px 14px;
+      margin: 10px 0;
+    }
+    .seghead{
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      gap:10px;
+      flex-wrap:wrap;
+      margin-bottom: 6px;
+    }
+    .segtitle{
+      font-weight: 900;
+      font-size: 22px;
+    }
+    .segtime{
+      font-size: 16px;
+      color: var(--muted);
+      border:1px solid rgba(255,255,255,0.16);
+      border-radius: 999px;
+      padding: 5px 10px;
+    }
+
+    .prayerBox{
+      background: rgba(134,240,215,0.08);
+      border: 1px solid rgba(134,240,215,0.22);
+    }
+
+    .note{
+      color: var(--muted);
+      font-size: 18px;
+      margin-top: 8px;
+    }
+
+    /* Context readings */
+    .contextBlock{
+      border-radius: var(--r21);
+      border: 1px solid rgba(255,255,255,0.14);
+      background: rgba(0,0,0,0.10);
+      padding: 12px 14px;
+      margin-top: 10px;
+    }
+    .contextHdr{
+      display:flex;
+      justify-content:space-between;
+      gap:10px;
+      flex-wrap:wrap;
+      align-items:center;
+      margin-bottom: 8px;
+    }
+    .contextTitle{
+      font-weight: 900;
+      font-size: 22px;
+    }
+    .badge{
+      font-size: 15px;
+      padding: 6px 10px;
+      border-radius: 999px;
+      border: 1px solid rgba(255,255,255,0.16);
+      background: rgba(255,255,255,0.05);
+      color: var(--muted);
+      white-space:nowrap;
+    }
+
+    /* Quiz */
+    .quiz .q{
+      margin: 12px 0;
+      padding: 12px;
+      border-radius: var(--r21);
+      border: 1px solid rgba(255,255,255,0.14);
+      background: rgba(0,0,0,0.08);
+    }
+    .quiz .qtitle{
+      font-weight: 900;
+      margin-bottom: 8px;
+    }
+    label.option{
+      display:block;
+      margin: 8px 0;
+      color: var(--text);
+      cursor:pointer;
+    }
+    input[type="radio"]{transform: scale(1.2); margin-right: 10px;}
+
+    textarea{
+      width:100%;
+      min-height: 110px;
+      resize: vertical;
+      padding: 10px 12px;
+      border-radius: var(--r11);
+      border: 1px solid rgba(255,255,255,0.18);
+      background: rgba(255,255,255,0.06);
+      color: var(--text);
+      font-size: 20px;
+      outline:none;
+    }
+    textarea:focus{border-color: rgba(127,179,255,0.55);}
+
+    .row{
+      display:flex;
+      gap:10px;
+      flex-wrap:wrap;
+      align-items:center;
+      margin-top: 10px;
+    }
+    .statusline{
+      color: var(--muted);
+      font-size: 18px;
+    }
+    .score{
+      font-weight: 900;
+      color: var(--good);
+    }
+
+    details{
+      margin-top: 10px;
+      border:1px solid rgba(255,255,255,0.12);
+      border-radius: var(--r21);
+      padding: 10px 12px;
+      background: rgba(255,255,255,0.04);
+    }
+    summary{
+      cursor:pointer;
+      font-weight: 900;
+    }
+
+    .foot{
+      text-align:center;
+      color: var(--muted);
+      margin: 18px 0 0;
+      font-size: 18px;
+    }
+
+    @media (max-width: 980px){
+      .layout{grid-template-columns: 1fr;}
+      .grid2{grid-template-columns: 1fr;}
+      .postureText{font-size: 18px;}
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- Sticky posture statement (always visible) -->
+  <div class="posture" id="postureBar">
+    <div class="postureInner">
+      <div class="postureText" id="postureText">
+        <b>Course Posture Statement:</b><br>
+        We will not equate any modern nation-state with the Kingdom of God. In the New Covenant, God’s people are identified by
+        <b>faith, humility, repentance, and allegiance to Yahushua (Jesus)</b>. <br>We learn from Israel’s story as warning and witness,
+        but we follow Messiah as our perfect example. Gentile inclusion is real, and Scripture strictly forbids pride or contempt:
+        we reject boasting and honor God’s mercy toward <b>all peoples</b>.
+      </div>
+      <div class="postureActions">
+        <div class="tiny good" id="btnCopyPosture">Copy</div>
+        <div class="tiny warn" id="btnTogglePosture">Hide</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="wrap">
+    <header>
+      <h1 class="title">The Remnant & the Nations</h1>
+      <p class="subtitle">
+        An 8-week self-paced study: God’s people as the humble faithful; the remnant theme; Jesus’ warnings against presumption;
+        and the Scriptural case for Gentiles inheriting the Kingdom through faith in Messiah, without boasting.
+      </p>
+
+      <div class="topbar">
+        <button class="btn secondary" id="btnPrint">🖨️ Print Lesson</button>
+        <button class="btn secondary" id="btnExport">⬇️ Export Progress</button>
+        <button class="btn danger" id="btnReset">↺ Reset</button>
+      </div>
+    </header>
+
+    <div class="layout">
+      <aside class="panel">
+        <h2>Weeks</h2>
+        <div class="weeklist" id="weekList"></div>
+        <div class="progress">
+          <div id="progressText">Progress: 0 / 8 complete</div>
+          <div class="bar"><div id="progressBar"></div></div>
+          <div class="note">Sequence locks by default: complete a week to unlock the next.</div>
+        </div>
+      </aside>
+
+      <main class="panel">
+        <div class="content" id="content"></div>
+      </main>
+    </div>
+
+    <div class="foot">
+      Thank You for Visiting
+      
+    </div>
+  </div>
+
+<script>
+/* =========================================================
+   STORAGE
+========================================================= */
+const STORAGE_KEY = "remnant_nations_portal_v1";
+
+/* =========================================================
+   UTIL
+========================================================= */
+function escapeHtml(str){
+  return String(str ?? "")
+    .replaceAll("&","&amp;")
+    .replaceAll("<","&lt;")
+    .replaceAll(">","&gt;")
+    .replaceAll('"',"&quot;")
+    .replaceAll("'","&#039;");
+}
+function gatewayUrl(ref){
+  return "https://www.biblegateway.com/passage/?search=" + encodeURIComponent(ref);
+}
+function speakText(text){
+  try{
+    if(!("speechSynthesis" in window)){
+      alert("Text-to-speech is not supported in this browser.");
+      return;
+    }
+    window.speechSynthesis.cancel();
+    const u = new SpeechSynthesisUtterance(text);
+    u.rate = 0.95; u.pitch = 1.0; u.volume = 1.0;
+    window.speechSynthesis.speak(u);
+  }catch(e){
+    alert("Unable to play text-to-speech on this device.");
+  }
+}
+
+/* =========================================================
+   RESOURCES (optional)
+========================================================= */
+const RESOURCES = [
+  { name:"BibleGateway (passage lookup)", url:"https://www.biblegateway.com/" },
+  { name:"STEPBible (study tools)", url:"https://www.stepbible.org/" },
+  { name:"BibleProject (themes + videos)", url:"https://bibleproject.com/" },
+  { name:"Blue Letter Bible (study tools)", url:"https://www.blueletterbible.org/" }
+];
+
+/* =========================================================
+   30-MIN FLOW TEMPLATE
+========================================================= */
+const FLOW_TEMPLATE = [
+  { name:"Welcome", mins:2, prompts:[
+    "Invite calm focus: truth with humility.",
+    "Name today’s theme in one sentence."
+  ]},
+  { name:"Read the Passage Out Loud", mins:3, prompts:[
+    "Read slowly; consider reading twice.",
+    "Notice repeated words or contrasts."
+  ]},
+  { name:"Observe", mins:6, prompts:[
+    "What does the text actually say?",
+    "What is emphasized? Who is addressed?",
+    "What warnings or promises appear?"
+  ]},
+  { name:"Interpret", mins:8, prompts:[
+    "What did it mean to the original audience?",
+    "What does it reveal about God’s character?",
+    "How does it connect to Messiah and the Kingdom?"
+  ]},
+  { name:"Apply", mins:6, prompts:[
+    "Name one place you need humility or obedience.",
+    "Write one action step for this week.",
+    "Choose one verse to memorize or pray."
+  ]},
+  { name:"Pray", mins:5, prompts:[
+    "Confess, thank, ask, and commit.",
+    "Pray for gentleness and truth together."
+  ]}
+];
+
+/* =========================================================
+   LESSONS (8 weeks — exact theological spine)
+========================================================= */
+const LESSONS = [
+  {
+    week: 1,
+    title: "Covenant People, Global Purpose",
+    bigIdea: "God’s calling begins with covenant but aims outward: blessing to Abraham’s family is meant to reach the nations.",
+    goals: [
+      "See how Scripture links ‘God’s people’ to faithfulness and mission, not mere identity claims",
+      "Identify the nations thread from promise to fulfillment",
+      "Adopt a humble posture: no boasting, no presumption"
+    ],
+    passages: ["Genesis 12:1–3", "Exodus 19:5–6", "Isaiah 49:6"],
+    openingPrayer:
+      "Father, make us humble and faithful. Teach us Your purposes without pride, and anchor us in Messiah. Let our lives bless others in truth and love. Amen.",
+    flow: JSON.parse(JSON.stringify(FLOW_TEMPLATE)),
+    contextReadings: [
+      {
+        label: "Deuterocanon / Apocrypha (Scripture in Catholic & Orthodox canons; historical/devotional for many Protestants)",
+        items: [
+          "Tobit 13:11–13 — nations honoring God (theme echo)",
+          "Sirach 24 (selected) — wisdom and covenant themes (context)"
+        ]
+      },
+      {
+        label: "Second Temple Jewish Literature (historical context; not in Jewish canon or most Christian canons)",
+        items: [
+          "Jubilees (selected themes) — covenant identity in late Second Temple thought (context)"
+        ]
+      }
+    ],
+    quiz: {
+      tf: { q:"Genesis 12:3 contains a promise that blessing will reach all families/nations.", a:true },
+      mc1: { q:"Exodus 19:5–6 calls Israel a…", options:[
+        "Nation of merchants only",
+        "Kingdom of priests and a holy nation",
+        "People with no mission"
+      ], a:1 },
+      mc2: { q:"Isaiah 49:6 describes God’s servant as a light to…", options:[
+        "One village only",
+        "The nations",
+        "No one"
+      ], a:1 },
+      essay1: { q:"In your own words, how does covenant purpose point outward toward the nations?" },
+      essay2: { q:"Write one ‘humility vow’ you will keep when discussing God’s people and the Kingdom." },
+      key: {
+        tf:"True.",
+        mc1:"Kingdom of priests and a holy nation.",
+        mc2:"The nations.",
+        essayGuidance:[
+          "Look for: blessing/missional purpose; God’s heart for all peoples.",
+          "Humility vow: no boasting, careful speech, love, Scripture-based claims."
+        ]
+      }
+    }
+  },
+
+  {
+    week: 2,
+    title: "Stubbornness, Idolatry, and Injustice",
+    bigIdea: "Scripture warns that covenant privilege without obedience becomes presumption; God confronts stubbornness and hypocrisy.",
+    goals: [
+      "Recognize the Bible’s pattern of warning against hard hearts",
+      "Understand why idolatry + injustice are treated as covenant-breaking",
+      "Apply the warning to ourselves first (not as a weapon against others)"
+    ],
+    passages: ["Deuteronomy 9:4–6", "Isaiah 1:16–20", "Jeremiah 7:3–11", "Hosea 4:1–2"],
+    openingPrayer:
+      "Lord, keep us from stubbornness. Give us soft hearts, honest repentance, and obedience that matches our words. Amen.",
+    flow: JSON.parse(JSON.stringify(FLOW_TEMPLATE)),
+    contextReadings: [
+      {
+        label: "Deuterocanon / Apocrypha (Scripture in Catholic & Orthodox canons; historical/devotional for many Protestants)",
+        items: [
+          "Wisdom of Solomon 6:1–11 — responsibility and accountability (context)",
+          "Sirach 2:1–11 — perseverance and humility (context)"
+        ]
+      },
+      {
+        label: "Second Temple Jewish Literature (historical context; not in Jewish canon or most Christian canons)",
+        items: [
+          "Testament of the Twelve Patriarchs (selected) — ethics/exhortation tradition (context)"
+        ]
+      }
+    ],
+    quiz: {
+      tf: { q:"Isaiah 1 emphasizes that God cares about justice and clean hands, not empty ritual alone.", a:true },
+      mc1: { q:"Jeremiah 7 warns against trusting in…", options:[
+        "God’s mercy",
+        "A sacred place or slogan while living in disobedience",
+        "Repentance"
+      ], a:1 },
+      mc2: { q:"Hosea 4 describes a crisis marked by…", options:[
+        "Truth, mercy, and knowledge everywhere",
+        "Lying, violence, and breaking faith",
+        "Perfect obedience"
+      ], a:1 },
+      essay1: { q:"How can covenant language become ‘presumption’ if obedience and humility are missing?" },
+      essay2: { q:"Name one area where you will seek repentance + obedience this week." },
+      key: {
+        tf:"True.",
+        mc1:"A sacred place or slogan while living in disobedience.",
+        mc2:"Lying, violence, and breaking faith.",
+        essayGuidance:[
+          "Presumption: ‘I’m safe because of identity/ritual’ while ignoring God’s commands.",
+          "Application should be specific and measurable."
+        ]
+      }
+    }
+  },
+
+  {
+    week: 3,
+    title: "Remnant Theology in the Prophets",
+    bigIdea: "God preserves a faithful remnant—humble, repentant, devoted—through whom His purposes continue.",
+    goals: [
+      "Define the remnant theme as faithfulness within the people, not mere membership",
+      "See the remnant as hope (not superiority)",
+      "Connect remnant faithfulness to Messiah’s Kingdom"
+    ],
+    passages: ["Isaiah 10:20–22", "Micah 5:7–8", "Zephaniah 3:12–13", "Joel 2:32"],
+    openingPrayer:
+      "Father, make us part of the humble remnant—faithful, repentant, and steady. Keep us from pride and draw us close to You. Amen.",
+    flow: JSON.parse(JSON.stringify(FLOW_TEMPLATE)),
+    contextReadings: [
+      {
+        label: "Deuterocanon / Apocrypha (Scripture in Catholic & Orthodox canons; historical/devotional for many Protestants)",
+        items: [
+          "Baruch 4 (selected) — exile/return hope themes (context)",
+          "1 Maccabees 2:49–70 — faithfulness under pressure (context)"
+        ]
+      },
+      {
+        label: "Second Temple Jewish Literature (historical context; not in Jewish canon or most Christian canons)",
+        items: [
+          "4 Ezra (2 Esdras) 7 (selected) — wrestling with judgment and hope (context)"
+        ]
+      }
+    ],
+    quiz: {
+      tf: { q:"The remnant theme describes a faithful group preserved by God in times of judgment and testing.", a:true },
+      mc1: { q:"Zephaniah 3:12–13 describes the remnant as…", options:[
+        "Boastful and violent",
+        "Humble and truthful",
+        "Unreachable"
+      ], a:1 },
+      mc2: { q:"Joel 2:32 connects ‘deliverance’ to…", options:[
+        "Random chance",
+        "Calling on the name of the Lord",
+        "Human strength alone"
+      ], a:1 },
+      essay1: { q:"Why is remnant theology meant to produce humility instead of superiority?" },
+      essay2: { q:"What fruit (behavior) would show someone is living as ‘humble and faithful’?" },
+      key: {
+        tf:"True.",
+        mc1:"Humble and truthful.",
+        mc2:"Calling on the name of the Lord.",
+        essayGuidance:[
+          "Because the remnant is preserved by grace, not self-importance.",
+          "Fruit: repentance, obedience, gentleness, truthfulness, mercy, prayer."
+        ]
+      }
+    }
+  },
+
+  {
+    week: 4,
+    title: "Jesus and the ‘Few’: Kingdom Entry & True Discipleship",
+    bigIdea: "Jesus warns against presumption and calls for repentance, humility, and fruit—entry is remnant-shaped and heart-deep.",
+    goals: [
+      "Let Jesus define true discipleship (not inherited status)",
+      "Understand the ‘narrow gate’ warning as mercy, not elitism",
+      "Apply Jesus’ warnings to ourselves first"
+    ],
+    passages: ["Matthew 7:13–23", "Luke 12:32", "Luke 13:23–30"],
+    openingPrayer:
+      "Yahushua, keep us from false confidence. Teach us to obey You in truth, to bear fruit, and to walk the narrow way with humility. Amen.",
+    flow: JSON.parse(JSON.stringify(FLOW_TEMPLATE)),
+    contextReadings: [
+      {
+        label: "Deuterocanon / Apocrypha (Scripture in Catholic & Orthodox canons; historical/devotional for many Protestants)",
+        items: [
+          "Wisdom of Solomon 1:1–5 — sincerity and holiness (context)",
+          "Sirach 1:18–30 — humility and reverence (context)"
+        ]
+      },
+      {
+        label: "Second Temple Jewish Literature (historical context; not in Jewish canon or most Christian canons)",
+        items: [
+          "1 Enoch (selected) — judgment/repentance themes in Second Temple thought (context)"
+        ]
+      }
+    ],
+    quiz: {
+      tf: { q:"Matthew 7 warns that saying ‘Lord, Lord’ is not the same as doing the Father’s will.", a:true },
+      mc1: { q:"Luke 12:32 calls Jesus’ disciples a…", options:[
+        "Little flock",
+        "Empire",
+        "Secret elite"
+      ], a:0 },
+      mc2: { q:"Luke 13:23–30 includes the theme of…", options:[
+        "Reversal: outsiders welcomed while some insiders are shut out",
+        "No one entering the kingdom",
+        "Only geography deciding salvation"
+      ], a:0 },
+      essay1: { q:"How can someone have ‘religious confidence’ without true obedience or repentance?" },
+      essay2: { q:"What is one ‘fruit’ you will pursue this week that reflects real discipleship?" },
+      key: {
+        tf:"True.",
+        mc1:"Little flock.",
+        mc2:"Reversal: outsiders welcomed while some insiders are shut out.",
+        essayGuidance:[
+          "Confidence can be based on identity, ritual, or claims rather than surrender and obedience.",
+          "Fruit should be concrete: reconciliation, truthfulness, mercy, prayer, generosity."
+        ]
+      }
+    }
+  },
+
+  {
+    week: 5,
+    title: "Jesus and the Nations",
+    bigIdea: "Jesus signals the global scope of the Kingdom: Gentiles are welcomed by faith and gathered into one flock under one Shepherd.",
+    goals: [
+      "Track Jesus’ explicit inclusion of Gentiles",
+      "See the Kingdom’s multi-ethnic purpose without pride",
+      "Practice mission: blessing and invitation"
+    ],
+    passages: ["Matthew 8:5–13", "John 10:16", "Matthew 28:18–20"],
+    openingPrayer:
+      "Lord, make us faithful witnesses. Teach us to love the nations and proclaim Your Kingdom with humility, courage, and compassion. Amen.",
+    flow: JSON.parse(JSON.stringify(FLOW_TEMPLATE)),
+    contextReadings: [
+      {
+        label: "Deuterocanon / Apocrypha (Scripture in Catholic & Orthodox canons; historical/devotional for many Protestants)",
+        items: [
+          "Tobit 13:11–13 — nations honoring God (context echo)",
+          "Judith 14–16 (selected) — deliverance and praise themes (context)"
+        ]
+      },
+      {
+        label: "Second Temple Jewish Literature (historical context; not in Jewish canon or most Christian canons)",
+        items: [
+          "Sibylline Oracles (selected) — nations/justice hopes in late antiquity (context)"
+        ]
+      }
+    ],
+    quiz: {
+      tf: { q:"Matthew 8 portrays Jesus praising great faith in a Gentile centurion.", a:true },
+      mc1: { q:"John 10:16 describes ‘other sheep’ leading to…", options:[
+        "Many flocks under many shepherds",
+        "One flock under one shepherd",
+        "No flock at all"
+      ], a:1 },
+      mc2: { q:"Matthew 28:18–20 commands discipleship of…", options:[
+        "One ethnicity only",
+        "All nations",
+        "Only scholars"
+      ], a:1 },
+      essay1: { q:"How does Jesus’ welcome of Gentiles challenge pride and presumption?" },
+      essay2: { q:"Write one mission-shaped action you will do this week (prayer, invitation, service, witness)." },
+      key: {
+        tf:"True.",
+        mc1:"One flock under one shepherd.",
+        mc2:"All nations.",
+        essayGuidance:[
+          "It shows God responds to faith; no group can boast.",
+          "Action should be simple and doable this week."
+        ]
+      }
+    }
+  },
+
+  {
+    week: 6,
+    title: "Acts: The Gentile Door Opens",
+    bigIdea: "Acts shows Gentiles receiving the Spirit and being welcomed into God’s people through faith—confirmed by the church.",
+    goals: [
+      "Follow the turning points: Cornelius, mission expansion, council clarity",
+      "Understand inclusion without arrogance",
+      "Learn to read narrative carefully (what happens, why it matters)"
+    ],
+    passages: ["Acts 10:34–48", "Acts 13:46–48", "Acts 15:7–11"],
+    openingPrayer:
+      "Holy Spirit, guide us into truth. Teach us to welcome whom You welcome, and to obey the gospel with humility and love. Amen.",
+    flow: JSON.parse(JSON.stringify(FLOW_TEMPLATE)),
+    contextReadings: [
+      {
+        label: "Deuterocanon / Apocrypha (Scripture in Catholic & Orthodox canons; historical/devotional for many Protestants)",
+        items: [
+          "2 Maccabees 7 (selected) — faith under persecution (context)",
+          "Baruch 5 — hope and restoration imagery (context)"
+        ]
+      },
+      {
+        label: "Second Temple Jewish Literature (historical context; not in Jewish canon or most Christian canons)",
+        items: [
+          "Dead Sea Scrolls community themes (overview reading) — purity/community identity debates (context)"
+        ]
+      }
+    ],
+    quiz: {
+      tf: { q:"Acts 10 describes Gentiles receiving the Holy Spirit, shocking some early believers.", a:true },
+      mc1: { q:"Acts 10:34 includes the idea that God…", options:[
+        "Shows partiality",
+        "Shows no partiality",
+        "Only listens to one group"
+      ], a:1 },
+      mc2: { q:"Acts 15:7–11 argues that salvation comes by…", options:[
+        "Grace",
+        "Ethnicity",
+        "Perfect rule-keeping"
+      ], a:0 },
+      essay1: { q:"Why did Gentile inclusion require courage and clarity in the early church?" },
+      essay2: { q:"How can we welcome others without compromising truth or boasting?" },
+      key: {
+        tf:"True.",
+        mc1:"Shows no partiality.",
+        mc2:"Grace.",
+        essayGuidance:[
+          "Cultural shock, identity boundaries, tradition questions, unity risks.",
+          "Welcome with truth: humility, Scripture, repentance, love, patience."
+        ]
+      }
+    }
+  },
+
+  {
+    week: 7,
+    title: "Paul: Co-Heirs, One Body",
+    bigIdea: "Paul teaches Gentiles become fellow heirs through faith in Messiah—one new humanity—without erasing Israel’s story.",
+    goals: [
+      "Understand ‘fellow heirs’ and ‘one body’ language",
+      "Connect Abrahamic promise to faith-based inheritance",
+      "Strengthen unity: one Lord, one people, no boasting"
+    ],
+    passages: ["Ephesians 2:11–22", "Ephesians 3:6", "Galatians 3:26–29", "Romans 4:16–17"],
+    openingPrayer:
+      "Father, thank You for mercy that brings the far off near. Make us one in Messiah, humble in heart, and faithful in life. Amen.",
+    flow: JSON.parse(JSON.stringify(FLOW_TEMPLATE)),
+    contextReadings: [
+      {
+        label: "Deuterocanon / Apocrypha (Scripture in Catholic & Orthodox canons; historical/devotional for many Protestants)",
+        items: [
+          "Wisdom of Solomon 2 (selected) — righteousness and opposition (context)",
+          "Sirach 35 — sincerity in worship (context)"
+        ]
+      },
+      {
+        label: "Second Temple Jewish Literature (historical context; not in Jewish canon or most Christian canons)",
+        items: [
+          "Philo (selected summaries) — diaspora Jewish thought (context)",
+          "Josephus (selected summaries) — first-century Jewish history (context)"
+        ]
+      }
+    ],
+    quiz: {
+      tf: { q:"Ephesians 3:6 teaches Gentiles are fellow heirs and members of the same body in Messiah.", a:true },
+      mc1: { q:"Ephesians 2 describes Gentiles as once…", options:[
+        "Far off, now brought near",
+        "Already rulers of the temple",
+        "Never needing mercy"
+      ], a:0 },
+      mc2: { q:"Galatians 3 links inheritance to…", options:[
+        "Faith in Messiah",
+        "Human boasting",
+        "Geography"
+      ], a:0 },
+      essay1: { q:"How does ‘one new humanity’ challenge division and spiritual pride?" },
+      essay2: { q:"Write a unity practice you will do this week (speech, prayer, reconciliation, service)." },
+      key: {
+        tf:"True.",
+        mc1:"Far off, now brought near.",
+        mc2:"Faith in Messiah.",
+        essayGuidance:[
+          "It removes superiority claims; calls for humility and reconciliation.",
+          "Unity practice should be concrete and peace-building."
+        ]
+      }
+    }
+  },
+
+  {
+    week: 8,
+    title: "Romans 9–11 + Revelation: Inclusion Without Arrogance",
+    bigIdea: "Gentile inclusion is real, but boasting is forbidden; the end vision is multi-ethnic worship before God’s throne.",
+    goals: [
+      "Learn the grafting imagery and its warning against pride",
+      "See Revelation’s nations vision as the Kingdom’s climax",
+      "Write a lifelong posture of humble, faithful discipleship"
+    ],
+    passages: ["Romans 11:17–24", "Romans 11:25–36", "Revelation 5:9–10", "Revelation 7:9", "Revelation 21:24–26"],
+    openingPrayer:
+      "Lord, keep us from arrogance. Teach us to rejoice in Your mercy, honor Your wisdom, and worship with every nation in humility. Amen.",
+    flow: JSON.parse(JSON.stringify(FLOW_TEMPLATE)),
+    contextReadings: [
+      {
+        label: "Deuterocanon / Apocrypha (Scripture in Catholic & Orthodox canons; historical/devotional for many Protestants)",
+        items: [
+          "Tobit 14:6–7 — nations turning to God (context echo)",
+          "Tobit 13:11–13 — nations honoring God (context echo)"
+        ]
+      },
+      {
+        label: "Second Temple Jewish Literature (historical context; not in Jewish canon or most Christian canons)",
+        items: [
+          "2 Baruch (selected) — hope, restoration, and eschatology themes (context)"
+        ]
+      }
+    ],
+    quiz: {
+      tf: { q:"Romans 11 warns Gentile believers not to boast over others, using grafting imagery.", a:true },
+      mc1: { q:"Revelation 7:9 describes a multitude from…", options:[
+        "One nation only",
+        "Every nation, tribe, people, and language",
+        "Only one language"
+      ], a:1 },
+      mc2: { q:"A faithful response to Gentile inclusion is…", options:[
+        "Boasting and contempt",
+        "Gratitude and humility",
+        "Indifference"
+      ], a:1 },
+      essay1: { q:"In your own words, what does the grafting warning teach you about humility?" },
+      essay2: { q:"Write your ‘posture statement’ for future study and teaching (3–5 sentences)." },
+      key: {
+        tf:"True.",
+        mc1:"Every nation, tribe, people, and language.",
+        mc2:"Gratitude and humility.",
+        essayGuidance:[
+          "Humility: you stand by mercy; you do not boast; you remain faithful.",
+          "Posture: Scripture-first, humble, truth-seeking, peace-building, Messiah-centered."
+        ]
+      }
+    }
+  }
+];
+
+/* =========================================================
+   STATE
+========================================================= */
+function defaultState(){
+  return {
+    currentWeek: 1,
+    completedWeeks: Array(LESSONS.length).fill(false),
+    quiz: {},
+    postureHidden: false
+  };
+}
+
+function loadState(){
+  try{
+    const raw = localStorage.getItem(STORAGE_KEY);
+    if(!raw) return defaultState();
+    const st = JSON.parse(raw);
+    if(!st || typeof st !== "object") return defaultState();
+    if(!Array.isArray(st.completedWeeks) || st.completedWeeks.length !== LESSONS.length){
+      st.completedWeeks = Array(LESSONS.length).fill(false);
+    }
+    if(typeof st.currentWeek !== "number") st.currentWeek = 1;
+    if(!st.quiz || typeof st.quiz !== "object") st.quiz = {};
+    if(typeof st.postureHidden !== "boolean") st.postureHidden = false;
+    st.currentWeek = Math.min(Math.max(1, st.currentWeek), LESSONS.length);
+    return st;
+  }catch(e){
+    return defaultState();
+  }
+}
+
+let state = loadState();
+function saveState(){ localStorage.setItem(STORAGE_KEY, JSON.stringify(state)); }
+
+/* =========================================================
+   UNLOCK LOGIC (sequence)
+========================================================= */
+function isUnlocked(week){
+  if(week === 1) return true;
+  return state.completedWeeks[week - 2] === true;
+}
+
+/* =========================================================
+   RENDER
+========================================================= */
+const weekListEl = document.getElementById("weekList");
+const contentEl = document.getElementById("content");
+const progressTextEl = document.getElementById("progressText");
+const progressBarEl = document.getElementById("progressBar");
+
+function renderWeekList(){
+  weekListEl.innerHTML = "";
+  for(const lesson of LESSONS){
+    const wk = lesson.week;
+    const unlocked = isUnlocked(wk);
+    const completed = state.completedWeeks[wk - 1] === true;
+
+    const btn = document.createElement("button");
+    btn.className = "weekbtn";
+    btn.setAttribute("aria-current", (wk === state.currentWeek) ? "true" : "false");
+    btn.disabled = !unlocked;
+    btn.title = unlocked ? `Open Week ${wk}` : `Complete Week ${wk-1} to unlock.`;
+
+    const left = document.createElement("div");
+    left.innerHTML = `<b>Week ${wk}</b>
+      <div style="color:var(--muted); font-size:18px; margin-top:4px;">${escapeHtml(lesson.title)}</div>`;
+
+    const right = document.createElement("div");
+    const tag = document.createElement("span");
+    tag.className = "tag " + (completed ? "done" : (unlocked ? "" : "locked"));
+    tag.textContent = completed ? "✓ Complete" : (unlocked ? "Open" : "Locked");
+    right.appendChild(tag);
+
+    btn.appendChild(left);
+    btn.appendChild(right);
+
+    btn.addEventListener("click", () => {
+      state.currentWeek = wk;
+      saveState();
+      renderAll();
+      window.scrollTo({top:0, behavior:"smooth"});
+    });
+
+    weekListEl.appendChild(btn);
+  }
+}
+
+function renderProgress(){
+  const done = state.completedWeeks.filter(Boolean).length;
+  progressTextEl.textContent = `Progress: ${done} / ${LESSONS.length} complete`;
+  const pct = Math.round((done / LESSONS.length) * 100);
+  progressBarEl.style.width = pct + "%";
+}
+
+function renderQuizQuestions(lesson, saved){
+  const tfVal = (saved.tf ?? "");
+  const mc1Val = (saved.mc1 ?? "");
+  const mc2Val = (saved.mc2 ?? "");
+  const essay1Val = (saved.essay1 ?? "");
+  const essay2Val = (saved.essay2 ?? "");
+
+  return `
+    <div class="q">
+      <div class="qtitle">1) True / False</div>
+      <div style="margin-bottom:10px;">${escapeHtml(lesson.quiz.tf.q)}</div>
+      <label class="option"><input type="radio" name="tf" value="true" ${tfVal==="true"?"checked":""}/> True</label>
+      <label class="option"><input type="radio" name="tf" value="false" ${tfVal==="false"?"checked":""}/> False</label>
+    </div>
+
+    <div class="q">
+      <div class="qtitle">2) Multiple Choice</div>
+      <div style="margin-bottom:10px;">${escapeHtml(lesson.quiz.mc1.q)}</div>
+      ${lesson.quiz.mc1.options.map((opt,i)=>`
+        <label class="option"><input type="radio" name="mc1" value="${i}" ${String(mc1Val)===String(i)?"checked":""}/> ${escapeHtml(opt)}</label>
+      `).join("")}
+    </div>
+
+    <div class="q">
+      <div class="qtitle">3) Multiple Choice</div>
+      <div style="margin-bottom:10px;">${escapeHtml(lesson.quiz.mc2.q)}</div>
+      ${lesson.quiz.mc2.options.map((opt,i)=>`
+        <label class="option"><input type="radio" name="mc2" value="${i}" ${String(mc2Val)===String(i)?"checked":""}/> ${escapeHtml(opt)}</label>
+      `).join("")}
+    </div>
+
+    <div class="q">
+      <div class="qtitle">4) Essay Response</div>
+      <div style="margin-bottom:10px;">${escapeHtml(lesson.quiz.essay1.q)}</div>
+      <textarea name="essay1" placeholder="Write your response here...">${escapeHtml(essay1Val)}</textarea>
+    </div>
+
+    <div class="q">
+      <div class="qtitle">5) Essay Response</div>
+      <div style="margin-bottom:10px;">${escapeHtml(lesson.quiz.essay2.q)}</div>
+      <textarea name="essay2" placeholder="Write your response here...">${escapeHtml(essay2Val)}</textarea>
+    </div>
+  `;
+}
+
+function readQuizForm(){
+  const form = document.getElementById("quizForm");
+  if(!form) return {};
+  const fd = new FormData(form);
+  return {
+    tf: fd.get("tf") || "",
+    mc1: fd.get("mc1") || "",
+    mc2: fd.get("mc2") || "",
+    essay1: (fd.get("essay1") || "").toString().trim(),
+    essay2: (fd.get("essay2") || "").toString().trim()
+  };
+}
+
+function validateQuizAnswers(a){
+  const missing = [];
+  if(!a.tf) missing.push("True/False");
+  if(a.mc1 === "") missing.push("Multiple Choice #1");
+  if(a.mc2 === "") missing.push("Multiple Choice #2");
+  if(!a.essay1) missing.push("Essay #1");
+  if(!a.essay2) missing.push("Essay #2");
+  return missing;
+}
+
+function scoreObjective(quiz, answers){
+  let score = 0;
+  let max = 3;
+  const tfAns = (answers.tf === "true");
+  if(tfAns === quiz.tf.a) score++;
+
+  const mc1Ans = parseInt(answers.mc1,10);
+  if(mc1Ans === quiz.mc1.a) score++;
+
+  const mc2Ans = parseInt(answers.mc2,10);
+  if(mc2Ans === quiz.mc2.a) score++;
+
+  return {score, max};
+}
+
+function renderContent(){
+  const lesson = LESSONS.find(x => x.week === state.currentWeek);
+  if(!lesson){ contentEl.innerHTML = "<p>Lesson not found.</p>"; return; }
+
+  const wk = lesson.week;
+  if(!isUnlocked(wk)){
+    contentEl.innerHTML = `
+      <div class="hero">
+        <div class="kicker">Week ${wk}</div>
+        <div class="heading">${escapeHtml(lesson.title)}</div>
+        <p class="idea">This week is locked. Complete Week ${wk-1} to unlock it.</p>
+      </div>
+    `;
+    return;
+  }
+
+  const savedQuiz = state.quiz[wk] || {};
+  const submittedAt = savedQuiz.submittedAt ? new Date(savedQuiz.submittedAt) : null;
+
+  const passagesHtml = lesson.passages.map(ref => `
+    <li>
+      <span>${escapeHtml(ref)}</span>
+      <span style="opacity:.9;"> — </span>
+      <a href="${gatewayUrl(ref)}" target="_blank" rel="noopener">Open passage</a>
+    </li>
+  `).join("");
+
+  const goalsHtml = (lesson.goals || []).map(g => `<li>${escapeHtml(g)}</li>`).join("");
+
+  const resourcesHtml = RESOURCES.map(r =>
+    `<a href="${r.url}" target="_blank" rel="noopener">🔗 ${escapeHtml(r.name)}</a>`
+  ).join(" &nbsp;•&nbsp; ");
+
+  const flowHtml = lesson.flow.map(seg => `
+    <div class="seg">
+      <div class="seghead">
+        <div class="segtitle">${escapeHtml(seg.name)}</div>
+        <div class="segtime">${seg.mins} min</div>
+      </div>
+      <ul>${seg.prompts.map(p => `<li>${escapeHtml(p)}</li>`).join("")}</ul>
+    </div>
+  `).join("");
+
+  const contextHtml = (lesson.contextReadings || []).map(block => `
+    <div class="contextBlock">
+      <div class="contextHdr">
+        <div class="contextTitle">Context Readings</div>
+        <div class="badge">${escapeHtml(block.label)}</div>
+      </div>
+      <ul style="margin-top:0;">
+        ${block.items.map(x => `<li>${escapeHtml(x)}</li>`).join("")}
+      </ul>
+      <div class="note">
+        These readings are provided for historical/thematic context. Canon status varies by tradition.
+      </div>
+    </div>
+  `).join("");
+
+  contentEl.innerHTML = `
+    <div class="hero">
+      <div class="kicker">Week ${wk} of ${LESSONS.length} • Self-paced</div>
+      <div class="heading">${escapeHtml(lesson.title)}</div>
+      <p class="idea"><b>Big idea:</b> ${escapeHtml(lesson.bigIdea)}</p>
+    </div>
+
+    <div class="grid2">
+      <div class="card prayerBox">
+        <h3>Opening Prayer</h3>
+        <p style="margin:0;">${escapeHtml(lesson.openingPrayer)}</p>
+        <div class="row">
+          <button class="btn secondary" id="btnReadPrayer">🔊 Read Aloud</button>
+        </div>
+        <div class="note">Tip: pray it once slowly, then again in your own words.</div>
+      </div>
+
+      <div class="card">
+        <h3>Week Goals</h3>
+        <ul style="margin-top:10px;">
+          ${goalsHtml}
+        </ul>
+        <div class="note">Read with humility: apply warnings to yourself first.</div>
+      </div>
+    </div>
+
+    <div class="card">
+      <h3>Key Passages</h3>
+      <ul style="margin-top:10px;">
+        ${passagesHtml}
+      </ul>
+      <div class="note">
+        Scripture text is not embedded; use your preferred translation.
+      </div>
+    </div>
+
+    <div class="card">
+      <h3>30-Minute Session Flow</h3>
+      <div class="note" style="margin-top:0;">
+        Welcome (2) • Read (3) • Observe (6) • Interpret (8) • Apply (6) • Pray (5)
+        &nbsp;—&nbsp; If you want a longer session, repeat Observe/Interpret/Apply with new questions.
+      </div>
+      ${flowHtml}
+    </div>
+
+    <div class="card">
+      <h3>Optional Online Study Resources</h3>
+      <div>${resourcesHtml}</div>
+      <div class="note">Use tools, but keep Scripture as the anchor.</div>
+    </div>
+
+    <div class="card">
+      <h3>Deuterocanon / Second Temple Context</h3>
+      ${contextHtml}
+    </div>
+
+    <div class="card quiz">
+      <h3>Homework Quiz (5 Questions)</h3>
+      <div class="statusline" id="quizStatus">
+        ${submittedAt ? `Last submitted: <b>${submittedAt.toLocaleString()}</b>` : "Not submitted yet."}
+      </div>
+
+      <form id="quizForm" autocomplete="off">
+        ${renderQuizQuestions(lesson, savedQuiz)}
+        <div class="row">
+          <button class="btn good" type="submit">✅ Submit Homework</button>
+          <button class="btn secondary" type="button" id="btnSaveDraft">💾 Save Draft</button>
+          <span class="statusline" id="scoreLine"></span>
+        </div>
+      </form>
+
+      <details>
+        <summary>Answer Key (Self-Check / Teacher)</summary>
+        <div style="margin-top:10px; color:var(--muted); font-size:18px;">
+          <div><b>True/False:</b> ${escapeHtml(lesson.quiz.key.tf)}</div>
+          <div style="margin-top:6px;"><b>MC #1:</b> ${escapeHtml(lesson.quiz.key.mc1)}</div>
+          <div style="margin-top:6px;"><b>MC #2:</b> ${escapeHtml(lesson.quiz.key.mc2)}</div>
+          <div style="margin-top:10px;"><b>Essay guidance:</b></div>
+          <ul>${lesson.quiz.key.essayGuidance.map(x => `<li>${escapeHtml(x)}</li>`).join("")}</ul>
+        </div>
+      </details>
+    </div>
+  `;
+
+  document.getElementById("btnReadPrayer").addEventListener("click", () => speakText(lesson.openingPrayer));
+
+  const btnSaveDraft = document.getElementById("btnSaveDraft");
+  const scoreLine = document.getElementById("scoreLine");
+
+  btnSaveDraft.addEventListener("click", () => {
+    const draft = readQuizForm();
+    state.quiz[wk] = { ...(state.quiz[wk]||{}), ...draft };
+    saveState();
+    scoreLine.innerHTML = `<span style="color:var(--muted);">Draft saved.</span>`;
+  });
+
+  document.getElementById("quizForm").addEventListener("submit", (e) => {
+    e.preventDefault();
+    const answers = readQuizForm();
+    const missing = validateQuizAnswers(answers);
+    if(missing.length){
+      alert("Please answer all questions before submitting:\n\n- " + missing.join("\n- "));
+      return;
+    }
+
+    const {score, max} = scoreObjective(lesson.quiz, answers);
+    const payload = {
+      ...answers,
+      scoreObj: { score, max },
+      submittedAt: new Date().toISOString()
+    };
+
+    state.quiz[wk] = payload;
+    state.completedWeeks[wk - 1] = true;
+
+    if(wk < LESSONS.length) state.currentWeek = wk + 1;
+
+    saveState();
+    renderAll();
+
+    alert(`Homework submitted!\n\nObjective score: ${score} / ${max}\n(Essays are saved for review.)`);
+  });
+
+  if(savedQuiz.scoreObj){
+    scoreLine.innerHTML = `Objective score: <span class="score">${savedQuiz.scoreObj.score} / ${savedQuiz.scoreObj.max}</span> • Essays saved`;
+  }
+}
+
+function renderAll(){
+  renderWeekList();
+  renderProgress();
+  renderContent();
+  renderPostureVisibility();
+}
+
+/* =========================================================
+   POSTURE BAR CONTROLS
+========================================================= */
+const postureBar = document.getElementById("postureBar");
+const btnTogglePosture = document.getElementById("btnTogglePosture");
+const btnCopyPosture = document.getElementById("btnCopyPosture");
+const postureText = document.getElementById("postureText");
+
+function renderPostureVisibility(){
+  if(state.postureHidden){
+    postureBar.style.maxHeight = "42px";
+    postureText.style.display = "none";
+    btnCopyPosture.style.display = "none";
+    btnTogglePosture.textContent = "Show";
+  }else{
+    postureBar.style.maxHeight = "none";
+    postureText.style.display = "block";
+    btnCopyPosture.style.display = "inline-block";
+    btnTogglePosture.textContent = "Hide";
+  }
+}
+
+btnTogglePosture.addEventListener("click", () => {
+  state.postureHidden = !state.postureHidden;
+  saveState();
+  renderPostureVisibility();
+});
+
+btnCopyPosture.addEventListener("click", async () => {
+  const text = postureText.innerText.trim();
+  try{
+    await navigator.clipboard.writeText(text);
+    btnCopyPosture.textContent = "Copied!";
+    setTimeout(()=> btnCopyPosture.textContent = "Copy", 900);
+  }catch(e){
+    alert("Copy failed on this device. You can manually select and copy the text.");
+  }
+});
+
+/* =========================================================
+   TOP BUTTONS
+========================================================= */
+document.getElementById("btnPrint").addEventListener("click", () => window.print());
+
+document.getElementById("btnReset").addEventListener("click", () => {
+  const ok = confirm("Reset all progress and saved answers on this device?");
+  if(!ok) return;
+  localStorage.removeItem(STORAGE_KEY);
+  state = defaultState();
+  saveState();
+  renderAll();
+  window.scrollTo({top:0, behavior:"smooth"});
+});
+
+document.getElementById("btnExport").addEventListener("click", () => {
+  const payload = {
+    exportedAt: new Date().toISOString(),
+    app: "The Remnant & The Nations Portal",
+    version: "v1",
+    state
+  };
+  const blob = new Blob([JSON.stringify(payload, null, 2)], {type:"application/json"});
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement("a");
+  a.href = url;
+  a.download = "remnant-nations-progress.json";
+  document.body.appendChild(a);
+  a.click();
+  a.remove();
+  URL.revokeObjectURL(url);
+});
+
+/* =========================================================
+   INIT
+========================================================= */
+renderAll();
+</script>
+</body>
+</html>
