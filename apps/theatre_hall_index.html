@@ -1,0 +1,1042 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>ARSHIF Theatre Hall — Plays, Monologues & Script Resources</title>
+<style>
+/* =========================================================
+   ARSHIF Theatre Hall — fully scoped styles
+   No external libraries. No external fonts. Safe to embed.
+   ========================================================= */
+#arshif-theatre-hall{
+  --ath-bg:#050610;
+  --ath-panel:#111522;
+  --ath-panel-2:#171b2b;
+  --ath-ink:#f7f0df;
+  --ath-muted:#cfc2a6;
+  --ath-dim:#8d8067;
+  --ath-gold:#d9b878;
+  --ath-gold-2:#b98b42;
+  --ath-red:#7f2735;
+  --ath-blue:#202846;
+  --ath-emerald:#244537;
+  --ath-parchment:#f4ead4;
+  --ath-parchment-2:#e7d7b9;
+  --ath-dark-ink:#22180c;
+  --ath-line:rgba(217,184,120,.33);
+  --ath-shadow:0 28px 90px rgba(0,0,0,.72);
+  --ath-radius:24px;
+  --ath-radius-sm:15px;
+  font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  color:var(--ath-ink);
+  background:
+    radial-gradient(circle at 10% 0%, rgba(127,39,53,.35), transparent 32%),
+    radial-gradient(circle at 85% 0%, rgba(217,184,120,.20), transparent 32%),
+    linear-gradient(180deg,#101426 0%,#050610 56%,#02030a 100%);
+  min-height:100vh;
+  padding:28px 14px 46px;
+  box-sizing:border-box;
+}
+#arshif-theatre-hall *{box-sizing:border-box;}
+#arshif-theatre-hall button,
+#arshif-theatre-hall input,
+#arshif-theatre-hall textarea,
+#arshif-theatre-hall select{font:inherit;}
+#arshif-theatre-hall a{color:inherit;}
+#arshif-theatre-hall .ath-shell{
+  width:min(1420px,100%);
+  margin:0 auto;
+  border:1px solid var(--ath-line);
+  border-radius:var(--ath-radius);
+  box-shadow:var(--ath-shadow);
+  overflow:hidden;
+  background:linear-gradient(135deg, rgba(17,21,34,.96), rgba(7,9,18,.98));
+}
+#arshif-theatre-hall .ath-header{
+  position:relative;
+  padding:34px 26px 28px;
+  text-align:center;
+  overflow:hidden;
+  border-bottom:1px solid rgba(247,240,223,.13);
+  background:
+    linear-gradient(180deg,rgba(255,255,255,.04),rgba(255,255,255,0)),
+    radial-gradient(circle at top,rgba(217,184,120,.22),transparent 62%),
+    #101320;
+}
+#arshif-theatre-hall .ath-header:before,
+#arshif-theatre-hall .ath-header:after{
+  content:"";
+  position:absolute;
+  width:240px;
+  height:240px;
+  border:1px solid rgba(217,184,120,.14);
+  border-radius:50%;
+  top:-110px;
+}
+#arshif-theatre-hall .ath-header:before{left:-70px;}
+#arshif-theatre-hall .ath-header:after{right:-70px;}
+#arshif-theatre-hall .ath-kicker{
+  margin:0 0 9px;
+  color:var(--ath-gold);
+  letter-spacing:.22em;
+  text-transform:uppercase;
+  font-size:12px;
+  font-weight:700;
+}
+#arshif-theatre-hall .ath-title{
+  margin:0;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size:clamp(34px,5vw,68px);
+  line-height:.95;
+  letter-spacing:.12em;
+  text-transform:uppercase;
+  text-shadow:0 8px 22px rgba(0,0,0,.6);
+}
+#arshif-theatre-hall .ath-subtitle{
+  max-width:900px;
+  margin:17px auto 0;
+  color:var(--ath-muted);
+  line-height:1.75;
+  font-size:15px;
+}
+#arshif-theatre-hall .ath-statline{
+  display:flex;
+  flex-wrap:wrap;
+  justify-content:center;
+  gap:10px;
+  margin:22px auto 0;
+}
+#arshif-theatre-hall .ath-stat{
+  border:1px solid rgba(217,184,120,.35);
+  background:rgba(0,0,0,.22);
+  border-radius:999px;
+  padding:8px 12px;
+  color:var(--ath-parchment);
+  font-size:12px;
+  letter-spacing:.09em;
+  text-transform:uppercase;
+}
+#arshif-theatre-hall .ath-tabs{
+  display:flex;
+  flex-wrap:wrap;
+  gap:8px;
+  padding:14px;
+  border-bottom:1px solid rgba(247,240,223,.12);
+  background:rgba(3,4,10,.55);
+  position:sticky;
+  top:0;
+  z-index:10;
+}
+#arshif-theatre-hall .ath-tab{
+  appearance:none;
+  border:1px solid rgba(217,184,120,.34);
+  background:rgba(255,255,255,.03);
+  color:var(--ath-ink);
+  border-radius:999px;
+  padding:9px 13px;
+  cursor:pointer;
+  transition:.18s ease;
+  font-size:13px;
+  letter-spacing:.04em;
+}
+#arshif-theatre-hall .ath-tab:hover{transform:translateY(-1px);background:rgba(217,184,120,.12);}
+#arshif-theatre-hall .ath-tab.active{
+  background:linear-gradient(135deg,var(--ath-gold),var(--ath-gold-2));
+  color:#180f07;
+  box-shadow:0 8px 22px rgba(0,0,0,.35);
+  border-color:transparent;
+}
+#arshif-theatre-hall .ath-grid-layout{
+  display:grid;
+  grid-template-columns:310px 1fr;
+  min-height:720px;
+}
+#arshif-theatre-hall .ath-sidebar{
+  border-right:1px solid rgba(247,240,223,.12);
+  background:linear-gradient(180deg,rgba(20,24,39,.92),rgba(7,9,17,.98));
+  padding:20px;
+}
+#arshif-theatre-hall .ath-panel-title{
+  font-family:Georgia,"Times New Roman",serif;
+  color:var(--ath-gold);
+  text-transform:uppercase;
+  letter-spacing:.13em;
+  font-size:18px;
+  margin:0 0 12px;
+}
+#arshif-theatre-hall .ath-sidebar p{color:var(--ath-muted);line-height:1.58;font-size:13px;margin:0 0 16px;}
+#arshif-theatre-hall .ath-search{
+  width:100%;
+  border:1px solid rgba(217,184,120,.34);
+  border-radius:999px;
+  background:rgba(255,255,255,.06);
+  color:var(--ath-ink);
+  padding:12px 14px;
+  outline:none;
+  margin:0 0 12px;
+}
+#arshif-theatre-hall .ath-search::placeholder{color:rgba(247,240,223,.5);}
+#arshif-theatre-hall .ath-chipbox{display:flex;flex-wrap:wrap;gap:8px;margin:12px 0 18px;}
+#arshif-theatre-hall .ath-chip{
+  border:1px solid rgba(217,184,120,.28);
+  background:rgba(0,0,0,.18);
+  color:var(--ath-muted);
+  border-radius:999px;
+  padding:7px 10px;
+  cursor:pointer;
+  font-size:12px;
+  transition:.18s ease;
+}
+#arshif-theatre-hall .ath-chip.active,
+#arshif-theatre-hall .ath-chip:hover{
+  background:rgba(217,184,120,.17);
+  color:var(--ath-gold);
+  border-color:rgba(217,184,120,.7);
+}
+#arshif-theatre-hall .ath-side-card{
+  border:1px solid rgba(217,184,120,.25);
+  background:rgba(0,0,0,.18);
+  border-radius:18px;
+  padding:14px;
+  margin-top:14px;
+}
+#arshif-theatre-hall .ath-side-card strong{color:var(--ath-gold);}
+#arshif-theatre-hall .ath-main{
+  padding:22px;
+  background:
+    linear-gradient(180deg,rgba(255,255,255,.025),transparent),
+    radial-gradient(circle at 50% 0%,rgba(127,39,53,.18),transparent 48%);
+}
+#arshif-theatre-hall .ath-view{display:none;}
+#arshif-theatre-hall .ath-view.active{display:block;animation:athFade .22s ease;}
+@keyframes athFade{from{opacity:.2;transform:translateY(4px)}to{opacity:1;transform:none}}
+#arshif-theatre-hall .ath-view-head{
+  display:flex;
+  justify-content:space-between;
+  align-items:flex-end;
+  gap:16px;
+  margin:0 0 16px;
+  border-bottom:1px solid rgba(217,184,120,.20);
+  padding-bottom:14px;
+}
+#arshif-theatre-hall .ath-view-head h2{
+  margin:0;
+  font-family:Georgia,"Times New Roman",serif;
+  color:var(--ath-gold);
+  letter-spacing:.08em;
+  text-transform:uppercase;
+  font-size:clamp(22px,3vw,34px);
+}
+#arshif-theatre-hall .ath-view-head p{margin:7px 0 0;color:var(--ath-muted);line-height:1.55;max-width:760px;}
+#arshif-theatre-hall .ath-actions{display:flex;flex-wrap:wrap;gap:8px;justify-content:flex-end;}
+#arshif-theatre-hall .ath-btn{
+  border:1px solid rgba(217,184,120,.38);
+  border-radius:999px;
+  background:rgba(255,255,255,.04);
+  color:var(--ath-ink);
+  padding:9px 13px;
+  cursor:pointer;
+  transition:.18s ease;
+  text-decoration:none;
+  display:inline-flex;
+  align-items:center;
+  gap:6px;
+  font-size:13px;
+}
+#arshif-theatre-hall .ath-btn:hover{background:rgba(217,184,120,.13);transform:translateY(-1px);}
+#arshif-theatre-hall .ath-btn.gold{background:linear-gradient(135deg,var(--ath-gold),var(--ath-gold-2));color:#1a1006;border-color:transparent;font-weight:700;}
+#arshif-theatre-hall .ath-card-grid{
+  display:grid;
+  grid-template-columns:repeat(3,minmax(0,1fr));
+  gap:14px;
+}
+#arshif-theatre-hall .ath-card{
+  position:relative;
+  min-height:236px;
+  border:1px solid rgba(217,184,120,.24);
+  background:
+    linear-gradient(180deg,rgba(255,255,255,.055),rgba(255,255,255,.02)),
+    rgba(9,11,20,.82);
+  border-radius:20px;
+  padding:15px;
+  overflow:hidden;
+  display:flex;
+  flex-direction:column;
+  gap:10px;
+  box-shadow:0 18px 44px rgba(0,0,0,.26);
+}
+#arshif-theatre-hall .ath-card:before{
+  content:"";
+  position:absolute;
+  inset:-60px -80px auto auto;
+  width:155px;
+  height:155px;
+  border-radius:50%;
+  border:1px solid rgba(217,184,120,.12);
+}
+#arshif-theatre-hall .ath-ribbon-row{display:flex;gap:7px;flex-wrap:wrap;align-items:center;}
+#arshif-theatre-hall .ath-badge{
+  border-radius:999px;
+  padding:4px 8px;
+  font-size:11px;
+  letter-spacing:.07em;
+  text-transform:uppercase;
+  border:1px solid rgba(217,184,120,.33);
+  color:var(--ath-gold);
+  background:rgba(0,0,0,.22);
+}
+#arshif-theatre-hall .ath-badge.red{color:#ffd8dc;border-color:rgba(127,39,53,.7);background:rgba(127,39,53,.28);}
+#arshif-theatre-hall .ath-badge.green{color:#d4ffe8;border-color:rgba(92,168,126,.55);background:rgba(36,69,55,.45);}
+#arshif-theatre-hall .ath-badge.blue{color:#dce4ff;border-color:rgba(116,140,220,.4);background:rgba(32,40,70,.55);}
+#arshif-theatre-hall .ath-card h3{
+  margin:0;
+  font-family:Georgia,"Times New Roman",serif;
+  color:var(--ath-parchment);
+  font-size:22px;
+  line-height:1.15;
+}
+#arshif-theatre-hall .ath-card .ath-meta{font-size:12px;color:var(--ath-muted);line-height:1.55;}
+#arshif-theatre-hall .ath-card .ath-desc{color:var(--ath-parchment-2);line-height:1.55;font-size:13px;margin:0;}
+#arshif-theatre-hall .ath-card .ath-card-foot{margin-top:auto;display:flex;justify-content:space-between;gap:8px;align-items:center;}
+#arshif-theatre-hall .ath-mini-link{
+  color:var(--ath-gold);
+  font-size:12px;
+  text-decoration:none;
+  border-bottom:1px dotted rgba(217,184,120,.5);
+}
+#arshif-theatre-hall .ath-course-list{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;}
+#arshif-theatre-hall .ath-module{
+  border:1px solid rgba(217,184,120,.23);
+  border-radius:18px;
+  background:rgba(0,0,0,.17);
+  padding:14px;
+  display:grid;
+  grid-template-columns:auto 1fr;
+  gap:12px;
+}
+#arshif-theatre-hall .ath-module input{margin-top:4px;accent-color:#d9b878;}
+#arshif-theatre-hall .ath-module h3{margin:0;color:var(--ath-parchment);font-family:Georgia,"Times New Roman",serif;font-size:19px;}
+#arshif-theatre-hall .ath-module p{margin:6px 0;color:var(--ath-muted);font-size:13px;line-height:1.5;}
+#arshif-theatre-hall .ath-module .ath-small{font-size:12px;color:var(--ath-dim);}
+#arshif-theatre-hall .ath-tool-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px;}
+#arshif-theatre-hall .ath-tool{
+  border:1px solid rgba(217,184,120,.24);
+  border-radius:22px;
+  padding:16px;
+  background:rgba(0,0,0,.18);
+}
+#arshif-theatre-hall .ath-tool h3{margin:0 0 10px;color:var(--ath-gold);font-family:Georgia,"Times New Roman",serif;letter-spacing:.04em;}
+#arshif-theatre-hall .ath-tool label{display:block;color:var(--ath-muted);font-size:12px;text-transform:uppercase;letter-spacing:.09em;margin:11px 0 5px;}
+#arshif-theatre-hall .ath-tool select,
+#arshif-theatre-hall .ath-tool input,
+#arshif-theatre-hall .ath-tool textarea{
+  width:100%;
+  border:1px solid rgba(217,184,120,.28);
+  background:rgba(255,255,255,.05);
+  color:var(--ath-ink);
+  border-radius:13px;
+  padding:10px;
+  outline:none;
+}
+#arshif-theatre-hall .ath-tool select option{background:#111522;color:#f7f0df;}
+#arshif-theatre-hall .ath-result{
+  margin-top:12px;
+  border-radius:16px;
+  border:1px solid rgba(217,184,120,.22);
+  background:linear-gradient(180deg,var(--ath-parchment),var(--ath-parchment-2));
+  color:var(--ath-dark-ink);
+  padding:14px;
+  min-height:120px;
+  white-space:pre-wrap;
+  line-height:1.55;
+  font-size:14px;
+}
+#arshif-theatre-hall .ath-resource-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;}
+#arshif-theatre-hall .ath-resource{
+  border:1px solid rgba(217,184,120,.23);
+  border-radius:18px;
+  padding:14px;
+  background:rgba(255,255,255,.035);
+}
+#arshif-theatre-hall .ath-resource h3{margin:0;color:var(--ath-parchment);font-family:Georgia,"Times New Roman",serif;}
+#arshif-theatre-hall .ath-resource p{color:var(--ath-muted);line-height:1.55;font-size:13px;margin:8px 0;}
+#arshif-theatre-hall .ath-resource a{color:var(--ath-gold);text-decoration:none;border-bottom:1px dotted rgba(217,184,120,.55);}
+#arshif-theatre-hall .ath-timeline{display:grid;gap:10px;}
+#arshif-theatre-hall .ath-time-row{display:grid;grid-template-columns:120px 1fr;gap:12px;border-left:2px solid rgba(217,184,120,.34);padding:0 0 0 14px;}
+#arshif-theatre-hall .ath-time-row strong{color:var(--ath-gold);}
+#arshif-theatre-hall .ath-time-row p{margin:0;color:var(--ath-muted);line-height:1.55;}
+#arshif-theatre-hall .ath-glossary{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;}
+#arshif-theatre-hall .ath-term{border:1px solid rgba(217,184,120,.22);border-radius:16px;background:rgba(0,0,0,.16);padding:12px;}
+#arshif-theatre-hall .ath-term strong{display:block;color:var(--ath-gold);margin-bottom:6px;}
+#arshif-theatre-hall .ath-term span{color:var(--ath-muted);font-size:13px;line-height:1.45;}
+#arshif-theatre-hall .ath-quiz-card{border:1px solid rgba(217,184,120,.24);border-radius:22px;background:rgba(0,0,0,.17);padding:17px;max-width:820px;}
+#arshif-theatre-hall .ath-quiz-card h3{margin:0 0 10px;color:var(--ath-gold);font-family:Georgia,"Times New Roman",serif;}
+#arshif-theatre-hall .ath-answer{display:block;width:100%;text-align:left;margin:8px 0;border:1px solid rgba(217,184,120,.25);background:rgba(255,255,255,.04);color:var(--ath-ink);border-radius:13px;padding:10px;cursor:pointer;}
+#arshif-theatre-hall .ath-answer.correct{background:rgba(36,69,55,.75);border-color:#78c295;}
+#arshif-theatre-hall .ath-answer.wrong{background:rgba(127,39,53,.65);border-color:#d58a91;}
+#arshif-theatre-hall .ath-notes-wrap{display:grid;grid-template-columns:1fr 280px;gap:14px;}
+#arshif-theatre-hall .ath-big-notes{width:100%;min-height:360px;border:1px solid rgba(217,184,120,.28);border-radius:20px;background:linear-gradient(180deg,var(--ath-parchment),var(--ath-parchment-2));color:var(--ath-dark-ink);padding:16px;line-height:1.55;}
+#arshif-theatre-hall .ath-progress-meter{height:12px;background:rgba(255,255,255,.08);border:1px solid rgba(217,184,120,.2);border-radius:999px;overflow:hidden;margin:8px 0;}
+#arshif-theatre-hall .ath-progress-fill{height:100%;width:0%;background:linear-gradient(90deg,var(--ath-gold-2),var(--ath-gold));transition:width .2s ease;}
+#arshif-theatre-hall .ath-footer{padding:15px 20px;text-align:center;border-top:1px solid rgba(247,240,223,.12);color:var(--ath-dim);font-size:12px;background:#070913;line-height:1.5;}
+#arshif-theatre-hall .ath-modal-backdrop{display:none;position:fixed;inset:0;background:rgba(0,0,0,.58);z-index:2000;}
+#arshif-theatre-hall .ath-modal-backdrop.show{display:block;}
+#arshif-theatre-hall .ath-dossier{
+  position:fixed;
+  z-index:2001;
+  top:7vh;
+  left:50%;
+  transform:translateX(-50%);
+  width:min(920px,calc(100vw - 24px));
+  max-height:86vh;
+  overflow:hidden;
+  border-radius:22px;
+  border:1px solid rgba(217,184,120,.55);
+  background:linear-gradient(180deg,#151927,#090b14);
+  box-shadow:0 32px 90px rgba(0,0,0,.8);
+  display:none;
+}
+#arshif-theatre-hall .ath-dossier.show{display:block;}
+#arshif-theatre-hall .ath-dossier-head{
+  cursor:move;
+  padding:14px 16px;
+  background:linear-gradient(135deg,var(--ath-gold),var(--ath-gold-2));
+  color:#170e06;
+  display:flex;
+  justify-content:space-between;
+  gap:12px;
+  align-items:center;
+}
+#arshif-theatre-hall .ath-dossier-head h3{margin:0;font-family:Georgia,"Times New Roman",serif;font-size:22px;}
+#arshif-theatre-hall .ath-close{border:none;background:rgba(0,0,0,.18);color:#170e06;border-radius:999px;width:34px;height:34px;cursor:pointer;font-weight:900;}
+#arshif-theatre-hall .ath-dossier-body{padding:18px;overflow:auto;max-height:calc(86vh - 64px);}
+#arshif-theatre-hall .ath-dossier-grid{display:grid;grid-template-columns:1.2fr .8fr;gap:14px;}
+#arshif-theatre-hall .ath-parchment{background:linear-gradient(180deg,var(--ath-parchment),var(--ath-parchment-2));color:var(--ath-dark-ink);border-radius:18px;padding:16px;line-height:1.58;}
+#arshif-theatre-hall .ath-parchment h4{margin:0 0 8px;font-family:Georgia,"Times New Roman",serif;color:#5c3512;}
+#arshif-theatre-hall .ath-parchment p{margin:0 0 10px;}
+#arshif-theatre-hall .ath-parchment ul{margin:8px 0 0;padding-left:20px;}
+#arshif-theatre-hall .ath-link-list{display:grid;gap:7px;margin-top:8px;}
+#arshif-theatre-hall .ath-link-list a{color:#5c3512;text-decoration:none;border-bottom:1px dotted rgba(92,53,18,.45);}
+#arshif-theatre-hall .ath-dossier textarea{width:100%;min-height:220px;border:1px solid rgba(92,53,18,.25);border-radius:14px;padding:12px;line-height:1.5;color:var(--ath-dark-ink);background:#fff9eb;}
+#arshif-theatre-hall .ath-print-only{display:none;}
+@media (max-width:1100px){
+  #arshif-theatre-hall .ath-card-grid{grid-template-columns:repeat(2,minmax(0,1fr));}
+  #arshif-theatre-hall .ath-glossary{grid-template-columns:repeat(2,minmax(0,1fr));}
+}
+@media (max-width:850px){
+  #arshif-theatre-hall .ath-grid-layout{grid-template-columns:1fr;}
+  #arshif-theatre-hall .ath-sidebar{border-right:none;border-bottom:1px solid rgba(247,240,223,.12);}
+  #arshif-theatre-hall .ath-card-grid,
+  #arshif-theatre-hall .ath-course-list,
+  #arshif-theatre-hall .ath-tool-grid,
+  #arshif-theatre-hall .ath-resource-grid,
+  #arshif-theatre-hall .ath-notes-wrap,
+  #arshif-theatre-hall .ath-dossier-grid{grid-template-columns:1fr;}
+  #arshif-theatre-hall .ath-view-head{align-items:flex-start;flex-direction:column;}
+}
+@media (max-width:560px){
+  #arshif-theatre-hall{padding:12px 7px 28px;}
+  #arshif-theatre-hall .ath-header{padding:28px 14px 24px;}
+  #arshif-theatre-hall .ath-main{padding:14px;}
+  #arshif-theatre-hall .ath-card-grid{grid-template-columns:1fr;}
+  #arshif-theatre-hall .ath-time-row{grid-template-columns:1fr;}
+  #arshif-theatre-hall .ath-glossary{grid-template-columns:1fr;}
+}
+@media print{
+  body *{visibility:hidden!important;}
+  #arshif-theatre-hall, #arshif-theatre-hall *{visibility:visible!important;}
+  #arshif-theatre-hall{background:white;color:black;padding:0;}
+  #arshif-theatre-hall .ath-tabs,#arshif-theatre-hall .ath-sidebar,#arshif-theatre-hall .ath-actions,#arshif-theatre-hall .ath-modal-backdrop,#arshif-theatre-hall .ath-dossier{display:none!important;}
+  #arshif-theatre-hall .ath-shell{box-shadow:none;border:none;border-radius:0;}
+  #arshif-theatre-hall .ath-grid-layout{display:block;}
+  #arshif-theatre-hall .ath-view{display:block!important;page-break-after:always;}
+  #arshif-theatre-hall .ath-card,#arshif-theatre-hall .ath-module,#arshif-theatre-hall .ath-resource,#arshif-theatre-hall .ath-term{break-inside:avoid;background:white;color:black;border:1px solid #999;}
+}
+</style>
+</head>
+<body>
+<div id="arshif-theatre-hall">
+  <div class="ath-shell">
+    <header class="ath-header">
+      <p class="ath-kicker">ARSHIF · Performance Archive · Living Scriptorium</p>
+      <h1 class="ath-title">Theatre Hall</h1>
+      <p class="ath-subtitle">An endless, self-contained study portal for plays, monologues, script craft, stage history, rehearsal practice, dramaturgy, design, and lawful script discovery. Built for students, actors, directors, teachers, playwrights, and curious readers.</p>
+      <div class="ath-statline" aria-label="Portal statistics">
+        <span class="ath-stat" id="athPlayCount">80+ play cards</span>
+        <span class="ath-stat">30 course modules</span>
+        <span class="ath-stat">Monologue + scene generators</span>
+        <span class="ath-stat">Notes, favorites, progress</span>
+        <span class="ath-stat">Vanilla JS · No libraries</span>
+      </div>
+    </header>
+
+    <nav class="ath-tabs" aria-label="Theatre Hall navigation">
+      <button class="ath-tab active" data-view="archive">🎭 Archive</button>
+      <button class="ath-tab" data-view="course">🏛 Course</button>
+      <button class="ath-tab" data-view="scriptorium">✍️ Scriptorium</button>
+      <button class="ath-tab" data-view="resources">🗂 Resources</button>
+      <button class="ath-tab" data-view="timeline">🕯 Timeline</button>
+      <button class="ath-tab" data-view="glossary">📚 Glossary</button>
+      <button class="ath-tab" data-view="quiz">🧠 Quiz</button>
+      <button class="ath-tab" data-view="notes">📝 Notes</button>
+    </nav>
+
+    <div class="ath-grid-layout">
+      <aside class="ath-sidebar">
+        <h2 class="ath-panel-title">Search the Stage</h2>
+        <p>Filter by era, culture, genre, use, or rights note. Open any dossier for historical context, monologue trails, classroom prompts, and script links.</p>
+        <input class="ath-search" id="athSearch" placeholder="Search plays, playwrights, cultures, themes…" />
+        <div class="ath-chipbox" id="athChips"></div>
+        <div class="ath-side-card">
+          <strong>Rights reminder:</strong>
+          <p style="margin-top:8px">Public-domain reading does not always equal free public performance everywhere. Translations, adaptations, editions, recordings, and modern scripts may require permission or royalties.</p>
+        </div>
+        <div class="ath-side-card">
+          <strong>Progress</strong>
+          <div class="ath-progress-meter"><div class="ath-progress-fill" id="athProgressFill"></div></div>
+          <p id="athProgressText">0 modules complete.</p>
+        </div>
+      </aside>
+
+      <main class="ath-main">
+        <section class="ath-view active" id="view-archive">
+          <div class="ath-view-head">
+            <div>
+              <h2>Global Play Archive</h2>
+              <p>A world-facing shelf of classic plays, performance traditions, monologue pathways, and script-study cards. Use the filters to move from ancient chorus to modern realism, from Noh to Sanskrit drama, from Shakespeare to early African American theatre.</p>
+            </div>
+            <div class="ath-actions">
+              <button class="ath-btn" id="athRandomBtn">🎲 Random Dossier</button>
+              <button class="ath-btn gold" id="athClearFilters">Reset Filters</button>
+            </div>
+          </div>
+          <div class="ath-card-grid" id="athArchiveGrid"></div>
+        </section>
+
+        <section class="ath-view" id="view-course">
+          <div class="ath-view-head">
+            <div>
+              <h2>Comprehensive Theatre Course</h2>
+              <p>Move through theatre history, dramatic forms, acting, directing, playwriting, dramaturgy, design, and production literacy. Check off modules as you complete them.</p>
+            </div>
+            <div class="ath-actions">
+              <button class="ath-btn" id="athPrintProgress">🖨 Print Progress</button>
+              <button class="ath-btn" id="athResetProgress">Reset Progress</button>
+            </div>
+          </div>
+          <div class="ath-course-list" id="athCourseList"></div>
+        </section>
+
+        <section class="ath-view" id="view-scriptorium">
+          <div class="ath-view-head">
+            <div>
+              <h2>Living Scriptorium</h2>
+              <p>Generate original study prompts, audition-safe monologue starters, scene frameworks, ten-minute play structures, rehearsal plans, and classroom activities. These are original prompts, not copied scripts.</p>
+            </div>
+          </div>
+          <div class="ath-tool-grid">
+            <div class="ath-tool">
+              <h3>Monologue Forge</h3>
+              <label>Character type</label>
+              <select id="monoCharacter"><option>exiled ruler</option><option>apprentice healer</option><option>village witness</option><option>court jester</option><option>grieving sibling</option><option>young rebel</option><option>elder storyteller</option><option>teacher facing a moral choice</option></select>
+              <label>Inner conflict</label>
+              <select id="monoConflict"><option>truth versus safety</option><option>love versus duty</option><option>memory versus forgetting</option><option>ambition versus conscience</option><option>forgiveness versus revenge</option><option>faith versus doubt</option></select>
+              <label>Style</label>
+              <select id="monoStyle"><option>classical verse-inspired</option><option>realist contemporary</option><option>comic confession</option><option>tragic revelation</option><option>ritual storytelling</option><option>audition-ready emotional arc</option></select>
+              <button class="ath-btn gold" id="makeMonologue">Create Monologue Prompt</button>
+              <div class="ath-result" id="monoResult">Choose options and generate an original monologue prompt.</div>
+            </div>
+            <div class="ath-tool">
+              <h3>Scene Loom</h3>
+              <label>Setting</label>
+              <select id="sceneSetting"><option>empty theatre after midnight</option><option>marketplace before a public trial</option><option>family kitchen during a storm</option><option>temple courtyard at dawn</option><option>school auditorium before auditions</option><option>backstage dressing room</option></select>
+              <label>Dramatic engine</label>
+              <select id="sceneEngine"><option>a secret is almost revealed</option><option>two people want the same impossible thing</option><option>an outsider asks the forbidden question</option><option>a ritual is interrupted</option><option>a letter arrives too late</option><option>someone refuses to leave the room</option></select>
+              <label>Length</label>
+              <select id="sceneLength"><option>2-minute scene</option><option>5-minute scene</option><option>10-minute one-act seed</option><option>full one-act outline</option></select>
+              <button class="ath-btn gold" id="makeScene">Create Scene Framework</button>
+              <div class="ath-result" id="sceneResult">Generate an original scene outline with beats and staging ideas.</div>
+            </div>
+            <div class="ath-tool">
+              <h3>Rehearsal Planner</h3>
+              <label>Project title</label>
+              <input id="rehearsalTitle" value="Antigone scene study" />
+              <label>Goal</label>
+              <select id="rehearsalGoal"><option>table read and comprehension</option><option>blocking and stage pictures</option><option>character objectives</option><option>voice, projection, and breath</option><option>monologue polish</option><option>final performance run</option></select>
+              <label>Time available</label>
+              <select id="rehearsalTime"><option>30 minutes</option><option>45 minutes</option><option>60 minutes</option><option>90 minutes</option><option>two-hour workshop</option></select>
+              <button class="ath-btn gold" id="makeRehearsal">Build Rehearsal Plan</button>
+              <div class="ath-result" id="rehearsalResult">Create a timed rehearsal plan.</div>
+            </div>
+            <div class="ath-tool">
+              <h3>Classroom Activity Generator</h3>
+              <label>Focus</label>
+              <select id="activityFocus"><option>chorus and ensemble</option><option>status and power</option><option>subtext</option><option>dramatic irony</option><option>stage directions</option><option>adaptation across cultures</option><option>public domain vs performance rights</option></select>
+              <label>Age group</label>
+              <select id="activityAge"><option>middle school</option><option>high school</option><option>college/adult</option><option>mixed community workshop</option></select>
+              <button class="ath-btn gold" id="makeActivity">Create Activity</button>
+              <div class="ath-result" id="activityResult">Generate a theatre classroom activity.</div>
+            </div>
+          </div>
+        </section>
+
+        <section class="ath-view" id="view-resources">
+          <div class="ath-view-head">
+            <div>
+              <h2>Script & Research Resource Library</h2>
+              <p>Use these doors to find texts, monologues, scene-study material, history, study guides, and licensing pathways. Some are public domain; some are discovery/licensing platforms.</p>
+            </div>
+          </div>
+          <div class="ath-resource-grid" id="athResourceGrid"></div>
+        </section>
+
+        <section class="ath-view" id="view-timeline">
+          <div class="ath-view-head"><div><h2>Theatre Timeline</h2><p>A broad historical map from ritual performance and classical drama to modern theatre-making.</p></div></div>
+          <div class="ath-timeline" id="athTimeline"></div>
+        </section>
+
+        <section class="ath-view" id="view-glossary">
+          <div class="ath-view-head"><div><h2>Theatre Glossary</h2><p>Core vocabulary for reading, rehearsing, directing, designing, and writing for the stage.</p></div></div>
+          <div class="ath-glossary" id="athGlossary"></div>
+        </section>
+
+        <section class="ath-view" id="view-quiz">
+          <div class="ath-view-head"><div><h2>Quiz Chamber</h2><p>Practice theatre history, script analysis, and production vocabulary.</p></div></div>
+          <div class="ath-quiz-card">
+            <h3 id="quizQuestion">Question</h3>
+            <div id="quizAnswers"></div>
+            <p id="quizFeedback" style="color:var(--ath-muted);line-height:1.5"></p>
+            <button class="ath-btn gold" id="nextQuiz">Next Question</button>
+          </div>
+        </section>
+
+        <section class="ath-view" id="view-notes">
+          <div class="ath-view-head">
+            <div><h2>Personal Theatre Notebook</h2><p>Save course reflections, casting ideas, staging experiments, monologue lists, and classroom plans in your browser.</p></div>
+            <div class="ath-actions"><button class="ath-btn" id="downloadNotes">Download Notes JSON</button><button class="ath-btn" id="clearNotes">Clear General Notes</button></div>
+          </div>
+          <div class="ath-notes-wrap">
+            <textarea class="ath-big-notes" id="generalNotes" placeholder="Write your theatre notes here…"></textarea>
+            <div class="ath-side-card" style="margin-top:0">
+              <strong>Notebook Ideas</strong>
+              <p>Track monologues you like, questions about translations, audition pieces, directing concepts, design palettes, or playwriting sparks.</p>
+              <strong>Favorites</strong>
+              <p id="favoriteList">No favorites yet.</p>
+            </div>
+          </div>
+        </section>
+      </main>
+    </div>
+    <footer class="ath-footer">ARSHIF Theatre Hall · Performance Archive · Living Scriptorium. Public-domain status varies by country, translation, edition, adaptation, and performance context. Always verify rights before performing.</footer>
+  </div>
+
+  <div class="ath-modal-backdrop" id="athBackdrop"></div>
+  <article class="ath-dossier" id="athDossier" role="dialog" aria-modal="true" aria-labelledby="dossierTitle">
+    <div class="ath-dossier-head" id="dossierDragHandle">
+      <h3 id="dossierTitle">Dossier</h3>
+      <button class="ath-close" id="closeDossier" aria-label="Close dossier">×</button>
+    </div>
+    <div class="ath-dossier-body" id="dossierBody"></div>
+  </article>
+</div>
+
+<script>
+(function(){
+'use strict';
+const ATH_STORE = 'arshif_theatre_hall_v1';
+const $ = sel => document.querySelector('#arshif-theatre-hall ' + sel);
+const $$ = sel => Array.from(document.querySelectorAll('#arshif-theatre-hall ' + sel));
+const chips = ['all','public-domain','rights-check','ancient','classical','medieval','early-modern','modern','contemporary','tragedy','comedy','monologue','one-act','greek','roman','indian','chinese','japanese','african','americas','english','french','russian','irish','women-playwrights','classroom'];
+let activeChip = 'all';
+let quizIndex = 0;
+let currentDossierId = null;
+const state = loadState();
+
+const plays = [
+ {id:'persians',t:'The Persians',a:'Aeschylus',era:'Ancient',cult:'Greek',genre:'Tragedy',date:'472 BCE',lang:'Ancient Greek',rights:'public-domain',tags:'ancient greek tragedy chorus empire war public-domain classroom monologue',desc:'The oldest surviving complete Greek tragedy, dramatizing the Persian court after Salamis from the enemy side.',themes:['war grief','empire','chorus','public memory'],links:[['Internet Classics Archive','https://classics.mit.edu/Aeschylus/persians.html'],['Project Gutenberg search','https://www.gutenberg.org/ebooks/search/?query=Aeschylus+Persians']],activity:'Create a choral lament that reports a public disaster without showing the battle itself.'},
+ {id:'agamemnon',t:'Agamemnon',a:'Aeschylus',era:'Ancient',cult:'Greek',genre:'Tragedy',date:'458 BCE',lang:'Ancient Greek',rights:'public-domain',tags:'ancient greek tragedy chorus justice family public-domain monologue',desc:'The first play of the Oresteia, where homecoming, sacrifice, revenge, and civic justice collide.',themes:['revenge','inheritance of violence','prophecy','gendered power'],links:[['Internet Classics Archive','https://classics.mit.edu/Aeschylus/agamemnon.html']],activity:'Map the chain of cause and consequence from Iphigenia to Clytemnestra.'},
+ {id:'eumenides',t:'The Eumenides',a:'Aeschylus',era:'Ancient',cult:'Greek',genre:'Tragedy',date:'458 BCE',lang:'Ancient Greek',rights:'public-domain',tags:'ancient greek tragedy law justice chorus public-domain',desc:'A cosmic revenge story becomes a trial, transforming blood vengeance into civic justice.',themes:['law','mercy','vengeance','institution building'],links:[['Internet Classics Archive','https://classics.mit.edu/Aeschylus/eumenides.html']],activity:'Stage the Furies as a soundscape rather than realistic characters.'},
+ {id:'oedipus',t:'Oedipus Rex',a:'Sophocles',era:'Ancient',cult:'Greek',genre:'Tragedy',date:'c. 429 BCE',lang:'Ancient Greek',rights:'public-domain',tags:'ancient greek tragedy fate monologue public-domain classroom',desc:'A king investigates a plague and discovers that the truth he seeks is himself.',themes:['fate','identity','sight and blindness','truth'],links:[['Internet Classics Archive','https://classics.mit.edu/Sophocles/oedipus.html']],activity:'Track every question Oedipus asks and how each one tightens the trap.'},
+ {id:'antigone',t:'Antigone',a:'Sophocles',era:'Ancient',cult:'Greek',genre:'Tragedy',date:'441 BCE',lang:'Ancient Greek',rights:'public-domain',tags:'ancient greek tragedy law women-playwrights? monologue public-domain classroom',desc:'A young woman defies a ruler to bury her brother, asking whether law without conscience is justice.',themes:['civil disobedience','family duty','state power','burial rites'],links:[['Internet Classics Archive','https://classics.mit.edu/Sophocles/antigone.html']],activity:'Debate Creon and Antigone using only arguments each character could honestly believe.'},
+ {id:'electra',t:'Electra',a:'Sophocles',era:'Ancient',cult:'Greek',genre:'Tragedy',date:'c. 410 BCE',lang:'Ancient Greek',rights:'public-domain',tags:'ancient greek tragedy revenge monologue public-domain',desc:'Electra waits in grief and rage for revenge against the murderers of her father.',themes:['revenge','mourning','recognition','family'],links:[['Internet Classics Archive','https://classics.mit.edu/Sophocles/electra.html']],activity:'Compare Electra’s grief as ritual, strategy, and identity.'},
+ {id:'medea',t:'Medea',a:'Euripides',era:'Ancient',cult:'Greek',genre:'Tragedy',date:'431 BCE',lang:'Ancient Greek',rights:'public-domain',tags:'ancient greek tragedy monologue women public-domain classroom',desc:'A betrayed outsider turns intelligence, grief, and fury into devastating revenge.',themes:['exile','betrayal','gender','revenge'],links:[['Internet Classics Archive','https://classics.mit.edu/Euripides/medea.html']],activity:'Stage Medea’s argument as both confession and courtroom speech.'},
+ {id:'bacchae',t:'The Bacchae',a:'Euripides',era:'Ancient',cult:'Greek',genre:'Tragedy',date:'405 BCE',lang:'Ancient Greek',rights:'public-domain',tags:'ancient greek tragedy ritual chorus public-domain monologue',desc:'Dionysus returns to Thebes and tears open the limits of order, denial, ecstasy, and control.',themes:['ritual','ecstasy','order versus wildness','divinity'],links:[['Internet Classics Archive','https://classics.mit.edu/Euripides/bacchan.html']],activity:'Design the chorus as a community transformed by rhythm.'},
+ {id:'trojan-women',t:'The Trojan Women',a:'Euripides',era:'Ancient',cult:'Greek',genre:'Tragedy',date:'415 BCE',lang:'Ancient Greek',rights:'public-domain',tags:'ancient greek tragedy war women monologue public-domain classroom',desc:'After Troy falls, women face enslavement, exile, and the ruins of victory.',themes:['antiwar theatre','captivity','grief','survival'],links:[['Internet Classics Archive','https://classics.mit.edu/Euripides/troj_women.html']],activity:'Create a tableau sequence showing a city after defeat without battle scenes.'},
+ {id:'lysistrata',t:'Lysistrata',a:'Aristophanes',era:'Ancient',cult:'Greek',genre:'Comedy',date:'411 BCE',lang:'Ancient Greek',rights:'public-domain',tags:'ancient greek comedy satire public-domain classroom monologue',desc:'Women organize a comic political strike to pressure men to end the Peloponnesian War.',themes:['satire','gender politics','peace','public comedy'],links:[['Internet Classics Archive','https://classics.mit.edu/Aristophanes/lysistrata.html']],activity:'Identify how comedy can carry serious political critique.'},
+ {id:'clouds',t:'The Clouds',a:'Aristophanes',era:'Ancient',cult:'Greek',genre:'Comedy',date:'423 BCE',lang:'Ancient Greek',rights:'public-domain',tags:'ancient greek comedy satire philosophy public-domain',desc:'A satire of intellectual fashion, education, rhetoric, and Socrates as comic symbol.',themes:['education','rhetoric','satire','parents and children'],links:[['Internet Classics Archive','https://classics.mit.edu/Aristophanes/clouds.html']],activity:'Stage an argument where weak reasoning triumphs for comic effect.'},
+ {id:'birds',t:'The Birds',a:'Aristophanes',era:'Ancient',cult:'Greek',genre:'Comedy',date:'414 BCE',lang:'Ancient Greek',rights:'public-domain',tags:'ancient greek comedy fantasy public-domain',desc:'Two Athenians persuade birds to build a city in the sky, turning fantasy into political satire.',themes:['utopia','satire','escape','power'],links:[['Internet Classics Archive','https://classics.mit.edu/Aristophanes/birds.html']],activity:'Invent a chorus movement vocabulary for birds as citizens.'},
+ {id:'frogs',t:'The Frogs',a:'Aristophanes',era:'Ancient',cult:'Greek',genre:'Comedy',date:'405 BCE',lang:'Ancient Greek',rights:'public-domain',tags:'ancient greek comedy theatre-about-theatre public-domain classroom',desc:'Dionysus journeys to the underworld to bring back a great playwright and save the city.',themes:['criticism','theatre itself','civic art','comic descent'],links:[['Internet Classics Archive','https://classics.mit.edu/Aristophanes/frogs.html']],activity:'Hold a mock contest between two playwrights for the soul of the city.'},
+ {id:'menaechmi',t:'The Menaechmi',a:'Plautus',era:'Ancient',cult:'Roman',genre:'Comedy',date:'c. 200 BCE',lang:'Latin',rights:'public-domain',tags:'ancient roman comedy mistaken-identity public-domain classroom',desc:'A Roman farce of separated twins, confusion, servants, wives, and mistaken identity.',themes:['farce','doubling','status','family reunion'],links:[['Project Gutenberg search','https://www.gutenberg.org/ebooks/search/?query=Plautus+Menaechmi']],activity:'Create a door-slamming farce map showing entrances, exits, and misunderstandings.'},
+ {id:'miles',t:'The Braggart Soldier',a:'Plautus',era:'Ancient',cult:'Roman',genre:'Comedy',date:'c. 3rd–2nd c. BCE',lang:'Latin',rights:'public-domain',tags:'ancient roman comedy stock-characters public-domain',desc:'A swaggering soldier becomes the target of schemes, disguise, and comic humiliation.',themes:['stock types','deception','status','comic boasting'],links:[['Project Gutenberg search','https://www.gutenberg.org/ebooks/search/?query=Plautus+Braggart+Soldier']],activity:'Build a stock-character mask bank: braggart, clever servant, lover, parasite.'},
+ {id:'sakuntala',t:'Shakuntala',a:'Kālidāsa',era:'Classical',cult:'Indian',genre:'Romance Drama',date:'c. 4th–5th c. CE',lang:'Sanskrit',rights:'public-domain',tags:'classical indian sanskrit drama romance public-domain monologue classroom',desc:'A luminous Sanskrit drama of love, memory, recognition, curse, and restoration.',themes:['recognition','nature','court and forest','memory'],links:[['Project Gutenberg search','https://www.gutenberg.org/ebooks/search/?query=Kalidasa+Sakuntala'],['Internet Archive search','https://archive.org/search?query=Kalidasa+Sakuntala']],activity:'Contrast forest world and court world through sound, movement, and costume.'},
+ {id:'little-clay-cart',t:'The Little Clay Cart',a:'Śūdraka',era:'Classical',cult:'Indian',genre:'Comedy / Romance',date:'c. 5th c. CE',lang:'Sanskrit',rights:'public-domain',tags:'classical indian sanskrit comedy public-domain classroom',desc:'A richly social Sanskrit play mixing romance, politics, courtesans, thieves, and civic life.',themes:['class','romance','urban society','justice'],links:[['Project Gutenberg search','https://www.gutenberg.org/ebooks/search/?query=Little+Clay+Cart']],activity:'Track how comic subplots become part of the main social world.'},
+ {id:'mudrarakshasa',t:'Mudrārākṣasa',a:'Viśākhadatta',era:'Classical',cult:'Indian',genre:'Political Drama',date:'c. 4th–8th c. CE',lang:'Sanskrit',rights:'public-domain',tags:'classical indian sanskrit political drama public-domain',desc:'A political drama of statecraft, loyalty, intrigue, and strategy around the Mauryan court.',themes:['statecraft','loyalty','diplomacy','power'],links:[['Internet Archive search','https://archive.org/search?query=Mudrarakshasa']],activity:'Diagram every alliance and reversal like a political chessboard.'},
+ {id:'malatimadhava',t:'Mālatīmādhava',a:'Bhavabhūti',era:'Classical',cult:'Indian',genre:'Romantic Drama',date:'8th c. CE',lang:'Sanskrit',rights:'public-domain',tags:'classical indian sanskrit romance public-domain',desc:'A Sanskrit drama combining romance, friendship, danger, and devotional atmosphere.',themes:['love','danger','devotion','friendship'],links:[['Internet Archive search','https://archive.org/search?query=Malatimadhava']],activity:'Create a mood board contrasting romance and danger.'},
+ {id:'orphan-zhao',t:'The Orphan of Zhao',a:'Ji Junxiang / Yuan tradition',era:'Classical',cult:'Chinese',genre:'Historical Drama',date:'13th c.',lang:'Chinese',rights:'rights-check',tags:'classical chinese drama tragedy adaptation rights-check classroom',desc:'A Yuan drama of loyalty, sacrifice, identity, and justice across generations.',themes:['sacrifice','revenge','loyalty','identity'],links:[['WorldCat search','https://search.worldcat.org/search?q=The+Orphan+of+Zhao'],['Internet Archive search','https://archive.org/search?query=Orphan+of+Zhao']],activity:'Discuss how adaptations change the ethics of revenge and sacrifice.'},
+ {id:'peony-pavilion',t:'The Peony Pavilion',a:'Tang Xianzu',era:'Early Modern',cult:'Chinese',genre:'Kunqu Romance',date:'1598',lang:'Chinese',rights:'rights-check',tags:'early-modern chinese drama romance opera rights-check',desc:'A Ming masterpiece where dream, desire, death, and revival merge in poetic theatre.',themes:['dream','desire','revival','poetry'],links:[['WorldCat search','https://search.worldcat.org/search?q=The+Peony+Pavilion'],['Internet Archive search','https://archive.org/search?query=Peony+Pavilion']],activity:'Stage a boundary between dream and waking using only fabric and light.'},
+ {id:'western-chamber',t:'The Romance of the Western Chamber',a:'Wang Shifu',era:'Classical',cult:'Chinese',genre:'Romantic Drama',date:'13th c.',lang:'Chinese',rights:'rights-check',tags:'classical chinese romance drama rights-check classroom',desc:'A celebrated Chinese romance drama of love, poetry, negotiation, and social barriers.',themes:['romance','social barriers','poetry','wit'],links:[['Internet Archive search','https://archive.org/search?query=Romance+of+the+Western+Chamber']],activity:'Write a silent scene where etiquette hides emotion.'},
+ {id:'snow-midsummer',t:'Snow in Midsummer',a:'Guan Hanqing',era:'Classical',cult:'Chinese',genre:'Yuan Drama',date:'13th c.',lang:'Chinese',rights:'rights-check',tags:'classical chinese tragedy justice rights-check',desc:'A Yuan-era drama of injustice, wrongful death, and cosmic signs of moral disorder.',themes:['injustice','testimony','cosmic signs','truth'],links:[['WorldCat search','https://search.worldcat.org/search?q=Snow+in+Midsummer+Guan+Hanqing']],activity:'Create three stage signs that reveal the world is morally out of balance.'},
+ {id:'chalk-circle',t:'The Chalk Circle',a:'Li Xingdao tradition',era:'Classical',cult:'Chinese',genre:'Courtroom Drama',date:'Yuan period',lang:'Chinese',rights:'rights-check',tags:'classical chinese courtroom drama rights-check adaptation',desc:'A justice tale later echoed in European adaptations, centered on maternal claim and legal judgment.',themes:['justice','motherhood','evidence','adaptation'],links:[['Internet Archive search','https://archive.org/search?query=Chalk+Circle+Chinese+play']],activity:'Compare courtroom staging in ancient, medieval, and modern forms.'},
+ {id:'atsumori',t:'Atsumori',a:'Zeami tradition',era:'Medieval',cult:'Japanese',genre:'Noh',date:'14th–15th c.',lang:'Japanese',rights:'public-domain',tags:'medieval japanese noh tragedy ritual public-domain monologue classroom',desc:'A warrior’s ghost returns through memory, music, and Buddhist reflection.',themes:['memory','war','compassion','ghosts'],links:[['Sacred Texts Noh index','https://sacred-texts.com/shi/npj/index.htm'],['Project Gutenberg Noh Plays','https://www.gutenberg.org/ebooks/43304']],activity:'Use slow movement to show a memory arriving before a character speaks.'},
+ {id:'hagoromo',t:'Hagoromo',a:'Noh tradition',era:'Medieval',cult:'Japanese',genre:'Noh',date:'medieval',lang:'Japanese',rights:'public-domain',tags:'medieval japanese noh dance public-domain classroom',desc:'A celestial maiden seeks her feather mantle in a Noh play of beauty, trust, and dance.',themes:['dance','trust','heaven and earth','beauty'],links:[['Sacred Texts Noh index','https://sacred-texts.com/shi/npj/index.htm'],['The Noh Plays Database','https://www.the-noh.com/en/plays/index.html']],activity:'Design a simple prop whose presence changes the whole stage world.'},
+ {id:'matsukaze',t:'Matsukaze',a:'Kan’ami / Zeami tradition',era:'Medieval',cult:'Japanese',genre:'Noh',date:'14th c.',lang:'Japanese',rights:'public-domain',tags:'medieval japanese noh memory public-domain',desc:'Two sisters’ ghosts remain bound to longing, sea wind, and pine trees.',themes:['longing','ghosts','place','poetic image'],links:[['Project Gutenberg Noh Plays','https://www.gutenberg.org/ebooks/43304']],activity:'Create a sound score from wind, waves, and silence.'},
+ {id:'sumidagawa',t:'Sumidagawa',a:'Jūrō Motomasa tradition',era:'Medieval',cult:'Japanese',genre:'Noh',date:'15th c.',lang:'Japanese',rights:'public-domain',tags:'medieval japanese noh grief public-domain monologue',desc:'A mother searches for her lost child in a restrained yet devastating Noh grief journey.',themes:['loss','pilgrimage','restraint','ritual'],links:[['Sacred Texts Noh index','https://sacred-texts.com/shi/npj/index.htm']],activity:'Explore how stillness can intensify grief more than visible weeping.'},
+ {id:'chushingura',t:'Chūshingura',a:'Takeda Izumo II et al.',era:'Early Modern',cult:'Japanese',genre:'Kabuki / Bunraku',date:'1748',lang:'Japanese',rights:'rights-check',tags:'early-modern japanese kabuki bunraku revenge rights-check',desc:'The treasury of loyal retainers, a monumental revenge story in puppet and kabuki traditions.',themes:['loyalty','revenge','honor','adaptation'],links:[['WorldCat search','https://search.worldcat.org/search?q=Chushingura+play'],['Internet Archive search','https://archive.org/search?query=Chushingura']],activity:'Stage honor as a physical distance between characters.'},
+ {id:'everyman',t:'Everyman',a:'Anonymous',era:'Medieval',cult:'English',genre:'Morality Play',date:'late 15th c.',lang:'Middle English',rights:'public-domain',tags:'medieval english morality allegory public-domain classroom monologue',desc:'An allegorical soul-play where Everyman must face death and discover what can accompany him.',themes:['mortality','allegory','salvation','values'],links:[['Project Gutenberg search','https://www.gutenberg.org/ebooks/search/?query=Everyman+morality+play']],activity:'Assign each virtue a movement style and entrance sound.'},
+ {id:'second-shepherds',t:'The Second Shepherds’ Play',a:'Wakefield Master / Anonymous',era:'Medieval',cult:'English',genre:'Mystery Play',date:'15th c.',lang:'Middle English',rights:'public-domain',tags:'medieval english comedy nativity public-domain classroom',desc:'A comic sheep-stealing plot turns toward the Nativity, blending earthy farce with devotion.',themes:['comic low life','nativity','community','revelation'],links:[['Internet Archive search','https://archive.org/search?query=Second+Shepherds+Play']],activity:'Play the shift from farce to wonder without changing the set.'},
+ {id:'mankind',t:'Mankind',a:'Anonymous',era:'Medieval',cult:'English',genre:'Morality Play',date:'c. 1470',lang:'Middle English',rights:'public-domain',tags:'medieval english morality comedy public-domain',desc:'A morality play where temptation, labor, mischief, and repentance become theatrical figures.',themes:['temptation','labor','comedy','repentance'],links:[['Internet Archive search','https://archive.org/search?query=Mankind+morality+play']],activity:'Create allegorical costumes from everyday objects.'},
+ {id:'hamlet',t:'Hamlet',a:'William Shakespeare',era:'Early Modern',cult:'English',genre:'Tragedy',date:'c. 1600',lang:'English',rights:'public-domain',tags:'early-modern english shakespeare tragedy monologue public-domain classroom',desc:'A prince confronts grief, surveillance, revenge, performance, and uncertainty.',themes:['revenge','grief','theatre within theatre','thought and action'],links:[['Folger Hamlet','https://www.folger.edu/explore/shakespeares-works/hamlet/read/'],['MIT Shakespeare','https://shakespeare.mit.edu/hamlet/']],activity:'Compare “to be” as philosophy, survival question, and performance beat.'},
+ {id:'macbeth',t:'Macbeth',a:'William Shakespeare',era:'Early Modern',cult:'English / Scottish setting',genre:'Tragedy',date:'c. 1606',lang:'English',rights:'public-domain',tags:'early-modern english shakespeare tragedy monologue public-domain classroom',desc:'Prophecy, ambition, murder, guilt, and tyranny gather into one of theatre’s swiftest tragedies.',themes:['ambition','guilt','prophecy','violence'],links:[['Folger Macbeth','https://www.folger.edu/explore/shakespeares-works/macbeth/read/'],['MIT Shakespeare','https://shakespeare.mit.edu/macbeth/']],activity:'Track how darkness, sleep, and blood become recurring stage images.'},
+ {id:'lear',t:'King Lear',a:'William Shakespeare',era:'Early Modern',cult:'English / British setting',genre:'Tragedy',date:'c. 1605',lang:'English',rights:'public-domain',tags:'early-modern english shakespeare tragedy monologue public-domain',desc:'A king divides his kingdom and enters a storm of family, power, madness, and compassion.',themes:['power','family','madness','human need'],links:[['Folger King Lear','https://www.folger.edu/explore/shakespeares-works/king-lear/read/'],['MIT Shakespeare','https://shakespeare.mit.edu/lear/']],activity:'Build a storm scene with bodies, breath, and percussion only.'},
+ {id:'othello',t:'Othello',a:'William Shakespeare',era:'Early Modern',cult:'English / Venetian setting',genre:'Tragedy',date:'c. 1603',lang:'English',rights:'public-domain',tags:'early-modern english shakespeare tragedy monologue public-domain classroom',desc:'A military hero is manipulated by insinuation, jealousy, racial othering, and false proof.',themes:['jealousy','trust','race','manipulation'],links:[['Folger Othello','https://www.folger.edu/explore/shakespeares-works/othello/read/'],['MIT Shakespeare','https://shakespeare.mit.edu/othello/']],activity:'Stage Iago’s persuasion as an infection of thought.'},
+ {id:'romeo-juliet',t:'Romeo and Juliet',a:'William Shakespeare',era:'Early Modern',cult:'English / Italian setting',genre:'Tragedy',date:'c. 1595',lang:'English',rights:'public-domain',tags:'early-modern english shakespeare tragedy romance public-domain classroom monologue',desc:'Young love grows inside civic violence, speed, secrecy, and inherited feud.',themes:['love','feud','youth','fate'],links:[['Folger Romeo and Juliet','https://www.folger.edu/explore/shakespeares-works/romeo-and-juliet/read/'],['MIT Shakespeare','https://shakespeare.mit.edu/romeo_juliet/']],activity:'Chart the play’s timeline to show how speed creates tragedy.'},
+ {id:'twelfth-night',t:'Twelfth Night',a:'William Shakespeare',era:'Early Modern',cult:'English / Illyrian setting',genre:'Comedy',date:'c. 1601',lang:'English',rights:'public-domain',tags:'early-modern english shakespeare comedy monologue public-domain classroom',desc:'Disguise, grief, mistaken identity, and desire unfold in a bittersweet comedy of self-recognition.',themes:['disguise','music','desire','identity'],links:[['Folger Twelfth Night','https://www.folger.edu/explore/shakespeares-works/twelfth-night/read/'],['MIT Shakespeare','https://shakespeare.mit.edu/twelfth_night/']],activity:'Play a scene twice: once for comedy, once for grief underneath.'},
+ {id:'tempest',t:'The Tempest',a:'William Shakespeare',era:'Early Modern',cult:'English / Mediterranean island',genre:'Romance',date:'c. 1611',lang:'English',rights:'public-domain',tags:'early-modern english shakespeare romance magic public-domain classroom',desc:'A displaced ruler uses magic, theatre, forgiveness, and control on an enchanted island.',themes:['forgiveness','colonial readings','magic','art'],links:[['Folger The Tempest','https://www.folger.edu/explore/shakespeares-works/the-tempest/read/'],['MIT Shakespeare','https://shakespeare.mit.edu/tempest/']],activity:'Design Prospero’s magic as stage technology rather than supernatural spectacle.'},
+ {id:'much-ado',t:'Much Ado About Nothing',a:'William Shakespeare',era:'Early Modern',cult:'English / Sicilian setting',genre:'Comedy',date:'c. 1598',lang:'English',rights:'public-domain',tags:'early-modern english shakespeare comedy public-domain monologue',desc:'Wit, overhearing, public shame, and emotional repair drive this comedy of language and trust.',themes:['wit','honor','misinformation','love'],links:[['Folger Much Ado','https://www.folger.edu/explore/shakespeares-works/much-ado-about-nothing/read/'],['MIT Shakespeare','https://shakespeare.mit.edu/much_ado/']],activity:'Stage overhearing scenes with visible audience complicity.'},
+ {id:'faustus',t:'Doctor Faustus',a:'Christopher Marlowe',era:'Early Modern',cult:'English',genre:'Tragedy',date:'c. 1592',lang:'English',rights:'public-domain',tags:'early-modern english tragedy monologue public-domain classroom',desc:'A scholar trades his soul for knowledge, power, spectacle, and temporary command.',themes:['ambition','damnation','knowledge','spectacle'],links:[['Project Gutenberg search','https://www.gutenberg.org/ebooks/search/?query=Marlowe+Doctor+Faustus']],activity:'Make Faustus’s bargains physically smaller each time his imagination shrinks.'},
+ {id:'spanish-tragedy',t:'The Spanish Tragedy',a:'Thomas Kyd',era:'Early Modern',cult:'English / Spanish setting',genre:'Revenge Tragedy',date:'c. 1587',lang:'English',rights:'public-domain',tags:'early-modern english revenge tragedy public-domain',desc:'A foundational revenge tragedy filled with ghosts, madness, justice, and play-within-play mechanics.',themes:['revenge','madness','meta-theatre','justice'],links:[['Project Gutenberg search','https://www.gutenberg.org/ebooks/search/?query=Spanish+Tragedy+Kyd']],activity:'Stage the play-within-play as both performance and trap.'},
+ {id:'duchess-malfi',t:'The Duchess of Malfi',a:'John Webster',era:'Early Modern',cult:'English / Italian setting',genre:'Tragedy',date:'c. 1613',lang:'English',rights:'public-domain',tags:'early-modern english tragedy women monologue public-domain',desc:'A widowed duchess chooses love and autonomy inside a violent surveillance state.',themes:['autonomy','surveillance','corruption','death'],links:[['Project Gutenberg search','https://www.gutenberg.org/ebooks/search/?query=Duchess+of+Malfi']],activity:'Design shadows and listening positions for a world of surveillance.'},
+ {id:'volpone',t:'Volpone',a:'Ben Jonson',era:'Early Modern',cult:'English / Venetian setting',genre:'Comedy / Satire',date:'1606',lang:'English',rights:'public-domain',tags:'early-modern english comedy satire public-domain',desc:'A fox-like con artist exposes greed, inheritance hunger, and moral rot through comic deception.',themes:['greed','satire','performance','deception'],links:[['Project Gutenberg search','https://www.gutenberg.org/ebooks/search/?query=Volpone+Ben+Jonson']],activity:'Give each greedy character an animal movement signature.'},
+ {id:'life-dream',t:'Life Is a Dream',a:'Pedro Calderón de la Barca',era:'Early Modern',cult:'Spanish',genre:'Philosophical Drama',date:'1635',lang:'Spanish',rights:'public-domain',tags:'early-modern spanish drama philosophy monologue public-domain classroom',desc:'A prince imprisoned by prophecy confronts freedom, illusion, power, and moral choice.',themes:['free will','dream and reality','power','education'],links:[['Project Gutenberg search','https://www.gutenberg.org/ebooks/search/?query=Life+Is+a+Dream+Calderon']],activity:'Create two versions of the same scene: prison as literal, prison as mental.'},
+ {id:'fuenteovejuna',t:'Fuenteovejuna',a:'Lope de Vega',era:'Early Modern',cult:'Spanish',genre:'Drama',date:'c. 1612',lang:'Spanish',rights:'public-domain',tags:'early-modern spanish drama community public-domain classroom',desc:'A village collectively resists tyranny, turning community voice into theatrical power.',themes:['collective action','justice','abuse of power','community'],links:[['Project Gutenberg search','https://www.gutenberg.org/ebooks/search/?query=Fuenteovejuna+Lope+de+Vega']],activity:'Stage the village as one body with many voices.'},
+ {id:'trickster-seville',t:'The Trickster of Seville',a:'Tirso de Molina',era:'Early Modern',cult:'Spanish',genre:'Drama',date:'c. 1630',lang:'Spanish',rights:'public-domain',tags:'early-modern spanish drama don-juan public-domain',desc:'An early Don Juan play where deception, desire, and consequence become theatrical legend.',themes:['seduction','deception','judgment','legend'],links:[['Project Gutenberg search','https://www.gutenberg.org/ebooks/search/?query=Trickster+of+Seville']],activity:'Compare charm as performance with harm as consequence.'},
+ {id:'tartuffe',t:'Tartuffe',a:'Molière',era:'Early Modern',cult:'French',genre:'Comedy',date:'1664',lang:'French',rights:'public-domain',tags:'early-modern french comedy satire public-domain classroom monologue',desc:'A hypocrite weaponizes piety to manipulate a household, exposing gullibility and moral performance.',themes:['hypocrisy','family','satire','religious performance'],links:[['Project Gutenberg search','https://www.gutenberg.org/ebooks/search/?query=Tartuffe+Moliere']],activity:'Stage Tartuffe as sincere to himself rather than cartoonishly false.'},
+ {id:'misanthrope',t:'The Misanthrope',a:'Molière',era:'Early Modern',cult:'French',genre:'Comedy',date:'1666',lang:'French',rights:'public-domain',tags:'early-modern french comedy manners public-domain monologue',desc:'A comedy of manners where honesty, vanity, love, and social performance collide.',themes:['truth-telling','society','vanity','manners'],links:[['Project Gutenberg search','https://www.gutenberg.org/ebooks/search/?query=Misanthrope+Moliere']],activity:'Play every compliment as both gift and weapon.'},
+ {id:'imaginary-invalid',t:'The Imaginary Invalid',a:'Molière',era:'Early Modern',cult:'French',genre:'Comedy',date:'1673',lang:'French',rights:'public-domain',tags:'early-modern french comedy medicine public-domain classroom',desc:'A hypochondriac household comedy about medicine, authority, dependence, and performance.',themes:['medicine satire','family','fear','authority'],links:[['Project Gutenberg search','https://www.gutenberg.org/ebooks/search/?query=Imaginary+Invalid+Moliere']],activity:'Create comic business around rituals of diagnosis.'},
+ {id:'phedre',t:'Phèdre',a:'Jean Racine',era:'Early Modern',cult:'French',genre:'Tragedy',date:'1677',lang:'French',rights:'public-domain',tags:'early-modern french tragedy monologue public-domain',desc:'A neoclassical tragedy of forbidden desire, shame, speech, and destructive silence.',themes:['desire','shame','confession','myth'],links:[['Project Gutenberg search','https://www.gutenberg.org/ebooks/search/?query=Racine+Phedre']],activity:'Explore how formal restraint can intensify emotional crisis.'},
+ {id:'the-rover',t:'The Rover',a:'Aphra Behn',era:'Restoration',cult:'English',genre:'Comedy',date:'1677',lang:'English',rights:'public-domain',tags:'early-modern english restoration comedy women-playwrights public-domain classroom',desc:'A Restoration comedy of masks, desire, gender negotiation, and carnival danger.',themes:['female agency','carnival','desire','disguise'],links:[['Project Gutenberg search','https://www.gutenberg.org/ebooks/search/?query=Aphra+Behn+Rover']],activity:'Discuss where comedy turns dangerous and how directors can handle that responsibly.'},
+ {id:'way-of-world',t:'The Way of the World',a:'William Congreve',era:'Restoration',cult:'English',genre:'Comedy of Manners',date:'1700',lang:'English',rights:'public-domain',tags:'early-modern english comedy manners public-domain',desc:'A glittering comedy of contracts, wit, inheritance, romance, and social chess.',themes:['marriage contracts','wit','property','manners'],links:[['Project Gutenberg search','https://www.gutenberg.org/ebooks/search/?query=Way+of+the+World+Congreve']],activity:'Stage a conversation as a duel with pauses as parries.'},
+ {id:'she-stoops',t:'She Stoops to Conquer',a:'Oliver Goldsmith',era:'18th Century',cult:'Irish / English',genre:'Comedy',date:'1773',lang:'English',rights:'public-domain',tags:'modern? irish english comedy mistaken-identity public-domain classroom',desc:'A comedy of mistaken class, courtship, inn confusion, and social performance.',themes:['class','mistaken identity','courtship','wit'],links:[['Project Gutenberg search','https://www.gutenberg.org/ebooks/search/?query=She+Stoops+to+Conquer']],activity:'Map who knows what, and when, to understand comic timing.'},
+ {id:'school-scandal',t:'The School for Scandal',a:'Richard Brinsley Sheridan',era:'18th Century',cult:'Irish / English',genre:'Comedy of Manners',date:'1777',lang:'English',rights:'public-domain',tags:'modern? irish english comedy gossip public-domain classroom',desc:'A sharp comedy about gossip, reputation, hypocrisy, and social appetite.',themes:['gossip','reputation','hypocrisy','manners'],links:[['Project Gutenberg search','https://www.gutenberg.org/ebooks/search/?query=School+for+Scandal']],activity:'Create a gossip chorus that physically spreads rumor across the stage.'},
+ {id:'doll-house',t:'A Doll’s House',a:'Henrik Ibsen',era:'Modern',cult:'Norwegian',genre:'Realist Drama',date:'1879',lang:'Norwegian',rights:'public-domain',tags:'modern realism tragedy women monologue public-domain classroom',desc:'A domestic realism landmark where marriage, debt, identity, and freedom become explosive.',themes:['gender roles','marriage','selfhood','realism'],links:[['Project Gutenberg search','https://www.gutenberg.org/ebooks/search/?query=A+Doll%27s+House+Ibsen']],activity:'Trace every door, letter, and object as a pressure point.'},
+ {id:'ghosts',t:'Ghosts',a:'Henrik Ibsen',era:'Modern',cult:'Norwegian',genre:'Realist Drama',date:'1881',lang:'Norwegian',rights:'public-domain',tags:'modern realism tragedy public-domain classroom',desc:'A family drama about inheritance, reputation, illness, and the dead ideas that haunt the living.',themes:['inheritance','secrets','social hypocrisy','haunting'],links:[['Project Gutenberg search','https://www.gutenberg.org/ebooks/search/?query=Ghosts+Ibsen']],activity:'List every “ghost” that is not literally supernatural.'},
+ {id:'hedda',t:'Hedda Gabler',a:'Henrik Ibsen',era:'Modern',cult:'Norwegian',genre:'Realist Drama',date:'1891',lang:'Norwegian',rights:'public-domain',tags:'modern realism tragedy monologue public-domain classroom',desc:'Hedda, trapped by status and boredom, manipulates the lives around her toward catastrophe.',themes:['control','gender confinement','boredom','social pressure'],links:[['Project Gutenberg search','https://www.gutenberg.org/ebooks/search/?query=Hedda+Gabler']],activity:'Stage Hedda’s objects as extensions of power and entrapment.'},
+ {id:'seagull',t:'The Seagull',a:'Anton Chekhov',era:'Modern',cult:'Russian',genre:'Comedy / Drama',date:'1896',lang:'Russian',rights:'public-domain',tags:'modern russian realism comedy public-domain monologue classroom',desc:'Artists and lovers circle longing, failure, hope, and the fragile need to be seen.',themes:['art','unrequited love','failure','subtext'],links:[['Project Gutenberg search','https://www.gutenberg.org/ebooks/search/?query=The+Seagull+Chekhov']],activity:'Play every line for the want underneath, not the literal sentence.'},
+ {id:'uncle-vanya',t:'Uncle Vanya',a:'Anton Chekhov',era:'Modern',cult:'Russian',genre:'Drama',date:'1899',lang:'Russian',rights:'public-domain',tags:'modern russian realism public-domain monologue classroom',desc:'A rural estate becomes a chamber of wasted hopes, ecological grief, longing, and endurance.',themes:['wasted life','labor','ecology','longing'],links:[['Project Gutenberg search','https://www.gutenberg.org/ebooks/search/?query=Uncle+Vanya']],activity:'Identify how ordinary conversation hides emotional emergencies.'},
+ {id:'three-sisters',t:'Three Sisters',a:'Anton Chekhov',era:'Modern',cult:'Russian',genre:'Drama',date:'1901',lang:'Russian',rights:'public-domain',tags:'modern russian realism public-domain monologue classroom',desc:'Three sisters dream of Moscow while time, duty, love, and loss pass through their house.',themes:['longing','time','family','unfulfilled dreams'],links:[['Project Gutenberg search','https://www.gutenberg.org/ebooks/search/?query=Three+Sisters+Chekhov']],activity:'Stage the repeated dream of Moscow as a changing sound motif.'},
+ {id:'cherry-orchard',t:'The Cherry Orchard',a:'Anton Chekhov',era:'Modern',cult:'Russian',genre:'Comedy / Drama',date:'1904',lang:'Russian',rights:'public-domain',tags:'modern russian realism comedy public-domain classroom',desc:'An estate’s sale becomes a gentle and devastating portrait of social change and denial.',themes:['class change','memory','loss','denial'],links:[['Project Gutenberg search','https://www.gutenberg.org/ebooks/search/?query=Cherry+Orchard+Chekhov']],activity:'Make the orchard present through sound and light even when unseen.'},
+ {id:'inspector-general',t:'The Inspector General',a:'Nikolai Gogol',era:'Modern',cult:'Russian',genre:'Satire',date:'1836',lang:'Russian',rights:'public-domain',tags:'modern russian comedy satire public-domain classroom',desc:'Corrupt officials mistake a minor clerk for a government inspector, revealing systemic panic.',themes:['corruption','mistaken identity','bureaucracy','satire'],links:[['Project Gutenberg search','https://www.gutenberg.org/ebooks/search/?query=Inspector+General+Gogol']],activity:'Build escalating panic through tempo, interruptions, and physical status.'},
+ {id:'lower-depths',t:'The Lower Depths',a:'Maxim Gorky',era:'Modern',cult:'Russian',genre:'Realist Drama',date:'1902',lang:'Russian',rights:'public-domain',tags:'modern russian realism public-domain classroom',desc:'A lodging house drama of poverty, illusion, dignity, cruelty, and survival.',themes:['poverty','hope and illusion','dignity','social realism'],links:[['Project Gutenberg search','https://www.gutenberg.org/ebooks/search/?query=Lower+Depths+Gorky']],activity:'Discuss whether comfort without truth can be merciful.'},
+ {id:'earnest',t:'The Importance of Being Earnest',a:'Oscar Wilde',era:'Modern',cult:'Irish / English',genre:'Comedy',date:'1895',lang:'English',rights:'public-domain',tags:'modern irish english comedy satire monologue public-domain classroom',desc:'A perfectly polished farce of names, manners, marriage, language, and social absurdity.',themes:['identity','language','manners','farce'],links:[['Project Gutenberg search','https://www.gutenberg.org/ebooks/search/?query=Importance+of+Being+Earnest']],activity:'Play Wilde’s lines for precision: every pause should sharpen the wit.'},
+ {id:'lady-windermere',t:'Lady Windermere’s Fan',a:'Oscar Wilde',era:'Modern',cult:'Irish / English',genre:'Comedy of Manners',date:'1892',lang:'English',rights:'public-domain',tags:'modern irish english comedy monologue public-domain',desc:'Secrets, reputation, sacrifice, and social performance unfold around a fan and a party.',themes:['reputation','motherhood','sacrifice','society'],links:[['Project Gutenberg search','https://www.gutenberg.org/ebooks/search/?query=Lady+Windermere%27s+Fan']],activity:'Use the fan as a shifting symbol: flirtation, defense, evidence, mask.'},
+ {id:'salome',t:'Salomé',a:'Oscar Wilde',era:'Modern',cult:'Irish / French-written',genre:'Symbolist Drama',date:'1891',lang:'French',rights:'public-domain',tags:'modern symbolist drama monologue public-domain classroom',desc:'A symbolist one-act of desire, gaze, prophecy, and fatal spectacle.',themes:['desire','gaze','symbolism','fatality'],links:[['Project Gutenberg search','https://www.gutenberg.org/ebooks/search/?query=Salome+Oscar+Wilde']],activity:'Design a stage world where color and repetition carry meaning.'},
+ {id:'arms-man',t:'Arms and the Man',a:'George Bernard Shaw',era:'Modern',cult:'Irish / English',genre:'Comedy',date:'1894',lang:'English',rights:'public-domain',tags:'modern irish english comedy antiwar public-domain classroom',desc:'A romantic comedy that punctures heroic fantasies of war, love, and class.',themes:['antiwar satire','romantic illusion','class','pragmatism'],links:[['Project Gutenberg search','https://www.gutenberg.org/ebooks/search/?query=Arms+and+the+Man']],activity:'Identify where each character confuses performance with reality.'},
+ {id:'pygmalion',t:'Pygmalion',a:'George Bernard Shaw',era:'Modern',cult:'Irish / English',genre:'Comedy / Social Drama',date:'1913',lang:'English',rights:'public-domain',tags:'modern irish english comedy language public-domain monologue classroom',desc:'A phonetics experiment becomes a sharp comedy about class, language, labor, and selfhood.',themes:['class','language','identity','education'],links:[['Project Gutenberg search','https://www.gutenberg.org/ebooks/search/?query=Pygmalion+Shaw']],activity:'Explore accent and status respectfully: language is power, not a punchline.'},
+ {id:'riders-sea',t:'Riders to the Sea',a:'J. M. Synge',era:'Modern',cult:'Irish',genre:'One-Act Tragedy',date:'1904',lang:'English',rights:'public-domain',tags:'modern irish one-act tragedy women monologue public-domain classroom',desc:'A compact one-act tragedy of sea, family, fate, and maternal endurance.',themes:['fate','sea','family loss','ritual grief'],links:[['Project Gutenberg One Act Plays','https://www.gutenberg.org/ebooks/bookshelf/55'],['Project Gutenberg search','https://www.gutenberg.org/ebooks/search/?query=Riders+to+the+Sea']],activity:'Stage offstage death through sound, fabric, and waiting.'},
+ {id:'playboy-western',t:'The Playboy of the Western World',a:'J. M. Synge',era:'Modern',cult:'Irish',genre:'Comedy / Drama',date:'1907',lang:'English',rights:'public-domain',tags:'modern irish comedy public-domain classroom',desc:'A stranger’s shocking story makes him a folk hero, exposing mythmaking and community desire.',themes:['storytelling','celebrity','violence','community'],links:[['Project Gutenberg search','https://www.gutenberg.org/ebooks/search/?query=Playboy+of+the+Western+World']],activity:'Track how listeners create the hero they want to hear.'},
+ {id:'spreading-news',t:'Spreading the News',a:'Lady Gregory',era:'Modern',cult:'Irish',genre:'One-Act Comedy',date:'1904',lang:'English',rights:'public-domain',tags:'modern irish one-act comedy women-playwrights public-domain classroom',desc:'A comic one-act about rumor, misunderstanding, and village speech.',themes:['rumor','community','misinterpretation','comedy'],links:[['Project Gutenberg search','https://www.gutenberg.org/ebooks/search/?query=Lady+Gregory+Spreading+the+News']],activity:'Make rumor visible by passing a gesture that mutates each time.'},
+ {id:'post-office',t:'The Post Office',a:'Rabindranath Tagore',era:'Modern',cult:'Indian / Bengali',genre:'Symbolic Drama',date:'1912',lang:'Bengali',rights:'public-domain',tags:'modern indian drama one-act public-domain classroom monologue',desc:'A child confined indoors imagines a larger world through letters, visitors, and spiritual openness.',themes:['imagination','freedom','illness','spiritual longing'],links:[['Project Gutenberg One Act Plays','https://www.gutenberg.org/ebooks/bookshelf/55'],['Project Gutenberg search','https://www.gutenberg.org/ebooks/search/?query=The+Post+Office+Tagore']],activity:'Stage the outside world through voices and light rather than scenery.'},
+ {id:'chitra',t:'Chitra',a:'Rabindranath Tagore',era:'Modern',cult:'Indian / Bengali',genre:'One-Act Drama',date:'1913',lang:'Bengali / English adaptation',rights:'public-domain',tags:'modern indian one-act drama public-domain monologue classroom',desc:'A lyrical drama inspired by the Mahabharata, exploring identity, beauty, love, and self-revelation.',themes:['identity','beauty','love','mythic adaptation'],links:[['Project Gutenberg One Act Plays','https://www.gutenberg.org/ebooks/bookshelf/55'],['Project Gutenberg search','https://www.gutenberg.org/ebooks/search/?query=Chitra+Tagore']],activity:'Ask what changes when a character chooses to be seen truthfully.'},
+ {id:'trifles',t:'Trifles',a:'Susan Glaspell',era:'Modern',cult:'American',genre:'One-Act Drama',date:'1916',lang:'English',rights:'public-domain',tags:'modern american one-act women-playwrights drama public-domain monologue classroom',desc:'A quiet one-act mystery where overlooked domestic details reveal a hidden story of abuse and judgment.',themes:['gendered knowledge','justice','domestic evidence','silence'],links:[['Project Gutenberg One Act Plays','https://www.gutenberg.org/ebooks/bookshelf/55'],['Project Gutenberg search','https://www.gutenberg.org/ebooks/search/?query=Trifles+Susan+Glaspell']],activity:'List every “trifle” and what it reveals that official investigators miss.'},
+ {id:'verge',t:'The Verge',a:'Susan Glaspell',era:'Modern',cult:'American',genre:'Experimental Drama',date:'1921',lang:'English',rights:'public-domain',tags:'modern american women-playwrights experimental public-domain classroom',desc:'An experimental play about a woman botanist pushing life beyond existing forms.',themes:['creation','confinement','experimentation','gender'],links:[['Project Gutenberg search','https://www.gutenberg.org/ebooks/search/?query=The+Verge+Susan+Glaspell']],activity:'Design a greenhouse that feels both creative and imprisoning.'},
+ {id:'hairy-ape',t:'The Hairy Ape',a:'Eugene O’Neill',era:'Modern',cult:'American',genre:'Expressionist Drama',date:'1922',lang:'English',rights:'public-domain',tags:'modern american expressionism monologue public-domain classroom',desc:'A stoker’s identity crisis becomes an expressionist journey through class, labor, and alienation.',themes:['labor','class','alienation','expressionism'],links:[['Project Gutenberg One Act Plays','https://www.gutenberg.org/ebooks/bookshelf/55'],['Project Gutenberg search','https://www.gutenberg.org/ebooks/search/?query=The+Hairy+Ape']],activity:'Use rhythm and machine sound to externalize inner pressure.'},
+ {id:'emperor-jones',t:'The Emperor Jones',a:'Eugene O’Neill',era:'Modern',cult:'American / Caribbean setting',genre:'Expressionist Drama',date:'1920',lang:'English',rights:'public-domain',tags:'modern american expressionism monologue rights-check classroom',desc:'A controversial expressionist play of power, fear, race, empire, and psychological descent; teach with historical care.',themes:['power','fear','colonial imagination','expressionism'],links:[['Project Gutenberg search','https://www.gutenberg.org/ebooks/search/?query=Emperor+Jones+O%27Neill']],activity:'Discuss responsible staging of historically harmful language and representation.'},
+ {id:'anna-christie',t:'Anna Christie',a:'Eugene O’Neill',era:'Modern',cult:'American',genre:'Drama',date:'1921',lang:'English',rights:'public-domain',tags:'modern american drama monologue public-domain classroom',desc:'A sea-and-family drama of past trauma, reinvention, and the demand to be accepted whole.',themes:['reinvention','family','sea','stigma'],links:[['Project Gutenberg search','https://www.gutenberg.org/ebooks/search/?query=Anna+Christie+O%27Neill']],activity:'Track how fog functions as weather, mood, and metaphor.'},
+ {id:'rachel',t:'Rachel',a:'Angelina Weld Grimké',era:'Modern',cult:'African American',genre:'Drama',date:'1916',lang:'English',rights:'public-domain',tags:'modern american african women-playwrights drama public-domain classroom monologue',desc:'A landmark African American drama confronting racism, motherhood, inherited trauma, and moral witness.',themes:['racism','motherhood','memory','witness'],links:[['Project Gutenberg search','https://www.gutenberg.org/ebooks/search/?query=Rachel+Angelina+Weld+Grimke']],activity:'Frame historical context carefully before scene work; discuss what the play asks of witness.'},
+ {id:'chip-woman',t:'The Chip Woman’s Fortune',a:'Willis Richardson',era:'Modern',cult:'African American',genre:'One-Act Drama',date:'1923',lang:'English',rights:'rights-check',tags:'modern american african one-act drama rights-check classroom',desc:'A short domestic drama associated with early Black theatre history and Broadway milestones.',themes:['family','poverty','dignity','Black theatre history'],links:[['WorldCat search','https://search.worldcat.org/search?q=The+Chip+Woman%27s+Fortune'],['Internet Archive search','https://archive.org/search?query=The+Chip+Woman%27s+Fortune']],activity:'Research production history before staging; build a context wall for students.'},
+ {id:'commedia',t:'Commedia dell’arte Scenarios',a:'Italian popular theatre tradition',era:'Early Modern',cult:'Italian',genre:'Improvised Comedy',date:'16th–18th c.',lang:'Italian / multilingual',rights:'public-domain',tags:'early-modern italian comedy masks classroom public-domain monologue',desc:'A tradition of masks, lazzi, stock characters, improvisation, status, and touring performance.',themes:['improvisation','masks','status','physical comedy'],links:[['Internet Archive search','https://archive.org/search?query=commedia+dell%27arte+scenarios']],activity:'Create a lazzo: a repeatable comic routine with clear beginning, escalation, and button.'},
+ {id:'rabinal-achi',t:'Rabinal Achí',a:'Maya dance-drama tradition',era:'Classical / Traditional',cult:'Maya / Americas',genre:'Dance Drama',date:'precolonial roots; recorded later',lang:'Kʼicheʼ / Achi',rights:'rights-check',tags:'americas indigenous maya ritual drama rights-check classroom',desc:'A Maya dance-drama tradition preserving conflict, ritual, movement, music, and community memory.',themes:['ritual','community memory','warrior ethics','performance heritage'],links:[['UNESCO search','https://ich.unesco.org/en/search-00795?q=Rabinal+Achi'],['WorldCat search','https://search.worldcat.org/search?q=Rabinal+Achi']],activity:'Study respectfully as living heritage; do not extract sacred elements for casual performance.'},
+ {id:'yoruba-alarinjo',t:'Yoruba Alárìnjó / Egungun Performance',a:'Yoruba performance traditions',era:'Traditional / Living',cult:'Yoruba / West African',genre:'Masquerade / Traveling Theatre',date:'longstanding living traditions',lang:'Yoruba',rights:'rights-check',tags:'african yoruba ritual theatre classroom rights-check',desc:'A performance world of masquerade, music, movement, satire, ancestry, and community presence.',themes:['masquerade','ancestry','community','satire'],links:[['WorldCat search','https://search.worldcat.org/search?q=Yoruba+Alarinjo+theatre'],['Internet Archive search','https://archive.org/search?query=Yoruba+theatre+Alarinjo']],activity:'Study form, ethics, and cultural context before adaptation; avoid sacred imitation.'},
+ {id:'raisin',t:'A Raisin in the Sun',a:'Lorraine Hansberry',era:'Contemporary',cult:'African American',genre:'Realist Drama',date:'1959',lang:'English',rights:'rights-check',tags:'contemporary american african drama rights-check classroom monologue',desc:'A modern classic about housing, dreams, family, race, dignity, and economic pressure. Use licensed texts only.',themes:['family','housing justice','dreams','dignity'],links:[['WorldCat search','https://search.worldcat.org/search?q=A+Raisin+in+the+Sun'],['Concord Theatricals search','https://www.concordtheatricals.com/search?keyword=A%20Raisin%20in%20the%20Sun']],activity:'Build a dramaturgy board around housing covenants, migration, and family dreams.'},
+ {id:'salesman',t:'Death of a Salesman',a:'Arthur Miller',era:'Contemporary',cult:'American',genre:'Drama',date:'1949',lang:'English',rights:'rights-check',tags:'contemporary american drama rights-check classroom monologue',desc:'A modern tragedy of labor, family myth, capitalism, memory, and collapse. Use licensed texts only.',themes:['American dream','memory','family','work'],links:[['WorldCat search','https://search.worldcat.org/search?q=Death+of+a+Salesman'],['Dramatists Play Service search','https://www.dramatists.com/cgi-bin/db/single.asp?key=0&search=Death%20of%20a%20Salesman']],activity:'Stage memory scenes with lighting rules that the audience learns subconsciously.'},
+ {id:'fences',t:'Fences',a:'August Wilson',era:'Contemporary',cult:'African American',genre:'Drama',date:'1985',lang:'English',rights:'rights-check',tags:'contemporary american african drama rights-check classroom monologue',desc:'A Pittsburgh Cycle masterpiece of family, work, race, baseball, masculinity, and blocked possibility. Use licensed texts only.',themes:['family','race','work','inheritance'],links:[['WorldCat search','https://search.worldcat.org/search?q=August+Wilson+Fences'],['Concord Theatricals search','https://www.concordtheatricals.com/search?keyword=Fences']],activity:'Analyze how the backyard fence is literal, emotional, and historical.'},
+ {id:'godot',t:'Waiting for Godot',a:'Samuel Beckett',era:'Contemporary',cult:'Irish / French',genre:'Absurdist Drama',date:'1953',lang:'French / English',rights:'rights-check',tags:'contemporary absurdist drama rights-check classroom',desc:'A landmark of absurdist theatre: waiting, repetition, friendship, comic despair, and existential uncertainty. Use licensed texts only.',themes:['waiting','absurdism','friendship','time'],links:[['WorldCat search','https://search.worldcat.org/search?q=Waiting+for+Godot'],['Dramatists Play Service search','https://www.dramatists.com/']],activity:'Rehearse pauses as active events rather than empty silence.'},
+ {id:'glass-menagerie',t:'The Glass Menagerie',a:'Tennessee Williams',era:'Contemporary',cult:'American',genre:'Memory Play',date:'1944',lang:'English',rights:'rights-check',tags:'contemporary american drama rights-check classroom monologue',desc:'A memory play of family pressure, fragility, escape, and regret. Use licensed texts only.',themes:['memory','family','fragility','escape'],links:[['WorldCat search','https://search.worldcat.org/search?q=The+Glass+Menagerie'],['Dramatists Play Service search','https://www.dramatists.com/']],activity:'Design the stage as memory: incomplete, emotional, and selective.'},
+ {id:'crucible',t:'The Crucible',a:'Arthur Miller',era:'Contemporary',cult:'American',genre:'Historical Drama',date:'1953',lang:'English',rights:'rights-check',tags:'contemporary american drama rights-check classroom',desc:'A Salem witch trial drama written amid McCarthy-era fear, accusation, and conscience. Use licensed texts only.',themes:['hysteria','conscience','accusation','power'],links:[['WorldCat search','https://search.worldcat.org/search?q=The+Crucible+Arthur+Miller'],['Dramatists Play Service search','https://www.dramatists.com/']],activity:'Map accusation as a contagious stage action.'},
+ {id:'npx-card',t:'New Play Exchange Discovery',a:'Living playwrights platform',era:'Contemporary',cult:'Global / Contemporary',genre:'Script Discovery',date:'current',lang:'varied',rights:'rights-check',tags:'contemporary resource rights-check classroom monologue',desc:'A discovery portal for new scripts, monologues, and living playwrights; use according to platform terms and author permissions.',themes:['new work','living writers','script discovery','networking'],links:[['New Play Exchange','https://newplayexchange.org/'],['NNPN NPX information','https://nnpn.org/new-play-exchange']],activity:'Build a respectful script-selection rubric: cast size, content fit, author context, licensing, and student needs.'}
+];
+
+const course = [
+ ['Origins of Theatre','Study ritual, storytelling, dance, masks, oral tradition, festival, and civic gathering as roots of theatre.','Create a one-page map connecting ritual, audience, performer, and community purpose.'],
+ ['Greek Tragedy','Learn chorus, myth, catharsis, dramatic irony, civic festival, and the three major tragedians.','Read one tragedy and mark chorus functions: witness, judge, community, ritual voice.'],
+ ['Greek Comedy & Satire','Explore Aristophanes, parody, political critique, fantasy, obscenity, and the comic chorus.','Write a safe classroom satire scene about a civic problem.'],
+ ['Roman Comedy','Study Plautus and Terence, stock characters, farce, doubling, servants, status, and later influence.','Build a farce map of entrances, exits, secrets, and mistaken identities.'],
+ ['Sanskrit Drama','Explore rasa, court/forest worlds, romance, recognition, and mixed emotional texture.','Choose a scene and identify dominant emotional flavors.'],
+ ['Chinese Theatre Traditions','Study Yuan drama, Kunqu, opera aesthetics, poetry, music, justice, romance, and adaptation.','Compare a Chinese justice drama with a Western courtroom scene.'],
+ ['Japanese Noh & Kabuki','Learn masks, slow time, ghosts, dance, kyogen contrast, kabuki spectacle, and living heritage ethics.','Create a movement phrase that communicates memory without realism.'],
+ ['Medieval Mystery & Morality Plays','Study allegory, pageant wagons, community performance, biblical cycles, and moral personification.','Turn an abstract concept into a playable character.'],
+ ['Commedia dell’arte','Explore masks, stock types, improvisation, lazzi, touring actors, and physical comedy.','Invent a lazzo with escalation and a clean comic button.'],
+ ['Elizabethan & Jacobean Stage','Study public theatres, repertory companies, verse, revenge tragedy, and stage conventions.','Sketch a thrust-stage blocking plan for a Shakespeare scene.'],
+ ['Spanish Golden Age','Study honor, faith, dream/reality, monarchy, village justice, and philosophical drama.','Debate fate versus freedom in Life Is a Dream.'],
+ ['French Neoclassicism & Comedy','Explore rules, decorum, alexandrines, Molière satire, Racine restraint, and social critique.','Stage a high-emotion moment under strict physical restraint.'],
+ ['Restoration & Comedy of Manners','Study wit, reputation, gender, marriage contracts, and social performance.','Score a witty exchange like a fencing match.'],
+ ['Melodrama, Romanticism & 19th Century Forms','Track spectacle, virtue/villainy, sensation, star actors, and popular audiences.','Create a melodrama tableau with clear moral geometry.'],
+ ['Realism & Naturalism','Study Ibsen, Chekhov, social pressure, subtext, objects, rooms, and ordinary speech.','List what characters say versus what they want.'],
+ ['Symbolism & Expressionism','Study dream logic, inner worlds, distortion, sound, light, and anti-realism.','Redesign a realist scene as an expressionist nightmare.'],
+ ['Irish, American & Early Modern Social Drama','Study Synge, Gregory, Glaspell, O’Neill, Grimké, labor, race, family, and nation.','Research production context for one early 20th-century play.'],
+ ['African & Diaspora Theatre','Study masquerade, oral performance, Black theatre history, ritual, music, and modern drama.','Build a context-first discussion guide before staging material.'],
+ ['Indigenous & Living Performance Traditions','Learn respectful study methods, cultural protocols, living heritage, and adaptation ethics.','Write three questions to ask before adapting any sacred/living tradition.'],
+ ['Absurdism & Postwar Theatre','Study repetition, silence, existential uncertainty, anti-plot, and comic despair.','Rehearse a pause as an event with objective and stakes.'],
+ ['Contemporary New Work','Explore living playwrights, development readings, dramaturgy, workshops, and licensing.','Create a script-selection rubric for your students or company.'],
+ ['Monologue Technique','Study objective, obstacle, beats, turning point, given circumstances, and audition cuts.','Prepare a monologue beat map: start, discovery, turn, final image.'],
+ ['Scene Study','Learn actioning, listening, tactics, relationship, status, stakes, and shared rhythm.','Rehearse the same scene with three different objectives.'],
+ ['Playwriting Structure','Study premise, conflict, character desire, reversals, exposition, climax, and image systems.','Draft a ten-minute play beat sheet.'],
+ ['Dramaturgy','Learn context packets, source research, timelines, glossary, and rehearsal-room questions.','Create a one-page dramaturgy packet for a play card.'],
+ ['Directing','Study concept, casting, table work, blocking, tempo, pictures, transitions, and actor support.','Write a director’s concept in five sentences.'],
+ ['Design: Set, Costume, Light, Sound','Study visual world, practicality, symbolism, safety, budget, and collaboration.','Create a three-color/two-texture design palette.'],
+ ['Stage Management & Production','Learn schedules, rehearsal reports, props tracking, cueing, communication, and safety.','Draft a rehearsal report template.'],
+ ['Rights, Royalties & Ethics','Understand public domain, translation rights, licensed scripts, adaptation, and responsible representation.','Create a rights checklist before choosing any script.'],
+ ['Capstone: Build a Theatre Night','Combine reading, monologues, scenes, design, dramaturgy, and audience conversation.','Plan a 60-minute showcase around a theme such as justice, memory, or transformation.']
+];
+
+const resources = [
+ ['Project Gutenberg: Plays/Films/Dramas','Large public-domain drama bookshelf with classic plays and related works.','https://www.gutenberg.org/ebooks/bookshelf/642','Public-domain reading'],
+ ['Project Gutenberg: One Act Plays','Useful for classroom scenes, short readings, and one-act study.','https://www.gutenberg.org/ebooks/bookshelf/55','Public-domain reading'],
+ ['Project Gutenberg Subject Search: Plays','Search comedy plays, one-act plays, children’s plays, radio plays, and more.','https://www.gutenberg.org/ebooks/subjects/search/?query=plays','Public-domain discovery'],
+ ['Folger Shakespeare Texts','Read, search, and download Shakespeare’s plays and poems in multiple formats.','https://www.folger.edu/explore/shakespeares-works/','Shakespeare texts'],
+ ['MIT Shakespeare','Public-domain HTML versions of Shakespeare’s plays and poems.','https://shakespeare.mit.edu/','Shakespeare texts'],
+ ['Internet Shakespeare Editions','Scholarly Shakespeare texts, performance materials, and contextual resources.','https://internetshakespeare.uvic.ca/','Research'],
+ ['Internet Classics Archive','Searchable classical literature, including Greek drama in English translation.','https://classics.mit.edu/','Ancient classics'],
+ ['Sacred Texts: Nō Plays of Japan','Arthur Waley’s Noh translations and cultural notes.','https://sacred-texts.com/shi/npj/index.htm','Japanese Noh'],
+ ['Project Gutenberg: The Nō Plays of Japan','Public-domain Noh translations by Arthur Waley.','https://www.gutenberg.org/ebooks/43304','Japanese Noh'],
+ ['The Noh Plays Database','Database of currently performed Noh plays with summaries and performance context.','https://www.the-noh.com/en/plays/index.html','Living tradition research'],
+ ['Internet Archive: Theatre Search','Search scanned theatre books, historical play editions, public-domain collections, and criticism.','https://archive.org/search?query=theatre+plays','Archive discovery'],
+ ['WorldCat','Find editions, translations, and library holdings for scripts and scholarship.','https://search.worldcat.org/','Library discovery'],
+ ['New Play Exchange','Discovery platform for new scripts, monologues, and living playwrights.','https://newplayexchange.org/','Licensed/new work'],
+ ['StageAgent','Theatre guides, audition resources, monologues, scenes, and learning modules.','https://stageagent.com/','Study/audition resource'],
+ ['Drama Notebook','Royalty-free and classroom-friendly drama resources for children and teens.','https://www.dramanotebook.com/plays-for-kids-and-teens/','School resources'],
+ ['Freedrama','Free scripts, skits, drama games, lesson plans, and activities; check author terms.','https://www.freedrama.net/','School/community scripts'],
+ ['Theatrefolk','School theatre scripts and teaching resources; licensing terms apply.','https://www.theatrefolk.com/products','School scripts'],
+ ['Concord Theatricals','Licensing and script information for many modern plays and musicals.','https://www.concordtheatricals.com/','Licensing'],
+ ['Dramatists Play Service','Licensing and publication source for many modern and contemporary plays.','https://www.dramatists.com/','Licensing'],
+ ['Folger Monologue Project','Teaching resource for working with Shakespearean monologues.','https://www.folger.edu/teach/resource/the-monologue-project/','Monologue study']
+];
+
+const timeline = [
+ ['Ancient roots','Ritual, dance, storytelling, masks, music, and public gatherings become performance forms across cultures.'],
+ ['5th c. BCE Athens','Tragedy and comedy develop in civic festival contexts with chorus, myth, satire, and public debate.'],
+ ['Classical India','Sanskrit drama develops rich theories of performance, emotion, gesture, music, and rasa.'],
+ ['Classical China','Zaju, Kunqu, opera forms, justice dramas, romance, poetry, and music create highly theatrical traditions.'],
+ ['Medieval Japan','Noh and Kyogen refine masked performance, slow time, ghosts, poetry, music, and comic interludes.'],
+ ['Medieval Europe','Mystery, miracle, and morality plays bring allegory, biblical cycles, and community performance into public space.'],
+ ['16th c. Italy','Commedia dell’arte companies tour with masks, stock characters, improvisation, and physical comedy.'],
+ ['Elizabethan/Jacobean England','Commercial public theatres, repertory companies, Shakespeare, Marlowe, Jonson, and Webster flourish.'],
+ ['Spanish Golden Age','Lope de Vega, Calderón, and Tirso develop honor plays, philosophical drama, and popular theatre.'],
+ ['17th c. France','Molière, Racine, and Corneille shape neoclassical tragedy and comedy of manners.'],
+ ['18th c. Britain/Ireland','Restoration and comedy of manners explore wit, reputation, property, class, and gender.'],
+ ['19th c. Europe','Melodrama, romantic spectacle, realism, naturalism, and the modern director emerge.'],
+ ['Late 19th–early 20th c.','Ibsen, Chekhov, Strindberg, Wilde, Shaw, Synge, and others reshape modern drama.'],
+ ['Early 20th c.','Expressionism, symbolism, Black theatre, women playwrights, little theatres, and experimental forms expand the stage.'],
+ ['Postwar theatre','Absurdism, epic theatre influence, memory plays, civil rights drama, and new performance vocabularies grow.'],
+ ['Contemporary theatre','Global, devised, documentary, digital, immersive, community, Indigenous, and new-work practices continue expanding the field.']
+];
+
+const glossary = [
+ ['Action','What a character does to get what they want. Strong acting choices are playable actions.'],
+ ['Aside','A line spoken to the audience or privately, not heard by other characters in the scene.'],
+ ['Beat','A small unit of action or thought; a shift in tactic, emotion, or information.'],
+ ['Blocking','The planned movement and position of performers on stage.'],
+ ['Catharsis','A debated Greek term often connected to emotional purification, clarification, or release in tragedy.'],
+ ['Chorus','A group voice that comments, witnesses, dances, sings, or represents community.'],
+ ['Dramaturgy','Research and interpretive work that supports the play, production, audience, and rehearsal room.'],
+ ['Fourth Wall','The imaginary wall separating performers from audience in many realist staging styles.'],
+ ['Given Circumstances','Facts of the play: who, where, when, relationships, events, and conditions.'],
+ ['Lazzo','A repeatable comic routine or bit, especially associated with commedia dell’arte.'],
+ ['Monologue','A sustained speech by one character, often revealing desire, thought, argument, or transformation.'],
+ ['Objective','What a character wants in a scene.'],
+ ['Obstacle','What blocks the character from getting the objective.'],
+ ['Rasa','In Indian performance theory, an aesthetic/emotional flavor experienced by the audience.'],
+ ['Score','A map of actions, beats, cues, movement, or vocal choices through a performance.'],
+ ['Subtext','What is meant, felt, hidden, or implied beneath the spoken words.'],
+ ['Tableau','A still stage picture made by bodies and space.'],
+ ['Tactic','A strategy used by a character to pursue an objective.'],
+ ['Thrust Stage','A stage extending into the audience on three sides.'],
+ ['Verfremdung','A distancing or alienation effect associated with Brechtian theatre, prompting critical awareness.'],
+ ['Public Domain','Works no longer protected by copyright in a jurisdiction; editions/translations/adaptations may still be protected.'],
+ ['Royalties','Fees paid for the legal right to perform a script or musical work.'],
+ ['Dramatic Irony','When the audience knows something a character does not.'],
+ ['Motif','A recurring image, sound, object, gesture, phrase, or idea that accumulates meaning.']
+];
+
+const quiz = [
+ {q:'Which term best describes what a character wants in a scene?',a:['Objective','Prop','Aside','Tableau'],c:0,why:'An objective is the goal the character pursues.'},
+ {q:'Which theatre form is strongly associated with masks, ghosts, slow movement, and poetic memory?',a:['Noh','Restoration comedy','Naturalism','Melodrama'],c:0,why:'Japanese Noh often uses masks, music, dance, ghosts, and highly formal movement.'},
+ {q:'Which playwright wrote A Doll’s House?',a:['Henrik Ibsen','Anton Chekhov','Susan Glaspell','Molière'],c:0,why:'Ibsen’s A Doll’s House is a landmark of modern realist drama.'},
+ {q:'A lazzo is most associated with which tradition?',a:['Commedia dell’arte','Greek tragedy','Noh','Absurdism'],c:0,why:'A lazzo is a comic routine used in commedia dell’arte.'},
+ {q:'In Greek tragedy, what is the chorus often used for?',a:['Witnessing and commenting','Selling tickets','Changing scenery only','Replacing all actors'],c:0,why:'The chorus can witness, comment, sing, dance, and embody the community.'},
+ {q:'What should you verify before publicly performing a modern play?',a:['Performance rights and royalties','Only the page count','The actor’s favorite color','Whether the title is short'],c:0,why:'Modern plays usually require permission/licensing for public performance.'},
+ {q:'Subtext means…',a:['Meaning beneath the spoken words','The title page','A costume label','A lighting instrument'],c:0,why:'Subtext is what is implied, hidden, meant, or felt under the line.'},
+ {q:'Which play is by Susan Glaspell?',a:['Trifles','Tartuffe','Macbeth','The Persians'],c:0,why:'Trifles is Glaspell’s compact and powerful one-act drama.'},
+ {q:'Which play is a Spanish Golden Age philosophical drama about freedom and illusion?',a:['Life Is a Dream','The Seagull','The Rover','Everyman'],c:0,why:'Calderón’s Life Is a Dream explores fate, freedom, and reality.'},
+ {q:'What is dramaturgy?',a:['Research and interpretive support for theatre-making','Only memorizing lines','A type of curtain','A ticket discount'],c:0,why:'Dramaturgy supports context, interpretation, rehearsal, and audience understanding.'}
+];
+
+function loadState(){
+ try{return JSON.parse(localStorage.getItem(ATH_STORE)) || {progress:{}, notes:{}, favorites:{}, generalNotes:''};}
+ catch(e){return {progress:{}, notes:{}, favorites:{}, generalNotes:''};}
+}
+function saveState(){ localStorage.setItem(ATH_STORE, JSON.stringify(state)); }
+function esc(s){ return String(s).replace(/[&<>'"]/g, m => ({'&':'&amp;','<':'&lt;','>':'&gt;',"'":'&#39;','"':'&quot;'}[m])); }
+function hasTag(item, chip){ return chip==='all' || (item.tags||'').toLowerCase().includes(chip.toLowerCase()) || (item.era||'').toLowerCase().includes(chip) || (item.cult||'').toLowerCase().includes(chip) || (item.genre||'').toLowerCase().includes(chip); }
+function rightsBadge(rights){ return rights === 'public-domain' ? '<span class="ath-badge green">Public domain trail</span>' : '<span class="ath-badge red">Rights check</span>'; }
+function renderChips(){
+ const el = $('#athChips');
+ el.innerHTML = chips.map(c => `<button class="ath-chip ${c===activeChip?'active':''}" data-chip="${esc(c)}">${esc(c.replace('-', ' '))}</button>`).join('');
+ $$('.ath-chip').forEach(btn => btn.addEventListener('click',()=>{ activeChip = btn.dataset.chip; renderChips(); renderArchive(); }));
+}
+function renderArchive(){
+ const q = ($('#athSearch').value || '').toLowerCase().trim();
+ let items = plays.concat(getCustomCards());
+ items = items.filter(item => {
+   const blob = [item.t,item.a,item.era,item.cult,item.genre,item.date,item.lang,item.desc,(item.themes||[]).join(' '),item.tags].join(' ').toLowerCase();
+   return hasTag(item, activeChip) && (!q || blob.includes(q));
+ });
+ $('#athPlayCount').textContent = `${plays.length}+ play/resource cards`;
+ const grid = $('#athArchiveGrid');
+ if(!items.length){ grid.innerHTML = '<div class="ath-card"><h3>No cards found</h3><p class="ath-desc">Try resetting filters or searching a broader term.</p></div>'; return; }
+ grid.innerHTML = items.map(item => `
+  <article class="ath-card">
+    <div class="ath-ribbon-row"><span class="ath-badge">🌍 ${esc(item.cult)}</span><span class="ath-badge blue">${esc(item.era)}</span>${rightsBadge(item.rights)}</div>
+    <h3>${esc(item.t)}</h3>
+    <div class="ath-meta">${esc(item.a)} · ${esc(item.genre)} · ${esc(item.date)} · ${esc(item.lang)}</div>
+    <p class="ath-desc">${esc(item.desc)}</p>
+    <div class="ath-ribbon-row">${(item.themes||[]).slice(0,4).map(x=>`<span class="ath-badge">${esc(x)}</span>`).join('')}</div>
+    <div class="ath-card-foot"><button class="ath-btn gold" data-open="${esc(item.id)}">Open Dossier</button><button class="ath-btn" data-fav="${esc(item.id)}">${state.favorites[item.id]?'★':'☆'}</button></div>
+  </article>`).join('');
+ grid.querySelectorAll('[data-open]').forEach(btn => btn.addEventListener('click',()=>openDossier(btn.dataset.open)));
+ grid.querySelectorAll('[data-fav]').forEach(btn => btn.addEventListener('click',()=>toggleFavorite(btn.dataset.fav)));
+ renderFavorites();
+}
+function getAllItems(){ return plays.concat(getCustomCards()); }
+function getCustomCards(){ return state.customCards || []; }
+function toggleFavorite(id){ state.favorites[id] = !state.favorites[id]; saveState(); renderArchive(); renderFavorites(); }
+function renderFavorites(){
+ const favs = getAllItems().filter(x => state.favorites[x.id]).map(x => x.t);
+ const el = $('#favoriteList');
+ if(el) el.textContent = favs.length ? favs.join(' · ') : 'No favorites yet.';
+}
+function openDossier(id){
+ const item = getAllItems().find(x => x.id === id); if(!item) return;
+ currentDossierId = id;
+ $('#dossierTitle').textContent = item.t;
+ const note = state.notes[id] || '';
+ $('#dossierBody').innerHTML = `
+  <div class="ath-dossier-grid">
+    <div class="ath-parchment">
+      <h4>Archive Dossier</h4>
+      <p><strong>Creator / tradition:</strong> ${esc(item.a)}</p>
+      <p><strong>Era:</strong> ${esc(item.era)} · <strong>Civilization / culture:</strong> ${esc(item.cult)}</p>
+      <p><strong>Approximate date:</strong> ${esc(item.date)} · <strong>Original language:</strong> ${esc(item.lang)}</p>
+      <p><strong>Form:</strong> ${esc(item.genre)} · <strong>Rights note:</strong> ${esc(item.rights === 'public-domain' ? 'Public-domain reading trail exists; still verify translations and performance rights.' : 'Rights check required; use licensed scripts/authorized editions for performance.')}</p>
+      <h4>Historical / Dramatic Context</h4>
+      <p>${esc(item.desc)}</p>
+      <h4>Major Themes</h4>
+      <ul>${(item.themes||[]).map(t=>`<li>${esc(t)}</li>`).join('')}</ul>
+      <h4>Monologue / Scene Trail</h4>
+      <p>${monologueTrail(item)}</p>
+      <h4>Classroom / Rehearsal Prompt</h4>
+      <p>${esc(item.activity || 'Choose a scene, identify each character’s objective, obstacle, and turning point, then stage it two different ways.')}</p>
+    </div>
+    <div class="ath-parchment">
+      <h4>Reading & Research Links</h4>
+      <div class="ath-link-list">${(item.links||[]).map(l=>`<a href="${esc(l[1])}" target="_blank" rel="noopener">${esc(l[0])}</a>`).join('')}</div>
+      <h4 style="margin-top:16px">Personal Dossier Notes</h4>
+      <textarea id="dossierNotes" placeholder="Notes for ${esc(item.t)}…">${esc(note)}</textarea>
+      <div style="display:flex;gap:8px;flex-wrap:wrap;margin-top:10px"><button class="ath-btn gold" id="saveDossierNote">Save Note</button><button class="ath-btn" id="favFromDossier">${state.favorites[id]?'Remove Favorite':'Add Favorite'}</button></div>
+    </div>
+  </div>`;
+ $('#athBackdrop').classList.add('show');
+ $('#athDossier').classList.add('show');
+ $('#saveDossierNote').addEventListener('click',()=>{ state.notes[id] = $('#dossierNotes').value; saveState(); $('#saveDossierNote').textContent = 'Saved'; setTimeout(()=>$('#saveDossierNote').textContent='Save Note',900); });
+ $('#favFromDossier').addEventListener('click',()=>{ toggleFavorite(id); openDossier(id); });
+}
+function monologueTrail(item){
+ const g = (item.genre||'').toLowerCase();
+ if(g.includes('comedy')) return 'Look for speeches where a character performs a public mask, hides a private motive, or tries to win status through language. For audition work, choose a clear tactic shift and avoid context-heavy cuts.';
+ if(g.includes('tragedy')) return 'Look for confession, warning, plea, recognition, lament, or decision speeches. Mark the moment when knowledge changes the speaker.';
+ if(g.includes('noh')) return 'Treat the monologue as memory, ritual, and image. Focus on breath, stillness, and transformation rather than speed.';
+ if((item.tags||'').includes('one-act')) return 'One-act plays often contain compact, playable speeches. Look for the sentence where the scene cannot return to what it was.';
+ return 'Find a sustained speech with a clear addressee, urgent need, obstacle, and turn. Avoid copying protected modern monologues unless you have permission.';
+}
+function renderCourse(){
+ const el = $('#athCourseList');
+ el.innerHTML = course.map((m,i)=>`
+  <article class="ath-module">
+    <input type="checkbox" id="mod${i}" data-module="${i}" ${state.progress[i]?'checked':''}/>
+    <div><h3>${String(i+1).padStart(2,'0')} · ${esc(m[0])}</h3><p>${esc(m[1])}</p><div class="ath-small"><strong>Practice:</strong> ${esc(m[2])}</div></div>
+  </article>`).join('');
+ el.querySelectorAll('input[type="checkbox"]').forEach(cb => cb.addEventListener('change',()=>{ state.progress[cb.dataset.module] = cb.checked; saveState(); updateProgress(); }));
+ updateProgress();
+}
+function updateProgress(){
+ const done = Object.values(state.progress).filter(Boolean).length;
+ const pct = Math.round(done/course.length*100);
+ $('#athProgressFill').style.width = pct + '%';
+ $('#athProgressText').textContent = `${done} of ${course.length} modules complete (${pct}%).`;
+}
+function renderResources(){
+ $('#athResourceGrid').innerHTML = resources.map(r=>`
+  <article class="ath-resource"><div class="ath-ribbon-row"><span class="ath-badge">${esc(r[3])}</span></div><h3>${esc(r[0])}</h3><p>${esc(r[1])}</p><a href="${esc(r[2])}" target="_blank" rel="noopener">Open resource ↗</a></article>`).join('');
+}
+function renderTimeline(){ $('#athTimeline').innerHTML = timeline.map(t=>`<div class="ath-time-row"><strong>${esc(t[0])}</strong><p>${esc(t[1])}</p></div>`).join(''); }
+function renderGlossary(){ $('#athGlossary').innerHTML = glossary.map(t=>`<div class="ath-term"><strong>${esc(t[0])}</strong><span>${esc(t[1])}</span></div>`).join(''); }
+function renderQuiz(){
+ const q = quiz[quizIndex % quiz.length];
+ $('#quizQuestion').textContent = q.q;
+ $('#quizFeedback').textContent = '';
+ $('#quizAnswers').innerHTML = q.a.map((ans,i)=>`<button class="ath-answer" data-ans="${i}">${esc(ans)}</button>`).join('');
+ $('#quizAnswers').querySelectorAll('button').forEach(btn => btn.addEventListener('click',()=>{
+  const pick = Number(btn.dataset.ans);
+  $('#quizAnswers').querySelectorAll('button').forEach((b,idx)=>{ b.disabled=true; if(idx===q.c)b.classList.add('correct'); });
+  if(pick!==q.c) btn.classList.add('wrong');
+  $('#quizFeedback').textContent = q.why;
+ }));
+}
+function setupTabs(){
+ $$('.ath-tab').forEach(tab => tab.addEventListener('click',()=>{
+  $$('.ath-tab').forEach(t=>t.classList.remove('active')); tab.classList.add('active');
+  $$('.ath-view').forEach(v=>v.classList.remove('active'));
+  $('#view-' + tab.dataset.view).classList.add('active');
+ }));
+}
+function setupTools(){
+ $('#makeMonologue').addEventListener('click',()=>{
+  const ch=$('#monoCharacter').value, con=$('#monoConflict').value, st=$('#monoStyle').value;
+  $('#monoResult').textContent = `Original Monologue Prompt\n\nCharacter: A ${ch}.\nConflict: ${con}.\nStyle: ${st}.\n\nGiven circumstances: The character has entered a room expecting to accuse someone else, but discovers an object that proves they have misunderstood the truth.\n\nArc: Begin with certainty. Let one detail disturb that certainty. Turn toward confession or decision. End with an image the audience can remember.\n\nFirst line seed: “I came here carrying my answer like a lantern, and now the light is accusing me.”\n\nActor notes: Choose one addressee. Mark three tactics: defend, reveal, ask. Avoid shouting early; save the largest emotional release for the final turn.`;
+ });
+ $('#makeScene').addEventListener('click',()=>{
+  const set=$('#sceneSetting').value, eng=$('#sceneEngine').value, len=$('#sceneLength').value;
+  $('#sceneResult').textContent = `${len} Framework\n\nSetting: ${set}.\nEngine: ${eng}.\n\nCharacters:\nA wants the room to remain unchanged.\nB needs the room to become evidence.\nOptional C enters halfway through with the wrong assumption.\n\nBeat 1: Ordinary action with hidden tension.\nBeat 2: The interruption exposes a contradiction.\nBeat 3: Someone uses humor to avoid the truth.\nBeat 4: A physical object changes hands.\nBeat 5: The secret becomes a choice, not just information.\nFinal image: One character leaves; the other stays with the object.`;
+ });
+ $('#makeRehearsal').addEventListener('click',()=>{
+  const title=$('#rehearsalTitle').value||'Untitled project', goal=$('#rehearsalGoal').value, time=$('#rehearsalTime').value;
+  $('#rehearsalResult').textContent = `Rehearsal Plan: ${title}\nGoal: ${goal}\nTime: ${time}\n\n1. Arrival focus — 5 min: Breath, body scan, ensemble circle.\n2. Table check — 10 min: Given circumstances, words needing clarity, context.\n3. Objective pass — 10 min: Each actor states want, obstacle, tactic.\n4. Active rehearsal — 20–45 min: Work beat by beat. Stop only for playable notes.\n5. Run without stopping — 5–15 min: Observe rhythm, transitions, listening.\n6. Reflection — 5 min: One discovery, one question, one next action.\n\nDirector reminder: Give notes as actions, not judgments.`;
+ });
+ $('#makeActivity').addEventListener('click',()=>{
+  const f=$('#activityFocus').value, age=$('#activityAge').value;
+  $('#activityResult').textContent = `Classroom Activity: ${f}\nAge group: ${age}\n\nObjective: Students will understand ${f} through body, voice, text, and reflection.\n\nWarm-up: 3 silent tableaux showing “before, during, after.”\nText work: Read a short scene aloud twice: first for sense, second for hidden wants.\nStage experiment: Groups create two contrasting versions using only space, tempo, and status.\nReflection: What changed the meaning most: movement, voice, distance, or silence?\nExit ticket: Name one theatre tool you used and one question you still have.`;
+ });
+}
+function setupNotes(){
+ $('#generalNotes').value = state.generalNotes || '';
+ $('#generalNotes').addEventListener('input',()=>{ state.generalNotes = $('#generalNotes').value; saveState(); });
+ $('#downloadNotes').addEventListener('click',()=>{
+  const blob = new Blob([JSON.stringify(state,null,2)], {type:'application/json'});
+  const a = document.createElement('a'); a.href = URL.createObjectURL(blob); a.download='arshif-theatre-hall-notes.json'; document.body.appendChild(a); a.click(); a.remove(); URL.revokeObjectURL(a.href);
+ });
+ $('#clearNotes').addEventListener('click',()=>{ if(confirm('Clear general notebook notes? Dossier notes will remain.')){ state.generalNotes=''; saveState(); $('#generalNotes').value=''; }});
+}
+function setupModal(){
+ $('#closeDossier').addEventListener('click',closeDossier); $('#athBackdrop').addEventListener('click',closeDossier);
+ document.addEventListener('keydown',e=>{ if(e.key==='Escape') closeDossier(); });
+ const modal = $('#athDossier'), handle = $('#dossierDragHandle'); let drag=false, offX=0, offY=0;
+ handle.addEventListener('mousedown', e=>{ drag=true; const r=modal.getBoundingClientRect(); offX=e.clientX-r.left; offY=e.clientY-r.top; modal.style.transform='none'; e.preventDefault(); });
+ document.addEventListener('mousemove', e=>{ if(!drag) return; modal.style.left=Math.max(6, Math.min(window.innerWidth-80, e.clientX-offX))+'px'; modal.style.top=Math.max(6, Math.min(window.innerHeight-80, e.clientY-offY))+'px'; });
+ document.addEventListener('mouseup',()=>drag=false);
+}
+function closeDossier(){ $('#athBackdrop').classList.remove('show'); $('#athDossier').classList.remove('show'); currentDossierId=null; }
+function setupMisc(){
+ $('#athSearch').addEventListener('input',renderArchive);
+ $('#athClearFilters').addEventListener('click',()=>{ activeChip='all'; $('#athSearch').value=''; renderChips(); renderArchive(); });
+ $('#athRandomBtn').addEventListener('click',()=>{ const items = getAllItems(); openDossier(items[Math.floor(Math.random()*items.length)].id); });
+ $('#nextQuiz').addEventListener('click',()=>{ quizIndex++; renderQuiz(); });
+ $('#athPrintProgress').addEventListener('click',()=>window.print());
+ $('#athResetProgress').addEventListener('click',()=>{ if(confirm('Reset course progress?')){ state.progress={}; saveState(); renderCourse(); }});
+}
+function init(){ setupTabs(); renderChips(); renderArchive(); renderCourse(); renderResources(); renderTimeline(); renderGlossary(); renderQuiz(); setupTools(); setupNotes(); setupModal(); setupMisc(); updateProgress(); renderFavorites(); }
+init();
+})();
+</script>
+</body>
+</html>
