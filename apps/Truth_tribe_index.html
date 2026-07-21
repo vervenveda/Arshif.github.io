@@ -1,0 +1,855 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Truth Tribe — Creation Atlas</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+
+  <!-- Fonts (optional; remove if you want fully offline) -->
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600&family=Cormorant+Garamond:wght@400;500;600&display=swap" rel="stylesheet">
+
+  <style>
+    :root{
+      --parchment:#f7f3ea;
+      --parchment-soft:#f0e9dc;
+      --gold:#d9b878;
+      --gold-deep:#b89252;
+      --gold-root:#7a5a28;
+      --midnight:#050713;
+      --ink:#fdfaf2;
+      --ink-soft:#e3dbc3;
+      --radius-shell:77px;
+      --radius-card:33px;
+      --shadow-card:0 21px 55px rgba(0,0,0,0.65);
+    }
+
+    *,*::before,*::after{
+      box-sizing:border-box;
+    }
+
+    html,body{
+      margin:0;
+      padding:0;
+      min-height:100%;
+      font-family:'Cormorant Garamond',system-ui,-apple-system,'Segoe UI',serif;
+      background:radial-gradient(circle at top,#f9f3e3 0%,#e6d6b3 40%,#cfb68b 72%,#b89c6f 100%);
+      color:var(--parchment);
+    }
+
+    body{
+      display:flex;
+      flex-direction:column;
+      align-items:center;
+      padding:33px 11px 77px;
+    }
+
+    /* Shell */
+
+    .truth-shell,
+    .motifs-shell,
+    .links-shell{
+      width:100%;
+      display:flex;
+      justify-content:center;
+      margin-bottom:33px;
+    }
+
+    .truth-inner,
+    .motifs-inner,
+    .links-inner{
+      width:100%;
+      max-width:1222px;
+      margin:0 auto;
+      padding:44px 33px 44px;
+      border-radius:var(--radius-shell);
+      background:linear-gradient(180deg,#191b2a 0%,#050713 72%);
+      border:1px solid rgba(60,43,18,0.55);
+      box-shadow:0 24px 72px rgba(0,0,0,0.9);
+    }
+
+    .motifs-inner,
+    .links-inner{
+      border-radius:33px;
+      padding:33px 27px 33px;
+    }
+
+    /* Header */
+
+    .truth-header{
+      text-align:center;
+      margin-bottom:24px;
+      color:var(--parchment);
+    }
+
+    .truth-title{
+      font-family:'Cinzel','Times New Roman',serif;
+      font-size:33px;
+      letter-spacing:0.18em;
+      text-transform:uppercase;
+      margin:0 0 11px;
+    }
+
+    .truth-tag{
+      font-size:21px;
+      letter-spacing:0.16em;
+      text-transform:uppercase;
+      color:var(--gold);
+      margin:0 0 14px;
+    }
+
+    .truth-sub{
+      max-width:888px;
+      margin:0 auto 14px;
+      font-size:15px;
+      line-height:1.7;
+      color:var(--parchment-soft);
+    }
+
+    .truth-note{
+      font-size:14px;
+      color:var(--ink-soft);
+      margin-top:4px;
+    }
+
+    /* Filter row */
+
+    .atlas-filter-row{
+      margin:24px auto 11px;
+      display:flex;
+      flex-wrap:wrap;
+      justify-content:center;
+      gap:9px;
+    }
+
+    .atlas-filter-pill{
+      border:none;
+      border-radius:999px;
+      padding:11px 24px;
+      font-size:14px;
+      letter-spacing:0.14em;
+      text-transform:uppercase;
+      background:rgba(255,255,255,0.06);
+      color:var(--parchment);
+      cursor:pointer;
+      border:2px solid rgba(211,188,122,0.4);
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      white-space:normal;
+      line-height:1.4;
+      transition:background .18s,transform .24s,box-shadow .24s;
+    }
+
+    .atlas-filter-pill:hover{
+      transform:translateY(-1px);
+      box-shadow:0 11px 24px rgba(0,0,0,0.4);
+    }
+
+    .atlas-filter-pill.active{
+      background:linear-gradient(135deg,var(--gold),var(--gold-deep));
+      color:#050713;
+      box-shadow:0 9px 24px rgba(0,0,0,0.65);
+    }
+
+    /* Atlas grid */
+
+    .atlas-grid{
+      margin-top:24px;
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+      gap:24px;
+    }
+
+    .atlas-card{
+      position:relative;
+      padding:21px 18px 18px;
+      border-radius:var(--radius-card);
+      background:rgba(8,10,22,0.97);
+      border:1px solid rgba(247,243,234,0.13);
+      box-shadow:var(--shadow-card);
+      color:var(--parchment);
+      display:flex;
+      flex-direction:column;
+      min-height:222px;
+      text-align:left;
+    }
+
+    .atlas-top-row{
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      gap:9px;
+      margin-bottom:7px;
+    }
+
+    .atlas-chip{
+      font-size:10px;
+      letter-spacing:0.12em;
+      text-transform:uppercase;
+      padding:3px 9px;
+      border-radius:999px;
+      background:linear-gradient(135deg,var(--gold),var(--gold-root));
+      color:#fffff1;
+      white-space:nowrap;
+    }
+
+    .atlas-region{
+      font-size:11px;
+      color:var(--ink-soft);
+      text-align:right;
+      white-space:nowrap;
+    }
+
+    .atlas-title{
+      font-family:'Cinzel','Times New Roman',serif;
+      font-size:18px;
+      margin:3px 0 4px;
+    }
+
+    .atlas-tradition{
+      font-size:14px;
+      color:var(--ink-soft);
+      margin:0 0 6px;
+    }
+
+    .atlas-tagline{
+      font-size:14px;
+      line-height:1.6;
+      margin:0 0 9px;
+    }
+
+    .atlas-tags{
+      display:flex;
+      flex-wrap:wrap;
+      gap:6px;
+      margin-bottom:11px;
+      font-size:11px;
+      color:var(--ink-soft);
+    }
+
+    .atlas-tags span{
+      border-radius:999px;
+      border:1px solid rgba(217,184,120,0.55);
+      padding:3px 9px;
+    }
+
+    .atlas-actions{
+      margin-top:auto;
+      display:flex;
+      flex-wrap:wrap;
+      gap:9px;
+      justify-content:center;
+    }
+
+    .atlas-btn{
+      flex:1 1 120px;
+      max-width:100%;
+      border-radius:777px;
+      border:1px solid rgba(217,184,120,0.65);
+      padding:7px 14px;
+      font-size:12px;
+      letter-spacing:0.11em;
+      text-transform:uppercase;
+      text-decoration:none;
+      background:rgba(255,255,255,0.03);
+      color:var(--parchment);
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      gap:6px;
+      transition:background .18s,transform .18s,box-shadow .18s,color .18s;
+      text-align:center;
+      white-space:normal;
+    }
+
+    .atlas-btn.primary::after{
+      content:'↗';
+      font-size:11px;
+    }
+
+    .atlas-btn.secondary::after{
+      content:'☉';
+      font-size:11px;
+    }
+
+    .atlas-btn:hover{
+      background:linear-gradient(135deg,var(--gold),var(--gold-deep));
+      color:#050713;
+      transform:translateY(-1px);
+      box-shadow:0 9px 24px rgba(0,0,0,0.6);
+    }
+
+    .empty-state{
+      grid-column:1 / -1;
+      text-align:center;
+      font-size:14px;
+      color:var(--ink-soft);
+      padding:18px 0 6px;
+    }
+
+    /* Shared Motifs */
+
+    .section-title{
+      font-family:'Cinzel','Times New Roman',serif;
+      font-size:24px;
+      letter-spacing:0.14em;
+      text-transform:uppercase;
+      text-align:center;
+      margin:0 0 11px;
+      color:var(--parchment);
+    }
+
+    .section-sub{
+      max-width:777px;
+      margin:0 auto 24px;
+      font-size:14px;
+      line-height:1.7;
+      text-align:center;
+      color:var(--parchment-soft);
+    }
+
+    .motifs-grid{
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+      gap:24px;
+    }
+
+    .motif-card{
+      padding:21px 18px 18px;
+      border-radius:27px;
+      background:rgba(7,8,19,0.96);
+      border:1px solid rgba(247,243,234,0.13);
+      box-shadow:var(--shadow-card);
+      color:var(--parchment);
+      text-align:left;
+    }
+
+    .motif-name{
+      font-family:'Cinzel','Times New Roman',serif;
+      font-size:18px;
+      margin:0 0 7px;
+    }
+
+    .motif-summary{
+      font-size:14px;
+      line-height:1.6;
+      margin:0 0 9px;
+      color:var(--parchment-soft);
+    }
+
+    .motif-list{
+      list-style:none;
+      padding:0;
+      margin:0;
+      font-size:13px;
+    }
+
+    .motif-list li+li{
+      margin-top:6px;
+    }
+
+    .motif-link{
+      color:var(--gold);
+      text-decoration:none;
+      border-bottom:1px dashed rgba(217,184,120,0.6);
+    }
+
+    .motif-link:hover{
+      color:#ffe08c;
+    }
+
+    .motif-trad{
+      font-size:11px;
+      text-transform:uppercase;
+      letter-spacing:0.12em;
+      color:var(--ink-soft);
+      display:block;
+      margin-bottom:1px;
+    }
+
+    /* Directory */
+
+    .links-groups{
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+      gap:24px;
+    }
+
+    .links-card{
+      padding:21px 18px 18px;
+      border-radius:27px;
+      background:rgba(6,7,17,0.96);
+      border:1px solid rgba(247,243,234,0.13);
+      box-shadow:var(--shadow-card);
+      color:var(--parchment);
+      text-align:left;
+    }
+
+    .links-group-title{
+      font-family:'Cinzel','Times New Roman',serif;
+      font-size:18px;
+      margin:0 0 7px;
+    }
+
+    .links-list{
+      list-style:none;
+      padding:0;
+      margin:0;
+      font-size:13px;
+    }
+
+    .links-list li+li{
+      margin-top:7px;
+    }
+
+    .dir-link{
+      color:var(--gold);
+      text-decoration:none;
+      border-bottom:1px dashed rgba(217,184,120,0.6);
+    }
+
+    .dir-link:hover{
+      color:#ffe08c;
+    }
+
+    .dir-note{
+      font-size:11px;
+      color:var(--ink-soft);
+      margin-top:3px;
+    }
+
+    /* Responsive */
+
+    @media (max-width:720px){
+      body{
+        padding:24px 9px 55px;
+      }
+      .truth-inner,
+      .motifs-inner,
+      .links-inner{
+        padding:33px 21px 27px;
+        border-radius:33px;
+      }
+      .atlas-actions{
+        flex-direction:column;
+      }
+      .atlas-region{
+        font-size:10px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- TRUTH TRIBE · CREATION ATLAS -->
+  <section class="truth-shell">
+    <div class="truth-inner">
+      <header class="truth-header">
+        <h1 class="truth-title">TRUTH TRIBE</h1>
+        <p class="truth-tag">CREATION ATLAS</p>
+        <p class="truth-sub">
+          A centered map of creation threads across traditions — Scripture, hymns, epics, and oral memory — 
+          gathered so you can walk them slowly, side by side, in the light of the Creator.
+        </p>
+        <p class="truth-note">
+          Primary buttons open free source texts in a new tab. Study buttons point to your Testament threads
+          (anchors you can fill out over time).
+        </p>
+      </header>
+
+      <!-- Cluster filter -->
+      <div class="atlas-filter-row" aria-label="Creation Atlas filters">
+        <button class="atlas-filter-pill active" data-cluster="all" type="button">All</button>
+        <button class="atlas-filter-pill" data-cluster="scripture-core" type="button">Scripture Core</button>
+        <button class="atlas-filter-pill" data-cluster="story-song" type="button">Story &amp; Song</button>
+        <button class="atlas-filter-pill" data-cluster="oral-lineage" type="button">Oral Lineages</button>
+        <button class="atlas-filter-pill" data-cluster="cosmic-hymn" type="button">Cosmic Hymns</button>
+        <button class="atlas-filter-pill" data-cluster="index" type="button">Comparative Index</button>
+      </div>
+
+      <!-- Atlas grid -->
+      <section id="atlasGrid" class="atlas-grid" aria-live="polite"></section>
+    </div>
+  </section>
+
+  <!-- SHARED MOTIFS SECTION -->
+  <section class="motifs-shell">
+    <div class="motifs-inner">
+      <h2 class="section-title">Shared Motifs</h2>
+      <p class="section-sub">
+        Here are some of the places where stories lean toward one another:
+        world-floods and arks, promised saviors and world-renewal, festivals of light and liberation.
+        Each link opens a free study resource.
+      </p>
+      <div id="motifsGrid" class="motifs-grid"></div>
+    </div>
+  </section>
+
+  <!-- STUDY DIRECTORY SECTION -->
+  <section class="links-shell">
+    <div class="links-inner">
+      <h2 class="section-title">Study Directory</h2>
+      <p class="section-sub">
+        A small, growing directory of creation-focused resources you can open while working in The Testament
+        or Truth Tribe. Save the ones you love into your own ARSHIF vaults.
+      </p>
+      <div id="linksGroups" class="links-groups"></div>
+    </div>
+  </section>
+
+  <script>
+    /* === DATA: CREATION ATLAS === */
+    const TRUTH_TRIBES = [
+      {
+        id:'genesis-abrahamic',
+        title:'Genesis · Hebrew & Christian',
+        tradition:'Hebrew Bible / Christian Old Testament',
+        region:'Ancient Near East',
+        cluster:'scripture-core',
+        tagline:'“In the beginning” — creation by the word of a personal God, heaven and earth, image-bearing humans.',
+        tags:['Torah','Pentateuch','Genesis 1–2'],
+        primaryUrl:'https://www.biblegateway.com/passage/?search=Genesis+1-2&version=ESV',
+        testamentUrl:'https://www.vervenveda.com/testament#genesis-abrahamic'
+      },
+      {
+        id:'quran-creation',
+        title:'Qur’anic Cosmos',
+        tradition:'Qur’an · Islam',
+        region:'Arabian Peninsula',
+        cluster:'scripture-core',
+        tagline:'Creation of the heavens and the earth in truth; night and day, rain and fruits as signs for those who remember.',
+        tags:['Qur’an 2:21–22','heavens & earth'],
+        primaryUrl:'https://quran.com/en/al-baqarah/21-22',
+        testamentUrl:'https://www.vervenveda.com/testament#quran-creation'
+      },
+      {
+        id:'rigveda-nasadiya',
+        title:'Nasadiya Sukta · Rig Veda 10.129',
+        tradition:'Vedic Hymn · Hindu Tradition',
+        region:'Indian Subcontinent',
+        cluster:'cosmic-hymn',
+        tagline:'A questioning hymn about what was “before” creation — neither being nor non-being, darkness wrapped in darkness.',
+        tags:['Rig Veda','cosmogony','philosophical hymn'],
+        primaryUrl:'https://www.wisdomlib.org/hinduism/book/rig-veda-english-translation/d/doc833889.html',
+        testamentUrl:'https://www.vervenveda.com/testament#rigveda-nasadiya'
+      },
+      {
+        id:'enuma-elish',
+        title:'Enuma Elish · Babylonian Epic',
+        tradition:'Mesopotamian Mythic Epic',
+        region:'Ancient Mesopotamia',
+        cluster:'story-song',
+        tagline:'Creation through divine struggle: waters, gods, and the ordering of the cosmos around Babylon.',
+        tags:['Akkadian','Marduk','cosmic conflict'],
+        primaryUrl:'https://omnika.org/text/259/enuma-elish-the-babylonian-epic-of-creation',
+        testamentUrl:'https://www.vervenveda.com/testament#enuma-elish'
+      },
+      {
+        id:'popol-vuh',
+        title:'Popol Vuh · Sacred Book of the Maya',
+        tradition:'K’iche’ Maya',
+        region:'Mesoamerica',
+        cluster:'story-song',
+        tagline:'Multiple attempts at shaping humanity, from mud to wood to corn; gods speaking creation into being.',
+        tags:['Maya','corn people','cosmic drama'],
+        primaryUrl:'https://www.gutenberg.org/ebooks/43986',
+        testamentUrl:'https://www.vervenveda.com/testament#popol-vuh'
+      },
+      {
+        id:'indigenous-origins',
+        title:'Indigenous Origins · Many Nations',
+        tradition:'Curated Indigenous Creation Stories',
+        region:'Global',
+        cluster:'oral-lineage',
+        tagline:'Creation told as journey, kinship, land, and responsibility, preserved through elders and storytellers.',
+        tags:['oral tradition','First Nations','worldwide'],
+        primaryUrl:'https://www.gly.uga.edu/railsback/CS/CSIndex.html',
+        testamentUrl:'https://www.vervenveda.com/testament#indigenous-origins'
+      },
+      {
+        id:'global-index',
+        title:'Global Creation Story Index',
+        tradition:'Comparative Reference',
+        region:'Multi-region',
+        cluster:'index',
+        tagline:'Side-by-side summaries of creation accounts from many cultures, useful for quick comparison and classroom work.',
+        tags:['comparative','reference'],
+        primaryUrl:'https://www.gly.uga.edu/railsback/CS/CSIndex.html',
+        testamentUrl:'https://www.vervenveda.com/testament#global-index'
+      }
+    ];
+
+    const CLUSTER_LABELS = {
+      'scripture-core':'Scripture Core',
+      'story-song':'Story & Song',
+      'oral-lineage':'Oral Lineages',
+      'cosmic-hymn':'Cosmic Hymns',
+      'index':'Comparative Index'
+    };
+
+    let currentCluster = 'all';
+
+    /* === DATA: SHARED MOTIFS === */
+    const TRUTH_MOTIFS = [
+      {
+        id:'flood',
+        name:'Great Flood & Ark Motifs',
+        summary:'Stories of a world-flood, a preserved remnant, and a renewed earth.',
+        examples:[
+          {
+            tradition:'Hebrew Bible',
+            label:'Noah · Genesis 6–9',
+            url:'https://www.biblegateway.com/passage/?search=Genesis+6-9&version=ESV'
+          },
+          {
+            tradition:'Mesopotamian',
+            label:'Utnapishtim · Epic of Gilgamesh XI',
+            url:'https://sacred-texts.com/ane/eog/eog13.htm'
+          },
+          {
+            tradition:'Mesopotamian',
+            label:'Atrahasis Flood Narrative',
+            url:'https://www.livius.org/sources/content/anet/499-atrahasis-the-babylonian-story-of-the-flood/'
+          },
+          {
+            tradition:'Greek',
+            label:'Deucalion & Pyrrha',
+            url:'https://mythfolklore.blogspot.com/2014/03/ovids-metamorphoses-deucalion-and-pyrrha.html'
+          },
+          {
+            tradition:'Hindu Traditions',
+            label:'Manu & the Great Flood',
+            url:'https://www.wisdomlib.org/hinduism/book/mahabharata-english-summary/d/doc1345570.html'
+          }
+        ]
+      },
+      {
+        id:'savior',
+        name:'Promised Savior & World Renewal',
+        summary:'Figures who bring liberation, justice, or new creation at history’s turning points.',
+        examples:[
+          {
+            tradition:'Judaism / Christianity',
+            label:'Messiah & Christ · Comparative Study',
+            url:'https://www.sciencedirect.com/science/article/pii/S2405844022003681'
+          },
+          {
+            tradition:'Zoroastrianism',
+            label:'Saoshyant · Future Savior',
+            url:'https://www.iranicaonline.org/articles/saosyant'
+          },
+          {
+            tradition:'Buddhism',
+            label:'Maitreya · Future Buddha',
+            url:'https://en.wikipedia.org/wiki/Maitreya'
+          },
+          {
+            tradition:'Multi-tradition',
+            label:'Savior Narratives Across Traditions',
+            url:'https://www.mdpi.com/2077-1444/15/11/1322'
+          }
+        ]
+      },
+      {
+        id:'holy-days',
+        name:'Festivals of Light & Liberation',
+        summary:'Holy days clustering around light, deliverance, and new beginnings.',
+        examples:[
+          {
+            tradition:'Jewish / Christian',
+            label:'Passover & Easter',
+            url:'https://www.myjewishlearning.com/article/easter-and-passover/'
+          },
+          {
+            tradition:'Jewish / Hindu',
+            label:'Hanukkah & Diwali',
+            url:'https://theculturetrip.com/middle-east/israel/articles/hanukkah-the-jewish-diwali'
+          },
+          {
+            tradition:'Multi-tradition',
+            label:'Global Festivals of Light',
+            url:'https://en.wikipedia.org/wiki/Festival_of_Lights'
+          }
+        ]
+      }
+    ];
+
+    /* === DATA: STUDY DIRECTORY === */
+    const TRUTH_LINK_GROUPS = [
+      {
+        group:'Global Creation Story Indexes',
+        links:[
+          {
+            label:'Creation Stories from Around the World (Railsback, UGA)',
+            url:'https://www.gly.uga.edu/railsback/CS/CSIndex.html',
+            note:'Concise summaries for dozens of traditions.'
+          },
+          {
+            label:'University of Hawai‘i – Creation Myths Guide',
+            url:'https://guides.library.manoa.hawaii.edu/c.php?g=997792&p=7226769',
+            note:'Library guide pointing to books and articles.'
+          },
+          {
+            label:'Internet Sacred Text Archive – Creation & Cosmology',
+            url:'https://www.sacred-texts.com/etc/index.htm',
+            note:'Scanned primary texts in the public domain.'
+          }
+        ]
+      },
+      {
+        group:'Abrahamic Scriptures · Creation Threads',
+        links:[
+          {
+            label:'Genesis 1–2 (BibleGateway)',
+            url:'https://www.biblegateway.com/passage/?search=Genesis+1-2&version=ESV',
+            note:'“In the beginning” — two creation perspectives side by side.'
+          },
+          {
+            label:'Qur’an Verses on Creation (Curated Index)',
+            url:'https://myislam.org/quran-verses/creation/',
+            note:'Collects many ayat about creation with brief commentary.'
+          },
+          {
+            label:'Qur’an 2:21–22 · Creation & Provision',
+            url:'https://quran.com/en/al-baqarah/21-22',
+            note:'He made the earth a resting place and the sky a canopy.'
+          }
+        ]
+      },
+      {
+        group:'Hymns, Epics & Sacred Narratives',
+        links:[
+          {
+            label:'Rig Veda · Nasadiya Sukta 10.129',
+            url:'https://www.wisdomlib.org/hinduism/book/rig-veda-english-translation/d/doc833889.html',
+            note:'Classic “not-this, not-that” creation hymn.'
+          },
+          {
+            label:'Enuma Elish · Babylonian Epic of Creation',
+            url:'https://omnika.org/text/259/enuma-elish-the-babylonian-epic-of-creation',
+            note:'A mythic battle leading to ordered cosmos.'
+          },
+          {
+            label:'Popol Vuh · Sacred Book of the Maya (Gutenberg)',
+            url:'https://www.gutenberg.org/ebooks/43986',
+            note:'Public-domain English translation with introductions.'
+          }
+        ]
+      }
+    ];
+
+    /* === RENDERING: ATLAS === */
+    const atlasGridEl = document.getElementById('atlasGrid');
+    const filterPills = document.querySelectorAll('.atlas-filter-pill');
+
+    function renderAtlas(){
+      atlasGridEl.innerHTML = '';
+      let count = 0;
+      TRUTH_TRIBES.forEach(item => {
+        if(currentCluster !== 'all' && item.cluster !== currentCluster) return;
+        count++;
+
+        const card = document.createElement('article');
+        card.className = 'atlas-card';
+        const clusterLabel = CLUSTER_LABELS[item.cluster] || 'Story Thread';
+        const tagsHtml = (item.tags || []).map(t => `<span>${t}</span>`).join('');
+
+        card.innerHTML = `
+          <div class="atlas-top-row">
+            <span class="atlas-chip">${clusterLabel}</span>
+            <span class="atlas-region">${item.region}</span>
+          </div>
+          <h3 class="atlas-title">${item.title}</h3>
+          <p class="atlas-tradition">${item.tradition}</p>
+          <p class="atlas-tagline">${item.tagline}</p>
+          <div class="atlas-tags">${tagsHtml}</div>
+          <div class="atlas-actions">
+            <a class="atlas-btn primary" href="${item.primaryUrl}" target="_blank" rel="noopener noreferrer">
+              Primary Text
+            </a>
+            <a class="atlas-btn secondary" href="${item.testamentUrl}" target="_blank" rel="noopener noreferrer">
+              Study Thread
+            </a>
+          </div>
+        `;
+        atlasGridEl.appendChild(card);
+      });
+
+      if(!count){
+        atlasGridEl.innerHTML = '<p class="empty-state">No threads in this filter yet. Try “All” while the Atlas grows.</p>';
+      }
+    }
+
+    filterPills.forEach(btn => {
+      btn.addEventListener('click', () => {
+        filterPills.forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        currentCluster = btn.getAttribute('data-cluster') || 'all';
+        renderAtlas();
+      });
+    });
+
+    /* === RENDERING: MOTIFS === */
+    const motifsGridEl = document.getElementById('motifsGrid');
+
+    function renderMotifs(){
+      motifsGridEl.innerHTML = '';
+      TRUTH_MOTIFS.forEach(m => {
+        const card = document.createElement('article');
+        card.className = 'motif-card';
+
+        const listItems = (m.examples || []).map(ex => `
+          <li>
+            <span class="motif-trad">${ex.tradition}</span>
+            <a class="motif-link" href="${ex.url}" target="_blank" rel="noopener noreferrer">
+              ${ex.label}
+            </a>
+          </li>
+        `).join('');
+
+        card.innerHTML = `
+          <h3 class="motif-name">${m.name}</h3>
+          <p class="motif-summary">${m.summary}</p>
+          <ul class="motif-list">
+            ${listItems}
+          </ul>
+        `;
+        motifsGridEl.appendChild(card);
+      });
+    }
+
+    /* === RENDERING: DIRECTORY === */
+    const linksGroupsEl = document.getElementById('linksGroups');
+
+    function renderDirectory(){
+      linksGroupsEl.innerHTML = '';
+      TRUTH_LINK_GROUPS.forEach(group => {
+        const card = document.createElement('article');
+        card.className = 'links-card';
+
+        const listItems = group.links.map(link => `
+          <li>
+            <a class="dir-link" href="${link.url}" target="_blank" rel="noopener noreferrer">
+              ${link.label}
+            </a>
+            ${link.note ? `<div class="dir-note">${link.note}</div>` : ''}
+          </li>
+        `).join('');
+
+        card.innerHTML = `
+          <h3 class="links-group-title">${group.group}</h3>
+          <ul class="links-list">
+            ${listItems}
+          </ul>
+        `;
+        linksGroupsEl.appendChild(card);
+      });
+    }
+
+    // Initial render
+    renderAtlas();
+    renderMotifs();
+    renderDirectory();
+  </script>
+</body>
+</html>
