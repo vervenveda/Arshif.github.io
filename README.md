@@ -1,4 +1,4 @@
-r"""# ARSHIF
+# ARSHIF
 
 ## The Living Archive of Human Knowledge
 
