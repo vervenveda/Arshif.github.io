@@ -500,3 +500,859 @@ Kind-specific buttons such as Enter Hall, Open Course, Open Portal, Open Directo
 A built-in directory audit that checks for duplicate IDs, paths, repositories, and insecure external URLs
 A strict Content Security Policy
 No analytics, trackers, external JavaScript, or silent network requests
+
+
+
+Repository Structure
+
+The exact repository will continue to evolve, but the current architecture is represented by:
+
+Arshif.github.io/
+├── index.html
+├── README.md
+├── LICENSE.md                 # recommended
+├── SECURITY.md                # recommended
+├── PRIVACY.md                 # recommended
+├── THIRD_PARTY_NOTICES.md     # recommended
+├── 404.html                   # recommended
+│
+└── apps/
+    ├── childrens_medicine_hall/
+    │   ├── README.md
+    │   └── index.html
+    ├── culinary_hall/
+    │   ├── README.md
+    │   └── index.html
+    ├── financial_hall/
+    │   ├── README.md
+    │   └── index.html
+    ├── holistic_medicine_hall/
+    │   ├── README.md
+    │   └── index.html
+    ├── language_hall/
+    │   └── index.html
+    ├── nonprofit_hall/
+    │   ├── README.md
+    │   └── index.html
+    ├── poetry_hall/
+    │   └── index.html
+    ├── traditional_medicine_hall/
+    │   ├── README.md
+    │   └── index.html
+    ├── Bible_and_History_index.html
+    ├── Bible_context_index.html
+    ├── Biblical_web_directory_index.html
+    ├── Foundations_of_faith_index.html
+    ├── PLERA_Search_index.html
+    ├── Reading_room_index.html
+    ├── Song_embedder_index.html
+    ├── Testament_study_portal_index.html
+    ├── The_Testament_index.html
+    ├── Truth_tribe_class_index.html
+    ├── Truth_tribe_index.html
+    ├── Truth_tribe_kids_index.html
+    ├── Yahushua_Study_index.html
+    ├── Yahushua_portal_index.html
+    ├── bible_before_cannon_index.html
+    ├── biblical_portal_index.html
+    ├── business_hall_index.html
+    ├── business_hub_index.html
+    ├── business_incubator_index.html
+    ├── contribute_index.html
+    ├── exercise_log_index.html
+    ├── lost_works_index.html
+    ├── mythology_hall_index.html
+    ├── oral_traditions_index.html
+    ├── philosophy_Hall_index.html
+    ├── remnant_nations_inndex.html
+    ├── science_hall_index.html
+    ├── theatre_hall_index.html
+    ├── travel_exploration_hall_index.html
+    ├── world_classics_Hall_index.html
+    └── zionism_course_index.html
+
+A separate Faith/apps/ structure may be used if faith applications are physically moved there. Any move must be accompanied by matching updates to every affected path value in the landing page directory.
+
+Route and Filename Rules
+
+GitHub Pages paths are case-sensitive.
+
+The following distinctions matter:
+
+philosophy_Hall_index.html
+world_classics_Hall_index.html
+Bible_and_History_index.html
+Yahushua_Study_index.html
+
+These are not interchangeable with lowercase versions.
+
+The current filename:
+
+remnant_nations_inndex.html
+
+contains the spelling inndex.
+
+The current landing-page link must preserve that exact filename until the file itself is intentionally renamed and every reference is updated.
+
+Preferred Naming Standard for New Files
+
+For future applications, prefer:
+
+lowercase_words_with_underscores_index.html
+
+or a folder route:
+
+apps/new_hall_name/index.html
+
+Folder routes are generally cleaner:
+
+./apps/new_hall_name/
+Before Renaming Any Existing File
+Rename the file in GitHub.
+Update its path in the halls array.
+Search the repository for the old filename.
+Update return links and cross-links.
+Test case sensitivity.
+Test the published GitHub Pages route.
+Preserve redirects or a temporary notice when the old route has already been shared.
+Technology
+
+The ARSHIF landing page intentionally uses a small and durable stack:
+
+HTML5
+CSS3
+Vanilla JavaScript
+Inline SVG
+LocalStorage for favorites
+Static files
+GitHub Pages-compatible routing
+
+The landing page does not require:
+
+React
+Vue
+Angular
+Bootstrap
+jQuery
+Node.js
+npm
+A package manager
+A build pipeline
+A server-side database
+A mandatory user account
+External analytics
+Advertising trackers
+External JavaScript
+
+Some individual applications may still contain external font links or links to outside resources. Each application should be reviewed independently before being described as completely offline or dependency-free.
+
+Sovereign Design Standard
+
+Within ARSHIF, sovereign means that the project should remain understandable, portable, preservable, and independently operable.
+
+Whenever practical, an ARSHIF application should:
+
+function as a self-contained HTML file;
+use plain HTML, CSS, and JavaScript;
+avoid unnecessary third-party dependencies;
+avoid mandatory accounts;
+avoid proprietary platform lock-in;
+preserve user work locally;
+provide export or print options when appropriate;
+disclose all network activity;
+avoid hidden analytics and tracking;
+remain readable without a specialized build system;
+include clear return navigation;
+preserve the owner’s ability to move the application to another host; and
+fail safely when browser storage or external resources are unavailable.
+
+Sovereignty does not require isolation from trusted public institutions. Research archives need pathways to libraries, museums, archives, universities, public agencies, journals, and historical collections.
+
+External resources should be deliberate, visible, relevant, and reviewed.
+
+Research and Source Standard
+Preferred Source Types
+
+ARSHIF should prioritize:
+
+primary documents;
+official public records;
+government agencies;
+libraries and archives;
+museums and cultural institutions;
+universities;
+peer-reviewed research;
+recognized scholarly publishers;
+professional associations;
+public-health institutions;
+legal texts and court records;
+public-domain editions;
+responsible oral-history collections; and
+community-authorized cultural resources.
+Source Classification
+
+Where practical, resources should identify whether they are:
+
+primary sources;
+secondary sources;
+reference sources;
+educational summaries;
+oral histories;
+cultural traditions;
+theological interpretations;
+disputed interpretations;
+emerging studies;
+public records;
+public-domain works; or
+third-party external resources.
+Recommended Source Record
+
+A research page should record, when available:
+
+title;
+creator or responsible institution;
+publication or creation date;
+source type;
+jurisdiction or geographic scope;
+language;
+edition or translation;
+access date;
+public-domain or copyright status;
+known limitations;
+stable link or archival identifier; and
+a short explanation of why the source is relevant.
+Conflicting Evidence
+
+When credible sources disagree, ARSHIF should:
+
+identify the major positions;
+distinguish evidence from conclusion;
+explain the source of disagreement;
+avoid presenting speculation as settled fact;
+identify missing evidence;
+note changes in scholarship over time; and
+preserve uncertainty honestly.
+Content Review Standard
+
+Before public publication, ARSHIF materials should be reviewed for:
+
+factual accuracy;
+alignment between lessons, quizzes, and stated subject matter;
+source quality;
+broken or redirected links;
+outdated information;
+age appropriateness;
+accessibility;
+privacy implications;
+cultural sensitivity;
+medical, legal, financial, political, or safety risks;
+copyright and public-domain status;
+unsupported claims;
+misleading certainty;
+inflammatory framing;
+internal navigation;
+spelling and case-sensitive route accuracy; and
+consistency with the application’s stated purpose.
+
+Time-sensitive materials should include a last-reviewed date when practical.
+
+Health and Safety Standard
+
+Several ARSHIF applications address medicine, health, psychology, movement, food, plants, children, or traditional healing.
+
+These subjects require heightened care.
+
+Health-related materials must:
+
+remain educational rather than diagnostic;
+avoid promising cures;
+avoid instructing visitors to discontinue prescribed treatment;
+identify emergency warning signs where relevant;
+encourage qualified care when needed;
+distinguish historical practice from current evidence;
+identify known uncertainty and risk;
+avoid unsafe dosage instructions;
+avoid presenting “natural” as automatically safe;
+address interactions, allergies, toxicity, pregnancy, age, and underlying conditions when relevant;
+avoid exploiting fear or distrust; and
+use verified sources for changing medical guidance.
+General Health Disclaimer
+
+ARSHIF health materials do not replace:
+
+emergency services;
+licensed medical evaluation;
+diagnosis;
+individualized treatment;
+pharmacy guidance;
+poison-control services;
+mental-health crisis care; or
+advice from a qualified professional familiar with the person’s circumstances.
+
+Anyone facing an emergency should contact the appropriate local emergency service or verified crisis resource.
+
+Faith, History, and Contested-Claims Standard
+
+Faith, history, politics, identity, nationalism, archaeology, canon, and ancient-text studies may involve deeply held convictions and contested evidence.
+
+ARSHIF applications in these areas should:
+
+distinguish devotional teaching from historical analysis;
+identify translations and editions;
+separate manuscript evidence from later interpretation;
+identify scholarly disagreements;
+avoid presenting modern political claims as automatic conclusions of ancient texts;
+identify when terminology changed over time;
+distinguish a people, religion, government, ideology, and political movement;
+avoid collective blame;
+reject dehumanization and conspiracy framing;
+include multiple credible viewpoints where responsible scholarship differs;
+preserve the dignity and safety of living communities; and
+clearly label speculation.
+
+The goal is not false neutrality. The goal is transparent sourcing, precise language, honest uncertainty, and responsible inquiry.
+
+Privacy and Local Storage
+
+ARSHIF is designed to minimize unnecessary collection.
+
+The central landing page may use browser LocalStorage to save favorite applications. This information remains on the visitor’s device unless browser data is cleared or the browser behaves otherwise.
+
+Individual applications may use local browser storage for:
+
+progress;
+notes;
+preferences;
+quiz results;
+journals;
+certificates;
+caregiver logs;
+exercise records;
+saved resources; or
+locally generated reports.
+
+Unless an individual application clearly states otherwise, local information is not transmitted to ARSHIF or stored in a central account.
+
+Future Development Should Avoid
+hidden analytics;
+behavioral advertising;
+browser fingerprinting;
+surveillance tools;
+unnecessary cookies;
+undisclosed third-party scripts;
+silent cloud synchronization;
+transmission of private user content without clear consent; and
+collection of sensitive information that is not necessary for the application’s purpose.
+
+Visitors should not store highly sensitive information in browser storage without understanding shared-device, backup, clearing, and browser-security risks.
+
+Security
+
+The updated landing page includes:
+
+a Content Security Policy;
+no external JavaScript;
+no analytics or tracking;
+no server-side forms;
+no silent network requests;
+connect-src 'none' for the landing page;
+secure new-tab links using noopener noreferrer;
+referrer protection;
+HTML escaping for directory data;
+HTTPS-only external research links;
+a built-in audit for duplicate IDs and paths; and
+local-only favorites.
+Security Limitations
+
+A static landing page cannot guarantee the safety or availability of every connected external site.
+
+Each internal application should be reviewed independently for:
+
+external scripts;
+remote fonts;
+unsafe HTML injection;
+overly permissive Content Security Policy rules;
+localStorage handling;
+download behavior;
+embedded media;
+form actions;
+mixed-content links;
+third-party trackers; and
+unsafe user-generated content rendering.
+
+Security concerns should be reported privately to the project maintainer.
+
+Accessibility
+
+ARSHIF aims to support:
+
+semantic document structure;
+keyboard navigation;
+visible focus indicators;
+screen-reader labels;
+sufficient color contrast;
+responsive typography;
+large touch targets;
+reduced-motion preferences;
+readable line lengths;
+plain-language instructions;
+print-friendly materials;
+logical heading order;
+descriptive link text; and
+interfaces that do not rely on color alone.
+
+Every new application should be tested on:
+
+desktop;
+tablet;
+mobile;
+keyboard-only navigation;
+zoomed text;
+reduced-motion settings;
+high-contrast conditions; and
+at least one screen-reader workflow when practical.
+
+Accessibility is an ongoing maintenance responsibility.
+
+Running ARSHIF Locally
+
+Because ARSHIF uses static files, it can be tested without a build process.
+
+Option 1: Open the File Directly
+
+Download or clone the repository, then open:
+
+index.html
+
+in a modern browser.
+
+Some relative routes, downloads, security policies, and browser APIs may behave differently under a file:// address.
+
+Option 2: Use a Local Static Server
+
+From the repository folder, run:
+
+python3 -m http.server 8080
+
+Then open:
+
+http://localhost:8080
+
+A local server is recommended when testing:
+
+folder routes;
+flat-file routes;
+browser storage;
+content-security policies;
+internal navigation;
+downloads;
+printing;
+media;
+external links; and
+responsive behavior.
+Publishing with GitHub Pages
+
+A typical publishing workflow is:
+
+Place the central landing page at the repository root as index.html.
+Place independent applications under apps/.
+Preserve the exact capitalization of every filename.
+Confirm that every folder-based application contains index.html.
+Use repository-relative links.
+Commit changes to the publishing branch.
+Open repository Settings.
+Select Pages.
+Confirm the intended branch and root publishing folder.
+Allow GitHub Pages time to rebuild.
+Test the homepage and every updated route.
+
+A GitHub address ending with:
+
+/blob/main/index.html
+
+shows the source file.
+
+The GitHub Pages address shows the rendered website.
+
+Visibility Warning
+
+Before storing confidential, student, medical, legal, financial, unreleased, or proprietary working material, verify both repository visibility and Pages visibility.
+
+Do not assume that a repository described informally as private is actually private.
+
+Do not assume that repository privacy automatically makes a published Pages site private.
+
+Adding a New Application
+1. Choose the Application Form
+
+Folder-based application:
+
+apps/new_hall_name/
+└── index.html
+
+Flat-file application:
+
+apps/new_tool_index.html
+
+Folder-based applications are preferred for projects expected to gain documentation, images, or additional files.
+
+2. Add Documentation
+
+For a substantial hall or portal, create:
+
+apps/new_hall_name/README.md
+
+The application README should explain:
+
+purpose;
+intended audience;
+educational scope;
+features;
+route;
+storage behavior;
+external dependencies;
+source standard;
+safety limitations;
+accessibility notes;
+copyright status; and
+maintenance requirements.
+3. Register the Application
+
+Add one complete record to the halls array:
+
+{
+  id: "history-of-science",
+  title: "Hall of the History of Science",
+  category: "Science & Inquiry",
+  kind: "Hall",
+  symbol: "⚗",
+  path: "./apps/history_of_science_hall/",
+  description: "How observation, experiment, mathematics, instruments, institutions, and debate shaped scientific knowledge.",
+  pathways: [
+    "Scientific revolutions",
+    "History of experimentation",
+    "Instruments and measurement",
+    "Science and society",
+    "Primary scientific texts"
+  ]
+}
+4. Test Every Entry Point
+
+Confirm that:
+
+the card appears;
+the menu link appears;
+search finds the application;
+the category filter works;
+favorites work;
+the research-scope modal opens;
+the primary action reaches the correct route;
+random discovery can open it;
+the application includes a return path; and
+the mobile layout remains readable.
+Maintaining the Central Directory
+
+The three central arrays should remain the single sources of truth.
+
+When Updating an Internal Application
+
+Update the relevant record in:
+
+const halls = [];
+When Updating a Connected Repository
+
+Update:
+
+const networkSites = [];
+
+Review:
+
+repository name;
+case-sensitive Pages path;
+publication status;
+live Pages URL;
+repository URL;
+card description; and
+whether unfinished projects should open GitHub instead of a nonexistent Pages site.
+When Updating an External Research Resource
+
+Update:
+
+const researchResources = [];
+
+Confirm:
+
+HTTPS;
+responsible institution;
+stable destination;
+accurate description;
+no unnecessary tracking parameters;
+no duplicate resource;
+continued public access; and
+appropriate new-tab security.
+Testing Checklist
+
+Before replacing the public index.html, test:
+
+Structure
+ HTML opens without parse errors.
+ JavaScript passes a syntax check.
+ No duplicate HTML IDs exist.
+ All getElementById() targets exist.
+ All on-page anchors point to real sections.
+Internal Applications
+ All expected applications appear.
+ Folder routes contain index.html.
+ Flat-file routes match exact capitalization.
+ No duplicate application IDs exist.
+ No duplicate application paths exist.
+ Card buttons open the correct applications.
+ Menu buttons open the same applications.
+ Modal buttons open the same applications.
+Search and Interaction
+ Search finds applications.
+ Search finds connected repositories.
+ Search finds research gateways.
+ Category filters work.
+ Favorites save locally.
+ Clear resets the directory.
+ Random discovery opens a valid application.
+ Escape closes menus and modals.
+Connected Repositories
+ Published sites use the correct Pages URL.
+ Setup repositories do not send users to avoidable 404 pages.
+ Unverified repositories are clearly labeled.
+ Repository names preserve exact capitalization.
+External Resources
+ Every resource uses HTTPS.
+ New tabs use noopener noreferrer.
+ Descriptions match the institution.
+ No duplicate gateways exist.
+ No resource is presented as owned by ARSHIF.
+Accessibility
+ Keyboard navigation works.
+ Focus remains visible.
+ Search inputs have labels.
+ Buttons have meaningful accessible names.
+ Reduced-motion preferences are respected.
+ Mobile tap targets are large enough.
+ Print output remains readable.
+Project Stewardship
+
+ARSHIF is privately directed and maintained.
+
+The repository is not an invitation to copy, independently publish, modify, redistribute, commercialize, scrape, train artificial intelligence on, or create derivative projects.
+
+Visitors may report:
+
+broken links;
+factual errors;
+accessibility concerns;
+safety concerns;
+privacy issues;
+misaligned quiz questions;
+attribution problems;
+outdated sources;
+missing context; or
+security vulnerabilities.
+
+A report, suggestion, or source submission does not grant permission to:
+
+change the code;
+reproduce the project;
+publish a modified version;
+redistribute content;
+create a competing archive;
+use ARSHIF branding;
+train a model on the materials; or
+create derivative works.
+
+All changes to the official archive are reviewed and approved by Jennifer Pearl.
+
+Intellectual Property
+
+Unless a particular file expressly states otherwise:
+
+ARSHIF source code is proprietary;
+original written content is proprietary;
+original course structures are proprietary;
+original interface design is proprietary;
+original artwork and visual identity are proprietary;
+original compilations, arrangements, and curated pathways are proprietary; and
+ARSHIF names, symbols, branding, and source-identifying materials are reserved.
+
+Public facts, government materials, public-domain works, and independently owned third-party resources retain their own legal status.
+
+Public visibility does not place ARSHIF in the public domain and does not make the project open source.
+
+No permission is granted to:
+
+copy;
+modify;
+translate;
+republish;
+redistribute;
+mirror;
+rehost;
+sell;
+sublicense;
+commercialize;
+create derivative works;
+remove ownership notices;
+claim authorship;
+create a confusingly similar project;
+scrape or bulk-harvest the archive; or
+use the materials for artificial-intelligence or machine-learning training.
+
+Attribution alone does not create permission.
+
+Noncommercial, educational, charitable, governmental, religious, political, or nonprofit status does not automatically create permission.
+
+A dedicated ARSHIF LICENSE.md should govern the repository. Third-party materials should be documented in THIRD_PARTY_NOTICES.md.
+
+Public Repository Notice
+
+A public repository allows people to view its contents through GitHub and may allow platform-native actions under GitHub’s terms.
+
+Public access does not automatically grant a general license to:
+
+republish the project elsewhere;
+modify it;
+commercialize it;
+remove ownership notices;
+use its branding;
+train artificial intelligence on it; or
+create derivative works.
+
+Materials that must remain confidential should not be committed to a public repository.
+
+Protected items may include:
+
+unreleased source code;
+private research;
+student records;
+medical or family information;
+internal architecture;
+unpublished manuscripts;
+private journals;
+passwords or keys;
+proprietary planning documents; and
+concepts whose protection depends on confidentiality.
+Related Ecosystem
+Verve N Veda
+
+Website: https://www.vervenveda.com
+
+The public-facing sanctuary of resources, learning tools, creative spaces, community pathways, and independent browser applications.
+
+Khaemenes Academy
+
+Website: https://www.khaemenesacademy.org
+
+The connected educational environment for curriculum, courses, student pathways, grade-level portals, and the Open Academy of Living Knowledge.
+
+PLERA Search
+
+A connected research gateway joining public resources, learning, discovery tools, and the wider Verve N Veda network.
+
+The Verifier
+
+A connected information-literacy and news-discovery project focused on source comparison, verification, and public research navigation.
+
+Firmament Law
+
+A connected legal-information and public-reference environment.
+
+Solanar
+
+A connected weather, Earth-science, environmental-awareness, lunar, and global-observation environment.
+
+Bazaar Art and My Art Gallery
+
+Connected creative and visual-art environments for learning, presentation, preservation, and artist resources.
+
+One Nation for All
+
+A connected civic-engagement, public-policy, accountability, voting, and public-dialogue environment.
+
+Links between projects do not erase their separate purposes, legal notices, audiences, safety standards, or maintenance responsibilities.
+
+Recommended Foundation Files
+
+The repository should ultimately include:
+
+README.md
+index.html
+LICENSE.md
+SECURITY.md
+PRIVACY.md
+THIRD_PARTY_NOTICES.md
+404.html
+
+Recommended supporting documents:
+
+docs/
+├── archive-standard.md
+├── source-review-policy.md
+├── accessibility-standard.md
+├── health-content-standard.md
+├── faith-and-history-standard.md
+├── deployment.md
+├── route-map.md
+└── maintenance-checklist.md
+
+Recommended next priority:
+
+LICENSE.md
+
+The license should be proprietary, all-rights-reserved, and consistent with the project owner’s decision not to grant permission to change the code or use the project’s protected expression without written authorization.
+
+Maintainer
+
+Created and maintained by Jennifer Pearl as part of the Verve N Veda, ARSHIF, PLERA, and Khaemenes Academy knowledge and learning ecosystem.
+
+Copyright © 2026 Jennifer Pearl. All Rights Reserved.
+
+Closing Statement
+
+ARSHIF is being built as a place where knowledge is not reduced to a headline, a trend, a slogan, or an isolated answer.
+
+It is a place to slow down.
+
+To examine the source.
+
+To preserve the record.
+
+To compare what humanity has believed, discovered, created, endured, forgotten, contested, and passed forward.
+
+To connect disciplines that were separated.
+
+To protect memory from disappearance.
+
+To preserve faith without hiding context.
+
+To study history without erasing complexity.
+
+To make learning available without surrendering privacy, dignity, or intellectual independence.
+
+Enter with curiosity. Research with care. Preserve with responsibility. Return knowledge to the people.
+"""
+
+output_dir = Path("/mnt/data/arshif-readme-updated")
+output_dir.mkdir(parents=True, exist_ok=True)
+output_path = output_dir / "README.md"
+output_path.write_text(readme, encoding="utf-8")
+
+print(f"Created: {output_path}")
+print(f"Characters: {len(readme):,}")
+print(f"Lines: {readme.count(chr(10)) + 1:,}")
+
+STDOUT/STDERR
+Created: /mnt/data/arshif-readme-updated/README.md
+Characters: 44,661
+Lines: 1,450
+
+
+The new comprehensive ARSHIF README.md is complete.
+
+README.md
