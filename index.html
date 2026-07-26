@@ -4,8 +4,8 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="description" content="ARSHIF — The Living Archive of Human Knowledge. A sovereign, privacy-respecting gateway to deep research, public learning, culture, history, science, art, and human memory." />
-  <meta name="theme-color" content="#0b1013" />
-  <meta name="color-scheme" content="dark" />
+  <meta name="theme-color" content="#f6f0e3" />
+  <meta name="color-scheme" content="light" />
   <meta name="referrer" content="no-referrer" />
   <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self'; connect-src 'none'; object-src 'none'; base-uri 'self'; form-action 'none'; upgrade-insecure-requests" />
   <meta property="og:title" content="ARSHIF — The Living Archive of Human Knowledge" />
@@ -1393,6 +1393,500 @@
       }
     }
   </style>
+
+  <style id="arshif-antique-map-theme">
+    /*
+      ARSHIF — Illuminated Antique Atlas Theme
+      -----------------------------------------
+      This final override preserves the original layout, app registry,
+      search, filters, favorites, modal, menu, and responsive behavior.
+    */
+    :root{
+      --night:#f7f2e7;
+      --night-2:#f2eadb;
+      --night-3:#eadfc9;
+      --paper:#342b22;
+      --paper-soft:#665b4f;
+      --ink:#33291f;
+      --gold:#a9792f;
+      --gold-bright:#bc8b3d;
+      --gold-dim:rgba(169,121,47,.16);
+      --teal:#527a7a;
+      --teal-deep:#315d5c;
+      --line:rgba(77,57,34,.18);
+      --panel:rgba(250,248,240,.88);
+      --panel-solid:#faf8f0;
+      --shadow:0 20px 48px rgba(74,50,24,.12);
+      --radius:.28rem;
+      --max:1240px;
+      --atlas-paper:#faf8f0;
+      --atlas-paper-warm:#f6f0e3;
+      --atlas-paper-aged:#eee2cd;
+      --atlas-edge:#d7c29d;
+      --atlas-ink:#342b22;
+      --atlas-umber:#765333;
+      --atlas-sea:#53797b;
+      --atlas-forest:#5e6c52;
+      --atlas-brass:#aa7d35;
+      --display:"Gaspacho","Cormorant Garamond",Baskerville,Georgia,serif;
+      --ceremonial:"Cinzel","Cormorant Garamond",Georgia,serif;
+      --sans:"Brandon Grotesque","Montserrat","Avenir Next",Avenir,Arial,sans-serif;
+    }
+
+    html{background:var(--atlas-paper)}
+    body{
+      color:var(--atlas-ink);
+      background:
+        radial-gradient(circle at 14% 8%,rgba(83,121,123,.11),transparent 25rem),
+        radial-gradient(circle at 86% 12%,rgba(170,125,53,.10),transparent 28rem),
+        linear-gradient(180deg,#faf8f0 0%,#f7f1e5 48%,#f3eadb 100%);
+      font-family:var(--sans);
+    }
+    ::selection{background:#e3d3b4;color:var(--atlas-ink)}
+
+    .page-noise{
+      z-index:0;
+      opacity:.13;
+      background-image:
+        radial-gradient(circle at 1px 1px,rgba(83,62,38,.24) .65px,transparent .8px);
+      background-size:17px 17px;
+      mix-blend-mode:multiply;
+    }
+    .page-grid{
+      z-index:0;
+      opacity:.22;
+      background-image:
+        linear-gradient(rgba(83,121,123,.14) 1px,transparent 1px),
+        linear-gradient(90deg,rgba(83,121,123,.11) 1px,transparent 1px);
+      background-size:72px 72px;
+      mask-image:linear-gradient(to bottom,black,rgba(0,0,0,.38) 55%,transparent 88%);
+    }
+
+    .site-header{
+      border-bottom:1px solid rgba(92,65,34,.2);
+      background:rgba(250,248,240,.93);
+      box-shadow:0 4px 18px rgba(74,50,24,.05);
+    }
+    .brand{color:var(--atlas-ink)}
+    .brand-mark{color:var(--atlas-brass)}
+    .brand-name{
+      font-family:var(--ceremonial);
+      font-weight:600;
+      letter-spacing:.25em;
+    }
+    .brand-subtitle{color:var(--paper-soft);font-family:var(--sans)}
+    .icon-button{
+      color:var(--atlas-ink);
+      background:rgba(255,255,255,.42);
+      border:1px solid rgba(103,75,38,.25);
+      border-radius:3px;
+    }
+    .icon-button:hover{
+      background:#fffdf7;
+      border-color:var(--atlas-brass);
+    }
+
+    main{z-index:1}
+
+    .hero{
+      min-height:min(880px,calc(100vh - 74px));
+      color:var(--atlas-ink);
+      background:
+        linear-gradient(rgba(250,248,240,.62),rgba(250,248,240,.79)),
+        radial-gradient(circle at center,transparent 0 20%,rgba(170,125,53,.06) 21% 21.6%,transparent 22%),
+        repeating-radial-gradient(circle at center,transparent 0 78px,rgba(83,121,123,.07) 79px 80px),
+        linear-gradient(115deg,rgba(83,121,123,.12),transparent 34%,rgba(170,125,53,.10));
+      border-bottom:1px solid var(--line);
+    }
+    .hero::before{
+      inset:6% auto auto 50%;
+      width:min(76vw,820px);
+      border:1px solid rgba(118,83,51,.18);
+      border-radius:50%;
+      box-shadow:
+        0 0 0 42px rgba(118,83,51,.025),
+        0 0 0 94px rgba(83,121,123,.022),
+        inset 0 0 100px rgba(170,125,53,.05);
+    }
+    .hero::after{
+      content:"";
+      position:absolute;
+      inset:34px;
+      z-index:-1;
+      pointer-events:none;
+      border:1px solid rgba(118,83,51,.17);
+      background:
+        linear-gradient(90deg,transparent 49.86%,rgba(118,83,51,.09) 50%,transparent 50.14%),
+        linear-gradient(transparent 49.86%,rgba(118,83,51,.09) 50%,transparent 50.14%);
+      box-shadow:inset 0 0 70px rgba(98,70,36,.06);
+    }
+    .orbital{
+      border-color:var(--atlas-brass);
+      box-shadow:0 0 14px rgba(170,125,53,.44);
+    }
+    .hero-sigil{
+      width:min(250px,58vw);
+      color:var(--atlas-brass);
+      filter:drop-shadow(0 4px 9px rgba(96,66,30,.13));
+    }
+    .eyebrow,.section-kicker{
+      color:var(--atlas-brass);
+      font-family:var(--ceremonial);
+    }
+    h1{
+      color:var(--atlas-ink);
+      font-family:var(--ceremonial);
+      font-weight:500;
+      letter-spacing:.12em;
+      text-shadow:0 1px 0 #fff;
+    }
+    .hero-title-accent{
+      color:var(--atlas-umber);
+      font-family:var(--sans);
+    }
+    .hero-description{
+      color:#54483c;
+      font-family:var(--display);
+      font-size:clamp(1.1rem,2.3vw,1.42rem);
+    }
+    .primary-button,.quiet-button{
+      border-radius:3px;
+      font-family:var(--sans);
+      font-size:.76rem;
+      font-weight:700;
+      letter-spacing:.08em;
+      text-transform:uppercase;
+    }
+    .primary-button{
+      color:#fffdf8;
+      background:linear-gradient(180deg,#b58a43,#946a2d);
+      border:1px solid #856027;
+      box-shadow:0 9px 20px rgba(106,73,31,.15),inset 0 1px rgba(255,255,255,.3);
+    }
+    .primary-button:hover{background:linear-gradient(180deg,#c39950,#9d7130)}
+    .quiet-button{
+      color:var(--atlas-ink);
+      background:rgba(250,248,240,.72);
+      border:1px solid rgba(103,75,38,.32);
+    }
+    .quiet-button:hover{
+      background:#fffdf8;
+      border-color:var(--atlas-brass);
+    }
+    .hero-notes{
+      border:1px solid rgba(103,75,38,.2);
+      border-radius:3px;
+      background:rgba(250,248,240,.72);
+      box-shadow:0 12px 30px rgba(75,51,24,.07);
+    }
+    .hero-note{border-color:rgba(103,75,38,.14)}
+    .hero-note strong{color:var(--atlas-brass);font-family:var(--ceremonial)}
+    .hero-note span{color:var(--paper-soft)}
+    .directory-summary{color:var(--atlas-umber)}
+
+    .section + .section{border-top:1px solid rgba(91,67,41,.15)}
+    .section-heading{position:relative}
+    .section-heading::after{
+      content:"✦";
+      display:block;
+      color:var(--atlas-brass);
+      font-size:.8rem;
+      letter-spacing:1rem;
+      opacity:.75;
+      margin-top:.4rem;
+    }
+    h2{
+      color:var(--atlas-ink);
+      font-family:var(--display);
+      font-weight:600;
+    }
+    .section-copy,.results-line{color:var(--paper-soft)}
+
+    .archive-principles{
+      gap:12px;
+    }
+    .principle{
+      border:1px solid rgba(103,75,38,.18);
+      border-top:3px solid var(--atlas-brass);
+      border-radius:3px;
+      background:
+        linear-gradient(135deg,rgba(255,255,255,.8),rgba(247,239,224,.75));
+      box-shadow:0 10px 28px rgba(74,50,24,.07);
+    }
+    .principle-index{color:var(--atlas-brass);font-family:var(--ceremonial)}
+    .principle h3{font-family:var(--display);font-weight:600}
+    .principle p{color:var(--paper-soft)}
+
+    .archive-search,.menu-search{
+      color:var(--atlas-ink);
+      background:#fffdf8;
+      border:1px solid rgba(103,75,38,.25);
+      border-radius:3px;
+    }
+    .archive-search::placeholder,.menu-search::placeholder{color:#8b8073}
+    .archive-search:focus,.menu-search:focus{
+      border-color:var(--atlas-brass);
+      box-shadow:0 0 0 3px rgba(170,125,53,.12);
+    }
+    .search-wrap svg{color:var(--atlas-brass)}
+
+    .filter-button{
+      color:#625446;
+      background:rgba(255,253,248,.72);
+      border:1px solid rgba(103,75,38,.2);
+      border-radius:2px;
+      font-family:var(--sans);
+      font-weight:700;
+      letter-spacing:.06em;
+      text-transform:uppercase;
+    }
+    .filter-button:hover,
+    .filter-button[aria-pressed="true"]{
+      color:#fff;
+      background:var(--atlas-umber);
+      border-color:var(--atlas-umber);
+    }
+
+    .hall-grid{gap:12px}
+    .hall-card{
+      min-height:300px;
+      color:var(--atlas-ink);
+      border:1px solid rgba(103,75,38,.19);
+      border-radius:3px;
+      background:
+        linear-gradient(145deg,rgba(255,255,255,.88),rgba(246,238,222,.82));
+      box-shadow:0 11px 28px rgba(73,50,24,.08);
+    }
+    .hall-card::before{
+      content:"";
+      position:absolute;
+      inset:8px;
+      pointer-events:none;
+      border:1px solid rgba(170,125,53,.09);
+    }
+    .hall-card::after{
+      border-color:rgba(83,121,123,.12);
+      box-shadow:0 0 0 18px rgba(83,121,123,.022);
+    }
+    .hall-card:hover{
+      border-color:var(--atlas-brass);
+      box-shadow:0 18px 40px rgba(73,50,24,.13);
+    }
+    .hall-symbol{
+      color:var(--atlas-brass);
+      border:1px solid rgba(170,125,53,.3);
+      border-radius:50%;
+      background:#fbf5e9;
+    }
+    .favorite-button{
+      color:#766a5e;
+    }
+    .favorite-button:hover,
+    .favorite-button[aria-pressed="true"]{
+      color:var(--atlas-brass);
+      background:rgba(170,125,53,.09);
+      border-color:rgba(170,125,53,.25);
+    }
+    .hall-category,.modal-category,.network-repo,.resource-provider{
+      color:var(--atlas-sea);
+      font-family:var(--sans);
+    }
+    .hall-card h3,.modal-title{
+      font-family:var(--display);
+      font-weight:600;
+    }
+    .hall-description,.modal-body{color:var(--paper-soft);font-family:var(--sans)}
+    .kind-badge,.status-badge{
+      color:#6d6052;
+      background:rgba(255,253,248,.76);
+      border-color:rgba(103,75,38,.18);
+      border-radius:2px;
+    }
+    .enter-link{
+      color:#fff;
+      background:var(--atlas-umber);
+      border:1px solid #654426;
+      border-radius:2px;
+      font-weight:700;
+      letter-spacing:.045em;
+      text-transform:uppercase;
+    }
+    .details-button,.secondary-link{
+      color:var(--atlas-ink);
+      border-color:rgba(103,75,38,.23);
+      border-radius:2px;
+      background:rgba(255,253,248,.5);
+      text-transform:uppercase;
+    }
+    .details-button:hover,.secondary-link:hover{
+      background:#fffdf8;
+      border-color:var(--atlas-brass);
+    }
+    .empty-state{
+      color:var(--paper-soft);
+      border-color:rgba(103,75,38,.25);
+      border-radius:3px;
+      background:rgba(255,253,248,.55);
+    }
+
+    .manifesto{
+      border:1px solid rgba(103,75,38,.2);
+      border-radius:3px;
+      background:
+        radial-gradient(circle at 90% 12%,rgba(83,121,123,.11),transparent 25rem),
+        linear-gradient(135deg,#f7efdf,#efe1ca);
+      box-shadow:var(--shadow);
+    }
+    .manifesto::before{color:rgba(118,83,51,.045)}
+    .manifesto blockquote{color:var(--atlas-ink);font-family:var(--display)}
+    .manifesto footer{color:var(--atlas-brass)}
+
+    .menu-overlay{background:rgba(54,40,26,.48)}
+    .menu-panel{
+      color:var(--atlas-ink);
+      border-left:1px solid rgba(103,75,38,.22);
+      background:
+        linear-gradient(180deg,rgba(250,248,240,.99),rgba(244,236,220,.99));
+      box-shadow:-20px 0 65px rgba(67,45,22,.2);
+    }
+    .menu-title{color:var(--atlas-ink);font-family:var(--ceremonial)}
+    .menu-intro{color:var(--paper-soft)}
+    .menu-group-label{color:var(--atlas-brass)}
+    .menu-link{
+      color:var(--atlas-ink);
+      border-color:rgba(103,75,38,.13);
+      border-radius:3px;
+      background:rgba(255,255,255,.36);
+    }
+    .menu-link:hover{
+      background:#fffdf8;
+      border-color:rgba(170,125,53,.34);
+    }
+    .menu-link-icon,.menu-link-arrow{color:var(--atlas-brass)}
+    .menu-link-category{color:var(--paper-soft)}
+
+    .modal{background:rgba(52,40,27,.62)}
+    .modal-dialog{
+      color:var(--atlas-ink);
+      background:
+        radial-gradient(circle at 100% 0%,rgba(83,121,123,.1),transparent 22rem),
+        var(--panel-solid);
+      border:1px solid rgba(103,75,38,.25);
+      border-radius:3px;
+      box-shadow:0 36px 90px rgba(58,39,19,.28);
+    }
+    .modal-list{color:var(--paper-soft)}
+
+    .resource-note{
+      color:var(--paper-soft);
+      background:rgba(255,253,248,.58);
+      border-left-color:var(--atlas-brass);
+      border-radius:2px;
+    }
+
+    .site-footer{
+      color:#f8f1e4;
+      border-top:1px solid rgba(170,125,53,.25);
+      background:#342b22;
+    }
+    .footer-title{color:#e2c68e;font-family:var(--ceremonial)}
+    .footer-copy,.footer-legal,.footer-links a{color:#d8cdbd}
+    .footer-links a:hover{color:#f2dcae}
+
+    :focus-visible{
+      outline:3px solid rgba(170,125,53,.55);
+      outline-offset:3px;
+    }
+
+    @media(max-width:720px){
+      .hero::after{inset:14px}
+    }
+
+    @media print{
+      body{background:#fff;color:#111}
+      .hall-card,.principle,.manifesto{background:#fff}
+    }
+  </style>
+
+
+  <style id="arshif-weathered-map-frame">
+    body::before,
+    body::after{
+      content:"";
+      position:fixed;
+      z-index:1300;
+      pointer-events:none;
+    }
+
+    /* Outer cartographer's frame */
+    body::before{
+      inset:10px;
+      border:1px solid rgba(92,61,31,.46);
+      box-shadow:
+        inset 0 0 0 4px rgba(250,248,240,.72),
+        inset 0 0 0 6px rgba(149,106,53,.28),
+        inset 0 0 34px rgba(92,61,31,.16),
+        0 0 0 1px rgba(255,255,255,.76);
+      background:
+        radial-gradient(circle at 0 0,rgba(105,68,30,.22),transparent 78px),
+        radial-gradient(circle at 100% 0,rgba(105,68,30,.19),transparent 82px),
+        radial-gradient(circle at 0 100%,rgba(105,68,30,.18),transparent 76px),
+        radial-gradient(circle at 100% 100%,rgba(105,68,30,.22),transparent 88px);
+      mix-blend-mode:multiply;
+    }
+
+    /* Irregular weathering and fine printed line */
+    body::after{
+      inset:18px;
+      border:1px solid rgba(170,125,53,.24);
+      background:
+        linear-gradient(90deg,rgba(118,83,51,.12),transparent 18px,transparent calc(100% - 18px),rgba(118,83,51,.12)),
+        linear-gradient(rgba(118,83,51,.10),transparent 18px,transparent calc(100% - 18px),rgba(118,83,51,.10)),
+        repeating-linear-gradient(90deg,transparent 0 38px,rgba(118,83,51,.05) 39px,transparent 40px);
+      opacity:.88;
+    }
+
+    .compass-mark{
+      filter:drop-shadow(0 2px 4px rgba(76,49,21,.13));
+    }
+
+    .compass-rose-hero{
+      width:min(290px,64vw);
+      margin-bottom:1.7rem;
+      filter:drop-shadow(0 9px 15px rgba(91,59,25,.13));
+    }
+
+    .hero-inner{
+      position:relative;
+    }
+
+    .hero-inner::before,
+    .hero-inner::after{
+      content:"";
+      position:absolute;
+      top:150px;
+      width:min(19vw,210px);
+      height:1px;
+      background:linear-gradient(90deg,transparent,rgba(170,125,53,.52),transparent);
+    }
+
+    .hero-inner::before{left:-6%}
+    .hero-inner::after{right:-6%}
+
+    @media(max-width:720px){
+      body::before{inset:5px}
+      body::after{inset:11px}
+      .hero-inner::before,
+      .hero-inner::after{display:none}
+      .compass-rose-hero{width:min(245px,68vw)}
+    }
+
+    @media print{
+      body::before,
+      body::after{display:none}
+    }
+  </style>
+
 </head>
 
 <body>
@@ -1403,11 +1897,18 @@
   <header class="site-header">
     <div class="header-inner">
       <a class="brand" href="./" aria-label="ARSHIF home">
-        <svg class="brand-mark" viewBox="0 0 100 100" aria-hidden="true">
-          <circle cx="50" cy="50" r="43" fill="none" stroke="currentColor" stroke-width="1.8"/>
-          <circle cx="50" cy="50" r="30" fill="none" stroke="currentColor" stroke-width="1" opacity=".55"/>
-          <path d="M31 61c9-22 29-22 38 0M38 41h24M50 25v50" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-          <circle cx="50" cy="50" r="5" fill="currentColor"/>
+        <svg class="brand-mark compass-mark" viewBox="0 0 100 100" role="img" aria-label="ARSHIF compass rose">
+          <circle cx="50" cy="50" r="45" fill="none" stroke="currentColor" stroke-width="1.6"/>
+          <circle cx="50" cy="50" r="34" fill="none" stroke="currentColor" stroke-width=".9" opacity=".55"/>
+          <path d="M50 5 59 41 95 50 59 59 50 95 41 59 5 50 41 41Z" fill="none" stroke="currentColor" stroke-width="1.6"/>
+          <path d="M50 14 54.5 45.5 86 50 54.5 54.5 50 86 45.5 54.5 14 50 45.5 45.5Z" fill="currentColor" opacity=".18"/>
+          <path d="M50 5 54.5 45.5 50 50 45.5 45.5Z" fill="currentColor"/>
+          <path d="M95 50 54.5 54.5 50 50 54.5 45.5Z" fill="currentColor" opacity=".72"/>
+          <path d="M50 95 45.5 54.5 50 50 54.5 54.5Z" fill="currentColor" opacity=".42"/>
+          <path d="M5 50 45.5 45.5 50 50 45.5 54.5Z" fill="currentColor" opacity=".62"/>
+          <circle cx="50" cy="50" r="6" fill="var(--atlas-paper)" stroke="currentColor" stroke-width="1.6"/>
+          <circle cx="50" cy="50" r="2.2" fill="currentColor"/>
+          <text x="50" y="12" text-anchor="middle" font-size="8" fill="currentColor" font-family="Georgia, serif">N</text>
         </svg>
         <span class="brand-copy">
           <span class="brand-name">ARSHIF</span>
@@ -1458,15 +1959,29 @@
       <span class="orbital two" aria-hidden="true"></span>
 
       <div class="hero-inner">
-        <svg class="hero-sigil" viewBox="0 0 400 220" role="img" aria-label="ARSHIF archive sigil">
+        <svg class="hero-sigil compass-rose-hero" viewBox="0 0 400 400" role="img" aria-label="Large antique compass rose">
           <g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M200 18v184" stroke-width="2"/>
-            <path d="M145 45c30 8 46 28 55 54 9-26 25-46 55-54-5 35-20 60-55 78-35-18-50-43-55-78Z" stroke-width="2.2"/>
-            <path d="M102 100c35-2 65 9 98 33 33-24 63-35 98-33-20 33-50 54-98 64-48-10-78-31-98-64Z" stroke-width="2.2"/>
-            <path d="M73 149c42-4 82 4 127 26 45-22 85-30 127-26" stroke-width="1.7"/>
-            <circle cx="200" cy="133" r="12" stroke-width="2"/>
-            <circle cx="200" cy="133" r="3" fill="currentColor" stroke="none"/>
-            <path d="M44 176h312M85 190h230" opacity=".55"/>
+            <circle cx="200" cy="200" r="174" stroke-width="2"/>
+            <circle cx="200" cy="200" r="142" stroke-width="1.2" opacity=".72"/>
+            <circle cx="200" cy="200" r="94" stroke-width=".9" opacity=".48"/>
+            <path d="M200 18 226 174 382 200 226 226 200 382 174 226 18 200 174 174Z" stroke-width="2.4"/>
+            <path d="M200 54 214 186 346 200 214 214 200 346 186 214 54 200 186 186Z" stroke-width="1.4" opacity=".76"/>
+            <path d="M200 18 214 186 200 200 186 186Z" fill="currentColor" stroke-width="1.4"/>
+            <path d="M382 200 214 214 200 200 214 186Z" fill="currentColor" opacity=".72" stroke-width="1.2"/>
+            <path d="M200 382 186 214 200 200 214 214Z" fill="currentColor" opacity=".38" stroke-width="1.2"/>
+            <path d="M18 200 186 186 200 200 186 214Z" fill="currentColor" opacity=".58" stroke-width="1.2"/>
+            <path d="M71 71 189 189 200 200 211 189 329 71 211 211 200 200 189 211 71 329 189 189Z" stroke-width="1.1" opacity=".58"/>
+            <path d="M329 329 211 211M71 329 189 211M329 71 211 189M71 71 189 189" opacity=".42"/>
+            <circle cx="200" cy="200" r="18" fill="var(--atlas-paper)" stroke-width="2"/>
+            <circle cx="200" cy="200" r="7" fill="currentColor" stroke="none"/>
+            <path d="M200 5v16M200 379v16M5 200h16M379 200h16" stroke-width="1.2"/>
+            <path d="M65 65l12 12M323 323l12 12M335 65l-12 12M77 323l-12 12" stroke-width="1"/>
+          </g>
+          <g fill="currentColor" font-family="Georgia, serif" font-size="18" text-anchor="middle">
+            <text x="200" y="16">N</text>
+            <text x="390" y="206">E</text>
+            <text x="200" y="397">S</text>
+            <text x="10" y="206">W</text>
           </g>
         </svg>
 
@@ -1485,11 +2000,11 @@
 
         <div class="hero-actions">
           <a class="primary-button" href="#archive">
-            Enter the Archive
+            Enter the Atlas
             <span aria-hidden="true">↓</span>
           </a>
           <button class="quiet-button" id="randomButton" type="button">
-            Open a Random Path
+            Follow the Compass
             <span aria-hidden="true">✦</span>
           </button>
         </div>
@@ -1557,8 +2072,8 @@
     <section class="section" id="archive" aria-labelledby="archiveTitle">
       <div class="section-heading">
         <div>
-          <p class="section-kicker">Directory of Halls</p>
-          <h2 id="archiveTitle">Choose a hall, course, portal, or research tool.</h2>
+          <p class="section-kicker">Charted Regions</p>
+          <h2 id="archiveTitle">Choose a region of knowledge.</h2>
           <p class="section-copy">
             Search by subject, filter by knowledge family, save favorite apps to this device,
             or allow the archive to choose a path for you.
@@ -1573,7 +2088,7 @@
             <path d="m20 20-4-4"/>
           </svg>
           <label class="visually-hidden" for="archiveSearch">Search halls</label>
-          <input class="archive-search" id="archiveSearch" type="search" placeholder="Search medicine, philosophy, art, law, memory…" autocomplete="off" />
+          <input class="archive-search" id="archiveSearch" type="search" placeholder="Search the archive map…" autocomplete="off" />
         </div>
 
         <div class="toolbar-actions">
@@ -1600,7 +2115,7 @@
     <section class="section" id="research-gateways" aria-labelledby="researchGatewaysTitle">
       <div class="section-heading">
         <div>
-          <p class="section-kicker">Trusted Research Gateways</p>
+          <p class="section-kicker">Ports of Knowledge</p>
           <h2 id="researchGatewaysTitle">Continue into established libraries and archives.</h2>
           <p class="section-copy">
             These independent public institutions and scholarly services provide primary sources,
@@ -1621,8 +2136,8 @@
     <section class="section" id="network" aria-labelledby="networkTitle">
       <div class="section-heading">
         <div>
-          <p class="section-kicker">The Verve N Veda Network</p>
-          <h2 id="networkTitle">Continue through the connected archives.</h2>
+          <p class="section-kicker">Expeditions Beyond ARSHIF</p>
+          <h2 id="networkTitle">Continue through the connected knowledge network.</h2>
           <p class="section-copy">
             Move between ARSHIF and the wider public ecosystem of learning, law, professional tools,
             civic resources, weather, verification, community stewardship, reflection, and discovery.
@@ -2876,7 +3391,7 @@
       ` : "";
 
       const resourceMarkup = matchingResources.length ? `
-        <div class="menu-group-label">Trusted Research Gateways</div>
+        <div class="menu-group-label">Ports of Knowledge</div>
         ${matchingResources.map((resource) => `
           <a class="menu-link" href="${escapeHTML(resource.url)}" target="_blank" rel="noopener noreferrer">
             <span class="menu-link-icon" aria-hidden="true">${escapeHTML(resource.symbol)}</span>
