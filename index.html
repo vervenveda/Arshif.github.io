@@ -152,12 +152,11 @@
       text-decoration: none;
     }
 
-    .brand-mark {
-      width: 42px;
-      height: 42px;
-      flex: 0 0 auto;
-      color: var(--gold-bright);
-    }
+   .brand-mark {
+  width: 46px;
+  height: 46px;
+  color: var(--atlas-brass);
+}
 
     .brand-copy {
       display: grid;
@@ -1762,7 +1761,7 @@
       background:#fffdf8;
       border-color:rgba(170,125,53,.34);
     }
-    .menu-link-icon,.menu-link-arrow{color:var(--atlas-brass)}
+   .menu-link-icon, .menu-link-arrow { color: var(--atlas-brass); }
     .menu-link-category{color:var(--paper-soft)}
 
     .modal{background:rgba(52,40,27,.62)}
@@ -1959,31 +1958,30 @@
       <span class="orbital two" aria-hidden="true"></span>
 
       <div class="hero-inner">
-        <svg class="hero-sigil compass-rose-hero" viewBox="0 0 400 400" role="img" aria-label="Large antique compass rose">
-          <g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
-            <circle cx="200" cy="200" r="174" stroke-width="2"/>
-            <circle cx="200" cy="200" r="142" stroke-width="1.2" opacity=".72"/>
-            <circle cx="200" cy="200" r="94" stroke-width=".9" opacity=".48"/>
-            <path d="M200 18 226 174 382 200 226 226 200 382 174 226 18 200 174 174Z" stroke-width="2.4"/>
-            <path d="M200 54 214 186 346 200 214 214 200 346 186 214 54 200 186 186Z" stroke-width="1.4" opacity=".76"/>
-            <path d="M200 18 214 186 200 200 186 186Z" fill="currentColor" stroke-width="1.4"/>
-            <path d="M382 200 214 214 200 200 214 186Z" fill="currentColor" opacity=".72" stroke-width="1.2"/>
-            <path d="M200 382 186 214 200 200 214 214Z" fill="currentColor" opacity=".38" stroke-width="1.2"/>
-            <path d="M18 200 186 186 200 200 186 214Z" fill="currentColor" opacity=".58" stroke-width="1.2"/>
-            <path d="M71 71 189 189 200 200 211 189 329 71 211 211 200 200 189 211 71 329 189 189Z" stroke-width="1.1" opacity=".58"/>
-            <path d="M329 329 211 211M71 329 189 211M329 71 211 189M71 71 189 189" opacity=".42"/>
-            <circle cx="200" cy="200" r="18" fill="var(--atlas-paper)" stroke-width="2"/>
-            <circle cx="200" cy="200" r="7" fill="currentColor" stroke="none"/>
-            <path d="M200 5v16M200 379v16M5 200h16M379 200h16" stroke-width="1.2"/>
-            <path d="M65 65l12 12M323 323l12 12M335 65l-12 12M77 323l-12 12" stroke-width="1"/>
-          </g>
-          <g fill="currentColor" font-family="Georgia, serif" font-size="18" text-anchor="middle">
-            <text x="200" y="16">N</text>
-            <text x="390" y="206">E</text>
-            <text x="200" y="397">S</text>
-            <text x="10" y="206">W</text>
-          </g>
-        </svg>
+       <svg class="brand-mark compass-mark" viewBox="0 0 100 100" role="img" aria-label="ARSHIF compass rose">
+  <circle cx="50" cy="50" r="44" fill="none" stroke="currentColor" stroke-width="1.8"/>
+  <circle cx="50" cy="50" r="31" fill="none" stroke="currentColor" stroke-width="1" opacity=".45"/>
+
+  <g fill="currentColor">
+    <polygon points="50,11 55,39 50,50 45,39"/>
+    <polygon points="89,50 61,55 50,50 61,45"/>
+    <polygon points="50,89 45,61 50,50 55,61"/>
+    <polygon points="11,50 39,45 50,50 39,55"/>
+  </g>
+
+  <g fill="currentColor" opacity=".28">
+    <polygon points="50,24 57,43 50,50 43,43"/>
+    <polygon points="76,50 57,57 50,50 57,43"/>
+    <polygon points="50,76 43,57 50,50 57,57"/>
+    <polygon points="24,50 43,43 50,50 43,57"/>
+  </g>
+
+  <circle cx="50" cy="50" r="5.8" fill="var(--atlas-paper)" stroke="currentColor" stroke-width="1.6"/>
+  <circle cx="50" cy="50" r="2.2" fill="currentColor"/>
+  <text x="50" y="15" text-anchor="middle" font-size="7" fill="currentColor" font-family="Georgia, serif" letter-spacing=".08em">N</text>
+</svg>
+
+And update the CSS for the mark:
 
         <p class="eyebrow">A Sovereign Archive for Deep Inquiry</p>
 
