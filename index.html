@@ -1,10 +1,11 @@
 <!DOCTYPE html>
+<!-- ARSHIF Antiquated Atlas Edition · refined header, compass, proportions, and route directory -->
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="description" content="ARSHIF — The Living Archive of Human Knowledge. A sovereign, privacy-respecting gateway to deep research, public learning, culture, history, science, art, and human memory." />
-  <meta name="theme-color" content="#f6f0e3" />
+  <meta name="theme-color" content="#e8dcc4" />
   <meta name="color-scheme" content="light" />
   <meta name="referrer" content="no-referrer" />
   <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self'; connect-src 'none'; object-src 'none'; base-uri 'self'; form-action 'none'; upgrade-insecure-requests" />
@@ -1888,59 +1889,152 @@
   </style>
 
 
-  <style id="arshif-centering-and-header-fix">
-    /* Keep the decorative frame from crowding the sticky header. */
+  <style id="arshif-proportion-and-header-fix">
+    /*
+      ARSHIF — Proportion, Header & Reading Rhythm
+      --------------------------------------------
+      The brand remains at the far left on every screen.
+      Page headings and major controls remain centered.
+      Cards are proportionate, symmetrical, and readable.
+    */
     .site-header{
       top:0;
-      padding-top:18px;
       z-index:1450;
+      padding-top:14px;
+      background:rgba(246,239,224,.96);
+      backdrop-filter:blur(12px) saturate(.9);
     }
 
     .header-inner{
-      position:relative;
-      display:grid;
-      grid-template-columns:1fr auto 1fr;
-      justify-content:stretch;
+      width:min(calc(100% - 3.25rem), 1360px);
+      min-height:76px;
+      display:flex;
       align-items:center;
-      text-align:center;
+      justify-content:space-between;
+      gap:1.25rem;
+      margin:0 auto;
+      text-align:left;
     }
 
     .brand{
-      grid-column:2;
-      justify-self:center;
-      justify-content:center;
-      text-align:center;
+      margin-right:auto;
+      justify-content:flex-start;
+      text-align:left;
+    }
+
+    .brand-mark{
+      width:46px;
+      height:46px;
     }
 
     .brand-copy{
-      justify-items:center;
-      text-align:center;
+      justify-items:start;
+      text-align:left;
     }
 
     .header-actions{
-      grid-column:3;
-      justify-self:end;
+      margin-left:auto;
+      justify-content:flex-end;
     }
 
-    /* Center the visual and textual rhythm across the full page. */
-    .hero-inner,
-    .section-heading,
-    .section-copy,
-    .directory-summary,
-    .results-line,
-    .resource-note,
-    .footer-inner{
+
+    .menu-overlay{
+      z-index:1600;
+    }
+
+    .modal{
+      z-index:1700;
+    }
+
+    .hero{
+      min-height:min(840px,calc(100vh - 90px));
+      padding:5.6rem 1.25rem 5rem;
+    }
+
+    .hero-inner{
+      width:min(100%, 980px);
+      position:relative;
+      margin:0 auto;
       text-align:center;
+    }
+
+    /* Remove the mid-direction rules that crossed the central artwork. */
+    .hero-inner::before,
+    .hero-inner::after{
+      display:none!important;
+      content:none!important;
+    }
+
+    .compass-rose-hero{
+      width:min(218px,50vw);
+      margin:0 auto 1.55rem;
+    }
+
+    h1{
+      max-width:940px;
+      margin-inline:auto;
+      font-size:clamp(3.15rem,8.6vw,7rem);
+      letter-spacing:.135em;
+    }
+
+    .hero-title-accent{
+      max-width:860px;
+      margin-inline:auto;
+      letter-spacing:.205em;
+    }
+
+    .hero-description{
+      width:min(100%,760px);
+      margin-inline:auto;
+    }
+
+    .hero-actions,
+    .hero-notes{
+      margin-inline:auto;
+    }
+
+    .hero-notes{
+      width:min(100%,760px);
+    }
+
+    .section{
+      width:min(calc(100% - 3rem), 1320px);
+      padding:5rem 0;
     }
 
     .section-heading{
       grid-template-columns:1fr;
       justify-items:center;
+      align-items:center;
+      max-width:980px;
+      margin:0 auto 2.25rem;
+      text-align:center;
     }
 
-    .section-copy{
+    .section-copy,
+    .directory-summary,
+    .results-line,
+    .resource-note{
       margin-left:auto;
       margin-right:auto;
+      text-align:center;
+    }
+
+    .archive-toolbar{
+      grid-template-columns:minmax(260px,780px);
+      justify-content:center;
+      max-width:940px;
+      margin-left:auto;
+      margin-right:auto;
+    }
+
+    .search-wrap{
+      width:100%;
+    }
+
+    .toolbar-actions,
+    .filters{
+      justify-content:center;
     }
 
     .archive-principles,
@@ -1951,8 +2045,8 @@
     .principle,
     .hall-card,
     .network-card{
-      text-align:center;
       align-items:center;
+      text-align:center;
     }
 
     .card-top{
@@ -1960,9 +2054,7 @@
     }
 
     .hall-meta-row,
-    .card-actions,
-    .toolbar-actions,
-    .filters{
+    .card-actions{
       justify-content:center;
     }
 
@@ -1972,48 +2064,174 @@
       text-align:center;
     }
 
-    .archive-toolbar{
-      grid-template-columns:minmax(240px,760px);
-      justify-content:center;
-    }
-
-    .search-wrap{
-      width:100%;
+    .manifesto blockquote,
+    .manifesto footer{
+      margin-left:auto;
+      margin-right:auto;
+      text-align:center;
     }
 
     .footer-inner{
       grid-template-columns:1fr;
       justify-items:center;
+      text-align:center;
     }
 
     .footer-links{
       justify-content:center;
     }
 
-    .manifesto blockquote,
-    .manifesto footer{
-      text-align:center;
-      margin-left:auto;
-      margin-right:auto;
+    @media(max-width:720px){
+      .site-header{padding-top:9px}
+      .header-inner{
+        width:min(calc(100% - 2rem), 1360px);
+        min-height:68px;
+        gap:.75rem;
+      }
+      .brand-mark{
+        width:41px;
+        height:41px;
+      }
+      .hero{
+        padding-top:4.8rem;
+      }
+      .section{
+        width:min(calc(100% - 2rem), 1320px);
+        padding:4rem 0;
+      }
+    }
+
+    @media(max-width:430px){
+      .brand-name{
+        font-size:.88rem;
+        letter-spacing:.18em;
+      }
+      .header-actions{
+        gap:.4rem;
+      }
+      .icon-button{
+        width:41px;
+        height:41px;
+      }
+    }
+  </style>
+
+
+  <style id="arshif-deeper-age-and-patina">
+    body{
+      background:
+        radial-gradient(ellipse at 0 0,rgba(104,68,31,.20),transparent 29rem),
+        radial-gradient(ellipse at 100% 0,rgba(104,68,31,.16),transparent 31rem),
+        radial-gradient(ellipse at 0 100%,rgba(104,68,31,.12),transparent 28rem),
+        radial-gradient(ellipse at 100% 100%,rgba(104,68,31,.18),transparent 30rem),
+        radial-gradient(circle at 18% 28%,rgba(111,132,118,.07),transparent 23rem),
+        radial-gradient(circle at 81% 62%,rgba(151,103,48,.07),transparent 25rem),
+        repeating-linear-gradient(0deg,rgba(80,57,34,.016) 0 1px,transparent 1px 5px),
+        linear-gradient(180deg,#f7f0e2 0%,#f3e8d4 50%,#ede0c8 100%);
+    }
+
+    .page-grid{
+      opacity:.12;
+      background-image:
+        linear-gradient(rgba(90,67,42,.055) 1px,transparent 1px),
+        linear-gradient(90deg,rgba(90,67,42,.045) 1px,transparent 1px);
+      background-size:84px 84px;
+    }
+
+    .page-noise{
+      opacity:.16;
+      background-image:
+        radial-gradient(circle at 1px 1px,rgba(82,58,32,.28) .55px,transparent .8px),
+        radial-gradient(circle at 9px 13px,rgba(119,83,40,.12) .45px,transparent .8px);
+      background-size:19px 19px,31px 31px;
+    }
+
+    .hero{
+      background:
+        linear-gradient(rgba(247,240,226,.64),rgba(242,231,211,.80)),
+        radial-gradient(circle at 50% 43%,transparent 0 16%,rgba(133,91,41,.055) 16.2% 16.8%,transparent 17%),
+        repeating-radial-gradient(ellipse at 50% 44%,transparent 0 92px,rgba(82,113,111,.045) 93px 94px),
+        linear-gradient(118deg,rgba(76,111,109,.10),transparent 34%,rgba(164,114,51,.10));
+    }
+
+    .hero::before{
+      width:min(70vw,720px);
+      inset:9% auto auto 50%;
+      border-color:rgba(111,77,40,.15);
+      box-shadow:
+        0 0 0 34px rgba(111,77,40,.020),
+        0 0 0 72px rgba(73,106,104,.018),
+        inset 0 0 80px rgba(139,95,42,.045);
+    }
+
+    .hero::after{
+      inset:34px;
+      border:1px solid rgba(103,71,36,.17);
+      background:
+        radial-gradient(circle at 0 0,rgba(122,81,37,.10),transparent 105px),
+        radial-gradient(circle at 100% 0,rgba(122,81,37,.08),transparent 105px),
+        radial-gradient(circle at 0 100%,rgba(122,81,37,.07),transparent 105px),
+        radial-gradient(circle at 100% 100%,rgba(122,81,37,.10),transparent 105px);
+      box-shadow:inset 0 0 76px rgba(91,61,30,.055);
+    }
+
+    .orbital{
+      display:none;
+    }
+
+    .hall-card,
+    .principle{
+      background:
+        radial-gradient(circle at 12% 10%,rgba(158,107,51,.055),transparent 8rem),
+        radial-gradient(circle at 92% 90%,rgba(81,117,113,.045),transparent 9rem),
+        linear-gradient(145deg,rgba(255,252,245,.91),rgba(239,225,201,.86));
+    }
+
+    .hall-card::before{
+      inset:7px;
+      border-color:rgba(138,93,42,.11);
+    }
+
+    .manifesto{
+      background:
+        radial-gradient(circle at 92% 10%,rgba(76,111,109,.11),transparent 24rem),
+        radial-gradient(circle at 8% 88%,rgba(157,106,47,.10),transparent 21rem),
+        linear-gradient(135deg,#f1e4ce,#e7d4b6);
+    }
+
+    .site-header::after{
+      content:"";
+      position:absolute;
+      left:0;
+      right:0;
+      bottom:-4px;
+      height:4px;
+      pointer-events:none;
+      opacity:.55;
+      background:
+        linear-gradient(90deg,transparent,rgba(133,91,41,.38) 12%,rgba(133,91,41,.38) 88%,transparent);
+      mask-image:linear-gradient(90deg,transparent,black 8%,black 92%,transparent);
+    }
+
+    .section-heading::before{
+      content:"";
+      width:min(100%,340px);
+      height:1px;
+      margin-bottom:1rem;
+      background:linear-gradient(90deg,transparent,rgba(153,105,48,.55),transparent);
+    }
+
+    .section-heading::after{
+      content:"◆";
+      margin-top:.85rem;
+      color:var(--atlas-brass);
+      font-size:.58rem;
+      letter-spacing:0;
     }
 
     @media(max-width:720px){
-      .site-header{padding-top:12px}
-      .header-inner{
-        grid-template-columns:1fr auto;
-      }
-      .brand{
-        grid-column:1;
-        justify-self:start;
-        text-align:left;
-      }
-      .brand-copy{
-        justify-items:start;
-        text-align:left;
-      }
-      .header-actions{
-        grid-column:2;
-      }
+      .hero::after{inset:13px}
+      .hero::before{width:min(86vw,620px)}
     }
   </style>
 
@@ -2027,18 +2245,18 @@
   <header class="site-header">
     <div class="header-inner">
       <a class="brand" href="./" aria-label="ARSHIF home">
-        <svg class="brand-mark compass-mark" viewBox="0 0 100 100" role="img" aria-label="ARSHIF compass rose">
-          <circle cx="50" cy="50" r="45" fill="none" stroke="currentColor" stroke-width="1.6"/>
-          <circle cx="50" cy="50" r="34" fill="none" stroke="currentColor" stroke-width=".9" opacity=".55"/>
-          <path d="M50 14 59 41 86 50 59 59 50 86 41 59 14 50 41 41Z" fill="none" stroke="currentColor" stroke-width="1.6"/>
-          <path d="M50 21 54.5 45.5 79 50 54.5 54.5 50 79 45.5 54.5 21 50 45.5 45.5Z" fill="currentColor" opacity=".18"/>
-          <path d="M50 14 54.5 45.5 50 50 45.5 45.5Z" fill="currentColor"/>
-          <path d="M86 50 54.5 54.5 50 50 54.5 45.5Z" fill="currentColor" opacity=".72"/>
-          <path d="M50 86 45.5 54.5 50 50 54.5 54.5Z" fill="currentColor" opacity=".42"/>
-          <path d="M14 50 45.5 45.5 50 50 45.5 54.5Z" fill="currentColor" opacity=".62"/>
-          <circle cx="50" cy="50" r="6" fill="var(--atlas-paper)" stroke="currentColor" stroke-width="1.6"/>
-          <circle cx="50" cy="50" r="2.2" fill="currentColor"/>
-          <text x="50" y="10" text-anchor="middle" font-size="7" fill="currentColor" font-family="Georgia, serif">N</text>
+        <svg class="brand-mark compass-mark" viewBox="0 0 100 100" role="img" aria-label="ARSHIF compass star">
+          <circle cx="50" cy="50" r="44" fill="none" stroke="currentColor" stroke-width="1.7"/>
+          <circle cx="50" cy="50" r="31" fill="none" stroke="currentColor" stroke-width=".8" opacity=".48"/>
+          <path d="M50 8 57 39 78 22 61 43 92 50 61 57 78 78 57 61 50 92 43 61 22 78 39 57 8 50 39 43 22 22 43 39Z"
+                fill="none" stroke="currentColor" stroke-width="1.55"/>
+          <path d="M50 8 57 39 50 50 43 39Z" fill="currentColor"/>
+          <path d="M92 50 61 57 50 50 61 43Z" fill="currentColor" opacity=".68"/>
+          <path d="M50 92 43 61 50 50 57 61Z" fill="currentColor" opacity=".34"/>
+          <path d="M8 50 39 43 50 50 39 57Z" fill="currentColor" opacity=".54"/>
+          <circle cx="50" cy="50" r="6.2" fill="var(--atlas-paper)" stroke="currentColor" stroke-width="1.5"/>
+          <circle cx="50" cy="50" r="2.1" fill="currentColor"/>
+          <text x="50" y="6.5" text-anchor="middle" font-size="6.5" fill="currentColor" font-family="Georgia, serif">N</text>
         </svg>
         <span class="brand-copy">
           <span class="brand-name">ARSHIF</span>
@@ -2089,29 +2307,25 @@
       <span class="orbital two" aria-hidden="true"></span>
 
       <div class="hero-inner">
-        <svg class="hero-sigil compass-rose-hero" viewBox="0 0 400 400" role="img" aria-label="Large antique compass rose">
+        <svg class="hero-sigil compass-rose-hero" viewBox="0 0 320 320" role="img" aria-label="Antique eight-point compass rose">
           <g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
-            <circle cx="200" cy="200" r="174" stroke-width="2"/>
-            <circle cx="200" cy="200" r="142" stroke-width="1.2" opacity=".72"/>
-            <circle cx="200" cy="200" r="94" stroke-width=".9" opacity=".48"/>
-            <path d="M200 48 226 174 352 200 226 226 200 352 174 226 48 200 174 174Z" stroke-width="2.4"/>
-            <path d="M200 74 214 186 326 200 214 214 200 326 186 214 74 200 186 186Z" stroke-width="1.4" opacity=".76"/>
-            <path d="M200 48 214 186 200 200 186 186Z" fill="currentColor" stroke-width="1.4"/>
-            <path d="M352 200 214 214 200 200 214 186Z" fill="currentColor" opacity=".72" stroke-width="1.2"/>
-            <path d="M200 352 186 214 200 200 214 214Z" fill="currentColor" opacity=".38" stroke-width="1.2"/>
-            <path d="M48 200 186 186 200 200 186 214Z" fill="currentColor" opacity=".58" stroke-width="1.2"/>
-            <path d="M91 91 189 189 200 200 211 189 309 91 211 211 200 200 189 211 91 309 189 189Z" stroke-width="1.1" opacity=".58"/>
-            <path d="M309 309 211 211M91 309 189 211M309 91 211 189M91 91 189 189" opacity=".42"/>
-            <circle cx="200" cy="200" r="18" fill="var(--atlas-paper)" stroke-width="2"/>
-            <circle cx="200" cy="200" r="7" fill="currentColor" stroke="none"/>
-            <path d="M200 25v14M200 361v14M25 200h14M361 200h14" stroke-width="1.2"/>
-            <path d="M72 72l10 10M318 318l10 10M328 72l-10 10M82 318l-10 10" stroke-width="1"/>
+            <circle cx="160" cy="160" r="137" stroke-width="2"/>
+            <circle cx="160" cy="160" r="106" stroke-width="1" opacity=".58"/>
+            <path d="M160 31 178 132 251 69 188 142 289 160 188 178 251 251 178 188 160 289 142 188 69 251 132 178 31 160 132 142 69 69 142 132Z"
+                  stroke-width="2.2"/>
+            <path d="M160 31 178 132 160 160 142 132Z" fill="currentColor" stroke-width="1.4"/>
+            <path d="M289 160 188 178 160 160 188 142Z" fill="currentColor" opacity=".67" stroke-width="1.2"/>
+            <path d="M160 289 142 188 160 160 178 188Z" fill="currentColor" opacity=".30" stroke-width="1.2"/>
+            <path d="M31 160 132 142 160 160 132 178Z" fill="currentColor" opacity=".50" stroke-width="1.2"/>
+            <circle cx="160" cy="160" r="17" fill="var(--atlas-paper)" stroke-width="1.9"/>
+            <circle cx="160" cy="160" r="6" fill="currentColor" stroke="none"/>
+            <path d="M160 15v10M160 295v10M15 160h10M295 160h10" stroke-width="1.1"/>
           </g>
-          <g fill="currentColor" font-family="Georgia, serif" font-size="17" text-anchor="middle">
-            <text x="200" y="20">N</text>
-            <text x="382" y="206">E</text>
-            <text x="200" y="390">S</text>
-            <text x="18" y="206">W</text>
+          <g fill="currentColor" font-family="Georgia, serif" font-size="14" text-anchor="middle">
+            <text x="160" y="11">N</text>
+            <text x="309" y="165">E</text>
+            <text x="160" y="317">S</text>
+            <text x="11" y="165">W</text>
           </g>
         </svg>
 
@@ -2294,7 +2508,7 @@
       <div>
         <p class="footer-title">ARSHIF</p>
         <p class="footer-copy">The Living Archive of Human Knowledge</p>
-        <p class="footer-legal">© <span id="year"></span> Jennifer Pearl. All Rights Reserved.</p>
+        <p class="footer-legal">© <span id="year"></span> Jennifer Kay Pearl · Verve N Veda · ARSHIF Archives. All Rights Reserved.</p>
       </div>
 
       <nav class="footer-links" aria-label="Footer navigation">
@@ -3010,15 +3224,6 @@
         "status": "live"
       },
       {
-        "title": "Site / Website Foundry",
-        "repo": "Site.github.io",
-        "url": "https://vervenveda.github.io/Site.github.io/",
-        "repoUrl": "https://github.com/vervenveda/Site.github.io",
-        "symbol": "⌘",
-        "description": "Website-building experiments, page design systems, sovereign publishing tools, and creative development.",
-        "status": "unverified"
-      },
-      {
         "title": "Administration",
         "repo": "admin.github.io",
         "url": "https://vervenveda.github.io/admin.github.io/",
@@ -3579,7 +3784,7 @@
     function statusLabel(status) {
       if (status === "live") return "Published";
       if (status === "setup") return "Repository Setup";
-      return "Needs Verification";
+      return "Repository Link";
     }
 
     function renderNetwork() {
@@ -3627,10 +3832,17 @@
         if (!hall.path.startsWith("./apps/")) issues.push(`Unexpected app path: ${hall.path}`);
       });
 
-      [...networkSites.map((site) => site.repoUrl), ...researchResources.map((resource) => resource.url)]
+      [...networkSites.flatMap((site) => [site.url, site.repoUrl]), ...researchResources.map((resource) => resource.url)]
         .forEach((url) => {
-          if (!url.startsWith("https://")) issues.push(`Non-HTTPS external link: ${url}`);
+          if (!url || url === "#" || url.startsWith("javascript:")) issues.push(`Empty or unsafe link: ${url || "(blank)"}`);
+          else if (!url.startsWith("https://")) issues.push(`Non-HTTPS external link: ${url}`);
         });
+
+      halls.forEach((hall) => {
+        if (!hall.path || hall.path === "./apps/" || hall.path.includes("..")) {
+          issues.push(`Malformed app route: ${hall.title} → ${hall.path}`);
+        }
+      });
 
       directorySummary.textContent =
         `${halls.length} archive apps · ${networkSites.length} connected repositories · ${researchResources.length} trusted research gateways`;
