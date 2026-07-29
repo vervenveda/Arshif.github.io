@@ -2895,6 +2895,49 @@
   }
 </style>
 
+
+<style id="arshif-restored-compass-artwork">
+  /* Restored original ARSHIF compass rose, tuned to the quiet studio palette. */
+  .brand-mark.compass-mark{
+    width:42px;
+    height:42px;
+    flex:0 0 42px;
+    color:var(--studio-clay);
+    filter:none;
+    transition:color .18s ease,transform .18s ease;
+  }
+
+  .brand:hover .brand-mark.compass-mark{
+    color:var(--studio-sage-deep);
+    transform:rotate(4deg);
+  }
+
+  .hero-sigil.compass-rose-hero{
+    width:min(190px,48vw);
+    margin:0 auto 30px;
+    color:var(--studio-sage-deep);
+    filter:drop-shadow(0 10px 18px rgba(73,91,79,.10));
+  }
+
+  .hero-sigil.compass-rose-hero circle,
+  .hero-sigil.compass-rose-hero path{
+    vector-effect:non-scaling-stroke;
+  }
+
+  @media(max-width:720px){
+    .brand-mark.compass-mark{
+      width:39px;
+      height:39px;
+      flex-basis:39px;
+    }
+
+    .hero-sigil.compass-rose-hero{
+      width:min(165px,52vw);
+      margin-bottom:26px;
+    }
+  }
+</style>
+
 </head>
 
 <body>
@@ -2905,7 +2948,19 @@
   <header class="site-header">
     <div class="header-inner">
       <a class="brand" href="https://vervenveda.com/" aria-label="Return to Verve N Veda home">
-        <span class="brand-mark studio-mark" aria-hidden="true">A</span>
+        <svg class="brand-mark compass-mark" viewBox="0 0 100 100" role="img" aria-label="ARSHIF compass star">
+          <circle cx="50" cy="50" r="44" fill="none" stroke="currentColor" stroke-width="1.7"/>
+          <circle cx="50" cy="50" r="31" fill="none" stroke="currentColor" stroke-width=".8" opacity=".48"/>
+          <path d="M50 8 57 39 78 22 61 43 92 50 61 57 78 78 57 61 50 92 43 61 22 78 39 57 8 50 39 43 22 22 43 39Z"
+                fill="none" stroke="currentColor" stroke-width="1.55"/>
+          <path d="M50 8 57 39 50 50 43 39Z" fill="currentColor"/>
+          <path d="M92 50 61 57 50 50 61 43Z" fill="currentColor" opacity=".68"/>
+          <path d="M50 92 43 61 50 50 57 61Z" fill="currentColor" opacity=".34"/>
+          <path d="M8 50 39 43 50 50 39 57Z" fill="currentColor" opacity=".54"/>
+          <circle cx="50" cy="50" r="6.2" fill="var(--atlas-paper)" stroke="currentColor" stroke-width="1.5"/>
+          <circle cx="50" cy="50" r="2.1" fill="currentColor"/>
+          <text x="50" y="6.5" text-anchor="middle" font-size="6.5" fill="currentColor" font-family="Georgia, serif">N</text>
+        </svg>
         <span class="brand-copy">
           <span class="brand-name">ARSHIF</span>
           <span class="brand-subtitle">The Living Archive of Human Knowledge</span>
@@ -2953,48 +3008,28 @@
     <section class="hero" aria-labelledby="heroTitle">
 
       <div class="hero-inner">
-        <div class="hero-sigil studio-orbit" aria-hidden="true">
-          <span class="orbit-ring ring-one"></span>
-          <span class="orbit-ring ring-two"></span>
-          <span class="orbit-core">A</span>
-        </div>
-
-        <p class="eyebrow">A Quiet Studio for Deep Inquiry</p>
-
-        <h1 id="heroTitle">
-          ARSHIF
-          <span class="hero-title-accent">The Living Archive of Human Knowledge</span>
-        </h1>
-
-        <p class="hero-description">
-          A calm place to enter the record of human thought, where history, science, medicine, art, culture, law, philosophy, memory, and lived experience can be studied with patience, context, and care.
-        </p>
-
-        <div class="hero-actions">
-          <a class="primary-button" href="#archive">
-            Enter ARSHIF
-            <span aria-hidden="true">↓</span>
-          </a>
-          <button class="quiet-button" id="randomButton" type="button">
-            Choose a Quiet Path
-            <span aria-hidden="true">✦</span>
-          </button>
-        </div>
-
-        <div class="hero-notes" aria-label="Archive qualities">
-          <div class="hero-note">
-            <strong>Sovereign</strong>
-            <span>No external framework or account required</span>
-          </div>
-          <div class="hero-note">
-            <strong>Private by Design</strong>
-            <span>Search and favorites remain in this browser</span>
-          </div>
-          <div class="hero-note">
-            <strong>Research Centered</strong>
-            <span>Built for Context, Evidence, and Lifelong Learning</span>
-          </div>
-        </div>
+        <svg class="hero-sigil compass-rose-hero" viewBox="0 0 320 320" role="img" aria-label="Antique eight-point compass rose">
+          <g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="160" cy="160" r="137" stroke-width="2"/>
+            <circle cx="160" cy="160" r="106" stroke-width="1" opacity=".58"/>
+            <path d="M160 31 178 132 251 69 188 142 289 160 188 178 251 251 178 188 160 289 142 188 69 251 132 178 31 160 132 142 69 69 142 132Z"
+                  stroke-width="2.2"/>
+            <path d="M160 31 178 132 160 160 142 132Z" fill="currentColor" stroke-width="1.4"/>
+            <path d="M289 160 188 178 160 160 188 142Z" fill="currentColor" opacity=".67" stroke-width="1.2"/>
+            <path d="M160 289 142 188 160 160 178 188Z" fill="currentColor" opacity=".30" stroke-width="1.2"/>
+            <path d="M31 160 132 142 160 160 132 178Z" fill="currentColor" opacity=".50" stroke-width="1.2"/>
+            <circle cx="160" cy="160" r="17" fill="var(--atlas-paper)" stroke-width="1.9"/>
+            <circle cx="160" cy="160" r="6" fill="currentColor" stroke="none"/>
+            <path d="M160 15v10M160 295v10M15 160h10M295 160h10" stroke-width="1.1"/>
+          </g>
+          <g fill="currentColor" font-family="Georgia, serif" font-size="14" text-anchor="middle">
+            <text x="160" y="11">N</text>
+            <text x="309" y="165">E</text>
+            <text x="160" y="317">S</text>
+            <text x="11" y="165">W</text>
+          </g>
+        </svg>
+      </div>
         <p class="directory-summary" id="directorySummary" aria-live="polite">
           Loading the archive directory…
         </p>
