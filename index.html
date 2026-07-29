@@ -2938,6 +2938,34 @@
   }
 </style>
 
+
+<style id="arshif-final-title-hierarchy">
+  .hero .eyebrow{
+    margin-bottom:18px!important;
+    color:var(--studio-clay)!important;
+    opacity:1;
+  }
+
+  .hero h1{
+    color:var(--studio-charcoal)!important;
+  }
+
+  .hero-title-accent{
+    margin-top:18px!important;
+    color:var(--studio-sage-deep)!important;
+    opacity:1;
+  }
+
+  .hero-description{
+    margin-top:24px!important;
+    color:var(--studio-muted)!important;
+  }
+
+  .hero-sigil.compass-rose-hero{
+    margin-bottom:30px;
+  }
+</style>
+
 </head>
 
 <body>
@@ -3006,7 +3034,6 @@
 
   <main id="main-content">
     <section class="hero" aria-labelledby="heroTitle">
-
       <div class="hero-inner">
         <svg class="hero-sigil compass-rose-hero" viewBox="0 0 320 320" role="img" aria-label="Antique eight-point compass rose">
           <g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
@@ -3029,7 +3056,46 @@
             <text x="11" y="165">W</text>
           </g>
         </svg>
-      </div>
+
+        <p class="eyebrow">A Quiet Studio for Deep Inquiry</p>
+
+        <h1 id="heroTitle">
+          ARSHIF
+          <span class="hero-title-accent">The Living Archive of Human Knowledge</span>
+        </h1>
+
+        <p class="hero-description">
+          A calm place to enter the record of human thought, where history, science, medicine,
+          art, culture, law, philosophy, memory, and lived experience can be studied with
+          patience, context, and care.
+        </p>
+
+        <div class="hero-actions">
+          <a class="primary-button" href="#archive">
+            Enter ARSHIF
+            <span aria-hidden="true">↓</span>
+          </a>
+          <button class="quiet-button" id="randomButton" type="button">
+            Choose a Quiet Path
+            <span aria-hidden="true">✦</span>
+          </button>
+        </div>
+
+        <div class="hero-notes" aria-label="Archive qualities">
+          <div class="hero-note">
+            <strong>Sovereign</strong>
+            <span>No external framework or account required</span>
+          </div>
+          <div class="hero-note">
+            <strong>Private by Design</strong>
+            <span>Search and favorites remain in this browser</span>
+          </div>
+          <div class="hero-note">
+            <strong>Research Centered</strong>
+            <span>Built for context, evidence, and lifelong learning</span>
+          </div>
+        </div>
+
         <p class="directory-summary" id="directorySummary" aria-live="polite">
           Loading the archive directory…
         </p>
