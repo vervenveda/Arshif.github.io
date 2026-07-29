@@ -2966,6 +2966,97 @@
   }
 </style>
 
+
+<style id="arshif-refined-network-menu">
+  .menu-panel{
+    width:min(92vw,420px);
+    padding:18px;
+  }
+
+  .menu-title{
+    font-size:1.08rem;
+    letter-spacing:.08em;
+  }
+
+  .menu-intro{
+    margin:12px 0 14px;
+    font-size:.82rem;
+    line-height:1.5;
+  }
+
+  .menu-search{
+    min-height:44px;
+    margin-bottom:14px;
+    padding:10px 12px;
+    font-size:.82rem;
+  }
+
+  .menu-group-label{
+    margin:18px 0 7px;
+    color:var(--studio-clay)!important;
+    font-size:.62rem;
+    font-weight:333!important;
+    letter-spacing:.16em;
+  }
+
+  .menu-group-label:first-child{
+    margin-top:2px;
+  }
+
+  .menu-links{
+    gap:6px;
+  }
+
+  .menu-link{
+    grid-template-columns:30px 1fr 18px;
+    gap:10px;
+    min-height:58px;
+    padding:9px 10px;
+  }
+
+  .menu-link-icon{
+    font-size:.88rem;
+    text-align:center;
+  }
+
+  .menu-link-title{
+    color:var(--studio-charcoal)!important;
+    font-size:.84rem;
+    font-weight:444!important;
+    line-height:1.25;
+  }
+
+  .menu-link-category{
+    margin-top:3px;
+    color:var(--studio-muted)!important;
+    font-size:.66rem;
+    font-weight:333!important;
+    letter-spacing:.035em;
+    line-height:1.35;
+    text-transform:none;
+  }
+
+  .menu-link-arrow{
+    font-size:.74rem;
+  }
+
+  .menu-divider{
+    height:1px;
+    margin:16px 0 6px;
+    background:linear-gradient(90deg,transparent,var(--studio-line),transparent);
+  }
+
+  .menu-link.current-site{
+    background:rgba(111,129,116,.08);
+    border-color:rgba(79,99,86,.26);
+  }
+
+  @media(max-width:430px){
+    .menu-panel{padding:15px}
+    .menu-link{min-height:56px}
+  }
+</style>
+
 </head>
 
 <body>
@@ -3022,7 +3113,7 @@
       </div>
 
       <p class="menu-intro">
-        Search ARSHIF halls and the connected Verve N Veda public sites.
+        Begin with the network anchors, then explore ARSHIF halls, public-service destinations, and trusted research gateways.
       </p>
 
       <label class="visually-hidden" for="menuSearch">Search menu</label>
@@ -3927,6 +4018,34 @@
 
     const networkSites = [
       {
+        "title": "Veterans",
+        "repo": "veterans.github.io",
+        "url": "https://vervenveda.github.io/veterans.github.io/",
+        "repoUrl": "https://github.com/vervenveda/veterans.github.io",
+        "symbol": "V",
+        "description": "Benefits, health care, housing, employment, records, military families, crisis support, and community resources.",
+        "status": "live"
+      },
+      {
+        "title": "Homeless Services",
+        "repo": "homeless.github.io",
+        "url": "https://vervenveda.github.io/homeless.github.io/",
+        "repoUrl": "https://github.com/vervenveda/homeless.github.io",
+        "symbol": "1D",
+        "description": "One Door pathways for housing, shelter, food, health, identification, public benefits, and coordinated assistance.",
+        "status": "live"
+      },
+      {
+        "title": "Finance",
+        "repo": "finance.github.io",
+        "url": "https://vervenveda.github.io/finance.github.io/",
+        "repoUrl": "https://github.com/vervenveda/finance.github.io",
+        "symbol": "$",
+        "description": "Financial literacy, budgeting, credit, taxes, retirement, housing, benefits, small business, and fraud prevention.",
+        "status": "live"
+      },
+
+      {
         "title": "ARSHIF Archives",
         "repo": "Arshif.github.io",
         "url": "https://vervenveda.github.io/Arshif.github.io/",
@@ -4457,54 +4576,229 @@
 
     function renderMenu(query = "") {
       const normalized = query.trim().toLowerCase();
-      const matchingHalls = halls.filter((hall) => !normalized || hallSearchText(hall).includes(normalized));
-      const matchingResources = researchResources.filter((resource) => !normalized || resourceSearchText(resource).includes(normalized));
-      const matchingSites = networkSites.filter((site) => !normalized || siteSearchText(site).includes(normalized));
 
-      const hallMarkup = matchingHalls.length ? `
-        <div class="menu-group-label">ARSHIF Apps & Halls</div>
-        ${matchingHalls.map((hall) => `
-          <a class="menu-link" href="${escapeHTML(hall.path)}">
-            <span class="menu-link-icon" aria-hidden="true">${escapeHTML(hall.symbol)}</span>
-            <span class="menu-link-copy">
-              <span class="menu-link-title">${escapeHTML(hall.title)}</span>
-              <span class="menu-link-category">${escapeHTML(hall.category)} · ${escapeHTML(hall.kind)}</span>
-            </span>
-            <span class="menu-link-arrow" aria-hidden="true">→</span>
-          </a>
-        `).join("")}
-      ` : "";
+      const networkAnchors = [
+        {
+          title: "Verve N Veda",
+          subtitle: "Main public gateway",
+          url: "https://vervenveda.com/",
+          symbol: "V"
+        },
+        {
+          title: "One Nation For All",
+          subtitle: "Civic learning, public policy, and participation",
+          url: "https://vervenveda.github.io/onenationforall.github.io/",
+          symbol: "1"
+        },
+        {
+          title: "PLERA Search",
+          subtitle: "Research and public-resource discovery",
+          url: "https://vervenveda.github.io/PLERASearch.github.io/",
+          symbol: "⌕"
+        },
+        {
+          title: "Jennifer Pearl 2028",
+          subtitle: "Campaign, policies, events, and public updates",
+          url: "https://jenniferpearl2028.github.io/",
+          symbol: "JP"
+        }
+      ];
 
-      const resourceMarkup = matchingResources.length ? `
-        <div class="menu-group-label">Trusted Research Paths</div>
-        ${matchingResources.map((resource) => `
-          <a class="menu-link" href="${escapeHTML(resource.url)}" target="_blank" rel="noopener noreferrer">
-            <span class="menu-link-icon" aria-hidden="true">${escapeHTML(resource.symbol)}</span>
+      const repositoryGroups = [
+        {
+          label: "Knowledge & Learning",
+          titles: [
+            "ARSHIF Archives",
+            "Khaemenes Academy",
+            "Khaemenes University",
+            "Khaemenes Elementary",
+            "Khaemenes Junior High",
+            "Khaemenes High School",
+            "Linguistics",
+            "Medicament Hub",
+            "Firmament Law",
+            "The Verifier"
+          ]
+        },
+        {
+          label: "Public Service",
+          titles: [
+            "Veterans",
+            "Homeless Services",
+            "Finance",
+            "One Nation for All",
+            "River to Road",
+            "Administration"
+          ]
+        },
+        {
+          label: "Creative & Professional",
+          titles: [
+            "Bazaar Art",
+            "Aurora",
+            "ProResource Hub",
+            "Solanar",
+            "The Refrain",
+            "Arcade",
+            "My Art Gallery"
+          ]
+        },
+        {
+          label: "Early Learning",
+          titles: [
+            "Crèche Preschool",
+            "KinderGarden"
+          ]
+        }
+      ];
+
+      const visibleAnchors = networkAnchors.filter((item) => {
+        const searchText = `${item.title} ${item.subtitle}`.toLowerCase();
+        return !normalized || searchText.includes(normalized);
+      });
+
+      const matchingHalls = halls.filter((hall) =>
+        !normalized || hallSearchText(hall).includes(normalized)
+      );
+
+      const matchingResources = researchResources.filter((resource) =>
+        !normalized || resourceSearchText(resource).includes(normalized)
+      );
+
+      const renderedSiteTitles = new Set();
+
+      function renderAnchor(item) {
+        return `
+          <a class="menu-link" href="${escapeHTML(item.url)}" target="_blank" rel="noopener noreferrer">
+            <span class="menu-link-icon" aria-hidden="true">${escapeHTML(item.symbol)}</span>
             <span class="menu-link-copy">
-              <span class="menu-link-title">${escapeHTML(resource.title)}</span>
-              <span class="menu-link-category">${escapeHTML(resource.provider)}</span>
+              <span class="menu-link-title">${escapeHTML(item.title)}</span>
+              <span class="menu-link-category">${escapeHTML(item.subtitle)}</span>
             </span>
             <span class="menu-link-arrow" aria-hidden="true">↗</span>
           </a>
-        `).join("")}
-      ` : "";
+        `;
+      }
 
-      const siteMarkup = matchingSites.length ? `
-        <div class="menu-group-label">Verve N Veda Repositories</div>
-        ${matchingSites.map((site) => `
-          <a class="menu-link" href="${escapeHTML(sitePrimaryUrl(site))}" target="_blank" rel="noopener noreferrer">
+      function siteSubtitle(site) {
+        const descriptions = {
+          "ARSHIF Archives": "Living archive, culture, history, and inquiry",
+          "Medicament Hub": "Health education and medical-resource halls",
+          "Crèche Preschool": "Playful preschool learning and family activities",
+          "One Nation for All": "Civic learning, participation, and public policy",
+          "Administration": "Planning and ecosystem management",
+          "The Verifier": "News discovery and source verification",
+          "Bazaar Art": "Artists, galleries, culture, and creative enterprise",
+          "Aurora": "Reflection, renewal, and supportive tools",
+          "Verve N Veda": "Main public gateway",
+          "Khaemenes University": "Higher education and advanced study",
+          "Khaemenes Elementary": "Elementary learning and family support",
+          "Khaemenes Junior High": "Middle-grade curriculum and student tools",
+          "Khaemenes High School": "High-school learning and future planning",
+          "River to Road": "Environmental stewardship and community action",
+          "ProResource Hub": "Professional templates and browser tools",
+          "Khaemenes Academy": "Sovereign education and lifelong learning",
+          "PLERA Search": "Research and public-resource discovery",
+          "Arcade": "Games, puzzles, trivia, and creative play",
+          "KinderGarden": "Foundational learning, stories, and activities",
+          "Linguistics": "Languages, writing systems, and communication",
+          "Firmament Law": "Law, rights, courts, and public legal resources",
+          "Solanar": "Weather, Earth systems, and environmental awareness",
+          "My Art Gallery": "Original artwork and gallery presentation",
+          "Veterans": "Benefits, health, housing, and family support",
+          "Homeless Services": "Housing, shelter, benefits, and coordinated help",
+          "Finance": "Financial literacy and practical money resources",
+          "The Refrain": "Music, composition, performance, and sound"
+        };
+        return descriptions[site.title] || site.description;
+      }
+
+      function renderSite(site) {
+        renderedSiteTitles.add(site.title);
+        const currentClass = site.title === "ARSHIF Archives" ? " current-site" : "";
+        return `
+          <a class="menu-link${currentClass}" href="${escapeHTML(sitePrimaryUrl(site))}" target="_blank" rel="noopener noreferrer">
             <span class="menu-link-icon" aria-hidden="true">${escapeHTML(site.symbol)}</span>
             <span class="menu-link-copy">
               <span class="menu-link-title">${escapeHTML(site.title)}</span>
-              <span class="menu-link-category">${escapeHTML(site.repo)} · ${escapeHTML(site.status)}</span>
+              <span class="menu-link-category">${escapeHTML(siteSubtitle(site))}</span>
             </span>
             <span class="menu-link-arrow" aria-hidden="true">↗</span>
           </a>
-        `).join("")}
-      ` : "";
+        `;
+      }
 
-      menuLinks.innerHTML = hallMarkup + resourceMarkup + siteMarkup || `
-        <div class="empty-state is-visible">No app, research gateway, or connected repository matched that search.</div>
+      let markup = "";
+
+      if (visibleAnchors.length) {
+        markup += `
+          <div class="menu-group-label">Network Anchors</div>
+          ${visibleAnchors.map(renderAnchor).join("")}
+          <div class="menu-divider" aria-hidden="true"></div>
+        `;
+      }
+
+      if (matchingHalls.length) {
+        markup += `
+          <div class="menu-group-label">ARSHIF Halls & Apps</div>
+          ${matchingHalls.map((hall) => `
+            <a class="menu-link" href="${escapeHTML(hall.path)}">
+              <span class="menu-link-icon" aria-hidden="true">${escapeHTML(hall.symbol)}</span>
+              <span class="menu-link-copy">
+                <span class="menu-link-title">${escapeHTML(hall.title)}</span>
+                <span class="menu-link-category">${escapeHTML(hall.category)} · ${escapeHTML(hall.kind)}</span>
+              </span>
+              <span class="menu-link-arrow" aria-hidden="true">→</span>
+            </a>
+          `).join("")}
+        `;
+      }
+
+      repositoryGroups.forEach((group) => {
+        const groupSites = group.titles
+          .map((title) => networkSites.find((site) => site.title === title))
+          .filter(Boolean)
+          .filter((site) => !normalized || siteSearchText(site).includes(normalized));
+
+        if (groupSites.length) {
+          markup += `
+            <div class="menu-group-label">${escapeHTML(group.label)}</div>
+            ${groupSites.map(renderSite).join("")}
+          `;
+        }
+      });
+
+      const remainingSites = networkSites.filter((site) =>
+        !renderedSiteTitles.has(site.title) &&
+        !["Verve N Veda", "PLERA Search", "One Nation for All"].includes(site.title) &&
+        (!normalized || siteSearchText(site).includes(normalized))
+      );
+
+      if (remainingSites.length) {
+        markup += `
+          <div class="menu-group-label">More Connected Destinations</div>
+          ${remainingSites.map(renderSite).join("")}
+        `;
+      }
+
+      if (matchingResources.length) {
+        markup += `
+          <div class="menu-group-label">Trusted Research Gateways</div>
+          ${matchingResources.map((resource) => `
+            <a class="menu-link" href="${escapeHTML(resource.url)}" target="_blank" rel="noopener noreferrer">
+              <span class="menu-link-icon" aria-hidden="true">${escapeHTML(resource.symbol)}</span>
+              <span class="menu-link-copy">
+                <span class="menu-link-title">${escapeHTML(resource.title)}</span>
+                <span class="menu-link-category">${escapeHTML(resource.provider)}</span>
+              </span>
+              <span class="menu-link-arrow" aria-hidden="true">↗</span>
+            </a>
+          `).join("")}
+        `;
+      }
+
+      menuLinks.innerHTML = markup || `
+        <div class="empty-state is-visible">No hall, research gateway, or connected destination matched that search.</div>
       `;
     }
 
