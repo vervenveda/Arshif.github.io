@@ -8,7 +8,7 @@
   <meta name="theme-color" content="#f4efe7" />
   <meta name="color-scheme" content="light" />
   <meta name="referrer" content="no-referrer" />
-  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self'; connect-src 'none'; object-src 'none'; base-uri 'self'; form-action 'none'; upgrade-insecure-requests" />
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self'; connect-src 'self'; object-src 'none'; base-uri 'self'; form-action 'none'; upgrade-insecure-requests" />
   <meta property="og:title" content="ARSHIF — The Living Archive of Human Knowledge" />
   <meta property="og:description" content="A sovereign gateway to research halls, public learning, trusted archives, and the connected Verve N Veda knowledge network." />
   <meta property="og:type" content="website" />
@@ -3057,6 +3057,131 @@
   }
 </style>
 
+
+  <style id="arshif-growth-system">
+    /* Growth-ready archive registry layer */
+    .archive-census{
+      display:grid;
+      grid-template-columns:repeat(5,minmax(0,1fr));
+      gap:.75rem;
+      margin:1.5rem 0 1rem;
+    }
+    .census-card{
+      min-width:0;
+      padding:1rem;
+      text-align:center;
+      border:1px solid rgba(103,75,38,.19);
+      border-radius:3px;
+      background:rgba(255,253,248,.72);
+      box-shadow:0 10px 28px rgba(74,50,24,.06);
+    }
+    .census-number{
+      display:block;
+      color:var(--atlas-brass,var(--gold-bright));
+      font-family:var(--ceremonial,Georgia,serif);
+      font-size:clamp(1.6rem,4vw,2.35rem);
+      line-height:1;
+    }
+    .census-label{
+      display:block;
+      margin-top:.45rem;
+      color:var(--paper-soft);
+      font-family:var(--sans,Arial,sans-serif);
+      font-size:.68rem;
+      font-weight:700;
+      letter-spacing:.1em;
+      line-height:1.4;
+      text-transform:uppercase;
+    }
+    .growth-toolbar{
+      display:flex;
+      flex-wrap:wrap;
+      align-items:center;
+      gap:.7rem;
+      margin:1rem 0 1.35rem;
+    }
+    .registry-status{
+      flex:1 1 260px;
+      color:var(--paper-soft);
+      font-family:var(--sans,Arial,sans-serif);
+      font-size:.78rem;
+      line-height:1.5;
+    }
+    .future-grid{
+      display:grid;
+      grid-template-columns:repeat(3,minmax(0,1fr));
+      gap:.8rem;
+    }
+    .future-card{
+      min-width:0;
+      min-height:170px;
+      display:flex;
+      flex-direction:column;
+      padding:1rem;
+      border:1px dashed rgba(103,75,38,.24);
+      border-radius:3px;
+      background:
+        linear-gradient(135deg,rgba(255,255,255,.58),rgba(247,239,224,.58));
+    }
+    .future-symbol{
+      width:38px;
+      height:38px;
+      display:grid;
+      place-items:center;
+      color:var(--atlas-brass,var(--gold-bright));
+      border:1px solid rgba(103,75,38,.22);
+      border-radius:50%;
+      font-family:var(--ceremonial,Georgia,serif);
+    }
+    .future-status{
+      margin:.85rem 0 .25rem;
+      color:var(--teal);
+      font-family:var(--sans,Arial,sans-serif);
+      font-size:.65rem;
+      font-weight:700;
+      letter-spacing:.12em;
+      text-transform:uppercase;
+    }
+    .future-card h3{
+      margin:0;
+      color:var(--atlas-ink,var(--paper));
+      font-family:var(--display,Georgia,serif);
+      font-size:1.18rem;
+      line-height:1.2;
+    }
+    .future-card p{
+      margin:.55rem 0 0;
+      color:var(--paper-soft);
+      font-family:var(--sans,Arial,sans-serif);
+      font-size:.84rem;
+      line-height:1.55;
+    }
+    .hall-grid{align-items:stretch}
+    .hall-card{min-width:0;height:100%}
+    .card-actions{flex-wrap:wrap;align-items:stretch}
+    .enter-link,.details-button,.secondary-link{
+      max-width:100%;
+      min-width:0;
+      white-space:normal;
+      text-align:center;
+      overflow-wrap:anywhere;
+    }
+    @media (max-width:1000px){
+      .archive-census{grid-template-columns:repeat(3,minmax(0,1fr))}
+      .future-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+    }
+    @media (max-width:620px){
+      .archive-census{grid-template-columns:repeat(2,minmax(0,1fr))}
+      .future-grid{grid-template-columns:1fr}
+      .growth-toolbar .quiet-button{width:100%}
+    }
+    @media print{
+      .growth-toolbar{display:none!important}
+      .future-grid{grid-template-columns:repeat(2,1fr)}
+      .future-card,.census-card{break-inside:avoid;background:#fff;box-shadow:none}
+    }
+  </style>
+
 </head>
 
 <body>
@@ -3233,6 +3358,37 @@
       </div>
     </section>
 
+
+    <section class="section" id="growth-ledger" aria-labelledby="growthTitle">
+      <div class="section-heading">
+        <div>
+          <p class="section-kicker">Living Archive Registry</p>
+          <h2 id="growthTitle">Built to expand without losing its memory.</h2>
+          <p class="section-copy">
+            ARSHIF keeps its halls, trusted research gateways, connected repositories, and future collections
+            in one structured registry. New knowledge can be added without rebuilding the visual shell or
+            scattering links throughout the page.
+          </p>
+        </div>
+      </div>
+
+      <div class="archive-census" id="archiveCensus" aria-label="Current archive census"></div>
+
+      <div class="growth-toolbar">
+        <a class="quiet-button" href="./apps/contribute_index.html">
+          Propose a New Hall <span aria-hidden="true">→</span>
+        </a>
+        <button class="quiet-button" id="exportRegistryButton" type="button">
+          Download Archive Index <span aria-hidden="true">↓</span>
+        </button>
+        <span class="registry-status" id="registryStatus" aria-live="polite">
+          Loading the embedded archive registry…
+        </span>
+      </div>
+
+      <div class="future-grid" id="futureGrid" aria-label="Future ARSHIF collections"></div>
+    </section>
+
     <section class="section" id="archive" aria-labelledby="archiveTitle">
       <div class="section-heading">
         <div>
@@ -3332,6 +3488,7 @@
       </div>
 
       <nav class="footer-links" aria-label="Footer navigation">
+        <a href="#growth-ledger">Growth Ledger</a>
         <a href="#archive">Archive Apps</a>
         <a href="#research-gateways">Research Gateways</a>
         <a href="#network">Connected Repositories</a>
@@ -3389,7 +3546,88 @@
       https://vervenveda.github.io/<repository>/... GitHub Pages address.
     */
 
-    const halls = [
+    let archiveMeta = {
+      "schema": "arshif-living-archive-registry",
+      "schemaVersion": 1,
+      "registryVersion": "2026.07.31",
+      "lastUpdated": "2026-07-31",
+      "title": "ARSHIF — The Living Archive of Human Knowledge",
+      "maintainer": "Jennifer Kay Pearl",
+      "principles": [
+            "Evidence",
+            "Context",
+            "Access",
+            "Stewardship",
+            "Intellectual Independence",
+            "Human Dignity",
+            "Sovereignty"
+      ]
+};
+
+    let futureCollections = [
+      {
+            "title": "Archaeology & Ancient Civilizations",
+            "symbol": "⌛",
+            "description": "Artifacts, sites, excavation ethics, ancient societies, chronology, and material evidence."
+      },
+      {
+            "title": "Anthropology & Human Cultures",
+            "symbol": "◎",
+            "description": "Human cultures, kinship, ritual, identity, adaptation, fieldwork, and ethical interpretation."
+      },
+      {
+            "title": "Mathematics & Logic",
+            "symbol": "∑",
+            "description": "Mathematical ideas, proof, number systems, logic, measurement, and the history of computation."
+      },
+      {
+            "title": "Maps, Geography & Cartography",
+            "symbol": "⌖",
+            "description": "Historic maps, place, borders, migration, landscape, navigation, and geographic change."
+      },
+      {
+            "title": "Law, Governance & Constitutions",
+            "symbol": "⚖",
+            "description": "Legal traditions, public institutions, constitutions, civic records, rights, and governance history."
+      },
+      {
+            "title": "Music & Sound Archives",
+            "symbol": "♫",
+            "description": "Musical traditions, instruments, notation, recordings, oral transmission, and sound preservation."
+      },
+      {
+            "title": "Architecture & Built Environment",
+            "symbol": "⌂",
+            "description": "Buildings, cities, engineering, design traditions, preservation, and the social life of places."
+      },
+      {
+            "title": "Environmental History & Earth Systems",
+            "symbol": "♧",
+            "description": "Climate, land use, ecosystems, environmental records, human impact, and stewardship."
+      },
+      {
+            "title": "Technology & Invention",
+            "symbol": "⚙",
+            "description": "Tools, machines, communications, computing, invention, labor, and technological consequence."
+      },
+      {
+            "title": "Genealogy & Community Memory",
+            "symbol": "✧",
+            "description": "Family records, local history, oral testimony, photographs, migration, and community archives."
+      },
+      {
+            "title": "Migration, Diaspora & Exchange",
+            "symbol": "↝",
+            "description": "Movement of people, trade, exile, settlement, cultural exchange, and changing identities."
+      },
+      {
+            "title": "Museums, Material Culture & Conservation",
+            "symbol": "◇",
+            "description": "Collections, objects, provenance, restitution, conservation, cataloging, and public interpretation."
+      }
+];
+
+    let halls = [
       {
         "id": "childrens-medicine",
         "title": "Children’s Medicine Resource Portal",
@@ -4016,220 +4254,244 @@
       }
     ];
 
-    const networkSites = [
+    let networkSites = [
       {
-        "title": "Veterans",
-        "repo": "veterans.github.io",
-        "url": "https://vervenveda.github.io/veterans.github.io/",
-        "symbol": "V",
-        "description": "Benefits, health care, housing, employment, records, military families, crisis support, and community resources.",
-        "status": "live"
+            "title": "Verve N Veda",
+            "repo": "vervenveda.github.io",
+            "url": "https://vervenveda.github.io/",
+            "symbol": "V",
+            "description": "The public front door to the Verve N Veda ecosystem and its shared resources.",
+            "status": "live",
+            "group": "Network Home"
       },
       {
-        "title": "Homeless Services",
-        "repo": "homeless.github.io",
-        "url": "https://vervenveda.github.io/homeless.github.io/",
-        "symbol": "1D",
-        "description": "One Door pathways for housing, shelter, food, health, identification, public benefits, and coordinated assistance.",
-        "status": "live"
+            "title": "ARSHIF Archives",
+            "repo": "Arshif.github.io",
+            "url": "https://vervenveda.github.io/Arshif.github.io/",
+            "symbol": "A",
+            "description": "The living archive of human knowledge, deep research, cultural memory, and interdisciplinary inquiry.",
+            "status": "live",
+            "group": "Knowledge & Research"
       },
       {
-        "title": "Finance",
-        "repo": "finance.github.io",
-        "url": "https://vervenveda.github.io/finance.github.io/",
-        "symbol": "$",
-        "description": "Financial literacy, budgeting, credit, taxes, retirement, housing, benefits, small business, and fraud prevention.",
-        "status": "live"
-      },
-
-      {
-        "title": "ARSHIF Archives",
-        "repo": "Arshif.github.io",
-        "url": "https://vervenveda.github.io/Arshif.github.io/",
-        "symbol": "A",
-        "description": "The living archive of human knowledge, deep research, cultural memory, and interdisciplinary inquiry.",
-        "status": "live"
+            "title": "Khaemenes Academy",
+            "repo": "Khaemenes_Academy.github.io",
+            "url": "https://vervenveda.github.io/Khaemenes_Academy.github.io/",
+            "symbol": "KA",
+            "description": "The central academy gateway connecting the complete Khaemenes learning network.",
+            "status": "live",
+            "group": "Khaemenes Academy"
       },
       {
-        "title": "Medicament Hub",
-        "repo": "medicament-hub.github.io",
-        "url": "https://vervenveda.github.io/medicament-hub.github.io/",
-        "symbol": "☤",
-        "description": "The dedicated medical-education repository for children’s medicine, holistic medicine, traditional medicine, movement records, safety-first learning, and future health resources.",
-        "status": "setup",
-        "publicEntry": true
+            "title": "Khaemenes Preschool",
+            "repo": "Khaemenes_Preschool.github.io",
+            "url": "https://vervenveda.github.io/Khaemenes_Preschool.github.io/",
+            "symbol": "P",
+            "description": "Playful early-learning stories, foundational skills, creativity, and family-supported exploration.",
+            "status": "live",
+            "group": "Khaemenes Academy"
       },
       {
-        "title": "Crèche Preschool",
-        "repo": "creche_preschool.github.io",
-        "url": "https://vervenveda.github.io/creche_preschool.github.io/",
-        "symbol": "☀",
-        "description": "Preschool learning, playful foundations, family participation, creativity, and early childhood exploration.",
-        "status": "unverified"
+            "title": "Khaemenes KinderGarden",
+            "repo": "Khaemenes_KinderGarden.github.io",
+            "url": "https://vervenveda.github.io/Khaemenes_KinderGarden.github.io/",
+            "symbol": "❀",
+            "description": "Garden-inspired kindergarten learning, discovery, literacy, numeracy, nature, art, and movement.",
+            "status": "live",
+            "group": "Khaemenes Academy"
       },
       {
-        "title": "One Nation for All",
-        "repo": "onenationforall.github.io",
-        "url": "https://vervenveda.github.io/onenationforall.github.io/",
-        "symbol": "◫",
-        "description": "Civic engagement, public policy, national dialogue, accountability, voting resources, and unity-centered ideas.",
-        "status": "live"
+            "title": "Khaemenes Elementary",
+            "repo": "Khaemenes_Elementary.github.io",
+            "url": "https://vervenveda.github.io/Khaemenes_Elementary.github.io/",
+            "symbol": "E",
+            "description": "Elementary curriculum, activities, student tools, and family-supported education.",
+            "status": "live",
+            "group": "Khaemenes Academy"
       },
       {
-        "title": "Administration",
-        "repo": "admin.github.io",
-        "url": "https://vervenveda.github.io/admin.github.io/",
-        "symbol": "⚙",
-        "description": "Administrative controls, planning, project organization, and ecosystem management.",
-        "status": "live"
+            "title": "Khaemenes Middle School",
+            "repo": "Khaemenes_Middle.github.io",
+            "url": "https://vervenveda.github.io/Khaemenes_Middle.github.io/",
+            "symbol": "M",
+            "description": "Middle-school courses, independent study, project work, and grade-level learning portals.",
+            "status": "live",
+            "group": "Khaemenes Academy"
       },
       {
-        "title": "The Verifier",
-        "repo": "theverifier.github.io",
-        "url": "https://vervenveda.github.io/theverifier.github.io/",
-        "symbol": "⌕",
-        "description": "Information literacy, news discovery, source comparison, verification, and research navigation.",
-        "status": "live"
+            "title": "Khaemenes High School",
+            "repo": "Khaemenes_High.github.io",
+            "url": "https://vervenveda.github.io/Khaemenes_High.github.io/",
+            "symbol": "H",
+            "description": "High-school curriculum, records, college preparation, career exploration, and student portals.",
+            "status": "live",
+            "group": "Khaemenes Academy"
       },
       {
-        "title": "Bazaar Art",
-        "repo": "bazaarart.github.io",
-        "url": "https://vervenveda.github.io/bazaarart.github.io/",
-        "symbol": "✦",
-        "description": "Art, artists, creative enterprise, community programs, exhibitions, and cultural resources.",
-        "status": "live"
+            "title": "Khaemenes Higher Learning",
+            "repo": "Khaemenes_Higher_Learning.github.io",
+            "url": "https://vervenveda.github.io/Khaemenes_Higher_Learning.github.io/",
+            "symbol": "Σ",
+            "description": "Advanced study, professional learning, continuing education, and higher-learning pathways.",
+            "status": "live",
+            "group": "Khaemenes Academy"
       },
       {
-        "title": "Aurora",
-        "repo": "aurora.github.io",
-        "url": "https://vervenveda.github.io/aurora.github.io/",
-        "symbol": "☼",
-        "description": "A creative and exploratory space for visual learning, reflection, ideas, and emerging projects.",
-        "status": "live"
+            "title": "Khaemenes Linguistics",
+            "repo": "Khaemenes_Linguistics.github.io",
+            "url": "https://vervenveda.github.io/Khaemenes_Linguistics.github.io/",
+            "symbol": "Aa",
+            "description": "Language learning, linguistics, writing systems, vocabulary, translation, and communication.",
+            "status": "live",
+            "group": "Khaemenes Academy"
       },
       {
-        "title": "Verve N Veda",
-        "repo": "vervenveda.github.io",
-        "url": "https://vervenveda.github.io/",
-        "symbol": "V",
-        "description": "The public front door to the Verve N Veda ecosystem and its shared resources.",
-        "status": "live"
+            "title": "The Verifier",
+            "repo": "theverifier.github.io",
+            "url": "https://vervenveda.github.io/theverifier.github.io/",
+            "symbol": "⌕",
+            "description": "Information literacy, news discovery, source comparison, verification, and research navigation.",
+            "status": "live",
+            "group": "Knowledge & Research"
       },
       {
-        "title": "Khaemenes University",
-        "repo": "Khaemenes-university.github.io",
-        "url": "https://vervenveda.github.io/Khaemenes-university.github.io/",
-        "symbol": "Σ",
-        "description": "Higher education, advanced study, research pathways, professional learning, and collegiate development.",
-        "status": "setup"
+            "title": "PLERA Search",
+            "repo": "PLERASearch.github.io",
+            "url": "https://vervenveda.github.io/PLERASearch.github.io/",
+            "symbol": "⌖",
+            "description": "A broad search gateway connecting trusted research, public resources, and learning tools.",
+            "status": "live",
+            "group": "Knowledge & Research"
       },
       {
-        "title": "Khaemenes Elementary",
-        "repo": "Khaemenes-elementary.github.io",
-        "url": "https://vervenveda.github.io/Khaemenes-elementary.github.io/",
-        "symbol": "△",
-        "description": "Elementary learning portals, curriculum, activities, student tools, and family-supported education.",
-        "status": "setup"
+            "title": "Firmament Law",
+            "repo": "firmament.github.io",
+            "url": "https://vervenveda.github.io/firmament.github.io/",
+            "symbol": "⚖",
+            "description": "Legal information, public-resource libraries, evidence workspaces, rights education, and governance references.",
+            "status": "live",
+            "group": "Civic & Public Resources"
       },
       {
-        "title": "Khaemenes Junior High",
-        "repo": "Khaemenes-jrhigh.github.io",
-        "url": "https://vervenveda.github.io/Khaemenes-jrhigh.github.io/",
-        "symbol": "◇",
-        "description": "Middle-grade curriculum, student portals, interdisciplinary courses, and adolescent learning support.",
-        "status": "setup"
+            "title": "One Nation for All",
+            "repo": "onenationforall.github.io",
+            "url": "https://vervenveda.github.io/onenationforall.github.io/",
+            "symbol": "◫",
+            "description": "Civic engagement, public policy, accountability, voting resources, and unity-centered national ideas.",
+            "status": "live",
+            "group": "Civic & Public Resources"
       },
       {
-        "title": "Khaemenes High School",
-        "repo": "Khaemenes-High_github.io",
-        "url": "https://vervenveda.github.io/Khaemenes-High_github.io/",
-        "symbol": "Ⅻ",
-        "description": "High-school curriculum, transcripts, college preparation, career tools, and student pathways.",
-        "status": "setup"
+            "title": "Veterans",
+            "repo": "veterans.github.io",
+            "url": "https://vervenveda.github.io/veterans.github.io/",
+            "symbol": "V",
+            "description": "Benefits, health care, housing, employment, records, military families, crisis support, and community resources.",
+            "status": "live",
+            "group": "Civic & Public Resources"
       },
       {
-        "title": "River to Road",
-        "repo": "river_to_road.github.io",
-        "url": "https://vervenveda.github.io/river_to_road.github.io/",
-        "symbol": "♧",
-        "description": "Environmental stewardship, community cleanup, local action, restoration, and public participation.",
-        "status": "live"
+            "title": "Homeless Services",
+            "repo": "Homeless.github.io",
+            "url": "https://vervenveda.github.io/Homeless.github.io/",
+            "symbol": "1D",
+            "description": "One Door pathways for housing, shelter, food, health, identification, public benefits, and coordinated assistance.",
+            "status": "setup",
+            "group": "Civic & Public Resources"
       },
       {
-        "title": "ProResource Hub",
-        "repo": "proresource_hub.github.io",
-        "url": "https://vervenveda.github.io/proresource_hub.github.io/",
-        "symbol": "⌬",
-        "description": "Professional browser tools for writing, coding, media, files, search, design, and productivity.",
-        "status": "live"
+            "title": "Medicament Hub",
+            "repo": "medicament-hub.github.io",
+            "url": "https://vervenveda.github.io/medicament-hub.github.io/",
+            "symbol": "☤",
+            "description": "Medical education, health literacy, safety-first learning, wellness resources, and future health halls.",
+            "status": "live",
+            "group": "Health & Life"
       },
       {
-        "title": "Khaemenes Academy",
-        "repo": "khaemenesacademy.github.io",
-        "url": "https://vervenveda.github.io/khaemenesacademy.github.io/",
-        "symbol": "∆",
-        "description": "Sovereign education portals, curriculum, student resources, and lifelong learning.",
-        "status": "live"
+            "title": "Finance",
+            "repo": "finance.github.io",
+            "url": "https://vervenveda.github.io/finance.github.io/",
+            "symbol": "$",
+            "description": "Financial literacy, budgeting, credit, taxes, retirement, housing, benefits, small business, and fraud prevention.",
+            "status": "live",
+            "group": "Practical Life"
       },
       {
-        "title": "PLERA Search",
-        "repo": "PLERASearch.github.io",
-        "url": "https://vervenveda.github.io/PLERASearch.github.io/",
-        "symbol": "◌",
-        "description": "A broad search gateway connecting research, public resources, learning, and discovery tools.",
-        "status": "live"
+            "title": "ProReSources Hub",
+            "repo": "proresource_hub.github.io",
+            "url": "https://vervenveda.github.io/proresource_hub.github.io/",
+            "symbol": "PR",
+            "description": "Professional browser tools for writing, communication, code, media, design, files, and workflow.",
+            "status": "live",
+            "group": "Professional Tools"
       },
       {
-        "title": "Arcade",
-        "repo": "arcade.github.io",
-        "url": "https://vervenveda.github.io/arcade.github.io/",
-        "symbol": "✦",
-        "description": "Games, puzzles, strategy, creativity, trivia, and discovery through play.",
-        "status": "live"
+            "title": "Bazaar Art",
+            "repo": "bazaarart.github.io",
+            "url": "https://vervenveda.github.io/bazaarart.github.io/",
+            "symbol": "BA",
+            "description": "Art, artists, creative enterprise, community programs, exhibitions, and cultural resources.",
+            "status": "live",
+            "group": "Arts & Culture"
       },
       {
-        "title": "KinderGarden",
-        "repo": "KinderGarden.github.io",
-        "url": "https://vervenveda.github.io/KinderGarden.github.io/",
-        "symbol": "❀",
-        "description": "Kindergarten learning, foundational skills, stories, games, family activities, and creative growth.",
-        "status": "live"
+            "title": "My Art Gallery",
+            "repo": "myartgallery.github.io",
+            "url": "https://vervenveda.github.io/myartgallery.github.io/",
+            "symbol": "▣",
+            "description": "A dedicated gallery destination for exhibiting and exploring artwork and artist collections.",
+            "status": "live",
+            "group": "Arts & Culture"
       },
       {
-        "title": "Linguistics",
-        "repo": "linguistics.github.io",
-        "url": "https://vervenveda.github.io/linguistics.github.io/",
-        "symbol": "文",
-        "description": "Language science, world languages, writing systems, communication, translation, and linguistic inquiry.",
-        "status": "live"
+            "title": "The Refrain",
+            "repo": "the_refrain.github.io",
+            "url": "https://vervenveda.github.io/the_refrain.github.io/",
+            "symbol": "♫",
+            "description": "Music education, composition, recording, performance, and connected creative studios.",
+            "status": "live",
+            "group": "Arts & Culture"
       },
       {
-        "title": "Firmament Law",
-        "repo": "firmament.github.io",
-        "url": "https://vervenveda.github.io/firmament.github.io/",
-        "symbol": "⚖",
-        "description": "Legal-information tools, evidence workspaces, family resources, and public reference collections.",
-        "status": "live"
+            "title": "Aurora",
+            "repo": "aurora.github.io",
+            "url": "https://vervenveda.github.io/aurora.github.io/",
+            "symbol": "☼",
+            "description": "A creative and exploratory space for visual learning, reflection, ideas, and emerging projects.",
+            "status": "live",
+            "group": "Arts & Culture"
       },
       {
-        "title": "Solanar",
-        "repo": "solanar.github.io",
-        "url": "https://vervenveda.github.io/solanar.github.io/",
-        "symbol": "☼",
-        "description": "Weather, earth science, environmental awareness, lunar information, and global observation.",
-        "status": "live"
+            "title": "Arcade",
+            "repo": "arcade.github.io",
+            "url": "https://vervenveda.github.io/arcade.github.io/",
+            "symbol": "◈",
+            "description": "Games, strategy, creativity, trivia, puzzles, and playful learning experiences.",
+            "status": "live",
+            "group": "Play & Exploration"
       },
       {
-        "title": "My Art Gallery",
-        "repo": "myartgallery.github.io",
-        "url": "https://vervenveda.github.io/myartgallery.github.io/",
-        "symbol": "▣",
-        "description": "A developing gallery space for preserving, organizing, presenting, and sharing original artwork.",
-        "status": "setup"
+            "title": "Solanar",
+            "repo": "solanar.github.io",
+            "url": "https://vervenveda.github.io/solanar.github.io/",
+            "symbol": "☀",
+            "description": "Weather, earth science, environmental awareness, lunar information, and global observation.",
+            "status": "live",
+            "group": "Earth & Environment"
+      },
+      {
+            "title": "River to Road",
+            "repo": "river_to_road.github.io",
+            "url": "https://vervenveda.github.io/river_to_road.github.io/",
+            "symbol": "♧",
+            "description": "Environmental stewardship, community cleanup, local action, and neighborhood restoration.",
+            "status": "live",
+            "group": "Earth & Environment"
       }
-    ];
+];
 
-    const researchResources = [
+    let researchResources = [
       {
         "title": "Library of Congress Digital Collections",
         "provider": "Library of Congress",
@@ -4350,6 +4612,10 @@
     const researchGrid = document.getElementById("researchGrid");
     const networkGrid = document.getElementById("networkGrid");
     const directorySummary = document.getElementById("directorySummary");
+    const archiveCensus = document.getElementById("archiveCensus");
+    const futureGrid = document.getElementById("futureGrid");
+    const registryStatus = document.getElementById("registryStatus");
+    const exportRegistryButton = document.getElementById("exportRegistryButton");
     const filters = document.getElementById("filters");
     const archiveSearch = document.getElementById("archiveSearch");
     const resultsLine = document.getElementById("resultsLine");
@@ -4576,53 +4842,13 @@
         }
       ];
 
-      const repositoryGroups = [
-        {
-          label: "Knowledge & Learning",
-          titles: [
-            "ARSHIF Archives",
-            "Khaemenes Academy",
-            "Khaemenes University",
-            "Khaemenes Elementary",
-            "Khaemenes Junior High",
-            "Khaemenes High School",
-            "Linguistics",
-            "Medicament Hub",
-            "Firmament Law",
-            "The Verifier"
-          ]
-        },
-        {
-          label: "Public Service",
-          titles: [
-            "Veterans",
-            "Homeless Services",
-            "Finance",
-            "One Nation for All",
-            "River to Road",
-            "Administration"
-          ]
-        },
-        {
-          label: "Creative & Professional",
-          titles: [
-            "Bazaar Art",
-            "Aurora",
-            "ProResource Hub",
-            "Solanar",
-            "The Refrain",
-            "Arcade",
-            "My Art Gallery"
-          ]
-        },
-        {
-          label: "Early Learning",
-          titles: [
-            "Crèche Preschool",
-            "KinderGarden"
-          ]
-        }
-      ];
+      const repositoryGroups = [...new Set(networkSites.map((site) => site.group || "Connected Network"))]
+        .map((label) => ({
+          label,
+          titles: networkSites
+            .filter((site) => (site.group || "Connected Network") === label)
+            .map((site) => site.title)
+        }));
 
       const visibleAnchors = networkAnchors.filter((item) => {
         const searchText = `${item.title} ${item.subtitle}`.toLowerCase();
@@ -4653,36 +4879,7 @@
       }
 
       function siteSubtitle(site) {
-        const descriptions = {
-          "ARSHIF Archives": "Living archive, culture, history, and inquiry",
-          "Medicament Hub": "Health education and medical-resource halls",
-          "Crèche Preschool": "Playful preschool learning and family activities",
-          "One Nation for All": "Civic learning, participation, and public policy",
-          "Administration": "Planning and ecosystem management",
-          "The Verifier": "News discovery and source verification",
-          "Bazaar Art": "Artists, galleries, culture, and creative enterprise",
-          "Aurora": "Reflection, renewal, and supportive tools",
-          "Verve N Veda": "Main public gateway",
-          "Khaemenes University": "Higher education and advanced study",
-          "Khaemenes Elementary": "Elementary learning and family support",
-          "Khaemenes Junior High": "Middle-grade curriculum and student tools",
-          "Khaemenes High School": "High-school learning and future planning",
-          "River to Road": "Environmental stewardship and community action",
-          "ProResource Hub": "Professional templates and browser tools",
-          "Khaemenes Academy": "Sovereign education and lifelong learning",
-          "PLERA Search": "Research and public-resource discovery",
-          "Arcade": "Games, puzzles, trivia, and creative play",
-          "KinderGarden": "Foundational learning, stories, and activities",
-          "Linguistics": "Languages, writing systems, and communication",
-          "Firmament Law": "Law, rights, courts, and public legal resources",
-          "Solanar": "Weather, Earth systems, and environmental awareness",
-          "My Art Gallery": "Original artwork and gallery presentation",
-          "Veterans": "Benefits, health, housing, and family support",
-          "Homeless Services": "Housing, shelter, benefits, and coordinated help",
-          "Finance": "Financial literacy and practical money resources",
-          "The Refrain": "Music, composition, performance, and sound"
-        };
-        return descriptions[site.title] || site.description;
+        return site.description;
       }
 
       function renderSite(site) {
@@ -4803,6 +5000,86 @@
       return "Landing Page";
     }
 
+
+    function renderGrowthLedger() {
+      const categoryCount = new Set(halls.map((hall) => hall.category)).size;
+      const liveNetworkCount = networkSites.filter((site) => site.status === "live").length;
+      const census = [
+        { number: halls.length, label: "Archive Destinations" },
+        { number: categoryCount, label: "Knowledge Families" },
+        { number: researchResources.length, label: "Research Gateways" },
+        { number: networkSites.length, label: "Connected Repositories" },
+        { number: futureCollections.length, label: "Future Collections" }
+      ];
+
+      archiveCensus.innerHTML = census.map((item) => `
+        <div class="census-card">
+          <strong class="census-number">${item.number}</strong>
+          <span class="census-label">${escapeHTML(item.label)}</span>
+        </div>
+      `).join("");
+
+      futureGrid.innerHTML = futureCollections.map((collection) => `
+        <article class="future-card">
+          <span class="future-symbol" aria-hidden="true">${escapeHTML(collection.symbol)}</span>
+          <p class="future-status">Future Collection</p>
+          <h3>${escapeHTML(collection.title)}</h3>
+          <p>${escapeHTML(collection.description)}</p>
+        </article>
+      `).join("");
+
+      registryStatus.textContent =
+        `Registry ${archiveMeta.registryVersion || "embedded"} · ${liveNetworkCount} published network destinations · optional arshif_registry.json loading enabled`;
+    }
+
+    function currentRegistry() {
+      return {
+        ...archiveMeta,
+        exportedAt: new Date().toISOString(),
+        halls,
+        researchResources,
+        networkSites,
+        futureCollections
+      };
+    }
+
+    function downloadRegistry() {
+      const blob = new Blob([JSON.stringify(currentRegistry(), null, 2)], { type: "application/json" });
+      const url = URL.createObjectURL(blob);
+      const anchor = document.createElement("a");
+      anchor.href = url;
+      anchor.download = "arshif_registry.json";
+      document.body.appendChild(anchor);
+      anchor.click();
+      anchor.remove();
+      URL.revokeObjectURL(url);
+    }
+
+    async function loadExternalRegistry() {
+      try {
+        const response = await fetch("./arshif_registry.json", { cache: "no-store" });
+        if (!response.ok) throw new Error(`HTTP ${response.status}`);
+        const registry = await response.json();
+
+        if (!Array.isArray(registry.halls) || !Array.isArray(registry.researchResources) ||
+            !Array.isArray(registry.networkSites) || !Array.isArray(registry.futureCollections)) {
+          throw new Error("Registry arrays are incomplete.");
+        }
+
+        halls = registry.halls;
+        researchResources = registry.researchResources;
+        networkSites = registry.networkSites;
+        futureCollections = registry.futureCollections;
+        archiveMeta = { ...archiveMeta, ...registry };
+        registryStatus.textContent = `Loaded arshif_registry.json · registry ${archiveMeta.registryVersion || "current"}`;
+        return true;
+      } catch (error) {
+        registryStatus.textContent =
+          `Using the complete embedded registry · optional external registry was not loaded (${error.message}).`;
+        return false;
+      }
+    }
+
     function renderNetwork() {
       networkGrid.innerHTML = networkSites.map((site) => {
         const primaryUrl = sitePrimaryUrl(site);
@@ -4838,6 +5115,7 @@
       duplicateValues(halls.map((hall) => hall.path)).forEach((path) => issues.push(`Duplicate hall path: ${path}`));
       duplicateValues(networkSites.map((site) => site.repo)).forEach((repo) => issues.push(`Duplicate repository: ${repo}`));
       duplicateValues(researchResources.map((resource) => resource.url)).forEach((url) => issues.push(`Duplicate research URL: ${url}`));
+      duplicateValues(futureCollections.map((collection) => collection.title)).forEach((title) => issues.push(`Duplicate future collection: ${title}`));
 
       halls.forEach((hall) => {
         const isLocalApp = hall.path.startsWith("./apps/");
@@ -4860,7 +5138,7 @@
       });
 
       directorySummary.textContent =
-        `${halls.length} archive destinations · ${networkSites.length} connected repositories · ${researchResources.length} trusted research gateways`;
+        `${halls.length} archive destinations · ${networkSites.length} connected repositories · ${researchResources.length} trusted research gateways · registry ${archiveMeta.registryVersion || "embedded"}`;
 
       if (issues.length) {
         console.warn("ARSHIF directory audit found issues:", issues);
@@ -5009,6 +5287,7 @@
     clearButton.addEventListener("click", clearArchiveControls);
     randomButton.addEventListener("click", openRandomPath);
     printButton.addEventListener("click", () => window.print());
+    exportRegistryButton.addEventListener("click", downloadRegistry);
 
     menuButton.addEventListener("click", () => {
       if (siteMenu.classList.contains("is-open")) {
@@ -5046,14 +5325,19 @@
       }
     });
 
-    document.getElementById("year").textContent = String(new Date().getFullYear());
+    async function initializeArchive() {
+      await loadExternalRegistry();
+      renderGrowthLedger();
+      renderFilters();
+      renderHalls();
+      renderResources();
+      renderNetwork();
+      renderMenu();
+      auditDirectory();
+    }
 
-    renderFilters();
-    renderHalls();
-    renderResources();
-    renderNetwork();
-    renderMenu();
-    auditDirectory();
+    document.getElementById("year").textContent = String(new Date().getFullYear());
+    initializeArchive();
   </script>
 
   <style>
