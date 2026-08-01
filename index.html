@@ -8,7 +8,7 @@
   <meta name="theme-color" content="#f4efe7" />
   <meta name="color-scheme" content="light" />
   <meta name="referrer" content="no-referrer" />
-  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self'; connect-src 'self'; object-src 'none'; base-uri 'self'; form-action 'none'; upgrade-insecure-requests" />
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self'; connect-src 'none'; object-src 'none'; frame-src 'none'; worker-src 'none'; base-uri 'self'; form-action 'none'; upgrade-insecure-requests" />
   <meta property="og:title" content="ARSHIF — The Living Archive of Human Knowledge" />
   <meta property="og:description" content="A sovereign gateway to research halls, public learning, trusted archives, and the connected Verve N Veda knowledge network." />
   <meta property="og:type" content="website" />
@@ -3182,6 +3182,66 @@
     }
   </style>
 
+
+  <style id="arshif-audit-safety">
+    .status-badge[data-status="repair"]{
+      color:#7a4d30;
+      border-color:rgba(150,93,54,.38);
+      background:rgba(150,93,54,.08);
+    }
+    .status-badge[data-status="duplicate"]{
+      color:#6d577c;
+      border-color:rgba(111,83,132,.34);
+      background:rgba(111,83,132,.07);
+    }
+    .disabled-link{
+      min-height:42px;
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      padding:.65rem .85rem;
+      border:1px dashed rgba(120,87,52,.28);
+      border-radius:3px;
+      color:#776b60;
+      background:rgba(255,255,255,.3);
+      font-family:var(--sans,Arial,sans-serif);
+      font-size:.76rem;
+      font-weight:700;
+      letter-spacing:.06em;
+      text-transform:uppercase;
+      cursor:not-allowed;
+    }
+    .menu-link.menu-link-disabled{
+      opacity:.62;
+      cursor:not-allowed;
+    }
+    .menu-link.menu-link-disabled:hover{
+      transform:none;
+      background:rgba(255,255,255,.025);
+      border-color:rgba(227,201,143,.1);
+    }
+    .hall-card[data-status="repair"],
+    .hall-card[data-status="duplicate"]{
+      border-style:dashed;
+    }
+    .hall-status-note{
+      margin:.15rem 0 1rem;
+      color:#756b60;
+      font-family:var(--sans,Arial,sans-serif);
+      font-size:.78rem;
+      line-height:1.55;
+    }
+    .external-safety-note{
+      margin:1rem 0 0;
+      padding:.8rem 1rem;
+      border-left:3px solid var(--atlas-brass,#aa7d35);
+      color:#685d51;
+      background:rgba(255,255,255,.34);
+      font-family:var(--sans,Arial,sans-serif);
+      font-size:.82rem;
+    }
+  </style>
+
 </head>
 
 <body>
@@ -3375,9 +3435,9 @@
       <div class="archive-census" id="archiveCensus" aria-label="Current archive census"></div>
 
       <div class="growth-toolbar">
-        <a class="quiet-button" href="./apps/contribute_index.html">
-          Propose a New Hall <span aria-hidden="true">→</span>
-        </a>
+        <span class="quiet-button" aria-disabled="true" title="Contribution page is being rebuilt">
+          Propose a New Hall · In Development
+        </span>
         <button class="quiet-button" id="exportRegistryButton" type="button">
           Download Archive Index <span aria-hidden="true">↓</span>
         </button>
@@ -3435,8 +3495,8 @@
     <section class="section" id="research-gateways" aria-labelledby="researchGatewaysTitle">
       <div class="section-heading">
         <div>
-          <p class="section-kicker">Trusted Research Paths</p>
-          <h2 id="researchGatewaysTitle">Continue into established libraries and archives.</h2>
+          <p class="section-kicker">Reviewed External Research Paths</p>
+          <h2 id="researchGatewaysTitle">Continue into reviewed public libraries and archives.</h2>
           <p class="section-copy">
             These independent public institutions and scholarly services provide primary sources,
             public-domain works, open scholarship, museum collections, library discovery, and research reference.
@@ -3549,8 +3609,8 @@
     let archiveMeta = {
       "schema": "arshif-living-archive-registry",
       "schemaVersion": 1,
-      "registryVersion": "2026.07.31",
-      "lastUpdated": "2026-07-31",
+      "registryVersion": "2026.08.01-audited",
+      "lastUpdated": "2026-08-01",
       "title": "ARSHIF — The Living Archive of Human Knowledge",
       "maintainer": "Jennifer Kay Pearl",
       "principles": [
@@ -3561,7 +3621,8 @@
             "Intellectual Independence",
             "Human Dignity",
             "Sovereignty"
-      ]
+      ],
+      "auditPolicy": "Fail closed: only verified live hall paths and reviewed research domains are launchable."
 };
 
     let futureCollections = [
@@ -3629,630 +3690,708 @@
 
     let halls = [
       {
-        "id": "childrens-medicine",
-        "title": "Children’s Medicine Resource Portal",
-        "category": "Health & Life",
-        "kind": "Portal",
-        "symbol": "✚",
-        "path": "https://vervenveda.github.io/medicament-hub.github.io/halls/Children%27s%20Medicine%20Hall/",
-        "description": "A safety-first educational resource for symptom literacy, medicine awareness, caregiver logs, source research, and printable family reports.",
-        "pathways": [
-          "Children’s health literacy",
-          "Medicine safety",
-          "Caregiver documentation",
-          "Source research",
-          "Printable family reports"
-        ]
+            "id": "childrens-medicine",
+            "title": "Children’s Medicine Resource Portal",
+            "category": "Health & Life",
+            "kind": "Portal",
+            "symbol": "✚",
+            "path": "https://vervenveda.github.io/medicament-hub.github.io/halls/Childrens_Medicine_Hall/",
+            "description": "A safety-first educational resource for symptom literacy, medicine awareness, caregiver logs, source research, and printable family reports.",
+            "pathways": [
+                  "Children’s health literacy",
+                  "Medicine safety",
+                  "Caregiver documentation",
+                  "Source research",
+                  "Printable family reports"
+            ],
+            "status": "live",
+            "statusNote": "Verified repository path; corrected during the August 2026 audit."
       },
       {
-        "id": "culinary",
-        "title": "Culinary Hall",
-        "category": "Culture & Daily Life",
-        "kind": "Hall",
-        "symbol": "◒",
-        "path": "./apps/culinary_hall/",
-        "description": "World foodways, cooking and baking foundations, nutrition, preservation, agriculture, trade, ritual, and cultural identity.",
-        "pathways": [
-          "Culinary foundations",
-          "World foodways",
-          "Cooking and baking",
-          "Food preservation",
-          "Nutrition and culture"
-        ]
+            "id": "culinary",
+            "title": "Culinary Hall",
+            "category": "Culture & Daily Life",
+            "kind": "Hall",
+            "symbol": "◒",
+            "path": "./apps/culinary_hall/",
+            "description": "World foodways, cooking and baking foundations, nutrition, preservation, agriculture, trade, ritual, and cultural identity.",
+            "pathways": [
+                  "Culinary foundations",
+                  "World foodways",
+                  "Cooking and baking",
+                  "Food preservation",
+                  "Nutrition and culture"
+            ],
+            "status": "live",
+            "statusNote": "Verified repository path."
       },
       {
-        "id": "financial",
-        "title": "Financial Hall",
-        "category": "Civic & Practical",
-        "kind": "Hall",
-        "symbol": "◈",
-        "path": "./apps/financial_hall/",
-        "description": "A local-first financial education and certificate portal covering personal finance, institutions, markets, consumer protection, and public finance.",
-        "pathways": [
-          "Personal financial literacy",
-          "Economic history",
-          "Public finance",
-          "Markets and institutions",
-          "Consumer protection"
-        ]
+            "id": "financial",
+            "title": "Financial Hall",
+            "category": "Civic & Practical",
+            "kind": "Hall",
+            "symbol": "◈",
+            "path": "./apps/financial_hall/",
+            "description": "A local-first financial education and certificate portal covering personal finance, institutions, markets, consumer protection, and public finance.",
+            "pathways": [
+                  "Personal financial literacy",
+                  "Economic history",
+                  "Public finance",
+                  "Markets and institutions",
+                  "Consumer protection"
+            ],
+            "status": "live",
+            "statusNote": "Verified repository path."
       },
       {
-        "id": "holistic-medicine",
-        "title": "Holistic Medicine Hall",
-        "category": "Health & Life",
-        "kind": "Hall",
-        "symbol": "✧",
-        "path": "https://vervenveda.github.io/medicament-hub.github.io/halls/%20Holistic%20Medicine%20Hall/",
-        "description": "Whole-person wellness traditions studied with evidence standards, historical context, ethics, safety, and responsible comparison.",
-        "pathways": [
-          "Whole-person wellness",
-          "Evidence and safety",
-          "Historical traditions",
-          "Ethics of care",
-          "Complementary approaches"
-        ]
+            "id": "holistic-medicine",
+            "title": "Holistic Medicine Hall",
+            "category": "Health & Life",
+            "kind": "Hall",
+            "symbol": "✧",
+            "path": "https://vervenveda.github.io/medicament-hub.github.io/halls/%20Holistic%20Medicine%20Hall/",
+            "description": "Whole-person wellness traditions studied with evidence standards, historical context, ethics, safety, and responsible comparison.",
+            "pathways": [
+                  "Whole-person wellness",
+                  "Evidence and safety",
+                  "Historical traditions",
+                  "Ethics of care",
+                  "Complementary approaches"
+            ],
+            "status": "live",
+            "statusNote": "Verified repository path."
       },
       {
-        "id": "language",
-        "title": "Language Hall",
-        "category": "Texts & Language",
-        "kind": "Hall",
-        "symbol": "文",
-        "path": "./apps/language_hall/",
-        "description": "Language learning, linguistics, writing systems, vocabulary, pronunciation, translation, and cultural context.",
-        "pathways": [
-          "Language foundations",
-          "Writing systems",
-          "Vocabulary and pronunciation",
-          "Translation",
-          "Language and culture"
-        ]
+            "id": "language",
+            "title": "Language Hall",
+            "category": "Texts & Language",
+            "kind": "Hall",
+            "symbol": "文",
+            "path": "./apps/language_hall/",
+            "description": "Language learning, linguistics, writing systems, vocabulary, pronunciation, translation, and cultural context.",
+            "pathways": [
+                  "Language foundations",
+                  "Writing systems",
+                  "Vocabulary and pronunciation",
+                  "Translation",
+                  "Language and culture"
+            ],
+            "status": "live",
+            "statusNote": "Verified repository path."
       },
       {
-        "id": "nonprofit",
-        "title": "Nonprofit Hall",
-        "category": "Civic & Practical",
-        "kind": "Hall",
-        "symbol": "◎",
-        "path": "./apps/nonprofit_hall/",
-        "description": "Public service, governance, mission design, fundraising, compliance, accountability, and sustainable community impact.",
-        "pathways": [
-          "Formation and governance",
-          "Mission and strategy",
-          "Fundraising",
-          "Compliance",
-          "Impact measurement"
-        ]
+            "id": "nonprofit",
+            "title": "Nonprofit Hall",
+            "category": "Civic & Practical",
+            "kind": "Hall",
+            "symbol": "◎",
+            "path": "./apps/nonprofit_hall/",
+            "description": "Public service, governance, mission design, fundraising, compliance, accountability, and sustainable community impact.",
+            "pathways": [
+                  "Formation and governance",
+                  "Mission and strategy",
+                  "Fundraising",
+                  "Compliance",
+                  "Impact measurement"
+            ],
+            "status": "live",
+            "statusNote": "Verified repository path."
       },
       {
-        "id": "poetry",
-        "title": "Poetry Hall",
-        "category": "Arts & Expression",
-        "kind": "Hall",
-        "symbol": "❧",
-        "path": "./apps/poetry_hall/",
-        "description": "Poetic traditions, forms, voices, movements, performance, close reading, and the craft of language.",
-        "pathways": [
-          "World poetry",
-          "Forms and technique",
-          "Poetry movements",
-          "Oral performance",
-          "Writing practice"
-        ]
+            "id": "poetry",
+            "title": "Poetry Hall",
+            "category": "Arts & Expression",
+            "kind": "Hall",
+            "symbol": "❧",
+            "path": "./apps/poetry_hall/",
+            "description": "Poetic traditions, forms, voices, movements, performance, close reading, and the craft of language.",
+            "pathways": [
+                  "World poetry",
+                  "Forms and technique",
+                  "Poetry movements",
+                  "Oral performance",
+                  "Writing practice"
+            ],
+            "status": "live",
+            "statusNote": "Verified repository path."
       },
       {
-        "id": "traditional-medicine",
-        "title": "Traditional Medicine Hall",
-        "category": "Health & Life",
-        "kind": "Hall",
-        "symbol": "☤",
-        "path": "https://vervenveda.github.io/medicament-hub.github.io/halls/Traditional%20Medicine%20Hall/",
-        "description": "Traditional healing systems studied in historical and cultural context with attention to evidence, safety, ethics, and respectful comparison.",
-        "pathways": [
-          "Healing traditions",
-          "Cultural context",
-          "Materia medica history",
-          "Safety and evidence",
-          "Comparative study"
-        ]
+            "id": "traditional-medicine",
+            "title": "Traditional Medicine Hall",
+            "category": "Health & Life",
+            "kind": "Hall",
+            "symbol": "☤",
+            "path": "https://vervenveda.github.io/medicament-hub.github.io/halls/Traditional%20Medicine%20Hall/",
+            "description": "Traditional healing systems studied in historical and cultural context with attention to evidence, safety, ethics, and respectful comparison.",
+            "pathways": [
+                  "Healing traditions",
+                  "Cultural context",
+                  "Materia medica history",
+                  "Safety and evidence",
+                  "Comparative study"
+            ],
+            "status": "repair",
+            "statusNote": "The linked page exists, but its doctype is malformed and should be corrected."
       },
       {
-        "id": "bible-history",
-        "title": "Bible & History Parallels",
-        "category": "Faith & Sacred Texts",
-        "kind": "Course",
-        "symbol": "⌛",
-        "path": "./apps/Bible_and_History_index.html",
-        "description": "A structured course comparing biblical narratives with historical settings, chronology, archaeology, empires, and source traditions.",
-        "pathways": [
-          "Historical context",
-          "Chronology",
-          "Ancient civilizations",
-          "Archaeology and texts",
-          "Comparative study"
-        ]
+            "id": "bible-history",
+            "title": "Bible & History Parallels",
+            "category": "Faith & Sacred Texts",
+            "kind": "Course",
+            "symbol": "⌛",
+            "path": "./apps/Bible_and_History_index.html",
+            "description": "A structured course comparing biblical narratives with historical settings, chronology, archaeology, empires, and source traditions.",
+            "pathways": [
+                  "Historical context",
+                  "Chronology",
+                  "Ancient civilizations",
+                  "Archaeology and texts",
+                  "Comparative study"
+            ],
+            "status": "live",
+            "statusNote": "Verified repository path."
       },
       {
-        "id": "bible-context",
-        "title": "Text, Transmission & Canon",
-        "category": "Faith & Sacred Texts",
-        "kind": "Course",
-        "symbol": "¶",
-        "path": "./apps/Bible_context_index.html",
-        "description": "A study of how biblical texts were written, copied, transmitted, translated, collected, and interpreted across time.",
-        "pathways": [
-          "Manuscript transmission",
-          "Canon formation",
-          "Translation history",
-          "Textual context",
-          "Source comparison"
-        ]
+            "id": "bible-context",
+            "title": "Text, Transmission & Canon",
+            "category": "Faith & Sacred Texts",
+            "kind": "Course",
+            "symbol": "¶",
+            "path": "./apps/Bible_context_index.html",
+            "description": "A study of how biblical texts were written, copied, transmitted, translated, collected, and interpreted across time.",
+            "pathways": [
+                  "Manuscript transmission",
+                  "Canon formation",
+                  "Translation history",
+                  "Textual context",
+                  "Source comparison"
+            ],
+            "status": "live",
+            "statusNote": "Verified repository path."
       },
       {
-        "id": "biblical-directory",
-        "title": "Biblical Web Directory",
-        "category": "Faith & Sacred Texts",
-        "kind": "Directory",
-        "symbol": "⌕",
-        "path": "./apps/Biblical_web_directory_index.html",
-        "description": "A curated gateway to biblical texts, manuscripts, maps, languages, archaeology, history, and study resources.",
-        "pathways": [
-          "Digital Bibles",
-          "Manuscripts",
-          "Biblical languages",
-          "Maps and archaeology",
-          "Research directories"
-        ]
+            "id": "biblical-directory",
+            "title": "Biblical Web Directory",
+            "category": "Faith & Sacred Texts",
+            "kind": "Directory",
+            "symbol": "⌕",
+            "path": "./apps/Biblical_web_directory_index.html",
+            "description": "A curated gateway to biblical texts, manuscripts, maps, languages, archaeology, history, and study resources.",
+            "pathways": [
+                  "Digital Bibles",
+                  "Manuscripts",
+                  "Biblical languages",
+                  "Maps and archaeology",
+                  "Research directories"
+            ],
+            "status": "live",
+            "statusNote": "Verified repository path."
       },
       {
-        "id": "foundations-faith",
-        "title": "Foundations of Faith",
-        "category": "Faith & Sacred Texts",
-        "kind": "Study Portal",
-        "symbol": "△",
-        "path": "./apps/Foundations_of_faith_index.html",
-        "description": "A self-paced portal exploring foundational beliefs, scripture study, reflection, practice, and personal understanding.",
-        "pathways": [
-          "Foundational beliefs",
-          "Scripture study",
-          "Reflection",
-          "Practice",
-          "Personal study"
-        ]
+            "id": "foundations-faith",
+            "title": "Foundations of Faith",
+            "category": "Faith & Sacred Texts",
+            "kind": "Study Portal",
+            "symbol": "△",
+            "path": "./apps/Foundations_of_faith_index.html",
+            "description": "A self-paced portal exploring foundational beliefs, scripture study, reflection, practice, and personal understanding.",
+            "pathways": [
+                  "Foundational beliefs",
+                  "Scripture study",
+                  "Reflection",
+                  "Practice",
+                  "Personal study"
+            ],
+            "status": "live",
+            "statusNote": "Verified repository path."
       },
       {
-        "id": "plera-search",
-        "title": "PLERA Search",
-        "category": "Research Tools",
-        "kind": "Search Gateway",
-        "symbol": "◌",
-        "path": "./apps/PLERA_Search_index.html",
-        "description": "A broad research gateway for finding public resources, learning materials, archives, reference tools, and connected projects.",
-        "pathways": [
-          "Research discovery",
-          "Public resources",
-          "Learning tools",
-          "Archive navigation",
-          "Connected search"
-        ]
+            "id": "plera-search",
+            "title": "PLERA Search",
+            "category": "Research Tools",
+            "kind": "Search Gateway",
+            "symbol": "◌",
+            "path": "./apps/PLERA_Search_index.html",
+            "description": "A broad research gateway for finding public resources, learning materials, archives, reference tools, and connected projects.",
+            "pathways": [
+                  "Research discovery",
+                  "Public resources",
+                  "Learning tools",
+                  "Archive navigation",
+                  "Connected search"
+            ],
+            "status": "live",
+            "statusNote": "Verified repository path."
       },
       {
-        "id": "reading-room",
-        "title": "ARSHIF Reading Room",
-        "category": "Research Tools",
-        "kind": "Reading Space",
-        "symbol": "▤",
-        "path": "./apps/Reading_room_index.html",
-        "description": "A focused reading environment for organizing texts, study sessions, notes, reflection, and independent inquiry.",
-        "pathways": [
-          "Focused reading",
-          "Study organization",
-          "Notes and reflection",
-          "Text collections",
-          "Independent inquiry"
-        ]
+            "id": "reading-room",
+            "title": "ARSHIF Reading Room",
+            "category": "Research Tools",
+            "kind": "Reading Space",
+            "symbol": "▤",
+            "path": "./apps/Reading_room_index.html",
+            "description": "A focused reading environment for organizing texts, study sessions, notes, reflection, and independent inquiry.",
+            "pathways": [
+                  "Focused reading",
+                  "Study organization",
+                  "Notes and reflection",
+                  "Text collections",
+                  "Independent inquiry"
+            ],
+            "status": "repair",
+            "statusNote": "The file exists but is an HTML fragment rather than a complete standalone document."
       },
       {
-        "id": "song-embedder",
-        "title": "Song Embedder",
-        "category": "Arts & Expression",
-        "kind": "Creative Tool",
-        "symbol": "♫",
-        "path": "./apps/Song_embedder_index.html",
-        "description": "A browser-based creative tool for organizing and presenting songs, recordings, lyrics, notes, and embedded media.",
-        "pathways": [
-          "Song organization",
-          "Media embedding",
-          "Lyrics and notes",
-          "Creative presentation",
-          "Music archives"
-        ]
+            "id": "song-embedder",
+            "title": "Song Embedder",
+            "category": "Arts & Expression",
+            "kind": "Creative Tool",
+            "symbol": "♫",
+            "path": "./apps/Song_embedder_index.html",
+            "description": "A browser-based creative tool for organizing and presenting songs, recordings, lyrics, notes, and embedded media.",
+            "pathways": [
+                  "Song organization",
+                  "Media embedding",
+                  "Lyrics and notes",
+                  "Creative presentation",
+                  "Music archives"
+            ],
+            "status": "live",
+            "statusNote": "Verified repository path."
       },
       {
-        "id": "testament-study",
-        "title": "Testament Study Portal",
-        "category": "Faith & Sacred Texts",
-        "kind": "Study Portal",
-        "symbol": "✦",
-        "path": "./apps/Testament_study_portal_index.html",
-        "description": "A structured study environment for testament texts, themes, people, places, chronology, and cross-reference work.",
-        "pathways": [
-          "Text study",
-          "Themes and people",
-          "Places and chronology",
-          "Cross references",
-          "Study notes"
-        ]
+            "id": "testament-study",
+            "title": "Testament Study Portal",
+            "category": "Faith & Sacred Texts",
+            "kind": "Study Portal",
+            "symbol": "✦",
+            "path": "./apps/Testament_study_portal_index.html",
+            "description": "A structured study environment for testament texts, themes, people, places, chronology, and cross-reference work.",
+            "pathways": [
+                  "Text study",
+                  "Themes and people",
+                  "Places and chronology",
+                  "Cross references",
+                  "Study notes"
+            ],
+            "status": "live",
+            "statusNote": "Verified repository path."
       },
       {
-        "id": "the-testament",
-        "title": "The Testament",
-        "category": "Faith & Sacred Texts",
-        "kind": "Archive",
-        "symbol": "✧",
-        "path": "./apps/The_Testament_index.html",
-        "description": "An immersive testament archive for reading, contextual exploration, reflection, and preservation of connected study materials.",
-        "pathways": [
-          "Testament reading",
-          "Historical context",
-          "Themes",
-          "Reflection",
-          "Preservation"
-        ]
+            "id": "the-testament",
+            "title": "The Testament",
+            "category": "Faith & Sacred Texts",
+            "kind": "Archive",
+            "symbol": "✧",
+            "path": "./apps/The_Testament_index.html",
+            "description": "An immersive testament archive for reading, contextual exploration, reflection, and preservation of connected study materials.",
+            "pathways": [
+                  "Testament reading",
+                  "Historical context",
+                  "Themes",
+                  "Reflection",
+                  "Preservation"
+            ],
+            "status": "duplicate",
+            "statusNote": "This file is currently byte-identical to Testament Study Portal and does not yet provide a distinct archive."
       },
       {
-        "id": "truth-tribe-class",
-        "title": "Truth Tribe Class",
-        "category": "Faith & Sacred Texts",
-        "kind": "Class Portal",
-        "symbol": "◇",
-        "path": "./apps/Truth_tribe_class_index.html",
-        "description": "A guided class environment centered on inquiry, scripture, discussion, source awareness, and reflective learning.",
-        "pathways": [
-          "Guided lessons",
-          "Source awareness",
-          "Discussion",
-          "Reflection",
-          "Class activities"
-        ]
+            "id": "truth-tribe-class",
+            "title": "Truth Tribe Class",
+            "category": "Faith & Sacred Texts",
+            "kind": "Class Portal",
+            "symbol": "◇",
+            "path": "./apps/Truth_tribe_class_index.html",
+            "description": "A guided class environment centered on inquiry, scripture, discussion, source awareness, and reflective learning.",
+            "pathways": [
+                  "Guided lessons",
+                  "Source awareness",
+                  "Discussion",
+                  "Reflection",
+                  "Class activities"
+            ],
+            "status": "live",
+            "statusNote": "Verified repository path."
       },
       {
-        "id": "truth-tribe",
-        "title": "Truth Tribe",
-        "category": "Faith & Sacred Texts",
-        "kind": "Community Portal",
-        "symbol": "◉",
-        "path": "./apps/Truth_tribe_index.html",
-        "description": "A faith-centered learning and community portal for study, reflection, discussion, and shared exploration.",
-        "pathways": [
-          "Community study",
-          "Reflection",
-          "Discussion",
-          "Faith learning",
-          "Shared exploration"
-        ]
+            "id": "truth-tribe",
+            "title": "Truth Tribe",
+            "category": "Faith & Sacred Texts",
+            "kind": "Community Portal",
+            "symbol": "◉",
+            "path": "./apps/Truth_tribe_index.html",
+            "description": "A faith-centered learning and community portal for study, reflection, discussion, and shared exploration.",
+            "pathways": [
+                  "Community study",
+                  "Reflection",
+                  "Discussion",
+                  "Faith learning",
+                  "Shared exploration"
+            ],
+            "status": "live",
+            "statusNote": "Verified repository path."
       },
       {
-        "id": "truth-tribe-kids",
-        "title": "Truth Tribe Kids",
-        "category": "Faith & Sacred Texts",
-        "kind": "Kids Portal",
-        "symbol": "☀",
-        "path": "./apps/Truth_tribe_kids_index.html",
-        "description": "An age-conscious faith and history portal designed to help children learn through stories, activities, questions, and reflection.",
-        "pathways": [
-          "Stories",
-          "Age-appropriate lessons",
-          "Activities",
-          "Questions",
-          "Reflection"
-        ]
+            "id": "truth-tribe-kids",
+            "title": "Truth Tribe Kids",
+            "category": "Faith & Sacred Texts",
+            "kind": "Kids Portal",
+            "symbol": "☀",
+            "path": "./apps/Truth_tribe_kids_index.html",
+            "description": "An age-conscious faith and history portal designed to help children learn through stories, activities, questions, and reflection.",
+            "pathways": [
+                  "Stories",
+                  "Age-appropriate lessons",
+                  "Activities",
+                  "Questions",
+                  "Reflection"
+            ],
+            "status": "duplicate",
+            "statusNote": "This file is currently byte-identical to Truth Tribe Class and does not yet provide a distinct kids experience."
       },
       {
-        "id": "yahushua-study",
-        "title": "Yahushua Study",
-        "category": "Faith & Sacred Texts",
-        "kind": "Course",
-        "symbol": "✥",
-        "path": "./apps/Yahushua_Study_index.html",
-        "description": "A focused study of Yahushua through historical context, texts, language, teachings, geography, and source comparison.",
-        "pathways": [
-          "Historical context",
-          "Teachings",
-          "Language",
-          "Geography",
-          "Source comparison"
-        ]
+            "id": "yahushua-study",
+            "title": "Yahushua Study",
+            "category": "Faith & Sacred Texts",
+            "kind": "Course",
+            "symbol": "✥",
+            "path": "./apps/Yahushua_Study_index.html",
+            "description": "A focused study of Yahushua through historical context, texts, language, teachings, geography, and source comparison.",
+            "pathways": [
+                  "Historical context",
+                  "Teachings",
+                  "Language",
+                  "Geography",
+                  "Source comparison"
+            ],
+            "status": "live",
+            "statusNote": "Verified repository path."
       },
       {
-        "id": "yahushua-portal",
-        "title": "Yahushua Research Portal",
-        "category": "Faith & Sacred Texts",
-        "kind": "Research Portal",
-        "symbol": "✺",
-        "path": "./apps/Yahushua_portal_index.html",
-        "description": "A research gateway connecting texts, history, chronology, scholarship, maps, and thematic study related to Yahushua.",
-        "pathways": [
-          "Texts and history",
-          "Chronology",
-          "Scholarship",
-          "Maps",
-          "Thematic study"
-        ]
+            "id": "yahushua-portal",
+            "title": "Yahushua Research Portal",
+            "category": "Faith & Sacred Texts",
+            "kind": "Research Portal",
+            "symbol": "✺",
+            "path": "./apps/Yahushua_portal_index.html",
+            "description": "A research gateway connecting texts, history, chronology, scholarship, maps, and thematic study related to Yahushua.",
+            "pathways": [
+                  "Texts and history",
+                  "Chronology",
+                  "Scholarship",
+                  "Maps",
+                  "Thematic study"
+            ],
+            "status": "live",
+            "statusNote": "Verified repository path."
       },
       {
-        "id": "bible-before-canon",
-        "title": "Bible Before the Canon",
-        "category": "Faith & Sacred Texts",
-        "kind": "Course",
-        "symbol": "⌘",
-        "path": "./apps/bible_before_cannon_index.html",
-        "description": "An inquiry into early textual traditions, communities, manuscript transmission, and the historical formation of biblical canons.",
-        "pathways": [
-          "Early texts",
-          "Communities",
-          "Manuscripts",
-          "Canon history",
-          "Historical inquiry"
-        ]
+            "id": "bible-before-canon",
+            "title": "Bible Before the Canon",
+            "category": "Faith & Sacred Texts",
+            "kind": "Course",
+            "symbol": "⌘",
+            "path": "./apps/bible_before_cannon_index.html",
+            "description": "An inquiry into early textual traditions, communities, manuscript transmission, and the historical formation of biblical canons.",
+            "pathways": [
+                  "Early texts",
+                  "Communities",
+                  "Manuscripts",
+                  "Canon history",
+                  "Historical inquiry"
+            ],
+            "status": "live",
+            "statusNote": "Verified repository path."
       },
       {
-        "id": "biblical-portal",
-        "title": "Biblical Research Portal",
-        "category": "Faith & Sacred Texts",
-        "kind": "Research Portal",
-        "symbol": "✢",
-        "path": "./apps/biblical_portal_index.html",
-        "description": "A central biblical research environment connecting texts, languages, history, archaeology, maps, themes, and study tools.",
-        "pathways": [
-          "Texts",
-          "Languages",
-          "History and archaeology",
-          "Maps",
-          "Study tools"
-        ]
+            "id": "biblical-portal",
+            "title": "Biblical Research Portal",
+            "category": "Faith & Sacred Texts",
+            "kind": "Research Portal",
+            "symbol": "✢",
+            "path": "./apps/biblical_portal_index.html",
+            "description": "A central biblical research environment connecting texts, languages, history, archaeology, maps, themes, and study tools.",
+            "pathways": [
+                  "Texts",
+                  "Languages",
+                  "History and archaeology",
+                  "Maps",
+                  "Study tools"
+            ],
+            "status": "repair",
+            "statusNote": "The file exists but is an HTML fragment rather than a complete standalone document."
       },
       {
-        "id": "business-hall",
-        "title": "Business Management Hall",
-        "category": "Civic & Practical",
-        "kind": "Hall",
-        "symbol": "▦",
-        "path": "./apps/business_hall_index.html",
-        "description": "A certification-oriented study environment for management, operations, leadership, marketing, finance, ethics, and organizational strategy.",
-        "pathways": [
-          "Management foundations",
-          "Operations",
-          "Leadership",
-          "Marketing and finance",
-          "Business ethics"
-        ]
+            "id": "business-hall",
+            "title": "Business Management Hall",
+            "category": "Civic & Practical",
+            "kind": "Hall",
+            "symbol": "▦",
+            "path": "./apps/business_hall_index.html",
+            "description": "A certification-oriented study environment for management, operations, leadership, marketing, finance, ethics, and organizational strategy.",
+            "pathways": [
+                  "Management foundations",
+                  "Operations",
+                  "Leadership",
+                  "Marketing and finance",
+                  "Business ethics"
+            ],
+            "status": "live",
+            "statusNote": "Verified repository path."
       },
       {
-        "id": "business-hub",
-        "title": "Business Resource Hub",
-        "category": "Civic & Practical",
-        "kind": "Resource Hub",
-        "symbol": "⌘",
-        "path": "./apps/business_hub_index.html",
-        "description": "A practical gateway connecting planning resources, operations tools, funding pathways, professional development, and support services.",
-        "pathways": [
-          "Business planning",
-          "Operations resources",
-          "Funding pathways",
-          "Professional development",
-          "Support services"
-        ]
+            "id": "business-hub",
+            "title": "Business Resource Hub",
+            "category": "Civic & Practical",
+            "kind": "Resource Hub",
+            "symbol": "⌘",
+            "path": "./apps/business_hub_index.html",
+            "description": "A practical gateway connecting planning resources, operations tools, funding pathways, professional development, and support services.",
+            "pathways": [
+                  "Business planning",
+                  "Operations resources",
+                  "Funding pathways",
+                  "Professional development",
+                  "Support services"
+            ],
+            "status": "live",
+            "statusNote": "Verified repository path."
       },
       {
-        "id": "business-incubator",
-        "title": "Business Incubator",
-        "category": "Civic & Practical",
-        "kind": "Builder",
-        "symbol": "↗",
-        "path": "./apps/business_incubator_index.html",
-        "description": "Develop an idea from early research through validation, planning, ethical launch, resilient operations, and community-centered growth.",
-        "pathways": [
-          "Idea validation",
-          "Business models",
-          "Launch planning",
-          "Resilient operations",
-          "Community enterprise"
-        ]
+            "id": "business-incubator",
+            "title": "Business Incubator",
+            "category": "Civic & Practical",
+            "kind": "Builder",
+            "symbol": "↗",
+            "path": "./apps/business_incubator_index.html",
+            "description": "Develop an idea from early research through validation, planning, ethical launch, resilient operations, and community-centered growth.",
+            "pathways": [
+                  "Idea validation",
+                  "Business models",
+                  "Launch planning",
+                  "Resilient operations",
+                  "Community enterprise"
+            ],
+            "status": "live",
+            "statusNote": "Verified repository path."
       },
       {
-        "id": "contribute",
-        "title": "Contribute to ARSHIF",
-        "category": "Research Tools",
-        "kind": "Stewardship",
-        "symbol": "+",
-        "path": "./apps/contribute_index.html",
-        "description": "A guided pathway for submitting corrections, resource suggestions, source notes, accessibility concerns, and archive stewardship reports.",
-        "pathways": [
-          "Corrections",
-          "Resource suggestions",
-          "Source notes",
-          "Accessibility reports",
-          "Archive stewardship"
-        ]
+            "id": "contribute",
+            "title": "Contribute to ARSHIF",
+            "category": "Research Tools",
+            "kind": "Stewardship",
+            "symbol": "+",
+            "path": "./apps/contribute_index.html",
+            "description": "A guided pathway for submitting corrections, resource suggestions, source notes, accessibility concerns, and archive stewardship reports.",
+            "pathways": [
+                  "Corrections",
+                  "Resource suggestions",
+                  "Source notes",
+                  "Accessibility reports",
+                  "Archive stewardship"
+            ],
+            "status": "repair",
+            "statusNote": "The file is only a Stripe buy-button script fragment and is not a complete standalone ARSHIF page."
       },
       {
-        "id": "exercise-log",
-        "title": "Exercise Log",
-        "category": "Health & Life",
-        "kind": "Local Tool",
-        "symbol": "△",
-        "path": "https://vervenveda.github.io/medicament-hub.github.io/tools/Universal%20Exercise%20Log%20%26%20Workout%20Tracker_index.html",
-        "description": "A private browser-based space for recording movement, routines, goals, reflections, and personal progress over time.",
-        "pathways": [
-          "Activity logging",
-          "Routine planning",
-          "Goal tracking",
-          "Progress reflection",
-          "Local browser records"
-        ]
+            "id": "exercise-log",
+            "title": "Exercise Log",
+            "category": "Health & Life",
+            "kind": "Local Tool",
+            "symbol": "△",
+            "path": "https://vervenveda.github.io/medicament-hub.github.io/tools/Universal_Exercise_Log_Workout_Tracker_index.html",
+            "description": "A private browser-based space for recording movement, routines, goals, reflections, and personal progress over time.",
+            "pathways": [
+                  "Activity logging",
+                  "Routine planning",
+                  "Goal tracking",
+                  "Progress reflection",
+                  "Local browser records"
+            ],
+            "status": "live",
+            "statusNote": "Verified repository path; corrected during the August 2026 audit."
       },
       {
-        "id": "lost-works",
-        "title": "Archive of Lost Works",
-        "category": "Memory & Civilization",
-        "kind": "Archive",
-        "symbol": "◇",
-        "path": "./apps/lost_works_index.html",
-        "description": "Trace missing, fragmentary, suppressed, destroyed, or rediscovered works and consider what their absence reveals about history and memory.",
-        "pathways": [
-          "Lost literature",
-          "Fragmentary evidence",
-          "Destroyed archives",
-          "Rediscovery",
-          "Cultural memory"
-        ]
+            "id": "lost-works",
+            "title": "Archive of Lost Works",
+            "category": "Memory & Civilization",
+            "kind": "Archive",
+            "symbol": "◇",
+            "path": "./apps/lost_works_index.html",
+            "description": "Trace missing, fragmentary, suppressed, destroyed, or rediscovered works and consider what their absence reveals about history and memory.",
+            "pathways": [
+                  "Lost literature",
+                  "Fragmentary evidence",
+                  "Destroyed archives",
+                  "Rediscovery",
+                  "Cultural memory"
+            ],
+            "status": "repair",
+            "statusNote": "The file exists but is an HTML fragment rather than a complete standalone document."
       },
       {
-        "id": "mythology",
-        "title": "Hall of Mythology",
-        "category": "Memory & Civilization",
-        "kind": "Hall",
-        "symbol": "☾",
-        "path": "./apps/mythology_hall_index.html",
-        "description": "Myths, symbols, cosmologies, heroes, sacred narratives, comparative traditions, and the cultural worlds that carried them.",
-        "pathways": [
-          "World mythologies",
-          "Creation narratives",
-          "Heroes and archetypes",
-          "Symbols and ritual",
-          "Comparative mythology"
-        ]
+            "id": "mythology",
+            "title": "Hall of Mythology",
+            "category": "Memory & Civilization",
+            "kind": "Hall",
+            "symbol": "☾",
+            "path": "./apps/mythology_hall_index.html",
+            "description": "Myths, symbols, cosmologies, heroes, sacred narratives, comparative traditions, and the cultural worlds that carried them.",
+            "pathways": [
+                  "World mythologies",
+                  "Creation narratives",
+                  "Heroes and archetypes",
+                  "Symbols and ritual",
+                  "Comparative mythology"
+            ],
+            "status": "live",
+            "statusNote": "Verified repository path."
       },
       {
-        "id": "oral-traditions",
-        "title": "Hall of Oral Traditions",
-        "category": "Memory & Civilization",
-        "kind": "Hall",
-        "symbol": "◉",
-        "path": "./apps/oral_traditions_index.html",
-        "description": "Storytelling, song, genealogy, testimony, performance, and community memory transmitted through living voices.",
-        "pathways": [
-          "Storytelling traditions",
-          "Oral history",
-          "Song and performance",
-          "Genealogy and memory",
-          "Preservation ethics"
-        ]
+            "id": "oral-traditions",
+            "title": "Hall of Oral Traditions",
+            "category": "Memory & Civilization",
+            "kind": "Hall",
+            "symbol": "◉",
+            "path": "./apps/oral_traditions_index.html",
+            "description": "Storytelling, song, genealogy, testimony, performance, and community memory transmitted through living voices.",
+            "pathways": [
+                  "Storytelling traditions",
+                  "Oral history",
+                  "Song and performance",
+                  "Genealogy and memory",
+                  "Preservation ethics"
+            ],
+            "status": "live",
+            "statusNote": "Verified repository path."
       },
       {
-        "id": "philosophy",
-        "title": "Hall of Philosophy",
-        "category": "Texts & Ideas",
-        "kind": "Hall",
-        "symbol": "Φ",
-        "path": "./apps/philosophy_Hall_index.html",
-        "description": "Questions of being, knowledge, ethics, logic, meaning, politics, beauty, mind, and human responsibility.",
-        "pathways": [
-          "Ethics",
-          "Logic",
-          "Epistemology",
-          "Political philosophy",
-          "Philosophy of mind"
-        ]
+            "id": "philosophy",
+            "title": "Hall of Philosophy",
+            "category": "Texts & Ideas",
+            "kind": "Hall",
+            "symbol": "Φ",
+            "path": "./apps/philosophy_Hall_index.html",
+            "description": "Questions of being, knowledge, ethics, logic, meaning, politics, beauty, mind, and human responsibility.",
+            "pathways": [
+                  "Ethics",
+                  "Logic",
+                  "Epistemology",
+                  "Political philosophy",
+                  "Philosophy of mind"
+            ],
+            "status": "live",
+            "statusNote": "Verified repository path."
       },
       {
-        "id": "remnant-nations",
-        "title": "The Remnant & The Nations",
-        "category": "Faith & Sacred Texts",
-        "kind": "Course",
-        "symbol": "∞",
-        "path": "./apps/remnant_nations_inndex.html",
-        "description": "An eight-week course examining remnant and nations themes through scripture, history, interpretation, and reflective study.",
-        "pathways": [
-          "Scriptural themes",
-          "Historical context",
-          "Interpretation",
-          "Nations and identity",
-          "Reflective study"
-        ]
+            "id": "remnant-nations",
+            "title": "The Remnant & The Nations",
+            "category": "Faith & Sacred Texts",
+            "kind": "Course",
+            "symbol": "∞",
+            "path": "./apps/remnant_nations_inndex.html",
+            "description": "An eight-week course examining remnant and nations themes through scripture, history, interpretation, and reflective study.",
+            "pathways": [
+                  "Scriptural themes",
+                  "Historical context",
+                  "Interpretation",
+                  "Nations and identity",
+                  "Reflective study"
+            ],
+            "status": "live",
+            "statusNote": "Verified repository path."
       },
       {
-        "id": "science",
-        "title": "Hall of the History of Science",
-        "category": "Science & Inquiry",
-        "kind": "Hall",
-        "symbol": "⚗",
-        "path": "./apps/science_hall_index.html",
-        "description": "The development of observation, experiment, mathematics, instruments, institutions, debate, and scientific revolutions.",
-        "pathways": [
-          "Scientific method",
-          "History of discovery",
-          "Instruments and measurement",
-          "Scientific institutions",
-          "Ethics of science"
-        ]
+            "id": "science",
+            "title": "Hall of the History of Science",
+            "category": "Science & Inquiry",
+            "kind": "Hall",
+            "symbol": "⚗",
+            "path": "./apps/science_hall_index.html",
+            "description": "The development of observation, experiment, mathematics, instruments, institutions, debate, and scientific revolutions.",
+            "pathways": [
+                  "Scientific method",
+                  "History of discovery",
+                  "Instruments and measurement",
+                  "Scientific institutions",
+                  "Ethics of science"
+            ],
+            "status": "live",
+            "statusNote": "Verified repository path."
       },
       {
-        "id": "theatre",
-        "title": "Hall of Theatre",
-        "category": "Arts & Expression",
-        "kind": "Hall",
-        "symbol": "◐",
-        "path": "./apps/theatre_hall_index.html",
-        "description": "Drama, performance, stagecraft, playwrights, theatrical traditions, criticism, and the social life of the stage.",
-        "pathways": [
-          "World theatre",
-          "Playwriting",
-          "Performance traditions",
-          "Stagecraft",
-          "Theatre criticism"
-        ]
+            "id": "theatre",
+            "title": "Hall of Theatre",
+            "category": "Arts & Expression",
+            "kind": "Hall",
+            "symbol": "◐",
+            "path": "./apps/theatre_hall_index.html",
+            "description": "Drama, performance, stagecraft, playwrights, theatrical traditions, criticism, and the social life of the stage.",
+            "pathways": [
+                  "World theatre",
+                  "Playwriting",
+                  "Performance traditions",
+                  "Stagecraft",
+                  "Theatre criticism"
+            ],
+            "status": "live",
+            "statusNote": "Verified repository path."
       },
       {
-        "id": "travel-exploration",
-        "title": "Hall of Travel & Exploration",
-        "category": "Memory & Civilization",
-        "kind": "Hall",
-        "symbol": "⌖",
-        "path": "./apps/travel_exploration_hall_index.html",
-        "description": "Travel narratives, mapping, navigation, encounter, migration, expedition, colonial context, and the ethics of exploration.",
-        "pathways": [
-          "Travel writing",
-          "Cartography",
-          "Navigation",
-          "Expeditions and encounter",
-          "Ethics of exploration"
-        ]
+            "id": "travel-exploration",
+            "title": "Hall of Travel & Exploration",
+            "category": "Memory & Civilization",
+            "kind": "Hall",
+            "symbol": "⌖",
+            "path": "./apps/travel_exploration_hall_index.html",
+            "description": "Travel narratives, mapping, navigation, encounter, migration, expedition, colonial context, and the ethics of exploration.",
+            "pathways": [
+                  "Travel writing",
+                  "Cartography",
+                  "Navigation",
+                  "Expeditions and encounter",
+                  "Ethics of exploration"
+            ],
+            "status": "duplicate",
+            "statusNote": "This file is currently byte-identical to Hall of Mythology and does not yet provide distinct travel content."
       },
       {
-        "id": "world-classics",
-        "title": "Hall of World Classics",
-        "category": "Texts & Ideas",
-        "kind": "Hall",
-        "symbol": "Ⅳ",
-        "path": "./apps/world_classics_Hall_index.html",
-        "description": "Foundational works from civilizations around the world, read through historical, cultural, literary, and comparative context.",
-        "pathways": [
-          "Ancient epics",
-          "Classical drama",
-          "Philosophical texts",
-          "Historical chronicles",
-          "Comparative reading"
-        ]
+            "id": "world-classics",
+            "title": "Hall of World Classics",
+            "category": "Texts & Ideas",
+            "kind": "Hall",
+            "symbol": "Ⅳ",
+            "path": "./apps/world_classics_Hall_index.html",
+            "description": "Foundational works from civilizations around the world, read through historical, cultural, literary, and comparative context.",
+            "pathways": [
+                  "Ancient epics",
+                  "Classical drama",
+                  "Philosophical texts",
+                  "Historical chronicles",
+                  "Comparative reading"
+            ],
+            "status": "live",
+            "statusNote": "Verified repository path."
       },
       {
-        "id": "zionism-course",
-        "title": "Zionism: History, Ideas & Debate",
-        "category": "History & Civic Inquiry",
-        "kind": "Course",
-        "symbol": "◫",
-        "path": "./apps/zionism_course_index.html",
-        "description": "An evidence-centered course examining the history, ideas, movements, sources, competing narratives, and continuing debates associated with Zionism.",
-        "pathways": [
-          "Historical origins",
-          "Primary sources",
-          "Political movements",
-          "Competing narratives",
-          "Contemporary debate"
-        ]
+            "id": "zionism-course",
+            "title": "Zionism: History, Ideas & Debate",
+            "category": "History & Civic Inquiry",
+            "kind": "Course",
+            "symbol": "◫",
+            "path": "./apps/zionism_course_index.html",
+            "description": "An evidence-centered course examining the history, ideas, movements, sources, competing narratives, and continuing debates associated with Zionism.",
+            "pathways": [
+                  "Historical origins",
+                  "Primary sources",
+                  "Political movements",
+                  "Competing narratives",
+                  "Contemporary debate"
+            ],
+            "status": "live",
+            "statusNote": "Verified repository path."
       }
-    ];
+];
 
     let networkSites = [
       {
@@ -4262,7 +4401,8 @@
             "symbol": "V",
             "description": "The public front door to the Verve N Veda ecosystem and its shared resources.",
             "status": "live",
-            "group": "Network Home"
+            "group": "Network Home",
+            "statusNote": "Published landing page verified in the Verve N Veda network."
       },
       {
             "title": "ARSHIF Archives",
@@ -4271,7 +4411,8 @@
             "symbol": "A",
             "description": "The living archive of human knowledge, deep research, cultural memory, and interdisciplinary inquiry.",
             "status": "live",
-            "group": "Knowledge & Research"
+            "group": "Knowledge & Research",
+            "statusNote": "Published landing page verified in the Verve N Veda network."
       },
       {
             "title": "Khaemenes Academy",
@@ -4280,7 +4421,8 @@
             "symbol": "KA",
             "description": "The central academy gateway connecting the complete Khaemenes learning network.",
             "status": "live",
-            "group": "Khaemenes Academy"
+            "group": "Khaemenes Academy",
+            "statusNote": "Published landing page verified in the Verve N Veda network."
       },
       {
             "title": "Khaemenes Preschool",
@@ -4289,7 +4431,8 @@
             "symbol": "P",
             "description": "Playful early-learning stories, foundational skills, creativity, and family-supported exploration.",
             "status": "live",
-            "group": "Khaemenes Academy"
+            "group": "Khaemenes Academy",
+            "statusNote": "Published landing page verified in the Verve N Veda network."
       },
       {
             "title": "Khaemenes KinderGarden",
@@ -4298,7 +4441,8 @@
             "symbol": "❀",
             "description": "Garden-inspired kindergarten learning, discovery, literacy, numeracy, nature, art, and movement.",
             "status": "live",
-            "group": "Khaemenes Academy"
+            "group": "Khaemenes Academy",
+            "statusNote": "Published landing page verified in the Verve N Veda network."
       },
       {
             "title": "Khaemenes Elementary",
@@ -4306,8 +4450,9 @@
             "url": "https://vervenveda.github.io/Khaemenes_Elementary.github.io/",
             "symbol": "E",
             "description": "Elementary curriculum, activities, student tools, and family-supported education.",
-            "status": "live",
-            "group": "Khaemenes Academy"
+            "status": "setup",
+            "group": "Khaemenes Academy",
+            "statusNote": "No published root index.html was found during the August 2026 repository audit."
       },
       {
             "title": "Khaemenes Middle School",
@@ -4315,8 +4460,9 @@
             "url": "https://vervenveda.github.io/Khaemenes_Middle.github.io/",
             "symbol": "M",
             "description": "Middle-school courses, independent study, project work, and grade-level learning portals.",
-            "status": "live",
-            "group": "Khaemenes Academy"
+            "status": "setup",
+            "group": "Khaemenes Academy",
+            "statusNote": "No published root index.html was found during the August 2026 repository audit."
       },
       {
             "title": "Khaemenes High School",
@@ -4325,7 +4471,8 @@
             "symbol": "H",
             "description": "High-school curriculum, records, college preparation, career exploration, and student portals.",
             "status": "live",
-            "group": "Khaemenes Academy"
+            "group": "Khaemenes Academy",
+            "statusNote": "Published landing page verified in the Verve N Veda network."
       },
       {
             "title": "Khaemenes Higher Learning",
@@ -4334,7 +4481,8 @@
             "symbol": "Σ",
             "description": "Advanced study, professional learning, continuing education, and higher-learning pathways.",
             "status": "live",
-            "group": "Khaemenes Academy"
+            "group": "Khaemenes Academy",
+            "statusNote": "Published landing page verified in the Verve N Veda network."
       },
       {
             "title": "Khaemenes Linguistics",
@@ -4342,8 +4490,9 @@
             "url": "https://vervenveda.github.io/Khaemenes_Linguistics.github.io/",
             "symbol": "Aa",
             "description": "Language learning, linguistics, writing systems, vocabulary, translation, and communication.",
-            "status": "live",
-            "group": "Khaemenes Academy"
+            "status": "setup",
+            "group": "Khaemenes Academy",
+            "statusNote": "No published root index.html was found during the August 2026 repository audit."
       },
       {
             "title": "The Verifier",
@@ -4352,7 +4501,8 @@
             "symbol": "⌕",
             "description": "Information literacy, news discovery, source comparison, verification, and research navigation.",
             "status": "live",
-            "group": "Knowledge & Research"
+            "group": "Knowledge & Research",
+            "statusNote": "Published landing page verified in the Verve N Veda network."
       },
       {
             "title": "PLERA Search",
@@ -4361,7 +4511,8 @@
             "symbol": "⌖",
             "description": "A broad search gateway connecting trusted research, public resources, and learning tools.",
             "status": "live",
-            "group": "Knowledge & Research"
+            "group": "Knowledge & Research",
+            "statusNote": "Published landing page verified in the Verve N Veda network."
       },
       {
             "title": "Firmament Law",
@@ -4370,7 +4521,8 @@
             "symbol": "⚖",
             "description": "Legal information, public-resource libraries, evidence workspaces, rights education, and governance references.",
             "status": "live",
-            "group": "Civic & Public Resources"
+            "group": "Civic & Public Resources",
+            "statusNote": "Published landing page verified in the Verve N Veda network."
       },
       {
             "title": "One Nation for All",
@@ -4379,7 +4531,8 @@
             "symbol": "◫",
             "description": "Civic engagement, public policy, accountability, voting resources, and unity-centered national ideas.",
             "status": "live",
-            "group": "Civic & Public Resources"
+            "group": "Civic & Public Resources",
+            "statusNote": "Published landing page verified in the Verve N Veda network."
       },
       {
             "title": "Veterans",
@@ -4387,8 +4540,9 @@
             "url": "https://vervenveda.github.io/veterans.github.io/",
             "symbol": "V",
             "description": "Benefits, health care, housing, employment, records, military families, crisis support, and community resources.",
-            "status": "live",
-            "group": "Civic & Public Resources"
+            "status": "setup",
+            "group": "Civic & Public Resources",
+            "statusNote": "No published root index.html was found during the August 2026 repository audit."
       },
       {
             "title": "Homeless Services",
@@ -4397,7 +4551,8 @@
             "symbol": "1D",
             "description": "One Door pathways for housing, shelter, food, health, identification, public benefits, and coordinated assistance.",
             "status": "setup",
-            "group": "Civic & Public Resources"
+            "group": "Civic & Public Resources",
+            "statusNote": "No published root index.html was found during the August 2026 repository audit."
       },
       {
             "title": "Medicament Hub",
@@ -4406,7 +4561,8 @@
             "symbol": "☤",
             "description": "Medical education, health literacy, safety-first learning, wellness resources, and future health halls.",
             "status": "live",
-            "group": "Health & Life"
+            "group": "Health & Life",
+            "statusNote": "Published landing page verified in the Verve N Veda network."
       },
       {
             "title": "Finance",
@@ -4414,8 +4570,9 @@
             "url": "https://vervenveda.github.io/finance.github.io/",
             "symbol": "$",
             "description": "Financial literacy, budgeting, credit, taxes, retirement, housing, benefits, small business, and fraud prevention.",
-            "status": "live",
-            "group": "Practical Life"
+            "status": "setup",
+            "group": "Practical Life",
+            "statusNote": "No published root index.html was found during the August 2026 repository audit."
       },
       {
             "title": "ProReSources Hub",
@@ -4424,7 +4581,8 @@
             "symbol": "PR",
             "description": "Professional browser tools for writing, communication, code, media, design, files, and workflow.",
             "status": "live",
-            "group": "Professional Tools"
+            "group": "Professional Tools",
+            "statusNote": "Published landing page verified in the Verve N Veda network."
       },
       {
             "title": "Bazaar Art",
@@ -4433,7 +4591,8 @@
             "symbol": "BA",
             "description": "Art, artists, creative enterprise, community programs, exhibitions, and cultural resources.",
             "status": "live",
-            "group": "Arts & Culture"
+            "group": "Arts & Culture",
+            "statusNote": "Published landing page verified in the Verve N Veda network."
       },
       {
             "title": "My Art Gallery",
@@ -4441,8 +4600,9 @@
             "url": "https://vervenveda.github.io/myartgallery.github.io/",
             "symbol": "▣",
             "description": "A dedicated gallery destination for exhibiting and exploring artwork and artist collections.",
-            "status": "live",
-            "group": "Arts & Culture"
+            "status": "setup",
+            "group": "Arts & Culture",
+            "statusNote": "No published root index.html was found during the August 2026 repository audit."
       },
       {
             "title": "The Refrain",
@@ -4451,7 +4611,8 @@
             "symbol": "♫",
             "description": "Music education, composition, recording, performance, and connected creative studios.",
             "status": "live",
-            "group": "Arts & Culture"
+            "group": "Arts & Culture",
+            "statusNote": "Published landing page verified in the Verve N Veda network."
       },
       {
             "title": "Aurora",
@@ -4460,7 +4621,8 @@
             "symbol": "☼",
             "description": "A creative and exploratory space for visual learning, reflection, ideas, and emerging projects.",
             "status": "live",
-            "group": "Arts & Culture"
+            "group": "Arts & Culture",
+            "statusNote": "Published landing page verified in the Verve N Veda network."
       },
       {
             "title": "Arcade",
@@ -4469,7 +4631,8 @@
             "symbol": "◈",
             "description": "Games, strategy, creativity, trivia, puzzles, and playful learning experiences.",
             "status": "live",
-            "group": "Play & Exploration"
+            "group": "Play & Exploration",
+            "statusNote": "Published landing page verified in the Verve N Veda network."
       },
       {
             "title": "Solanar",
@@ -4478,7 +4641,8 @@
             "symbol": "☀",
             "description": "Weather, earth science, environmental awareness, lunar information, and global observation.",
             "status": "live",
-            "group": "Earth & Environment"
+            "group": "Earth & Environment",
+            "statusNote": "Published landing page verified in the Verve N Veda network."
       },
       {
             "title": "River to Road",
@@ -4487,116 +4651,143 @@
             "symbol": "♧",
             "description": "Environmental stewardship, community cleanup, local action, and neighborhood restoration.",
             "status": "live",
-            "group": "Earth & Environment"
+            "group": "Earth & Environment",
+            "statusNote": "Published landing page verified in the Verve N Veda network."
       }
 ];
 
     let researchResources = [
       {
-        "title": "Library of Congress Digital Collections",
-        "provider": "Library of Congress",
-        "category": "Primary Sources",
-        "symbol": "◫",
-        "url": "https://www.loc.gov/collections/",
-        "description": "Digitized manuscripts, photographs, maps, recordings, books, newspapers, and other primary-source collections."
+            "title": "Library of Congress Digital Collections",
+            "provider": "Library of Congress",
+            "category": "Primary Sources",
+            "symbol": "◫",
+            "url": "https://www.loc.gov/collections/",
+            "description": "Digitized manuscripts, photographs, maps, recordings, books, newspapers, and other primary-source collections.",
+            "status": "reviewed",
+            "statusNote": "Reviewed external research gateway; opens outside Verve N Veda in a new tab."
       },
       {
-        "title": "National Archives Catalog",
-        "provider": "U.S. National Archives",
-        "category": "Public Records",
-        "symbol": "▤",
-        "url": "https://catalog.archives.gov/",
-        "description": "The public catalog for U.S. federal records, archival descriptions, digitized documents, photographs, and electronic records."
+            "title": "National Archives Catalog",
+            "provider": "U.S. National Archives",
+            "category": "Public Records",
+            "symbol": "▤",
+            "url": "https://catalog.archives.gov/",
+            "description": "The public catalog for U.S. federal records, archival descriptions, digitized documents, photographs, and electronic records.",
+            "status": "reviewed",
+            "statusNote": "Reviewed external research gateway; opens outside Verve N Veda in a new tab."
       },
       {
-        "title": "Smithsonian Open Access",
-        "provider": "Smithsonian Institution",
-        "category": "Museums & Culture",
-        "symbol": "✦",
-        "url": "https://www.si.edu/openaccess",
-        "description": "Millions of openly available images, objects, data, and 2D and 3D collection materials across Smithsonian institutions."
+            "title": "Smithsonian Open Access",
+            "provider": "Smithsonian Institution",
+            "category": "Museums & Culture",
+            "symbol": "✦",
+            "url": "https://www.si.edu/openaccess",
+            "description": "Millions of openly available images, objects, data, and 2D and 3D collection materials across Smithsonian institutions.",
+            "status": "reviewed",
+            "statusNote": "Reviewed external research gateway; opens outside Verve N Veda in a new tab."
       },
       {
-        "title": "Europeana Collections",
-        "provider": "Europeana",
-        "category": "Global Culture",
-        "symbol": "◎",
-        "url": "https://www.europeana.eu/en/collections",
-        "description": "European cultural heritage from museums, galleries, libraries, and archives, organized across themes, periods, and institutions."
+            "title": "Europeana Collections",
+            "provider": "Europeana",
+            "category": "Global Culture",
+            "symbol": "◎",
+            "url": "https://www.europeana.eu/en/collections",
+            "description": "European cultural heritage from museums, galleries, libraries, and archives, organized across themes, periods, and institutions.",
+            "status": "reviewed",
+            "statusNote": "Reviewed external research gateway; opens outside Verve N Veda in a new tab."
       },
       {
-        "title": "UNESCO Digital Library",
-        "provider": "UNESCO",
-        "category": "Global Knowledge",
-        "symbol": "◇",
-        "url": "https://unesdoc.unesco.org/",
-        "description": "UNESCO publications, institutional records, education, culture, science, communication, and international policy materials."
+            "title": "UNESCO Digital Library",
+            "provider": "UNESCO",
+            "category": "Global Knowledge",
+            "symbol": "◇",
+            "url": "https://unesdoc.unesco.org/",
+            "description": "UNESCO publications, institutional records, education, culture, science, communication, and international policy materials.",
+            "status": "reviewed",
+            "statusNote": "Reviewed external research gateway; opens outside Verve N Veda in a new tab."
       },
       {
-        "title": "Internet Archive",
-        "provider": "Internet Archive",
-        "category": "Digital Preservation",
-        "symbol": "∞",
-        "url": "https://archive.org/",
-        "description": "A nonprofit digital library preserving books, audio, video, software, websites, and other cultural artifacts."
+            "title": "Internet Archive",
+            "provider": "Internet Archive",
+            "category": "Digital Preservation",
+            "symbol": "∞",
+            "url": "https://archive.org/",
+            "description": "A nonprofit digital library preserving books, audio, video, software, websites, and other cultural artifacts.",
+            "status": "reviewed",
+            "statusNote": "Reviewed external research gateway; opens outside Verve N Veda in a new tab."
       },
       {
-        "title": "Project Gutenberg",
-        "provider": "Project Gutenberg",
-        "category": "Public-Domain Books",
-        "symbol": "¶",
-        "url": "https://www.gutenberg.org/",
-        "description": "A free library of public-domain and rights-cleared ebooks that can be read online or downloaded."
+            "title": "Project Gutenberg",
+            "provider": "Project Gutenberg",
+            "category": "Public-Domain Books",
+            "symbol": "¶",
+            "url": "https://www.gutenberg.org/",
+            "description": "A free library of public-domain and rights-cleared ebooks that can be read online or downloaded.",
+            "status": "reviewed",
+            "statusNote": "Reviewed external research gateway; opens outside Verve N Veda in a new tab."
       },
       {
-        "title": "WorldCat",
-        "provider": "OCLC",
-        "category": "Library Discovery",
-        "symbol": "⌕",
-        "url": "https://search.worldcat.org/",
-        "description": "A global library catalog for locating books, maps, recordings, archives, journals, and other materials in participating libraries."
+            "title": "WorldCat",
+            "provider": "OCLC",
+            "category": "Library Discovery",
+            "symbol": "⌕",
+            "url": "https://search.worldcat.org/",
+            "description": "A global library catalog for locating books, maps, recordings, archives, journals, and other materials in participating libraries.",
+            "status": "reviewed",
+            "statusNote": "Reviewed external research gateway; opens outside Verve N Veda in a new tab."
       },
       {
-        "title": "Directory of Open Access Journals",
-        "provider": "DOAJ",
-        "category": "Open Scholarship",
-        "symbol": "○",
-        "url": "https://doaj.org/",
-        "description": "A global index of peer-reviewed open-access journals and articles across disciplines, languages, and regions."
+            "title": "Directory of Open Access Journals",
+            "provider": "DOAJ",
+            "category": "Open Scholarship",
+            "symbol": "○",
+            "url": "https://doaj.org/",
+            "description": "A global index of peer-reviewed open-access journals and articles across disciplines, languages, and regions.",
+            "status": "reviewed",
+            "statusNote": "Reviewed external research gateway; opens outside Verve N Veda in a new tab."
       },
       {
-        "title": "NCBI Bookshelf",
-        "provider": "U.S. National Library of Medicine",
-        "category": "Health & Life Science",
-        "symbol": "✚",
-        "url": "https://www.ncbi.nlm.nih.gov/books/",
-        "description": "Free online books and documents in biomedical science, health care, medicine, and related fields."
+            "title": "NCBI Bookshelf",
+            "provider": "U.S. National Library of Medicine",
+            "category": "Health & Life Science",
+            "symbol": "✚",
+            "url": "https://www.ncbi.nlm.nih.gov/books/",
+            "description": "Free online books and documents in biomedical science, health care, medicine, and related fields.",
+            "status": "reviewed",
+            "statusNote": "Reviewed external research gateway; opens outside Verve N Veda in a new tab."
       },
       {
-        "title": "Stanford Encyclopedia of Philosophy",
-        "provider": "Stanford University",
-        "category": "Philosophy",
-        "symbol": "Φ",
-        "url": "https://plato.stanford.edu/",
-        "description": "Expert-authored and editorially reviewed reference entries across philosophy and related fields."
+            "title": "Stanford Encyclopedia of Philosophy",
+            "provider": "Stanford University",
+            "category": "Philosophy",
+            "symbol": "Φ",
+            "url": "https://plato.stanford.edu/",
+            "description": "Expert-authored and editorially reviewed reference entries across philosophy and related fields.",
+            "status": "reviewed",
+            "statusNote": "Reviewed external research gateway; opens outside Verve N Veda in a new tab."
       },
       {
-        "title": "Perseus Digital Library",
-        "provider": "Tufts University",
-        "category": "Classics & Humanities",
-        "symbol": "Ⅳ",
-        "url": "https://www.perseus.tufts.edu/hopper/",
-        "description": "Classical texts, translations, language tools, and cultural collections, especially for the Greco-Roman world."
+            "title": "Perseus Digital Library",
+            "provider": "Tufts University",
+            "category": "Classics & Humanities",
+            "symbol": "Ⅳ",
+            "url": "https://www.perseus.tufts.edu/hopper/",
+            "description": "Classical texts, translations, language tools, and cultural collections, especially for the Greco-Roman world.",
+            "status": "reviewed",
+            "statusNote": "Reviewed external research gateway; opens outside Verve N Veda in a new tab."
       },
       {
-        "title": "Biodiversity Heritage Library",
-        "provider": "BHL Consortium",
-        "category": "Biodiversity",
-        "symbol": "♧",
-        "url": "https://www.biodiversitylibrary.org/",
-        "description": "Open-access biodiversity literature, natural-history books, archives, scientific names, and historical illustrations."
+            "title": "Biodiversity Heritage Library",
+            "provider": "BHL Consortium",
+            "category": "Biodiversity",
+            "symbol": "♧",
+            "url": "https://www.biodiversitylibrary.org/",
+            "description": "Open-access biodiversity literature, natural-history books, archives, scientific names, and historical illustrations.",
+            "status": "reviewed",
+            "statusNote": "Reviewed external research gateway; opens outside Verve N Veda in a new tab."
       }
-    ];
+];
 
     const storageKey = "arshif_favorite_halls_v1";
 
@@ -4675,6 +4866,8 @@
         hall.category,
         hall.kind,
         hall.description,
+        hall.status,
+        hall.statusNote,
         ...hall.pathways
       ].join(" ").toLowerCase();
     }
@@ -4725,6 +4918,23 @@
       `).join("");
     }
 
+    function hallStatusLabel(status) {
+      if (status === "live") return "Verified Live";
+      if (status === "repair") return "Needs Repair";
+      if (status === "duplicate") return "Duplicate Content";
+      return "Unavailable";
+    }
+
+    function hallStatusAction(status) {
+      if (status === "repair") return "Repair Required";
+      if (status === "duplicate") return "Distinct Page Needed";
+      return "Unavailable";
+    }
+
+    function isHallLive(hall) {
+      return hall && hall.status === "live";
+    }
+
     function entryLabel(item) {
       const labels = {
         "Hall": "Enter Hall",
@@ -4748,6 +4958,18 @@
       return labels[item.kind] || "Open App";
     }
 
+    function hallActionMarkup(hall) {
+      if (isHallLive(hall)) {
+        return `
+          <a class="enter-link" href="${escapeHTML(hall.path)}"
+             aria-label="${escapeHTML(entryLabel(hall))}: ${escapeHTML(hall.title)}">
+            ${escapeHTML(entryLabel(hall))} <span aria-hidden="true">→</span>
+          </a>
+        `;
+      }
+      return `<span class="disabled-link" aria-disabled="true">${escapeHTML(hallStatusAction(hall.status))}</span>`;
+    }
+
     function renderHalls() {
       const displayed = visibleHalls();
 
@@ -4755,7 +4977,7 @@
         const isFavorite = state.favorites.has(hall.id);
 
         return `
-          <article class="hall-card" data-id="${escapeHTML(hall.id)}">
+          <article class="hall-card" data-id="${escapeHTML(hall.id)}" data-status="${escapeHTML(hall.status)}">
             <div class="card-top">
               <span class="hall-symbol" aria-hidden="true">${escapeHTML(hall.symbol)}</span>
 
@@ -4776,15 +4998,14 @@
             <div class="hall-meta-row">
               <p class="hall-category">${escapeHTML(hall.category)}</p>
               <span class="kind-badge">${escapeHTML(hall.kind)}</span>
+              <span class="status-badge" data-status="${escapeHTML(hall.status)}">${escapeHTML(hallStatusLabel(hall.status))}</span>
             </div>
             <h3>${escapeHTML(hall.title)}</h3>
             <p class="hall-description">${escapeHTML(hall.description)}</p>
+            ${isHallLive(hall) ? "" : `<p class="hall-status-note">${escapeHTML(hall.statusNote || "This destination is not currently launchable.")}</p>`}
 
             <div class="card-actions">
-              <a class="enter-link" href="${escapeHTML(hall.path)}"
-                 aria-label="${escapeHTML(entryLabel(hall))}: ${escapeHTML(hall.title)}">
-                ${escapeHTML(entryLabel(hall))} <span aria-hidden="true">→</span>
-              </a>
+              ${hallActionMarkup(hall)}
               <button class="details-button" type="button" data-details="${escapeHTML(hall.id)}">
                 Research Scope
               </button>
@@ -4794,9 +5015,8 @@
       }).join("");
 
       const count = displayed.length;
-      resultsLine.textContent = count === 1
-        ? "1 hall shown."
-        : `${count} halls shown.`;
+      const liveCount = displayed.filter(isHallLive).length;
+      resultsLine.textContent = `${count} archive destination${count === 1 ? "" : "s"} shown · ${liveCount} verified live.`;
 
       emptyState.classList.toggle("is-visible", count === 0);
       hallGrid.hidden = count === 0;
@@ -4833,12 +5053,6 @@
           subtitle: "Research and public-resource discovery",
           url: "https://vervenveda.github.io/PLERASearch.github.io/",
           symbol: "⌕"
-        },
-        {
-          title: "Jennifer Pearl 2028",
-          subtitle: "Campaign, policies, events, and public updates",
-          url: "https://jenniferpearl2028.github.io/",
-          symbol: "JP"
         }
       ];
 
@@ -4879,12 +5093,26 @@
       }
 
       function siteSubtitle(site) {
-        return site.description;
+        return site.status === "live"
+          ? site.description
+          : `${site.description} · In development`;
       }
 
       function renderSite(site) {
         renderedSiteTitles.add(site.title);
         const currentClass = site.title === "ARSHIF Archives" ? " current-site" : "";
+        if (site.status !== "live") {
+          return `
+            <span class="menu-link menu-link-disabled${currentClass}" aria-disabled="true">
+              <span class="menu-link-icon" aria-hidden="true">${escapeHTML(site.symbol)}</span>
+              <span class="menu-link-copy">
+                <span class="menu-link-title">${escapeHTML(site.title)}</span>
+                <span class="menu-link-category">${escapeHTML(siteSubtitle(site))}</span>
+              </span>
+              <span class="menu-link-arrow" aria-hidden="true">—</span>
+            </span>
+          `;
+        }
         return `
           <a class="menu-link${currentClass}" href="${escapeHTML(sitePrimaryUrl(site))}" target="_blank" rel="noopener noreferrer">
             <span class="menu-link-icon" aria-hidden="true">${escapeHTML(site.symbol)}</span>
@@ -4893,6 +5121,31 @@
               <span class="menu-link-category">${escapeHTML(siteSubtitle(site))}</span>
             </span>
             <span class="menu-link-arrow" aria-hidden="true">↗</span>
+          </a>
+        `;
+      }
+
+      function renderHallMenuItem(hall) {
+        if (!isHallLive(hall)) {
+          return `
+            <span class="menu-link menu-link-disabled" aria-disabled="true">
+              <span class="menu-link-icon" aria-hidden="true">${escapeHTML(hall.symbol)}</span>
+              <span class="menu-link-copy">
+                <span class="menu-link-title">${escapeHTML(hall.title)}</span>
+                <span class="menu-link-category">${escapeHTML(hall.category)} · ${escapeHTML(hallStatusLabel(hall.status))}</span>
+              </span>
+              <span class="menu-link-arrow" aria-hidden="true">—</span>
+            </span>
+          `;
+        }
+        return `
+          <a class="menu-link" href="${escapeHTML(hall.path)}">
+            <span class="menu-link-icon" aria-hidden="true">${escapeHTML(hall.symbol)}</span>
+            <span class="menu-link-copy">
+              <span class="menu-link-title">${escapeHTML(hall.title)}</span>
+              <span class="menu-link-category">${escapeHTML(hall.category)} · ${escapeHTML(hall.kind)}</span>
+            </span>
+            <span class="menu-link-arrow" aria-hidden="true">→</span>
           </a>
         `;
       }
@@ -4910,16 +5163,7 @@
       if (matchingHalls.length) {
         markup += `
           <div class="menu-group-label">ARSHIF Halls & Apps</div>
-          ${matchingHalls.map((hall) => `
-            <a class="menu-link" href="${escapeHTML(hall.path)}">
-              <span class="menu-link-icon" aria-hidden="true">${escapeHTML(hall.symbol)}</span>
-              <span class="menu-link-copy">
-                <span class="menu-link-title">${escapeHTML(hall.title)}</span>
-                <span class="menu-link-category">${escapeHTML(hall.category)} · ${escapeHTML(hall.kind)}</span>
-              </span>
-              <span class="menu-link-arrow" aria-hidden="true">→</span>
-            </a>
-          `).join("")}
+          ${matchingHalls.map(renderHallMenuItem).join("")}
         `;
       }
 
@@ -4952,13 +5196,13 @@
 
       if (matchingResources.length) {
         markup += `
-          <div class="menu-group-label">Trusted Research Gateways</div>
+          <div class="menu-group-label">Reviewed External Research Gateways</div>
           ${matchingResources.map((resource) => `
             <a class="menu-link" href="${escapeHTML(resource.url)}" target="_blank" rel="noopener noreferrer">
               <span class="menu-link-icon" aria-hidden="true">${escapeHTML(resource.symbol)}</span>
               <span class="menu-link-copy">
                 <span class="menu-link-title">${escapeHTML(resource.title)}</span>
-                <span class="menu-link-category">${escapeHTML(resource.provider)}</span>
+                <span class="menu-link-category">${escapeHTML(resource.provider)} · External</span>
               </span>
               <span class="menu-link-arrow" aria-hidden="true">↗</span>
             </a>
@@ -4996,8 +5240,8 @@
 
     function statusLabel(status) {
       if (status === "live") return "Published";
-      if (status === "setup") return "Coming Soon";
-      return "Landing Page";
+      if (status === "setup") return "In Development";
+      return "Unavailable";
     }
 
 
@@ -5028,8 +5272,10 @@
         </article>
       `).join("");
 
+      const liveHallCount = halls.filter((hall) => hall.status === "live").length;
+      const repairHallCount = halls.length - liveHallCount;
       registryStatus.textContent =
-        `Registry ${archiveMeta.registryVersion || "embedded"} · ${liveNetworkCount} published network destinations · optional arshif_registry.json loading enabled`;
+        `Audited embedded registry ${archiveMeta.registryVersion || "current"} · ${liveHallCount} verified live archive destinations · ${repairHallCount} held for repair · ${liveNetworkCount} published network destinations`;
     }
 
     function currentRegistry() {
@@ -5056,37 +5302,19 @@
     }
 
     async function loadExternalRegistry() {
-      try {
-        const response = await fetch("./arshif_registry.json", { cache: "no-store" });
-        if (!response.ok) throw new Error(`HTTP ${response.status}`);
-        const registry = await response.json();
-
-        if (!Array.isArray(registry.halls) || !Array.isArray(registry.researchResources) ||
-            !Array.isArray(registry.networkSites) || !Array.isArray(registry.futureCollections)) {
-          throw new Error("Registry arrays are incomplete.");
-        }
-
-        halls = registry.halls;
-        researchResources = registry.researchResources;
-        networkSites = registry.networkSites;
-        futureCollections = registry.futureCollections;
-        archiveMeta = { ...archiveMeta, ...registry };
-        registryStatus.textContent = `Loaded arshif_registry.json · registry ${archiveMeta.registryVersion || "current"}`;
-        return true;
-      } catch (error) {
-        registryStatus.textContent =
-          `Using the complete embedded registry · optional external registry was not loaded (${error.message}).`;
-        return false;
-      }
+      registryStatus.textContent =
+        `Using audited embedded registry ${archiveMeta.registryVersion || "current"} · external registry loading disabled for a self-contained public landing page.`;
+      return false;
     }
 
     function renderNetwork() {
       networkGrid.innerHTML = networkSites.map((site) => {
+        const isLive = site.status === "live";
         const primaryUrl = sitePrimaryUrl(site);
         const primaryLabel = sitePrimaryLabel(site);
 
         return `
-          <article class="hall-card network-card">
+          <article class="hall-card network-card" data-status="${escapeHTML(site.status)}">
             <div class="card-top">
               <span class="hall-symbol" aria-hidden="true">${escapeHTML(site.symbol)}</span>
               <span class="status-badge" data-status="${escapeHTML(site.status)}">${escapeHTML(statusLabel(site.status))}</span>
@@ -5096,11 +5324,14 @@
             </div>
             <h3>${escapeHTML(site.title)}</h3>
             <p class="hall-description">${escapeHTML(site.description)}</p>
+            ${isLive ? "" : `<p class="hall-status-note">${escapeHTML(site.statusNote || "No published landing page was found.")}</p>`}
             <div class="card-actions">
-              <a class="enter-link" href="${escapeHTML(primaryUrl)}" target="_blank" rel="noopener noreferrer"
-                 aria-label="Open the ${escapeHTML(site.title)} landing page in a new tab">
-                ${escapeHTML(primaryLabel)} <span aria-hidden="true">↗</span>
-              </a>
+              ${isLive ? `
+                <a class="enter-link" href="${escapeHTML(primaryUrl)}" target="_blank" rel="noopener noreferrer"
+                   aria-label="Open the ${escapeHTML(site.title)} landing page in a new tab">
+                  ${escapeHTML(primaryLabel)} <span aria-hidden="true">↗</span>
+                </a>
+              ` : `<span class="disabled-link" aria-disabled="true">In Development</span>`}
             </div>
           </article>
         `;
@@ -5110,6 +5341,22 @@
     function auditDirectory() {
       const issues = [];
       const duplicateValues = (values) => values.filter((value, index) => values.indexOf(value) !== index);
+      const allowedResearchHosts = new Set([
+        "www.loc.gov",
+        "catalog.archives.gov",
+        "www.si.edu",
+        "www.europeana.eu",
+        "unesdoc.unesco.org",
+        "archive.org",
+        "www.gutenberg.org",
+        "search.worldcat.org",
+        "doaj.org",
+        "www.ncbi.nlm.nih.gov",
+        "plato.stanford.edu",
+        "www.perseus.tufts.edu",
+        "www.biodiversitylibrary.org"
+      ]);
+      const suspiciousPattern = /\b(casino|gambling|poker|roulette|blackjack|sportsbook|betting|jackpot|slot(?:s| machine)?|sweepstakes|affiliate)\b/i;
 
       duplicateValues(halls.map((hall) => hall.id)).forEach((id) => issues.push(`Duplicate hall id: ${id}`));
       duplicateValues(halls.map((hall) => hall.path)).forEach((path) => issues.push(`Duplicate hall path: ${path}`));
@@ -5123,28 +5370,64 @@
         if (!isLocalApp && !isVerveNVedaPage) {
           issues.push(`Unexpected app path: ${hall.path}`);
         }
-      });
-
-      [...networkSites.map((site) => site.url), ...researchResources.map((resource) => resource.url)]
-        .forEach((url) => {
-          if (!url || url === "#" || url.startsWith("javascript:")) issues.push(`Empty or unsafe link: ${url || "(blank)"}`);
-          else if (!url.startsWith("https://")) issues.push(`Non-HTTPS external link: ${url}`);
-        });
-
-      halls.forEach((hall) => {
+        if (!["live", "repair", "duplicate"].includes(hall.status)) {
+          issues.push(`Unknown hall status: ${hall.title} → ${hall.status}`);
+        }
         if (!hall.path || hall.path === "./apps/" || hall.path.includes("..")) {
           issues.push(`Malformed app route: ${hall.title} → ${hall.path}`);
         }
+        if (suspiciousPattern.test(`${hall.title} ${hall.description} ${hall.path}`)) {
+          issues.push(`Gambling/spam terminology detected in hall record: ${hall.title}`);
+        }
       });
 
+      networkSites.forEach((site) => {
+        if (!site.url?.startsWith("https://vervenveda.github.io/")) {
+          issues.push(`Unexpected network host: ${site.title} → ${site.url}`);
+        }
+        if (!["live", "setup"].includes(site.status)) {
+          issues.push(`Unknown network status: ${site.title} → ${site.status}`);
+        }
+      });
+
+      researchResources.forEach((resource) => {
+        try {
+          const destination = new URL(resource.url);
+          if (destination.protocol !== "https:") {
+            issues.push(`Non-HTTPS research link: ${resource.url}`);
+          }
+          if (!allowedResearchHosts.has(destination.hostname)) {
+            issues.push(`Unreviewed research host: ${destination.hostname}`);
+          }
+          if (suspiciousPattern.test(`${resource.title} ${resource.provider} ${resource.url}`)) {
+            issues.push(`Gambling/spam terminology detected in research record: ${resource.title}`);
+          }
+        } catch {
+          issues.push(`Malformed research URL: ${resource.url}`);
+        }
+      });
+
+      const liveHallCount = halls.filter((hall) => hall.status === "live").length;
+      const heldHallCount = halls.length - liveHallCount;
+      const liveNetworkCount = networkSites.filter((site) => site.status === "live").length;
+
       directorySummary.textContent =
-        `${halls.length} archive destinations · ${networkSites.length} connected repositories · ${researchResources.length} trusted research gateways · registry ${archiveMeta.registryVersion || "embedded"}`;
+        `${liveHallCount} verified live archive destinations · ${heldHallCount} held for repair · ${liveNetworkCount} published Verve N Veda destinations · ${researchResources.length} reviewed external research gateways`;
 
       if (issues.length) {
         console.warn("ARSHIF directory audit found issues:", issues);
       } else {
-        console.info("ARSHIF directory audit passed.");
+        console.info("ARSHIF directory audit passed: reviewed hosts only, no gambling or spam destinations.");
       }
+
+      return {
+        archiveDestinations: halls.length,
+        verifiedLiveHalls: liveHallCount,
+        heldForRepair: heldHallCount,
+        publishedNetworkDestinations: liveNetworkCount,
+        reviewedExternalGateways: researchResources.length,
+        issues
+      };
     }
 
     function updateFavoriteCount() {
@@ -5210,15 +5493,24 @@
       previousFocus = document.activeElement;
       state.activeHallId = id;
 
-      modalCategory.textContent = hall.category;
+      modalCategory.textContent = `${hall.category} · ${hallStatusLabel(hall.status)}`;
       modalTitle.textContent = hall.title;
-      modalDescription.textContent = hall.description;
+      modalDescription.textContent = isHallLive(hall)
+        ? hall.description
+        : `${hall.description} ${hall.statusNote || "This destination is not currently launchable."}`;
       modalPathways.innerHTML = hall.pathways
         .map((pathway) => `<li>${escapeHTML(pathway)}</li>`)
         .join("");
-      modalEnterLink.href = hall.path;
-      modalEnterLink.innerHTML = `${escapeHTML(entryLabel(hall))} <span aria-hidden="true">→</span>`;
-      modalEnterLink.setAttribute("aria-label", `${entryLabel(hall)}: ${hall.title}`);
+
+      modalEnterLink.hidden = !isHallLive(hall);
+      if (isHallLive(hall)) {
+        modalEnterLink.href = hall.path;
+        modalEnterLink.innerHTML = `${escapeHTML(entryLabel(hall))} <span aria-hidden="true">→</span>`;
+        modalEnterLink.setAttribute("aria-label", `${entryLabel(hall)}: ${hall.title}`);
+      } else {
+        modalEnterLink.removeAttribute("href");
+        modalEnterLink.setAttribute("aria-disabled", "true");
+      }
 
       updateModalFavoriteButton();
 
@@ -5246,8 +5538,9 @@
     }
 
     function openRandomPath() {
-      const filtered = visibleHalls();
-      const choices = filtered.length ? filtered : halls;
+      const filtered = visibleHalls().filter(isHallLive);
+      const choices = filtered.length ? filtered : halls.filter(isHallLive);
+      if (!choices.length) return;
       const hall = choices[Math.floor(Math.random() * choices.length)];
       openModal(hall.id);
     }
@@ -5333,7 +5626,7 @@
       renderResources();
       renderNetwork();
       renderMenu();
-      auditDirectory();
+      window.ARSHIF_AUDIT = auditDirectory();
     }
 
     document.getElementById("year").textContent = String(new Date().getFullYear());
@@ -5355,20 +5648,62 @@
   </style>
 
 <script id="public-landing-page-link-guard">
-  document.addEventListener("click", function (event) {
-    const link = event.target.closest("a[href]");
-    if (!link) return;
+  (() => {
+    "use strict";
 
-    try {
-      const destination = new URL(link.href, window.location.href);
-      if (destination.hostname === "github.com" || destination.hostname === "www.github.com") {
+    const SAFE_EXTERNAL_HOSTS = new Set([
+      "vervenveda.com",
+      "www.vervenveda.com",
+      "vervenveda.github.io",
+      "www.loc.gov",
+      "catalog.archives.gov",
+      "www.si.edu",
+      "www.europeana.eu",
+      "unesdoc.unesco.org",
+      "archive.org",
+      "www.gutenberg.org",
+      "search.worldcat.org",
+      "doaj.org",
+      "www.ncbi.nlm.nih.gov",
+      "plato.stanford.edu",
+      "www.perseus.tufts.edu",
+      "www.biodiversitylibrary.org"
+    ]);
+
+    const BLOCKED_HOSTS = new Set(["github.com", "www.github.com"]);
+    const SUSPICIOUS = /\b(casino|gambling|poker|roulette|blackjack|sportsbook|betting|jackpot|slot(?:s| machine)?|sweepstakes|affiliate)\b/i;
+
+    document.addEventListener("click", (event) => {
+      const link = event.target.closest("a[href]");
+      if (!link) return;
+
+      try {
+        const destination = new URL(link.href, window.location.href);
+        const combined = `${link.textContent || ""} ${destination.href}`;
+
+        if (BLOCKED_HOSTS.has(destination.hostname)) {
+          event.preventDefault();
+          console.warn("Direct repository links are disabled on this public landing page.");
+          return;
+        }
+
+        if (SUSPICIOUS.test(combined)) {
+          event.preventDefault();
+          console.warn("A gambling, affiliate, or spam-like destination was blocked.");
+          return;
+        }
+
+        const sameOrigin = destination.origin === window.location.origin;
+        if (!sameOrigin && !SAFE_EXTERNAL_HOSTS.has(destination.hostname)) {
+          event.preventDefault();
+          console.warn(`Unreviewed external host blocked: ${destination.hostname}`);
+        }
+      } catch {
         event.preventDefault();
-        console.warn("Direct repository links are disabled on this public landing page.");
+        console.warn("Malformed destination blocked.");
       }
-    } catch (_) {
-      /* Leave valid relative landing-page routes untouched. */
-    }
-  });
+    });
+  })();
 </script>
 
 </body>
