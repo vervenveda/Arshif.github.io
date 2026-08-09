@@ -1,8 +1,8 @@
 {
-  "version": 1,
+  "version": 2,
   "sourceId": "verve.arshif",
   "name": "ARSHIF Archives",
-  "classification": "creative-cultural",
+  "classification": "research-information",
   "mentorSearchable": true,
   "audiences": [
     "middle",
@@ -22,8 +22,9 @@
     {
       "id": "arshif-home",
       "title": "ARSHIF Archives",
-      "description": "",
+      "description": "The Living Archive of Human Knowledge: a privacy-respecting gateway to research, public learning, culture, history, science, art, reading, and human memory.",
       "url": "https://vervenveda.com/Arshif.github.io/",
+      "classification": "research-information",
       "audiences": [
         "middle",
         "high",
@@ -38,23 +39,37 @@
       ],
       "domains": [
         "archives",
+        "research",
+        "reference",
         "reading",
-        "culture"
+        "culture",
+        "history"
       ],
-      "skills": [],
+      "skills": [
+        "research-navigation",
+        "source-discovery",
+        "reading"
+      ],
       "tags": [
         "archive",
+        "research",
+        "reference",
         "reading",
-        "culture"
+        "culture",
+        "human-knowledge"
       ],
       "mentorEligible": true,
-      "featured": true
+      "featured": true,
+      "resourceType": "hub",
+      "learningValue": "supplemental",
+      "curricularWeight": "supplemental"
     },
     {
       "id": "reading-room",
       "title": "ARSHIF Reading Room",
-      "description": "",
+      "description": "Archive reading room for literature, historical texts, and reflective reading.",
       "url": "https://vervenveda.com/Arshif.github.io/apps/Reading_room_index.html",
+      "classification": "research-information",
       "audiences": [
         "middle",
         "high",
@@ -68,25 +83,34 @@
       ],
       "domains": [
         "reading",
-        "archives"
+        "archives",
+        "literature",
+        "reference"
       ],
       "skills": [
         "reading",
-        "reflection"
+        "reflection",
+        "source-discovery"
       ],
       "tags": [
         "reading-room",
-        "archive"
+        "archive",
+        "literature",
+        "reference"
       ],
       "mentorEligible": true,
       "minutes": 20,
-      "energy": "gentle"
+      "energy": "gentle",
+      "resourceType": "reference",
+      "learningValue": "supplemental",
+      "curricularWeight": "supplemental"
     },
     {
       "id": "bible-history",
       "title": "Bible & History",
-      "description": "",
+      "description": "Structured historical-context study connecting biblical texts with historical inquiry.",
       "url": "https://vervenveda.com/Arshif.github.io/apps/Bible_and_History_index.html",
+      "classification": "educational",
       "audiences": [
         "high",
         "higher-learning",
@@ -99,16 +123,19 @@
       ],
       "domains": [
         "history",
-        "textual-study"
+        "textual-study",
+        "religious-studies"
       ],
       "skills": [
         "historical-context",
-        "reading"
+        "reading",
+        "comparative-analysis"
       ],
       "tags": [
         "history",
         "bible",
-        "faith"
+        "faith",
+        "textual-study"
       ],
       "mentorEligible": true,
       "minutes": 25,
@@ -116,13 +143,21 @@
       "requiresPreferenceMatch": [
         "faith",
         "biblical-study"
+      ],
+      "resourceType": "course",
+      "learningValue": "supplemental",
+      "curricularWeight": "supplemental",
+      "subjects": [
+        "history",
+        "religious-studies"
       ]
     },
     {
       "id": "bible-context",
       "title": "Bible Context",
-      "description": "",
+      "description": "Structured course in textual context, transmission, canon, and contextual reading.",
       "url": "https://vervenveda.com/Arshif.github.io/apps/Bible_context_index.html",
+      "classification": "educational",
       "audiences": [
         "high",
         "higher-learning",
@@ -135,15 +170,20 @@
       ],
       "domains": [
         "history",
-        "textual-study"
+        "textual-study",
+        "religious-studies"
       ],
       "skills": [
-        "contextual-reading"
+        "contextual-reading",
+        "textual-analysis",
+        "historical-context"
       ],
       "tags": [
         "bible",
         "history",
-        "faith"
+        "faith",
+        "context",
+        "textual-study"
       ],
       "mentorEligible": true,
       "minutes": 20,
@@ -151,13 +191,21 @@
       "requiresPreferenceMatch": [
         "faith",
         "biblical-study"
+      ],
+      "resourceType": "course",
+      "learningValue": "supplemental",
+      "curricularWeight": "supplemental",
+      "subjects": [
+        "history",
+        "religious-studies"
       ]
     },
     {
       "id": "foundations-faith",
       "title": "Foundations of Faith",
-      "description": "",
+      "description": "Self-paced faith-study portal for reflection and textual study.",
       "url": "https://vervenveda.com/Arshif.github.io/apps/Foundations_of_faith_index.html",
+      "classification": "educational",
       "audiences": [
         "high",
         "higher-learning",
@@ -169,7 +217,8 @@
         "educator"
       ],
       "domains": [
-        "faith-study"
+        "faith-study",
+        "religious-studies"
       ],
       "skills": [
         "reflection",
@@ -177,20 +226,28 @@
       ],
       "tags": [
         "faith",
-        "religion"
+        "religion",
+        "study"
       ],
       "mentorEligible": true,
       "minutes": 20,
       "energy": "gentle",
       "requiresPreferenceMatch": [
         "faith"
+      ],
+      "resourceType": "course",
+      "learningValue": "supplemental",
+      "curricularWeight": "supplemental",
+      "subjects": [
+        "religious-studies"
       ]
     },
     {
       "id": "truth-tribe-kids",
       "title": "Truth Tribe Kids",
-      "description": "",
+      "description": "Elementary and middle-school faith-oriented reading, exploration, and reflection portal.",
       "url": "https://vervenveda.com/Arshif.github.io/apps/Truth_tribe_kids_index.html",
+      "classification": "educational",
       "audiences": [
         "elementary",
         "middle"
@@ -202,7 +259,8 @@
       ],
       "domains": [
         "faith-study",
-        "reading"
+        "reading",
+        "religious-studies"
       ],
       "skills": [
         "reading",
@@ -210,15 +268,23 @@
       ],
       "tags": [
         "faith",
-        "kids"
+        "kids",
+        "reading"
       ],
       "mentorEligible": true,
       "minutes": 15,
       "energy": "gentle",
       "requiresPreferenceMatch": [
         "faith"
+      ],
+      "resourceType": "learning-portal",
+      "learningValue": "supplemental",
+      "curricularWeight": "supplemental",
+      "subjects": [
+        "reading",
+        "religious-studies"
       ]
     }
   ],
-  "mentorNotes": "Faith-specific resources carry preference metadata and should not be proactively recommended without a matching learner/family preference once that resolver rule is enabled."
+  "mentorNotes": "ARSHIF's primary federation role is research, archive, reference, and public-learning navigation. Cultural, literary, historical, and faith materials remain discoverable through domains and tags. Faith-specific resources retain requiresPreferenceMatch metadata and must not be proactively recommended without a matching family/learner preference or explicit query under the current Mentor resource policy."
 }
