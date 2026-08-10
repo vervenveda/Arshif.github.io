@@ -1,0 +1,740 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="description" content="ARSHIF Halls — a growing collection of Khaemenes Academy learning halls for literature, literacy, philosophy, theatre, history, travel, oral traditions, poetry, and human memory.">
+<meta name="theme-color" content="#080c0f">
+<meta name="color-scheme" content="dark">
+<meta name="referrer" content="no-referrer">
+<title>ARSHIF Halls · Khaemenes Academy</title>
+
+<style>
+:root{
+  --night:#080c0f;
+  --night2:#0c1317;
+  --night3:#10191d;
+  --paper:#e8e1cf;
+  --soft:#bdb7a7;
+  --gold:#c5a56a;
+  --gold2:#e3c98f;
+  --teal:#6f9e99;
+  --teal2:#365b5a;
+  --line:rgba(227,201,143,.18);
+  --line2:rgba(255,255,255,.065);
+  --panel:rgba(15,23,27,.84);
+  --shadow:0 26px 70px rgba(0,0,0,.38);
+  --radius:21px;
+  --max:1221px;
+  --serif:Georgia,"Times New Roman",serif;
+  --sans:Arial,Helvetica,sans-serif;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;background:var(--night)}
+body{
+  margin:0;
+  min-height:100vh;
+  overflow-x:hidden;
+  color:var(--paper);
+  background:
+    radial-gradient(circle at 12% 7%,rgba(111,158,153,.13),transparent 28rem),
+    radial-gradient(circle at 88% 18%,rgba(197,165,106,.12),transparent 26rem),
+    linear-gradient(180deg,#0a0f12 0%,#081014 48%,#070b0e 100%);
+  font-family:var(--serif);
+  line-height:1.65;
+}
+button,input,a{font:inherit}
+button{cursor:pointer}
+a{color:inherit;text-decoration:none}
+a:hover{text-decoration:none}
+:focus-visible{outline:3px solid var(--gold2);outline-offset:3px}
+::selection{background:rgba(227,201,143,.26);color:#fff}
+
+.skip{
+  position:fixed;top:-80px;left:11px;z-index:9999;
+  padding:10px 14px;border-radius:7px;background:var(--gold2);color:#111
+}
+.skip:focus{top:11px}
+
+.page-grid,.page-noise{
+  position:fixed;inset:0;pointer-events:none
+}
+.page-grid{
+  z-index:0;opacity:.16;
+  background-image:
+    linear-gradient(rgba(227,201,143,.055) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(227,201,143,.04) 1px,transparent 1px);
+  background-size:60px 60px;
+  mask-image:linear-gradient(to bottom,#000,transparent 82%);
+}
+.page-noise{
+  z-index:0;opacity:.035;
+  background-image:radial-gradient(circle at 1px 1px,#fff 1px,transparent 0);
+  background-size:22px 22px;
+}
+
+.shell{position:relative;z-index:2;width:min(calc(100% - 42px),var(--max));margin:auto}
+
+/* 66px header rhythm */
+.site-header{
+  position:sticky;top:0;z-index:100;
+  border-bottom:1px solid rgba(227,201,143,.12);
+  background:rgba(8,12,15,.82);
+  backdrop-filter:blur(18px);
+}
+.header-inner{
+  width:min(calc(100% - 42px),var(--max));
+  min-height:66px;margin:auto;
+  display:flex;align-items:center;justify-content:space-between;gap:21px
+}
+.brand{
+  display:inline-flex;align-items:center;gap:11px;min-width:0
+}
+.brand-mark{
+  width:38px;height:38px;display:grid;place-items:center;
+  border:1px solid rgba(227,201,143,.30);
+  border-radius:50%;
+  color:var(--gold2);
+  font:400 20px/1 var(--serif);
+  box-shadow:inset 0 0 22px rgba(227,201,143,.06)
+}
+.brand-copy{display:grid;line-height:1.05}
+.brand-name{
+  color:var(--paper);
+  font:400 15px/1 var(--serif);
+  letter-spacing:.24em
+}
+.brand-sub{
+  margin-top:6px;color:var(--soft);
+  font:700 9px/1 var(--sans);
+  letter-spacing:.18em;text-transform:uppercase
+}
+.header-actions{display:flex;align-items:center;gap:7px}
+.header-link{
+  min-height:36px;display:inline-flex;align-items:center;justify-content:center;
+  padding:7px 11px;border:1px solid var(--line);border-radius:999px;
+  color:var(--soft);
+  font:700 9px/1 var(--sans);
+  letter-spacing:.10em;text-transform:uppercase;
+  transition:.18s ease
+}
+.header-link:hover{color:var(--paper);border-color:rgba(227,201,143,.42);background:rgba(197,165,106,.08)}
+
+/* minimal opening screen */
+.hero{
+  min-height:min(770px,calc(100vh - 66px));
+  display:grid;place-items:center;
+  padding:77px 0 66px;
+  text-align:center;
+  border-bottom:1px solid rgba(227,201,143,.10)
+}
+.hero-inner{width:min(100%,999px);margin:auto}
+.sigil{
+  width:111px;height:111px;margin:0 auto 33px;
+  display:grid;place-items:center;
+  border:1px solid rgba(227,201,143,.30);
+  border-radius:50%;
+  color:var(--gold2);
+  font:400 42px/1 var(--serif);
+  box-shadow:
+    0 0 0 21px rgba(227,201,143,.020),
+    0 0 0 55px rgba(227,201,143,.012),
+    inset 0 0 44px rgba(111,158,153,.07)
+}
+.eyebrow{
+  margin:0 auto;
+  color:var(--gold2);
+  font:700 11px/1.3 var(--sans);
+  letter-spacing:.30em;text-transform:uppercase
+}
+.hero h1{
+  max-width:888px;margin:21px auto 0;
+  color:#f1ead9;
+  font:400 clamp(38px,6vw,72px)/.98 var(--serif);
+  letter-spacing:.015em
+}
+.hero-copy{
+  max-width:666px;margin:21px auto 0;
+  color:var(--soft);
+  font:400 15px/1.9 var(--sans)
+}
+.hero-actions{
+  display:flex;flex-wrap:wrap;justify-content:center;gap:11px;
+  margin-top:33px
+}
+.btn{
+  min-height:42px;display:inline-flex;align-items:center;justify-content:center;
+  padding:10px 14px;
+  border:1px solid var(--line);
+  border-radius:999px;
+  background:rgba(255,255,255,.035);
+  color:var(--paper);
+  font:700 9px/1 var(--sans);
+  letter-spacing:.11em;text-transform:uppercase;
+  transition:transform .16s ease,background .16s ease,border-color .16s ease
+}
+.btn:hover{transform:translateY(-1px);background:rgba(197,165,106,.08);border-color:rgba(227,201,143,.42)}
+.btn.primary{
+  background:linear-gradient(135deg,var(--gold2),var(--gold));
+  color:#17120b;border-color:transparent
+}
+.hero-stat{
+  margin-top:33px;
+  color:var(--soft);
+  font:700 10px/1.6 var(--sans);
+  letter-spacing:.12em;text-transform:uppercase
+}
+.hero-stat strong{color:var(--gold2);font-size:13px}
+
+/* directory */
+.directory{padding:77px 0 88px}
+.heading{text-align:center;max-width:888px;margin:0 auto 55px}
+.kicker{
+  margin:0;color:var(--gold2);
+  font:700 10px/1.3 var(--sans);
+  letter-spacing:.22em;text-transform:uppercase
+}
+.heading h2{
+  max-width:777px;margin:14px auto 0;
+  color:#f1ead9;
+  font:400 clamp(28px,4vw,44px)/1.08 var(--serif)
+}
+.heading p{
+  max-width:666px;margin:14px auto 0;
+  color:var(--soft);
+  font:400 13px/1.85 var(--sans)
+}
+.controls{
+  max-width:888px;margin:0 auto 33px;
+  padding:21px;
+  border:1px solid var(--line);
+  border-radius:21px;
+  background:rgba(15,23,27,.72);
+  box-shadow:var(--shadow);
+  text-align:center
+}
+.search{
+  width:min(100%,666px);
+  min-height:44px;
+  padding:10px 14px;
+  border:1px solid rgba(227,201,143,.18);
+  border-radius:999px;
+  background:rgba(255,255,255,.04);
+  color:var(--paper);
+  outline:none;
+  text-align:center;
+  font:400 13px/1 var(--sans)
+}
+.search::placeholder{color:#8f8a7d}
+.search:focus{border-color:var(--gold);box-shadow:0 0 0 3px rgba(197,165,106,.12)}
+.filters{
+  display:flex;flex-wrap:wrap;justify-content:center;gap:7px;margin-top:14px
+}
+.filter{
+  min-height:33px;padding:7px 10px;
+  border:1px solid var(--line);
+  border-radius:999px;
+  background:rgba(255,255,255,.025);
+  color:var(--soft);
+  font:700 8px/1 var(--sans);
+  letter-spacing:.08em;text-transform:uppercase
+}
+.filter.active{background:var(--gold);border-color:var(--gold);color:#17120b}
+.result-line{
+  margin-top:14px;color:#8f8a7d;
+  font:700 8px/1.4 var(--sans);
+  letter-spacing:.12em;text-transform:uppercase
+}
+
+.hall-grid{
+  display:grid;
+  grid-template-columns:repeat(3,minmax(0,1fr));
+  gap:21px;
+  align-items:stretch
+}
+.hall{
+  --accent:var(--gold);
+  position:relative;
+  min-height:390px;
+  display:flex;flex-direction:column;
+  padding:24px 21px 21px;
+  overflow:hidden;
+  border:1px solid var(--line);
+  border-top:3px solid var(--accent);
+  border-radius:21px;
+  background:
+    radial-gradient(circle at 100% 0%,color-mix(in srgb,var(--accent) 12%,transparent),transparent 42%),
+    linear-gradient(180deg,rgba(16,25,29,.95),rgba(10,16,19,.94));
+  box-shadow:0 18px 50px rgba(0,0,0,.24);
+  text-align:center;
+  transition:transform .18s ease,border-color .18s ease,box-shadow .18s ease
+}
+.hall:hover{
+  transform:translateY(-3px);
+  border-color:color-mix(in srgb,var(--accent) 62%,var(--line));
+  box-shadow:0 26px 60px rgba(0,0,0,.34)
+}
+.hall-symbol{
+  width:55px;height:55px;margin:0 auto;
+  display:grid;place-items:center;
+  border:1px solid color-mix(in srgb,var(--accent) 55%,transparent);
+  border-radius:50%;
+  color:var(--accent);
+  font:400 24px/1 var(--serif);
+  background:rgba(255,255,255,.025)
+}
+.hall-category{
+  margin-top:17px;
+  color:var(--accent);
+  font:800 8px/1.5 var(--sans);
+  letter-spacing:.13em;text-transform:uppercase
+}
+.hall h3{
+  min-height:52px;
+  display:flex;align-items:center;justify-content:center;
+  max-width:290px;margin:11px auto 0;
+  color:#f5eedc;
+  font:400 20px/1.22 var(--serif)
+}
+.hall-range{
+  min-height:26px;margin-top:8px;
+  color:#aea795;
+  font:700 8.5px/1.5 var(--sans);
+  letter-spacing:.08em;text-transform:uppercase
+}
+.hall p{
+  max-width:285px;margin:17px auto 21px;
+  color:var(--soft);
+  font:400 11px/1.75 var(--sans)
+}
+.tags{
+  display:flex;flex-wrap:wrap;justify-content:center;gap:6px;
+  margin-top:auto
+}
+.tag{
+  padding:5px 7px;
+  border:1px solid rgba(227,201,143,.11);
+  border-radius:999px;
+  color:#9f9889;
+  font:700 7.5px/1 var(--sans);
+  letter-spacing:.05em;text-transform:uppercase
+}
+.hall-actions{
+  display:flex;justify-content:center;gap:7px;margin-top:17px
+}
+.open{
+  min-height:38px;display:inline-flex;align-items:center;justify-content:center;
+  padding:8px 12px;border-radius:7px;
+  border:1px solid color-mix(in srgb,var(--accent) 56%,transparent);
+  background:color-mix(in srgb,var(--accent) 12%,transparent);
+  color:#f5eedc;
+  font:800 8px/1 var(--sans);
+  letter-spacing:.10em;text-transform:uppercase
+}
+.open:hover{background:color-mix(in srgb,var(--accent) 22%,transparent)}
+
+.empty{
+  grid-column:1/-1;
+  padding:55px 21px;
+  border:1px dashed var(--line);
+  border-radius:21px;
+  color:var(--soft);
+  text-align:center;
+  font:400 13px/1.8 var(--sans)
+}
+
+/* growth section */
+.growth{padding:0 0 88px}
+.growth-card{
+  max-width:999px;margin:auto;
+  padding:33px;
+  border:1px solid var(--line);
+  border-radius:21px;
+  background:linear-gradient(135deg,rgba(111,158,153,.07),rgba(197,165,106,.06));
+  text-align:center
+}
+.growth-card .kicker{color:var(--teal)}
+.growth-card h2{
+  max-width:666px;margin:14px auto 0;
+  color:#f1ead9;
+  font:400 28px/1.15 var(--serif)
+}
+.growth-card p{
+  max-width:666px;margin:14px auto 0;
+  color:var(--soft);
+  font:400 12px/1.8 var(--sans)
+}
+.registry-example{
+  max-width:777px;margin:21px auto 0;
+  padding:17px;
+  border:1px solid var(--line2);
+  border-radius:11px;
+  background:rgba(0,0,0,.20);
+  color:#b9b3a6;
+  text-align:left;
+  overflow:auto;
+  font:400 11px/1.6 ui-monospace,SFMono-Regular,Menlo,Consolas,monospace
+}
+
+/* footer */
+.footer{
+  padding:55px 21px 66px;
+  border-top:1px solid rgba(227,201,143,.12);
+  color:#898376;
+  text-align:center
+}
+.footer strong{
+  display:block;
+  color:var(--gold2);
+  font:400 15px/1 var(--serif);
+  letter-spacing:.16em
+}
+.footer span{
+  display:block;margin-top:11px;
+  font:700 8.5px/1.7 var(--sans);
+  letter-spacing:.12em;text-transform:uppercase
+}
+
+.reveal{opacity:0;transform:translateY(11px);transition:opacity .5s ease,transform .5s ease}
+.reveal.seen{opacity:1;transform:none}
+
+@media(max-width:1050px){
+  .hall-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+}
+@media(max-width:720px){
+  .header-inner{width:min(calc(100% - 28px),var(--max))}
+  .brand-sub{display:none}
+  .header-link:nth-child(2){display:none}
+  .hero{min-height:auto;padding:66px 0 55px}
+  .directory{padding-top:66px}
+}
+@media(max-width:580px){
+  .shell{width:min(calc(100% - 28px),var(--max))}
+  .hall-grid{grid-template-columns:1fr}
+  .hall{min-height:auto}
+  .controls{padding:17px}
+  .hero h1{font-size:42px}
+  .sigil{width:88px;height:88px;font-size:34px}
+}
+@media(prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  .ticker-track{animation:none}
+  .reveal{opacity:1;transform:none;transition:none}
+  *{transition:none!important}
+}
+</style>
+</head>
+
+<body>
+<a class="skip" href="#hallDirectory">Skip to Hall directory</a>
+<div class="page-grid" aria-hidden="true"></div>
+<div class="page-noise" aria-hidden="true"></div>
+
+<header class="site-header">
+  <div class="header-inner">
+    <a class="brand" href="../" aria-label="Return to ARSHIF home">
+      <span class="brand-mark" aria-hidden="true">A</span>
+      <span class="brand-copy">
+        <span class="brand-name">ARSHIF</span>
+        <span class="brand-sub">The Living Archive of Human Knowledge</span>
+      </span>
+    </a>
+    <div class="header-actions">
+      <a class="header-link" href="#hallDirectory">All Halls</a>
+      <a class="header-link" href="../">ARSHIF Home</a>
+    </div>
+  </div>
+</header>
+
+<main>
+  <section class="hero">
+    <div class="shell">
+      <div class="hero-inner reveal">
+        <div class="sigil" aria-hidden="true">A</div>
+        <p class="eyebrow">Khaemenes Academy · ARSHIF</p>
+        <h1>The Halls</h1>
+        <p class="hero-copy">
+          A growing constellation of deep-learning rooms where literature, memory, philosophy,
+          history, performance, faith, geography, language, and human knowledge can be studied
+          with patience rather than rushed through.
+        </p>
+        <div class="hero-actions">
+          <a class="btn primary" href="#hallDirectory">Enter the Halls</a>
+          <button class="btn" id="randomHall" type="button">Open a Random Hall</button>
+        </div>
+        <div class="hero-stat"><strong id="heroCount">9</strong> live halls · designed to grow</div>
+      </div>
+    </div>
+  </section>
+
+  <section class="directory" id="hallDirectory">
+    <div class="shell">
+      <div class="heading reveal">
+        <p class="kicker">The Living Directory</p>
+        <h2>Choose a room. Follow a question.</h2>
+        <p>
+          Each Hall keeps its own identity and curriculum while remaining part of one ARSHIF archive.
+          Search by subject, level, method, or theme.
+        </p>
+      </div>
+
+      <div class="controls reveal">
+        <input
+          class="search"
+          id="search"
+          type="search"
+          autocomplete="off"
+          spellcheck="false"
+          aria-label="Search Halls"
+          placeholder="Search: poetry, philosophy, archaeology, reading, theatre, oral traditions…"
+        >
+        <div class="filters" id="filters" aria-label="Filter Halls by category"></div>
+        <div class="result-line" id="resultLine">9 halls visible</div>
+      </div>
+
+      <div class="hall-grid" id="hallGrid" aria-live="polite"></div>
+    </div>
+  </section>
+
+  <section class="growth">
+    <div class="shell">
+      <article class="growth-card reveal">
+        <p class="kicker">A Growing Archive</p>
+        <h2>This landing page is built for the Halls you have not created yet.</h2>
+        <p>
+          New Halls are rendered from one registry near the bottom of this file. To add another Hall later,
+          add one object with its path, title, category, range, description, tags, symbol, and accent.
+          The search, category filters, count, grid, and random-Hall button update automatically.
+        </p>
+        <pre class="registry-example">{
+  path: "./future-hall/",
+  title: "Future Hall",
+  category: "Ideas & Culture",
+  range: "101–603",
+  description: "A concise description of the Hall.",
+  tags: ["research", "history", "culture"],
+  symbol: "◇",
+  accent: "#6f9e99"
+}</pre>
+      </article>
+    </div>
+  </section>
+</main>
+
+<footer class="footer">
+  <strong>ARSHIF</strong>
+  <span>The Halls · Khaemenes Academy · A quiet architecture for lifelong learning</span>
+</footer>
+
+<script>
+(() => {
+  "use strict";
+
+  /*
+    ============================================================
+    ARSHIF HALL REGISTRY
+    Add future halls here. The page renders itself from this list.
+    Keep repository folder paths EXACTLY as they exist on GitHub.
+    ============================================================
+  */
+  const HALLS = [
+    {
+      path: "./literacy-childrens-classics/",
+      title: "Reading & Literacy Hall",
+      category: "Literature & Literacy",
+      range: "Preschool through Middle School",
+      description: "Developmental reading, literacy strands, children’s classics, reading-level guides, Story Studio, family learning, and progress tools.",
+      tags: ["reading","literacy","classics","children","prek","elementary","middle school"],
+      symbol: "R",
+      accent: "#8b7cc2"
+    },
+    {
+      path: "./literacy-world-classics/",
+      title: "World Classics & Humanities Hall",
+      category: "Literature & Literacy",
+      range: "All Ages · High School through University Pathways",
+      description: "World literature, cultural context, comparative humanities, primary texts, scholarly reading, analysis, and advanced academic pathways.",
+      tags: ["world literature","classics","humanities","reading","analysis","university"],
+      symbol: "W",
+      accent: "#d6aa48"
+    },
+    {
+      path: "./literacy-poetry-9th-university/",
+      title: "Poetry Hall",
+      category: "Literature & Literacy",
+      range: "Poetry 101–603",
+      description: "Poetry reading, close analysis, craft, forms, traditions, workshops, criticism, research, and advanced poetry study.",
+      tags: ["poetry","writing","close reading","craft","workshop","research"],
+      symbol: "¶",
+      accent: "#b1788a"
+    },
+
+    {
+      path: "./literacy-indiginous-oral-traditions/",
+      title: "Indigenous Oral Traditions & Storywork Hall",
+      category: "Memory & Story",
+      range: "101–603",
+      description: "Oral traditions, storywork, community authority, living cultural knowledge, ethical research, listening, memory, and advanced independent study.",
+      tags: ["oral traditions","indigenous","storywork","memory","culture","ethics"],
+      symbol: "◌",
+      accent: "#7ba06f"
+    },
+    {
+      path: "./literacy-lost-books/",
+      title: "The Palimpsest Vault",
+      category: "Memory & Story",
+      range: "Vault Studies 101–603",
+      description: "Lost, fragmented, suppressed, challenged, and recovered works; manuscripts, canon, censorship, archives, textual criticism, and digital preservation.",
+      tags: ["lost books","manuscripts","archives","censorship","canon","preservation"],
+      symbol: "V",
+      accent: "#a77e3d"
+    },
+
+    {
+      path: "./philosophy/",
+      title: "Philosophy Hall",
+      category: "Ideas & Culture",
+      range: "Philosophy 101–603",
+      description: "World philosophy, logic, ethics, epistemology, metaphysics, political thought, comparative philosophy, research, and thesis-level inquiry.",
+      tags: ["philosophy","logic","ethics","world wisdom","research","ideas"],
+      symbol: "Φ",
+      accent: "#8b79a6"
+    },
+    {
+      path: "./historical-biblical-parallels/",
+      title: "Bible & History Parallels Hall",
+      category: "History & Evidence",
+      range: "101–603 · 12-Week Core Evidence Lab",
+      description: "Scripture, archaeology, inscriptions, manuscripts, ancient history, historical geography, evidence-aware research, and clearly labeled faith reflection.",
+      tags: ["bible","history","archaeology","epigraphy","manuscripts","evidence","faith"],
+      symbol: "§",
+      accent: "#6f9e99"
+    },
+    {
+      path: "./exploration-travelogues/",
+      title: "Travelogues & Exploration Hall",
+      category: "History & Evidence",
+      range: "Travelogues 101–603",
+      description: "World routes, maps, travel writing, pilgrimage, maritime networks, field observation, migration, environmental change, spatial humanities, and GIS thinking.",
+      tags: ["travel","maps","geography","exploration","fieldwork","gis","mobility"],
+      symbol: "⌖",
+      accent: "#7f9ab5"
+    },
+
+    {
+      path: "./theatre/",
+      title: "Theatre Hall",
+      category: "Performance & Creative Practice",
+      range: "Theatre 101–603",
+      description: "Global dramatic literature, acting, directing, dramaturgy, design, devising, playwriting, stage management, production, research, rights, and safe rehearsal practice.",
+      tags: ["theatre","acting","directing","plays","design","performance","playwriting"],
+      symbol: "T",
+      accent: "#a75d68"
+    }
+  ];
+
+  const $ = (s) => document.querySelector(s);
+  const esc = (value) => String(value ?? "").replace(/[&<>"']/g, (c) => ({
+    "&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"
+  }[c]));
+
+  let activeCategory = "All";
+  let query = "";
+
+  const categories = ["All", ...new Set(HALLS.map(h => h.category))];
+
+  function haystack(hall){
+    return [
+      hall.title,
+      hall.category,
+      hall.range,
+      hall.description,
+      ...(hall.tags || [])
+    ].join(" ").toLowerCase();
+  }
+
+  function visibleHalls(){
+    const q = query.trim().toLowerCase();
+    return HALLS.filter((hall) => {
+      const categoryMatch = activeCategory === "All" || hall.category === activeCategory;
+      const queryMatch = !q || haystack(hall).includes(q);
+      return categoryMatch && queryMatch;
+    });
+  }
+
+  function renderFilters(){
+    $("#filters").innerHTML = categories.map(category => `
+      <button
+        class="filter ${category === activeCategory ? "active" : ""}"
+        type="button"
+        data-category="${esc(category)}"
+      >${esc(category)}</button>
+    `).join("");
+  }
+
+  function renderHalls(){
+    const list = visibleHalls();
+
+    $("#hallGrid").innerHTML = list.length
+      ? list.map((hall) => `
+        <article class="hall reveal seen" style="--accent:${esc(hall.accent)}">
+          <div class="hall-symbol" aria-hidden="true">${esc(hall.symbol)}</div>
+          <div class="hall-category">${esc(hall.category)}</div>
+          <h3>${esc(hall.title)}</h3>
+          <div class="hall-range">${esc(hall.range)}</div>
+          <p>${esc(hall.description)}</p>
+          <div class="tags">
+            ${(hall.tags || []).slice(0, 5).map(tag => `<span class="tag">${esc(tag)}</span>`).join("")}
+          </div>
+          <div class="hall-actions">
+            <a class="open" href="${esc(hall.path)}" aria-label="Open ${esc(hall.title)}">Open Hall →</a>
+          </div>
+        </article>
+      `).join("")
+      : `<div class="empty">No Hall matches that search yet. Try another subject or choose “All.”</div>`;
+
+    $("#resultLine").textContent = `${list.length} ${list.length === 1 ? "hall" : "halls"} visible`;
+    $("#heroCount").textContent = HALLS.length;
+  }
+
+  $("#filters").addEventListener("click", (event) => {
+    const button = event.target.closest("[data-category]");
+    if (!button) return;
+    activeCategory = button.dataset.category;
+    renderFilters();
+    renderHalls();
+  });
+
+  $("#search").addEventListener("input", (event) => {
+    query = event.target.value;
+    renderHalls();
+  });
+
+  $("#randomHall").addEventListener("click", () => {
+    const pool = visibleHalls().length ? visibleHalls() : HALLS;
+    const hall = pool[Math.floor(Math.random() * pool.length)];
+    if (hall) window.location.href = hall.path;
+  });
+
+  const observer = "IntersectionObserver" in window
+    ? new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("seen");
+            observer.unobserve(entry.target);
+          }
+        });
+      }, { threshold: .08 })
+    : null;
+
+  document.querySelectorAll(".reveal").forEach(el => {
+    if (observer) observer.observe(el);
+    else el.classList.add("seen");
+  });
+
+  renderFilters();
+  renderHalls();
+})();
+</script>
+</body>
+</html>
