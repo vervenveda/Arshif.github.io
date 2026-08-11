@@ -1,290 +1,308 @@
 {
-  "version": 2,
+  "version": 3,
   "sourceId": "verve.arshif",
-  "name": "ARSHIF Archives",
-  "classification": "research-information",
-  "mentorSearchable": true,
+  "name": "ARSHIF — The Living Archive of Human Knowledge",
+  "classification": [
+    "research",
+    "information",
+    "humanities",
+    "curriculum",
+    "public-learning"
+  ],
+  "homepage": "https://vervenveda.com/Arshif.github.io/",
+  "hallsDirectory": "https://vervenveda.com/Arshif.github.io/halls/",
   "audiences": [
-    "middle",
-    "high",
+    "preschool",
+    "elementary",
+    "middle-school",
+    "high-school",
     "higher-learning",
     "adult",
-    "parent"
+    "parent",
+    "educator",
+    "independent-scholar"
   ],
   "roles": [
     "student",
     "parent",
-    "educator"
+    "educator",
+    "researcher",
+    "independent-scholar"
   ],
-  "homepage": "https://vervenveda.com/Arshif.github.io/",
-  "repository": "vervenveda/Arshif.github.io",
-  "resources": [
+  "principles": [
+    "Evidence",
+    "Context",
+    "Access",
+    "Stewardship",
+    "Intellectual Independence",
+    "Human Dignity",
+    "Sovereignty"
+  ],
+  "routing": {
+    "internalLayers": [
+      "halls/",
+      "apps/",
+      "Faith/apps/"
+    ],
+    "storage": "browser-local where individual apps use localStorage",
+    "automaticTranscriptCredit": false,
+    "note": "ARSHIF resource completion is not automatically an accredited transcript or institutional-credit record unless a separate Khaemenes course explicitly establishes that relationship."
+  },
+  "canonicalHalls": [
     {
-      "id": "arshif-home",
-      "title": "ARSHIF Archives",
-      "description": "The Living Archive of Human Knowledge: a privacy-respecting gateway to research, public learning, culture, history, science, art, reading, and human memory.",
-      "url": "https://vervenveda.com/Arshif.github.io/",
-      "classification": "research-information",
-      "audiences": [
-        "middle",
-        "high",
-        "higher-learning",
-        "adult",
-        "parent"
-      ],
-      "roles": [
-        "student",
-        "parent",
-        "educator"
-      ],
-      "domains": [
-        "archives",
-        "research",
-        "reference",
-        "reading",
-        "culture",
-        "history"
-      ],
-      "skills": [
-        "research-navigation",
-        "source-discovery",
-        "reading"
-      ],
+      "id": "reading-literacy",
+      "title": "Reading & Literacy Hall",
+      "url": "https://vervenveda.com/Arshif.github.io/halls/literacy-childrens-classics/",
+      "category": "Texts & Language",
       "tags": [
-        "archive",
-        "research",
-        "reference",
         "reading",
-        "culture",
-        "human-knowledge"
-      ],
-      "mentorEligible": true,
-      "featured": true,
-      "resourceType": "hub",
-      "learningValue": "supplemental",
-      "curricularWeight": "supplemental"
+        "literacy",
+        "children",
+        "classics",
+        "phonics",
+        "middle school"
+      ]
     },
     {
-      "id": "reading-room",
-      "title": "ARSHIF Reading Room",
-      "description": "Archive reading room for literature, historical texts, and reflective reading.",
-      "url": "https://vervenveda.com/Arshif.github.io/apps/Reading_room_index.html",
-      "classification": "research-information",
-      "audiences": [
-        "middle",
-        "high",
-        "higher-learning",
-        "adult"
-      ],
-      "roles": [
-        "student",
-        "parent",
-        "educator"
-      ],
-      "domains": [
-        "reading",
-        "archives",
-        "literature",
-        "reference"
-      ],
-      "skills": [
-        "reading",
-        "reflection",
-        "source-discovery"
-      ],
+      "id": "world-classics",
+      "title": "World Classics & Humanities Hall",
+      "url": "https://vervenveda.com/Arshif.github.io/halls/literacy-world-classics/",
+      "category": "Texts & Language",
       "tags": [
-        "reading-room",
-        "archive",
-        "literature",
-        "reference"
-      ],
-      "mentorEligible": true,
-      "minutes": 20,
-      "energy": "gentle",
-      "resourceType": "reference",
-      "learningValue": "supplemental",
-      "curricularWeight": "supplemental"
+        "classics",
+        "world literature",
+        "humanities",
+        "university",
+        "research"
+      ]
+    },
+    {
+      "id": "poetry",
+      "title": "Poetry Hall",
+      "url": "https://vervenveda.com/Arshif.github.io/halls/literacy-poetry-9th-university/",
+      "category": "Arts & Expression",
+      "tags": [
+        "poetry",
+        "writing",
+        "craft",
+        "workshop",
+        "literature"
+      ]
+    },
+    {
+      "id": "oral-traditions",
+      "title": "Indigenous Oral Traditions & Storywork Hall",
+      "url": "https://vervenveda.com/Arshif.github.io/halls/literacy-indiginous-oral-traditions/",
+      "category": "Culture & Memory",
+      "tags": [
+        "indigenous",
+        "oral traditions",
+        "storywork",
+        "memory",
+        "culture",
+        "ethics"
+      ]
+    },
+    {
+      "id": "lost-works",
+      "title": "The Palimpsest Vault",
+      "url": "https://vervenveda.com/Arshif.github.io/halls/literacy-lost-books/",
+      "category": "Culture & Memory",
+      "tags": [
+        "lost works",
+        "archives",
+        "manuscripts",
+        "censorship",
+        "preservation"
+      ]
+    },
+    {
+      "id": "philosophy",
+      "title": "Philosophy Hall",
+      "url": "https://vervenveda.com/Arshif.github.io/halls/philosophy/",
+      "category": "Ideas & Inquiry",
+      "tags": [
+        "philosophy",
+        "logic",
+        "ethics",
+        "ideas",
+        "research"
+      ]
     },
     {
       "id": "bible-history",
-      "title": "Bible & History",
-      "description": "Structured historical-context study connecting biblical texts with historical inquiry.",
-      "url": "https://vervenveda.com/Arshif.github.io/apps/Bible_and_History_index.html",
-      "classification": "educational",
-      "audiences": [
-        "high",
-        "higher-learning",
-        "adult"
-      ],
-      "roles": [
-        "student",
-        "parent",
-        "educator"
-      ],
-      "domains": [
-        "history",
-        "textual-study",
-        "religious-studies"
-      ],
-      "skills": [
-        "historical-context",
-        "reading",
-        "comparative-analysis"
-      ],
-      "tags": [
-        "history",
-        "bible",
-        "faith",
-        "textual-study"
-      ],
-      "mentorEligible": true,
-      "minutes": 25,
-      "energy": "steady",
-      "requiresPreferenceMatch": [
-        "faith",
-        "biblical-study"
-      ],
-      "resourceType": "course",
-      "learningValue": "supplemental",
-      "curricularWeight": "supplemental",
-      "subjects": [
-        "history",
-        "religious-studies"
-      ]
-    },
-    {
-      "id": "bible-context",
-      "title": "Bible Context",
-      "description": "Structured course in textual context, transmission, canon, and contextual reading.",
-      "url": "https://vervenveda.com/Arshif.github.io/apps/Bible_context_index.html",
-      "classification": "educational",
-      "audiences": [
-        "high",
-        "higher-learning",
-        "adult"
-      ],
-      "roles": [
-        "student",
-        "parent",
-        "educator"
-      ],
-      "domains": [
-        "history",
-        "textual-study",
-        "religious-studies"
-      ],
-      "skills": [
-        "contextual-reading",
-        "textual-analysis",
-        "historical-context"
-      ],
+      "title": "Bible & History Parallels Hall",
+      "url": "https://vervenveda.com/Arshif.github.io/halls/historical-biblical-parallels/",
+      "category": "Faith & Historical Inquiry",
       "tags": [
         "bible",
         "history",
-        "faith",
-        "context",
-        "textual-study"
-      ],
-      "mentorEligible": true,
-      "minutes": 20,
-      "energy": "steady",
-      "requiresPreferenceMatch": [
-        "faith",
-        "biblical-study"
-      ],
-      "resourceType": "course",
-      "learningValue": "supplemental",
-      "curricularWeight": "supplemental",
-      "subjects": [
-        "history",
-        "religious-studies"
+        "archaeology",
+        "epigraphy",
+        "manuscripts",
+        "faith"
       ]
     },
     {
-      "id": "foundations-faith",
-      "title": "Foundations of Faith",
-      "description": "Self-paced faith-study portal for reflection and textual study.",
-      "url": "https://vervenveda.com/Arshif.github.io/apps/Foundations_of_faith_index.html",
-      "classification": "educational",
-      "audiences": [
-        "high",
-        "higher-learning",
-        "adult"
-      ],
-      "roles": [
-        "student",
-        "parent",
-        "educator"
-      ],
-      "domains": [
-        "faith-study",
-        "religious-studies"
-      ],
-      "skills": [
-        "reflection",
-        "textual-study"
-      ],
+      "id": "travel-exploration",
+      "title": "Travelogues & Exploration Hall",
+      "url": "https://vervenveda.com/Arshif.github.io/halls/exploration-travelogues/",
+      "category": "History & Geography",
       "tags": [
-        "faith",
-        "religion",
-        "study"
-      ],
-      "mentorEligible": true,
-      "minutes": 20,
-      "energy": "gentle",
-      "requiresPreferenceMatch": [
-        "faith"
-      ],
-      "resourceType": "course",
-      "learningValue": "supplemental",
-      "curricularWeight": "supplemental",
-      "subjects": [
-        "religious-studies"
+        "travel",
+        "maps",
+        "geography",
+        "exploration",
+        "fieldwork",
+        "gis"
       ]
     },
     {
-      "id": "truth-tribe-kids",
-      "title": "Truth Tribe Kids",
-      "description": "Elementary and middle-school faith-oriented reading, exploration, and reflection portal.",
-      "url": "https://vervenveda.com/Arshif.github.io/apps/Truth_tribe_kids_index.html",
-      "classification": "educational",
-      "audiences": [
-        "elementary",
-        "middle"
-      ],
-      "roles": [
-        "student",
-        "parent",
-        "educator"
-      ],
-      "domains": [
-        "faith-study",
-        "reading",
-        "religious-studies"
-      ],
-      "skills": [
-        "reading",
-        "reflection"
-      ],
+      "id": "theatre",
+      "title": "Theatre Hall",
+      "url": "https://vervenveda.com/Arshif.github.io/halls/theatre/",
+      "category": "Arts & Expression",
       "tags": [
-        "faith",
-        "kids",
-        "reading"
-      ],
-      "mentorEligible": true,
-      "minutes": 15,
-      "energy": "gentle",
-      "requiresPreferenceMatch": [
-        "faith"
-      ],
-      "resourceType": "learning-portal",
-      "learningValue": "supplemental",
-      "curricularWeight": "supplemental",
-      "subjects": [
-        "reading",
-        "religious-studies"
+        "theatre",
+        "acting",
+        "directing",
+        "playwriting",
+        "performance",
+        "design"
       ]
     }
   ],
-  "mentorNotes": "ARSHIF's primary federation role is research, archive, reference, and public-learning navigation. Cultural, literary, historical, and faith materials remain discoverable through domains and tags. Faith-specific resources retain requiresPreferenceMatch metadata and must not be proactively recommended without a matching family/learner preference or explicit query under the current Mentor resource policy."
+  "matrixCorridors": [
+    {
+      "title": "The Halls",
+      "symbol": "A",
+      "url": "./halls/",
+      "group": "ARSHIF",
+      "description": "The dedicated growing landing page for ARSHIF’s nine canonical curriculum and research Halls.",
+      "status": "live"
+    },
+    {
+      "title": "Khaemenes Academy",
+      "symbol": "KA",
+      "url": "https://vervenveda.com/Khaemenes_Academy.github.io/",
+      "group": "Learning",
+      "description": "Central learning gateway connecting the Khaemenes educational ecosystem and family learning architecture.",
+      "status": "live"
+    },
+    {
+      "title": "Khaemenes Higher Learning",
+      "symbol": "HL",
+      "url": "https://vervenveda.com/Khaemenes_Higher_Learning.github.io/",
+      "group": "Learning",
+      "description": "University-oriented mathematics and higher-learning pathways for advanced study beyond the school sequence.",
+      "status": "live"
+    },
+    {
+      "title": "PROSE Editing Suite",
+      "symbol": "¶",
+      "url": "https://vervenveda.com/proresource_hub.github.io/#prose",
+      "group": "Creation",
+      "description": "Writing and editing corridor for essays, scripts, poetry, research papers, dossiers, reports, and capstone drafts.",
+      "status": "live"
+    },
+    {
+      "title": "PLERA Search",
+      "symbol": "⌕",
+      "url": "https://vervenveda.com/PLERASearch.github.io/",
+      "group": "Research",
+      "description": "Public-resource and research discovery corridor for extending ARSHIF inquiries beyond the embedded archive.",
+      "status": "live"
+    },
+    {
+      "title": "The Verifier",
+      "symbol": "✓",
+      "url": "https://vervenveda.com/theverifier.github.io/",
+      "group": "Research",
+      "description": "Verification and evidence-checking corridor for claims, sources, public information, and research discipline.",
+      "status": "live"
+    },
+    {
+      "title": "333 Network",
+      "symbol": "333",
+      "url": "https://vervenveda.com/333.github.io/",
+      "group": "Infrastructure",
+      "description": "Local-first member gateway for communication, community, creation, and connected infrastructure.",
+      "status": "live"
+    },
+    {
+      "title": "NAIB",
+      "symbol": "N",
+      "url": "https://artist1970.github.io/noema-ai.github.io/",
+      "group": "Intelligence",
+      "description": "Public intelligence-director corridor for research, mentors, verification, creativity, and specialist coordination.",
+      "status": "live"
+    },
+    {
+      "title": "Firmament Law",
+      "symbol": "§",
+      "url": "https://vervenveda.com/firmament.github.io/",
+      "group": "Law & Civic",
+      "description": "Legal-research and evidence corridor for rights, governance, citation, case organization, and civic study.",
+      "status": "live"
+    },
+    {
+      "title": "The Refrain",
+      "symbol": "♫",
+      "url": "https://vervenveda.com/the_refrain.github.io/",
+      "group": "Arts",
+      "description": "Music, reflection, and creative-expression corridor that pairs naturally with poetry, theatre, and oral tradition.",
+      "status": "live"
+    },
+    {
+      "title": "Bazaar Art",
+      "symbol": "B",
+      "url": "https://vervenveda.com/bazaarart.github.io/",
+      "group": "Arts",
+      "description": "Visual-art and creative-production corridor for translating knowledge into image, exhibition, and artistic response.",
+      "status": "live"
+    }
+  ],
+  "highValueResources": [
+    {
+      "title": "PLERA Search",
+      "url": "https://vervenveda.com/Arshif.github.io/apps/PLERA_Search_index.html",
+      "use": "resource discovery"
+    },
+    {
+      "title": "ARSHIF Reading Room",
+      "url": "https://vervenveda.com/Arshif.github.io/apps/Reading_room_index.html",
+      "use": "focused reading"
+    },
+    {
+      "title": "Science Hall",
+      "url": "https://vervenveda.com/Arshif.github.io/apps/science_hall_index.html",
+      "use": "history of science"
+    },
+    {
+      "title": "Faith & Biblical Studies Collection",
+      "url": "https://vervenveda.com/Arshif.github.io/Faith/apps/",
+      "use": "faith-specific study; preference-match before recommending"
+    },
+    {
+      "title": "PROSE Editing Suite",
+      "url": "https://vervenveda.com/proresource_hub.github.io/#prose",
+      "use": "writing and revision"
+    },
+    {
+      "title": "The Verifier",
+      "url": "https://vervenveda.com/theverifier.github.io/",
+      "use": "verification"
+    },
+    {
+      "title": "NAIB",
+      "url": "https://artist1970.github.io/noema-ai.github.io/",
+      "use": "public intelligence and specialist coordination"
+    }
+  ],
+  "recommendationPolicy": {
+    "faithSpecific": "Recommend faith-specific ARSHIF resources only when the learner request, profile, family preference, or course context makes them relevant.",
+    "repairOrDuplicate": "Do not route learners to records marked repair or duplicate.",
+    "externalResearch": "Use reviewed gateways as independent sources; inclusion is not blanket endorsement."
+  },
+  "updated": "2026-08-10"
 }
