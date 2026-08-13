@@ -8,13 +8,13 @@ Canonical artifact: `Khaemenes Academic Continuum`
 
 Canonical ID: `khaemenes.academic.continuum`
 
-Candidate source repository: `vervenveda/Khaemenes_Academy.github.io`
+Live source repository: `vervenveda/Khaemenes_Academy.github.io`
 
-Candidate source path: `shared-integration/academics/khaemenes-academic-continuum.json`
+Live source path: `shared-integration/academics/khaemenes-academic-continuum.json`
 
-Candidate branch: `agent/mathematics-continuum-v1`
+Live main commit: `a03165bb9be0f3b89655fe58037fa4249ea9b0b4`
 
-Candidate commit: `6b5fa47257cb2a5074b1a921ef59125baa2b8ff0`
+Original candidate branch: `agent/mathematics-continuum-v1`
 
 Purpose: preserve the first umbrella academic-continuum definition above the Khaemenes subject continuums. Mathematics is the first active reference subject and Advanced Geometric Topology is the first end-to-end reference course.
 
