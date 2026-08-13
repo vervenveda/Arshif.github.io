@@ -8,13 +8,13 @@ Canonical artifact: `Khaemenes Mathematics Continuum`
 
 Canonical ID: `khaemenes.mathematics.continuum`
 
-Candidate source repository: `vervenveda/Khaemenes_Academy.github.io`
+Live source repository: `vervenveda/Khaemenes_Academy.github.io`
 
-Candidate source path: `shared-integration/mathematics/khaemenes-mathematics-continuum.json`
+Live source path: `shared-integration/mathematics/khaemenes-mathematics-continuum.json`
 
-Candidate branch: `agent/mathematics-continuum-v1`
+Live main commit: `a03165bb9be0f3b89655fe58037fa4249ea9b0b4`
 
-Candidate commit: `b37342ab669be285a44fc34b5da463ce6f5cd12d`
+Original candidate branch: `agent/mathematics-continuum-v1`
 
 Scope: Pre-K / Creche through Kinder Garden, Elementary, Middle School, High School, Higher Learning, and Advanced / Research Mathematics.
 
