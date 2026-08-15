@@ -298,9 +298,9 @@
       "title": "ARSHIF Reading Room",
       "url": "https://vervenveda.com/Arshif.github.io/halls/Reading_room_index.html",
       "use": "focused reading",
-      "status": "repair",
-      "routable": false,
-      "note": "Current file is a section fragment rather than a complete standalone document. Preserve for repair; do not auto-route yet."
+      "status": "live",
+      "routable": true,
+      "note": "Verified as a complete standalone Reading Room page on 2026-08-15."
     },
     {
       "title": "Faith & Biblical Studies Collection",
