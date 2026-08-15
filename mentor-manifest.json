@@ -1,5 +1,5 @@
 {
-  "version": 4,
+  "version": 5,
   "sourceId": "verve.arshif",
   "name": "ARSHIF — The Living Archive of Human Knowledge",
   "classification": [
@@ -74,7 +74,24 @@
         "classics",
         "phonics",
         "middle school"
-      ]
+      ],
+      "resourceOwner": "arshif",
+      "sourceAuthority": "arshif",
+      "specialistRelationships": {
+        "eirenRole": "primary-literary-specialist",
+        "eirenFocus": [
+          "literary-comprehension",
+          "story",
+          "character",
+          "theme",
+          "writing-from-reading",
+          "discussion"
+        ],
+        "collaborators": [
+          "eiren",
+          "archaemenes"
+        ]
+      }
     },
     {
       "id": "world-classics",
@@ -87,7 +104,24 @@
         "humanities",
         "university",
         "research"
-      ]
+      ],
+      "resourceOwner": "arshif",
+      "sourceAuthority": "arshif",
+      "specialistRelationships": {
+        "eirenRole": "primary-literary-specialist",
+        "eirenFocus": [
+          "close-reading",
+          "comparative-literature",
+          "genre-and-form",
+          "voice-and-style",
+          "symbol-and-motif",
+          "literary-argument"
+        ],
+        "collaborators": [
+          "eiren",
+          "archaemenes"
+        ]
+      }
     },
     {
       "id": "poetry",
@@ -100,7 +134,27 @@
         "craft",
         "workshop",
         "literature"
-      ]
+      ],
+      "resourceOwner": "arshif",
+      "sourceAuthority": "arshif",
+      "specialistRelationships": {
+        "eirenRole": "primary-literary-specialist",
+        "eirenFocus": [
+          "poetry-analysis",
+          "poetic-form",
+          "image",
+          "line",
+          "sound",
+          "voice",
+          "craft",
+          "workshop"
+        ],
+        "collaborators": [
+          "eiren",
+          "archaemenes",
+          "moirai"
+        ]
+      }
     },
     {
       "id": "oral-traditions",
@@ -114,7 +168,24 @@
         "memory",
         "culture",
         "ethics"
-      ]
+      ],
+      "resourceOwner": "arshif",
+      "sourceAuthority": "arshif",
+      "specialistRelationships": {
+        "eirenRole": "supporting-literary-specialist",
+        "eirenFocus": [
+          "public-literary-analysis",
+          "story-form",
+          "performance-language",
+          "narrative-memory",
+          "translation-awareness"
+        ],
+        "collaborators": [
+          "eiren",
+          "archaemenes"
+        ],
+        "specialBoundary": "Protocol, authority, consent, community sovereignty, restricted knowledge, and archival ethics remain with ARSHIF and the relevant communities. Literary analysis does not create permission."
+      }
     },
     {
       "id": "lost-works",
@@ -127,7 +198,23 @@
         "manuscripts",
         "censorship",
         "preservation"
-      ]
+      ],
+      "resourceOwner": "arshif",
+      "sourceAuthority": "arshif",
+      "specialistRelationships": {
+        "eirenRole": "supporting-literary-specialist",
+        "eirenFocus": [
+          "fragment-interpretation",
+          "canon-and-reception",
+          "textual-comparison",
+          "literary-recovery",
+          "absence-and-silence-as-literary-context"
+        ],
+        "collaborators": [
+          "eiren",
+          "archaemenes"
+        ]
+      }
     },
     {
       "id": "philosophy",
@@ -140,7 +227,24 @@
         "ethics",
         "ideas",
         "research"
-      ]
+      ],
+      "resourceOwner": "arshif",
+      "sourceAuthority": "arshif",
+      "specialistRelationships": {
+        "eirenRole": "supporting-literary-and-rhetoric-specialist",
+        "eirenFocus": [
+          "close-reading",
+          "argument-language",
+          "rhetoric",
+          "metaphor",
+          "clarity-of-expression",
+          "essay-development"
+        ],
+        "collaborators": [
+          "eiren",
+          "archaemenes"
+        ]
+      }
     },
     {
       "id": "bible-history",
@@ -154,7 +258,24 @@
         "epigraphy",
         "manuscripts",
         "faith"
-      ]
+      ],
+      "resourceOwner": "arshif",
+      "sourceAuthority": "arshif",
+      "specialistRelationships": {
+        "eirenRole": "supporting-literary-specialist",
+        "eirenFocus": [
+          "literary-form",
+          "narrative",
+          "poetry",
+          "rhetoric",
+          "comparative-textual-reading"
+        ],
+        "collaborators": [
+          "eiren",
+          "archaemenes"
+        ],
+        "specialBoundary": "Historical, archaeological, manuscript, canon-status, and source-evidence claims remain ARSHIF-led. Faith-specific recommendations remain preference-matched."
+      }
     },
     {
       "id": "travel-exploration",
@@ -168,7 +289,24 @@
         "exploration",
         "fieldwork",
         "gis"
-      ]
+      ],
+      "resourceOwner": "arshif",
+      "sourceAuthority": "arshif",
+      "specialistRelationships": {
+        "eirenRole": "supporting-literary-specialist",
+        "eirenFocus": [
+          "travel-writing",
+          "narrative-voice",
+          "testimony",
+          "rhetoric",
+          "counter-narrative",
+          "literary-analysis"
+        ],
+        "collaborators": [
+          "eiren",
+          "archaemenes"
+        ]
+      }
     },
     {
       "id": "theatre",
@@ -182,7 +320,26 @@
         "playwriting",
         "performance",
         "design"
-      ]
+      ],
+      "resourceOwner": "arshif",
+      "sourceAuthority": "arshif",
+      "specialistRelationships": {
+        "eirenRole": "primary-literary-specialist",
+        "eirenFocus": [
+          "dramatic-literature",
+          "dialogue",
+          "character",
+          "playwriting",
+          "dramaturgical-writing",
+          "criticism"
+        ],
+        "collaborators": [
+          "eiren",
+          "archaemenes",
+          "zelle",
+          "moirai"
+        ]
+      }
     }
   ],
   "presentButNotCanonicalized": [
@@ -300,7 +457,24 @@
       "use": "focused reading",
       "status": "live",
       "routable": true,
-      "note": "Verified as a complete standalone Reading Room page on 2026-08-15."
+      "note": "Verified as a complete standalone Reading Room page on 2026-08-15.",
+      "resourceOwner": "arshif",
+      "sourceAuthority": "arshif",
+      "specialistRelationships": {
+        "eirenRole": "supporting-literary-specialist",
+        "eirenFocus": [
+          "close-reading",
+          "comparative-reading",
+          "literary-form",
+          "narrative",
+          "wisdom-literature",
+          "rhetoric"
+        ],
+        "collaborators": [
+          "eiren"
+        ],
+        "boundary": "ARSHIF retains canon-status, provenance, source-labeling, and tradition-specific context."
+      }
     },
     {
       "title": "Faith & Biblical Studies Collection",
@@ -345,5 +519,47 @@
     "repairOrDuplicate": "Do not route learners to records marked repair, unavailable, missing-current-tree, or duplicate.",
     "externalResearch": "Use reviewed gateways as independent sources; inclusion is not blanket endorsement."
   },
-  "updated": "2026-08-15"
+  "updated": "2026-08-15",
+  "specialistModel": {
+    "resourceOwner": {
+      "id": "arshif",
+      "role": "Librarian, Archivist & Source Continuity Steward",
+      "authority": [
+        "collections",
+        "provenance",
+        "source-status",
+        "archival-context",
+        "preservation",
+        "cataloging",
+        "research-pathways"
+      ]
+    },
+    "literarySpecialist": {
+      "id": "eiren",
+      "role": "Poet & Literary Gem",
+      "authority": [
+        "literary-interpretation",
+        "close-reading",
+        "comparative-literature",
+        "poetry-and-story-craft",
+        "voice-and-style",
+        "symbol-and-motif",
+        "rhetoric",
+        "literary-writing-mentorship"
+      ],
+      "boundary": "Eiren may interpret and teach from ARSHIF collections but does not replace ARSHIF's provenance, preservation, source-status, archival ethics, or collection stewardship."
+    },
+    "academicSpecialist": {
+      "id": "archaemenes",
+      "role": "Scholar of Khaemenes Academy",
+      "authority": [
+        "curriculum",
+        "grade-level-progression",
+        "academic-assessment",
+        "instructional-sequencing",
+        "course-alignment"
+      ]
+    },
+    "handoffPrinciple": "ARSHIF retrieves and contextualizes the source; Eiren reads and interprets the literature; Archaemenes governs academic progression when the work is part of formal learning."
+  }
 }
