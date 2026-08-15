@@ -1,5 +1,5 @@
 {
-  "version": 3,
+  "version": 4,
   "sourceId": "verve.arshif",
   "name": "ARSHIF — The Living Archive of Human Knowledge",
   "classification": [
@@ -41,12 +41,25 @@
   "routing": {
     "internalLayers": [
       "halls/",
-      "apps/",
+      "tools/",
       "Faith/apps/"
     ],
     "storage": "browser-local where individual apps use localStorage",
     "automaticTranscriptCredit": false,
     "note": "ARSHIF resource completion is not automatically an accredited transcript or institutional-credit record unless a separate Khaemenes course explicitly establishes that relationship."
+  },
+  "filesystemTruth": {
+    "verifiedDate": "2026-08-15",
+    "verifiedBranch": "main",
+    "verifiedTreeSha": "c312dcb937339e6f72dbaa3441d699668d7fc147",
+    "presentTopLevelResourceLayers": [
+      "Faith/",
+      "docs/",
+      "halls/",
+      "tools/"
+    ],
+    "absentLegacyLayer": "apps/",
+    "note": "Machine consumers should use present filesystem paths rather than legacy apps/ paths."
   },
   "canonicalHalls": [
     {
@@ -172,6 +185,17 @@
       ]
     }
   ],
+  "presentButNotCanonicalized": [
+    {
+      "id": "culinary",
+      "title": "Culinary Arts, Foodways & Hospitality Hall",
+      "path": "halls/culinary/",
+      "url": "https://vervenveda.com/Arshif.github.io/halls/culinary/",
+      "status": "present",
+      "routable": true,
+      "note": "Present in the current filesystem but not yet listed among the nine canonical Halls. Do not silently promote to canonical status."
+    }
+  ],
   "matrixCorridors": [
     {
       "title": "The Halls",
@@ -265,44 +289,61 @@
   "highValueResources": [
     {
       "title": "PLERA Search",
-      "url": "https://vervenveda.com/Arshif.github.io/apps/PLERA_Search_index.html",
-      "use": "resource discovery"
+      "url": "https://vervenveda.com/Arshif.github.io/tools/PLERA_Search_index.html",
+      "use": "resource discovery",
+      "status": "live",
+      "routable": true
     },
     {
       "title": "ARSHIF Reading Room",
-      "url": "https://vervenveda.com/Arshif.github.io/apps/Reading_room_index.html",
-      "use": "focused reading"
-    },
-    {
-      "title": "Science Hall",
-      "url": "https://vervenveda.com/Arshif.github.io/apps/science_hall_index.html",
-      "use": "history of science"
+      "url": "https://vervenveda.com/Arshif.github.io/halls/Reading_room_index.html",
+      "use": "focused reading",
+      "status": "repair",
+      "routable": false,
+      "note": "Current file is a section fragment rather than a complete standalone document. Preserve for repair; do not auto-route yet."
     },
     {
       "title": "Faith & Biblical Studies Collection",
       "url": "https://vervenveda.com/Arshif.github.io/Faith/apps/",
-      "use": "faith-specific study; preference-match before recommending"
+      "use": "faith-specific study; preference-match before recommending",
+      "status": "live",
+      "routable": true
     },
     {
       "title": "PROSE Editing Suite",
       "url": "https://vervenveda.com/proresource_hub.github.io/#prose",
-      "use": "writing and revision"
+      "use": "writing and revision",
+      "status": "live",
+      "routable": true
     },
     {
       "title": "The Verifier",
       "url": "https://vervenveda.com/theverifier.github.io/",
-      "use": "verification"
+      "use": "verification",
+      "status": "live",
+      "routable": true
     },
     {
       "title": "NAIB",
       "url": "https://artist1970.github.io/noema-ai.github.io/",
-      "use": "public intelligence and specialist coordination"
+      "use": "public intelligence and specialist coordination",
+      "status": "live",
+      "routable": true
+    }
+  ],
+  "legacyHeldResources": [
+    {
+      "title": "Science Hall",
+      "legacyUrl": "https://vervenveda.com/Arshif.github.io/apps/science_hall_index.html",
+      "status": "missing-current-tree",
+      "routable": false,
+      "note": "Retained as historical manifest knowledge only; not present in the verified 2026-08-15 main tree."
     }
   ],
   "recommendationPolicy": {
     "faithSpecific": "Recommend faith-specific ARSHIF resources only when the learner request, profile, family preference, or course context makes them relevant.",
-    "repairOrDuplicate": "Do not route learners to records marked repair or duplicate.",
+    "repairOrDuplicate": "Do not route learners to records marked repair, unavailable, missing-current-tree, or duplicate.",
     "externalResearch": "Use reviewed gateways as independent sources; inclusion is not blanket endorsement."
   },
-  "updated": "2026-08-10"
+  "updated": "2026-08-15"
 }
