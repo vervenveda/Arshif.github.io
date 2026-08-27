@@ -1,6 +1,6 @@
 # Beta Index Coverage
 
-- Added in this run: **2**
+- Added in this run: **3**
 - Already covered: **31**
 - Skipped: **0**
 
@@ -10,3 +10,4 @@ Rule: visible HTML filenames ending in `index.html` (including `_index.html` and
 
 - `Faith/index.html`
 - `index.html`
+- `tools/close-reading-annotation-lab/index.html`
