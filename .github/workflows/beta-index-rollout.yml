@@ -11,7 +11,7 @@ permissions:
 
 jobs:
   rollout:
-    if: github.actor != 'github-actions[bot]'
+    if: ${{ github.actor != 'github-actions[bot]' && !contains(github.event.head_commit.message || '', '[skip beta-rollout]') }}
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v5
@@ -23,6 +23,7 @@ jobs:
           widget='<script src="https://vervenveda.com/assets/vnv-beta-link.js" defer></script>'
           direct='<a href="https://vervenveda.com/beta/" aria-label="Open the Verve N Veda Beta Program" style="position:fixed;right:14px;bottom:14px;z-index:2147483647;padding:9px 12px;border:1px solid currentColor;border-radius:7px;background:#fff;color:#111;text-decoration:none;font:600 13px/1.2 system-ui,sans-serif">β Beta Program</a>'
           script_re=re.compile(r'<script\b[^>]*src=["\'][^"\']*vnv-beta-link\.js[^"\']*["\'][^>]*>\s*</script>',re.I)
+          direct_re=re.compile(r'<a\b[^>]*aria-label=["\']Open the Verve N Veda Beta Program["\'][^>]*>.*?</a>',re.I|re.S)
           changed=[]
           for p in sorted(Path('.').rglob('index.html')):
               if '.github' in p.parts or '.git' in p.parts: continue
@@ -30,16 +31,32 @@ jobs:
               except UnicodeDecodeError: continue
               t=original
               has_csp='content-security-policy' in t.lower()
-              has_direct='Open the Verve N Veda Beta Program' in t
+              has_direct=bool(direct_re.search(t))
               has_widget='vnv-beta-link.js' in t
               if has_csp:
-                  if has_widget: t=script_re.sub(direct,t)
+                  if has_widget:
+                      # CSP pages use the direct link. If one is already present,
+                      # remove only the redundant widget instead of creating a second link.
+                      t=script_re.sub('' if has_direct else direct,t)
                   elif not has_direct:
                       pos=t.lower().rfind('</body>')
                       if pos>=0: t=t[:pos]+'\n<!-- Verve N Veda Beta Program -->\n'+direct+'\n'+t[pos:]
               elif not has_widget and not has_direct:
                   pos=t.lower().rfind('</body>')
                   if pos>=0: t=t[:pos]+'\n<!-- Verve N Veda Beta Program -->\n'+widget+'\n'+t[pos:]
+
+              # Make the rollout idempotent by collapsing accidental duplicate
+              # direct Beta anchors to one canonical copy.
+              matches=direct_re.findall(t)
+              if len(matches)>1:
+                  canonical=matches[0]
+                  t=direct_re.sub('',t)
+                  pos=t.lower().rfind('</body>')
+                  if pos>=0:
+                      t=t[:pos].rstrip()+'\n'+canonical+'\n'+t[pos:]
+                  else:
+                      t=t.rstrip()+'\n'+canonical+'\n'
+
               if t!=original:
                   p.write_text(t,encoding='utf-8'); changed.append(str(p))
           print('Updated',len(changed),'index page(s)')
