@@ -85,13 +85,41 @@
           "character",
           "theme",
           "writing-from-reading",
-          "discussion"
+          "discussion",
+          "early-literacy",
+          "read-aloud-guidance",
+          "phonics-support",
+          "vocabulary",
+          "rhyme",
+          "comprehension",
+          "kindergarten-reading-discussion"
         ],
         "collaborators": [
           "eiren",
           "archaemenes"
         ]
-      }
+      },
+      "childLiteracyCorridors": [
+        {
+          "id": "khaemenes-kindergarten-reading-garden",
+          "title": "Khaemenes Kindergarten · Weekly Reading Garden",
+          "url": "https://vervenveda.com/Khaemenes_KinderGarden.github.io/reading/",
+          "owner": "khaemenes-kindergarten",
+          "literarySteward": "eiren",
+          "archiveDomain": "arshif",
+          "relationship": "curated-academy-pathway-through-arshif-literary-domain",
+          "boundary": "Kindergarten owns weekly sequence, learner completion, assessment and mastery. ARSHIF supplies literary/archive context. Eiren may guide reading, vocabulary, comprehension and discussion but may not mark completion or mastery."
+        },
+        {
+          "id": "khaemenes-kindergarten-great-classics",
+          "title": "Great Children’s Classics",
+          "url": "https://vervenveda.com/Khaemenes_KinderGarden.github.io/reading/",
+          "owner": "arshif-literary-domain",
+          "literarySteward": "eiren",
+          "relationship": "optional-childrens-classics-shelf",
+          "boundary": "Optional literary enrichment. It does not control Kindergarten progression or mastery; source rights and archival provenance remain ARSHIF-governed."
+        }
+      ]
     },
     {
       "id": "world-classics",
@@ -561,5 +589,22 @@
       ]
     },
     "handoffPrinciple": "ARSHIF retrieves and contextualizes the source; Eiren reads and interprets the literature; Archaemenes governs academic progression when the work is part of formal learning."
+  },
+  "governance": {
+    "eirenLiteraryDomain": {
+      "status": "canonical-literary-stewardship",
+      "specialist": "eiren",
+      "domain": "ARSHIF literary and language collections",
+      "scope": [
+        "children-reading-and-literacy",
+        "world-classics",
+        "poetry",
+        "theatre",
+        "literary-interpretation",
+        "reading-discussion",
+        "writing-from-reading"
+      ],
+      "boundary": "Eiren is the literary steward and teaching specialist within ARSHIF's literary domain. ARSHIF retains provenance, preservation, source-status, archival ethics and collection authority. Khaemenes retains formal academic progression, assessment and mastery authority."
+    }
   }
 }
