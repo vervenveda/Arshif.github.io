@@ -1393,7 +1393,13 @@
         transition-duration: 0.01ms !important;
       }
     }
-  </style>
+  
+/* Academy Front Desk parity · lightweight geometry only; campus colors and functions are preserved. */
+:where(.card,.school,.campus-card,.path-card,.course-card,.feature-card){box-sizing:border-box;min-width:0}
+:where(.grid,.cards,.school-grid,.course-grid,.campus-grid){justify-content:center;align-items:stretch}
+:where(.card,.school,.campus-card,.path-card,.course-card,.feature-card) :where(a,button){border-radius:7px}
+:where(.card,.school,.campus-card,.path-card,.course-card,.feature-card) :where(.btn,.button,.card-action){box-sizing:border-box;min-height:42px;text-align:center;overflow-wrap:break-word}
+</style>
 
   <style id="arshif-antique-map-theme">
     /*
