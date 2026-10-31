@@ -36,7 +36,7 @@
 </head>
 <body>
 <a class="skip-link" href="#reader">Skip to reading</a>
-<header class="site-header"><div class="header-inner"><a class="brand" href="../../index.html" aria-label="Return to ARSHIF home"><span class="brand-mark" aria-hidden="true"><span>A</span></span><span class="brand-copy"><span class="brand-name">ARSHIF</span><span class="brand-sub">Close-Reading & Annotation Lab</span></span></a><div class="header-actions"><button class="btn" id="newBtn" type="button">New Notebook</button><button class="btn" id="saveBtn" type="button">Save Local</button><button class="btn" id="exportBtn" type="button">Export</button><button class="btn" id="printBtn" type="button">Print</button><button class="icon-btn" id="themeBtn" type="button" aria-label="Toggle light and dark theme">◐</button><button class="icon-btn" id="helpBtn" type="button" aria-label="Open help">?</button></div></div></header>
+<header class="site-header"><div class="header-inner"><a class="brand" href="../../index.html" data-ticker data-ticker-label="ARSHIF Home" aria-label="Return to ARSHIF home"><span class="brand-mark" aria-hidden="true"><span>A</span></span><span class="brand-copy"><span class="brand-name">ARSHIF</span><span class="brand-sub">Close-Reading & Annotation Lab</span></span></a><div class="header-actions"><button class="btn" id="newBtn" type="button">New Notebook</button><button class="btn" id="saveBtn" type="button">Save Local</button><button class="btn" id="exportBtn" type="button">Export</button><button class="btn" id="printBtn" type="button">Print</button><button class="icon-btn" id="themeBtn" type="button" aria-label="Toggle light and dark theme">◐</button><button class="icon-btn" id="helpBtn" type="button" aria-label="Open help">?</button></div></div></header>
 <main class="shell" id="main">
 <section class="intro" aria-labelledby="pageTitle"><div><div class="eyebrow">Scholarly Reading Workspace · Local First</div><h1 id="pageTitle">Close-Reading & Annotation Lab</h1><p>Read slowly. Mark what the text actually says. Separate observation from inference. Build interpretations from evidence, then carry your thinking into discussion, PROSE, or your portfolio.</p></div><div class="status-strip"><span class="pill">Mode <strong id="statusMode">Literature</strong></span><span class="pill">Annotations <strong id="statusAnnotations">0</strong></span><span class="pill">Storage <strong>Local only</strong></span></div></section>
 <section class="workspace" aria-label="Close-reading workspace">
@@ -88,6 +88,8 @@ function init(){if(localStorage.getItem(THEME_KEY)==='light')document.body.class
 <!-- Verve N Veda Beta Program -->
 <a href="https://vervenveda.com/beta/" aria-label="Open the Verve N Veda Beta Program" style="position:fixed;right:14px;bottom:14px;z-index:2147483647;padding:9px 12px;border:1px solid currentColor;border-radius:7px;background:#fff;color:#111;text-decoration:none;font:600 13px/1.2 system-ui,sans-serif">β Beta Program</a>
 
+<script src="https://vervenveda.com/assets/vnv-ticker-autopopulate.js" data-vnv-ticker-autopopulate></script>
+<script>VNV_TICKER.autoPopulate({label:"Close-Reading Lab Quick Links",max:14});</script>
 <script src="https://vervenveda.com/assets/vnv-ecosystem-toolbar.js"></script>
 </body>
 </html>
