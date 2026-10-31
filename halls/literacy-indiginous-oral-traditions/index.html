@@ -15,7 +15,7 @@
 *{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;color:var(--ink);font:14px/1.67 var(--sans);background:radial-gradient(circle at 10% 0,rgba(79,116,73,.28),transparent 30rem),radial-gradient(circle at 92% 8%,rgba(73,108,127,.25),transparent 32rem),linear-gradient(145deg,#04070d,#0d1621 45%,#05070c)}
 a{color:inherit;text-decoration:none}button,input,textarea,select{font:inherit}button{cursor:pointer}.shell{width:min(calc(100% - 28px),var(--max));margin:auto}:focus-visible{outline:3px solid var(--gold);outline-offset:3px}
 .skip{position:fixed;top:-80px;left:11px;z-index:9999;background:#fff;color:#111;padding:8px 11px;border-radius:7px}.skip:focus{top:11px}
-.ticker{height:33px;overflow:hidden;background:#020408;border-bottom:1px solid var(--line)}.ticker-track{height:100%;width:max-content;display:flex;align-items:center;animation:tick 55s linear infinite}.ticker-set{height:100%;display:flex;align-items:center;white-space:nowrap}.ticker-set strong,.ticker-set span{height:100%;display:flex;align-items:center;padding:0 17px;border-left:1px solid var(--line)}.ticker-set strong{color:var(--gold);font:700 9px var(--serif);letter-spacing:.14em;text-transform:uppercase}.ticker-set span{color:#b8ad96;font-size:9px}@keyframes tick{to{transform:translateX(-50%)}}
+
 .hero{padding:55px 0 44px;text-align:center;border-bottom:1px solid var(--border)}.hero .eyebrow{margin:0;color:var(--gold);font:600 clamp(22px,2.8vw,38px)/1.04 var(--serif);letter-spacing:.08em;text-transform:uppercase}.hero h1{max-width:980px;margin:11px auto 0;color:#fff4d8;font:400 clamp(26px,3.5vw,45px)/1.04 var(--serif)}.lead{max-width:840px;margin:17px auto 0;color:var(--muted);font-size:13px;line-height:1.75}.covenant{max-width:999px;margin:21px auto 0;padding:14px 17px;border:1px solid rgba(217,184,120,.35);border-radius:11px;background:rgba(0,0,0,.20);color:#e7dcc3;font-size:10.5px;line-height:1.65}.actions{display:flex;flex-wrap:wrap;justify-content:center;gap:7px;margin-top:21px}.btn{min-height:40px;display:inline-flex;align-items:center;justify-content:center;padding:8px 11px;border:1px solid var(--border);border-radius:7px;background:rgba(255,255,255,.035);color:var(--ink);font-size:9px;font-weight:750;letter-spacing:.06em;text-transform:uppercase}.btn:hover{border-color:var(--gold);transform:translateY(-1px)}.btn.gold{background:linear-gradient(135deg,var(--gold),var(--gold2));border:0;color:#1c1207}.stats{max-width:999px;margin:33px auto 0;display:grid;grid-template-columns:repeat(4,1fr);border:1px solid var(--border);border-radius:21px;overflow:hidden}.stat{padding:15px;text-align:center;background:rgba(0,0,0,.18)}.stat+.stat{border-left:1px solid var(--border)}.stat strong{display:block;color:var(--gold);font:400 24px var(--serif)}.stat span{display:block;margin-top:4px;color:var(--muted);font-size:9px}
 .tabs{position:sticky;top:0;z-index:50;display:flex;flex-wrap:wrap;justify-content:center;gap:7px;padding:11px;background:rgba(4,7,13,.96);backdrop-filter:blur(12px);border-bottom:1px solid var(--border)}.tab{min-height:39px;padding:8px 11px;border:1px solid var(--border);border-radius:7px;background:#0b111b;color:#ddd2bb;font-size:9px;font-weight:700}.tab.active{background:linear-gradient(135deg,var(--gold),var(--gold2));border-color:transparent;color:#1b1308}
 main{padding:33px 0 55px}.view{display:none}.view.active{display:block}.heading{max-width:888px;margin:0 auto 33px;text-align:center}.kicker{margin:0;color:var(--gold);font:600 clamp(20px,2.2vw,30px)/1.05 var(--serif);letter-spacing:.09em;text-transform:uppercase}.heading h2{margin:9px 0 0;color:#fff;font:400 clamp(27px,3vw,40px)/1.05 var(--serif)}.heading p{max-width:777px;margin:11px auto 0;color:var(--muted);font-size:11px}.notice{max-width:999px;margin:0 auto 21px;padding:14px 17px;border:1px solid var(--border);border-radius:11px;background:rgba(73,108,127,.11);color:#d9deea;font-size:10.5px;text-align:center}
@@ -34,7 +34,7 @@ main{padding:33px 0 55px}.view{display:none}.view.active{display:block}.heading{
 @media(max-width:1050px){.course-grid,.skill-grid,.source-grid,.card-grid{grid-template-columns:repeat(2,1fr)}.protocol-strip{grid-template-columns:repeat(2,1fr)}}
 @media(max-width:780px){.stats,.detail-grid,.portfolio,.archive,.module-grid,.tool-grid{grid-template-columns:1fr}.stat+.stat{border-left:0;border-top:1px solid var(--border)}.side{position:static}}
 @media(max-width:560px){.course-grid,.skill-grid,.source-grid,.card-grid,.protocol-strip{grid-template-columns:1fr}.tabs{position:static}}
-@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.ticker-track{animation:none!important}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
 
 /* === KHAEMENES CENTERED SYMMETRY REPAIR START ===
    Presentation-only repair:
@@ -778,8 +778,6 @@ main{
 </head>
 <body>
 <a class="skip" href="#main">Skip to Hall content</a>
-<div class="ticker"><div class="ticker-track" id="ticker"></div></div>
-
 <header class="hero">
   <div class="shell">
     <p class="eyebrow">ARSHIF · Khaemenes Academy</p>
@@ -886,7 +884,7 @@ state.courseProgress ||= {}; state.skillProgress ||= {}; state.activeCourse ||= 
 let activeFilter="all", query="", currentCard=null;
 
 function save(){localStorage.setItem(KEY,JSON.stringify(state))}
-function ticker(){const labels=["Public Learning","Protocol First","Poetry? No — Living Storywork","101","102","103","201","202","203","301","302","303","401","402","403","501","502","503","601","602","603","CARE","OCAP®","Local Contexts","AIATSIS","UNDRIP","Community Authority"];const set=()=>`<div class="ticker-set"><strong>Indigenous Oral Traditions & Storywork</strong>${labels.map(x=>`<span>${esc(x)}</span>`).join("")}</div>`;$("#ticker").innerHTML=set()+set()}
+
 function show(id){$$(".tab").forEach(b=>b.classList.toggle("active",b.dataset.view===id));$$(".view").forEach(v=>v.classList.toggle("active",v.id==="view-"+id));if(id==="progress")renderProgress();scrollTo({top:document.querySelector(".tabs").offsetTop,behavior:"smooth"})}
 $("#tabs").onclick=e=>{const b=e.target.closest("[data-view]");if(b)show(b.dataset.view)};$$("[data-go]").forEach(b=>b.onclick=()=>show(b.dataset.go));
 function course(code){return HALL.courses.find(c=>c.code===code)||HALL.courses[0]}
@@ -928,12 +926,13 @@ $("#downloadPortfolio").onclick=()=>{const b=new Blob([JSON.stringify(snapshot()
 $("#clearNewProgress").onclick=()=>{if(confirm("Clear only the new 101–603 course and competency progress? Original notes, favorites, module progress and quiz score will remain.")){state.courseProgress={};state.skillProgress={};state.activeCourse="101";save();location.reload()}}
 $("#copyOpenProse").onclick=async()=>{const txt=$("#proseDraft").value.trim();if(txt){try{await navigator.clipboard.writeText(txt)}catch{}}window.open(HALL.proResourceUrl,"_blank","noopener")}
 
-ticker();renderCourses();renderFilters();renderCards();renderModules();renderProtocols();renderSkills();renderTools("#storyTools",HALL.storyTools,"story");renderTools("#researchTools",HALL.researchTools,"research");renderSources();renderTimeline();renderQuiz();renderProgress();
+renderCourses();renderFilters();renderCards();renderModules();renderProtocols();renderSkills();renderTools("#storyTools",HALL.storyTools,"story");renderTools("#researchTools",HALL.researchTools,"research");renderSources();renderTimeline();renderQuiz();renderProgress();
 })();
 </script>
 
+<script src="https://vervenveda.com/assets/vnv-333-ticker.js"></script>
 <script src="https://vervenveda.com/assets/vnv-ticker-autopopulate.js" data-vnv-ticker-autopopulate></script>
-<script>VNV_TICKER.autoPopulate({label:"Indigenous Oral Traditions Quick Links",max:14,cleanLegacy:false});</script>
+<script>VNV_TICKER.autoPopulate({label:"Indigenous Oral Traditions Quick Links",max:14});</script>
 <script src="https://vervenveda.com/assets/vnv-ecosystem-toolbar.js"></script>
 </body>
 </html>
