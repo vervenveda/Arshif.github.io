@@ -14,7 +14,7 @@
 }
 *{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;color:var(--ink);font:14px/1.7 var(--sans);background:radial-gradient(circle at 50% -8%,rgba(217,184,120,.14),transparent 33rem),radial-gradient(circle at 10% 18%,rgba(88,115,141,.16),transparent 28rem),radial-gradient(circle at 90% 18%,rgba(100,123,104,.14),transparent 28rem),linear-gradient(180deg,#060810,#0b1119 52%,#04060b)}
 a{color:inherit;text-decoration:none}button,input,textarea,select{font:inherit}button{cursor:pointer}:focus-visible{outline:3px solid var(--gold);outline-offset:3px}.shell{width:min(calc(100% - 42px),var(--max));margin:auto}.skip{position:fixed;top:-80px;left:11px;z-index:9999;background:#fff;color:#111;padding:8px 11px;border-radius:7px}.skip:focus{top:11px}
-.ticker{height:33px;overflow:hidden;background:#020308;border-bottom:1px solid var(--line2)}.ticker-track{height:100%;width:max-content;display:flex;align-items:center;animation:tick 55s linear infinite}.ticker-set{height:100%;display:flex;align-items:center;white-space:nowrap}.ticker-set strong,.ticker-set span{height:100%;display:flex;align-items:center;padding:0 17px;border-left:1px solid var(--line2)}.ticker-set strong{color:var(--gold);font:600 9px var(--serif);letter-spacing:.15em;text-transform:uppercase}.ticker-set span{color:#aaa18e;font-size:9px}@keyframes tick{to{transform:translateX(-50%)}}
+
 .hero{padding:66px 0 55px;text-align:center;border-bottom:1px solid rgba(217,184,120,.22)}.hero .shell{width:min(calc(100% - 42px),999px)}.eyebrow{max-width:888px;margin:0 auto;color:var(--gold);font:500 clamp(26px,3.2vw,42px)/1.06 var(--serif);letter-spacing:.10em;text-transform:uppercase}.hero h1{max-width:888px;margin:14px auto 0;color:#fff6dc;font:400 clamp(25px,3vw,39px)/1.12 var(--serif);letter-spacing:.025em}.lead{max-width:777px;margin:21px auto 0;color:var(--muted);font-size:12px;line-height:1.85}.hero-actions{display:flex;flex-wrap:wrap;justify-content:center;gap:11px;margin-top:33px}.btn{min-height:42px;display:inline-flex;align-items:center;justify-content:center;padding:9px 14px;border:1px solid var(--line);border-radius:7px;background:rgba(255,255,255,.035);color:var(--ink);font-size:9px;font-weight:700;letter-spacing:.065em;text-transform:uppercase}.btn:hover{transform:translateY(-1px);border-color:var(--gold);background:rgba(217,184,120,.08)}.btn.gold{background:linear-gradient(135deg,var(--gold),var(--gold2));border:0;color:#1c1207}.stats{max-width:888px;margin:33px auto 0;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));border:1px solid var(--line);border-radius:21px;overflow:hidden}.stat{min-height:88px;display:flex;flex-direction:column;justify-content:center;padding:14px 11px;text-align:center;background:rgba(0,0,0,.18)}.stat+.stat{border-left:1px solid var(--line)}.stat strong{display:block;color:var(--gold);font:400 23px var(--serif)}.stat span{max-width:150px;margin:5px auto 0;color:var(--muted);font-size:9px;line-height:1.45}
 .tabs{position:sticky;top:0;z-index:50;display:flex;flex-wrap:wrap;justify-content:center;gap:7px;padding:14px 21px;background:rgba(5,7,13,.96);backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}.tab{min-height:38px;padding:8px 13px;border:1px solid var(--line);border-radius:7px;background:#0d111a;color:#ded2ba;font-size:8.5px;font-weight:700}.tab.active{background:linear-gradient(135deg,var(--gold),var(--gold2));border-color:transparent;color:#1b1308}
 main{padding:55px 0 66px}.view{display:none}.view.active{display:block}.heading{max-width:888px;margin:0 auto 55px;text-align:center}.kicker{max-width:777px;margin:0 auto;color:var(--gold);font:500 clamp(23px,2.5vw,33px)/1.08 var(--serif);letter-spacing:.10em;text-transform:uppercase}.heading h2{max-width:777px;margin:14px auto 0;color:#fff;font:400 clamp(24px,2.8vw,36px)/1.14 var(--serif)}.heading p{max-width:666px;margin:14px auto 0;color:var(--muted);font-size:10.5px;line-height:1.85}.notice{max-width:888px;margin:0 auto 33px;padding:17px 21px;border:1px solid var(--line);border-radius:11px;background:rgba(88,115,141,.09);color:#d8d8d2;text-align:center;font-size:10px;line-height:1.75}
@@ -35,13 +35,12 @@ main{padding:55px 0 66px}.view{display:none}.view.active{display:block}.heading{
 @media(max-width:1050px){.course-grid,.card-grid,.skill-grid,.source-grid{grid-template-columns:repeat(2,1fr)}}
 @media(max-width:780px){.shell{width:min(calc(100% - 28px),var(--max))}.hero{padding:55px 0 44px}.heading{margin-bottom:33px}.detail{padding:24px 17px}.detail-grid,.module-grid,.tool-grid,.portfolio{grid-template-columns:1fr}.stats{grid-template-columns:repeat(2,1fr)}.stat:nth-child(3){border-left:0;border-top:1px solid var(--line)}.stat:nth-child(4){border-top:1px solid var(--line)}}
 @media(max-width:560px){.course-grid,.card-grid,.skill-grid,.source-grid,.stats{grid-template-columns:1fr}.stat+.stat{border-left:0;border-top:1px solid var(--line)}.course,.card,.skill,.source,.module,.tool{min-height:auto}.tabs{position:static;padding:11px}.dossier-body{padding:21px 14px}}
-@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.ticker-track{animation:none!important}*{transition:none!important}}
-@media print{body{background:#fff;color:#111}.ticker,.tabs,.hero-actions,.btn,.overlay,.search-panel{display:none!important}.view{display:none!important}#view-progress{display:block!important}.portfolio article{border:1px solid #888;background:#fff}.portfolio *{color:#111!important}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{transition:none!important}}
+@media print{body{background:#fff;color:#111}.tabs,.hero-actions,.btn,.overlay,.search-panel{display:none!important}.view{display:none!important}#view-progress{display:block!important}.portfolio article{border:1px solid #888;background:#fff}.portfolio *{color:#111!important}}
 </style>
 </head>
 <body>
 <a class="skip" href="#main">Skip to Hall content</a>
-<div class="ticker"><div class="ticker-track" id="ticker"></div></div>
 <header class="hero"><div class="shell">
   <p class="eyebrow">ARSHIF · Khaemenes Academy</p>
   <h1>Travelogues & Exploration Hall · 101–603</h1>
@@ -162,7 +161,7 @@ let activeFilter="All",query="";
 
 const proseHeavy=new Set(["203","302","303","401","403","501","503","601","602","603"]);
 
-function ticker(){const labels=["Maps","Routes","Pilgrimage","Maritime Worlds","Field Notes","Travel Writing","Migration","Forced Movement","Tourism","Environment","GIS","101","102","103","201","202","203","301","302","303","401","402","403","501","502","503","601","602","603"];const one=()=>`<div class="ticker-set"><strong>Travelogues & Exploration Hall</strong>${labels.map(x=>`<span>${esc(x)}</span>`).join("")}</div>`;$("#ticker").innerHTML=one()+one()}
+
 function show(id){$$(".tab").forEach(b=>b.classList.toggle("active",b.dataset.view===id));$$(".view").forEach(v=>v.classList.toggle("active",v.id==="view-"+id));if(id==="progress")renderProgress();window.scrollTo({top:document.querySelector(".tabs").offsetTop,behavior:"smooth"})}
 $("#tabs").onclick=e=>{const b=e.target.closest("[data-view]");if(b)show(b.dataset.view)};$$("[data-go]").forEach(b=>b.onclick=()=>show(b.dataset.go));
 
@@ -203,12 +202,13 @@ $("#printProgress").onclick=()=>window.print();
 $("#clearNewProgress").onclick=()=>{if(confirm("Clear only the new 101–603 course and competency progress? Original dossiers, modules, favorites, journal, quiz and notes will remain.")){localStorage.removeItem("arx2_courses");localStorage.removeItem("arx2_skills");localStorage.removeItem("arx2_active_course");location.reload()}}
 $("#copyOpenProse").onclick=async()=>{const txt=$("#proseDraft").value.trim();if(txt){try{await navigator.clipboard.writeText(txt)}catch{}}window.open(HALL.proseUrl,"_blank","noopener")};
 
-ticker();renderCourses();renderFilters();renderCards();renderModules();renderSkills();renderTools("#fieldTools",HALL.fieldTools,"field");renderTools("#researchTools",HALL.researchTools,"research");renderSources();renderTimeline();renderQuiz();renderJournal();renderProgress();
+renderCourses();renderFilters();renderCards();renderModules();renderSkills();renderTools("#fieldTools",HALL.fieldTools,"field");renderTools("#researchTools",HALL.researchTools,"research");renderSources();renderTimeline();renderQuiz();renderJournal();renderProgress();
 })();
 </script>
 
+<script src="https://vervenveda.com/assets/vnv-333-ticker.js"></script>
 <script src="https://vervenveda.com/assets/vnv-ticker-autopopulate.js" data-vnv-ticker-autopopulate></script>
-<script>VNV_TICKER.autoPopulate({label:"Travelogues Hall Quick Links",max:14,cleanLegacy:false});</script>
+<script>VNV_TICKER.autoPopulate({label:"Travelogues Hall Quick Links",max:14});</script>
 <script src="https://vervenveda.com/assets/vnv-ecosystem-toolbar.js"></script>
 </body>
 </html>
