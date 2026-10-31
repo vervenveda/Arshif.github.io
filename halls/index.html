@@ -440,8 +440,8 @@ a:hover{text-decoration:none}
       </span>
     </a>
     <div class="header-actions">
-      <a class="header-link" href="#hallDirectory">All Halls</a>
-      <a class="header-link" href="../">ARSHIF Home</a>
+      <a class="header-link" href="#hallDirectory" data-ticker>All Halls</a>
+      <a class="header-link" href="../" data-ticker>ARSHIF Home</a>
     </div>
   </div>
 </header>
@@ -459,8 +459,8 @@ a:hover{text-decoration:none}
           with patience rather than rushed through.
         </p>
         <div class="hero-actions">
-          <a class="btn primary" href="#hallDirectory">Enter the Halls</a>
-          <a class="btn" href="../tools/close-reading-annotation-lab/">Close-Reading Lab</a>
+          <a class="btn primary" href="#hallDirectory" data-ticker data-ticker-label="Hall Directory">Enter the Halls</a>
+          <a class="btn" href="../tools/close-reading-annotation-lab/" data-ticker>Close-Reading Lab</a>
           <button class="btn" id="randomHall" type="button">Open a Random Hall</button>
         </div>
         <div class="hero-stat"><strong id="heroCount">9</strong> live halls · designed to grow</div>
@@ -738,6 +738,8 @@ a:hover{text-decoration:none}
 })();
 </script>
 
+<script src="https://vervenveda.com/assets/vnv-ticker-autopopulate.js" data-vnv-ticker-autopopulate></script>
+<script>VNV_TICKER.autoPopulate({label:"ARSHIF Halls Quick Links",max:12});</script>
 <script src="https://vervenveda.com/assets/vnv-ecosystem-toolbar.js"></script>
 </body>
 </html>
