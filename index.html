@@ -3352,43 +3352,6 @@
   <div class="page-grid" aria-hidden="true"></div>
   <div class="page-noise" aria-hidden="true"></div>
 
-  <header class="site-header">
-    <div class="header-inner">
-      <a class="brand" href="https://vervenveda.com/" aria-label="Return to Verve N Veda home">
-        <svg class="brand-mark compass-mark" viewBox="0 0 100 100" role="img" aria-label="ARSHIF compass star">
-          <circle cx="50" cy="50" r="44" fill="none" stroke="currentColor" stroke-width="1.7"/>
-          <circle cx="50" cy="50" r="31" fill="none" stroke="currentColor" stroke-width=".8" opacity=".48"/>
-          <path d="M50 8 57 39 78 22 61 43 92 50 61 57 78 78 57 61 50 92 43 61 22 78 39 57 8 50 39 43 22 22 43 39Z"
-                fill="none" stroke="currentColor" stroke-width="1.55"/>
-          <path d="M50 8 57 39 50 50 43 39Z" fill="currentColor"/>
-          <path d="M92 50 61 57 50 50 61 43Z" fill="currentColor" opacity=".68"/>
-          <path d="M50 92 43 61 50 50 57 61Z" fill="currentColor" opacity=".34"/>
-          <path d="M8 50 39 43 50 50 39 57Z" fill="currentColor" opacity=".54"/>
-          <circle cx="50" cy="50" r="6.2" fill="var(--atlas-paper)" stroke="currentColor" stroke-width="1.5"/>
-          <circle cx="50" cy="50" r="2.1" fill="currentColor"/>
-          <text x="50" y="6.5" text-anchor="middle" font-size="6.5" fill="currentColor" font-family="Georgia, serif">N</text>
-        </svg>
-        <span class="brand-copy">
-          <span class="brand-name">ARSHIF</span>
-          <span class="brand-subtitle">The Living Archive of Human Knowledge</span>
-        </span>
-      </a>
-
-      <div class="header-actions">
-        <button class="icon-button" id="printButton" type="button" aria-label="Print archive directory" title="Print archive directory">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true">
-            <path d="M7 8V3h10v5M7 17H5a2 2 0 0 1-2-2v-4a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2v4a2 2 0 0 1-2 2h-2"/>
-            <path d="M7 14h10v7H7z"/>
-          </svg>
-        </button>
-
-        <button class="icon-button menu-button" id="menuButton" type="button" aria-label="Open archive menu" aria-expanded="false" aria-controls="siteMenu">
-          <span class="menu-lines" aria-hidden="true"></span>
-        </button>
-      </div>
-    </div>
-  </header>
-
   <div class="menu-overlay" id="siteMenu" aria-hidden="true">
     <nav class="menu-panel" aria-label="Archive navigation">
       <div class="menu-top">
@@ -6056,8 +6019,8 @@
       document.body.classList.add("menu-open");
       siteMenu.classList.add("is-open");
       siteMenu.setAttribute("aria-hidden", "false");
-      menuButton.setAttribute("aria-expanded", "true");
-      menuButton.setAttribute("aria-label", "Close archive menu");
+      menuButton?.setAttribute("aria-expanded", "true");
+      menuButton?.setAttribute("aria-label", "Close archive menu");
       setTimeout(() => menuSearch.focus(), 40);
     }
 
@@ -6065,8 +6028,8 @@
       document.body.classList.remove("menu-open");
       siteMenu.classList.remove("is-open");
       siteMenu.setAttribute("aria-hidden", "true");
-      menuButton.setAttribute("aria-expanded", "false");
-      menuButton.setAttribute("aria-label", "Open archive menu");
+      menuButton?.setAttribute("aria-expanded", "false");
+      menuButton?.setAttribute("aria-label", "Open archive menu");
       menuSearch.value = "";
       renderMenu();
 
@@ -6176,10 +6139,16 @@
 
     clearButton.addEventListener("click", clearArchiveControls);
     randomButton.addEventListener("click", openRandomPath);
-    printButton.addEventListener("click", () => window.print());
+    printButton?.addEventListener("click", () => window.print());
+document.addEventListener("click", event => {
+  const printLink=event.target.closest?.('a[href="#print-directory"]');
+  if(printLink){event.preventDefault();window.print();return;}
+  const menuLink=event.target.closest?.('a[href="#archive-menu"]');
+  if(menuLink){event.preventDefault();openMenu();}
+});
     exportRegistryButton.addEventListener("click", downloadRegistry);
 
-    menuButton.addEventListener("click", () => {
+    menuButton?.addEventListener("click", () => {
       if (siteMenu.classList.contains("is-open")) {
         closeMenu();
       } else {
@@ -6310,12 +6279,12 @@
 
 <script defer src="https://vervenveda.com/assets/vnv-external-landing.js"></script>
 
+<script src="https://vervenveda.com/assets/vnv-header-autopopulate.js"></script>
+<script>VNV_HEADER.mount({"title":"ARSHIF","subtitle":"The Living Archive of Human Knowledge","icon":"A","home":"https://vervenveda.com/","actions":[{"label":"Archive","href":"#archive"},{"label":"Collections","href":"#collections"},{"label":"Archive Menu","href":"#archive-menu"},{"label":"Print","href":"#print-directory"},{"label":"Verve N Veda","href":"https://vervenveda.com/"}]});</script>
 <script src="https://vervenveda.com/assets/vnv-333-ticker.js"></script>
 <script src="https://vervenveda.com/assets/vnv-ticker-autopopulate.js" data-vnv-ticker-autopopulate></script>
 <script>VNV_TICKER.autoPopulate({label:"ARSHIF Quick Links",max:12});</script>
-
-<script src="https://vervenveda.com/assets/vnv-header-autopopulate.js"></script>
-<script>VNV_HEADER.mount({replaceLegacy:true});</script>
+<script>VNV_HEADER.mount({"title":"ARSHIF","subtitle":"The Living Archive of Human Knowledge","icon":"A","home":"https://vervenveda.com/","actions":[{"label":"Archive","href":"#archive"},{"label":"Collections","href":"#collections"},{"label":"Archive Menu","href":"#archive-menu"},{"label":"Print","href":"#print-directory"},{"label":"Verve N Veda","href":"https://vervenveda.com/"}]});</script>
 <script src="https://vervenveda.com/assets/vnv-ecosystem-toolbar.js"></script>
 </body>
 </html>
