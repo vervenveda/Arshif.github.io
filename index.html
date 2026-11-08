@@ -3320,6 +3320,17 @@
 @media(max-width:760px){.vnv-global-strip{grid-template-columns:minmax(0,1fr) auto}.vnv-global-links{display:none}.vnv-global-copy small{display:none}}@media print{.vnv-global-strip{display:none!important}}
 </style>
 <link rel="stylesheet" href="https://vervenveda.com/assets/vnv-external-landing.css">
+<style id="arshif-grid-balance-20261108">
+/* Center incomplete final rows without altering the number or order of records. */
+@media (min-width:1001px){
+ #matrixGrid,#researchGrid{grid-template-columns:repeat(6,minmax(0,1fr))}
+ #matrixGrid>.hall-card,#researchGrid>.hall-card{grid-column:span 2}
+ /* 11-card Matrix Corridors: center its final two items in columns 2–3 and 4–5. */
+ #matrixGrid>.hall-card:nth-last-child(2):nth-child(3n + 1){grid-column:2 / span 2}
+ /* 13-card Research Gateways: center the final item. */
+ #researchGrid>.hall-card:last-child:nth-child(3n + 1){grid-column:3 / span 2}
+}
+</style>
 </head>
 
 <body data-vnv-outer-landing="true">
@@ -6294,6 +6305,56 @@ if(new URLSearchParams(location.search).get("page_audit")==="1"){
   auditScript.src="./assets/vnv-page-audit-optin.js?v=1.0.0";
   document.body.appendChild(auditScript);
 }
+</script>
+<script id="arshif-vnv-header-offset-reconcile">
+/* ARSHIF-only: shared header may calculate its sticky top before both tickers exist.
+   No replacement of the canonical header, menu, ticker, or toolbar. */
+(()=>{"use strict";
+ if(window.__arshifTickerHeaderReconcile)return;
+ window.__arshifTickerHeaderReconcile=true;
+ const ids=["vnv333NetworkTicker","vnvTickerAutoPopulate"];
+ let queued=false;
+ const seen=new WeakSet();
+ const ro=typeof ResizeObserver==="function"?new ResizeObserver(schedule):null;
+ function measure(){
+  let height=0;
+  for(const id of ids){
+   const el=document.getElementById(id);
+   if(!el)continue;
+   if(ro&&!seen.has(el)){seen.add(el);ro.observe(el)}
+   const st=getComputedStyle(el);
+   if(st.display!=="none"&&st.visibility!=="hidden"){
+    height+=Math.ceil(el.getBoundingClientRect().height||0);
+   }
+  }
+  const header=document.getElementById("vnvHeaderAutoPopulate");
+  if(!header||!height)return;
+  const root=document.documentElement;
+  const expected=height+"px";
+  if(root.style.getPropertyValue("--vnv-header-top").trim()!==expected){
+   root.style.setProperty("--vnv-header-top",expected);
+  }
+ }
+ function schedule(){
+  if(queued)return;queued=true;
+  requestAnimationFrame(()=>{queued=false;measure()});
+ }
+ function related(node){
+  return node.nodeType===1&&ids.some(id=>node.id===id||node.querySelector?.('[id="'+id+'"]'));
+ }
+ function start(){
+  new MutationObserver(records=>{
+   if(records.some(r=>[...r.addedNodes,...r.removedNodes].some(related)))schedule();
+  }).observe(document.body,{childList:true,subtree:true});
+  schedule();
+ }
+ if(document.body)start();
+ else document.addEventListener("DOMContentLoaded",start,{once:true});
+ document.addEventListener("DOMContentLoaded",schedule,{once:true});
+ window.addEventListener("load",schedule,{once:true});
+ window.addEventListener("pageshow",schedule);
+ window.addEventListener("resize",schedule,{passive:true});
+})();
 </script>
 </body>
 </html>
