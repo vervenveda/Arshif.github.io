@@ -1,9 +1,9 @@
-/* VNV campus opt-in layout and accessibility audit v1.0.0
+/* VNV campus opt-in layout and accessibility audit v1.1.0
    ?page_audit=1 only. No storage, cookies, network requests, learner data or mutation
    of campus components. The diagnostic panel itself is the sole added interface. */
 (()=>{"use strict";
 if(new URLSearchParams(location.search).get("page_audit")!=="1"||window.VNVPageAudit)return;
-const ver="1.0.0",maxFonts=35,excluded="#vnvPageAuditPanel";
+const ver="1.1.0",maxFonts=35,excluded="#vnvPageAuditPanel";
 let panel=null,out=null,closed=false;
 const $=s=>document.querySelector(s), $$=s=>[...document.querySelectorAll(s)];
 const round=n=>Math.round(n*10)/10;
@@ -69,6 +69,20 @@ function overlap(){
  return "Toolbar intersects footer rectangle="+(dx>0&&dy>0)+
  " (area="+Math.round(dx*dy)+"px²). At bottom inspect footer links, not just background.";
 }
+function sourceProof(){
+ const css=$("#arshif-grid-balance-20261108");
+ const recon=$("#arshif-vnv-header-offset-reconcile");
+ const matrix=$("#matrixGrid"),research=$("#researchGrid");
+ const rule=css?.textContent.includes("repeat(6,minmax(0,1fr))")||false;
+ const root=document.documentElement;
+ return "Grid repair style="+(css?"PRESENT":"MISSING")+" · expected 6-column rule="+rule+
+  " · header reconciliation script="+(recon?"PRESENT":"MISSING")+
+  " · reconciliation guard="+(window.__arshifTickerHeaderReconcile===true?"TRUE":"FALSE")+
+  " · inline header offset="+(root.style.getPropertyValue("--vnv-header-top").trim()||"(unset)")+
+  " · computed header top="+(($("#vnvHeaderAutoPopulate")&&getComputedStyle($("#vnvHeaderAutoPopulate")).top)||"n/a")+
+  " · matrix columns="+(matrix?getComputedStyle(matrix).gridTemplateColumns:"n/a")+
+  " · research columns="+(research?getComputedStyle(research).gridTemplateColumns:"n/a");
+}
 function report(){
  const h=$("#vnvHeaderAutoPopulate"),t1=$("#vnv333NetworkTicker"),t2=$("#vnvTickerAutoPopulate");
  const gap=(a,b)=>a&&b?round(b.getBoundingClientRect().top-a.getBoundingClientRect().bottom)+"px":"n/a";
@@ -78,6 +92,7 @@ function report(){
  "[OVERFLOW] scrollWidth="+document.documentElement.scrollWidth+
  " · clientWidth="+document.documentElement.clientWidth+
  " · horizontal="+Math.max(0,document.documentElement.scrollWidth-document.documentElement.clientWidth)+"px",
+ "[SOURCE GENERATION]",sourceProof(),
  "[CANONICAL CHROME]",chrome(),
  "333→auto gap="+gap(t1,t2)+" · auto→header gap="+gap(t2,h)+
  " · --vnv-header-top="+getComputedStyle(document.documentElement).getPropertyValue("--vnv-header-top").trim(),
