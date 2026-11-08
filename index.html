@@ -6287,5 +6287,13 @@ document.addEventListener("click", event => {
 <script>VNV_TICKER.autoPopulate({label:"ARSHIF Quick Links",max:12});</script>
 <script>VNV_HEADER.mount({"title":"ARSHIF","subtitle":"The Living Archive of Human Knowledge","icon":"A","home":"https://vervenveda.com/","actions":[{"label":"Archive","href":"#archive"},{"label":"Collections","href":"#collections"},{"label":"Archive Menu","href":"#archive-menu"},{"label":"Print","href":"#print-directory"},{"label":"Verve N Veda","href":"https://vervenveda.com/"}]});</script>
 <script src="https://vervenveda.com/assets/vnv-ecosystem-toolbar.js"></script>
+<!-- Opt-in read-only page audit; never runs for ordinary visitors. -->
+<script id="vnv-page-audit-optin-loader">
+if(new URLSearchParams(location.search).get("page_audit")==="1"){
+  const auditScript=document.createElement("script");
+  auditScript.src="./assets/vnv-page-audit-optin.js?v=1.0.0";
+  document.body.appendChild(auditScript);
+}
+</script>
 </body>
 </html>
