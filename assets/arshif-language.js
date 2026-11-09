@@ -36,11 +36,26 @@ function apply(){
 }
 function init(){
  const select=document.createElement("select");select.id="arshif-language-choice";select.setAttribute("aria-label","Choose interface language");
- select.style.cssText="border-radius:7px;padding:7px;background:#f8f2e7;color:#17211d;border:1px solid #b49c70;max-width:155px;";
+ select.style.cssText="border-radius:7px;padding:10px 13px;min-height:46px;font:400 16px/1.4 Nunito,Arial,sans-serif;background:#f8f2e7;color:#17211d;border:1px solid #b49c70;max-width:100%;";
  for(const [code,label] of Object.entries(LANG)){const option=document.createElement("option");option.value=code;option.textContent=label;select.append(option)}
  select.value=current;select.addEventListener("change",()=>{current=select.value;try{localStorage.setItem(KEY,current)}catch{}apply()});
- const slot=document.createElement("div");slot.style.cssText="display:flex;justify-content:center;padding:7px;";slot.append(select);
- (document.querySelector(".site-header")||document.body).append(slot);
+ // Keep the language control within the archival page instead of after the footer.
+ // The universal VNV header is injected dynamically and does not use .site-header.
+ const slot=document.createElement("div");
+ slot.className="arshif-footer-language";
+ slot.setAttribute("role","group");
+ slot.setAttribute("aria-label","Archive interface language");
+ slot.style.cssText="display:flex;align-items:center;justify-content:center;gap:12px;flex-wrap:wrap;width:100%;margin-top:22px;padding:16px 0 0;border-top:1px solid rgba(238,232,220,.25);";
+ const label=document.createElement("label");
+ label.htmlFor=select.id;label.textContent="Archive Language";
+ label.style.cssText="font:400 16px/1.4 Nunito,Arial,sans-serif;color:#fff8e9;";
+ slot.append(label,select);
+ const footer=document.querySelector(".site-footer .footer-inner");
+ if(footer){footer.append(slot)}else{
+  // Fallback stays adjacent to the page footer, never orphaned below it.
+  const fallback=document.querySelector(".site-footer")||document.querySelector("main");
+  fallback?.append(slot);
+ }
  apply();
  // Re-render labels added by the archive's own menu scripts, without altering archive text.
  const observer=new MutationObserver(records=>{for(const record of records){for(const node of record.addedNodes||[])if(node.nodeType===1)localize(node)}});
