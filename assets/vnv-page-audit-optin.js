@@ -1,14 +1,23 @@
-/* VNV campus opt-in layout and accessibility audit v1.1.0
+/* VNV campus opt-in layout and accessibility audit v1.2.0
    ?page_audit=1 only. No storage, cookies, network requests, learner data or mutation
    of campus components. The diagnostic panel itself is the sole added interface. */
 (()=>{"use strict";
 if(new URLSearchParams(location.search).get("page_audit")!=="1"||window.VNVPageAudit)return;
-const ver="1.1.0",maxFonts=35,excluded="#vnvPageAuditPanel";
+const ver="1.2.0",maxFonts=35,excluded="#vnvPageAuditPanel";
 let panel=null,out=null,closed=false;
 const $=s=>document.querySelector(s), $$=s=>[...document.querySelectorAll(s)];
 const round=n=>Math.round(n*10)/10;
 const rect=e=>{const r=e.getBoundingClientRect();return [r.x,r.y,r.width,r.height].map(round).join("×")};
-const visible=e=>{const s=getComputedStyle(e),r=e.getBoundingClientRect();return s.display!=="none"&&s.visibility!=="hidden"&&Number(s.opacity)>0&&r.width>0&&r.height>0};
+const visible=e=>{
+ if(!e||!e.isConnected||e.closest("[hidden],[inert]"))return false;
+ for(let p=e;p&&p.nodeType===1;p=p.parentElement){
+  const st=getComputedStyle(p);
+  if(st.display==="none"||st.visibility==="hidden"||Number(st.opacity)===0)return false;
+  if(p.matches("details:not([open])")&&!p.contains(e.closest("summary")))return false;
+ }
+ const r=e.getBoundingClientRect();
+ return r.width>0&&r.height>0&&e.getClientRects().length>0;
+};
 function chrome(){
  const parts=[["333","#vnv333NetworkTicker"],["Auto","#vnvTickerAutoPopulate"],["Header","#vnvHeaderAutoPopulate"],["Toolbar","#vnvEcosystemUtilityDock"]];
  return parts.map(([name,sel])=>{
@@ -59,6 +68,23 @@ function grids(){
  }
  return results.length?results.join("\n"):"No target card grids visible in this viewport";
 }
+function disclosureAndAlignment(){
+ const d=$("#arshifFutureDisclosure"),m=$("#matrixGrid"),r=$("#researchGrid");
+ const align=(el)=>{
+  if(!el)return "missing";
+  const kids=[...el.children].filter(visible);
+  if(!kids.length)return "no visible cards";
+  const lastY=Math.max(...kids.map(k=>k.getBoundingClientRect().top));
+  const last=kids.filter(k=>Math.abs(k.getBoundingClientRect().top-lastY)<4);
+  const left=Math.min(...last.map(k=>k.getBoundingClientRect().left));
+  const right=Math.max(...last.map(k=>k.getBoundingClientRect().right));
+  const center=round((left+right)/2-el.getBoundingClientRect().left-el.getBoundingClientRect().width/2);
+  return last.length+" in final row · center offset="+center+"px (0 is centered)";
+ };
+ return "Future Collections disclosure="+(d?(d.open?"OPEN":"CLOSED"):"MISSING")+
+  " · displayed children="+($(".future-grid")?[...$(".future-grid").children].filter(visible).length:0)+
+  "\nMatrix final row: "+align(m)+"\nResearch final row: "+align(r);
+}
 function overlap(){
  const bar=$("#vnvEcosystemUtilityDock");
  const footer=$("footer");
@@ -98,6 +124,7 @@ function report(){
  " · --vnv-header-top="+getComputedStyle(document.documentElement).getPropertyValue("--vnv-header-top").trim(),
  "[FONTS]",fonts(),
  "[VISIBLE GRID GEOMETRY]",grids(),
+ "[DISCLOSURE AND LAST-ROW CENTER]",disclosureAndAlignment(),
  "[FOOTER / TOOLBAR]",overlap(),
  "[NOTES] Refresh report after scrolling to footer, opening menus, or resizing viewport."
  ].join("\n\n");
