@@ -3603,6 +3603,95 @@ main#main-content .hall-grid .card-actions :is(.enter-link,.details-button):focu
  main#main-content .arshif-catalogue-body{display:block!important}
  main#main-content .arshif-catalogue-summary{border-color:#243038;background:#fff;color:#243038}
 }
+
+/* Connected Knowledge Network — opt-in catalogue and unified archive card parity. */
+#network .arshif-catalogue-disclosure{margin-top:16px}
+#network .arshif-catalogue-body{padding-top:28px}
+#network .network-card{
+  display:flex;flex-direction:column;align-items:center;
+  min-width:0;min-height:315px;height:100%;
+  padding:clamp(22px,2vw,30px);
+  border:2px solid #b9ac96;border-radius:7px;
+  background:#fbf8f1;color:#243038;text-align:center;
+}
+#network .network-card .card-top{
+  display:flex;align-items:center;justify-content:space-between;
+  width:100%;gap:12px;
+}
+#network .network-card .hall-meta-row{
+  width:100%;display:flex;align-items:center;justify-content:center;flex-wrap:wrap;
+  text-align:center;gap:8px;
+}
+#network .network-card .hall-category,
+#network .network-card .kind-badge,
+#network .network-card .status-badge,
+#network .network-card .hall-status-note,
+#network .network-card .hall-description,
+#network .network-card .disabled-link,
+#network .network-card .enter-link,
+#network .network-card .hall-symbol{
+  font-size:16px!important;
+}
+#network .network-card h3{
+  color:#243038!important;
+  font:400 clamp(21px,2.5vw,26px)/1.3 Cinzel,Georgia,serif;
+  text-align:center;margin:14px auto 0;max-width:100%;
+}
+#network .network-card .hall-category{
+  color:#76572d!important;
+  line-height:1.45;letter-spacing:.06em;
+  text-align:center;margin:8px auto 0;
+}
+#network .network-card .hall-description,
+#network .network-card .hall-status-note{
+  color:#35423e!important;
+  font:400 16px/1.65 Nunito,Arial,sans-serif;
+  text-align:center;max-width:36ch;margin:12px auto;
+}
+#network .network-card .status-badge{
+  line-height:1.4;padding:5px 8px;max-width:100%;
+  white-space:normal;text-align:center;
+}
+#network .network-card .card-actions{
+  width:100%;display:flex;align-items:stretch;justify-content:center;
+  margin-top:auto;padding-top:14px;gap:10px;
+}
+#network .network-card .card-actions .enter-link{
+  display:inline-flex;align-items:center;justify-content:center;
+  width:100%;min-height:48px;padding:11px 16px;
+  border:1px solid #243038;border-radius:7px;
+  background:#243038;color:#fff8e9!important;
+  font:400 16px/1.45 Nunito,Arial,sans-serif;
+  text-align:center;white-space:normal;text-decoration:none;
+}
+#network .network-card .card-actions .enter-link:hover{
+  background:#38515a;border-color:#38515a;color:#fff8e9!important;
+}
+#network .network-card .card-actions .enter-link:focus-visible{
+  outline:3px solid #b79452;outline-offset:3px;
+}
+#network .network-card .card-actions .disabled-link{
+  width:100%;min-height:48px;border:1px dashed #8f938d;
+  border-radius:7px;background:#ece8df;color:#48534f!important;
+  font:400 16px/1.45 Nunito,Arial,sans-serif;
+  text-align:center;letter-spacing:0;text-transform:none;
+}
+@media(min-width:1001px){
+ #networkGrid{grid-template-columns:repeat(6,minmax(0,1fr))}
+ #networkGrid>.network-card{grid-column:span 2}
+ #networkGrid>.network-card:last-child:nth-child(3n + 1){grid-column:3 / span 2}
+ #networkGrid>.network-card:nth-last-child(2):nth-child(3n + 1){grid-column:2 / span 2}
+}
+@media(min-width:561px) and (max-width:1000px){
+ #networkGrid{grid-template-columns:repeat(4,minmax(0,1fr))}
+ #networkGrid>.network-card{grid-column:span 2}
+ #networkGrid>.network-card:last-child:nth-child(odd){grid-column:2 / span 2}
+}
+@media(max-width:560px){
+ #networkGrid{grid-template-columns:minmax(0,1fr)}
+ #networkGrid>.network-card{grid-column:auto}
+}
+
 /* ARSHIF content refinements; canonical shared header is the only top navigation. */
 main#main-content .hero-title-accent{display:block;margin:12px auto 0;font-weight:400;text-align:center}
 .arshif-mentor-section{width:min(calc(100% - 40px),1353px);margin:0 auto}
@@ -3924,7 +4013,18 @@ main#main-content .hero-title-accent{display:block;margin:12px auto 0;font-weigh
         </div>
       </div>
 
-      <div class="hall-grid" id="networkGrid"></div>
+      <details class="arshif-catalogue-disclosure arshif-network-disclosure" id="arshifNetworkDisclosure">
+        <summary class="arshif-catalogue-summary">
+          <span class="arshif-catalogue-summary-title">
+            <span class="arshif-catalogue-label-closed">Explore Connected Destinations</span>
+            <span class="arshif-catalogue-label-open">Collapse Connected Destinations</span>
+          </span>
+          <span class="arshif-catalogue-chevron" aria-hidden="true">⌄</span>
+        </summary>
+        <div class="arshif-catalogue-body" id="arshifNetworkBody">
+          <div class="hall-grid" id="networkGrid"></div>
+        </div>
+      </details>
     </section>
 
     <section class="section">
@@ -6669,7 +6769,8 @@ if(new URLSearchParams(location.search).get("page_audit")==="1"){
  const bySection={
   archive:"arshifHallsDisclosure",
   "matrix-corridors":"arshifMatrixDisclosure",
-  "research-gateways":"arshifResearchDisclosure"
+  "research-gateways":"arshifResearchDisclosure",
+  network:"arshifNetworkDisclosure"
  };
  function openSection(id){const name=bySection[id];if(!name)return;const node=document.getElementById(name);if(node)node.open=true}
  function openHash(){const h=decodeURIComponent(location.hash.slice(1));openSection(h)}
