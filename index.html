@@ -3692,6 +3692,85 @@ main#main-content .hall-grid .card-actions :is(.enter-link,.details-button):focu
  #networkGrid>.network-card{grid-column:auto}
 }
 
+
+/* ARSHIF minimalist resource cards — heading-first and one concise metadata line.
+   Registry, favorite controls, scope dialogs and availability states remain authoritative. */
+main#main-content :is(#hallGrid,#matrixGrid,#researchGrid,#networkGrid)>.hall-card{
+ display:flex;flex-direction:column;align-items:center;
+ position:relative;padding:28px 22px 24px;
+ border:2px solid #c9bfae;border-radius:7px;
+ background:#fffdf8;text-align:center;
+}
+main#main-content :is(#hallGrid,#matrixGrid,#researchGrid,#networkGrid)>.hall-card::before,
+main#main-content :is(#hallGrid,#matrixGrid,#researchGrid,#networkGrid)>.hall-card::after{
+ content:none;
+}
+main#main-content :is(#hallGrid,#matrixGrid,#researchGrid,#networkGrid)>.hall-card h3{
+ order:0;width:100%;margin:0 auto 13px;
+ padding:0 0 4px;
+ color:#243038!important;
+ font:400 clamp(22px,2vw,27px)/1.35 Cinzel,Georgia,serif!important;
+ text-align:center;overflow-wrap:anywhere;
+}
+main#main-content :is(#hallGrid,#matrixGrid,#researchGrid,#networkGrid)>.hall-card .hall-category,
+main#main-content #researchGrid>.hall-card .resource-provider{
+ order:1;margin:0 auto 14px;
+ color:#715630!important;
+ font:400 16px/1.5 Nunito,Arial,sans-serif!important;
+ letter-spacing:.02em;text-transform:none;text-align:center;
+ overflow-wrap:anywhere;
+}
+main#main-content :is(#hallGrid,#matrixGrid,#researchGrid,#networkGrid)>.hall-card .hall-description{
+ order:2;margin:0 auto 18px;max-width:38ch;
+ color:#35423e!important;
+ font:400 16px/1.65 Nunito,Arial,sans-serif!important;
+ text-align:center;
+}
+main#main-content :is(#hallGrid,#matrixGrid,#researchGrid,#networkGrid)>.hall-card .hall-status-note{
+ order:3;margin:0 auto 14px;
+ color:#605c56!important;
+ font:400 16px/1.55 Nunito,Arial,sans-serif!important;
+ text-align:center;
+}
+main#main-content :is(#hallGrid,#matrixGrid,#researchGrid,#networkGrid)>.hall-card .card-actions{
+ order:4;display:flex;justify-content:center;align-items:stretch;
+ margin-top:auto;width:100%;gap:9px;padding-top:8px;
+}
+main#main-content #hallGrid>.hall-card .card-top{
+ position:absolute;top:11px;right:11px;
+ margin:0;width:auto;z-index:3;
+}
+main#main-content #hallGrid>.hall-card h3{padding-inline:29px}
+main#main-content #hallGrid>.hall-card .favorite-button{
+ width:38px;height:38px;border-radius:7px;
+ color:#243038;background:transparent;
+}
+main#main-content #hallGrid>.hall-card .favorite-button:hover,
+main#main-content #hallGrid>.hall-card .favorite-button[aria-pressed="true"]{
+ background:#f0e7d9;color:#76572d;
+}
+main#main-content #hallGrid>.hall-card .favorite-button:focus-visible{
+ outline:3px solid #b79452;outline-offset:2px;
+}
+main#main-content #futureGrid>.future-card{
+ display:flex;flex-direction:column;align-items:center;
+ padding:25px 21px;border:2px solid #c9bfae;border-radius:7px;
+ background:#fffdf8;text-align:center;
+}
+main#main-content #futureGrid>.future-card h3{
+ order:0;margin:0 auto 12px;color:#243038!important;
+ font:400 clamp(21px,2vw,25px)/1.35 Cinzel,Georgia,serif!important;
+}
+main#main-content #futureGrid>.future-card p{
+ order:1;margin:0 auto;color:#35423e!important;
+ font:400 16px/1.65 Nunito,Arial,sans-serif!important;
+ text-align:center;
+}
+@media(max-width:620px){
+ main#main-content :is(#hallGrid,#matrixGrid,#researchGrid,#networkGrid)>.hall-card{padding:24px 16px}
+ main#main-content #hallGrid>.hall-card h3{padding-inline:27px}
+}
+
 /* ARSHIF content refinements; canonical shared header is the only top navigation. */
 main#main-content .hero-title-accent{display:block;margin:12px auto 0;font-weight:400;text-align:center}
 .arshif-mentor-section{width:min(calc(100% - 40px),1353px);margin:0 auto}
@@ -5872,8 +5951,8 @@ main#main-content .hero-title-accent{display:block;margin:12px auto 0;font-weigh
 
         return `
           <article class="hall-card" data-id="${escapeHTML(hall.id)}" data-status="${escapeHTML(hall.status)}">
+            <h3>${escapeHTML(hall.title)}</h3>
             <div class="card-top">
-              <span class="hall-symbol" aria-hidden="true">${escapeHTML(hall.symbol)}</span>
 
               <button
                 class="favorite-button"
@@ -5889,13 +5968,7 @@ main#main-content .hero-title-accent{display:block;margin:12px auto 0;font-weigh
               </button>
             </div>
 
-            <div class="hall-meta-row">
-              <p class="hall-category">${escapeHTML(hall.category)}</p>
-              <span class="kind-badge">${escapeHTML(hall.layer || "ARSHIF")}</span>
-              <span class="kind-badge">${escapeHTML(hall.kind)}</span>
-              <span class="status-badge" data-status="${escapeHTML(hall.status)}">${escapeHTML(hallStatusLabel(hall.status))}</span>
-            </div>
-            <h3>${escapeHTML(hall.title)}</h3>
+            <p class="hall-category">${escapeHTML(hall.category)}</p>
             <p class="hall-description">${escapeHTML(hall.description)}</p>
             ${isHallLive(hall) ? "" : `<p class="hall-status-note">${escapeHTML(hall.statusNote || "This destination is not currently launchable.")}</p>`}
 
@@ -6132,16 +6205,9 @@ main#main-content .hero-title-accent{display:block;margin:12px auto 0;font-weigh
     function renderResources() {
       researchGrid.innerHTML = researchResources.map((resource) => `
         <article class="hall-card network-card">
-          <div class="card-top">
-            <span class="hall-symbol" aria-hidden="true">${escapeHTML(resource.symbol)}</span>
-          </div>
-          <div class="hall-meta-row">
-            <p class="hall-category">${escapeHTML(resource.category)}</p>
-            <span class="kind-badge">External</span>
-          </div>
           <h3>${escapeHTML(resource.title)}</h3>
-          <p class="hall-description">${escapeHTML(resource.description)}</p>
           <p class="resource-provider">${escapeHTML(resource.provider)}</p>
+          <p class="hall-description">${escapeHTML(resource.description)}</p>
           <div class="card-actions">
             <a class="enter-link" href="${escapeHTML(resource.url)}" target="_blank" rel="noopener noreferrer"
                aria-label="Open ${escapeHTML(resource.title)} in a new tab">
@@ -6180,8 +6246,6 @@ main#main-content .hero-title-accent{display:block;margin:12px auto 0;font-weigh
 
       futureGrid.innerHTML = futureCollections.map((collection) => `
         <article class="future-card">
-          <span class="future-symbol" aria-hidden="true">${escapeHTML(collection.symbol)}</span>
-          <p class="future-status">Future Collection</p>
           <h3>${escapeHTML(collection.title)}</h3>
           <p>${escapeHTML(collection.description)}</p>
         </article>
@@ -6229,15 +6293,8 @@ main#main-content .hero-title-accent{display:block;margin:12px auto 0;font-weigh
         const external = !item.url.startsWith("./");
         return `
           <article class="hall-card matrix-card">
-            <div class="card-top">
-              <span class="hall-symbol" aria-hidden="true">${escapeHTML(item.symbol)}</span>
-              <span class="status-badge" data-status="live">Connected</span>
-            </div>
-            <div class="hall-meta-row">
-              <p class="hall-category">${escapeHTML(item.group)}</p>
-              <span class="kind-badge">Matrix Corridor</span>
-            </div>
             <h3>${escapeHTML(item.title)}</h3>
+            <p class="hall-category">${escapeHTML(item.group)}</p>
             <p class="hall-description">${escapeHTML(item.description)}</p>
             <div class="card-actions">
               <a class="enter-link" href="${escapeHTML(item.url)}"
@@ -6259,13 +6316,6 @@ main#main-content .hero-title-accent{display:block;margin:12px auto 0;font-weigh
 
         return `
           <article class="hall-card network-card" data-status="${escapeHTML(site.status)}">
-            <div class="card-top">
-              <span class="hall-symbol" aria-hidden="true">${escapeHTML(site.symbol)}</span>
-              <span class="status-badge" data-status="${escapeHTML(site.status)}">${escapeHTML(statusLabel(site.status))}</span>
-            </div>
-            <div class="hall-meta-row">
-              <p class="hall-category">Connected Destination</p>
-            </div>
             <h3>${escapeHTML(site.title)}</h3>
             <p class="hall-description">${escapeHTML(site.description)}</p>
             ${isLive ? "" : `<p class="hall-status-note">${escapeHTML(site.statusNote || "No published landing page was found.")}</p>`}
