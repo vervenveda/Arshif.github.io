@@ -2839,7 +2839,6 @@
   .kind-badge,
   .status-badge,
   .filter-button,
-  .details-button,
   .secondary-link,
   .quiet-button:not(.hero-actions .quiet-button){
     color:var(--studio-soft-ink)!important;
@@ -3551,6 +3550,59 @@ body .vnv-support-ticker-link{
  }
 }
 
+
+/* ARSHIF long catalogue disclosure: keep all cards and research controls intact. */
+main#main-content .arshif-catalogue-disclosure{width:100%;margin:16px auto 0}
+main#main-content .arshif-catalogue-summary{
+  display:flex;align-items:center;justify-content:center;flex-wrap:wrap;
+  gap:13px;min-height:58px;padding:13px 22px;margin:0 auto;
+  width:min(100%,780px);cursor:pointer;list-style:none;
+  border:2px solid #243038;border-radius:7px;background:#243038;color:#fff8e9;
+  font:400 17px/1.4 Nunito,"Brandon Grotesque",Arial,sans-serif;text-align:center;
+}
+main#main-content .arshif-catalogue-summary::-webkit-details-marker{display:none}
+main#main-content .arshif-catalogue-summary::marker{content:""}
+main#main-content .arshif-catalogue-summary:focus-visible{outline:3px solid #b79452;outline-offset:4px}
+main#main-content .arshif-catalogue-summary:hover{background:#38515a;border-color:#38515a}
+main#main-content .arshif-catalogue-summary-title{color:#fff8e9;font-size:17px}
+main#main-content .arshif-catalogue-label-open{display:none}
+main#main-content .arshif-catalogue-disclosure[open] .arshif-catalogue-label-open{display:inline}
+main#main-content .arshif-catalogue-disclosure[open] .arshif-catalogue-label-closed{display:none}
+main#main-content .arshif-catalogue-count{font:400 16px/1.4 Nunito,Arial,sans-serif;color:#f2eada}
+main#main-content .arshif-catalogue-chevron{font-size:24px;line-height:1;transition:transform .15s}
+main#main-content .arshif-catalogue-disclosure[open] .arshif-catalogue-chevron{transform:rotate(180deg)}
+main#main-content .arshif-catalogue-body{padding-top:27px}
+main#main-content .hall-grid .card-actions .enter-link{
+ color:#243038!important;background:#f5ecda;border:1px solid #b8aa8f;
+ font:400 16px/1.4 Nunito,Arial,sans-serif;text-align:center;
+}
+main#main-content .hall-grid .card-actions .details-button{
+ color:#fff8e9!important;background:#243038;border:1px solid #243038;
+ font:400 16px/1.4 Nunito,Arial,sans-serif;text-align:center;
+}
+main#main-content .hall-grid .card-actions .details-button:hover{
+ color:#fff8e9!important;background:#38515a;border-color:#38515a;
+}
+main#main-content .hall-grid .card-actions .enter-link:hover{
+ color:#243038!important;background:#e9ddc8;
+}
+main#main-content .hall-grid .card-actions :is(.enter-link,.details-button):focus-visible{
+ outline:3px solid #b79452;outline-offset:3px;
+}
+@media(min-width:561px) and (max-width:1000px){
+ #matrixGrid,#researchGrid{grid-template-columns:repeat(4,minmax(0,1fr))}
+ #matrixGrid>.hall-card,#researchGrid>.hall-card{grid-column:span 2}
+ #matrixGrid>.hall-card:last-child:nth-child(odd),
+ #researchGrid>.hall-card:last-child:nth-child(odd){grid-column:2/span 2}
+}
+@media(max-width:560px){
+ #matrixGrid,#researchGrid{grid-template-columns:1fr}
+ #matrixGrid>.hall-card,#researchGrid>.hall-card{grid-column:auto}
+}
+@media print{
+ main#main-content .arshif-catalogue-body{display:block!important}
+ main#main-content .arshif-catalogue-summary{border-color:#243038;background:#fff;color:#243038}
+}
 /* ARSHIF content refinements; canonical shared header is the only top navigation. */
 main#main-content .hero-title-accent{display:block;margin:12px auto 0;font-weight:400;text-align:center}
 .arshif-mentor-section{width:min(calc(100% - 40px),1353px);margin:0 auto}
@@ -3766,6 +3818,13 @@ main#main-content .hero-title-accent{display:block;margin:12px auto 0;font-weigh
           </p>
         </div>
       </div>
+      <details class="arshif-catalogue-disclosure" id="arshifHallsDisclosure">
+        <summary class="arshif-catalogue-summary">
+          <span class="arshif-catalogue-summary-title"><span class="arshif-catalogue-label-closed">Explore Knowledge Halls</span><span class="arshif-catalogue-label-open">Collapse Knowledge Halls</span></span>
+          <span class="arshif-catalogue-count">33 archive destinations</span>
+          <span class="arshif-catalogue-chevron" aria-hidden="true">⌄</span>
+        </summary>
+        <div class="arshif-catalogue-body" id="arshifHallsBody">
 
       <div class="archive-toolbar">
         <div class="search-wrap">
@@ -3795,6 +3854,8 @@ main#main-content .hero-title-accent{display:block;margin:12px auto 0;font-weigh
         <h3>No ARSHIF app matched that search.</h3>
         <p>Try a broader subject, clear the filters, or open a random hall.</p>
       </div>
+            </div>
+      </details>
     </section>
 
 
@@ -3809,7 +3870,16 @@ main#main-content .hero-title-accent{display:block;margin:12px auto 0;font-weigh
           </p>
         </div>
       </div>
+      <details class="arshif-catalogue-disclosure" id="arshifMatrixDisclosure">
+        <summary class="arshif-catalogue-summary">
+          <span class="arshif-catalogue-summary-title"><span class="arshif-catalogue-label-closed">Explore Matrix Corridors</span><span class="arshif-catalogue-label-open">Collapse Matrix Corridors</span></span>
+          <span class="arshif-catalogue-count">11 connected research corridors</span>
+          <span class="arshif-catalogue-chevron" aria-hidden="true">⌄</span>
+        </summary>
+        <div class="arshif-catalogue-body" id="arshifMatrixBody">
       <div class="hall-grid matrix-grid" id="matrixGrid"></div>
+            </div>
+      </details>
     </section>
 
     <section class="section" id="research-gateways" aria-labelledby="researchGatewaysTitle">
@@ -3823,6 +3893,13 @@ main#main-content .hero-title-accent{display:block;margin:12px auto 0;font-weigh
           </p>
         </div>
       </div>
+      <details class="arshif-catalogue-disclosure" id="arshifResearchDisclosure">
+        <summary class="arshif-catalogue-summary">
+          <span class="arshif-catalogue-summary-title"><span class="arshif-catalogue-label-closed">Explore Public Research Libraries</span><span class="arshif-catalogue-label-open">Collapse Public Research Libraries</span></span>
+          <span class="arshif-catalogue-count">13 reviewed research gateways</span>
+          <span class="arshif-catalogue-chevron" aria-hidden="true">⌄</span>
+        </summary>
+        <div class="arshif-catalogue-body" id="arshifResearchBody">
 
       <div class="hall-grid" id="researchGrid"></div>
 
@@ -3831,6 +3908,8 @@ main#main-content .hero-title-accent{display:block;margin:12px auto 0;font-weigh
         not a blanket endorsement. Review each source’s rights, access conditions, scope, and current terms
         before downloading, publishing, or reusing materials.
       </p>
+            </div>
+      </details>
     </section>
 
     <section class="section" id="network" aria-labelledby="networkTitle">
@@ -6582,6 +6661,32 @@ if(new URLSearchParams(location.search).get("page_audit")==="1"){
  window.addEventListener("load",schedule,{once:true});
  window.addEventListener("pageshow",schedule);
  window.addEventListener("resize",schedule,{passive:true});
+})();
+</script>
+<script id="arshif-catalogue-navigation">
+/* Preserve deep links and filter controls for the three collapsed catalogues. */
+(()=>{"use strict";
+ const bySection={
+  archive:"arshifHallsDisclosure",
+  "matrix-corridors":"arshifMatrixDisclosure",
+  "research-gateways":"arshifResearchDisclosure"
+ };
+ function openSection(id){const name=bySection[id];if(!name)return;const node=document.getElementById(name);if(node)node.open=true}
+ function openHash(){const h=decodeURIComponent(location.hash.slice(1));openSection(h)}
+ document.addEventListener("click",e=>{
+  const a=e.target.closest?.('a[href^="#"]');
+  if(a){const hash=a.getAttribute("href").slice(1);openSection(hash)}
+ },true);
+ document.addEventListener("focusin",e=>{
+  const target=e.target;
+  for(const name of Object.values(bySection)){
+   const d=document.getElementById(name);
+   if(d?.contains(target)&&!d.open)d.open=true;
+  }
+ });
+ window.addEventListener("hashchange",openHash);
+ if(document.readyState==="loading")document.addEventListener("DOMContentLoaded",openHash,{once:true});
+ else openHash();
 })();
 </script>
 </body>
