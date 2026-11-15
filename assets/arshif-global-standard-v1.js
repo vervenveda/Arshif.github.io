@@ -85,6 +85,15 @@ html:root body [${PRIMARY_ATTR}="true"]{
  font-size:66px!important;line-height:1.05!important;font-weight:400!important;
  overflow-wrap:anywhere;text-wrap:balance
 }
+/* Hall masthead cleanup: preserve shortcut navigation without a second branded header. */
+html:root body .site-header .brand,
+html:root body .topbar .brand{display:none!important}
+html:root body .site-header,
+html:root body .topbar{min-height:auto!important}
+html:root body .site-header .header-inner,
+html:root body .topbar .topbar-inner{justify-content:center!important}
+html:root body .site-header .header-actions,
+html:root body .topbar .toplinks{width:100%!important;justify-content:center!important;flex-wrap:wrap!important}
 @media(max-width:560px){html:root body [${PRIMARY_ATTR}="true"]{font-size:66px!important}}
 `;document.head.append(style);
   }
