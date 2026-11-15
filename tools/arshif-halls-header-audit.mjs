@@ -19,27 +19,14 @@ function rel(f){return path.relative(ROOT,f).split(path.sep).join("/")}
 
 function convertHeaders(source){
   let changed=0;
-  const before=source;
-
-  // All Hall-local <header> elements are content, shortcut rails, or modal/dossier heads.
-  // The official VNV/ARSHIF header is runtime-mounted and remains the single page header.
-  source=source.replace(/<header\b([^>]*)>/gi,(m,attrs)=>{
+  const out=source.replace(/<header\b([^>]*)>([\s\S]*?)<\/header>/gi,(whole,attrs,inner)=>{
     changed++;
     const cls=(attrs.match(/class=["']([^"']*)["']/i)||[])[1]||"";
     const isHero=/\b(hero|cc-top|aph-header)\b/i.test(cls);
     const tag=isHero?"section":"div";
-    return `<${tag}${attrs} data-arshif-former-header="true">`;
+    return `<${tag}${attrs} data-arshif-former-header="true">${inner}</${tag}>`;
   });
-  source=source.replace(/<\/header>/gi,()=>"</div>");
-
-  // The generic close above cannot know which open tags were hero sections.
-  // Repair known hero wrappers deterministically by class.
-  for(const cls of ["hero","cc-top","aph-header"]){
-    const re=new RegExp(`(<section\\b[^>]*class=["'][^"']*\\b${cls}\\b[^"']*["'][^>]*>[\\s\\S]*?)<\\/div>`,"gi");
-    source=source.replace(re,"$1</section>");
-  }
-
-  return {source,changed:before===source?0:changed};
+  return {source:out,changed:out===source?0:changed};
 }
 
 const files=walk(HALLS).sort();
