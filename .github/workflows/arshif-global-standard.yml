@@ -7,6 +7,7 @@ on:
       - 'tools/arshif-global-standard-audit.mjs'
       - 'tools/semantic-hierarchy-audit.mjs'
       - 'tools/arshif-halls-header-audit.mjs'
+      - 'tools/arshif-semantic-source-normalizer.mjs'
       - '.github/workflows/arshif-global-standard.yml'
   workflow_dispatch:
 permissions:
@@ -27,6 +28,10 @@ jobs:
         run: node tools/arshif-halls-header-audit.mjs --write
       - name: Verify one official page header per Hall
         run: node tools/arshif-halls-header-audit.mjs --check
+      - name: Normalize clear Arshif semantic reversals in source
+        run: node tools/arshif-semantic-source-normalizer.mjs --write
+      - name: Verify no clear Arshif semantic reversals remain in source
+        run: node tools/arshif-semantic-source-normalizer.mjs --check
       - name: Audit Arshif semantic hierarchy
         run: node tools/semantic-hierarchy-audit.mjs
       - name: Validate patch
