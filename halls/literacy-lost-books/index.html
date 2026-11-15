@@ -34,14 +34,14 @@ main{padding:55px 0 66px}.view{display:none}.view.active{display:block}.heading{
 </head>
 <body>
 <a class="skip" href="#main">Skip to Vault content</a>
-<header class="hero"><div class="shell">
+<section class="hero" data-arshif-former-header="true"><div class="shell">
 <p class="eyebrow">ARSHIF · Khaemenes Academy</p>
 <h1>The Palimpsest Vault · Lost, Fragmented, Suppressed & Challenged Works · 101–603</h1>
 <p class="lead">A quiet scholarly register for works that survive unevenly: fragments, quotations, translations, manuscripts, disputed canons, destroyed documentary heritage, challenged books, and digital recoveries.</p>
 <div class="memory-line">This Vault does not erase anyone’s canon — it simply remembers. Its task is not to turn absence into certainty, but to preserve evidence, distinguish kinds of loss, and keep responsible pathways to memory open.</div>
 <div class="hero-actions"><button class="btn gold" data-go="ladder">Choose Vault 101–603</button><button class="btn" data-go="register">Open the Register</button><button class="btn" data-go="modules">Open 33 Resource Modules</button><a class="btn" href="https://vervenveda.com/proresource_hub.github.io/#prose" target="_blank" rel="noopener">Open PROSE Editing Suite</a></div>
 <div class="stats"><div class="stat"><strong>10</strong><span>original starter dossiers preserved</span></div><div class="stat"><strong>18</strong><span>courses · 101 through 603</span></div><div class="stat"><strong>33</strong><span>archival resource modules</span></div><div class="stat"><strong>11</strong><span>textual & archival competencies</span></div></div>
-</div></header>
+</div></section>
 
 <nav class="tabs" id="tabs">
 <button class="tab active" data-view="ladder">Course Ladder</button><button class="tab" data-view="register">Vault Register</button><button class="tab" data-view="modules">Resource Modules</button><button class="tab" data-view="skills">Competencies</button><button class="tab" data-view="lab">Textual Lab</button><button class="tab" data-view="research">Archive Research Studio</button><button class="tab" data-view="sources">Preservation & Source Vault</button><button class="tab" data-view="journal">Research Journal</button><button class="tab" data-view="progress">Portfolio & Progress</button>
@@ -67,7 +67,7 @@ main{padding:55px 0 66px}.view{display:none}.view.active{display:block}.heading{
 <section class="view" id="view-progress"><div class="heading"><p class="kicker">Portfolio & Progress</p><h2>A learner-controlled archival record.</h2><p>Course, module, competency, dossier and journal progress stays browser-local until explicitly exported.</p></div><div class="portfolio"><article><h3>Course Ladder</h3><p id="courseProgress"></p><div class="chips" id="courseChips"></div></article><article><h3>Resource Modules</h3><p id="moduleProgress"></p></article><article><h3>Competency Snapshot</h3><p id="portfolioSkills"></p><div class="actions"><button class="btn gold" id="copySnapshot">Copy Mentor / NAIB Snapshot</button><button class="btn" id="downloadPortfolio">Download Portfolio JSON</button></div></article><article><h3>Research Record</h3><p id="recordProgress"></p><div class="actions"><button class="btn" id="printProgress">Print</button><button class="btn" id="clearNewProgress">Clear Vault Progress</button></div></article></div></section>
 </div></main>
 
-<div class="overlay" id="overlay"><article class="dossier"><header><div><div class="code" id="dossierMeta"></div><h2 id="dossierTitle"></h2></div><button class="btn" id="closeDossier">Close</button></header><div class="dossier-body" id="dossierBody"></div></article></div>
+<div class="overlay" id="overlay"><article class="dossier"><div data-arshif-former-header="true"><div><div class="code" id="dossierMeta"></div><h2 id="dossierTitle"></h2></div><button class="btn" id="closeDossier">Close</button></div><div class="dossier-body" id="dossierBody"></div></article></div>
 <footer class="footer">ARSHIF · Khaemenes Academy · Palimpsest Vault · It does not erase anyone’s canon — it simply remembers · Vault Studies 101–603</footer>
 
 <script>
