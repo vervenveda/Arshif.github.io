@@ -3783,7 +3783,35 @@ main#main-content .hero-title-accent{display:block;margin:12px auto 0;font-weigh
 .arshif-mentor-action:focus-visible{outline:3px solid #b79452;outline-offset:3px}
 @media(max-width:760px){.arshif-mentor-section{width:calc(100% - 24px)}}
 </style>
-  </head>
+  <style id="arshif-canonical-landing-contract">
+:root{--arshif-charcoal:#243038;--arshif-cream:#fff8e9;--arshif-gold:#b48b45}
+.arshif-canonical-hero{
+  min-height:auto!important;padding:66px 24px!important;
+  background:#243038!important;color:#fff8e9!important;border-bottom:1px solid #b48b45!important
+}
+.arshif-canonical-hero .hero-inner{width:min(100%,980px)!important;margin:auto!important;display:grid!important;justify-items:center!important;gap:14px!important;text-align:center!important}
+.arshif-canonical-hero .arshif-academy-label{margin:0!important;color:#fff8e9!important;font:400 33px/1.15 Cinzel,Georgia,serif!important;letter-spacing:.03em!important;text-transform:none!important}
+.arshif-canonical-hero h1#heroTitle{margin:0!important;color:#fff8e9!important;font:400 66px/1.05 Cinzel,Georgia,serif!important;letter-spacing:.035em!important;text-transform:none!important}
+.arshif-canonical-hero .hero-title-accent{margin:0!important;color:#fff8e9!important;font:400 24px/1.35 "Brandon Grotesque",Nunito,Arial,sans-serif!important;letter-spacing:.015em!important;text-transform:none!important}
+.arshif-canonical-hero .hero-description{max-width:760px!important;margin:7px auto 0!important;color:#e8dfcf!important;font:400 16px/1.65 "Brandon Grotesque",Nunito,Arial,sans-serif!important}
+.arshif-access-actions{width:min(100%,760px)!important;display:grid!important;grid-template-columns:repeat(3,minmax(0,1fr))!important;gap:11px!important;margin:18px auto 0!important}
+.arshif-access-actions :is(a,button){box-sizing:border-box!important;min-height:48px!important;width:100%!important;margin:0!important;padding:11px 14px!important;border:1px solid #fff8e9!important;border-radius:7px!important;background:#fff8e9!important;color:#243038!important;font:400 16px/1.3 "Brandon Grotesque",Nunito,Arial,sans-serif!important;text-align:center!important;text-decoration:none!important}
+.arshif-access-actions :is(a,button):first-child{background:#243038!important;color:#fff8e9!important;border-color:#fff8e9!important}
+.arshif-canonical-hero .directory-summary{margin:8px auto 0!important;color:#d7c9ae!important;font-size:16px!important}
+.arshif-about{background:#fff8e9!important;color:#243038!important}
+.arshif-about .section-heading{max-width:820px!important;margin:0 auto 28px!important;text-align:center!important}
+.arshif-about .section-kicker{color:#76572d!important;font:400 24px/1.2 Cinzel,Georgia,serif!important}
+.arshif-about h2{color:#243038!important;font:400 33px/1.25 Cinzel,Georgia,serif!important}
+.arshif-about .section-copy{max-width:760px!important;margin:14px auto 0!important;color:#46534e!important;font-size:16px!important;text-align:center!important}
+.arshif-feature-grid{width:min(100%,980px);margin:auto;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px;align-items:stretch}
+.arshif-feature-card{min-height:190px;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:24px;border:1px solid #243038;border-radius:7px;background:#fff;color:#243038;text-align:center}
+.arshif-feature-card span{color:#76572d;font:400 16px/1 Cinzel,Georgia,serif}.arshif-feature-card h3{margin:9px 0 7px;font:400 24px/1.2 Cinzel,Georgia,serif}.arshif-feature-card p{max-width:360px;margin:0;color:#46534e;font-size:16px;line-height:1.55}
+.site-footer{background:#243038!important;color:#fff8e9!important;border-top:1px solid #b48b45!important}.site-footer .footer-inner{grid-template-columns:1fr!important;justify-items:center!important;text-align:center!important}.site-footer .footer-links{justify-content:center!important}
+:where(button,a[class],article,details,summary,input,select,textarea,.modal-dialog,.arshif-catalogue-disclosure,.arshif-future-disclosure,.arshif-mentor-card,.manifesto,.hall-card,.principle){border-radius:7px!important}
+:where(button,a[class]){font-size:16px}
+@media(max-width:720px){.arshif-access-actions,.arshif-feature-grid{grid-template-columns:1fr}.arshif-canonical-hero h1#heroTitle{font-size:clamp(48px,15vw,66px)!important}.arshif-canonical-hero .arshif-academy-label{font-size:clamp(24px,8vw,33px)!important}.arshif-canonical-hero .hero-title-accent{font-size:clamp(20px,6vw,24px)!important}}
+</style>
+</head>
 
 <body data-vnv-outer-landing="true">
 
@@ -3814,117 +3842,41 @@ main#main-content .hero-title-accent{display:block;margin:12px auto 0;font-weigh
   </div>
 
   <main id="main-content">
-    <section class="hero" aria-labelledby="heroTitle">
+    <section class="hero arshif-canonical-hero" aria-labelledby="heroTitle">
       <div class="hero-inner">
-        <svg class="hero-sigil compass-rose-hero" viewBox="0 0 320 320" role="img" aria-label="Antique eight-point compass rose">
-          <g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
-            <circle cx="160" cy="160" r="137" stroke-width="2"/>
-            <circle cx="160" cy="160" r="106" stroke-width="1" opacity=".58"/>
-            <path d="M160 31 178 132 251 69 188 142 289 160 188 178 251 251 178 188 160 289 142 188 69 251 132 178 31 160 132 142 69 69 142 132Z"
-                  stroke-width="2.2"/>
-            <path d="M160 31 178 132 160 160 142 132Z" fill="currentColor" stroke-width="1.4"/>
-            <path d="M289 160 188 178 160 160 188 142Z" fill="currentColor" opacity=".67" stroke-width="1.2"/>
-            <path d="M160 289 142 188 160 160 178 188Z" fill="currentColor" opacity=".30" stroke-width="1.2"/>
-            <path d="M31 160 132 142 160 160 132 178Z" fill="currentColor" opacity=".50" stroke-width="1.2"/>
-            <circle cx="160" cy="160" r="17" fill="var(--atlas-paper)" stroke-width="1.9"/>
-            <circle cx="160" cy="160" r="6" fill="currentColor" stroke="none"/>
-            <path d="M160 15v10M160 295v10M15 160h10M295 160h10" stroke-width="1.1"/>
-          </g>
-          <g fill="currentColor" font-family="Georgia, serif" font-size="14" text-anchor="middle">
-            <text x="160" y="11">N</text>
-            <text x="309" y="165">E</text>
-            <text x="160" y="317">S</text>
-            <text x="11" y="165">W</text>
-          </g>
-        </svg>
-
-        <p class="eyebrow">Knowledge &amp; Archives</p>
-
+        <p class="arshif-academy-label">Khaemenes Academy</p>
         <h1 id="heroTitle">ARSHIF</h1>
         <p class="hero-title-accent">The Living Archive of Human Knowledge</p>
-
-        <p class="hero-description">
-          A calm place to enter the record of human thought, where history, science, medicine,
-          art, culture, law, philosophy, memory, and lived experience can be studied with
-          patience, context, and care.
-        </p>
-
-        <div class="hero-actions">
-          <a class="primary-button" href="#archive">
-            Enter ARSHIF
-            <span aria-hidden="true">↓</span>
-          </a>
-          <a class="quiet-button" href="./halls/">
-            Enter the Halls
-            <span aria-hidden="true">→</span>
-          </a>
-          <a class="quiet-button" href="https://vervenveda.com/Khaemenes_KinderGarden.github.io/reading/">
-            Kindergarten Reading Garden
-            <span aria-hidden="true">→</span>
-          </a>
-          <button class="quiet-button" id="randomButton" type="button">
-            Choose a Quiet Path
-            <span aria-hidden="true">✦</span>
-          </button>
-        </div>
-
-        <div class="hero-notes" aria-label="Archive qualities">
-          <div class="hero-note">
-            <strong>Sovereign</strong>
-            <span>No external framework or account required</span>
-          </div>
-          <div class="hero-note">
-            <strong>Private by Design</strong>
-            <span>Search and favorites remain in this browser</span>
-          </div>
-          <div class="hero-note">
-            <strong>Research Centered</strong>
-            <span>Built for context, evidence, and lifelong learning</span>
-          </div>
-        </div>
-
-        <p class="directory-summary" id="directorySummary" aria-live="polite">
-          Loading the archive directory…
-        </p>
+        <p class="hero-description">A public research archive for history, science, medicine, art, culture, law, philosophy, memory, and connected human knowledge.</p>
+        <nav class="hero-actions arshif-access-actions" aria-label="Academy access">
+          <a class="primary-button" href="https://vervenveda.com/Khaemenes_Academy.github.io/student/">Learner Profile</a>
+          <a class="quiet-button" href="https://vervenveda.com/Khaemenes_Academy.github.io/family/">Parent Profile</a>
+          <a class="quiet-button" href="https://vervenveda.com/Khaemenes_Academy.github.io/family/enroll/">Enrollment</a>
+        </nav>
+        <p class="directory-summary" id="directorySummary" aria-live="polite">Loading the archive directory…</p>
       </div>
     </section>
 
-    <section class="section" aria-labelledby="principlesTitle">
+    <section class="section arshif-about" aria-labelledby="aboutArshifTitle">
       <div class="section-heading">
         <div>
-          <p class="section-kicker">Stewardship Principles</p>
-          <h2 id="principlesTitle">The Archive Standard</h2>
-          <p class="section-copy">
-            ARSHIF is designed as more than a directory. Each hall can become a layered
-            research environment with source pathways, public domain works, timelines,
-            primary documents, lessons, questions, and living connections between fields.
-          </p>
+          <p class="section-kicker">About ARSHIF</p>
+          <h2 id="aboutArshifTitle">A living archive built for careful study.</h2>
+          <p class="section-copy">ARSHIF organizes public knowledge into research halls, source pathways, timelines, primary documents, trusted gateways, and connected disciplines so learners can study evidence with context and return to original sources.</p>
         </div>
       </div>
-
-      <div class="archive-principles">
-        <article class="principle">
-          <span class="principle-index">01 / Evidence</span>
-          <h3>Trace the source</h3>
-          <p>Separate primary records, scholarship, commentary, oral history, and interpretation so learners can understand how knowledge is built.</p>
+      <div class="arshif-feature-grid" aria-label="ARSHIF features">
+        <article class="arshif-feature-card">
+          <span>01</span><h3>Evidence</h3><p>Separate primary records, scholarship, commentary, oral history, and interpretation.</p>
         </article>
-
-        <article class="principle">
-          <span class="principle-index">02 / Context</span>
-          <h3>See the whole field</h3>
-          <p>Place discoveries within historical, cultural, geographic, ethical, and scientific context rather than presenting isolated fragments.</p>
+        <article class="arshif-feature-card">
+          <span>02</span><h3>Context</h3><p>Connect knowledge to historical, cultural, geographic, ethical, and scientific context.</p>
         </article>
-
-        <article class="principle">
-          <span class="principle-index">03 / Access</span>
-          <h3>Open a first door</h3>
-          <p>Use readable pathways, free resources, public archives, and thoughtful organization to make difficult subjects approachable.</p>
+        <article class="arshif-feature-card">
+          <span>03</span><h3>Access</h3><p>Use readable pathways, public archives, and free research resources to open a first door.</p>
         </article>
-
-        <article class="principle">
-          <span class="principle-index">04 / Stewardship</span>
-          <h3>Preserve with dignity</h3>
-          <p>Treat human stories, cultural knowledge, art, scholarship, and memory as inheritances to be protected rather than extracted.</p>
+        <article class="arshif-feature-card">
+          <span>04</span><h3>Stewardship</h3><p>Preserve human stories, cultural knowledge, art, scholarship, and memory with dignity.</p>
         </article>
       </div>
     </section>
@@ -6743,7 +6695,6 @@ document.addEventListener("click", event => {
     });
   })();
 </script>
-<script src="./assets/arshif-language.js" defer></script>
 
 <script src="https://vervenveda.com/assets/vnv-support.js" defer></script>
 
@@ -6753,7 +6704,61 @@ document.addEventListener("click", event => {
 <script src="https://vervenveda.com/assets/vnv-333-ticker.js"></script>
 <script src="https://vervenveda.com/assets/vnv-ticker-autopopulate.js" data-vnv-ticker-autopopulate></script>
 <script>VNV_TICKER.autoPopulate({label:"ARSHIF Quick Links",max:12});</script>
-<script>VNV_HEADER.mount({"title":"ARSHIF","subtitle":"The Living Archive of Human Knowledge","icon":"A","home":"https://vervenveda.com/","actions":[{"label":"Archive","href":"#archive"},{"label":"Collections","href":"#collections"},{"label":"Archive Menu","href":"#archive-menu"},{"label":"Print","href":"#print-directory"},{"label":"Verve N Veda","href":"https://vervenveda.com/"}]});</script>
+<script>VNV_HEADER.mount({"title":"Khaemenes Academy","subtitle":"ARSHIF · The Living Archive of Human Knowledge","icon":"K","home":"https://vervenveda.com/Khaemenes_Academy.github.io/","actions":[]});</script>
+<script src="https://vervenveda.com/assets/khaemenes-campus-phrases.js" defer></script>
+<script src="https://vervenveda.com/assets/khaemenes-interlingual-core.js" defer></script>
+<script src="https://vervenveda.com/Khaemenes_Linguistics.github.io/assets/khaemenes-translator-loader.js?v=1.1.1" defer></script>
+<script src="https://vervenveda.com/assets/vnv-language.js?v=20261108-cream-buttons" defer></script>
+<script id="arshif-class-tools-config">
+window.KhaemenesClassToolsConfigV1=Object.freeze({
+ id:"arshif-landing",
+ match:()=>/\/Arshif\.github\.io\/(?:index\.html)?$/i.test(location.pathname),
+ toggleLabel:"Tools",ariaLabel:"ARSHIF tools",
+ tools:[
+  {type:"link",label:"Search",sub:"PLERA Search",href:"https://vervenveda.com/PLERASearch.github.io/"},
+  {type:"ecosystem-list",label:"Research",sub:"Research resources",filter:{category:"research",limit:12}},
+  {type:"link",label:"Halls",sub:"ARSHIF halls",href:"./halls/"},
+  {type:"action",label:"Translate",sub:"Page language",action:"translate"},
+  {type:"link",label:"Profile",sub:"Learner profile",href:"https://vervenveda.com/Khaemenes_Academy.github.io/student/"},
+  {type:"help",label:"Instructions",sub:"How to use tools"}
+ ],
+ actions:{
+  translate({root}){
+   let panel=root.querySelector("[data-vct-translator-panel]");
+   if(!panel){
+    panel=document.createElement("div");panel.className="vct-pop";panel.dataset.vctTranslatorPanel="";panel.hidden=true;
+    panel.innerHTML="<h2>Translate ARSHIF</h2><p>Use the canonical Verve N Veda translator for this page.</p><div data-vnv-language-mount></div>";
+    root.querySelector("#vnvClassToolsPanel")?.append(panel);
+   }
+   root.querySelectorAll(".vct-pop").forEach(p=>{if(p!==panel)p.hidden=true});
+   panel.hidden=!panel.hidden;
+   const mount=panel.querySelector("[data-vnv-language-mount]");
+   const switcher=document.getElementById("vnv-language-switch");
+   if(mount&&switcher&&switcher.parentElement!==mount)mount.append(switcher);
+  }
+ },
+ help:{title:"ARSHIF Tools",paragraphs:["Search and Research use approved public ecosystem resources.","Halls opens the archive halls. Translate uses the canonical Verve N Veda language system.","These tools do not alter archive records or learner data."]}
+});
+</script>
+<script src="https://vervenveda.com/assets/vnv-class-tools-toolbar.js?v=1.6.1"></script>
+<script id="arshif-translator-toolbar-dock">
+document.addEventListener("DOMContentLoaded",()=>{
+ setTimeout(()=>{
+  const root=document.getElementById("vnvClassToolsToolbar");
+  if(!root)return;
+  let panel=root.querySelector("[data-vct-translator-panel]");
+  if(!panel){
+   panel=document.createElement("div");panel.className="vct-pop";panel.dataset.vctTranslatorPanel="";panel.hidden=true;
+   panel.innerHTML="<h2>Translate ARSHIF</h2><p>Use the canonical Verve N Veda translator for this page.</p><div data-vnv-language-mount></div>";
+   root.querySelector("#vnvClassToolsPanel")?.append(panel);
+  }
+  const mount=panel.querySelector("[data-vnv-language-mount]");
+  const switcher=document.getElementById("vnv-language-switch");
+  if(mount&&switcher)mount.append(switcher);
+  document.getElementById("vnv-language-rail")?.remove();
+ },120);
+},{once:true});
+</script>
 <script src="https://vervenveda.com/assets/vnv-ecosystem-toolbar.js"></script>
 <!-- Opt-in read-only page audit; never runs for ordinary visitors. -->
 <script id="vnv-page-audit-optin-loader">
