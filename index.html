@@ -6700,6 +6700,11 @@ document.addEventListener("click", event => {
 
 <script defer src="https://vervenveda.com/assets/vnv-external-landing.js"></script>
 
+<style id="arshif-canonical-dual-ticker-stack">
+:root{--ticker-height:33px;--vnv-autopopulate-ticker-height:33px}
+body > #vnvTickerAutoPopulate{top:var(--ticker-height,33px)!important}
+body > #vnvHeaderAutoPopulate{top:calc(var(--ticker-height,33px) + var(--vnv-autopopulate-ticker-height,33px))!important}
+</style>
 <script src="https://vervenveda.com/assets/vnv-header-autopopulate.js"></script>
 <script src="https://vervenveda.com/assets/vnv-333-ticker.js"></script>
 <script src="https://vervenveda.com/assets/vnv-ticker-autopopulate.js" data-vnv-ticker-autopopulate></script>
@@ -6767,56 +6772,6 @@ if(new URLSearchParams(location.search).get("page_audit")==="1"){
   auditScript.src="./assets/vnv-page-audit-optin.js?v=1.2.0";
   document.body.appendChild(auditScript);
 }
-</script>
-<script id="arshif-vnv-header-offset-reconcile">
-/* ARSHIF-only: shared header may calculate its sticky top before both tickers exist.
-   No replacement of the canonical header, menu, ticker, or toolbar. */
-(()=>{"use strict";
- if(window.__arshifTickerHeaderReconcile)return;
- window.__arshifTickerHeaderReconcile=true;
- const ids=["vnv333NetworkTicker","vnvTickerAutoPopulate"];
- let queued=false;
- const seen=new WeakSet();
- const ro=typeof ResizeObserver==="function"?new ResizeObserver(schedule):null;
- function measure(){
-  let height=0;
-  for(const id of ids){
-   const el=document.getElementById(id);
-   if(!el)continue;
-   if(ro&&!seen.has(el)){seen.add(el);ro.observe(el)}
-   const st=getComputedStyle(el);
-   if(st.display!=="none"&&st.visibility!=="hidden"){
-    height+=Math.ceil(el.getBoundingClientRect().height||0);
-   }
-  }
-  const header=document.getElementById("vnvHeaderAutoPopulate");
-  if(!header||!height)return;
-  const root=document.documentElement;
-  const expected=height+"px";
-  if(root.style.getPropertyValue("--vnv-header-top").trim()!==expected){
-   root.style.setProperty("--vnv-header-top",expected);
-  }
- }
- function schedule(){
-  if(queued)return;queued=true;
-  requestAnimationFrame(()=>{queued=false;measure()});
- }
- function related(node){
-  return node.nodeType===1&&ids.some(id=>node.id===id||node.querySelector?.('[id="'+id+'"]'));
- }
- function start(){
-  new MutationObserver(records=>{
-   if(records.some(r=>[...r.addedNodes,...r.removedNodes].some(related)))schedule();
-  }).observe(document.body,{childList:true,subtree:true});
-  schedule();
- }
- if(document.body)start();
- else document.addEventListener("DOMContentLoaded",start,{once:true});
- document.addEventListener("DOMContentLoaded",schedule,{once:true});
- window.addEventListener("load",schedule,{once:true});
- window.addEventListener("pageshow",schedule);
- window.addEventListener("resize",schedule,{passive:true});
-})();
 </script>
 <script id="arshif-catalogue-navigation">
 /* Preserve deep links and filter controls for the three collapsed catalogues. */
