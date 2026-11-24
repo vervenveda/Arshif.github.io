@@ -638,6 +638,966 @@
         "BHL Consortium",
         "Biodiversity"
       ]
+    },
+    {
+      "id": "ARSHIF-KHAE-ELA9-U01",
+      "title": "English 9 · Unit 01 · Required reading and study",
+      "url": "https://vervenveda.github.io/Khaemenes_High.github.io/courses/language-arts/english-9/units/unit-01/index.html#assigned-reading",
+      "archiveUrl": "https://vervenveda.com/Arshif.github.io/catalog/texts/english-9-unit-01.html",
+      "description": "Academy-authored reading and available extended passages preserved in ARSHIF",
+      "subject": "Reading & Literature",
+      "type": "Academic reading",
+      "grade": 9,
+      "unit": 1,
+      "rights": "Academy-authored material; confirm rights individually for any referenced third-party sources",
+      "source": "Khaemenes High, English curriculum",
+      "keywords": [
+        "english",
+        "reading",
+        "literature",
+        "grade 9",
+        "unit 1"
+      ]
+    },
+    {
+      "id": "ARSHIF-KHAE-ELA9-U02",
+      "title": "English 9 · Unit 02 · Required reading and study",
+      "url": "https://vervenveda.github.io/Khaemenes_High.github.io/courses/language-arts/english-9/units/unit-02/index.html#assigned-reading",
+      "archiveUrl": null,
+      "description": "catalog reference only; full-text not yet copied",
+      "subject": "Reading & Literature",
+      "type": "Academic reading",
+      "grade": 9,
+      "unit": 2,
+      "rights": "Academy-authored material; confirm rights individually for any referenced third-party sources",
+      "source": "Khaemenes High, English curriculum",
+      "keywords": [
+        "english",
+        "reading",
+        "literature",
+        "grade 9",
+        "unit 2"
+      ]
+    },
+    {
+      "id": "ARSHIF-KHAE-ELA9-U03",
+      "title": "English 9 · Unit 03 · Required reading and study",
+      "url": "https://vervenveda.github.io/Khaemenes_High.github.io/courses/language-arts/english-9/units/unit-03/index.html#assigned-reading",
+      "archiveUrl": "https://vervenveda.com/Arshif.github.io/catalog/texts/english-9-unit-03.html",
+      "description": "Academy-authored reading and available extended passages preserved in ARSHIF",
+      "subject": "Reading & Literature",
+      "type": "Academic reading",
+      "grade": 9,
+      "unit": 3,
+      "rights": "Academy-authored material; confirm rights individually for any referenced third-party sources",
+      "source": "Khaemenes High, English curriculum",
+      "keywords": [
+        "english",
+        "reading",
+        "literature",
+        "grade 9",
+        "unit 3"
+      ]
+    },
+    {
+      "id": "ARSHIF-KHAE-ELA9-U04",
+      "title": "English 9 · Unit 04 · Required reading and study",
+      "url": "https://vervenveda.github.io/Khaemenes_High.github.io/courses/language-arts/english-9/units/unit-04/index.html#assigned-reading",
+      "archiveUrl": null,
+      "description": "catalog reference only; full-text not yet copied",
+      "subject": "Reading & Literature",
+      "type": "Academic reading",
+      "grade": 9,
+      "unit": 4,
+      "rights": "Academy-authored material; confirm rights individually for any referenced third-party sources",
+      "source": "Khaemenes High, English curriculum",
+      "keywords": [
+        "english",
+        "reading",
+        "literature",
+        "grade 9",
+        "unit 4"
+      ]
+    },
+    {
+      "id": "ARSHIF-KHAE-ELA9-U05",
+      "title": "English 9 · Unit 05 · Required reading and study",
+      "url": "https://vervenveda.github.io/Khaemenes_High.github.io/courses/language-arts/english-9/units/unit-05/index.html#assigned-reading",
+      "archiveUrl": null,
+      "description": "catalog reference only; full-text not yet copied",
+      "subject": "Reading & Literature",
+      "type": "Academic reading",
+      "grade": 9,
+      "unit": 5,
+      "rights": "Academy-authored material; confirm rights individually for any referenced third-party sources",
+      "source": "Khaemenes High, English curriculum",
+      "keywords": [
+        "english",
+        "reading",
+        "literature",
+        "grade 9",
+        "unit 5"
+      ]
+    },
+    {
+      "id": "ARSHIF-KHAE-ELA9-U06",
+      "title": "English 9 · Unit 06 · Required reading and study",
+      "url": "https://vervenveda.github.io/Khaemenes_High.github.io/courses/language-arts/english-9/units/unit-06/index.html#assigned-reading",
+      "archiveUrl": null,
+      "description": "catalog reference only; full-text not yet copied",
+      "subject": "Reading & Literature",
+      "type": "Academic reading",
+      "grade": 9,
+      "unit": 6,
+      "rights": "Academy-authored material; confirm rights individually for any referenced third-party sources",
+      "source": "Khaemenes High, English curriculum",
+      "keywords": [
+        "english",
+        "reading",
+        "literature",
+        "grade 9",
+        "unit 6"
+      ]
+    },
+    {
+      "id": "ARSHIF-KHAE-ELA9-U07",
+      "title": "English 9 · Unit 07 · Required reading and study",
+      "url": "https://vervenveda.github.io/Khaemenes_High.github.io/courses/language-arts/english-9/units/unit-07/index.html#assigned-reading",
+      "archiveUrl": null,
+      "description": "catalog reference only; full-text not yet copied",
+      "subject": "Reading & Literature",
+      "type": "Academic reading",
+      "grade": 9,
+      "unit": 7,
+      "rights": "Academy-authored material; confirm rights individually for any referenced third-party sources",
+      "source": "Khaemenes High, English curriculum",
+      "keywords": [
+        "english",
+        "reading",
+        "literature",
+        "grade 9",
+        "unit 7"
+      ]
+    },
+    {
+      "id": "ARSHIF-KHAE-ELA9-U08",
+      "title": "English 9 · Unit 08 · Required reading and study",
+      "url": "https://vervenveda.github.io/Khaemenes_High.github.io/courses/language-arts/english-9/units/unit-08/index.html#assigned-reading",
+      "archiveUrl": null,
+      "description": "catalog reference only; full-text not yet copied",
+      "subject": "Reading & Literature",
+      "type": "Academic reading",
+      "grade": 9,
+      "unit": 8,
+      "rights": "Academy-authored material; confirm rights individually for any referenced third-party sources",
+      "source": "Khaemenes High, English curriculum",
+      "keywords": [
+        "english",
+        "reading",
+        "literature",
+        "grade 9",
+        "unit 8"
+      ]
+    },
+    {
+      "id": "ARSHIF-KHAE-ELA9-U09",
+      "title": "English 9 · Unit 09 · Required reading and study",
+      "url": "https://vervenveda.github.io/Khaemenes_High.github.io/courses/language-arts/english-9/units/unit-09/index.html#assigned-reading",
+      "archiveUrl": null,
+      "description": "catalog reference only; full-text not yet copied",
+      "subject": "Reading & Literature",
+      "type": "Academic reading",
+      "grade": 9,
+      "unit": 9,
+      "rights": "Academy-authored material; confirm rights individually for any referenced third-party sources",
+      "source": "Khaemenes High, English curriculum",
+      "keywords": [
+        "english",
+        "reading",
+        "literature",
+        "grade 9",
+        "unit 9"
+      ]
+    },
+    {
+      "id": "ARSHIF-KHAE-ELA9-U10",
+      "title": "English 9 · Unit 10 · Required reading and study",
+      "url": "https://vervenveda.github.io/Khaemenes_High.github.io/courses/language-arts/english-9/units/unit-10/index.html#assigned-reading",
+      "archiveUrl": null,
+      "description": "catalog reference only; full-text not yet copied",
+      "subject": "Reading & Literature",
+      "type": "Academic reading",
+      "grade": 9,
+      "unit": 10,
+      "rights": "Academy-authored material; confirm rights individually for any referenced third-party sources",
+      "source": "Khaemenes High, English curriculum",
+      "keywords": [
+        "english",
+        "reading",
+        "literature",
+        "grade 9",
+        "unit 10"
+      ]
+    },
+    {
+      "id": "ARSHIF-KHAE-ELA9-U11",
+      "title": "English 9 · Unit 11 · Required reading and study",
+      "url": "https://vervenveda.github.io/Khaemenes_High.github.io/courses/language-arts/english-9/units/unit-11/index.html#assigned-reading",
+      "archiveUrl": null,
+      "description": "catalog reference only; full-text not yet copied",
+      "subject": "Reading & Literature",
+      "type": "Academic reading",
+      "grade": 9,
+      "unit": 11,
+      "rights": "Academy-authored material; confirm rights individually for any referenced third-party sources",
+      "source": "Khaemenes High, English curriculum",
+      "keywords": [
+        "english",
+        "reading",
+        "literature",
+        "grade 9",
+        "unit 11"
+      ]
+    },
+    {
+      "id": "ARSHIF-KHAE-ELA9-U12",
+      "title": "English 9 · Unit 12 · Required reading and study",
+      "url": "https://vervenveda.github.io/Khaemenes_High.github.io/courses/language-arts/english-9/units/unit-12/index.html#assigned-reading",
+      "archiveUrl": null,
+      "description": "catalog reference only; full-text not yet copied",
+      "subject": "Reading & Literature",
+      "type": "Academic reading",
+      "grade": 9,
+      "unit": 12,
+      "rights": "Academy-authored material; confirm rights individually for any referenced third-party sources",
+      "source": "Khaemenes High, English curriculum",
+      "keywords": [
+        "english",
+        "reading",
+        "literature",
+        "grade 9",
+        "unit 12"
+      ]
+    },
+    {
+      "id": "ARSHIF-KHAE-ELA10-U01",
+      "title": "English 10 · Unit 01 · Required reading and study",
+      "url": "https://vervenveda.github.io/Khaemenes_High.github.io/courses/language-arts/english-10/units/unit-01/index.html#assigned-reading",
+      "archiveUrl": "https://vervenveda.com/Arshif.github.io/catalog/texts/english-10-unit-01.html",
+      "description": "Academy-authored reading and available extended passages preserved in ARSHIF",
+      "subject": "Reading & Literature",
+      "type": "Academic reading",
+      "grade": 10,
+      "unit": 1,
+      "rights": "Academy-authored material; confirm rights individually for any referenced third-party sources",
+      "source": "Khaemenes High, English curriculum",
+      "keywords": [
+        "english",
+        "reading",
+        "literature",
+        "grade 10",
+        "unit 1"
+      ]
+    },
+    {
+      "id": "ARSHIF-KHAE-ELA10-U02",
+      "title": "English 10 · Unit 02 · Required reading and study",
+      "url": "https://vervenveda.github.io/Khaemenes_High.github.io/courses/language-arts/english-10/units/unit-02/index.html#assigned-reading",
+      "archiveUrl": null,
+      "description": "catalog reference only; full-text not yet copied",
+      "subject": "Reading & Literature",
+      "type": "Academic reading",
+      "grade": 10,
+      "unit": 2,
+      "rights": "Academy-authored material; confirm rights individually for any referenced third-party sources",
+      "source": "Khaemenes High, English curriculum",
+      "keywords": [
+        "english",
+        "reading",
+        "literature",
+        "grade 10",
+        "unit 2"
+      ]
+    },
+    {
+      "id": "ARSHIF-KHAE-ELA10-U03",
+      "title": "English 10 · Unit 03 · Required reading and study",
+      "url": "https://vervenveda.github.io/Khaemenes_High.github.io/courses/language-arts/english-10/units/unit-03/index.html#assigned-reading",
+      "archiveUrl": "https://vervenveda.com/Arshif.github.io/catalog/texts/english-10-unit-03.html",
+      "description": "Academy-authored reading and available extended passages preserved in ARSHIF",
+      "subject": "Reading & Literature",
+      "type": "Academic reading",
+      "grade": 10,
+      "unit": 3,
+      "rights": "Academy-authored material; confirm rights individually for any referenced third-party sources",
+      "source": "Khaemenes High, English curriculum",
+      "keywords": [
+        "english",
+        "reading",
+        "literature",
+        "grade 10",
+        "unit 3"
+      ]
+    },
+    {
+      "id": "ARSHIF-KHAE-ELA10-U04",
+      "title": "English 10 · Unit 04 · Required reading and study",
+      "url": "https://vervenveda.github.io/Khaemenes_High.github.io/courses/language-arts/english-10/units/unit-04/index.html#assigned-reading",
+      "archiveUrl": null,
+      "description": "catalog reference only; full-text not yet copied",
+      "subject": "Reading & Literature",
+      "type": "Academic reading",
+      "grade": 10,
+      "unit": 4,
+      "rights": "Academy-authored material; confirm rights individually for any referenced third-party sources",
+      "source": "Khaemenes High, English curriculum",
+      "keywords": [
+        "english",
+        "reading",
+        "literature",
+        "grade 10",
+        "unit 4"
+      ]
+    },
+    {
+      "id": "ARSHIF-KHAE-ELA10-U05",
+      "title": "English 10 · Unit 05 · Required reading and study",
+      "url": "https://vervenveda.github.io/Khaemenes_High.github.io/courses/language-arts/english-10/units/unit-05/index.html#assigned-reading",
+      "archiveUrl": null,
+      "description": "catalog reference only; full-text not yet copied",
+      "subject": "Reading & Literature",
+      "type": "Academic reading",
+      "grade": 10,
+      "unit": 5,
+      "rights": "Academy-authored material; confirm rights individually for any referenced third-party sources",
+      "source": "Khaemenes High, English curriculum",
+      "keywords": [
+        "english",
+        "reading",
+        "literature",
+        "grade 10",
+        "unit 5"
+      ]
+    },
+    {
+      "id": "ARSHIF-KHAE-ELA10-U06",
+      "title": "English 10 · Unit 06 · Required reading and study",
+      "url": "https://vervenveda.github.io/Khaemenes_High.github.io/courses/language-arts/english-10/units/unit-06/index.html#assigned-reading",
+      "archiveUrl": null,
+      "description": "catalog reference only; full-text not yet copied",
+      "subject": "Reading & Literature",
+      "type": "Academic reading",
+      "grade": 10,
+      "unit": 6,
+      "rights": "Academy-authored material; confirm rights individually for any referenced third-party sources",
+      "source": "Khaemenes High, English curriculum",
+      "keywords": [
+        "english",
+        "reading",
+        "literature",
+        "grade 10",
+        "unit 6"
+      ]
+    },
+    {
+      "id": "ARSHIF-KHAE-ELA10-U07",
+      "title": "English 10 · Unit 07 · Required reading and study",
+      "url": "https://vervenveda.github.io/Khaemenes_High.github.io/courses/language-arts/english-10/units/unit-07/index.html#assigned-reading",
+      "archiveUrl": null,
+      "description": "catalog reference only; full-text not yet copied",
+      "subject": "Reading & Literature",
+      "type": "Academic reading",
+      "grade": 10,
+      "unit": 7,
+      "rights": "Academy-authored material; confirm rights individually for any referenced third-party sources",
+      "source": "Khaemenes High, English curriculum",
+      "keywords": [
+        "english",
+        "reading",
+        "literature",
+        "grade 10",
+        "unit 7"
+      ]
+    },
+    {
+      "id": "ARSHIF-KHAE-ELA10-U08",
+      "title": "English 10 · Unit 08 · Required reading and study",
+      "url": "https://vervenveda.github.io/Khaemenes_High.github.io/courses/language-arts/english-10/units/unit-08/index.html#assigned-reading",
+      "archiveUrl": null,
+      "description": "catalog reference only; full-text not yet copied",
+      "subject": "Reading & Literature",
+      "type": "Academic reading",
+      "grade": 10,
+      "unit": 8,
+      "rights": "Academy-authored material; confirm rights individually for any referenced third-party sources",
+      "source": "Khaemenes High, English curriculum",
+      "keywords": [
+        "english",
+        "reading",
+        "literature",
+        "grade 10",
+        "unit 8"
+      ]
+    },
+    {
+      "id": "ARSHIF-KHAE-ELA10-U09",
+      "title": "English 10 · Unit 09 · Required reading and study",
+      "url": "https://vervenveda.github.io/Khaemenes_High.github.io/courses/language-arts/english-10/units/unit-09/index.html#assigned-reading",
+      "archiveUrl": null,
+      "description": "catalog reference only; full-text not yet copied",
+      "subject": "Reading & Literature",
+      "type": "Academic reading",
+      "grade": 10,
+      "unit": 9,
+      "rights": "Academy-authored material; confirm rights individually for any referenced third-party sources",
+      "source": "Khaemenes High, English curriculum",
+      "keywords": [
+        "english",
+        "reading",
+        "literature",
+        "grade 10",
+        "unit 9"
+      ]
+    },
+    {
+      "id": "ARSHIF-KHAE-ELA10-U10",
+      "title": "English 10 · Unit 10 · Required reading and study",
+      "url": "https://vervenveda.github.io/Khaemenes_High.github.io/courses/language-arts/english-10/units/unit-10/index.html#assigned-reading",
+      "archiveUrl": null,
+      "description": "catalog reference only; full-text not yet copied",
+      "subject": "Reading & Literature",
+      "type": "Academic reading",
+      "grade": 10,
+      "unit": 10,
+      "rights": "Academy-authored material; confirm rights individually for any referenced third-party sources",
+      "source": "Khaemenes High, English curriculum",
+      "keywords": [
+        "english",
+        "reading",
+        "literature",
+        "grade 10",
+        "unit 10"
+      ]
+    },
+    {
+      "id": "ARSHIF-KHAE-ELA10-U11",
+      "title": "English 10 · Unit 11 · Required reading and study",
+      "url": "https://vervenveda.github.io/Khaemenes_High.github.io/courses/language-arts/english-10/units/unit-11/index.html#assigned-reading",
+      "archiveUrl": null,
+      "description": "catalog reference only; full-text not yet copied",
+      "subject": "Reading & Literature",
+      "type": "Academic reading",
+      "grade": 10,
+      "unit": 11,
+      "rights": "Academy-authored material; confirm rights individually for any referenced third-party sources",
+      "source": "Khaemenes High, English curriculum",
+      "keywords": [
+        "english",
+        "reading",
+        "literature",
+        "grade 10",
+        "unit 11"
+      ]
+    },
+    {
+      "id": "ARSHIF-KHAE-ELA10-U12",
+      "title": "English 10 · Unit 12 · Required reading and study",
+      "url": "https://vervenveda.github.io/Khaemenes_High.github.io/courses/language-arts/english-10/units/unit-12/index.html#assigned-reading",
+      "archiveUrl": null,
+      "description": "catalog reference only; full-text not yet copied",
+      "subject": "Reading & Literature",
+      "type": "Academic reading",
+      "grade": 10,
+      "unit": 12,
+      "rights": "Academy-authored material; confirm rights individually for any referenced third-party sources",
+      "source": "Khaemenes High, English curriculum",
+      "keywords": [
+        "english",
+        "reading",
+        "literature",
+        "grade 10",
+        "unit 12"
+      ]
+    },
+    {
+      "id": "ARSHIF-KHAE-ELA11-U01",
+      "title": "English 11 · Unit 01 · Required reading and study",
+      "url": "https://vervenveda.github.io/Khaemenes_High.github.io/courses/language-arts/english-11/units/unit-01/index.html#assigned-reading",
+      "archiveUrl": "https://vervenveda.com/Arshif.github.io/catalog/texts/english-11-unit-01.html",
+      "description": "Academy-authored reading and available extended passages preserved in ARSHIF",
+      "subject": "Reading & Literature",
+      "type": "Academic reading",
+      "grade": 11,
+      "unit": 1,
+      "rights": "Academy-authored material; confirm rights individually for any referenced third-party sources",
+      "source": "Khaemenes High, English curriculum",
+      "keywords": [
+        "english",
+        "reading",
+        "literature",
+        "grade 11",
+        "unit 1"
+      ]
+    },
+    {
+      "id": "ARSHIF-KHAE-ELA11-U02",
+      "title": "English 11 · Unit 02 · Required reading and study",
+      "url": "https://vervenveda.github.io/Khaemenes_High.github.io/courses/language-arts/english-11/units/unit-02/index.html#assigned-reading",
+      "archiveUrl": null,
+      "description": "catalog reference only; full-text not yet copied",
+      "subject": "Reading & Literature",
+      "type": "Academic reading",
+      "grade": 11,
+      "unit": 2,
+      "rights": "Academy-authored material; confirm rights individually for any referenced third-party sources",
+      "source": "Khaemenes High, English curriculum",
+      "keywords": [
+        "english",
+        "reading",
+        "literature",
+        "grade 11",
+        "unit 2"
+      ]
+    },
+    {
+      "id": "ARSHIF-KHAE-ELA11-U03",
+      "title": "English 11 · Unit 03 · Required reading and study",
+      "url": "https://vervenveda.github.io/Khaemenes_High.github.io/courses/language-arts/english-11/units/unit-03/index.html#assigned-reading",
+      "archiveUrl": "https://vervenveda.com/Arshif.github.io/catalog/texts/english-11-unit-03.html",
+      "description": "Academy-authored reading and available extended passages preserved in ARSHIF",
+      "subject": "Reading & Literature",
+      "type": "Academic reading",
+      "grade": 11,
+      "unit": 3,
+      "rights": "Academy-authored material; confirm rights individually for any referenced third-party sources",
+      "source": "Khaemenes High, English curriculum",
+      "keywords": [
+        "english",
+        "reading",
+        "literature",
+        "grade 11",
+        "unit 3"
+      ]
+    },
+    {
+      "id": "ARSHIF-KHAE-ELA11-U04",
+      "title": "English 11 · Unit 04 · Required reading and study",
+      "url": "https://vervenveda.github.io/Khaemenes_High.github.io/courses/language-arts/english-11/units/unit-04/index.html#assigned-reading",
+      "archiveUrl": null,
+      "description": "catalog reference only; full-text not yet copied",
+      "subject": "Reading & Literature",
+      "type": "Academic reading",
+      "grade": 11,
+      "unit": 4,
+      "rights": "Academy-authored material; confirm rights individually for any referenced third-party sources",
+      "source": "Khaemenes High, English curriculum",
+      "keywords": [
+        "english",
+        "reading",
+        "literature",
+        "grade 11",
+        "unit 4"
+      ]
+    },
+    {
+      "id": "ARSHIF-KHAE-ELA11-U05",
+      "title": "English 11 · Unit 05 · Required reading and study",
+      "url": "https://vervenveda.github.io/Khaemenes_High.github.io/courses/language-arts/english-11/units/unit-05/index.html#assigned-reading",
+      "archiveUrl": null,
+      "description": "catalog reference only; full-text not yet copied",
+      "subject": "Reading & Literature",
+      "type": "Academic reading",
+      "grade": 11,
+      "unit": 5,
+      "rights": "Academy-authored material; confirm rights individually for any referenced third-party sources",
+      "source": "Khaemenes High, English curriculum",
+      "keywords": [
+        "english",
+        "reading",
+        "literature",
+        "grade 11",
+        "unit 5"
+      ]
+    },
+    {
+      "id": "ARSHIF-KHAE-ELA11-U06",
+      "title": "English 11 · Unit 06 · Required reading and study",
+      "url": "https://vervenveda.github.io/Khaemenes_High.github.io/courses/language-arts/english-11/units/unit-06/index.html#assigned-reading",
+      "archiveUrl": null,
+      "description": "catalog reference only; full-text not yet copied",
+      "subject": "Reading & Literature",
+      "type": "Academic reading",
+      "grade": 11,
+      "unit": 6,
+      "rights": "Academy-authored material; confirm rights individually for any referenced third-party sources",
+      "source": "Khaemenes High, English curriculum",
+      "keywords": [
+        "english",
+        "reading",
+        "literature",
+        "grade 11",
+        "unit 6"
+      ]
+    },
+    {
+      "id": "ARSHIF-KHAE-ELA11-U07",
+      "title": "English 11 · Unit 07 · Required reading and study",
+      "url": "https://vervenveda.github.io/Khaemenes_High.github.io/courses/language-arts/english-11/units/unit-07/index.html#assigned-reading",
+      "archiveUrl": null,
+      "description": "catalog reference only; full-text not yet copied",
+      "subject": "Reading & Literature",
+      "type": "Academic reading",
+      "grade": 11,
+      "unit": 7,
+      "rights": "Academy-authored material; confirm rights individually for any referenced third-party sources",
+      "source": "Khaemenes High, English curriculum",
+      "keywords": [
+        "english",
+        "reading",
+        "literature",
+        "grade 11",
+        "unit 7"
+      ]
+    },
+    {
+      "id": "ARSHIF-KHAE-ELA11-U08",
+      "title": "English 11 · Unit 08 · Required reading and study",
+      "url": "https://vervenveda.github.io/Khaemenes_High.github.io/courses/language-arts/english-11/units/unit-08/index.html#assigned-reading",
+      "archiveUrl": null,
+      "description": "catalog reference only; full-text not yet copied",
+      "subject": "Reading & Literature",
+      "type": "Academic reading",
+      "grade": 11,
+      "unit": 8,
+      "rights": "Academy-authored material; confirm rights individually for any referenced third-party sources",
+      "source": "Khaemenes High, English curriculum",
+      "keywords": [
+        "english",
+        "reading",
+        "literature",
+        "grade 11",
+        "unit 8"
+      ]
+    },
+    {
+      "id": "ARSHIF-KHAE-ELA11-U09",
+      "title": "English 11 · Unit 09 · Required reading and study",
+      "url": "https://vervenveda.github.io/Khaemenes_High.github.io/courses/language-arts/english-11/units/unit-09/index.html#assigned-reading",
+      "archiveUrl": null,
+      "description": "catalog reference only; full-text not yet copied",
+      "subject": "Reading & Literature",
+      "type": "Academic reading",
+      "grade": 11,
+      "unit": 9,
+      "rights": "Academy-authored material; confirm rights individually for any referenced third-party sources",
+      "source": "Khaemenes High, English curriculum",
+      "keywords": [
+        "english",
+        "reading",
+        "literature",
+        "grade 11",
+        "unit 9"
+      ]
+    },
+    {
+      "id": "ARSHIF-KHAE-ELA11-U10",
+      "title": "English 11 · Unit 10 · Required reading and study",
+      "url": "https://vervenveda.github.io/Khaemenes_High.github.io/courses/language-arts/english-11/units/unit-10/index.html#assigned-reading",
+      "archiveUrl": null,
+      "description": "catalog reference only; full-text not yet copied",
+      "subject": "Reading & Literature",
+      "type": "Academic reading",
+      "grade": 11,
+      "unit": 10,
+      "rights": "Academy-authored material; confirm rights individually for any referenced third-party sources",
+      "source": "Khaemenes High, English curriculum",
+      "keywords": [
+        "english",
+        "reading",
+        "literature",
+        "grade 11",
+        "unit 10"
+      ]
+    },
+    {
+      "id": "ARSHIF-KHAE-ELA11-U11",
+      "title": "English 11 · Unit 11 · Required reading and study",
+      "url": "https://vervenveda.github.io/Khaemenes_High.github.io/courses/language-arts/english-11/units/unit-11/index.html#assigned-reading",
+      "archiveUrl": null,
+      "description": "catalog reference only; full-text not yet copied",
+      "subject": "Reading & Literature",
+      "type": "Academic reading",
+      "grade": 11,
+      "unit": 11,
+      "rights": "Academy-authored material; confirm rights individually for any referenced third-party sources",
+      "source": "Khaemenes High, English curriculum",
+      "keywords": [
+        "english",
+        "reading",
+        "literature",
+        "grade 11",
+        "unit 11"
+      ]
+    },
+    {
+      "id": "ARSHIF-KHAE-ELA11-U12",
+      "title": "English 11 · Unit 12 · Required reading and study",
+      "url": "https://vervenveda.github.io/Khaemenes_High.github.io/courses/language-arts/english-11/units/unit-12/index.html#assigned-reading",
+      "archiveUrl": null,
+      "description": "catalog reference only; full-text not yet copied",
+      "subject": "Reading & Literature",
+      "type": "Academic reading",
+      "grade": 11,
+      "unit": 12,
+      "rights": "Academy-authored material; confirm rights individually for any referenced third-party sources",
+      "source": "Khaemenes High, English curriculum",
+      "keywords": [
+        "english",
+        "reading",
+        "literature",
+        "grade 11",
+        "unit 12"
+      ]
+    },
+    {
+      "id": "ARSHIF-KHAE-ELA12-U01",
+      "title": "English 12 · Unit 01 · Required reading and study",
+      "url": "https://vervenveda.github.io/Khaemenes_High.github.io/courses/language-arts/english-12/units/unit-01/index.html#assigned-reading",
+      "archiveUrl": "https://vervenveda.com/Arshif.github.io/catalog/texts/english-12-unit-01.html",
+      "description": "Academy-authored reading and available extended passages preserved in ARSHIF",
+      "subject": "Reading & Literature",
+      "type": "Academic reading",
+      "grade": 12,
+      "unit": 1,
+      "rights": "Academy-authored material; confirm rights individually for any referenced third-party sources",
+      "source": "Khaemenes High, English curriculum",
+      "keywords": [
+        "english",
+        "reading",
+        "literature",
+        "grade 12",
+        "unit 1"
+      ]
+    },
+    {
+      "id": "ARSHIF-KHAE-ELA12-U02",
+      "title": "English 12 · Unit 02 · Required reading and study",
+      "url": "https://vervenveda.github.io/Khaemenes_High.github.io/courses/language-arts/english-12/units/unit-02/index.html#assigned-reading",
+      "archiveUrl": null,
+      "description": "catalog reference only; full-text not yet copied",
+      "subject": "Reading & Literature",
+      "type": "Academic reading",
+      "grade": 12,
+      "unit": 2,
+      "rights": "Academy-authored material; confirm rights individually for any referenced third-party sources",
+      "source": "Khaemenes High, English curriculum",
+      "keywords": [
+        "english",
+        "reading",
+        "literature",
+        "grade 12",
+        "unit 2"
+      ]
+    },
+    {
+      "id": "ARSHIF-KHAE-ELA12-U03",
+      "title": "English 12 · Unit 03 · Required reading and study",
+      "url": "https://vervenveda.github.io/Khaemenes_High.github.io/courses/language-arts/english-12/units/unit-03/index.html#assigned-reading",
+      "archiveUrl": "https://vervenveda.com/Arshif.github.io/catalog/texts/english-12-unit-03.html",
+      "description": "Academy-authored reading and available extended passages preserved in ARSHIF",
+      "subject": "Reading & Literature",
+      "type": "Academic reading",
+      "grade": 12,
+      "unit": 3,
+      "rights": "Academy-authored material; confirm rights individually for any referenced third-party sources",
+      "source": "Khaemenes High, English curriculum",
+      "keywords": [
+        "english",
+        "reading",
+        "literature",
+        "grade 12",
+        "unit 3"
+      ]
+    },
+    {
+      "id": "ARSHIF-KHAE-ELA12-U04",
+      "title": "English 12 · Unit 04 · Required reading and study",
+      "url": "https://vervenveda.github.io/Khaemenes_High.github.io/courses/language-arts/english-12/units/unit-04/index.html#assigned-reading",
+      "archiveUrl": null,
+      "description": "catalog reference only; full-text not yet copied",
+      "subject": "Reading & Literature",
+      "type": "Academic reading",
+      "grade": 12,
+      "unit": 4,
+      "rights": "Academy-authored material; confirm rights individually for any referenced third-party sources",
+      "source": "Khaemenes High, English curriculum",
+      "keywords": [
+        "english",
+        "reading",
+        "literature",
+        "grade 12",
+        "unit 4"
+      ]
+    },
+    {
+      "id": "ARSHIF-KHAE-ELA12-U05",
+      "title": "English 12 · Unit 05 · Required reading and study",
+      "url": "https://vervenveda.github.io/Khaemenes_High.github.io/courses/language-arts/english-12/units/unit-05/index.html#assigned-reading",
+      "archiveUrl": null,
+      "description": "catalog reference only; full-text not yet copied",
+      "subject": "Reading & Literature",
+      "type": "Academic reading",
+      "grade": 12,
+      "unit": 5,
+      "rights": "Academy-authored material; confirm rights individually for any referenced third-party sources",
+      "source": "Khaemenes High, English curriculum",
+      "keywords": [
+        "english",
+        "reading",
+        "literature",
+        "grade 12",
+        "unit 5"
+      ]
+    },
+    {
+      "id": "ARSHIF-KHAE-ELA12-U06",
+      "title": "English 12 · Unit 06 · Required reading and study",
+      "url": "https://vervenveda.github.io/Khaemenes_High.github.io/courses/language-arts/english-12/units/unit-06/index.html#assigned-reading",
+      "archiveUrl": null,
+      "description": "catalog reference only; full-text not yet copied",
+      "subject": "Reading & Literature",
+      "type": "Academic reading",
+      "grade": 12,
+      "unit": 6,
+      "rights": "Academy-authored material; confirm rights individually for any referenced third-party sources",
+      "source": "Khaemenes High, English curriculum",
+      "keywords": [
+        "english",
+        "reading",
+        "literature",
+        "grade 12",
+        "unit 6"
+      ]
+    },
+    {
+      "id": "ARSHIF-KHAE-ELA12-U07",
+      "title": "English 12 · Unit 07 · Required reading and study",
+      "url": "https://vervenveda.github.io/Khaemenes_High.github.io/courses/language-arts/english-12/units/unit-07/index.html#assigned-reading",
+      "archiveUrl": null,
+      "description": "catalog reference only; full-text not yet copied",
+      "subject": "Reading & Literature",
+      "type": "Academic reading",
+      "grade": 12,
+      "unit": 7,
+      "rights": "Academy-authored material; confirm rights individually for any referenced third-party sources",
+      "source": "Khaemenes High, English curriculum",
+      "keywords": [
+        "english",
+        "reading",
+        "literature",
+        "grade 12",
+        "unit 7"
+      ]
+    },
+    {
+      "id": "ARSHIF-KHAE-ELA12-U08",
+      "title": "English 12 · Unit 08 · Required reading and study",
+      "url": "https://vervenveda.github.io/Khaemenes_High.github.io/courses/language-arts/english-12/units/unit-08/index.html#assigned-reading",
+      "archiveUrl": null,
+      "description": "catalog reference only; full-text not yet copied",
+      "subject": "Reading & Literature",
+      "type": "Academic reading",
+      "grade": 12,
+      "unit": 8,
+      "rights": "Academy-authored material; confirm rights individually for any referenced third-party sources",
+      "source": "Khaemenes High, English curriculum",
+      "keywords": [
+        "english",
+        "reading",
+        "literature",
+        "grade 12",
+        "unit 8"
+      ]
+    },
+    {
+      "id": "ARSHIF-KHAE-ELA12-U09",
+      "title": "English 12 · Unit 09 · Required reading and study",
+      "url": "https://vervenveda.github.io/Khaemenes_High.github.io/courses/language-arts/english-12/units/unit-09/index.html#assigned-reading",
+      "archiveUrl": null,
+      "description": "catalog reference only; full-text not yet copied",
+      "subject": "Reading & Literature",
+      "type": "Academic reading",
+      "grade": 12,
+      "unit": 9,
+      "rights": "Academy-authored material; confirm rights individually for any referenced third-party sources",
+      "source": "Khaemenes High, English curriculum",
+      "keywords": [
+        "english",
+        "reading",
+        "literature",
+        "grade 12",
+        "unit 9"
+      ]
+    },
+    {
+      "id": "ARSHIF-KHAE-ELA12-U10",
+      "title": "English 12 · Unit 10 · Required reading and study",
+      "url": "https://vervenveda.github.io/Khaemenes_High.github.io/courses/language-arts/english-12/units/unit-10/index.html#assigned-reading",
+      "archiveUrl": null,
+      "description": "catalog reference only; full-text not yet copied",
+      "subject": "Reading & Literature",
+      "type": "Academic reading",
+      "grade": 12,
+      "unit": 10,
+      "rights": "Academy-authored material; confirm rights individually for any referenced third-party sources",
+      "source": "Khaemenes High, English curriculum",
+      "keywords": [
+        "english",
+        "reading",
+        "literature",
+        "grade 12",
+        "unit 10"
+      ]
+    },
+    {
+      "id": "ARSHIF-KHAE-ELA12-U11",
+      "title": "English 12 · Unit 11 · Required reading and study",
+      "url": "https://vervenveda.github.io/Khaemenes_High.github.io/courses/language-arts/english-12/units/unit-11/index.html#assigned-reading",
+      "archiveUrl": null,
+      "description": "catalog reference only; full-text not yet copied",
+      "subject": "Reading & Literature",
+      "type": "Academic reading",
+      "grade": 12,
+      "unit": 11,
+      "rights": "Academy-authored material; confirm rights individually for any referenced third-party sources",
+      "source": "Khaemenes High, English curriculum",
+      "keywords": [
+        "english",
+        "reading",
+        "literature",
+        "grade 12",
+        "unit 11"
+      ]
+    },
+    {
+      "id": "ARSHIF-KHAE-ELA12-U12",
+      "title": "English 12 · Unit 12 · Required reading and study",
+      "url": "https://vervenveda.github.io/Khaemenes_High.github.io/courses/language-arts/english-12/units/unit-12/index.html#assigned-reading",
+      "archiveUrl": null,
+      "description": "catalog reference only; full-text not yet copied",
+      "subject": "Reading & Literature",
+      "type": "Academic reading",
+      "grade": 12,
+      "unit": 12,
+      "rights": "Academy-authored material; confirm rights individually for any referenced third-party sources",
+      "source": "Khaemenes High, English curriculum",
+      "keywords": [
+        "english",
+        "reading",
+        "literature",
+        "grade 12",
+        "unit 12"
+      ]
     }
   ]
 }
