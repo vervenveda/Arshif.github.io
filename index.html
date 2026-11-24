@@ -8,7 +8,7 @@
   <meta name="theme-color" content="#f4efe7" />
   <meta name="color-scheme" content="light" />
   <meta name="referrer" content="no-referrer" />
-  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self'; connect-src 'none'; object-src 'none'; frame-src 'none'; worker-src 'none'; base-uri 'self'; form-action 'none'; upgrade-insecure-requests" />
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://vervenveda.com 'unsafe-inline'; style-src 'self' https://vervenveda.com 'unsafe-inline'; img-src 'self' data: https://vervenveda.com; font-src 'self'; connect-src 'self' https://vervenveda.com; object-src 'none'; frame-src 'none'; worker-src 'none'; base-uri 'self'; form-action 'none'; upgrade-insecure-requests" />
   <meta property="og:title" content="ARSHIF — The Living Archive of Human Knowledge" />
   <meta property="og:description" content="A sovereign gateway to research halls, public learning, trusted archives, and the connected Verve N Veda knowledge network." />
   <meta property="og:type" content="website" />
@@ -3811,9 +3811,10 @@ main#main-content .hero-title-accent{display:block;margin:12px auto 0;font-weigh
 :where(button,a[class]){font-size:16px}
 @media(max-width:720px){.arshif-access-actions,.arshif-feature-grid{grid-template-columns:1fr}.arshif-canonical-hero h1#heroTitle{font-size:clamp(48px,15vw,66px)!important}.arshif-canonical-hero .arshif-academy-label{font-size:clamp(24px,8vw,33px)!important}.arshif-canonical-hero .hero-title-accent{font-size:clamp(20px,6vw,24px)!important}}
 </style>
-</head>
+<link rel="stylesheet" href="./assets/arshif-core.css"><style id="arshif-department-polish">body[data-arshif-core]{background:#f4eddf;color:#292827}.arshif-canonical-hero{background:#292827!important;padding:24px 16px!important;border-radius:7px}.arshif-about{background:#f4eddf!important;border:1px solid #292827;border-radius:7px}.arshif-feature-card{background:#292827!important;color:#f8f0df!important;min-height:84px!important;cursor:pointer;font:400 24px Cinzel,Georgia,serif!important;width:100%}.arshif-catalogue-summary,.arshif-future-summary{background:#292827!important;color:#f8f0df!important;border-radius:7px!important}.arshif-catalogue-summary *,.arshif-future-summary *{color:#f8f0df!important}.arshif-catalogue-disclosure,.arshif-future-disclosure{border:1px solid #292827!important;border-radius:7px!important}.arshif-access-actions{grid-template-columns:repeat(3,minmax(0,1fr))!important}.arshif-feature-grid{grid-template-columns:repeat(2,minmax(0,1fr))!important}.site-footer{background:#292827!important}</style></head>
 
-<body data-vnv-outer-landing="true">
+<body data-vnv-outer-landing="true" data-arshif-core>
+<nav class="ac-crumb" aria-label="Breadcrumb"><a href="https://vervenveda.com/">Verve N Veda</a> / Arshif Archives</nav>
 
   <a class="skip-link" href="#main-content">Skip to the archive</a>
   <div class="page-grid" aria-hidden="true"></div>
@@ -3865,21 +3866,7 @@ main#main-content .hero-title-accent{display:block;margin:12px auto 0;font-weigh
           <p class="section-copy">ARSHIF organizes public knowledge into research halls, source pathways, timelines, primary documents, trusted gateways, and connected disciplines so learners can study evidence with context and return to original sources.</p>
         </div>
       </div>
-      <div class="arshif-feature-grid" aria-label="ARSHIF features">
-        <article class="arshif-feature-card">
-          <span>01</span><h3>Evidence</h3><p>Separate primary records, scholarship, commentary, oral history, and interpretation.</p>
-        </article>
-        <article class="arshif-feature-card">
-          <span>02</span><h3>Context</h3><p>Connect knowledge to historical, cultural, geographic, ethical, and scientific context.</p>
-        </article>
-        <article class="arshif-feature-card">
-          <span>03</span><h3>Access</h3><p>Use readable pathways, public archives, and free research resources to open a first door.</p>
-        </article>
-        <article class="arshif-feature-card">
-          <span>04</span><h3>Stewardship</h3><p>Preserve human stories, cultural knowledge, art, scholarship, and memory with dignity.</p>
-        </article>
-      </div>
-    </section>
+      <div class="arshif-feature-grid" aria-label="ARSHIF features"><button class="arshif-feature-card" type="button" data-ac-feature data-description="Separate primary records, scholarship, commentary, oral history and interpretation." data-href="#research-gateways">Evidence</button><button class="arshif-feature-card" type="button" data-ac-feature data-description="Connect knowledge across historical and cultural disciplines." data-href="#archive">Context</button><button class="arshif-feature-card" type="button" data-ac-feature data-description="Discover public reading and research resources." data-href="./search/">Access</button><button class="arshif-feature-card" type="button" data-ac-feature data-description="Preserve knowledge with context and dignity." data-href="#growth-ledger">Stewardship</button></div></section><dialog class="ac-dialog" id="acFeatureDialog"><h2></h2><p></p><a href="#">Open</a> <button type="button" data-ac-close>Close</button></dialog>
 
 
     <section class="section" id="growth-ledger" aria-labelledby="growthTitle">
@@ -6713,12 +6700,12 @@ body > #vnvHeaderAutoPopulate{top:calc(var(--ticker-height,33px) + var(--vnv-aut
 <script src="https://vervenveda.com/assets/vnv-header-autopopulate.js"></script>
 <script src="https://vervenveda.com/assets/vnv-333-ticker.js"></script>
 <script src="https://vervenveda.com/assets/vnv-ticker-autopopulate.js" data-vnv-ticker-autopopulate></script>
-<script>VNV_TICKER.autoPopulate({label:"ARSHIF Quick Links",max:12});</script>
+<script>VNV_TICKER.autoPopulate({before:".ac-crumb",label:"ARSHIF Quick Links",max:12});</script>
 <script>VNV_HEADER.mount({"title":"Khaemenes Academy","subtitle":"ARSHIF · The Living Archive of Human Knowledge","icon":"K","home":"https://vervenveda.com/Khaemenes_Academy.github.io/","actions":[]});</script>
 <script src="https://vervenveda.com/assets/khaemenes-campus-phrases.js" defer></script>
 <script src="https://vervenveda.com/assets/khaemenes-interlingual-core.js" defer></script>
 <script src="https://vervenveda.com/Khaemenes_Linguistics.github.io/assets/khaemenes-translator-loader.js?v=1.1.1" defer></script>
-<script src="https://vervenveda.com/assets/vnv-language.js?v=20261108-cream-buttons" defer></script>
+<script src="https://vervenveda.com/assets/vnv-language.js?v=20261121-half-height" defer></script>
 <script id="arshif-class-tools-config">
 window.KhaemenesClassToolsConfigV1=Object.freeze({
  id:"arshif-landing",
@@ -6744,31 +6731,14 @@ window.KhaemenesClassToolsConfigV1=Object.freeze({
    panel.hidden=!panel.hidden;
    const mount=panel.querySelector("[data-vnv-language-mount]");
    const switcher=document.getElementById("vnv-language-switch");
-   if(mount&&switcher&&switcher.parentElement!==mount)mount.append(switcher);
+   if(switcher){panel.hidden=true;switcher.scrollIntoView({block:"center"});switcher.querySelector("select,button")?.focus();}
   }
  },
  help:{title:"ARSHIF Tools",paragraphs:["Search and Research use approved public ecosystem resources.","Halls opens the archive halls. Translate uses the canonical Verve N Veda language system.","These tools do not alter archive records or learner data."]}
 });
 </script>
 <script src="https://vervenveda.com/assets/vnv-class-tools-toolbar.js?v=1.6.1"></script>
-<script id="arshif-translator-toolbar-dock">
-document.addEventListener("DOMContentLoaded",()=>{
- setTimeout(()=>{
-  const root=document.getElementById("vnvClassToolsToolbar");
-  if(!root)return;
-  let panel=root.querySelector("[data-vct-translator-panel]");
-  if(!panel){
-   panel=document.createElement("div");panel.className="vct-pop";panel.dataset.vctTranslatorPanel="";panel.hidden=true;
-   panel.innerHTML="<h2>Translate ARSHIF</h2><p>Use the canonical Verve N Veda translator for this page.</p><div data-vnv-language-mount></div>";
-   root.querySelector("#vnvClassToolsPanel")?.append(panel);
-  }
-  const mount=panel.querySelector("[data-vnv-language-mount]");
-  const switcher=document.getElementById("vnv-language-switch");
-  if(mount&&switcher)mount.append(switcher);
-  document.getElementById("vnv-language-rail")?.remove();
- },120);
-},{once:true});
-</script>
+<script src="./assets/arshif-core.js"></script>
 <script src="https://vervenveda.com/assets/vnv-ecosystem-toolbar.js"></script>
 <!-- Opt-in read-only page audit; never runs for ordinary visitors. -->
 <script id="vnv-page-audit-optin-loader">
