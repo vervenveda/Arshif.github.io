@@ -1,0 +1,643 @@
+{
+  "schemaVersion": 1,
+  "generated": "2026-11-24",
+  "purpose": "Local archive records and reviewed library gateways only; ecosystem data loaded from canonical gateway at runtime.",
+  "records": [
+    {
+      "id": "reading-literacy",
+      "title": "Reading & Literacy Hall",
+      "url": "https://vervenveda.com/Arshif.github.io/halls/literacy-childrens-classics/",
+      "description": "Preschool-through-middle-school reading and literacy hub with developmental pathways, classics, literacy strands, Story Studio, level guides, and progress tools.",
+      "subject": "Texts & Language",
+      "type": "Hall",
+      "keywords": [
+        "Oral language & phonological awareness",
+        "Phonics, decoding & spelling",
+        "Fluency, vocabulary & morphology",
+        "Literature & informational reading",
+        "Writing from reading & discussion",
+        "reading",
+        "literacy",
+        "children",
+        "classics",
+        "phonics",
+        "middle school"
+      ],
+      "source": "Arshif archive registry"
+    },
+    {
+      "id": "world-classics",
+      "title": "World Classics & Humanities Hall",
+      "url": "https://vervenveda.com/Arshif.github.io/halls/literacy-world-classics/",
+      "description": "World literature and humanities archive with all-ages access and formal high-school through university pathways for comparative reading, research, context, and scholarly argument.",
+      "subject": "Texts & Language",
+      "type": "Hall",
+      "keywords": [
+        "World literature",
+        "Comparative humanities",
+        "Historical & cultural context",
+        "Research and source evaluation",
+        "Advanced literary study",
+        "classics",
+        "world literature",
+        "humanities",
+        "university",
+        "research"
+      ],
+      "source": "Arshif archive registry"
+    },
+    {
+      "id": "poetry",
+      "title": "Poetry Hall",
+      "url": "https://vervenveda.com/Arshif.github.io/halls/literacy-poetry-9th-university/",
+      "description": "Poetry 101–603 for reading, close analysis, craft, forms, traditions, workshops, criticism, research, and advanced poetry study.",
+      "subject": "Arts & Expression",
+      "type": "Hall",
+      "keywords": [
+        "Close reading",
+        "Poetic forms & craft",
+        "World poetry traditions",
+        "Workshop & revision",
+        "Criticism and advanced research",
+        "poetry",
+        "writing",
+        "craft",
+        "workshop",
+        "literature"
+      ],
+      "source": "Arshif archive registry"
+    },
+    {
+      "id": "oral-traditions",
+      "title": "Indigenous Oral Traditions & Storywork Hall",
+      "url": "https://vervenveda.com/Arshif.github.io/halls/literacy-indiginous-oral-traditions/",
+      "description": "Oral traditions, storywork, living cultural knowledge, community authority, listening, ethical research, memory, and advanced independent study.",
+      "subject": "Culture & Memory",
+      "type": "Hall",
+      "keywords": [
+        "Oral tradition & memory",
+        "Storywork",
+        "Community authority",
+        "Ethical research",
+        "Living cultural knowledge",
+        "indigenous",
+        "oral traditions",
+        "storywork",
+        "memory",
+        "culture",
+        "ethics"
+      ],
+      "source": "Arshif archive registry"
+    },
+    {
+      "id": "lost-works",
+      "title": "The Palimpsest Vault",
+      "url": "https://vervenveda.com/Arshif.github.io/halls/literacy-lost-books/",
+      "description": "Lost, fragmented, suppressed, challenged, and recovered works studied through manuscripts, canon, censorship, archives, textual criticism, provenance, and digital preservation.",
+      "subject": "Culture & Memory",
+      "type": "Archive",
+      "keywords": [
+        "Lost & fragmentary works",
+        "Manuscripts & textual criticism",
+        "Canon & censorship",
+        "Provenance & preservation",
+        "Digital scholarly editions",
+        "lost works",
+        "archives",
+        "manuscripts",
+        "censorship",
+        "preservation"
+      ],
+      "source": "Arshif archive registry"
+    },
+    {
+      "id": "philosophy",
+      "title": "Philosophy Hall",
+      "url": "https://vervenveda.com/Arshif.github.io/halls/philosophy/",
+      "description": "Philosophy 101–603 covering world philosophy, logic, ethics, epistemology, metaphysics, political thought, comparative philosophy, research, and thesis-level inquiry.",
+      "subject": "Ideas & Inquiry",
+      "type": "Hall",
+      "keywords": [
+        "Logic & argument",
+        "Ethics",
+        "Epistemology & metaphysics",
+        "Political philosophy",
+        "Comparative and advanced research",
+        "philosophy",
+        "logic",
+        "ethics",
+        "ideas",
+        "research"
+      ],
+      "source": "Arshif archive registry"
+    },
+    {
+      "id": "bible-history",
+      "title": "Bible & History Parallels Hall",
+      "url": "https://vervenveda.com/Arshif.github.io/halls/historical-biblical-parallels/",
+      "description": "Bible and ancient-history study through Scripture, archaeology, inscriptions, manuscripts, chronology, historical geography, evidence-aware research, and clearly labeled faith reflection.",
+      "subject": "Faith & Historical Inquiry",
+      "type": "Hall",
+      "keywords": [
+        "Scripture & source literacy",
+        "Archaeology & epigraphy",
+        "Second Temple history",
+        "Manuscripts & textual criticism",
+        "Historical method & research",
+        "bible",
+        "history",
+        "archaeology",
+        "epigraphy",
+        "manuscripts",
+        "faith"
+      ],
+      "source": "Arshif archive registry"
+    },
+    {
+      "id": "travel-exploration",
+      "title": "Travelogues & Exploration Hall",
+      "url": "https://vervenveda.com/Arshif.github.io/halls/exploration-travelogues/",
+      "description": "Travel writing, routes, maps, pilgrimage, maritime networks, migration, field observation, environmental change, spatial humanities, and GIS-oriented research.",
+      "subject": "History & Geography",
+      "type": "Hall",
+      "keywords": [
+        "Travel writing",
+        "Maps & spatial thinking",
+        "Migration & mobility",
+        "Field observation",
+        "GIS & digital spatial humanities",
+        "travel",
+        "maps",
+        "geography",
+        "exploration",
+        "fieldwork",
+        "gis"
+      ],
+      "source": "Arshif archive registry"
+    },
+    {
+      "id": "theatre",
+      "title": "Theatre Hall",
+      "url": "https://vervenveda.com/Arshif.github.io/halls/theatre/",
+      "description": "Theatre 101–603 spanning dramatic literature, acting, directing, dramaturgy, design, devising, playwriting, stage management, production, research, rights, and safe rehearsal practice.",
+      "subject": "Arts & Expression",
+      "type": "Hall",
+      "keywords": [
+        "Dramatic literature",
+        "Acting & directing",
+        "Playwriting & devising",
+        "Dramaturgy & design",
+        "Production & research",
+        "theatre",
+        "acting",
+        "directing",
+        "playwriting",
+        "performance",
+        "design"
+      ],
+      "source": "Arshif archive registry"
+    },
+    {
+      "id": "plera-search",
+      "title": "PLERA Search",
+      "url": "https://vervenveda.github.io/PLERASearch.github.io/",
+      "description": "Independent PLERA portal for public-resource discovery.",
+      "subject": "Research & Discovery",
+      "type": "Search Gateway",
+      "keywords": [
+        "Research discovery",
+        "Public resources",
+        "Source finding",
+        "Cross-domain inquiry"
+      ],
+      "source": "Arshif archive registry"
+    },
+    {
+      "id": "reading-room",
+      "title": "ARSHIF Reading Room",
+      "url": "https://vervenveda.com/Arshif.github.io/halls/Reading_room_index.html",
+      "description": "A focused reading room for long-form study and quiet engagement with texts.",
+      "subject": "Texts & Language",
+      "type": "Reading Space",
+      "keywords": [
+        "Focused reading",
+        "Long-form study",
+        "Reference reading",
+        "Independent inquiry"
+      ],
+      "source": "Arshif archive registry"
+    },
+    {
+      "id": "song-embedder",
+      "title": "Reading Music · Song Embedder",
+      "url": "https://vervenveda.com/Arshif.github.io/tools/song_embedder_index.html",
+      "description": "Listening accessory for readers; open separately while reading.",
+      "subject": "Arts & Expression",
+      "type": "Creative Tool",
+      "keywords": [
+        "Music & media",
+        "Creative study",
+        "Listening pathways",
+        "Presentation"
+      ],
+      "source": "Arshif archive registry"
+    },
+    {
+      "id": "financial",
+      "title": "Financial Hall",
+      "url": "https://vervenveda.github.io/finance.github.io/financial-hall/",
+      "description": "Financial literacy and certificate portal covering personal finance, institutions, markets, consumer protection, public finance, and practical tools.",
+      "subject": "Civic & Practical",
+      "type": "Hall",
+      "keywords": [
+        "Personal financial literacy",
+        "Markets & institutions",
+        "Public finance",
+        "Consumer protection",
+        "Budgeting tools"
+      ],
+      "source": "Arshif archive registry"
+    },
+    {
+      "id": "language",
+      "title": "Khaemenes Linguistics",
+      "url": "https://vervenveda.github.io/Khaemenes_Linguistics.github.io/",
+      "description": "Canonical language-learning gateway; the former local Language Hall route is retired.",
+      "subject": "Texts & Language",
+      "type": "Hall",
+      "keywords": [
+        "Language foundations",
+        "Writing systems",
+        "Vocabulary & pronunciation",
+        "Translation",
+        "Language & culture"
+      ],
+      "source": "Arshif archive registry"
+    },
+    {
+      "id": "nonprofit",
+      "title": "Nonprofit Hall",
+      "url": "https://vervenveda.github.io/finance.github.io/nonprofit-hall/",
+      "description": "Public service, governance, mission design, fundraising, compliance, accountability, and sustainable community impact.",
+      "subject": "Civic & Practical",
+      "type": "Hall",
+      "keywords": [
+        "Formation & governance",
+        "Mission & strategy",
+        "Fundraising",
+        "Compliance",
+        "Impact measurement"
+      ],
+      "source": "Arshif archive registry"
+    },
+    {
+      "id": "bible-context",
+      "title": "Bible Context",
+      "url": "https://vervenveda.com/Arshif.github.io/Faith/apps/Bible-context_index.html",
+      "description": "Biblical context study focused on text, transmission, historical setting, and interpretation.",
+      "subject": "Faith & Religious Literacy",
+      "type": "Study Portal",
+      "keywords": [
+        "Biblical context",
+        "Text & transmission",
+        "Historical setting",
+        "Interpretation"
+      ],
+      "source": "Arshif archive registry"
+    },
+    {
+      "id": "yahushua-study",
+      "title": "Yahushua Study",
+      "url": "https://vervenveda.com/Arshif.github.io/Faith/apps/Yahushua_Study_index.html",
+      "description": "Focused study of Yahushua through textual, historical, theological, and devotional pathways.",
+      "subject": "Faith & Religious Literacy",
+      "type": "Study Portal",
+      "keywords": [
+        "Textual study",
+        "Historical context",
+        "Theological reflection",
+        "Devotional study"
+      ],
+      "source": "Arshif archive registry"
+    },
+    {
+      "id": "yahushua-portal",
+      "title": "Yahushua Research Portal",
+      "url": "https://vervenveda.com/Arshif.github.io/Faith/apps/Yahushua_portal_index.html",
+      "description": "Research-oriented portal for sources, context, study pathways, and structured inquiry concerning Yahushua.",
+      "subject": "Faith & Religious Literacy",
+      "type": "Research Portal",
+      "keywords": [
+        "Research pathways",
+        "Source comparison",
+        "Historical context",
+        "Structured inquiry"
+      ],
+      "source": "Arshif archive registry"
+    },
+    {
+      "id": "bible-before-canon",
+      "title": "Bible Before the Canon",
+      "url": "https://vervenveda.com/Arshif.github.io/Faith/apps/bible_before_cannon_index.html",
+      "description": "Study of biblical texts, collections, transmission, and historical context before later canon boundaries were standardized.",
+      "subject": "Faith & Religious Literacy",
+      "type": "Archive",
+      "keywords": [
+        "Early textual collections",
+        "Transmission",
+        "Canon history",
+        "Historical context"
+      ],
+      "source": "Arshif archive registry"
+    },
+    {
+      "id": "biblical-directory",
+      "title": "Biblical Web Directory",
+      "url": "https://vervenveda.com/Arshif.github.io/Faith/apps/biblical_web_directory_index.html",
+      "description": "Curated biblical research directory for finding textual, historical, scholarly, and faith-study resources.",
+      "subject": "Faith & Religious Literacy",
+      "type": "Directory",
+      "keywords": [
+        "Research directory",
+        "Biblical sources",
+        "Historical resources",
+        "Scholarship"
+      ],
+      "source": "Arshif archive registry"
+    },
+    {
+      "id": "foundations-faith",
+      "title": "Foundations of Faith",
+      "url": "https://vervenveda.com/Arshif.github.io/Faith/apps/foundations_of_faith_index.html",
+      "description": "Foundational faith study organized for structured reading, reflection, and learning.",
+      "subject": "Faith & Religious Literacy",
+      "type": "Study Portal",
+      "keywords": [
+        "Foundational study",
+        "Scripture",
+        "Reflection",
+        "Faith literacy"
+      ],
+      "source": "Arshif archive registry"
+    },
+    {
+      "id": "prayer",
+      "title": "Prayer",
+      "url": "https://vervenveda.com/Arshif.github.io/Faith/apps/prayer_index.html",
+      "description": "A focused prayer and devotional resource within the ARSHIF faith collection.",
+      "subject": "Faith & Religious Literacy",
+      "type": "Community Portal",
+      "keywords": [
+        "Prayer",
+        "Reflection",
+        "Devotional practice"
+      ],
+      "source": "Arshif archive registry"
+    },
+    {
+      "id": "remnant-nations",
+      "title": "The Remnant & The Nations",
+      "url": "https://vervenveda.com/Arshif.github.io/Faith/apps/remnant_nations_index.html",
+      "description": "Study portal examining remnant and nations themes through biblical and historical context.",
+      "subject": "Faith & Religious Literacy",
+      "type": "Study Portal",
+      "keywords": [
+        "Biblical themes",
+        "Historical context",
+        "Comparative reading",
+        "Reflection"
+      ],
+      "source": "Arshif archive registry"
+    },
+    {
+      "id": "testament-study",
+      "title": "Testament Study Portal",
+      "url": "https://vervenveda.com/Arshif.github.io/Faith/apps/testament_study_portal_index.html",
+      "description": "Canonical Testament study portal for structured textual and contextual learning.",
+      "subject": "Faith & Religious Literacy",
+      "type": "Study Portal",
+      "keywords": [
+        "Testament study",
+        "Textual reading",
+        "Context",
+        "Structured study"
+      ],
+      "source": "Arshif archive registry"
+    },
+    {
+      "id": "truth-tribe-class",
+      "title": "Truth Tribe Class",
+      "url": "https://vervenveda.com/Arshif.github.io/Faith/apps/truth_tribe_class_index.html",
+      "description": "Class-oriented Truth Tribe learning portal.",
+      "subject": "Faith & Religious Literacy",
+      "type": "Class Portal",
+      "keywords": [
+        "Class study",
+        "Discussion",
+        "Faith learning",
+        "Structured lessons"
+      ],
+      "source": "Arshif archive registry"
+    },
+    {
+      "id": "truth-tribe",
+      "title": "Truth Tribe",
+      "url": "https://vervenveda.com/Arshif.github.io/Faith/apps/truth_tribe_index.html",
+      "description": "Truth Tribe community and study portal.",
+      "subject": "Faith & Religious Literacy",
+      "type": "Community Portal",
+      "keywords": [
+        "Community",
+        "Study",
+        "Faith discussion",
+        "Resources"
+      ],
+      "source": "Arshif archive registry"
+    },
+    {
+      "id": "zionism-course",
+      "title": "Zionism: History, Ideas & Debate",
+      "url": "https://vervenveda.com/Arshif.github.io/Faith/apps/zionism_course_index.html",
+      "description": "Historical and ideas-based course for studying Zionism, its contexts, debates, sources, and competing perspectives.",
+      "subject": "History & Religious Literacy",
+      "type": "Course",
+      "keywords": [
+        "History",
+        "Political ideas",
+        "Primary sources",
+        "Competing perspectives",
+        "Evidence-aware discussion"
+      ],
+      "source": "Arshif archive registry"
+    },
+    {
+      "id": "library-library-of-congress-digital-collections",
+      "title": "Library of Congress Digital Collections",
+      "url": "https://www.loc.gov/collections/",
+      "description": "Digitized manuscripts, photographs, maps, recordings, books, newspapers, and other primary-source collections.",
+      "subject": "Primary Sources",
+      "type": "Library gateway",
+      "source": "Reviewed external research gateway",
+      "keywords": [
+        "Library of Congress",
+        "Primary Sources"
+      ]
+    },
+    {
+      "id": "library-national-archives-catalog",
+      "title": "National Archives Catalog",
+      "url": "https://catalog.archives.gov/",
+      "description": "The public catalog for U.S. federal records, archival descriptions, digitized documents, photographs, and electronic records.",
+      "subject": "Public Records",
+      "type": "Library gateway",
+      "source": "Reviewed external research gateway",
+      "keywords": [
+        "U.S. National Archives",
+        "Public Records"
+      ]
+    },
+    {
+      "id": "library-smithsonian-open-access",
+      "title": "Smithsonian Open Access",
+      "url": "https://www.si.edu/openaccess",
+      "description": "Millions of openly available images, objects, data, and 2D and 3D collection materials across Smithsonian institutions.",
+      "subject": "Museums & Culture",
+      "type": "Library gateway",
+      "source": "Reviewed external research gateway",
+      "keywords": [
+        "Smithsonian Institution",
+        "Museums & Culture"
+      ]
+    },
+    {
+      "id": "library-europeana-collections",
+      "title": "Europeana Collections",
+      "url": "https://www.europeana.eu/en/collections",
+      "description": "European cultural heritage from museums, galleries, libraries, and archives, organized across themes, periods, and institutions.",
+      "subject": "Global Culture",
+      "type": "Library gateway",
+      "source": "Reviewed external research gateway",
+      "keywords": [
+        "Europeana",
+        "Global Culture"
+      ]
+    },
+    {
+      "id": "library-unesco-digital-library",
+      "title": "UNESCO Digital Library",
+      "url": "https://unesdoc.unesco.org/",
+      "description": "UNESCO publications, institutional records, education, culture, science, communication, and international policy materials.",
+      "subject": "Global Knowledge",
+      "type": "Library gateway",
+      "source": "Reviewed external research gateway",
+      "keywords": [
+        "UNESCO",
+        "Global Knowledge"
+      ]
+    },
+    {
+      "id": "library-internet-archive",
+      "title": "Internet Archive",
+      "url": "https://archive.org/",
+      "description": "A nonprofit digital library preserving books, audio, video, software, websites, and other cultural artifacts.",
+      "subject": "Digital Preservation",
+      "type": "Library gateway",
+      "source": "Reviewed external research gateway",
+      "keywords": [
+        "Internet Archive",
+        "Digital Preservation"
+      ]
+    },
+    {
+      "id": "library-project-gutenberg",
+      "title": "Project Gutenberg",
+      "url": "https://www.gutenberg.org/",
+      "description": "A free library of public-domain and rights-cleared ebooks that can be read online or downloaded.",
+      "subject": "Public-Domain Books",
+      "type": "Library gateway",
+      "source": "Reviewed external research gateway",
+      "keywords": [
+        "Project Gutenberg",
+        "Public-Domain Books"
+      ]
+    },
+    {
+      "id": "library-worldcat",
+      "title": "WorldCat",
+      "url": "https://search.worldcat.org/",
+      "description": "A global library catalog for locating books, maps, recordings, archives, journals, and other materials in participating libraries.",
+      "subject": "Library Discovery",
+      "type": "Library gateway",
+      "source": "Reviewed external research gateway",
+      "keywords": [
+        "OCLC",
+        "Library Discovery"
+      ]
+    },
+    {
+      "id": "library-directory-of-open-access-journals",
+      "title": "Directory of Open Access Journals",
+      "url": "https://doaj.org/",
+      "description": "A global index of peer-reviewed open-access journals and articles across disciplines, languages, and regions.",
+      "subject": "Open Scholarship",
+      "type": "Library gateway",
+      "source": "Reviewed external research gateway",
+      "keywords": [
+        "DOAJ",
+        "Open Scholarship"
+      ]
+    },
+    {
+      "id": "library-ncbi-bookshelf",
+      "title": "NCBI Bookshelf",
+      "url": "https://www.ncbi.nlm.nih.gov/books/",
+      "description": "Free online books and documents in biomedical science, health care, medicine, and related fields.",
+      "subject": "Health & Life Science",
+      "type": "Library gateway",
+      "source": "Reviewed external research gateway",
+      "keywords": [
+        "U.S. National Library of Medicine",
+        "Health & Life Science"
+      ]
+    },
+    {
+      "id": "library-stanford-encyclopedia-of-philosophy",
+      "title": "Stanford Encyclopedia of Philosophy",
+      "url": "https://plato.stanford.edu/",
+      "description": "Expert-authored and editorially reviewed reference entries across philosophy and related fields.",
+      "subject": "Philosophy",
+      "type": "Library gateway",
+      "source": "Reviewed external research gateway",
+      "keywords": [
+        "Stanford University",
+        "Philosophy"
+      ]
+    },
+    {
+      "id": "library-perseus-digital-library",
+      "title": "Perseus Digital Library",
+      "url": "https://www.perseus.tufts.edu/hopper/",
+      "description": "Classical texts, translations, language tools, and cultural collections, especially for the Greco-Roman world.",
+      "subject": "Classics & Humanities",
+      "type": "Library gateway",
+      "source": "Reviewed external research gateway",
+      "keywords": [
+        "Tufts University",
+        "Classics & Humanities"
+      ]
+    },
+    {
+      "id": "library-biodiversity-heritage-library",
+      "title": "Biodiversity Heritage Library",
+      "url": "https://www.biodiversitylibrary.org/",
+      "description": "Open-access biodiversity literature, natural-history books, archives, scientific names, and historical illustrations.",
+      "subject": "Biodiversity",
+      "type": "Library gateway",
+      "source": "Reviewed external research gateway",
+      "keywords": [
+        "BHL Consortium",
+        "Biodiversity"
+      ]
+    }
+  ]
+}
