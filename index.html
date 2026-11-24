@@ -3928,6 +3928,7 @@ main#main-content .hero-title-accent{display:block;margin:12px auto 0;font-weigh
     </section>
 
     <section class="section" id="archive" aria-labelledby="archiveTitle">
+      <p style="text-align:center"><a class="primary-button" href="./search/">Arshif Search</a></p>
       <div class="section-heading">
         <div>
           <p class="section-kicker">Explore the Archive</p>
@@ -4154,8 +4155,8 @@ main#main-content .hero-title-accent{display:block;margin:12px auto 0;font-weigh
     let archiveMeta = {
       "schema": "arshif-living-archive-registry",
       "schemaVersion": 2,
-      "registryVersion": "2026.08.10-matrix-deep-dive",
-      "lastUpdated": "2026-08-10",
+      "registryVersion": "2026.11.24-route-reconciliation",
+      "lastUpdated": "2026-11-24",
       "title": "ARSHIF — The Living Archive of Human Knowledge",
       "maintainer": "Jennifer Kay Pearl",
       "principles": [
@@ -4169,8 +4170,8 @@ main#main-content .hero-title-accent{display:block;margin:12px auto 0;font-weigh
       ],
       "auditPolicy": "Fail closed: launch only current internal routes, reviewed research domains, and explicitly reviewed Matrix corridors.",
       "internalDestinationCount": 33,
-      "verifiedLiveInternal": 29,
-      "heldForRepair": 2,
+      "verifiedLiveInternal": 27,
+      "heldForRepair": 4,
       "duplicateRecordsHeld": 2,
       "canonicalHallCount": 9,
       "matrixConnected": true
@@ -4268,7 +4269,7 @@ main#main-content .hero-title-accent{display:block;margin:12px auto 0;font-weigh
                   },
                   {
                         "title": "ARSHIF Reading Room",
-                        "url": "./apps/Reading_room_index.html"
+                        "url": "./halls/Reading_room_index.html"
                   }
             ],
             "tags": [
@@ -4631,8 +4632,8 @@ main#main-content .hero-title-accent{display:block;margin:12px auto 0;font-weigh
             "category": "Research & Discovery",
             "kind": "Search Gateway",
             "symbol": "⌕",
-            "path": "./apps/PLERA_Search_index.html",
-            "description": "ARSHIF’s local doorway into PLERA-assisted research and public-resource discovery.",
+            "path": "https://vervenveda.github.io/PLERASearch.github.io/",
+            "description": "Independent PLERA portal for public-resource discovery.",
             "pathways": [
                   "Research discovery",
                   "Public resources",
@@ -4640,7 +4641,7 @@ main#main-content .hero-title-accent{display:block;margin:12px auto 0;font-weigh
                   "Cross-domain inquiry"
             ],
             "status": "live",
-            "statusNote": "Verified current repository path.",
+            "statusNote": "Canonical master directory destination; registered active, not independently runtime-certified.",
             "related": [
                   {
                         "title": "PLERA Search",
@@ -4656,7 +4657,8 @@ main#main-content .hero-title-accent{display:block;margin:12px auto 0;font-weigh
                   }
             ],
             "tags": [],
-            "layer": "Apps"
+            "layer": "Connected ecosystem",
+            "canonicalId": "plera"
       },
       {
             "id": "reading-room",
@@ -4664,7 +4666,7 @@ main#main-content .hero-title-accent{display:block;margin:12px auto 0;font-weigh
             "category": "Texts & Language",
             "kind": "Reading Space",
             "symbol": "¶",
-            "path": "./apps/Reading_room_index.html",
+            "path": "./halls/Reading_room_index.html",
             "description": "A focused reading room for long-form study and quiet engagement with texts.",
             "pathways": [
                   "Focused reading",
@@ -4685,16 +4687,16 @@ main#main-content .hero-title-accent{display:block;margin:12px auto 0;font-weigh
                   }
             ],
             "tags": [],
-            "layer": "Apps"
+            "layer": "Halls"
       },
       {
             "id": "song-embedder",
-            "title": "Song Embedder",
+            "title": "Reading Music · Song Embedder",
             "category": "Arts & Expression",
             "kind": "Creative Tool",
             "symbol": "♫",
-            "path": "./apps/Song_embedder_index.html",
-            "description": "A creative music and media tool for organizing or embedding song-based study experiences.",
+            "path": "./tools/song_embedder_index.html",
+            "description": "Listening accessory for readers; open separately while reading.",
             "pathways": [
                   "Music & media",
                   "Creative study",
@@ -4714,7 +4716,7 @@ main#main-content .hero-title-accent{display:block;margin:12px auto 0;font-weigh
                   }
             ],
             "tags": [],
-            "layer": "Apps"
+            "layer": "Tools"
       },
       {
             "id": "contribute",
@@ -4722,7 +4724,7 @@ main#main-content .hero-title-accent{display:block;margin:12px auto 0;font-weigh
             "category": "Stewardship",
             "kind": "Stewardship",
             "symbol": "＋",
-            "path": "./apps/contribute_index.html",
+            "path": "./tools/contribute_index.html",
             "description": "Contribution pathway retained in the repository, but the current file is a payment-button fragment rather than a complete standalone page.",
             "pathways": [
                   "Stewardship",
@@ -4733,7 +4735,7 @@ main#main-content .hero-title-accent{display:block;margin:12px auto 0;font-weigh
             "statusNote": "Current repository file is not a complete standalone HTML page; keep disabled until rebuilt.",
             "related": [],
             "tags": [],
-            "layer": "Apps"
+            "layer": "Tools"
       },
       {
             "id": "culinary",
@@ -4741,7 +4743,7 @@ main#main-content .hero-title-accent{display:block;margin:12px auto 0;font-weigh
             "category": "Culture & Daily Life",
             "kind": "Hall",
             "symbol": "◒",
-            "path": "./apps/culinary_hall/",
+            "path": "./halls/culinary/",
             "description": "World foodways, cooking and baking foundations, nutrition, preservation, agriculture, trade, ritual, and cultural identity.",
             "pathways": [
                   "Culinary foundations",
@@ -4750,8 +4752,8 @@ main#main-content .hero-title-accent{display:block;margin:12px auto 0;font-weigh
                   "Food preservation",
                   "Nutrition & culture"
             ],
-            "status": "live",
-            "statusNote": "Verified current repository path.",
+            "status": "repair",
+            "statusNote": "Local hall exists; canonical academic relocation remains unresolved. Held until reviewed.",
             "related": [],
             "tags": [],
             "layer": "Apps"
@@ -4762,7 +4764,7 @@ main#main-content .hero-title-accent{display:block;margin:12px auto 0;font-weigh
             "category": "Civic & Practical",
             "kind": "Hall",
             "symbol": "◈",
-            "path": "./apps/financial_hall/",
+            "path": "https://vervenveda.github.io/finance.github.io/financial-hall/",
             "description": "Financial literacy and certificate portal covering personal finance, institutions, markets, consumer protection, public finance, and practical tools.",
             "pathways": [
                   "Personal financial literacy",
@@ -4772,19 +4774,20 @@ main#main-content .hero-title-accent{display:block;margin:12px auto 0;font-weigh
                   "Budgeting tools"
             ],
             "status": "live",
-            "statusNote": "Verified current repository path.",
+            "statusNote": "Canonical master directory destination; registered active, not independently runtime-certified.",
             "related": [],
             "tags": [],
-            "layer": "Apps"
+            "layer": "Connected ecosystem",
+            "canonicalId": "finance-hall"
       },
       {
             "id": "language",
-            "title": "Language Hall",
+            "title": "Khaemenes Linguistics",
             "category": "Texts & Language",
             "kind": "Hall",
             "symbol": "文",
-            "path": "./apps/language_hall/",
-            "description": "Language learning, linguistics, writing systems, vocabulary, pronunciation, translation, and cultural context.",
+            "path": "https://vervenveda.github.io/Khaemenes_Linguistics.github.io/",
+            "description": "Canonical language-learning gateway; the former local Language Hall route is retired.",
             "pathways": [
                   "Language foundations",
                   "Writing systems",
@@ -4793,7 +4796,7 @@ main#main-content .hero-title-accent{display:block;margin:12px auto 0;font-weigh
                   "Language & culture"
             ],
             "status": "live",
-            "statusNote": "Verified current repository path.",
+            "statusNote": "Canonical master directory destination; registered active, not independently runtime-certified.",
             "related": [
                   {
                         "title": "Khaemenes Higher Learning",
@@ -4801,7 +4804,8 @@ main#main-content .hero-title-accent{display:block;margin:12px auto 0;font-weigh
                   }
             ],
             "tags": [],
-            "layer": "Apps"
+            "layer": "Connected ecosystem",
+            "canonicalId": "linguistics"
       },
       {
             "id": "nonprofit",
@@ -4809,7 +4813,7 @@ main#main-content .hero-title-accent{display:block;margin:12px auto 0;font-weigh
             "category": "Civic & Practical",
             "kind": "Hall",
             "symbol": "◎",
-            "path": "./apps/nonprofit_hall/",
+            "path": "https://vervenveda.github.io/finance.github.io/nonprofit-hall/",
             "description": "Public service, governance, mission design, fundraising, compliance, accountability, and sustainable community impact.",
             "pathways": [
                   "Formation & governance",
@@ -4819,7 +4823,7 @@ main#main-content .hero-title-accent{display:block;margin:12px auto 0;font-weigh
                   "Impact measurement"
             ],
             "status": "live",
-            "statusNote": "Verified current repository path.",
+            "statusNote": "Canonical master directory destination; registered active, not independently runtime-certified.",
             "related": [
                   {
                         "title": "Firmament Law",
@@ -4827,7 +4831,8 @@ main#main-content .hero-title-accent{display:block;margin:12px auto 0;font-weigh
                   }
             ],
             "tags": [],
-            "layer": "Apps"
+            "layer": "Connected ecosystem",
+            "canonicalId": "finance-nonprofit"
       },
       {
             "id": "science",
@@ -4844,8 +4849,8 @@ main#main-content .hero-title-accent{display:block;margin:12px auto 0;font-weigh
                   "Changing models",
                   "Interdisciplinary inquiry"
             ],
-            "status": "live",
-            "statusNote": "Verified current repository path.",
+            "status": "repair",
+            "statusNote": "Former local route absent. Higher Learning Science is a related canonical destination, not a verified replacement.",
             "related": [
                   {
                         "title": "PLERA Search",
@@ -6314,7 +6319,7 @@ main#main-content .hero-title-accent{display:block;margin:12px auto 0;font-weigh
         const isCurrentInternal =
           hall.path.startsWith("./apps/") ||
           hall.path.startsWith("./halls/") ||
-          hall.path.startsWith("./Faith/apps/");
+          hall.path.startsWith("./Faith/apps/") || hall.path.startsWith("./tools/");
         const isReviewedMatrixPage =
           hall.path.startsWith("https://vervenveda.com/") ||
           hall.path.startsWith("https://vervenveda.github.io/");
