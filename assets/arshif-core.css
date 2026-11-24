@@ -29,3 +29,19 @@ body[data-arshif-core] #vnv-language-switch{position:static!important;margin:0 a
 body[data-arshif-core] :is(#vnv333NetworkTicker,#vnvTickerAutoPopulate,#vnvHeaderAutoPopulate,#vnvClassToolsToolbar,#vnvEcosystemUtilityDock) :is(a,button,span,label){font-size:16px!important;font-weight:400!important}
 @media(max-width:650px){.ac-hero h1{font-size:clamp(33px,9vw,66px)!important}.ac-hero .ac-eyebrow{font-size:clamp(24px,6vw,33px)!important}.ac-access a{flex:1 1 100px;padding-inline:8px!important}.ac-grid button{min-height:64px!important}body[data-arshif-core] #vnvClassToolsToolbar{bottom:120px!important}}
 @media print{.ac-hero,.ac-about,.ac-features,.ac-crumb,.ac-footer,#vnv333NetworkTicker,#vnvTickerAutoPopulate,#vnvHeaderAutoPopulate,#vnvClassToolsToolbar,#vnvEcosystemUtilityDock,#vnv-language-switch{display:none!important}}
+
+/* Explicitly migrated Hall shells; legacy study controls remain available. */
+body[data-arshif-hall]>.site-header[data-arshif-former-header],body[data-arshif-hall]>.topbar[data-arshif-former-header]{display:none!important}
+body[data-arshif-hall] :is(.ribbon,.literacy-ribbon){display:none!important}
+body[data-arshif-hall] .ac-study-intro{background:#f4eddf!important;color:#292827!important;border:1px solid #292827!important;border-radius:7px!important;margin:12px auto!important;max-width:1200px!important;width:calc(100% - 24px)!important;padding:12px!important;box-sizing:border-box!important;text-align:center!important}
+body[data-arshif-hall] .ac-study-intro>summary{background:#292827!important;color:#f8f0df!important;border-radius:7px!important;padding:12px!important;cursor:pointer;font:400 16px/1.5 Nunito,Arial,sans-serif!important}
+body[data-arshif-hall] .ac-study-intro :is(.hero,.cc-top,.aph-header){position:static!important;margin:8px auto!important;width:100%!important}
+body[data-arshif-hall] .ac-study-intro .ac-original-title{display:none!important}
+body[data-arshif-hall] .ac-study-intro :is(.eyebrow,.cc-brandline,.aph-kicker,.sigil){display:none!important}
+body[data-arshif-hall] .ac-study-intro :is(.hero-actions,.actions,.aph-hero-actions){justify-content:center!important}
+body[data-arshif-hall] .ac-hero{position:static!important;display:block!important}
+body[data-arshif-hall] .ac-hero h1{font-weight:400!important}
+body[data-arshif-hall] .ac-hero :is(a,button){text-transform:none!important;letter-spacing:0!important}
+body[data-arshif-hall] .ac-features button{font-weight:400!important;letter-spacing:0!important;text-transform:none!important}
+body[data-arshif-hall] .ac-dialog[open]{display:block!important;position:fixed!important;inset:0!important;z-index:2147481000!important}
+body[data-arshif-hall] .ac-dialog:not([open]){display:none!important}
